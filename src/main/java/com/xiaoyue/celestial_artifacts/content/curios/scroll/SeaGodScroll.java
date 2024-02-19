@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.scroll;
 
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioBreak;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioBreak;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;

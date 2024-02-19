@@ -1,9 +1,9 @@
 package com.xiaoyue.celestial_artifacts.events.curios;
 
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioBreak;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioHeal;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioShield;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioXp;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioBreak;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioHeal;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioShield;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioXp;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.ShieldBlockEvent;

@@ -63,7 +63,7 @@ public class Test {
 			}
 		}
 		System.out.println("Special ingredient" + item);
-		return "";//TODO
+		return "";
 	}
 
 	private static String parseResult(JsonElement item) {
@@ -76,7 +76,7 @@ public class Test {
 			}
 		}
 		System.out.println("Special result" + item);
-		return "";//TODO
+		return "";
 	}
 
 	private static String parseItem(JsonElement val) {

@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.head;
 
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioSkill;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioSkill;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;

@@ -4,7 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.config.CommonConfig;
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioBreak;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioBreak;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.register.CCAttributes;

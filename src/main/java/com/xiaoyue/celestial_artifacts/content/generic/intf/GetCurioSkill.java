@@ -1,4 +1,4 @@
-package com.xiaoyue.celestial_artifacts.content.generic.Interface;
+package com.xiaoyue.celestial_artifacts.content.generic.intf;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

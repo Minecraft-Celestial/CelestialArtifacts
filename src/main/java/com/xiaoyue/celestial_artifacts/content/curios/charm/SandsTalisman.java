@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioXp;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioXp;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;

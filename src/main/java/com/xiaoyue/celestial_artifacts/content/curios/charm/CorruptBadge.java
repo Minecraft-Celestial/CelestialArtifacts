@@ -2,8 +2,8 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioBreak;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioSkill;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioBreak;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioSkill;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.EntityUtils;

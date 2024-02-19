@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.curios.necklace;
 
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioHeal;
+import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioHeal;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
