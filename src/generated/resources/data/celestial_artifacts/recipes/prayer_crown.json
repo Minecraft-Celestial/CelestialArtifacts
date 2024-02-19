@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:redstone_block"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "celestial_artifacts:cross_necklace"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BAB",
+    "CDC"
+  ],
+  "result": {
+    "item": "celestial_artifacts:prayer_crown"
+  },
+  "show_notification": true
+}

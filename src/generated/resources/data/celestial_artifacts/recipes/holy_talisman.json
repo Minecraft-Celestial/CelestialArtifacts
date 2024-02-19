@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "celestial_core:pure_nether_star"
+    },
+    "B": {
+      "item": "minecraft:feather"
+    },
+    "C": {
+      "item": "minecraft:gold_ingot"
+    },
+    "D": {
+      "item": "celestial_artifacts:heirloom_necklace"
+    },
+    "E": {
+      "item": "celestial_core:light_fragment"
+    }
+  },
+  "pattern": [
+    "ABB",
+    "CDB",
+    "ECC"
+  ],
+  "result": {
+    "item": "celestial_artifacts:holy_talisman"
+  },
+  "show_notification": true
+}

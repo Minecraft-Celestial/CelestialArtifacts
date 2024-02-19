@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "C": {
+      "item": "celestial_core:midnight_fragment"
+    },
+    "D": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:star_necklace"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:echo_shard"
+    },
+    "B": {
+      "item": "celestial_core:light_fragment"
+    },
+    "C": {
+      "item": "minecraft:diamond"
+    },
+    "D": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "E": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "pattern": [
+    " BA",
+    "CEB",
+    "DC "
+  ],
+  "result": {
+    "item": "celestial_artifacts:repent_mirror"
+  },
+  "show_notification": true
+}

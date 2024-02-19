@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "B": {
+      "item": "celestial_core:midnight_fragment"
+    },
+    "C": {
+      "item": "minecraft:blaze_powder"
+    },
+    "D": {
+      "item": "minecraft:ghast_tear"
+    },
+    "E": {
+      "item": "minecraft:enchanted_book"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CEC",
+    " D "
+  ],
+  "result": {
+    "item": "celestial_artifacts:cursed_talisman"
+  },
+  "show_notification": true
+}

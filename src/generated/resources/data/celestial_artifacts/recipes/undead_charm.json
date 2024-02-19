@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:skeleton_skull"
+    },
+    "B": {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:iron_nugget"
+    },
+    "E": {
+      "item": "minecraft:bone_block"
+    }
+  },
+  "pattern": [
+    "DCD",
+    "BAB",
+    "EBE"
+  ],
+  "result": {
+    "item": "celestial_artifacts:undead_charm"
+  },
+  "show_notification": true
+}

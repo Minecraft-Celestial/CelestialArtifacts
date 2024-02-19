@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "celestial_artifacts:diamond_ring"
+    },
+    "B": {
+      "item": "minecraft:netherite_scrap"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BAB",
+    " B "
+  ],
+  "result": {
+    "item": "celestial_artifacts:netherite_ring"
+  },
+  "show_notification": true
+}

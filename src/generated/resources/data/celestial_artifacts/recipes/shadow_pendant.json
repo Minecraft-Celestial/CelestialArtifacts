@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "C": {
+      "item": "celestial_core:void_essence"
+    },
+    "D": {
+      "item": "celestial_core:the_end_dust"
+    },
+    "E": {
+      "item": "celestial_artifacts:unowned_pendant"
+    }
+  },
+  "pattern": [
+    " A ",
+    "CED",
+    " B "
+  ],
+  "result": {
+    "item": "celestial_artifacts:shadow_pendant"
+  },
+  "show_notification": true
+}

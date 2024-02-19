@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "celestial_artifacts:cross_necklace"
+    },
+    "C": {
+      "item": "celestial_core:light_fragment"
+    },
+    "D": {
+      "item": "minecraft:experience_bottle"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:holy_necklace"
+  },
+  "show_notification": true
+}

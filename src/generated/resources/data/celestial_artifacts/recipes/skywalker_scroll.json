@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "minecraft:ender_pearl"
+    },
+    "C": {
+      "item": "minecraft:glow_ink_sac"
+    },
+    "D": {
+      "item": "celestial_core:light_fragment"
+    }
+  },
+  "pattern": [
+    "CBA",
+    "BAB",
+    "ABD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:skywalker_scroll"
+  },
+  "show_notification": true
+}

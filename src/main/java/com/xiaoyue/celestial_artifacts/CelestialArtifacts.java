@@ -1,7 +1,9 @@
 package com.xiaoyue.celestial_artifacts;
 
+import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.xiaoyue.celestial_artifacts.config.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CARecipeGen;
 import com.xiaoyue.celestial_artifacts.events.curios.AttackMain;
 import com.xiaoyue.celestial_artifacts.events.curios.OtherMain;
 import com.xiaoyue.celestial_artifacts.network.CMessages;
@@ -38,6 +40,8 @@ public class CelestialArtifacts {
 		AttackEventHandler.register(4500, new AttackMain());
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.spec);
+
+		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CARecipeGen::onRecipeGen);
 	}
 
 

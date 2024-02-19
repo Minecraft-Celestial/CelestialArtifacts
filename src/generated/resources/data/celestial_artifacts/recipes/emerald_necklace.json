@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "B": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:emerald"
+    },
+    "D": {
+      "item": "celestial_core:treasure_fragment"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ADA",
+    "BCB"
+  ],
+  "result": {
+    "item": "celestial_artifacts:emerald_necklace"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:trident"
+    },
+    "B": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "D": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "E": {
+      "item": "celestial_core:ocean_essence"
+    },
+    "F": {
+      "item": "minecraft:prismarine_crystals"
+    }
+  },
+  "pattern": [
+    "DEB",
+    "ACD",
+    "FDF"
+  ],
+  "result": {
+    "item": "celestial_artifacts:sea_god_scroll"
+  },
+  "show_notification": true
+}

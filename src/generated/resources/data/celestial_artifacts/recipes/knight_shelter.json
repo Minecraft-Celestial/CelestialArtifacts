@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:nether_star"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "celestial_core:light_fragment"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "BCB",
+    " B "
+  ],
+  "result": {
+    "item": "celestial_artifacts:knight_shelter"
+  },
+  "show_notification": true
+}

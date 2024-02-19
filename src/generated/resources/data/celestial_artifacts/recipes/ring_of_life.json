@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:cherry_sapling"
+    },
+    "B": {
+      "item": "celestial_artifacts:emerald_ring"
+    },
+    "C": {
+      "item": "minecraft:bamboo"
+    },
+    "D": {
+      "item": "minecraft:green_dye"
+    },
+    "E": {
+      "item": "minecraft:pitcher_plant"
+    },
+    "F": {
+      "item": "minecraft:glow_berries"
+    },
+    "G": {
+      "item": "minecraft:wheat_seeds"
+    },
+    "H": {
+      "item": "minecraft:nether_wart"
+    },
+    "I": {
+      "item": "minecraft:mangrove_propagule"
+    }
+  },
+  "pattern": [
+    "ACD",
+    "IBE",
+    "FGH"
+  ],
+  "result": {
+    "item": "celestial_artifacts:ring_of_life"
+  },
+  "show_notification": true
+}

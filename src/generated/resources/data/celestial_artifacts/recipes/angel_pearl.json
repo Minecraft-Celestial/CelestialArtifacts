@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:ender_pearl"
+    },
+    "B": {
+      "item": "minecraft:feather"
+    },
+    "C": {
+      "item": "minecraft:diamond"
+    },
+    "D": {
+      "item": "celestial_core:pure_nether_star"
+    }
+  },
+  "pattern": [
+    " D ",
+    "BAB",
+    "CCC"
+  ],
+  "result": {
+    "item": "celestial_artifacts:angel_pearl"
+  },
+  "show_notification": true
+}

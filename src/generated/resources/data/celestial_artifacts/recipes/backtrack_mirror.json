@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:ender_pearl"
+    },
+    "B": {
+      "item": "minecraft:echo_shard"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "D": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "E": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "pattern": [
+    " BA",
+    "CEB",
+    "DC "
+  ],
+  "result": {
+    "item": "celestial_artifacts:backtrack_mirror"
+  },
+  "show_notification": true
+}

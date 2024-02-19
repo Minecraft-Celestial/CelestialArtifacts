@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "celestial_core:heart_fragment"
+    },
+    "B": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "minecraft:netherite_block"
+    },
+    "D": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "pattern": [
+    "CBC",
+    "BAB",
+    "DBD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:greedy_heart"
+  },
+  "show_notification": true
+}

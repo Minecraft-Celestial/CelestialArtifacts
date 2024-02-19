@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "B": {
+      "item": "minecraft:ender_pearl"
+    },
+    "C": {
+      "item": "celestial_core:treasure_fragment"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:precious_bracelet"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "minecraft:redstone_block"
+    },
+    "C": {
+      "item": "minecraft:rabbit_foot"
+    },
+    "D": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:gallop_necklace"
+  },
+  "show_notification": true
+}

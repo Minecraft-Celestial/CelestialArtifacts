@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "B": {
+      "item": "celestial_core:death_essence"
+    },
+    "C": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    " A "
+  ],
+  "result": {
+    "item": "celestial_artifacts:cursed_protector"
+  },
+  "show_notification": true
+}

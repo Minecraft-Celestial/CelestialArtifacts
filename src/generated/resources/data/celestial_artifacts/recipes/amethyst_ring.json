@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "celestial_artifacts:gold_ring"
+    },
+    "B": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BAB",
+    "   "
+  ],
+  "result": {
+    "item": "celestial_artifacts:amethyst_ring"
+  },
+  "show_notification": true
+}

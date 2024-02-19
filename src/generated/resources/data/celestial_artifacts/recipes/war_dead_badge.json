@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "celestial_core:fire_essence"
+    },
+    "B": {
+      "item": "celestial_core:death_essence"
+    },
+    "C": {
+      "item": "celestial_core:the_end_dust"
+    },
+    "D": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "E": {
+      "item": "minecraft:skeleton_skull"
+    }
+  },
+  "pattern": [
+    "DCD",
+    "BEA",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:war_dead_badge"
+  },
+  "show_notification": true
+}

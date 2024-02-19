@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "celestial_core:pure_nether_star"
+    },
+    "B": {
+      "item": "minecraft:feather"
+    },
+    "C": {
+      "item": "minecraft:diamond"
+    },
+    "D": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BAB",
+    "CDC"
+  ],
+  "result": {
+    "item": "celestial_artifacts:angel_heart"
+  },
+  "show_notification": true
+}

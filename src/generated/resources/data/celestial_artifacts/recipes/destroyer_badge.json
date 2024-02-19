@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:piglin_head"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "D": {
+      "item": "minecraft:bone_block"
+    }
+  },
+  "pattern": [
+    "CBC",
+    "BAB",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:destroyer_badge"
+  },
+  "show_notification": true
+}

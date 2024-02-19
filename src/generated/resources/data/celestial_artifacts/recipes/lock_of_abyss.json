@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "B": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "celestial_core:void_essence"
+    },
+    "D": {
+      "item": "minecraft:ice"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ACA",
+    "DBD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:lock_of_abyss"
+  },
+  "show_notification": true
+}

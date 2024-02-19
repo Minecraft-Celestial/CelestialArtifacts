@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "B": {
+      "item": "minecraft:ender_pearl"
+    },
+    "C": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "D": {
+      "item": "celestial_core:void_essence"
+    }
+  },
+  "pattern": [
+    " A ",
+    "CBC",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:abyss_core"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:echo_shard"
+    },
+    "B": {
+      "item": "minecraft:wither_rose"
+    },
+    "C": {
+      "item": "celestial_core:midnight_fragment"
+    },
+    "D": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    " E ",
+    "CDC",
+    "BAB"
+  ],
+  "result": {
+    "item": "celestial_artifacts:cursed_totem"
+  },
+  "show_notification": true
+}

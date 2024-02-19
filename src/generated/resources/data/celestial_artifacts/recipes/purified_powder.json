@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "celestial_core:light_fragment"
+    },
+    "C": {
+      "item": "minecraft:experience_bottle"
+    }
+  },
+  "pattern": [
+    "   ",
+    " C ",
+    "BAB"
+  ],
+  "result": {
+    "item": "celestial_artifacts:purified_powder"
+  },
+  "show_notification": true
+}

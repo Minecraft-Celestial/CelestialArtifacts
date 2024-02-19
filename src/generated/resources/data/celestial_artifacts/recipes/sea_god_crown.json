@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "B": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "D": {
+      "item": "celestial_core:ocean_essence"
+    }
+  },
+  "pattern": [
+    "A A",
+    "ADA",
+    "BCB"
+  ],
+  "result": {
+    "item": "celestial_artifacts:sea_god_crown"
+  },
+  "show_notification": true
+}

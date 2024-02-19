@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "B": {
+      "item": "minecraft:ender_eye"
+    },
+    "C": {
+      "item": "celestial_core:shulker_scrap"
+    },
+    "D": {
+      "item": "minecraft:glow_ink_sac"
+    },
+    "E": {
+      "item": "minecraft:amethyst_block"
+    }
+  },
+  "pattern": [
+    "EAE",
+    "ABA",
+    "DCD"
+  ],
+  "result": {
+    "item": "celestial_artifacts:ender_protector"
+  },
+  "show_notification": true
+}

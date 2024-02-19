@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "celestial_artifacts:iron_scabbard"
+    },
+    "B": {
+      "item": "celestial_core:light_fragment"
+    },
+    "C": {
+      "item": "minecraft:experience_bottle"
+    },
+    "D": {
+      "item": "minecraft:gold_ingot"
+    },
+    "E": {
+      "item": "minecraft:lime_dye"
+    }
+  },
+  "pattern": [
+    " DB",
+    "EAD",
+    "CE "
+  ],
+  "result": {
+    "item": "celestial_artifacts:titan_scabbard"
+  },
+  "show_notification": true
+}
