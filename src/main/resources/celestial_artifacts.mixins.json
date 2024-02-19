@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "package": "com.xiaoyue.celestial_artifacts.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "celestial_artifacts.refmap.json",
+  "mixins": [
+    "MixinEnchTable"
+  ],
+  "minVersion": "0.8"
+}
