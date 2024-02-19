@@ -1,0 +1,18 @@
+{
+  "name": "魔法箭袋",
+  "icon": "celestial_artifacts:magic_arrow_bag",
+  "category": "celestial_artifacts:back",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者10%箭矢伤害与8%箭矢击退。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:back/magic_arrow_bag",
+      "text": "使用箭矢，皮革，紫水晶在工作台上合成获得。"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "celestial_core:add_loot_table",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/underwater_ruin_big"
+    }
+  ],
+  "lootTable": "celestial_artifacts:chests/underwater_ruin_big"
+}

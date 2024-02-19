@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG",
+    "ADC",
+    "FEF"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:disc_fragment_5"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "C": {
+      "item": "minecraft:experience_bottle"
+    },
+    "D": {
+      "item": "minecraft:leather"
+    },
+    "E": {
+      "item": "minecraft:blaze_powder"
+    },
+    "F": {
+      "item": "celestial_core:death_essence"
+    },
+    "G": {
+      "item": "minecraft:ink_sac"
+    }
+  },
+  "result": {
+    "item": "celestial_artifacts:hidden_bracelet"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "始源刻蚀",
+  "icon": "celestial_artifacts:origin_etching",
+  "category": "celestial_artifacts:etching",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "始源刻蚀，穿戴后以反转当前的始源诅咒状态。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:origin_etching",
+      "title": "始源刻蚀",
+      "text": "当末影龙被单次伤害大于500点杀死时有50%概率掉落。"
+    }
+  ]
+}

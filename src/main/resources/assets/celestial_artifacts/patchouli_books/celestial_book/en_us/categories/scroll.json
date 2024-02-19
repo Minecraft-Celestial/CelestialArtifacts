@@ -1,0 +1,7 @@
+{
+  "name": "书卷",
+  "description": "书卷类饰品",
+  "icon": "celestial_artifacts:sea_god_scroll",
+  "sortnum": 0,
+  "secret": false
+}

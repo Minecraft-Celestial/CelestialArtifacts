@@ -1,0 +1,7 @@
+{
+  "name": "特殊物品",
+  "description": "特殊物品",
+  "icon": "celestial_artifacts:repent_mirror",
+  "sortnum": 0,
+  "secret": false
+}

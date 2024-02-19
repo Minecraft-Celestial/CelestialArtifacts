@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "BDB",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:enchanted_book"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "C": {
+      "item": "celestial_core:the_end_dust"
+    },
+    "D": {
+      "item": "celestial_artifacts:unowned_pendant"
+    }
+  },
+  "result": {
+    "item": "celestial_artifacts:chaotic_pendant"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " E ",
+    "CBA",
+    " D "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:shulker_shell"
+    },
+    "B": {
+      "item": "celestial_core:the_end_dust"
+    },
+    "C": {
+      "item": "minecraft:ender_pearl"
+    },
+    "D": {
+      "item": "minecraft:potion"
+    },
+    "E": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "celestial_artifacts:corrupt_badge"
+  }
+}

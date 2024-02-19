@@ -1,0 +1,18 @@
+{
+  "name": "腐化徽章",
+  "icon": "celestial_artifacts:corrupt_badge",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，穿戴者自身每有1种负面效果，提高9%挖掘速度，3%攻击速度与14%攻击伤害。主动效果：穿戴者将获得15秒缓慢，中毒，霉运效果，冷却60秒。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:charm/corrupt_badge",
+      "text": "使用潜影壳，终焉之尘，末影珍珠，药水瓶，下界合金在工作台上合成获得。"
+    }
+  ]
+}

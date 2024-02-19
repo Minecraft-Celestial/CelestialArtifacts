@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " AA",
+    "ADB",
+    "AAC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "C": {
+      "item": "minecraft:ink_sac"
+    },
+    "D": {
+      "item": "celestial_core:midnight_fragment"
+    }
+  },
+  "result": {
+    "item": "celestial_artifacts:twisted_scroll"
+  }
+}

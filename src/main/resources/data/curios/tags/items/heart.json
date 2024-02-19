@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "celestial_artifacts:twisted_heart",
+    "celestial_artifacts:heart_of_revenge",
+    "celestial_artifacts:greedy_heart",
+    "celestial_artifacts:demon_heart"
+  ]
+}

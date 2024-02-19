@@ -1,0 +1,18 @@
+{
+  "name": "太阳磁铁",
+  "icon": "celestial_artifacts:solar_magnet",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，会吸取周围的物品到穿戴者的位置。提高穿戴者25%对亡灵生物伤害，处于白天时免疫燃烧，攻击时对最近的攻击目标施加燃烧，冷却2.5秒。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:charm/solar_magnet",
+      "text": "使用铁锭，附魔之瓶，红石，光明碎片在工作台上合成获得。"
+    }
+  ]
+}

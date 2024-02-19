@@ -1,0 +1,19 @@
+{
+  "name": "毒牙项链",
+  "icon": "celestial_artifacts:fang_necklace",
+  "category": "celestial_artifacts:necklace",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者10%攻击速度。穿戴者每次攻击有概率使目标中毒，对穿戴护甲的目标提高25%攻击伤害。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:fang_necklace",
+      "title": "毒牙项链",
+      "text": "你或许可以从废弃矿井的宝箱中发现它们。"
+    }
+  ]
+}

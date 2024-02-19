@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "BAB",
+    " D "
+  ],
+  "key": {
+    "A": {
+      "item": "celestial_artifacts:netherite_ring"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "C": {
+      "item": "minecraft:redstone"
+    },
+    "D": {
+      "item": "celestial_core:fire_essence"
+    }
+  },
+  "result": {
+    "item": "celestial_artifacts:nether_fire"
+  }
+}

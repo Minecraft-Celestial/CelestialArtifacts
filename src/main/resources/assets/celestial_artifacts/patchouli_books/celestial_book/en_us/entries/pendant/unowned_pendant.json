@@ -1,0 +1,19 @@
+{
+  "name": "神秘吊坠",
+  "icon": "celestial_artifacts:unowned_pendant",
+  "category": "celestial_artifacts:pendant",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后似乎并无什么效果，或许合成其他物品时可以用上它"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:unowned_pendant",
+      "title": "神秘吊坠",
+      "text": "你或许可以从远古城市的宝箱中发现它们。"
+    }
+  ]
+}

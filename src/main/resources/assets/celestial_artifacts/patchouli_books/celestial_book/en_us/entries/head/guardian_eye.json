@@ -1,0 +1,19 @@
+{
+  "name": "守卫者之眼",
+  "icon": "celestial_artifacts:guardian_eye",
+  "category": "celestial_artifacts:head",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者15%游泳速度。持续使穿戴者周围的生物获得挖掘疲劳效果。穿戴者处于水中时，降低20%受到伤害，且处于水下不在消耗氧气。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:guardian_eye",
+      "title": "守卫者之眼",
+      "text": "击杀远古守卫者小概率掉落"
+    }
+  ]
+}

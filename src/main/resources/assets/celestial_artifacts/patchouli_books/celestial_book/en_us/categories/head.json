@@ -1,0 +1,7 @@
+{
+  "name": "头饰",
+  "description": "头饰类饰品",
+  "icon": "celestial_artifacts:sea_god_crown",
+  "sortnum": 0,
+  "secret": false
+}

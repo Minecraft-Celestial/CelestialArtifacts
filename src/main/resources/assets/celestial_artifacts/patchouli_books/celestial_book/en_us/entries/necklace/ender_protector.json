@@ -1,0 +1,18 @@
+{
+  "name": "末影庇佑者",
+  "icon": "celestial_artifacts:ender_protector",
+  "category": "celestial_artifacts:necklace",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者4点盔甲韧性，与末影人对视将不会再激怒它们，穿戴者使用盾牌格挡攻击后，有概率将攻击者传送走。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:necklace/ender_protector",
+      "text": "使用钻石，附魔之瓶，下界合金碎片，宝藏碎片在工作台上合成获得。"
+    }
+  ]
+}

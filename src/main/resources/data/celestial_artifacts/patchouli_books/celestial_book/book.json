@@ -1,0 +1,8 @@
+{
+  "name": "patchouli.celestial_artifacts.title",
+  "landing_text": "patchouli.celestial_artifacts.landing",
+  "version": 1,
+  "model": "celestial_artifacts:book",
+  "creative_tab": "celestial_artifacts:curios",
+  "use_resource_pack": true
+}

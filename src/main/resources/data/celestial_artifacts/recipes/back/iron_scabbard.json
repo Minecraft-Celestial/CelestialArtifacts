@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BA ",
+    "A A",
+    "AAB"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "celestial_artifacts:iron_scabbard"
+  }
+}

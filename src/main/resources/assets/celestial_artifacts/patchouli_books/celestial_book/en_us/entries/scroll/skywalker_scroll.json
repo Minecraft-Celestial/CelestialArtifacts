@@ -1,0 +1,18 @@
+{
+  "name": "传送卷轴",
+  "icon": "celestial_artifacts:skywalker_scroll",
+  "category": "celestial_artifacts:scroll",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，主动效果：穿戴者下蹲时，储存当前位置的坐标，未下蹲时，将穿戴者传送到储存的坐标处，冷却60秒。储存的坐标会在每次重启游戏时重置，未储存任何坐标时，使用主动效果会将穿戴者传送到xyz分别为0的位置。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:scroll/skywalker_scroll",
+      "text": "使用纸，发光墨囊，光明碎片，末影珍珠在工作台上合成获得。"
+    }
+  ]
+}

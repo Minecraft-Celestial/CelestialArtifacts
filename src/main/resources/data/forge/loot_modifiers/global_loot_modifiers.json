@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "entries": [
+    "celestial_artifacts:chests/desert_pyramid",
+    "celestial_artifacts:chests/jungle_temple",
+    "celestial_artifacts:chests/abandoned_mineshaft",
+    "celestial_artifacts:chests/village/village_plains_house",
+    "celestial_artifacts:chests/ancient_city",
+    "celestial_artifacts:chests/nether_bridge",
+    "celestial_artifacts:chests/underwater_ruin_big",
+    "celestial_artifacts:chests/bastion_treasure"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "celestial_artifacts:item/potion/crit_rate_potion"
+    }
+}
