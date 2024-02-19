@@ -3,8 +3,8 @@ package com.xiaoyue.celestial_artifacts.events;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
-import com.xiaoyue.celestial_core.register.CAttributes;
-import com.xiaoyue.celestial_core.register.CEffects;
+import com.xiaoyue.celestial_core.register.CCAttributes;
+import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -32,7 +32,7 @@ public class CEventHandler {
     public static Multimap<Attribute, AttributeModifier> createEmeraldAttributeMap() {
         Multimap<Attribute, AttributeModifier> attributesDefault = HashMultimap.create();
         attributesDefault.put(net.minecraft.world.entity.ai.attributes.Attributes.LUCK, new AttributeModifier(ToolTipUtils.getFUuid(), "enel", 2, AttributeModifier.Operation.ADDITION));
-        attributesDefault.put(CAttributes.CRIT_RATE.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "encr", 0.15, AttributeModifier.Operation.ADDITION));
+        attributesDefault.put(CCAttributes.CRIT_RATE.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "encr", 0.15, AttributeModifier.Operation.ADDITION));
         return attributesDefault;
     }
 
@@ -46,7 +46,7 @@ public class CEventHandler {
             if (player.isUsingItem()) {
                 if (CurioUtiks.isRangeUseAnim(player.getUseItem().getUseAnimation())) {
                     if (player.getTicksUsingItem() > 60) {
-                        EntityUtils.addEct(player, CEffects.ARROW_DAMAGE.get(), 70, 0);
+                        EntityUtils.addEct(player, CCEffects.ARROW_DAMAGE.get(), 70, 0);
                     }
                 }
             }

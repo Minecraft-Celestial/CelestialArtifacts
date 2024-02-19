@@ -7,7 +7,7 @@ import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioBreak;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -203,13 +203,13 @@ public class CatastropheScroll extends AttackICurio implements GetCurioBreak {
         Multimap<Attribute, AttributeModifier> attributesDefault = HashMultimap.create();
         if (i_chaotic == 2) {
             float i = (100 - (player.getHealth() / player.getMaxHealth() * 100)) / 500;
-            attributesDefault.put(CAttributes.DAMAGE_REDUCTION.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csedr", ToolTipUtils.getNoZeroValue(i), AttributeModifier.Operation.ADDITION));
+            attributesDefault.put(CCAttributes.DAMAGE_REDUCTION.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csedr", ToolTipUtils.getNoZeroValue(i), AttributeModifier.Operation.ADDITION));
         }
         if (i_life == 2) {
-            attributesDefault.put(CAttributes.REPLY_POWER.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csnre", 0.1, AttributeModifier.Operation.MULTIPLY_BASE));
+            attributesDefault.put(CCAttributes.REPLY_POWER.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csnre", 0.1, AttributeModifier.Operation.MULTIPLY_BASE));
             attributesDefault.put(Attributes.MAX_HEALTH, new AttributeModifier(ToolTipUtils.getFUuid(), "csemh", 0.2, AttributeModifier.Operation.MULTIPLY_BASE));
         } else if (i_life == 0) {
-            attributesDefault.put(CAttributes.REPLY_POWER.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csnre", -0.5, AttributeModifier.Operation.MULTIPLY_BASE));
+            attributesDefault.put(CCAttributes.REPLY_POWER.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csnre", -0.5, AttributeModifier.Operation.MULTIPLY_BASE));
             attributesDefault.put(Attributes.MAX_HEALTH, new AttributeModifier(ToolTipUtils.getFUuid(), "csnmh", -0.25, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return attributesDefault;

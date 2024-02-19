@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
-import com.xiaoyue.celestial_core.register.CEffects;
+import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -38,7 +38,7 @@ public class SoulBox extends AttackICurio {
         if (CurioUtiks.hasCurio(player, this)) {
             if (event.getAmount() > player.getHealth()) {
                 if (attacker instanceof LivingEntity livingEntity) {
-                    EntityUtils.addEct(livingEntity, CEffects.SOUL_SHATTER.get(), 1200, 2);
+                    EntityUtils.addEct(livingEntity, CCEffects.SOUL_SHATTER.get(), 1200, 2);
                     livingEntity.hurt(player.damageSources().wither(), player.getMaxHealth() * 2.5f);
                     if (!player.getCooldowns().isOnCooldown(this)) {
                         event.setCanceled(true);
@@ -47,7 +47,7 @@ public class SoulBox extends AttackICurio {
                 }
             } else if (Math.random() > 0.3) {
                 if (attacker instanceof LivingEntity livingEntity) {
-                    EntityUtils.addEct(livingEntity, CEffects.SOUL_SHATTER.get(), 100, 0);
+                    EntityUtils.addEct(livingEntity, CCEffects.SOUL_SHATTER.get(), 100, 0);
                 }
             }
         }

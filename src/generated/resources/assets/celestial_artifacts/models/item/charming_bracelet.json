@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "celestial_artifacts:item/curios/bracelet/charming_bracelet"
+  }
+}

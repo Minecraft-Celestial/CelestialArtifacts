@@ -4,7 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.config.CommonConfig;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EnchUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -52,8 +52,8 @@ public class CursedTalisman extends XICurioBase {
         Multimap<Attribute, AttributeModifier> attributesDefault = HashMultimap.create();
         double cta = cursed_talisman_add * CommonConfig.CURSED_TALISMAN_CRIT_DAMAGE_ADD.get();
         double ctr = cursed_talisman_add * CommonConfig.CURSED_TALISMAN_CRIT_RATE_ADD.get();
-        attributesDefault.put(CAttributes.CRIT_DAMAGE.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "cbat", cta, AttributeModifier.Operation.ADDITION));
-        attributesDefault.put(CAttributes.CRIT_RATE.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "cbas", ctr, AttributeModifier.Operation.ADDITION));
+        attributesDefault.put(CCAttributes.CRIT_DAMAGE.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "cbat", cta, AttributeModifier.Operation.ADDITION));
+        attributesDefault.put(CCAttributes.CRIT_RATE.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "cbas", ctr, AttributeModifier.Operation.ADDITION));
         return attributesDefault;
     }
 

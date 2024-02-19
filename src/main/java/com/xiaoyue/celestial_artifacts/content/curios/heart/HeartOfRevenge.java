@@ -3,7 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.heart;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -44,7 +44,7 @@ public class HeartOfRevenge extends AttackICurio {
 
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(CAttributes.ARROW_DAMAGE.get(), new AttributeModifier(uuid, "extra arrow damage", 0.06, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.ARROW_DAMAGE.get(), new AttributeModifier(uuid, "extra arrow damage", 0.06, AttributeModifier.Operation.MULTIPLY_BASE));
         return Modifiers;
     }
 

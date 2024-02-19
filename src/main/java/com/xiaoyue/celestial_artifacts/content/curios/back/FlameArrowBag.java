@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.back;
 
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -28,8 +28,8 @@ public class FlameArrowBag extends XICurioBase {
 
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(CAttributes.ARROW_DAMAGE.get(), new AttributeModifier(uuid, "extra arrow damage", 0.12, AttributeModifier.Operation.MULTIPLY_BASE));
-        Modifiers.put(CAttributes.ARROW_KNOCK.get(), new AttributeModifier(uuid, "extra arrow knock", 0.1, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.ARROW_DAMAGE.get(), new AttributeModifier(uuid, "extra arrow damage", 0.12, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.ARROW_KNOCK.get(), new AttributeModifier(uuid, "extra arrow knock", 0.1, AttributeModifier.Operation.MULTIPLY_BASE));
         return Modifiers;
     }
 }

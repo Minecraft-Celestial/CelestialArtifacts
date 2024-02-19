@@ -5,7 +5,7 @@ import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.Interface.GetCurioHeal;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import net.minecraft.ChatFormatting;
@@ -53,7 +53,7 @@ public class DemonCurse extends XICurioBase implements GetCurioHeal {
     @Override
     public void equipmentTick(SlotContext context, Player player) {
         player.getAttributes().addTransientAttributeModifiers(createAttributeMap());
-        double attributeValue = player.getAttributeValue(CAttributes.REPLY_POWER.get());
+        double attributeValue = player.getAttributeValue(CCAttributes.REPLY_POWER.get());
         demon_curse_add = attributeValue - 1;
     }
     @Override

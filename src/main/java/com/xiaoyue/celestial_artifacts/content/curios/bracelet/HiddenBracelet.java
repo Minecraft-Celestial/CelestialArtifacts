@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.bracelet;
 
 import com.xiaoyue.celestial_artifacts.config.CommonConfig;
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
-import com.xiaoyue.celestial_core.register.CEffects;
+import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -36,12 +36,12 @@ public class HiddenBracelet extends AttackICurio {
     @Override
     public void equipmentTick(SlotContext context, Player player) {
         if (player.tickCount % CommonConfig.HIDDEN_BRACELET_EFFECT_INTERVAL.get() == 0) {
-            EntityUtils.addEct(player, CEffects.HIDDEN.get(), 40, 0);
+            EntityUtils.addEct(player, CCEffects.HIDDEN.get(), 40, 0);
         }
         if (player.getLastHurtMob() != null) {
             if (player.getLastHurtMobTimestamp() < 100) {
-                if (player.hasEffect(CEffects.HIDDEN.get())) {
-                    player.removeEffect(CEffects.HIDDEN.get());
+                if (player.hasEffect(CCEffects.HIDDEN.get())) {
+                    player.removeEffect(CCEffects.HIDDEN.get());
                 }
             }
         }
@@ -50,7 +50,7 @@ public class HiddenBracelet extends AttackICurio {
     @Override
     public void onPlayerHurtEntity(SlotContext context, Player player, LivingHurtEvent event) {
         if (CurioUtiks.hasCurio(player, this)) {
-            if (player.hasEffect(CEffects.HIDDEN.get())) {
+            if (player.hasEffect(CCEffects.HIDDEN.get())) {
                 event.setAmount(event.getAmount() * 1.25f);
             }
         }
@@ -59,9 +59,9 @@ public class HiddenBracelet extends AttackICurio {
     @Override
     public void onUnderHurt(SlotContext context, Player player, LivingHurtEvent event) {
         if (CurioUtiks.hasCurio(player, this)) {
-            if (player.hasEffect(CEffects.HIDDEN.get())) {
+            if (player.hasEffect(CCEffects.HIDDEN.get())) {
                 event.setCanceled(true);
-                player.removeEffect(CEffects.HIDDEN.get());
+                player.removeEffect(CCEffects.HIDDEN.get());
             }
         }
     }

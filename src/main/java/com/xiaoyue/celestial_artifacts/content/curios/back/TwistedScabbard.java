@@ -3,8 +3,8 @@ package com.xiaoyue.celestial_artifacts.content.curios.back;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.content.curios.CatastropheScroll;
-import com.xiaoyue.celestial_core.register.CAttributes;
-import com.xiaoyue.celestial_core.register.CEffects;
+import com.xiaoyue.celestial_core.register.CCAttributes;
+import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -47,7 +47,7 @@ public class TwistedScabbard extends AttackICurio {
     @Override
     public void equipmentTick(SlotContext context, Player player) {
         if (player.tickCount % 100 == 0) {
-            EntityUtils.addEct(player, CEffects.BLADE_MODIFIER.get(), 60, 0);
+            EntityUtils.addEct(player, CCEffects.BLADE_MODIFIER.get(), 60, 0);
             if (twisted_scabbard_add > 0) {
                 twisted_scabbard_add--;
             }
@@ -58,7 +58,7 @@ public class TwistedScabbard extends AttackICurio {
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
         Modifiers.put(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK, new AttributeModifier(uuid, "aabe", 0.25, AttributeModifier.Operation.MULTIPLY_BASE));
         Modifiers.put(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_SPEED, new AttributeModifier(uuid, "aabd", 0.25, AttributeModifier.Operation.MULTIPLY_BASE));
-        Modifiers.put(CAttributes.REPLY_POWER.get(), new AttributeModifier(uuid, "aare", -0.5, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.REPLY_POWER.get(), new AttributeModifier(uuid, "aare", -0.5, AttributeModifier.Operation.MULTIPLY_BASE));
         return Modifiers;
     }
 

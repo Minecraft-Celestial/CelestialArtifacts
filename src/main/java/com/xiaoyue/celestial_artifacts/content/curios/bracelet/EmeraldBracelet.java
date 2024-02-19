@@ -4,7 +4,7 @@ import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.events.CEventHandler;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -49,7 +49,7 @@ public class EmeraldBracelet extends AttackICurio {
 
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(CAttributes.CRIT_RATE.get(), new AttributeModifier(uuid, "lbcr", 0.1, AttributeModifier.Operation.ADDITION));
+        Modifiers.put(CCAttributes.CRIT_RATE.get(), new AttributeModifier(uuid, "lbcr", 0.1, AttributeModifier.Operation.ADDITION));
         return Modifiers;
     }
 

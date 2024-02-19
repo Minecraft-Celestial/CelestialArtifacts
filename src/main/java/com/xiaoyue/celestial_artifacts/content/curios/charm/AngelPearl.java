@@ -3,7 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.ChatFormatting;
@@ -44,7 +44,7 @@ public class AngelPearl extends XICurioBase {
     private Multimap<Attribute, AttributeModifier> createAttributeMap() {
         double add_rp = angel_pearl_add * 0.08;
         Multimap<Attribute, AttributeModifier> attributesDefault = HashMultimap.create();
-        attributesDefault.put(CAttributes.REPLY_POWER.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "aper", add_rp, AttributeModifier.Operation.MULTIPLY_BASE));
+        attributesDefault.put(CCAttributes.REPLY_POWER.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "aper", add_rp, AttributeModifier.Operation.MULTIPLY_BASE));
         attributesDefault.put(Attributes.ARMOR, new AttributeModifier(ToolTipUtils.getFUuid(), "apea", angel_pearl_add, AttributeModifier.Operation.ADDITION));
         return attributesDefault;
     }

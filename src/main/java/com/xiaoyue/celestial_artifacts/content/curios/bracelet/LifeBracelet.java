@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.bracelet;
 
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -38,7 +38,7 @@ public class LifeBracelet extends XICurioBase {
 
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(CAttributes.REPLY_POWER.get(), new AttributeModifier(uuid, "extra reply", 0.15, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.REPLY_POWER.get(), new AttributeModifier(uuid, "extra reply", 0.15, AttributeModifier.Operation.MULTIPLY_BASE));
         return Modifiers;
     }
 }

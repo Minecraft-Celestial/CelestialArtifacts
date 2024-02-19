@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.back;
 
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;
@@ -45,9 +45,9 @@ public class SpiritArrowBag extends XICurioBase {
 
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(CAttributes.ARROW_SPEED.get(), new AttributeModifier(uuid, "sabees", 0.5, AttributeModifier.Operation.MULTIPLY_BASE));
-        Modifiers.put(CAttributes.ARROW_DAMAGE.get(), new AttributeModifier(uuid, "sabead", 0.18, AttributeModifier.Operation.MULTIPLY_BASE));
-        Modifiers.put(CAttributes.ARROW_KNOCK.get(), new AttributeModifier(uuid, "sabeak", 0.18, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.ARROW_SPEED.get(), new AttributeModifier(uuid, "sabees", 0.5, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.ARROW_DAMAGE.get(), new AttributeModifier(uuid, "sabead", 0.18, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.ARROW_KNOCK.get(), new AttributeModifier(uuid, "sabeak", 0.18, AttributeModifier.Operation.MULTIPLY_BASE));
         return Modifiers;
     }
 }

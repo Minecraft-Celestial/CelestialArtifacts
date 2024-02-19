@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -35,7 +35,7 @@ public class SacrificialObject extends AttackICurio {
 
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(CAttributes.DAMAGE_REDUCTION.get(), new AttributeModifier(uuid, "soedr", 0.05, AttributeModifier.Operation.ADDITION));
+        Modifiers.put(CCAttributes.DAMAGE_REDUCTION.get(), new AttributeModifier(uuid, "soedr", 0.05, AttributeModifier.Operation.ADDITION));
         return Modifiers;
     }
 

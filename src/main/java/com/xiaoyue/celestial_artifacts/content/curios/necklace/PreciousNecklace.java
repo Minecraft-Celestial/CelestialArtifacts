@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.necklace;
 
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -34,7 +34,7 @@ public class PreciousNecklace extends XICurioBase {
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
         CuriosApi.addSlotModifier(Modifiers, "charm", uuid, 1, AttributeModifier.Operation.ADDITION);
-        Modifiers.put(CAttributes.CRIT_DAMAGE.get(), new AttributeModifier(uuid, "extra crit damage", 0.2, AttributeModifier.Operation.ADDITION));
+        Modifiers.put(CCAttributes.CRIT_DAMAGE.get(), new AttributeModifier(uuid, "extra crit damage", 0.2, AttributeModifier.Operation.ADDITION));
         return Modifiers;
     }
 

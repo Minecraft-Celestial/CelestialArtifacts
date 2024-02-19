@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "celestial_artifacts:item/curios/head/sea_god_crown"
+  }
+}

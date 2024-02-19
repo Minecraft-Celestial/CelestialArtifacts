@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CAttributes;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;
@@ -40,7 +40,7 @@ public class BearingStamen extends XICurioBase {
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
         Modifiers.put(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH, new AttributeModifier(uuid, "reme", 20, AttributeModifier.Operation.ADDITION));
-        Modifiers.put(CAttributes.REPLY_POWER.get(), new AttributeModifier(uuid, "bsere", 0.25, AttributeModifier.Operation.MULTIPLY_BASE));
+        Modifiers.put(CCAttributes.REPLY_POWER.get(), new AttributeModifier(uuid, "bsere", 0.25, AttributeModifier.Operation.MULTIPLY_BASE));
         return Modifiers;
     }
 }

@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.curios.back;
 
 import com.xiaoyue.celestial_artifacts.content.generic.AttackICurio;
-import com.xiaoyue.celestial_core.register.CEffects;
+import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -30,14 +30,14 @@ public class TitanScabbard extends AttackICurio {
     @Override
     public void equipmentTick(SlotContext context, Player player) {
         if (player.tickCount % 200 == 0) {
-            EntityUtils.addEct(player, CEffects.BLADE_MODIFIER.get(), 60, 0);
+            EntityUtils.addEct(player, CCEffects.BLADE_MODIFIER.get(), 60, 0);
         }
     }
 
     @Override
     public void onPlayerMeleeEntity(SlotContext context, Player player, LivingHurtEvent event) {
         if (CurioUtiks.hasCurio(player, this)) {
-            if (player.hasEffect(CEffects.BLADE_MODIFIER.get())) {
+            if (player.hasEffect(CCEffects.BLADE_MODIFIER.get())) {
                 if (event.getEntity().getMaxHealth() > player.getMaxHealth()) {
                     event.setAmount(event.getAmount() * 1.75f);
                 }
