@@ -6,7 +6,6 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -16,20 +15,15 @@ import java.util.function.Predicate;
 public class CAAttackListener implements AttackListener {
 
 	public static void fireEvent(Player player, Consumer<CAAttackToken> cons) {
-		for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-			if (e instanceof CAAttackToken token) {
-				cons.accept(token);
-			}
+		for (var token : CurioCacheCap.HOLDER.get(player).getAtkTokens()) {
+			cons.accept(token);
 		}
-		//var list = CurioCacheCap.HOLDER.get(player).getSimpleAttack();
 	}
 
 	public static boolean fireEventCancellable(Player player, Predicate<CAAttackToken> cons) {
-		for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-			if (e instanceof CAAttackToken token) {
-				if (cons.test(token)) {
-					return true;
-				}
+		for (var token : CurioCacheCap.HOLDER.get(player).getAtkTokens()) {
+			if (cons.test(token)) {
+				return true;
 			}
 		}
 		return false;

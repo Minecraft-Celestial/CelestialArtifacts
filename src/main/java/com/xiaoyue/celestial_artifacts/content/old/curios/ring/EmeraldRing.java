@@ -49,7 +49,7 @@ public class EmeraldRing extends XICurioBase {
 
     @Override
     public void takeTick(SlotContext context, Player player) {
-        if (CurioUtils.hasTwoCurio(player, CAItems.EMERALD_NECKLACE.get(), CAItems.EMERALD_BRACELET.get())) {
+        if (CurioUtils.hasCurio(player, CAItems.EMERALD_NECKLACE.get(), CAItems.EMERALD_BRACELET.get())) {
             player.getAttributes().removeAttributeModifiers(CEventHandler.createEmeraldAttributeMap());
         }
     }

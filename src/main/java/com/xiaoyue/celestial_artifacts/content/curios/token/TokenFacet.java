@@ -20,7 +20,7 @@ public record TokenFacet<T extends BaseTickingToken>(String id, Supplier<T> sup)
 		implements TickFacet, TokenProvider<T, TokenFacet<T>>, Context {
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list, boolean multiLine) {
+	public void addText(@Nullable Level level, List<Component> list) {
 		var token = ClientTokenHelper.get(this, level);
 		if (token != null) token.addText(level, list);
 		else sup.get().addTextNoData(list);

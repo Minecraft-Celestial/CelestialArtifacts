@@ -3,6 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.modular;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.curios.core.BaseCurio;
+import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
@@ -46,6 +47,7 @@ public final class ModularCurio extends BaseCurio {
 	private final List<TextFacet> text = new ArrayList<>();
 	private final List<TickFacet> tick = new ArrayList<>();
 	private final List<SetFacet> set = new ArrayList<>();
+	private final List<CAAttackToken> atk = new ArrayList<>();
 
 	private final Prop prop;
 
@@ -65,6 +67,10 @@ public final class ModularCurio extends BaseCurio {
 		if (facet instanceof SetFacet e) set.add(e);
 	}
 
+	public List<CAAttackToken> atkTokens() {
+		return atk;
+	}
+
 	@Override
 	public void curioTick(SlotContext slotContext, ItemStack stack) {
 		if (slotContext.cosmetic()) return;
@@ -77,7 +83,7 @@ public final class ModularCurio extends BaseCurio {
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			for (var e : text) {
-				e.addText(level, list, text.size() > 1);
+				e.addText(level, list);
 			}
 		} else {
 			if (prop.requireCS) {
@@ -196,7 +202,7 @@ public final class ModularCurio extends BaseCurio {
 			return this;
 		}
 
-		public Builder rarity(Rarity rarity){
+		public Builder rarity(Rarity rarity) {
 			this.prop.rarity(rarity);
 			return this;
 		}

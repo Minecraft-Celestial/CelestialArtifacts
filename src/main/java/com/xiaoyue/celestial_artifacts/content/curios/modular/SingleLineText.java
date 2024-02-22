@@ -12,11 +12,9 @@ public interface SingleLineText extends TextFacet {
 	Component getLine();
 
 	@Override
-	default void addText(@Nullable Level level, List<Component> list, boolean multiLine) {
+	default void addText(@Nullable Level level, List<Component> list) {
 		var line = getLine();
-		if (multiLine) {
-			line = Component.literal("- ").withStyle(ChatFormatting.GRAY).append(line);
-		}
+		line = Component.literal("- ").withStyle(ChatFormatting.GRAY).append(line);
 		list.add(line);
 	}
 }

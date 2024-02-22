@@ -18,6 +18,10 @@ import java.util.function.Supplier;
 public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, int period)
 		implements TickFacet, SingleLineText {
 
+	public static EffectFacet of(Supplier<MobEffect> eff, int duration, int amplifier, int period) {
+		return new EffectFacet(eff, duration, amplifier, period);
+	}
+
 	@Override
 	public Component getLine() {
 		MobEffectInstance ins = get();

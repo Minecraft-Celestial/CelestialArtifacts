@@ -4,7 +4,6 @@ import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.events.CEventHandler;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -56,7 +55,7 @@ public class EmeraldBracelet extends AttackICurio {
 
     @Override
     public void takeTick(SlotContext context, Player player) {
-        if (CurioUtils.hasTwoCurio(player, CAItems.EMERALD_RING.get(), CAItems.EMERALD_NECKLACE.get())) {
+        if (CurioUtils.hasCurio(player, CAItems.EMERALD_RING.get(), CAItems.EMERALD_NECKLACE.get())) {
             player.getAttributes().removeAttributeModifiers(CEventHandler.createEmeraldAttributeMap());
         }
     }

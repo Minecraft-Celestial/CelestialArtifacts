@@ -23,8 +23,8 @@ public class TitanScabbard extends AttackICurio {
 
     @Override
     public void addCurioInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.titan_scabbard.shift1");
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.titan_scabbard.shift2");
+       list.add(Component.translatable(  "tooltip.celestial_artifacts.titan_scabbard.shift1"));
+       list.add(Component.translatable(  "tooltip.celestial_artifacts.titan_scabbard.shift2"));
     }
 
     @Override

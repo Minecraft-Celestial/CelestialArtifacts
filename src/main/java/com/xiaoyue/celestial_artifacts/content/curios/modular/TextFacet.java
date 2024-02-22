@@ -13,6 +13,6 @@ public interface TextFacet extends IFacet {
 		return comp::get;
 	}
 
-	void addText(@Nullable Level level, List<Component> list, boolean multiLine);
+	void addText(@Nullable Level level, List<Component> list);
 
 }

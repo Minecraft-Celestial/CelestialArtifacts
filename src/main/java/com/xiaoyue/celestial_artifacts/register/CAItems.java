@@ -4,10 +4,12 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TwistedScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.AttrFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.EffectFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.ModularCurio;
+import com.xiaoyue.celestial_artifacts.content.curios.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
 import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
@@ -17,7 +19,8 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
-import com.xiaoyue.celestial_artifacts.content.old.curios.back.*;
+import com.xiaoyue.celestial_artifacts.content.old.curios.back.SpiritArrowBag;
+import com.xiaoyue.celestial_artifacts.content.old.curios.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.head.*;
@@ -37,6 +40,8 @@ import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.TwistedScroll;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -200,24 +205,36 @@ public class CAItems {
 
 	// back
 	// 魔法箭袋
-	public static final ItemEntry<Item> MAGIC_ARROW_BAG = back("magic_arrow_bag", MagicArrowBag::new);
+	public static final ItemEntry<Item> MAGIC_ARROW_BAG = back("magic_arrow_bag", () -> ModularCurio.of(
+			AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.1),
+			AttrFacet.add(CCAttributes.ARROW_KNOCK, () -> 0.08)
+	));
 	// 火焰箭袋
-	public static final ItemEntry<Item> FLAME_ARROW_BAG = back("flame_arrow_bag", FlameArrowBag::new);
+	public static final ItemEntry<Item> FLAME_ARROW_BAG = back("flame_arrow_bag", () -> ModularCurio.of(
+			AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.12),
+			AttrFacet.add(CCAttributes.ARROW_KNOCK, () -> 0.1),
+			TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.flame_arrow_bag.shift2"))
+	));
 	// 精灵箭袋
 	public static final ItemEntry<Item> SPIRIT_ARROW_BAG = back("spirit_arrow_bag", SpiritArrowBag::new);
 	// 铁剑鞘
-	public static final ItemEntry<Item> IRON_SCABBARD = back("iron_scabbard", () -> ModularCurio.of(new EffectFacet(() -> MobEffects.DAMAGE_BOOST, 2, 0, 5)));
+	public static final ItemEntry<Item> IRON_SCABBARD = back("iron_scabbard", () -> ModularCurio.of(
+			EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 2, 0, 5)
+	));
 	// 水蛭剑鞘
-	public static final ItemEntry<Item> LEECH_SCABBARD = back("leech_scabbard", LeechScabbard::new);
+	public static final ItemEntry<Item> LEECH_SCABBARD = back("leech_scabbard", () -> ModularCurio.of(
+			EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 10),
+			new LeechScabbard()
+	));
 	// 泰坦剑鞘
 	public static final ItemEntry<Item> TITAN_SCABBARD = back("titan_scabbard", TitanScabbard::new);
 	// 扭曲剑鞘
 	public static final ItemEntry<Item> TWISTED_SCABBARD = back("twisted_scabbard", () ->
 			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
-					new EffectFacet(CCEffects.BLADE_MODIFIER::get, 3, 0, 5),
-					AttrFacet.multBase(() -> Attributes.ATTACK_KNOCKBACK, () -> 0.25),
+					EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 5),
+					AttrFacet.multBase(() -> Attributes.ATTACK_KNOCKBACK, () -> 1),
 					AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.25),
-					AttrFacet.multBase(CCAttributes.REPLY_POWER, () -> -0.5),
+					AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.5),
 					TwistedScabbard.TOKEN
 			));
 

@@ -42,7 +42,7 @@ public class EmeraldNecklace extends AttackICurio {
 
     @Override
     public void takeTick(SlotContext context, Player player) {
-        if (CurioUtils.hasTwoCurio(player, CAItems.EMERALD_RING.get(), CAItems.EMERALD_BRACELET.get())) {
+        if (CurioUtils.hasCurio(player, CAItems.EMERALD_RING.get(), CAItems.EMERALD_BRACELET.get())) {
             player.getAttributes().removeAttributeModifiers(CEventHandler.createEmeraldAttributeMap());
         }
     }

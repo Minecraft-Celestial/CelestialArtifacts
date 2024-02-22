@@ -1,18 +1,18 @@
 package com.xiaoyue.celestial_artifacts.content.curios.impl.back;
 
+import com.xiaoyue.celestial_artifacts.content.curios.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.curios.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.content.curios.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -37,30 +37,28 @@ public class TwistedScabbard extends BaseTickingToken
 
 	}
 
-	@Override
-	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		var event = cache.getLivingHurtEvent();
-		assert event != null;
-		var source = event.getSource();
-		if (source.getDirectEntity() == player) {
-			float factor = 0.05f;
-			if (CurioUtils.isCsOn(player)) {
-				if (CatastropheScroll.i_end == 0) {//TODO
-					factor = 0.1f;
-				}
+	private AttrAdder attr(Player player) {
+		return AttrAdder.of("twisted_scabbard", () -> Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADDITION, () -> getVal(player));
+	}
+
+	private double getVal(Player player) {
+		double factor = 0.05f;
+		if (CurioUtils.isCsOn(player)) {
+			if (CatastropheScroll.i_end == 0) {
+				factor = 0.1f;
 			}
-			factor = 1 + twisted_scabbard_add * factor;
-			cache.addHurtModifier(DamageModifier.multTotal(factor));
 		}
+		return 1 + twisted_scabbard_add * factor;
 	}
 
 	@Override
 	protected void removeImpl(Player player) {
-
+		attr(player).removeImpl(player);
 	}
 
 	@Override
 	protected void tickImpl(Player player) {
+		attr(player).tickImpl(player);
 		if (player instanceof ServerPlayer sp) {
 			if (player.tickCount % 100 == 0) {
 				if (twisted_scabbard_add > 0) {
@@ -73,15 +71,12 @@ public class TwistedScabbard extends BaseTickingToken
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift1");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift2");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift3");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift4");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift5");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift6");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift7");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.twisted_scabbard.shift8",
-				ChatFormatting.LIGHT_PURPLE, twisted_scabbard_add);
+		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift4"));
+		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift5"));
+		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift6"));
+		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift7"));
+		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift8",
+				twisted_scabbard_add).withStyle(ChatFormatting.LIGHT_PURPLE));
 	}
 
 	@Override
