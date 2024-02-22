@@ -1,4 +1,4 @@
-package com.xiaoyue.celestial_artifacts.content.modular;
+package com.xiaoyue.celestial_artifacts.content.curios.modular;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;

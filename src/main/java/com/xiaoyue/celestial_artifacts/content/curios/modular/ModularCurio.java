@@ -1,8 +1,8 @@
-package com.xiaoyue.celestial_artifacts.content.modular;
+package com.xiaoyue.celestial_artifacts.content.curios.modular;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.content.core.BaseCurio;
+import com.xiaoyue.celestial_artifacts.content.curios.core.BaseCurio;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
@@ -12,15 +12,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
@@ -29,8 +33,12 @@ import java.util.*;
 
 public final class ModularCurio extends BaseCurio {
 
+	public static Builder builder() {
+		return new Builder();
+	}
+
 	public static ModularCurio of(IFacet... facets) {
-		return new ModularCurio(new Item.Properties(), false, facets);
+		return builder().build(facets);
 	}
 
 	private final List<AttrFacet> attributes = new ArrayList<>();
@@ -39,11 +47,11 @@ public final class ModularCurio extends BaseCurio {
 	private final List<TickFacet> tick = new ArrayList<>();
 	private final List<SetFacet> set = new ArrayList<>();
 
-	private final boolean requireCS;
+	private final Prop prop;
 
-	public ModularCurio(Properties props, boolean requireCS, IFacet... facets) {
+	private ModularCurio(Properties props, Prop prop, IFacet... facets) {
 		super(props);
-		this.requireCS = requireCS;
+		this.prop = prop;
 		for (var e : facets) {
 			add(e);
 		}
@@ -72,7 +80,7 @@ public final class ModularCurio extends BaseCurio {
 				e.addText(level, list, text.size() > 1);
 			}
 		} else {
-			if (requireCS) {
+			if (prop.requireCS) {
 				ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.has_cs_curio");
 			}
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.has_shift_down");
@@ -87,6 +95,22 @@ public final class ModularCurio extends BaseCurio {
 			}
 		}
 		super.appendHoverText(stack, level, list, flag);
+	}
+
+	@Override
+	public int getFortuneLevel(SlotContext slotContext, LootContext lootContext, ItemStack stack) {
+		return prop.fortune;
+	}
+
+	@Override
+	public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
+		return prop.loot;
+	}
+
+	@Override
+	public boolean canBeHurtBy(DamageSource source) {
+		if (prop.immune) return false;
+		return super.canBeHurtBy(source);
 	}
 
 	@Override
@@ -139,6 +163,61 @@ public final class ModularCurio extends BaseCurio {
 
 	@Override
 	public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
-		return entity instanceof Player player && CurioUtils.isCsOn(player) && super.canEquip(stack, armorType, entity);
+		if (prop.requireCS()) {
+			if (!(entity instanceof Player player && CurioUtils.isCsOn(player))) {
+				return false;
+			}
+		}
+		return super.canEquip(stack, armorType, entity);
 	}
+
+	public record Prop(boolean requireCS, boolean immune, int fortune, int loot) {
+
+	}
+
+	public static class Builder {
+
+		private final Item.Properties prop;
+		private boolean requireCS = false, immune = false;
+		private int fortune = 0, loot = 0;
+
+		private Builder() {
+			prop = new Properties().stacksTo(1);
+		}
+
+		public Builder immune() {
+			immune = true;
+			prop.fireResistant();
+			return this;
+		}
+
+		public Builder requireCS() {
+			this.requireCS = true;
+			return this;
+		}
+
+		public Builder rarity(Rarity rarity){
+			this.prop.rarity(rarity);
+			return this;
+		}
+
+		public Builder fortune(int fortune) {
+			this.fortune = fortune;
+			return this;
+		}
+
+		public Builder loot(int loot) {
+			this.loot = loot;
+			return this;
+		}
+
+		public ModularCurio build(IFacet... facet) {
+			return new ModularCurio(prop,
+					new Prop(requireCS, immune, fortune, loot),
+					facet);
+		}
+
+	}
+
+
 }

@@ -1,4 +1,4 @@
-package com.xiaoyue.celestial_artifacts.content.core;
+package com.xiaoyue.celestial_artifacts.content.curios.core;
 
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;

@@ -4,6 +4,10 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
+import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
+import com.xiaoyue.celestial_artifacts.content.curios.modular.AttrFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.modular.EffectFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
 import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
@@ -12,8 +16,6 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
-import com.xiaoyue.celestial_artifacts.content.modular.EffectFacet;
-import com.xiaoyue.celestial_artifacts.content.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.back.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
@@ -33,10 +35,14 @@ import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SeaGodScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SkywalkerScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.TravelerScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.TwistedScroll;
+import com.xiaoyue.celestial_core.register.CCAttributes;
+import com.xiaoyue.celestial_core.register.CCEffects;
+import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import top.theillusivec4.curios.Curios;
 
@@ -207,7 +213,14 @@ public class CAItems {
 	// 泰坦剑鞘
 	public static final ItemEntry<Item> TITAN_SCABBARD = back("titan_scabbard", TitanScabbard::new);
 	// 扭曲剑鞘
-	public static final ItemEntry<Item> TWISTED_SCABBARD = back("twisted_scabbard", TwistedScabbard::new);
+	public static final ItemEntry<Item> TWISTED_SCABBARD = back("twisted_scabbard", () ->
+			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
+					new EffectFacet(CCEffects.BLADE_MODIFIER::get, 3, 0, 5),
+					AttrFacet.multBase(() -> Attributes.ATTACK_KNOCKBACK, () -> 0.25),
+					AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.25),
+					AttrFacet.multBase(CCAttributes.REPLY_POWER, () -> -0.5),
+					TwistedScabbard.TOKEN
+			));
 
 	// etching
 	// 混沌

@@ -2,10 +2,11 @@ package com.xiaoyue.celestial_artifacts;
 
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.xiaoyue.celestial_artifacts.content.core.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.data.CommonConfig;
 import com.xiaoyue.celestial_artifacts.data.CARecipeGen;
 import com.xiaoyue.celestial_artifacts.events.AttackMain;
+import com.xiaoyue.celestial_artifacts.events.CAAttackListener;
 import com.xiaoyue.celestial_artifacts.events.OtherMain;
 import com.xiaoyue.celestial_artifacts.network.CMessages;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
@@ -40,6 +41,7 @@ public class CelestialArtifacts {
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new AttackMain());
 		MinecraftForge.EVENT_BUS.register(new OtherMain());
+		AttackEventHandler.register(3460, new CAAttackListener());
 		AttackEventHandler.register(4500, new AttackMain());
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.spec);

@@ -2,15 +2,15 @@ package com.xiaoyue.celestial_artifacts.events;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.register.CCItems;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
-import com.xiaoyue.celestial_core.utils.ModListUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
+import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -117,13 +117,16 @@ public class CEventHandler {
 		DamageSource source = event.getSource();
 		Entity attacker = source.getEntity();
 		if (attacker instanceof Player player) {
-			if (ModListUtils.isLoader("celestial_artifacts")) {
-				if (CurioUtils.isCsOn(player)) {
-					if (entity instanceof Monster monster) {
-						if (0.02 > Math.random()) {
-							monster.spawnAtLocation(CCItems.THE_END_DUST.get());
-						}
+			if (CurioUtils.isCsOn(player)) {
+				if (entity instanceof Monster monster) {
+					if (0.02 > Math.random()) {
+						monster.spawnAtLocation(CCItems.THE_END_DUST.get());
 					}
+				}
+			}
+			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+				if (e instanceof CAAttackToken token) {
+					token.onPlayerKill(player, event);
 				}
 			}
 		}

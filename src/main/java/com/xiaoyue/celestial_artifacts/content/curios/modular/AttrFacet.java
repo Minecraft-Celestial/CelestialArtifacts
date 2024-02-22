@@ -1,4 +1,4 @@
-package com.xiaoyue.celestial_artifacts.content.modular;
+package com.xiaoyue.celestial_artifacts.content.curios.modular;
 
 import com.google.common.collect.Multimap;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;

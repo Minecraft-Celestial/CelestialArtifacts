@@ -1,4 +1,4 @@
-package com.xiaoyue.celestial_artifacts.content.modular;
+package com.xiaoyue.celestial_artifacts.content.curios.modular;
 
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import dev.xkmc.l2library.base.effects.EffectUtil;
