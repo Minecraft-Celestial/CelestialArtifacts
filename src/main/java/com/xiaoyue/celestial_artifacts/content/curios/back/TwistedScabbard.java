@@ -26,6 +26,7 @@ public class TwistedScabbard extends BaseTickingToken
 
 	public static final TokenFacet<TwistedScabbard> TOKEN = new TokenFacet<>("twisted_scabbard", TwistedScabbard::new);
 
+	@SerialClass.SerialField
 	public int twisted_scabbard_add;
 
 	@Override
@@ -44,7 +45,7 @@ public class TwistedScabbard extends BaseTickingToken
 		if (source.getDirectEntity() == player) {
 			float factor = 0.05f;
 			if (CurioUtils.isCsOn(player)) {
-				if (CatastropheScroll.i_end == 0) {//TODO
+				if (CatastropheScroll.i_end != 1) {//TODO
 					factor = 0.1f;
 				}
 			}
