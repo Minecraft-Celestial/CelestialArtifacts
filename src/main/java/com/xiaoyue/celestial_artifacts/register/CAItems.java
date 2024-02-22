@@ -4,7 +4,7 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
-import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TwistedScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.AttrFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.EffectFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.ModularCurio;
@@ -20,7 +20,6 @@ import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.back.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.etching.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.head.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.old.curios.heart.GreedyHeart;
@@ -224,19 +223,19 @@ public class CAItems {
 
 	// etching
 	// 混沌
-	public static final ItemEntry<Item> CHAOTIC_ETCHING = etching("chaotic_etching", ChaoticEtching::new);
+	public static final ItemEntry<Item> CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().build());
 	// 始源
-	public static final ItemEntry<Item> ORIGIN_ETCHING = etching("origin_etching", OriginEtching::new);
+	public static final ItemEntry<Item> ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().build());
 	// 生命
-	public static final ItemEntry<Item> ETCHING_OF_LIFE = etching("etching_of_life", EtchingOfLife::new);
+	public static final ItemEntry<Item> ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().build());
 	// 真理
-	public static final ItemEntry<Item> TRUTH_ETCHING = etching("truth_etching", TruthEtching::new);
+	public static final ItemEntry<Item> TRUTH_ETCHING = etching("truth_etching", () -> ModularCurio.builder().immune().build());
 	// 欲望
-	public static final ItemEntry<Item> DESIRE_ETCHING = etching("desire_etching", DesireEtching::new);
+	public static final ItemEntry<Item> DESIRE_ETCHING = etching("desire_etching", () -> ModularCurio.builder().immune().build());
 	// 虚无
-	public static final ItemEntry<Item> NIHILITY_ETCHING = etching("nihility_etching", NihilityEtching::new);
+	public static final ItemEntry<Item> NIHILITY_ETCHING = etching("nihility_etching", () -> ModularCurio.builder().immune().build());
 	// 终焉
-	public static final ItemEntry<Item> END_ETCHING = etching("end_etching", EndEtching::new);
+	public static final ItemEntry<Item> END_ETCHING = etching("end_etching", () -> ModularCurio.builder().immune().build());
 
 	// tool
 	// 大地系列工具

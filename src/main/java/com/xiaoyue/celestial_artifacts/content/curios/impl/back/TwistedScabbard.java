@@ -1,4 +1,4 @@
-package com.xiaoyue.celestial_artifacts.content.curios.back;
+package com.xiaoyue.celestial_artifacts.content.curios.impl.back;
 
 import com.xiaoyue.celestial_artifacts.content.curios.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
@@ -45,7 +45,7 @@ public class TwistedScabbard extends BaseTickingToken
 		if (source.getDirectEntity() == player) {
 			float factor = 0.05f;
 			if (CurioUtils.isCsOn(player)) {
-				if (CatastropheScroll.i_end != 1) {//TODO
+				if (CatastropheScroll.i_end == 0) {//TODO
 					factor = 0.1f;
 				}
 			}

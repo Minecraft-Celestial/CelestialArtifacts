@@ -2,7 +2,6 @@ package com.xiaoyue.celestial_artifacts.events;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.register.CCItems;
@@ -10,7 +9,6 @@ import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -124,11 +122,7 @@ public class CEventHandler {
 					}
 				}
 			}
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-				if (e instanceof CAAttackToken token) {
-					token.onPlayerKill(player, event);
-				}
-			}
+			CAAttackListener.fireEvent(player, t -> t.onPlayerKill(player, event));
 		}
 	}
 

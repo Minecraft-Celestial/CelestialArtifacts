@@ -22,8 +22,8 @@ public interface CAAttackToken {
 
 	}
 
-	default void onPlayerAttacked(Player player, AttackCache cache) {
-
+	default boolean onPlayerAttacked(Player player, AttackCache cache) {
+		return false;
 	}
 
 	default void onPlayerHurt(Player player, AttackCache cache) {
@@ -42,7 +42,7 @@ public interface CAAttackToken {
 
 	}
 
-	default void onPlayerKill(Player player, LivingDeathEvent event){
+	default void onPlayerKill(Player player, LivingDeathEvent event) {
 
 	}
 
