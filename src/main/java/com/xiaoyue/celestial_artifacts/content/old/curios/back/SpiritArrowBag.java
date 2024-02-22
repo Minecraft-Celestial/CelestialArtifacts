@@ -28,12 +28,6 @@ public class SpiritArrowBag extends XICurioBase {
     }
 
     @Override
-    public void addCurioInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit_arrow_bag.shift1");
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit_arrow_bag.shift2");
-    }
-
-    @Override
     public void addCurioLinkageInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt1");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt2");

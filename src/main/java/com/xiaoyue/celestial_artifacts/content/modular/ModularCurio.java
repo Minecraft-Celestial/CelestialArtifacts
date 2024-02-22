@@ -17,6 +17,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -27,6 +28,10 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.*;
 
 public final class ModularCurio extends BaseCurio {
+
+	public static ModularCurio of(IFacet... facets) {
+		return new ModularCurio(new Item.Properties(), false, facets);
+	}
 
 	private final List<AttrFacet> attributes = new ArrayList<>();
 	private final List<SlotFacet> slots = new ArrayList<>();

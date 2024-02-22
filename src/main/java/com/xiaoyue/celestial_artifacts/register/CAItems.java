@@ -4,6 +4,16 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
+import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
+import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
+import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
+import com.xiaoyue.celestial_artifacts.content.items.item.RepentMirror;
+import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
+import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
+import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
+import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
+import com.xiaoyue.celestial_artifacts.content.modular.EffectFacet;
+import com.xiaoyue.celestial_artifacts.content.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.back.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
@@ -23,17 +33,10 @@ import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SeaGodScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SkywalkerScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.TravelerScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.TwistedScroll;
-import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
-import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
-import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
-import com.xiaoyue.celestial_artifacts.content.items.item.RepentMirror;
-import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
-import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
-import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
-import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import top.theillusivec4.curios.Curios;
 
@@ -198,7 +201,7 @@ public class CAItems {
 	// 精灵箭袋
 	public static final ItemEntry<Item> SPIRIT_ARROW_BAG = back("spirit_arrow_bag", SpiritArrowBag::new);
 	// 铁剑鞘
-	public static final ItemEntry<Item> IRON_SCABBARD = back("iron_scabbard", IronScabbard::new);
+	public static final ItemEntry<Item> IRON_SCABBARD = back("iron_scabbard", () -> ModularCurio.of(new EffectFacet(() -> MobEffects.DAMAGE_BOOST, 2, 0, 5)));
 	// 水蛭剑鞘
 	public static final ItemEntry<Item> LEECH_SCABBARD = back("leech_scabbard", LeechScabbard::new);
 	// 泰坦剑鞘
