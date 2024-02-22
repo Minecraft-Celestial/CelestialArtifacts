@@ -6,6 +6,7 @@ import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,7 +36,7 @@ public class SacrificialObject extends AttackICurio {
 
     @Override
     public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(CCAttributes.DAMAGE_REDUCTION.get(), new AttributeModifier(uuid, "soedr", 0.05, AttributeModifier.Operation.ADDITION));
+        Modifiers.put(L2DamageTracker.REDUCTION.get(), new AttributeModifier(uuid, "soedr", -0.05, AttributeModifier.Operation.ADDITION));
         return Modifiers;
     }
 

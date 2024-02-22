@@ -336,7 +336,7 @@
   
   "item.celestial_artifacts.spirit_arrow_bag": "精灵箭袋",
   "tooltip.celestial_artifacts.spirit_arrow_bag.shift1": "§e· 提高§618%§e箭矢伤害与箭矢击退",
-  "tooltip.celestial_artifacts.spirit_arrow_bag.shift2": "§e· 发射出的箭矢飞行速度提高§650%",
+  "tooltip.celestial_artifacts.spirit_arrow_bag.shift2": "§e· cs_is_chaotic§650%",
   
   "item.celestial_artifacts.iron_scabbard": "铁剑鞘",
   "tooltip.celestial_artifacts.iron_scabbard.shift1": "§e· 每5秒获得2秒力量效果",

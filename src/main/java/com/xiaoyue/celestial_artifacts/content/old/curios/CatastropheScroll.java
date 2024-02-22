@@ -11,6 +11,7 @@ import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -203,7 +204,7 @@ public class CatastropheScroll extends AttackICurio implements GetCurioBreak {
         Multimap<Attribute, AttributeModifier> attributesDefault = HashMultimap.create();
         if (i_chaotic == 2) {
             float i = (100 - (player.getHealth() / player.getMaxHealth() * 100)) / 500;
-            attributesDefault.put(CCAttributes.DAMAGE_REDUCTION.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csedr", ToolTipUtils.getNoZeroValue(i), AttributeModifier.Operation.ADDITION));
+            attributesDefault.put(L2DamageTracker.REDUCTION.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csedr", -ToolTipUtils.getNoZeroValue(i), AttributeModifier.Operation.ADDITION));
         }
         if (i_life == 2) {
             attributesDefault.put(CCAttributes.REPLY_POWER.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "csnre", 0.1, AttributeModifier.Operation.MULTIPLY_BASE));

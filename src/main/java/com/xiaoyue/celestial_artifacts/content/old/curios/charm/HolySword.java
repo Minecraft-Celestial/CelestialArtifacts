@@ -6,6 +6,7 @@ import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -44,7 +45,7 @@ public class HolySword extends AttackICurio {
 
 	@Override
 	public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-		Modifiers.put(CCAttributes.CRIT_RATE.get(), new AttributeModifier(uuid, "aabb", 0.15, AttributeModifier.Operation.ADDITION));
+		Modifiers.put(L2DamageTracker.CRIT_RATE.get(), new AttributeModifier(uuid, "aabb", 0.15, AttributeModifier.Operation.ADDITION));
 		return Modifiers;
 	}
 
