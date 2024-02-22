@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.mixin;
 
 import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
+import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
@@ -37,7 +37,7 @@ public abstract class MixinEnchTable {
     @Inject(at = {@At("HEAD")}, method = {"clickMenuButton"})
     public void celestial_artifacts$EnchButton(Player p_39465_, int p_39466_, CallbackInfoReturnable<Boolean> cir) {
         ItemStack itemStack = this.enchantSlots.getItem(0);
-        if (CurioUtiks.hasCurio(p_39465_, CAItems.CHAOTIC_PENDANT.get())) {
+        if (CurioUtils.hasCurio(p_39465_, CAItems.CHAOTIC_PENDANT.get())) {
             this.access.execute((level, blockPos) -> {
                 List<EnchantmentInstance> list = this.getEnchantmentList(itemStack, p_39466_, this.costs[p_39466_]);
                 p_39465_.onEnchantmentPerformed(itemStack, p_39466_ + 1);

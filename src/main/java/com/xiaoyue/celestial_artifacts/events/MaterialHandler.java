@@ -1,8 +1,8 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.config.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CommonConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
+import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;
@@ -58,7 +58,7 @@ public class MaterialHandler {
         LivingEntity entity = event.getEntity();
         Entity attack = event.getSource().getEntity();
         if (attack instanceof Player player) {
-            if (CurioUtiks.isCsOn(player)) {
+            if (CurioUtils.isCsOn(player)) {
                 if (entity instanceof WitherBoss witherBoss) {
                     if (event.getLootingLevel() > 7) {
                         if (0.25 > Math.random()) {
@@ -108,7 +108,7 @@ public class MaterialHandler {
                 }
             }
 
-            if (CurioUtiks.isCsOn(player)) {
+            if (CurioUtils.isCsOn(player)) {
                 if (EntityUtils.getHarmfulEffect(player) > 9) {
                     if (entity instanceof Warden warden) {
                         if (0.75 > Math.random()) {
@@ -118,7 +118,7 @@ public class MaterialHandler {
                 }
             }
 
-            if (CurioUtiks.isCsOn(player)) {
+            if (CurioUtils.isCsOn(player)) {
                 if (entity.getMaxHealth() > CommonConfig.ETCHING_OF_LIFE_DROP_CONDITION.get()) {
                     if (0.15 > Math.random()) {
                         entity.spawnAtLocation(CAItems.ETCHING_OF_LIFE.get());

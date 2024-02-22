@@ -1,8 +1,8 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.config.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CommonConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
+import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
@@ -66,7 +66,7 @@ public class CloneHandler {
                     for (int i = 0; i < stacks.getSlots(); i++) {
                         ItemStack stack = stacks.getStackInSlot(i);
                         if (stack.isEmpty()) {
-                            if (!CurioUtiks.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
+                            if (!CurioUtils.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
                                 if (!player.getPersistentData().getBoolean("cs")) {
                                     for (ISlotType value : CuriosApi.getSlots().values()) {
                                         if (value.getIdentifier().contains("c_charm")) {

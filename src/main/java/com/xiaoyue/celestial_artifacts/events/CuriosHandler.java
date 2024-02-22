@@ -1,9 +1,9 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.content.curios.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_artifacts.utils.CurioUtiks;
+import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -39,7 +39,7 @@ public class CuriosHandler {
         if (projectile instanceof AbstractArrow arrow) {
             if (arrow.getOwner() instanceof Player player) {
                 // 火焰箭袋
-                if (CurioUtiks.hasCurio(player, CAItems.FLAME_ARROW_BAG.get())) {
+                if (CurioUtils.hasCurio(player, CAItems.FLAME_ARROW_BAG.get())) {
                     entity.setSecondsOnFire(60);
                 }
             }
@@ -51,7 +51,7 @@ public class CuriosHandler {
         LivingEntity entity = event.getEntity();
         if (entity instanceof Player player) {
             // 魔法马掌
-            if (CurioUtiks.hasCurio(player, CAItems.MAGIC_HORSESHOE.get())) {
+            if (CurioUtils.hasCurio(player, CAItems.MAGIC_HORSESHOE.get())) {
                 event.setDamageMultiplier(event.getDamageMultiplier() * 0.05f);
             }
         }
@@ -62,7 +62,7 @@ public class CuriosHandler {
         MobEffectInstance instance = event.getEffectInstance();
         if (event.getEntity() instanceof Player player) {
             // 灾厄之册
-            if (CurioUtiks.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
+            if (CurioUtils.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
                 if (CatastropheScroll.i_nihility == 0) {
                     if (!player.hasEffect(instance.getEffect())) {
                         if (instance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
@@ -81,7 +81,7 @@ public class CuriosHandler {
         LivingEntity entity = event.getEntity();
         if (entity instanceof Player player) {
             // 暴食徽章
-            if (CurioUtiks.hasCurio(player, CAItems.GLUTTONY_BADGE.get())) {
+            if (CurioUtils.hasCurio(player, CAItems.GLUTTONY_BADGE.get())) {
                 if (itemStack.getUseAnimation() == UseAnim.EAT) {
                     EntityUtils.addEct(player, MobEffects.DAMAGE_BOOST, 40, 0);
                     EntityUtils.addEct(player, MobEffects.REGENERATION, 40, 0);
@@ -96,8 +96,8 @@ public class CuriosHandler {
         LivingEntity entity = event.getEntity();
         if (entity instanceof Player player) {
             // 精灵手环
-            if (CurioUtiks.hasCurio(player, CAItems.SPIRIT_BRACELET.get())) {
-                if (CurioUtiks.isRangeUseAnim(itemStack.getUseAnimation())) {
+            if (CurioUtils.hasCurio(player, CAItems.SPIRIT_BRACELET.get())) {
+                if (CurioUtils.isRangeUseAnim(itemStack.getUseAnimation())) {
                     event.setDuration((int) (event.getDuration() * 0.75f));
                 }
             }
@@ -110,7 +110,7 @@ public class CuriosHandler {
         Entity attacker = event.getSource().getEntity();
         if (entity instanceof Player player) {
             // 被咒者的图腾
-            if (CurioUtiks.hasCurio(player, CAItems.CURSED_TOTEM.get())) {
+            if (CurioUtils.hasCurio(player, CAItems.CURSED_TOTEM.get())) {
                 if (attacker instanceof LivingEntity livingEntity) {
                     EntityUtils.addEct(livingEntity, MobEffects.WITHER, 600, 2);
                 }
@@ -122,7 +122,7 @@ public class CuriosHandler {
     public static void onEnderManAnger(EnderManAngerEvent event) {
         Player player = event.getPlayer();
         // 末影庇佑者
-        if (CurioUtiks.hasCurio(player, CAItems.ENDER_PROTECTOR.get())) {
+        if (CurioUtils.hasCurio(player, CAItems.ENDER_PROTECTOR.get())) {
             event.setCanceled(true);
         }
     }
@@ -131,7 +131,7 @@ public class CuriosHandler {
     public static void onSpawnPhantom(PlayerSpawnPhantomsEvent event) {
         Player player = event.getEntity();
         // 怨影吊坠
-        if (CurioUtiks.hasCurio(player, CAItems.SHADOW_PENDANT.get())) {
+        if (CurioUtils.hasCurio(player, CAItems.SHADOW_PENDANT.get())) {
             event.setResult(Event.Result.DENY);
         }
     }
@@ -143,7 +143,7 @@ public class CuriosHandler {
         if (LevelUtils.isServerLevel(entity.level()) && entity instanceof Monster) {
             List<Player> entities = entity.level().getEntitiesOfClass(Player.class, EntityUtils.getAABB(entity, 6, 2));
             for (Player list : entities) {
-                if (CurioUtiks.hasCurio(list, CAItems.TWISTED_SCROLL.get())) {
+                if (CurioUtils.hasCurio(list, CAItems.TWISTED_SCROLL.get())) {
                     if (Math.random() < 0.6) {
                         entity.level().addFreshEntity(entity);
                     }
@@ -156,7 +156,7 @@ public class CuriosHandler {
     public static void onChangeLevel(PlayerEvent.PlayerChangedDimensionEvent event) {
         Player entity = event.getEntity();
         // 旅行者卷轴
-        if (CurioUtiks.hasCurio(entity, CAItems.TRAVELER_SCROLL.get())) {
+        if (CurioUtils.hasCurio(entity, CAItems.TRAVELER_SCROLL.get())) {
             EntityUtils.addEct(entity, MobEffects.MOVEMENT_SPEED, 300, 1);
             EntityUtils.addEct(entity, MobEffects.REGENERATION, 300, 0);
         }

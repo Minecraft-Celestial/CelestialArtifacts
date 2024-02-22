@@ -1,6 +1,5 @@
 package com.xiaoyue.celestial_artifacts.content.items.tool;
 
-import com.xiaoyue.celestial_artifacts.content.tiers.EarthTierUtils;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 

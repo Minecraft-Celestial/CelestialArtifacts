@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.content.generic.BaseICurio;
+import com.xiaoyue.celestial_artifacts.content.old.generic.BaseICurio;
 import com.xiaoyue.celestial_artifacts.network.CMessages;
 import com.xiaoyue.celestial_artifacts.network.CAbilityPacket;
 import com.xiaoyue.celestial_artifacts.register.Keymapping;

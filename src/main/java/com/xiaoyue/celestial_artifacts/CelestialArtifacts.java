@@ -2,14 +2,16 @@ package com.xiaoyue.celestial_artifacts;
 
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.xiaoyue.celestial_artifacts.config.CommonConfig;
+import com.xiaoyue.celestial_artifacts.content.core.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.data.CommonConfig;
 import com.xiaoyue.celestial_artifacts.data.CARecipeGen;
-import com.xiaoyue.celestial_artifacts.events.curios.AttackMain;
-import com.xiaoyue.celestial_artifacts.events.curios.OtherMain;
+import com.xiaoyue.celestial_artifacts.events.AttackMain;
+import com.xiaoyue.celestial_artifacts.events.OtherMain;
 import com.xiaoyue.celestial_artifacts.network.CMessages;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,6 +35,7 @@ public class CelestialArtifacts {
 
 		modEventBus.addListener(this::commonSetup);
 		CAItems.register();
+		CurioCacheCap.register();
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new AttackMain());
@@ -48,5 +51,10 @@ public class CelestialArtifacts {
 	private void commonSetup(final FMLCommonSetupEvent event) {
 		CMessages.register();
 	}
+
+	public static ResourceLocation loc(String id) {
+		return new ResourceLocation(MODID, id);
+	}
+
 
 }

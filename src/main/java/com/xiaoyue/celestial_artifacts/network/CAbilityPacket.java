@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.network;
 
-import com.xiaoyue.celestial_artifacts.content.generic.intf.GetCurioSkill;
+import com.xiaoyue.celestial_artifacts.content.old.generic.intf.GetCurioSkill;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
