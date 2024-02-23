@@ -4,10 +4,10 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.curios.core.BaseCurio;
 import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -65,6 +65,7 @@ public final class ModularCurio extends BaseCurio {
 		if (facet instanceof TextFacet e) text.add(e);
 		if (facet instanceof TickFacet e) tick.add(e);
 		if (facet instanceof SetFacet e) set.add(e);
+		if (facet instanceof CAAttackToken e) atk.add(e);
 	}
 
 	public List<CAAttackToken> atkTokens() {
@@ -160,10 +161,14 @@ public final class ModularCurio extends BaseCurio {
 			if (rep != null) {
 				Integer index = map.get(ent.attr().get().getDescriptionId());
 				if (index != null) {
-					tooltips.set(index, rep.withStyle(ChatFormatting.BLUE));
+					tooltips.set(index, rep);
 				}
 			}
 		}
+		if (prop.fortune != 0)
+			tooltips.add(AttrFacet.getSimple(CALang.Modular.FORTUNE.get(), prop.fortune));
+		if (prop.loot != 0)
+			tooltips.add(AttrFacet.getSimple(CALang.Modular.LOOT.get(), prop.loot));
 		return tooltips;
 	}
 

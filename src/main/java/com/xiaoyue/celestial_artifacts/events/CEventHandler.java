@@ -45,15 +45,6 @@ public class CEventHandler {
 		if (CurioUtils.isEmeraldOn(player)) {//TODO
 			player.getAttributes().addTransientAttributeModifiers(CEventHandler.createEmeraldAttributeMap());
 		}
-		if (CurioUtils.isSpiritOn(player)) {
-			if (player.isUsingItem()) {
-				if (CurioUtils.isRangeUseAnim(player.getUseItem().getUseAnimation())) {
-					if (player.getTicksUsingItem() > 60) {
-						EntityUtils.addEct(player, CCEffects.ARROW_DAMAGE.get(), 70, 0);
-					}
-				}
-			}
-		}
 	}
 
 	@SubscribeEvent
@@ -75,33 +66,12 @@ public class CEventHandler {
 					}
 				}
 			}
-			if (CurioUtils.isSpiritOn(player)) {
-				if (directEntity instanceof AbstractArrow) {
-					if (EntityUtils.isLookingBehindTarget(entity, player.getEyePosition())) {
-						event.setAmount(event.getAmount() * 1.5f);
-					}
-					if (player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-						if (Math.random() > 0.5) {
-							EntityUtils.addEct(entity, MobEffects.MOVEMENT_SLOWDOWN, 50, 1);
-						}
-					}
-				}
-			}
 		}
 		if (entity instanceof Player player) {
 			if (CurioUtils.isSeaGodOn(player)) {
 				if (attacker instanceof LivingEntity livingEntity) {
 					if (livingEntity.getMobType() == MobType.WATER) {
 						event.setAmount(event.getAmount() * 0.65f);
-					}
-				}
-			}
-			if (CurioUtils.isSpiritOn(player)) {
-				if (LevelUtils.sourceIsPhysics(source)) {
-					if (Math.random() < 0.2) {
-						event.setCanceled(true);
-					} else {
-						event.setAmount(event.getAmount() * 0.8f);
 					}
 				}
 			}

@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package com.xiaoyue.celestial_artifacts.content.old.curios.back;
+package com.xiaoyue.celestial_artifacts.content.curios.impl.set;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

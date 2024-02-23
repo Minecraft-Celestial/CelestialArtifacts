@@ -1,7 +1,10 @@
 package com.xiaoyue.celestial_artifacts.content.curios.modular;
 
 import com.google.common.collect.Multimap;
+import com.xiaoyue.celestial_core.CelestialCore;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -57,13 +60,24 @@ public record AttrFacet(Supplier<Attribute> attr, DoubleSupplier val,
 		}
 		base.append(" ");
 		base.append(text);
-		return base;
+		return base.withStyle((val < 0 ^ attr == L2DamageTracker.REDUCTION.get()) ? ChatFormatting.RED : ChatFormatting.BLUE);
+	}
+
+	public static MutableComponent getSimple(Component text, int val) {
+		MutableComponent base = Component.literal(val < 0 ? "-" : "+");
+		base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val)));
+		base.append(" ");
+		base.append(text);
+		return base.withStyle(val < 0 ? ChatFormatting.RED : ChatFormatting.BLUE);
 	}
 
 	public static boolean isMult(Attribute attr) {
+		if (attr == L2DamageTracker.ABSORB.get()) return false;
+		if (attr == CCAttributes.ARROW_KNOCK.get()) return false;
 		var rl = ForgeRegistries.ATTRIBUTES.getKey(attr);
 		assert rl != null;
-		return rl.getNamespace().equals(L2DamageTracker.MODID);
+		return rl.getNamespace().equals(L2DamageTracker.MODID) ||
+				rl.getNamespace().equals(CelestialCore.MODID);
 	}
 
 }

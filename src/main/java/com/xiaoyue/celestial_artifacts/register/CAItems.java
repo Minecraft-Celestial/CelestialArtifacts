@@ -5,11 +5,11 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.LeechScabbard;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TwistedScabbard;
-import com.xiaoyue.celestial_artifacts.content.curios.modular.AttrFacet;
-import com.xiaoyue.celestial_artifacts.content.curios.modular.EffectFacet;
-import com.xiaoyue.celestial_artifacts.content.curios.modular.ModularCurio;
-import com.xiaoyue.celestial_artifacts.content.curios.modular.TextFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SpiritSet;
+import com.xiaoyue.celestial_artifacts.content.curios.modular.*;
+import com.xiaoyue.celestial_artifacts.content.curios.set.SetTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
 import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
@@ -19,8 +19,6 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
-import com.xiaoyue.celestial_artifacts.content.old.curios.back.SpiritArrowBag;
-import com.xiaoyue.celestial_artifacts.content.old.curios.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.head.*;
@@ -48,7 +46,10 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import top.theillusivec4.curios.Curios;
+
+import java.util.List;
 
 public class CAItems {
 
@@ -173,7 +174,11 @@ public class CAItems {
 	// 毒牙项链
 	public static final ItemEntry<Item> FANG_NECKLACE = necklace("fang_necklace", FangNecklace::new);
 	// 珍钻项链
-	public static final ItemEntry<Item> PRECIOUS_NECKLACE = necklace("precious_necklace", PreciousNecklace::new);
+	public static final ItemEntry<Item> PRECIOUS_NECKLACE = necklace("precious_necklace", () ->
+			ModularCurio.builder().rarity(Rarity.RARE).fortune(1).build(
+					AttrFacet.add(L2DamageTracker.CRIT_DMG::get, () -> 0.2),
+					SlotFacet.of("charm", 1)
+			));
 	// 神圣项链
 	public static final ItemEntry<Item> HOLY_NECKLACE = necklace("holy_necklace", HolyNecklace::new);
 	// 家传项链
@@ -204,55 +209,79 @@ public class CAItems {
 	public static final ItemEntry<Item> SPIRIT_CROWN = head("spirit_crown", SpiritCrown::new);
 
 	// back
-	// 魔法箭袋
-	public static final ItemEntry<Item> MAGIC_ARROW_BAG = back("magic_arrow_bag", () -> ModularCurio.of(
-			AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.1),
-			AttrFacet.add(CCAttributes.ARROW_KNOCK, () -> 0.08)
-	));
-	// 火焰箭袋
-	public static final ItemEntry<Item> FLAME_ARROW_BAG = back("flame_arrow_bag", () -> ModularCurio.of(
-			AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.12),
-			AttrFacet.add(CCAttributes.ARROW_KNOCK, () -> 0.1),
-			TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.flame_arrow_bag.shift2"))
-	));
-	// 精灵箭袋
-	public static final ItemEntry<Item> SPIRIT_ARROW_BAG = back("spirit_arrow_bag", SpiritArrowBag::new);
-	// 铁剑鞘
-	public static final ItemEntry<Item> IRON_SCABBARD = back("iron_scabbard", () -> ModularCurio.of(
-			EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 2, 0, 5)
-	));
-	// 水蛭剑鞘
-	public static final ItemEntry<Item> LEECH_SCABBARD = back("leech_scabbard", () -> ModularCurio.of(
-			EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 10),
-			new LeechScabbard()
-	));
-	// 泰坦剑鞘
-	public static final ItemEntry<Item> TITAN_SCABBARD = back("titan_scabbard", TitanScabbard::new);
-	// 扭曲剑鞘
-	public static final ItemEntry<Item> TWISTED_SCABBARD = back("twisted_scabbard", () ->
-			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
-					EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 5),
-					AttrFacet.multBase(() -> Attributes.ATTACK_KNOCKBACK, () -> 1),
-					AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.25),
-					AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.5),
-					TwistedScabbard.TOKEN
-			));
+	public static final ItemEntry<Item> MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG;
+	public static final ItemEntry<Item> IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD;
+
+	static {
+		// 魔法箭袋
+		MAGIC_ARROW_BAG = back("magic_arrow_bag", () -> ModularCurio.of(
+				AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.1),
+				AttrFacet.add(CCAttributes.ARROW_KNOCK, () -> 0.08)
+		));
+		// 火焰箭袋
+		FLAME_ARROW_BAG = back("flame_arrow_bag", () -> ModularCurio.of(
+				AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.12),
+				AttrFacet.add(CCAttributes.ARROW_KNOCK, () -> 0.1),
+				TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.flame_arrow_bag.shift2"))
+		));
+		// 精灵箭袋
+		SPIRIT_ARROW_BAG = back("spirit_arrow_bag", () ->
+				ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+						AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.18),
+						AttrFacet.add(CCAttributes.ARROW_SPEED, () -> 0.5),
+						AttrFacet.add(CCAttributes.ARROW_KNOCK, () -> 1),
+						spiritSet()
+				));
+
+		// 铁剑鞘
+		IRON_SCABBARD = back("iron_scabbard", () -> ModularCurio.of(
+				EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 2, 0, 5)
+		));
+
+		// 水蛭剑鞘
+		LEECH_SCABBARD = back("leech_scabbard", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 10),
+						new LeechScabbard()
+				));
+
+		// 泰坦剑鞘
+		TITAN_SCABBARD = back("titan_scabbard", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 10),
+						new TitanScabbard()
+				));
+
+		// 扭曲剑鞘
+		TWISTED_SCABBARD = back("twisted_scabbard", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
+						EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 5),
+						AttrFacet.multBase(() -> Attributes.ATTACK_KNOCKBACK, () -> 1),
+						AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.25),
+						AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.5),
+						TwistedScabbard.TOKEN
+				));
+	}
 
 	// etching
-	// 混沌
-	public static final ItemEntry<Item> CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().build());
-	// 始源
-	public static final ItemEntry<Item> ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().build());
-	// 生命
-	public static final ItemEntry<Item> ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().build());
-	// 真理
-	public static final ItemEntry<Item> TRUTH_ETCHING = etching("truth_etching", () -> ModularCurio.builder().immune().build());
-	// 欲望
-	public static final ItemEntry<Item> DESIRE_ETCHING = etching("desire_etching", () -> ModularCurio.builder().immune().build());
-	// 虚无
-	public static final ItemEntry<Item> NIHILITY_ETCHING = etching("nihility_etching", () -> ModularCurio.builder().immune().build());
-	// 终焉
-	public static final ItemEntry<Item> END_ETCHING = etching("end_etching", () -> ModularCurio.builder().immune().build());
+	public static final ItemEntry<Item> CHAOTIC_ETCHING, ORIGIN_ETCHING, ETCHING_OF_LIFE, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
+
+	static {
+		// 混沌
+		CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().build());
+		// 始源
+		ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().build());
+		// 生命
+		ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().build());
+		// 真理
+		TRUTH_ETCHING = etching("truth_etching", () -> ModularCurio.builder().immune().build());
+		// 欲望
+		DESIRE_ETCHING = etching("desire_etching", () -> ModularCurio.builder().immune().build());
+		// 虚无
+		NIHILITY_ETCHING = etching("nihility_etching", () -> ModularCurio.builder().immune().build());
+		// 终焉
+		END_ETCHING = etching("end_etching", () -> ModularCurio.builder().immune().build());
+	}
 
 	// tool
 	// 大地系列工具
@@ -285,6 +314,13 @@ public class CAItems {
 	// 厄运土豆
 	public static final ItemEntry<Item> UNLUCKY_POTATO = item("food/", "unlucky_potato", UnluckyPotato::new).register();
 
+	private static final SetTokenFacet<SpiritSet> SPIRIT_SET = new SetTokenFacet<>("spirit",
+			List.of(SPIRIT_BRACELET, SPIRIT_CROWN, SPIRIT_NECKLACE, SPIRIT_ARROW_BAG),
+			SpiritSet::new);
+
+	private static SetTokenFacet<SpiritSet> spiritSet() {
+		return SPIRIT_SET;
+	}
 
 	public static ItemEntry<Item> ring(String id, NonNullSupplier<Item> factory) {
 		return item("curios/ring/", id, factory).tag(curio("ring")).register();

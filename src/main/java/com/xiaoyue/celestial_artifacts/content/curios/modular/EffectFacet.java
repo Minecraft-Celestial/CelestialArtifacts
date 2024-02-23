@@ -33,9 +33,9 @@ public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, 
 		desc = desc.withStyle(ins.getEffect().getCategory().getTooltipFormatting());
 		MutableComponent ans;
 		if (period <= duration) {
-			ans = CALang.IDS.EFFECT_REFRESH_CURIO.get().withStyle(ChatFormatting.GRAY);
+			ans = CALang.Modular.EFFECT_REFRESH.get().withStyle(ChatFormatting.GRAY);
 		} else {
-			ans = CALang.IDS.EFFECT_FLASH_CURIO.get(period).withStyle(ChatFormatting.GRAY);
+			ans = CALang.Modular.EFFECT_FLASH.get(period).withStyle(ChatFormatting.GRAY);
 		}
 		return ans.append(desc);
 	}
