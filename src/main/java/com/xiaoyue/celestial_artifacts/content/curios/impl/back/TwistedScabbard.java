@@ -27,11 +27,12 @@ public class TwistedScabbard extends BaseTickingToken
 	public static final TokenFacet<TwistedScabbard> TOKEN = new TokenFacet<>("twisted_scabbard", TwistedScabbard::new);
 
 	@SerialClass.SerialField
-	public int twisted_scabbard_add;
+	public int twisted_scabbard_add, timer;
 
 	@Override
 	public void onPlayerKill(Player player, LivingDeathEvent event) {
 		twisted_scabbard_add++;
+		timer = 0;
 		if (player instanceof ServerPlayer sp)
 			sync(TOKEN.getKey(), this, sp);
 
@@ -59,12 +60,11 @@ public class TwistedScabbard extends BaseTickingToken
 	@Override
 	protected void tickImpl(Player player) {
 		attr(player).tickImpl(player);
-		if (player instanceof ServerPlayer sp) {
-			if (player.tickCount % 100 == 0) {
-				if (twisted_scabbard_add > 0) {
-					twisted_scabbard_add--;
-					sync(TOKEN.getKey(), this, sp);
-				}
+		timer++;
+		if (timer >= 100) {
+			timer = 0;
+			if (twisted_scabbard_add > 0) {
+				twisted_scabbard_add--;
 			}
 		}
 	}

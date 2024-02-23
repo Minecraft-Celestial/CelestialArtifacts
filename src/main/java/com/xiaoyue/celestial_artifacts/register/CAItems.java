@@ -7,6 +7,9 @@ import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TwistedScabbard;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.SpiritBracelet;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.head.SpiritCrown;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.SpiritNecklace;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SpiritSet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.*;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SetTokenFacet;
@@ -154,7 +157,9 @@ public class CAItems {
 	// 魅力手环
 	public static final ItemEntry<Item> CHARMING_BRACELET = bracelet("charming_bracelet", CharmingBracelet::new);
 	// 精灵手环
-	public static final ItemEntry<Item> SPIRIT_BRACELET = bracelet("spirit_bracelet", SpiritBracelet::new);
+	public static final ItemEntry<Item> SPIRIT_BRACELET = bracelet("spirit_bracelet", () ->
+			ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+					new SpiritBracelet(), spiritSet()));
 
 	// pendant
 	// 无主的吊坠
@@ -192,7 +197,9 @@ public class CAItems {
 	// 深渊之锁
 	public static final ItemEntry<Item> LOCK_OF_ABYSS = necklace("lock_of_abyss", LockOfAbyss::new);
 	// 精灵项链
-	public static final ItemEntry<Item> SPIRIT_NECKLACE = necklace("spirit_necklace", SpiritNecklace::new);
+	public static final ItemEntry<Item> SPIRIT_NECKLACE = necklace("spirit_necklace", () ->
+			ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
+					new SpiritNecklace(), spiritSet()));
 
 	// head
 	// 海神王冠
@@ -206,7 +213,9 @@ public class CAItems {
 	// 邪恶之瞳
 	public static final ItemEntry<Item> EVIL_EYE = head("evil_eye", EvilEye::new);
 	// 精灵花冠
-	public static final ItemEntry<Item> SPIRIT_CROWN = head("spirit_crown", SpiritCrown::new);
+	public static final ItemEntry<Item> SPIRIT_CROWN = head("spirit_crown", () ->
+			ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
+					new SpiritCrown(), spiritSet()));
 
 	// back
 	public static final ItemEntry<Item> MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG;
