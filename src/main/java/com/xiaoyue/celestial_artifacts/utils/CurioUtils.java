@@ -35,16 +35,6 @@ public class CurioUtils {
 		return total;
 	}
 
-	public static boolean isSeaGodOn(Player player) {
-		return CurioUtils.hasCurio(player, CAItems.SEA_GOD_CROWN.get(),
-				CAItems.SEA_GOD_SCROLL.get());
-	}
-
-	public static boolean isEmeraldOn(Player player) {
-		return CurioUtils.hasCurio(player, CAItems.EMERALD_NECKLACE.get(),
-				CAItems.EMERALD_RING.get(), CAItems.EMERALD_BRACELET.get());
-	}
-
 	public static List<SlotResult> getACResult(Player player) {
 		List<SlotResult> list = new ArrayList<SlotResult>();
 		CuriosApi.getCuriosInventory(player).ifPresent(handler -> {

@@ -11,19 +11,21 @@ import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.EmeraldBrace
 import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.SpiritBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.charm.SandsTalisman;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
-import com.xiaoyue.celestial_artifacts.content.curios.impl.head.AbyssCore;
-import com.xiaoyue.celestial_artifacts.content.curios.impl.head.EvilEye;
-import com.xiaoyue.celestial_artifacts.content.curios.impl.head.SpiritCrown;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.head.*;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.TwistedHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.EmeraldNecklace;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.SpiritNecklace;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.pendant.ShadowPendant;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.scroll.SeaGodScroll;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.scroll.SkywalkerScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.EmeraldSet;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SeaGodSet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SpiritSet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.*;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SetTokenFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.token.SkillTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
@@ -35,11 +37,8 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.head.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.ring.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SeaGodScroll;
-import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SkywalkerScroll;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -60,7 +59,7 @@ import java.util.List;
 @SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
 
-	// 35/84
+	// 41/84
 
 	// ring
 	// 金戒指
@@ -158,22 +157,32 @@ public class CAItems {
 					.build(new TokenFacet<>("demon_heart", DemonHeart::new)));
 
 	// scroll
-	// 旅者卷轴
-	public static final ItemEntry<Item> TRAVELER_SCROLL = scroll("traveler_scroll", () ->
-			ModularCurio.builder().rarity(Rarity.UNCOMMON).immune().build(
-					AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.25),
-					AttrFacet.multBase(() -> Attributes.FLYING_SPEED, () -> 0.25),
-					AttrFacet.multBase(ForgeMod.SWIM_SPEED, () -> 0.25),
-					TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.traveler_scroll.shift2"))
-			));
-	// 海神卷轴
-	public static final ItemEntry<Item> SEA_GOD_SCROLL = scroll("sea_god_scroll", SeaGodScroll::new);
-	// 传送卷轴
-	public static final ItemEntry<Item> SKYWALKER_SCROLL = scroll("skywalker_scroll", SkywalkerScroll::new);
-	// 扭曲卷轴
-	public static final ItemEntry<Item> TWISTED_SCROLL = scroll("twisted_scroll", () ->
-			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
-					TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.twisted_scroll.shift1"))));
+
+	public static final ItemEntry<Item> TRAVELER_SCROLL, SEA_GOD_SCROLL, SKYWALKER_SCROLL, TWISTED_SCROLL;
+
+	static {
+		// 旅者卷轴
+		TRAVELER_SCROLL = scroll("traveler_scroll", () ->
+				ModularCurio.builder().rarity(Rarity.UNCOMMON).immune().build(
+						AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.25),
+						AttrFacet.multBase(() -> Attributes.FLYING_SPEED, () -> 0.25),
+						AttrFacet.multBase(ForgeMod.SWIM_SPEED, () -> 0.25),
+						TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.traveler_scroll.shift2"))
+				));
+		// 海神卷轴
+		SEA_GOD_SCROLL = scroll("sea_god_scroll", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						new SeaGodScroll(), seaGodSet()));
+		// 传送卷轴
+		SKYWALKER_SCROLL = scroll("skywalker_scroll", () -> {
+			var token = new TokenFacet<>("skywalker_scroll", SkywalkerScroll::new);
+			return ModularCurio.builder().rarity(Rarity.UNCOMMON).build(token, new SkillTokenFacet<>(token));
+		});
+		// 扭曲卷轴
+		TWISTED_SCROLL = scroll("twisted_scroll", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
+						TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.twisted_scroll.shift1"))));
+	}
 
 	// bracelet
 	// 幸运手环
@@ -251,22 +260,32 @@ public class CAItems {
 					new SpiritNecklace(), spiritSet()));
 
 	// head
-	// 海神王冠
-	public static final ItemEntry<Item> SEA_GOD_CROWN = head("sea_god_crown", SeaGodCrown::new);
-	// 祷告者王冠
-	public static final ItemEntry<Item> PRAYER_CROWN = head("prayer_crown", PrayerCrown::new);
-	// 深渊意志之核
-	public static final ItemEntry<Item> ABYSS_CORE = head("abyss_core", ()->
-			ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new AbyssCore()));
-	// 守卫者之眼
-	public static final ItemEntry<Item> GUARDIAN_EYE = head("guardian_eye", GuardianEye::new);
-	// 邪恶之瞳
-	public static final ItemEntry<Item> EVIL_EYE = head("evil_eye", () ->
-			ModularCurio.builder().rarity(Rarity.EPIC).build(new EvilEye()));
-	// 精灵花冠
-	public static final ItemEntry<Item> SPIRIT_CROWN = head("spirit_crown", () ->
-			ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
-					new SpiritCrown(), spiritSet()));
+	public static final ItemEntry<Item> SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN;
+
+	static {
+		// 海神王冠
+		SEA_GOD_CROWN = head("sea_god_crown", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						new SeaGodCrown(), seaGodSet()));
+		// 祷告者王冠
+		PRAYER_CROWN = head("prayer_crown", () ->
+				ModularCurio.builder().rarity(Rarity.UNCOMMON).build(new PrayerCrown()));
+		// 深渊意志之核
+		ABYSS_CORE = head("abyss_core", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new AbyssCore()));
+		// 守卫者之眼
+		GUARDIAN_EYE = head("guardian_eye", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						AttrFacet.multBase(ForgeMod.SWIM_SPEED, () -> 0.15),
+						new GuardianEye()));
+		// 邪恶之瞳
+		EVIL_EYE = head("evil_eye", () ->
+				ModularCurio.builder().rarity(Rarity.EPIC).build(new EvilEye()));
+		// 精灵花冠
+		SPIRIT_CROWN = head("spirit_crown", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
+						new SpiritCrown(), spiritSet()));
+	}
 
 	// back
 	public static final ItemEntry<Item> MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG;
@@ -388,12 +407,19 @@ public class CAItems {
 	private static final SetTokenFacet<EmeraldSet> EMERALD_SET = new SetTokenFacet<>("emerald",
 			List.of(EMERALD_RING, EMERALD_NECKLACE, EMERALD_BRACELET), EmeraldSet::new);
 
+	private static final SetTokenFacet<SeaGodSet> SEA_GOD_SET = new SetTokenFacet<>("sea_god",
+			List.of(SEA_GOD_CROWN, SEA_GOD_SCROLL), SeaGodSet::new);
+
 	private static SetTokenFacet<SpiritSet> spiritSet() {
 		return SPIRIT_SET;
 	}
 
 	private static SetTokenFacet<EmeraldSet> emeraldSet() {
 		return EMERALD_SET;
+	}
+
+	private static SetTokenFacet<SeaGodSet> seaGodSet() {
+		return SEA_GOD_SET;
 	}
 
 	public static ItemEntry<Item> ring(String id, NonNullSupplier<Item> factory) {

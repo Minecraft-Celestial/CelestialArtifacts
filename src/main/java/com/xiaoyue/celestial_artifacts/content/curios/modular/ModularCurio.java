@@ -52,6 +52,7 @@ public final class ModularCurio extends BaseCurio {
 	private final List<CAAttackToken> atk = new ArrayList<>();
 	private final List<BreakSpeedFacet> mining = new ArrayList<>();
 	private final List<XpBonusFacet> exp = new ArrayList<>();
+	private final List<SkillFacet> skill = new ArrayList<>();
 
 	private final Prop prop;
 
@@ -72,6 +73,7 @@ public final class ModularCurio extends BaseCurio {
 		if (facet instanceof CAAttackToken e) atk.add(e);
 		if (facet instanceof BreakSpeedFacet e) mining.add(e);
 		if (facet instanceof XpBonusFacet e) exp.add(e);
+		if (facet instanceof SkillFacet e) skill.add(e);
 	}
 
 	public List<CAAttackToken> atkTokens() {
@@ -84,6 +86,10 @@ public final class ModularCurio extends BaseCurio {
 
 	public List<XpBonusFacet> expTokens() {
 		return exp;
+	}
+
+	public List<SkillFacet> skillTokens() {
+		return skill;
 	}
 
 	@Override
