@@ -277,7 +277,7 @@
   "tooltip.celestial_artifacts.star_necklace.shift2": "§e· 从背后攻击目标时提高§640%§e攻击伤害",
 
   "item.celestial_artifacts.cross_necklace": "十字项链",
-  "tooltip.celestial_artifacts.cross_necklace.shift1": "§e· 将受到攻击后的无敌时间提升至§68§e",
+  "tooltip.celestial_artifacts.cross_necklace.shift1": "§e· 将受到攻击后的无敌时间提升§68§e",
 
   "item.celestial_artifacts.gallop_necklace": "疾行项链",
   "tooltip.celestial_artifacts.gallop_necklace.shift1": "§e· 增加§60.08§e点移动速度",
@@ -294,7 +294,7 @@
   "tooltip.celestial_artifacts.precious_necklace.shift3": "§e· 提高§620%§e星月暴伤",
   
   "item.celestial_artifacts.holy_necklace": "神圣项链",
-  "tooltip.celestial_artifacts.holy_necklace.shift1": "§e· 将受到攻击后的无敌时间提升至§610§e",
+  "tooltip.celestial_artifacts.holy_necklace.shift1": "§e· 将受到攻击后的无敌时间提升§610§e",
   "tooltip.celestial_artifacts.holy_necklace.shift2": "§e· 每次受到治疗后获得抗性提升效果，冷却3秒",
   "tooltip.celestial_artifacts.holy_necklace.shift3": "§e· 增加§64§e点最大生命",
   

@@ -59,7 +59,7 @@ import java.util.List;
 @SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
 
-	// 44/84
+	// 46/84
 
 	// ring
 	// 金戒指
@@ -226,10 +226,13 @@ public class CAItems {
 			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).requireCS().build(new ShadowPendant()));
 
 	// necklace
+
 	// 星星项链
-	public static final ItemEntry<Item> STAR_NECKLACE = necklace("star_necklace", StarNecklace::new);
+	public static final ItemEntry<Item> STAR_NECKLACE = necklace("star_necklace", () ->
+			ModularCurio.builder().rarity(Rarity.RARE).build(new StarNecklace()));
 	// 十字项链
-	public static final ItemEntry<Item> CROSS_NECKLACE = necklace("cross_necklace", CrossNecklace::new);
+	public static final ItemEntry<Item> CROSS_NECKLACE = necklace("cross_necklace", () ->
+			ModularCurio.builder().rarity(Rarity.UNCOMMON).build(new CrossNecklace()));
 	// 疾行项链
 	public static final ItemEntry<Item> GALLOP_NECKLACE = necklace("gallop_necklace", GallopNecklace::new);
 	// 毒牙项链
