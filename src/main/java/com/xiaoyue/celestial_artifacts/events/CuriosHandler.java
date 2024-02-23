@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
@@ -63,7 +63,7 @@ public class CuriosHandler {
         if (event.getEntity() instanceof Player player) {
             // 灾厄之册
             if (CurioUtils.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
-                if (CatastropheScroll.i_nihility == 0) {
+                if (CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, CAItems.NIHILITY_ETCHING.get())) {
                     if (!player.hasEffect(instance.getEffect())) {
                         if (instance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
                             instance.update(new MobEffectInstance(instance.getEffect(),

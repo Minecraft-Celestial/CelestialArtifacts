@@ -2,8 +2,9 @@ package com.xiaoyue.celestial_artifacts.content.old.curios.charm;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
+import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -78,7 +79,7 @@ public class WarDeadBadge extends AttackICurio {
     @Override
     public void onPlayerHurtEntity(SlotContext context, Player player, LivingHurtEvent event) {
         if (CurioUtils.hasCurio(player, this)) {
-            if (CatastropheScroll.i_chaotic == 0) {
+            if (CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, CAItems.CHAOTIC_ETCHING.get())) {
                 if (player.getHealth() < player.getMaxHealth() * 0.1f) {
                     List<LivingEntity> entities = EntityUtils.getExceptForCentralEntity(player, 8, 2);
                     player.heal((player.getMaxHealth() - player.getHealth()) * 0.01f * entities.size());

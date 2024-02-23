@@ -1,22 +1,16 @@
 package com.xiaoyue.celestial_artifacts.utils;
 
 import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
-import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
 
 public class CurioUtils {
 
@@ -29,30 +23,17 @@ public class CurioUtils {
 		return CurioUtils.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get());
 	}
 
-	public static int getCurseAmount() {
-		int curse = 0;
-		if (CatastropheScroll.i_chaotic == 0) {
-			curse += 1;
-		}
-		if (CatastropheScroll.i_desire == 0) {
-			curse += 1;
-		}
-		if (CatastropheScroll.i_end == 0) {
-			curse += 1;
-		}
-		if (CatastropheScroll.i_life == 0) {
-			curse += 1;
-		}
-		if (CatastropheScroll.i_truth == 0) {
-			curse += 1;
-		}
-		if (CatastropheScroll.i_origin == 0) {
-			curse += 1;
-		}
-		if (CatastropheScroll.i_nihility == 0) {
-			curse += 1;
-		}
-		return curse;
+	public static int getCurseAmount(Player player) {
+		if (!isCsOn(player)) return 0;
+		int total = 7;
+		if (hasCurio(player, CAItems.CHAOTIC_ETCHING.get())) total--;
+		if (hasCurio(player, CAItems.DESIRE_ETCHING.get())) total--;
+		if (hasCurio(player, CAItems.END_ETCHING.get())) total--;
+		if (hasCurio(player, CAItems.ETCHING_OF_LIFE.get())) total--;
+		if (hasCurio(player, CAItems.TRUTH_ETCHING.get())) total--;
+		if (hasCurio(player, CAItems.ORIGIN_ETCHING.get())) total--;
+		if (hasCurio(player, CAItems.NIHILITY_ETCHING.get())) total--;
+		return total;
 	}
 
 	public static boolean isSeaGodOn(Player player) {

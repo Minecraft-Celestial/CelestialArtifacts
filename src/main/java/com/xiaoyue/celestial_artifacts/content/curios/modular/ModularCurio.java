@@ -27,8 +27,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.*;
 
@@ -48,6 +50,7 @@ public final class ModularCurio extends BaseCurio {
 	private final List<TickFacet> tick = new ArrayList<>();
 	private final List<SetFacet> set = new ArrayList<>();
 	private final List<CAAttackToken> atk = new ArrayList<>();
+	private final List<BreakSpeedFacet> mining = new ArrayList<>();
 
 	private final Prop prop;
 
@@ -66,10 +69,15 @@ public final class ModularCurio extends BaseCurio {
 		if (facet instanceof TickFacet e) tick.add(e);
 		if (facet instanceof SetFacet e) set.add(e);
 		if (facet instanceof CAAttackToken e) atk.add(e);
+		if (facet instanceof BreakSpeedFacet e) mining.add(e);
 	}
 
 	public List<CAAttackToken> atkTokens() {
 		return atk;
+	}
+
+	public List<BreakSpeedFacet> miningTokens() {
+		return mining;
 	}
 
 	@Override
@@ -151,6 +159,12 @@ public final class ModularCurio extends BaseCurio {
 		}
 		for (AttrFacet ent : attributes) {
 			double val = ent.val().getAsDouble();
+			Integer index = map.get(ent.attr().get().getDescriptionId());
+			if (index == null) continue;
+			if (prop.hideAttr()) {
+				tooltips.set(index, null);
+				continue;
+			}
 			MutableComponent rep = null;
 			if (AttrFacet.isMult(ent.attr().get())) {
 				rep = AttrFacet.getDesc(ent.attr().get(), val, ent.op());
@@ -159,16 +173,16 @@ public final class ModularCurio extends BaseCurio {
 				rep = AttrFacet.getDesc(ent.attr().get(), val, ent.op());
 			}
 			if (rep != null) {
-				Integer index = map.get(ent.attr().get().getDescriptionId());
-				if (index != null) {
-					tooltips.set(index, rep);
-				}
+				tooltips.set(index, rep);
 			}
 		}
-		if (prop.fortune != 0)
-			tooltips.add(AttrFacet.getSimple(CALang.Modular.FORTUNE.get(), prop.fortune));
-		if (prop.loot != 0)
-			tooltips.add(AttrFacet.getSimple(CALang.Modular.LOOT.get(), prop.loot));
+		if (!prop.hideAttr()) {
+			if (prop.fortune != 0)
+				tooltips.add(AttrFacet.getSimple(CALang.Modular.FORTUNE.get(), prop.fortune));
+			if (prop.loot != 0)
+				tooltips.add(AttrFacet.getSimple(CALang.Modular.LOOT.get(), prop.loot));
+		}
+		tooltips.removeIf(Objects::isNull);
 		return tooltips;
 	}
 
@@ -182,14 +196,27 @@ public final class ModularCurio extends BaseCurio {
 		return super.canEquip(stack, armorType, entity);
 	}
 
-	public record Prop(boolean requireCS, boolean immune, int fortune, int loot) {
+	@Override
+	public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
+		return !prop.curse() || slotContext.entity() instanceof Player player && player.isCreative();
+	}
 
+	@NotNull
+	@Override
+	public ICurio.DropRule getDropRule(SlotContext ctx, DamageSource source, int loot, boolean hit, ItemStack stack) {
+		return prop.curse() ? ICurio.DropRule.ALWAYS_KEEP : super.getDropRule(ctx, source, loot, hit, stack);
+	}
+
+	public record Prop(
+			boolean requireCS, boolean curse, boolean immune, boolean hideAttr,
+			int fortune, int loot
+	) {
 	}
 
 	public static class Builder {
 
 		private final Item.Properties prop;
-		private boolean requireCS = false, immune = false;
+		private boolean requireCS = false, curse = false, immune = false, hideAttr = false;
 		private int fortune = 0, loot = 0;
 
 		private Builder() {
@@ -204,6 +231,16 @@ public final class ModularCurio extends BaseCurio {
 
 		public Builder requireCS() {
 			this.requireCS = true;
+			return this;
+		}
+
+		public Builder hideAttr() {
+			this.hideAttr = true;
+			return this;
+		}
+
+		public Builder curse() {
+			this.curse = true;
 			return this;
 		}
 
@@ -224,7 +261,7 @@ public final class ModularCurio extends BaseCurio {
 
 		public ModularCurio build(IFacet... facet) {
 			return new ModularCurio(prop,
-					new Prop(requireCS, immune, fortune, loot),
+					new Prop(requireCS, curse, immune, hideAttr, fortune, loot),
 					facet);
 		}
 

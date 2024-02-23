@@ -2,7 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.old.curios.heart;
 
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.old.generic.XICurioBase;
-import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;

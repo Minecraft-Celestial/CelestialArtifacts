@@ -9,10 +9,12 @@ import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TwistedScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.SpiritBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.head.SpiritCrown;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.SpiritNecklace;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SpiritSet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.*;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SetTokenFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
 import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
@@ -21,11 +23,10 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
-import com.xiaoyue.celestial_artifacts.content.old.curios.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.head.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.old.curios.heart.GreedyHeart;
 import com.xiaoyue.celestial_artifacts.content.old.curios.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.old.curios.heart.TwistedHeart;
@@ -129,7 +130,9 @@ public class CAItems {
 	// 古代殉葬品
 	public static final ItemEntry<Item> SACRIFICIAL_OBJECT = charm("sacrificial_object", SacrificialObject::new);
 	// 恶魔之心
-	public static final ItemEntry<Item> DEMON_HEART = heart("demon_heart", DemonHeart::new);
+	public static final ItemEntry<Item> DEMON_HEART = heart("demon_heart", () ->
+			ModularCurio.builder().rarity(Rarity.EPIC).requireCS()
+					.build(new TokenFacet<>("demon_heart", DemonHeart::new)));
 
 	// scroll
 	// 旅者卷轴
@@ -277,19 +280,22 @@ public class CAItems {
 
 	static {
 		// 混沌
-		CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().build());
+		CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 		// 始源
-		ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().build());
+		ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().hideAttr().build(BreakSpeedFacet.simple(1.25)));
 		// 生命
-		ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().build());
+		ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().hideAttr().build(
+				AttrFacet.add(CCAttributes.REPLY_POWER, () -> 0.6),
+				AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> 0.45)
+		));
 		// 真理
-		TRUTH_ETCHING = etching("truth_etching", () -> ModularCurio.builder().immune().build());
+		TRUTH_ETCHING = etching("truth_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 		// 欲望
-		DESIRE_ETCHING = etching("desire_etching", () -> ModularCurio.builder().immune().build());
+		DESIRE_ETCHING = etching("desire_etching", () -> ModularCurio.builder().immune().fortune(1).loot(1).hideAttr().build());
 		// 虚无
-		NIHILITY_ETCHING = etching("nihility_etching", () -> ModularCurio.builder().immune().build());
+		NIHILITY_ETCHING = etching("nihility_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 		// 终焉
-		END_ETCHING = etching("end_etching", () -> ModularCurio.builder().immune().build());
+		END_ETCHING = etching("end_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 	}
 
 	// tool
@@ -316,8 +322,12 @@ public class CAItems {
 	public static final ItemEntry<Item> PURIFIED_POWDER = item("items/", "purified_powder", PurifiedPowder::new).register();
 
 	// 灾厄之册
-	public static final ItemEntry<Item> CATASTROPHE_SCROLL = item("curios/", "catastrophe_scroll", CatastropheScroll::new)
-			.tag(curio("c_charm")).register();
+	public static final ItemEntry<Item> CATASTROPHE_SCROLL = item("curios/", "catastrophe_scroll", () ->
+			ModularCurio.builder().curse().immune().rarity(IRarityUtils.DARK_PURPLE).hideAttr().build(
+					AttrFacet.add(CCAttributes.REPLY_POWER, () -> -0.5),
+					AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> -0.25),
+					new CatastropheScroll()
+			)).tag(curio("c_charm")).register();
 
 	// food
 	// 厄运土豆

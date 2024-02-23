@@ -42,7 +42,7 @@ public class CEventHandler {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		Player player = event.player;
-		if (CurioUtils.isEmeraldOn(player)) {//TODO
+		if (CurioUtils.isEmeraldOn(player)) {
 			player.getAttributes().addTransientAttributeModifiers(CEventHandler.createEmeraldAttributeMap());
 		}
 	}
@@ -75,24 +75,6 @@ public class CEventHandler {
 					}
 				}
 			}
-		}
-	}
-
-
-	@SubscribeEvent
-	public static void onLivingDeath(LivingDeathEvent event) {
-		LivingEntity entity = event.getEntity();
-		DamageSource source = event.getSource();
-		Entity attacker = source.getEntity();
-		if (attacker instanceof Player player) {
-			if (CurioUtils.isCsOn(player)) {
-				if (entity instanceof Monster monster) {
-					if (0.02 > Math.random()) {
-						monster.spawnAtLocation(CCItems.THE_END_DUST.get());
-					}
-				}
-			}
-			CAAttackListener.fireEvent(player, t -> t.onPlayerKill(player, event));
 		}
 	}
 
