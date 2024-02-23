@@ -7,6 +7,7 @@ import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TwistedScabbard;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.EmeraldBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.SpiritBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.charm.SandsTalisman;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
@@ -14,8 +15,10 @@ import com.xiaoyue.celestial_artifacts.content.curios.impl.head.SpiritCrown;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.TwistedHeart;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.EmeraldNecklace;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.SpiritNecklace;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.pendant.ShadowPendant;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.set.EmeraldSet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SpiritSet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.*;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SetTokenFacet;
@@ -55,6 +58,8 @@ import java.util.List;
 @SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
 
+	// 33/84
+
 	// ring
 	// 金戒指
 	public static final ItemEntry<Item> GOLD_RING = ring("gold_ring", GoldRing::new);
@@ -63,7 +68,9 @@ public class CAItems {
 	// 钻石戒指
 	public static final ItemEntry<Item> DIAMOND_RING = ring("diamond_ring", DiamondRing::new);
 	// 绿宝石戒指
-	public static final ItemEntry<Item> EMERALD_RING = ring("emerald_ring", EmeraldRing::new);
+	public static final ItemEntry<Item> EMERALD_RING = ring("emerald_ring", () ->
+			ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+					AttrFacet.add(() -> Attributes.LUCK, () -> 1), emeraldSet()));
 	// 飞行戒指
 	public static final ItemEntry<Item> FLIGHT_RING = ring("flight_ring", FlightRing::new);
 	// 下界合金戒指
@@ -168,7 +175,10 @@ public class CAItems {
 
 	// bracelet
 	// 幸运手环
-	public static final ItemEntry<Item> EMERALD_BRACELET = bracelet("emerald_bracelet", EmeraldBracelet::new);
+	public static final ItemEntry<Item> EMERALD_BRACELET = bracelet("emerald_bracelet", () ->
+			ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+					AttrFacet.add(L2DamageTracker.CRIT_RATE::get, () -> 0.1),
+					new EmeraldBracelet(), emeraldSet()));
 	// 生命手环
 	public static final ItemEntry<Item> LIFE_BRACELET = bracelet("life_bracelet", LifeBracelet::new);
 	// 珍钻手环
@@ -224,7 +234,9 @@ public class CAItems {
 					XpBonusFacet.simple(0.1)
 			));
 	// 绿宝石项链
-	public static final ItemEntry<Item> EMERALD_NECKLACE = necklace("emerald_necklace", EmeraldNecklace::new);
+	public static final ItemEntry<Item> EMERALD_NECKLACE = necklace("emerald_necklace", () ->
+			ModularCurio.builder().rarity(IRarityUtils.GREEN).fortune(1).build(
+					new EmeraldNecklace(), emeraldSet()));
 	// 末影庇佑者项链
 	public static final ItemEntry<Item> ENDER_PROTECTOR = necklace("ender_protector", EnderProtector::new);
 	// 红心项链
@@ -369,8 +381,15 @@ public class CAItems {
 			List.of(SPIRIT_BRACELET, SPIRIT_CROWN, SPIRIT_NECKLACE, SPIRIT_ARROW_BAG),
 			SpiritSet::new);
 
+	private static final SetTokenFacet<EmeraldSet> EMERALD_SET = new SetTokenFacet<>("emerald",
+			List.of(EMERALD_RING, EMERALD_NECKLACE, EMERALD_BRACELET), EmeraldSet::new);
+
 	private static SetTokenFacet<SpiritSet> spiritSet() {
 		return SPIRIT_SET;
+	}
+
+	private static SetTokenFacet<EmeraldSet> emeraldSet() {
+		return EMERALD_SET;
 	}
 
 	public static ItemEntry<Item> ring(String id, NonNullSupplier<Item> factory) {

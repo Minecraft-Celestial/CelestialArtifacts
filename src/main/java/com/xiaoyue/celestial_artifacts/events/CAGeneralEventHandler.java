@@ -27,7 +27,7 @@ public class CAGeneralEventHandler {
 		if (attacker instanceof Player player) {
 			if (CurioUtils.isCsOn(player)) {
 				if (entity instanceof Monster monster) {
-					if (0.02 > Math.random()) {
+					if (0.02 > monster.getRandom().nextDouble()) {
 						monster.spawnAtLocation(CCItems.THE_END_DUST.get());
 					}
 				}

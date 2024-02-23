@@ -14,7 +14,6 @@ import java.util.List;
 
 public class CurioUtils {
 
-
 	public static boolean isRangeUseAnim(UseAnim useAnim) {
 		return useAnim == UseAnim.BOW || useAnim == UseAnim.CROSSBOW;
 	}
@@ -44,12 +43,6 @@ public class CurioUtils {
 	public static boolean isEmeraldOn(Player player) {
 		return CurioUtils.hasCurio(player, CAItems.EMERALD_NECKLACE.get(),
 				CAItems.EMERALD_RING.get(), CAItems.EMERALD_BRACELET.get());
-	}
-
-	public static boolean isSpiritOn(Player player) {
-		return CurioUtils.hasCurio(player, CAItems.SPIRIT_BRACELET.get(),
-				CAItems.SPIRIT_NECKLACE.get(), CAItems.SPIRIT_ARROW_BAG.get(),
-				CAItems.SPIRIT_ARROW_BAG.get());
 	}
 
 	public static List<SlotResult> getACResult(Player player) {

@@ -91,5 +91,9 @@
   "item.celestial_artifacts.unlucky_potato": "Unlucky Potato",
   "item.celestial_artifacts.unowned_pendant": "Unowned Pendant",
   "item.celestial_artifacts.war_dead_badge": "War Dead Badge",
-  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts"
+  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts",
+  "tooltip.celestial_artifacts.flame_arrow_bag.shift2": "",
+  "tooltip.celestial_artifacts.chaotic_pendant.shift2": "",
+  "tooltip.celestial_artifacts.twisted_scroll.shift1": "",
+  "tooltip.celestial_artifacts.traveler_scroll.shift2": ""
 }
