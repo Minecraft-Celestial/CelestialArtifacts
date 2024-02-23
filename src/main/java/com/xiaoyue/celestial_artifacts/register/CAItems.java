@@ -11,6 +11,8 @@ import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.EmeraldBrace
 import com.xiaoyue.celestial_artifacts.content.curios.impl.bracelet.SpiritBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.charm.SandsTalisman;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.head.AbyssCore;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.head.EvilEye;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.head.SpiritCrown;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.HeartOfRevenge;
@@ -58,7 +60,7 @@ import java.util.List;
 @SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
 
-	// 33/84
+	// 35/84
 
 	// ring
 	// 金戒指
@@ -254,11 +256,13 @@ public class CAItems {
 	// 祷告者王冠
 	public static final ItemEntry<Item> PRAYER_CROWN = head("prayer_crown", PrayerCrown::new);
 	// 深渊意志之核
-	public static final ItemEntry<Item> ABYSS_CORE = head("abyss_core", AbyssCore::new);
+	public static final ItemEntry<Item> ABYSS_CORE = head("abyss_core", ()->
+			ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new AbyssCore()));
 	// 守卫者之眼
 	public static final ItemEntry<Item> GUARDIAN_EYE = head("guardian_eye", GuardianEye::new);
 	// 邪恶之瞳
-	public static final ItemEntry<Item> EVIL_EYE = head("evil_eye", EvilEye::new);
+	public static final ItemEntry<Item> EVIL_EYE = head("evil_eye", () ->
+			ModularCurio.builder().rarity(Rarity.EPIC).build(new EvilEye()));
 	// 精灵花冠
 	public static final ItemEntry<Item> SPIRIT_CROWN = head("spirit_crown", () ->
 			ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
