@@ -59,15 +59,20 @@ import java.util.List;
 @SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
 
-	// 41/84
+	// 44/84
 
 	// ring
 	// 金戒指
-	public static final ItemEntry<Item> GOLD_RING = ring("gold_ring", GoldRing::new);
+	public static final ItemEntry<Item> GOLD_RING = ring("gold_ring", () ->
+			ModularCurio.of(new EffectFacet(() -> MobEffects.LUCK, 2, 0, 0)));
 	// 紫水晶戒指
-	public static final ItemEntry<Item> AMETHYST_RING = ring("amethyst_ring", AmethystRing::new);
+	public static final ItemEntry<Item> AMETHYST_RING = ring("amethyst_ring", () ->
+			ModularCurio.of(new EffectFacet(() -> MobEffects.NIGHT_VISION, 20, 0, 0),
+					AttrFacet.multBase(() -> Attributes.ATTACK_DAMAGE, () -> 0.1)));
 	// 钻石戒指
-	public static final ItemEntry<Item> DIAMOND_RING = ring("diamond_ring", DiamondRing::new);
+	public static final ItemEntry<Item> DIAMOND_RING = ring("diamond_ring", () ->
+			ModularCurio.builder().rarity(Rarity.RARE).build(
+					new EffectFacet(() -> MobEffects.DAMAGE_BOOST, 2, 0, 0)));
 	// 绿宝石戒指
 	public static final ItemEntry<Item> EMERALD_RING = ring("emerald_ring", () ->
 			ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
@@ -251,7 +256,8 @@ public class CAItems {
 	// 末影庇佑者项链
 	public static final ItemEntry<Item> ENDER_PROTECTOR = necklace("ender_protector", EnderProtector::new);
 	// 红心项链
-	public static final ItemEntry<Item> RED_HEART_NECKLACE = necklace("red_heart_necklace", RedHeartNecklace::new);
+	public static final ItemEntry<Item> RED_HEART_NECKLACE = necklace("red_heart_necklace", () ->
+			ModularCurio.of(AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> 0.05)));
 	// 深渊之锁
 	public static final ItemEntry<Item> LOCK_OF_ABYSS = necklace("lock_of_abyss", LockOfAbyss::new);
 	// 精灵项链
