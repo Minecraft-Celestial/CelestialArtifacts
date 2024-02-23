@@ -12,8 +12,10 @@ import com.xiaoyue.celestial_artifacts.content.curios.impl.charm.SandsTalisman;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.head.SpiritCrown;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.DemonHeart;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.TwistedHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.SpiritNecklace;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.pendant.ShadowPendant;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SpiritSet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.*;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SetTokenFacet;
@@ -29,16 +31,10 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.head.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.pendant.ChaoticPendant;
-import com.xiaoyue.celestial_artifacts.content.old.curios.pendant.ShadowPendant;
-import com.xiaoyue.celestial_artifacts.content.old.curios.pendant.UnownedPendant;
 import com.xiaoyue.celestial_artifacts.content.old.curios.ring.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SeaGodScroll;
 import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.SkywalkerScroll;
-import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.TravelerScroll;
-import com.xiaoyue.celestial_artifacts.content.old.curios.scroll.TwistedScroll;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -51,10 +47,12 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.common.ForgeMod;
 import top.theillusivec4.curios.Curios;
 
 import java.util.List;
 
+@SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
 
 	// ring
@@ -86,7 +84,11 @@ public class CAItems {
 	// 毁灭者徽章
 	public static final ItemEntry<Item> DESTROYER_BADGE = charm("destroyer_badge", DestroyerBadge::new);
 	// 复仇之心
-	public static final ItemEntry<Item> HEART_OF_REVENGE = heart("heart_of_revenge", HeartOfRevenge::new);
+	public static final ItemEntry<Item> HEART_OF_REVENGE = heart("heart_of_revenge", () ->
+			ModularCurio.builder().rarity(IRarityUtils.GOLD).build(
+					AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.06),
+					new HeartOfRevenge()
+			));
 	// 扭曲之脑
 	public static final ItemEntry<Item> TWISTED_BRAIN = charm("twisted_brain", TwistedBrain::new);
 	// 扭曲之心
@@ -148,13 +150,21 @@ public class CAItems {
 
 	// scroll
 	// 旅者卷轴
-	public static final ItemEntry<Item> TRAVELER_SCROLL = scroll("traveler_scroll", TravelerScroll::new);
+	public static final ItemEntry<Item> TRAVELER_SCROLL = scroll("traveler_scroll", () ->
+			ModularCurio.builder().rarity(Rarity.UNCOMMON).immune().build(
+					AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.25),
+					AttrFacet.multBase(() -> Attributes.FLYING_SPEED, () -> 0.25),
+					AttrFacet.multBase(ForgeMod.SWIM_SPEED, () -> 0.25),
+					TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.traveler_scroll.shift2"))
+			));
 	// 海神卷轴
 	public static final ItemEntry<Item> SEA_GOD_SCROLL = scroll("sea_god_scroll", SeaGodScroll::new);
 	// 传送卷轴
 	public static final ItemEntry<Item> SKYWALKER_SCROLL = scroll("skywalker_scroll", SkywalkerScroll::new);
 	// 扭曲卷轴
-	public static final ItemEntry<Item> TWISTED_SCROLL = scroll("twisted_scroll", TwistedScroll::new);
+	public static final ItemEntry<Item> TWISTED_SCROLL = scroll("twisted_scroll", () ->
+			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
+					TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.twisted_scroll.shift1"))));
 
 	// bracelet
 	// 幸运手环
@@ -178,11 +188,16 @@ public class CAItems {
 
 	// pendant
 	// 无主的吊坠
-	public static final ItemEntry<Item> UNOWNED_PENDANT = pendant("unowned_pendant", UnownedPendant::new);
+	public static final ItemEntry<Item> UNOWNED_PENDANT = pendant("unowned_pendant", () ->
+			ModularCurio.builder().rarity(Rarity.RARE).build());
 	// 混沌吊坠
-	public static final ItemEntry<Item> CHAOTIC_PENDANT = pendant("chaotic_pendant", ChaoticPendant::new);
+	public static final ItemEntry<Item> CHAOTIC_PENDANT = pendant("chaotic_pendant", () ->
+			ModularCurio.builder().rarity(Rarity.EPIC).requireCS().loot(1).build(
+					TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.chaotic_pendant.shift2"))
+			));
 	// 怨影吊坠
-	public static final ItemEntry<Item> SHADOW_PENDANT = pendant("shadow_pendant", ShadowPendant::new);
+	public static final ItemEntry<Item> SHADOW_PENDANT = pendant("shadow_pendant", () ->
+			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).requireCS().build(new ShadowPendant()));
 
 	// necklace
 	// 星星项链
