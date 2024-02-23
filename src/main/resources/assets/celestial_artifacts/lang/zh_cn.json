@@ -437,7 +437,7 @@
   "tooltip.celestial_artifacts.cs_has_desire.shift1": "§e· 提高§61.0§e点时运与抢夺等级",
   "tooltip.celestial_artifacts.cs_no_desire.shift1": "§5· 周围的生物将远离你，中立生物会主动攻击你",
   "tooltip.celestial_artifacts.cs_is_nihility.shift1": "· [虚无]",
-  "tooltip.celestial_artifacts.cs_has_nihility.shift1": "§e· 降低§675.0%§e收到虚空伤害，受到攻击时使攻击者获得§63§e级凋零",
+  "tooltip.celestial_artifacts.cs_has_nihility.shift1": "§e· 降低§675.0%§e收到虚空伤害，受到攻击时使攻击者获得§63§e级剧毒",
   "tooltip.celestial_artifacts.cs_no_nihility.shift1": "§5· 受到负面效果时长提高§450.0%§5，等级加§41.0§5",
   "tooltip.celestial_artifacts.cs_is_end.shift1": "· [终焉]",
   "tooltip.celestial_artifacts.cs_has_end.shift1": "§e· 攻击后恢复自身相当于已损失生命§612.0%§e生命",

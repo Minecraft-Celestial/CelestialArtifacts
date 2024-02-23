@@ -147,7 +147,7 @@ public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
 				factor *= 0.25f;
 			}
 			if (cache.getAttacker() != null) {
-				EntityUtils.addEct(cache.getAttacker(), MobEffects.WITHER, 200, 2);
+				EntityUtils.addEct(cache.getAttacker(), MobEffects.POISON, 200, 2);
 			}
 		}
 		cache.addDealtModifier(DamageModifier.multTotal(factor));

@@ -1,4 +1,4 @@
-package com.xiaoyue.celestial_artifacts.content.old.curios.necklace;
+package com.xiaoyue.celestial_artifacts.content.curios.impl.necklace;
 
 import com.xiaoyue.celestial_artifacts.content.curios.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;

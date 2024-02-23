@@ -15,8 +15,7 @@ import com.xiaoyue.celestial_artifacts.content.curios.impl.head.*;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.heart.TwistedHeart;
-import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.EmeraldNecklace;
-import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.SpiritNecklace;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.*;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.pendant.ShadowPendant;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.scroll.SeaGodScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.scroll.SkywalkerScroll;
@@ -37,7 +36,10 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.*;
+import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.EnderProtector;
+import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.FangNecklace;
+import com.xiaoyue.celestial_artifacts.content.curios.impl.necklace.GallopNecklace;
+import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.HolyNecklace;
 import com.xiaoyue.celestial_artifacts.content.old.curios.ring.*;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
@@ -96,19 +98,9 @@ public class CAItems {
 	public static final ItemEntry<Item> UNDEAD_CHARM = charm("undead_charm", UndeadCharm::new);
 	// 毁灭者徽章
 	public static final ItemEntry<Item> DESTROYER_BADGE = charm("destroyer_badge", DestroyerBadge::new);
-	// 复仇之心
-	public static final ItemEntry<Item> HEART_OF_REVENGE = heart("heart_of_revenge", () ->
-			ModularCurio.builder().rarity(IRarityUtils.GOLD).build(
-					AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.06),
-					new HeartOfRevenge()
-			));
+
 	// 扭曲之脑
 	public static final ItemEntry<Item> TWISTED_BRAIN = charm("twisted_brain", TwistedBrain::new);
-	// 扭曲之心
-	public static final ItemEntry<Item> TWISTED_HEART = heart("twisted_heart", () ->
-			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).immune().build(
-					new TokenFacet<>("twisted_heart", TwistedHeart::new)
-			));
 
 	// 噬咒护符
 	public static final ItemEntry<Item> CORRUPT_BADGE = charm("corrupt_badge", CorruptBadge::new);
@@ -136,11 +128,7 @@ public class CAItems {
 	public static final ItemEntry<Item> SOLAR_MAGNET = charm("solar_magnet", SolarMagnet::new);
 	// 暴食徽章
 	public static final ItemEntry<Item> GLUTTONY_BADGE = charm("gluttony_badge", GluttonyBadge::new);
-	// 贪婪者之心
-	public static final ItemEntry<Item> GREEDY_HEART = heart("greedy_heart", () ->
-			ModularCurio.builder().rarity(Rarity.EPIC).fortune(1).loot(1).build(
-					XpBonusFacet.simple(2)
-			));
+
 
 	// 魔法马掌
 	public static final ItemEntry<Item> MAGIC_HORSESHOE = charm("magic_horseshoe", MagicHorseshoe::new);
@@ -156,14 +144,53 @@ public class CAItems {
 			));
 	// 古代殉葬品
 	public static final ItemEntry<Item> SACRIFICIAL_OBJECT = charm("sacrificial_object", SacrificialObject::new);
-	// 恶魔之心
-	public static final ItemEntry<Item> DEMON_HEART = heart("demon_heart", () ->
-			ModularCurio.builder().rarity(Rarity.EPIC).requireCS()
-					.build(new TokenFacet<>("demon_heart", DemonHeart::new)));
 
+	// heart
+	public static final ItemEntry<Item> HEART_OF_REVENGE, TWISTED_HEART, GREEDY_HEART, DEMON_HEART;
 	// scroll
-
 	public static final ItemEntry<Item> TRAVELER_SCROLL, SEA_GOD_SCROLL, SKYWALKER_SCROLL, TWISTED_SCROLL;
+	// bracelet
+	public static final ItemEntry<Item> EMERALD_BRACELET, LIFE_BRACELET, PRECIOUS_BRACELET, RED_RUBY_BRACELET,
+			HIDDEN_BRACELET, SCARLET_BRACELET, CHARMING_BRACELET, SPIRIT_BRACELET;
+	// pendant
+	public static final ItemEntry<Item> UNOWNED_PENDANT, CHAOTIC_PENDANT, SHADOW_PENDANT;
+	// necklace
+	public static final ItemEntry<Item> STAR_NECKLACE, CROSS_NECKLACE, GALLOP_NECKLACE, FANG_NECKLACE,
+			PRECIOUS_NECKLACE, HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE,
+			ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE;
+	// head
+	public static final ItemEntry<Item> SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN;
+	// back
+	public static final ItemEntry<Item> MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG,
+			IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD;
+	// 灾厄之册
+	public static final ItemEntry<Item> CATASTROPHE_SCROLL;
+	// etching
+	public static final ItemEntry<Item> CHAOTIC_ETCHING, ORIGIN_ETCHING, ETCHING_OF_LIFE, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
+
+	static {
+		// 复仇之心
+		HEART_OF_REVENGE = heart("heart_of_revenge", () ->
+				ModularCurio.builder().rarity(IRarityUtils.GOLD).build(
+						AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.06),
+						new HeartOfRevenge()
+				));
+		// 扭曲之心
+		TWISTED_HEART = heart("twisted_heart", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).immune().build(
+						new TokenFacet<>("twisted_heart", TwistedHeart::new)
+				));
+
+		// 贪婪者之心
+		GREEDY_HEART = heart("greedy_heart", () ->
+				ModularCurio.builder().rarity(Rarity.EPIC).fortune(1).loot(1).build(
+						XpBonusFacet.simple(2)
+				));
+		// 恶魔之心
+		DEMON_HEART = heart("demon_heart", () ->
+				ModularCurio.builder().rarity(Rarity.EPIC).requireCS()
+						.build(new TokenFacet<>("demon_heart", DemonHeart::new)));
+	}
 
 	static {
 		// 旅者卷轴
@@ -189,87 +216,96 @@ public class CAItems {
 						TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.twisted_scroll.shift1"))));
 	}
 
-	// bracelet
-	// 幸运手环
-	public static final ItemEntry<Item> EMERALD_BRACELET = bracelet("emerald_bracelet", () ->
-			ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
-					AttrFacet.add(L2DamageTracker.CRIT_RATE::get, () -> 0.1),
-					new EmeraldBracelet(), emeraldSet()));
-	// 生命手环
-	public static final ItemEntry<Item> LIFE_BRACELET = bracelet("life_bracelet", LifeBracelet::new);
-	// 珍钻手环
-	public static final ItemEntry<Item> PRECIOUS_BRACELET = bracelet("precious_bracelet", PreciousBracelet::new);
-	// 绯红石手环
-	public static final ItemEntry<Item> RED_RUBY_BRACELET = bracelet("red_ruby_bracelet", RedRubyBracelet::new);
-	// 隐匿手环
-	public static final ItemEntry<Item> HIDDEN_BRACELET = bracelet("hidden_bracelet", HiddenBracelet::new);
-	// 猩红手环
-	public static final ItemEntry<Item> SCARLET_BRACELET = bracelet("scarlet_bracelet", ScarletBracelet::new);
-	// 魅力手环
-	public static final ItemEntry<Item> CHARMING_BRACELET = bracelet("charming_bracelet", CharmingBracelet::new);
-	// 精灵手环
-	public static final ItemEntry<Item> SPIRIT_BRACELET = bracelet("spirit_bracelet", () ->
-			ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
-					new SpiritBracelet(), spiritSet()));
+	static {
+		// 幸运手环
+		EMERALD_BRACELET = bracelet("emerald_bracelet", () ->
+				ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+						AttrFacet.add(L2DamageTracker.CRIT_RATE::get, () -> 0.1),
+						new EmeraldBracelet(), emeraldSet()));
+		// 生命手环
+		LIFE_BRACELET = bracelet("life_bracelet", LifeBracelet::new);
+		// 珍钻手环
+		PRECIOUS_BRACELET = bracelet("precious_bracelet", PreciousBracelet::new);
+		// 绯红石手环
+		RED_RUBY_BRACELET = bracelet("red_ruby_bracelet", RedRubyBracelet::new);
+		// 隐匿手环
+		HIDDEN_BRACELET = bracelet("hidden_bracelet", HiddenBracelet::new);
+		// 猩红手环
+		SCARLET_BRACELET = bracelet("scarlet_bracelet", ScarletBracelet::new);
+		// 魅力手环
+		CHARMING_BRACELET = bracelet("charming_bracelet", CharmingBracelet::new);
+		// 精灵手环
+		SPIRIT_BRACELET = bracelet("spirit_bracelet", () ->
+				ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+						new SpiritBracelet(), spiritSet()));
+	}
 
-	// pendant
-	// 无主的吊坠
-	public static final ItemEntry<Item> UNOWNED_PENDANT = pendant("unowned_pendant", () ->
-			ModularCurio.builder().rarity(Rarity.RARE).build());
-	// 混沌吊坠
-	public static final ItemEntry<Item> CHAOTIC_PENDANT = pendant("chaotic_pendant", () ->
-			ModularCurio.builder().rarity(Rarity.EPIC).requireCS().loot(1).build(
-					TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.chaotic_pendant.shift2"))
-			));
-	// 怨影吊坠
-	public static final ItemEntry<Item> SHADOW_PENDANT = pendant("shadow_pendant", () ->
-			ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).requireCS().build(new ShadowPendant()));
+	static {
+		// 无主的吊坠
+		UNOWNED_PENDANT = pendant("unowned_pendant", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build());
+		// 混沌吊坠
+		CHAOTIC_PENDANT = pendant("chaotic_pendant", () ->
+				ModularCurio.builder().rarity(Rarity.EPIC).requireCS().loot(1).build(
+						TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.chaotic_pendant.shift2"))
+				));
+		// 怨影吊坠
+		SHADOW_PENDANT = pendant("shadow_pendant", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).requireCS().build(new ShadowPendant()));
+	}
 
-	// necklace
+	static {
+		// 星星项链
+		STAR_NECKLACE = necklace("star_necklace", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(new StarNecklace()));
 
-	// 星星项链
-	public static final ItemEntry<Item> STAR_NECKLACE = necklace("star_necklace", () ->
-			ModularCurio.builder().rarity(Rarity.RARE).build(new StarNecklace()));
-	// 十字项链
-	public static final ItemEntry<Item> CROSS_NECKLACE = necklace("cross_necklace", () ->
-			ModularCurio.builder().rarity(Rarity.UNCOMMON).build(new CrossNecklace()));
-	// 疾行项链
-	public static final ItemEntry<Item> GALLOP_NECKLACE = necklace("gallop_necklace", GallopNecklace::new);
-	// 毒牙项链
-	public static final ItemEntry<Item> FANG_NECKLACE = necklace("fang_necklace", FangNecklace::new);
-	// 珍钻项链
-	public static final ItemEntry<Item> PRECIOUS_NECKLACE = necklace("precious_necklace", () ->
-			ModularCurio.builder().rarity(Rarity.RARE).fortune(1).build(
-					AttrFacet.add(L2DamageTracker.CRIT_DMG::get, () -> 0.2),
-					SlotFacet.of("charm", 1)
-			));
-	// 神圣项链
-	public static final ItemEntry<Item> HOLY_NECKLACE = necklace("holy_necklace", HolyNecklace::new);
-	// 家传项链
-	public static final ItemEntry<Item> HEIRLOOM_NECKLACE = necklace("heirloom_necklace", () ->
-			ModularCurio.builder().rarity(Rarity.UNCOMMON).fortune(1).build(
-					AttrFacet.add(() -> Attributes.ARMOR, () -> 2),
-					AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.05),
-					XpBonusFacet.simple(0.1)
-			));
-	// 绿宝石项链
-	public static final ItemEntry<Item> EMERALD_NECKLACE = necklace("emerald_necklace", () ->
-			ModularCurio.builder().rarity(IRarityUtils.GREEN).fortune(1).build(
-					new EmeraldNecklace(), emeraldSet()));
-	// 末影庇佑者项链
-	public static final ItemEntry<Item> ENDER_PROTECTOR = necklace("ender_protector", EnderProtector::new);
-	// 红心项链
-	public static final ItemEntry<Item> RED_HEART_NECKLACE = necklace("red_heart_necklace", () ->
-			ModularCurio.of(AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> 0.05)));
-	// 深渊之锁
-	public static final ItemEntry<Item> LOCK_OF_ABYSS = necklace("lock_of_abyss", LockOfAbyss::new);
-	// 精灵项链
-	public static final ItemEntry<Item> SPIRIT_NECKLACE = necklace("spirit_necklace", () ->
-			ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
-					new SpiritNecklace(), spiritSet()));
+		// 十字项链
+		CROSS_NECKLACE = necklace("cross_necklace", () ->
+				ModularCurio.builder().rarity(Rarity.UNCOMMON).build(new CrossNecklace()));
 
-	// head
-	public static final ItemEntry<Item> SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN;
+		// 疾行项链
+		GALLOP_NECKLACE = necklace("gallop_necklace", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						AttrFacet.add(() -> Attributes.MOVEMENT_SPEED, () -> 0.08),
+						new GallopNecklace()
+				));
+
+		// 毒牙项链
+		FANG_NECKLACE = necklace("fang_necklace", FangNecklace::new);
+
+		// 珍钻项链
+		PRECIOUS_NECKLACE = necklace("precious_necklace", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).fortune(1).build(
+						AttrFacet.add(L2DamageTracker.CRIT_DMG::get, () -> 0.2),
+						SlotFacet.of("charm", 1)
+				));
+		// 神圣项链
+		HOLY_NECKLACE = necklace("holy_necklace", HolyNecklace::new);
+
+		// 家传项链
+		HEIRLOOM_NECKLACE = necklace("heirloom_necklace", () ->
+				ModularCurio.builder().rarity(Rarity.UNCOMMON).fortune(1).build(
+						AttrFacet.add(() -> Attributes.ARMOR, () -> 2),
+						AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.05),
+						XpBonusFacet.simple(0.1)
+				));
+		// 绿宝石项链
+		EMERALD_NECKLACE = necklace("emerald_necklace", () ->
+				ModularCurio.builder().rarity(IRarityUtils.GREEN).fortune(1).build(
+						new EmeraldNecklace(), emeraldSet()));
+		// 末影庇佑者项链
+		ENDER_PROTECTOR = necklace("ender_protector", EnderProtector::new);
+		// 红心项链
+		RED_HEART_NECKLACE = necklace("red_heart_necklace", () ->
+				ModularCurio.of(AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> 0.05)));
+		// 深渊之锁
+		LOCK_OF_ABYSS = necklace("lock_of_abyss", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new LockOfAbyss()));
+		// 精灵项链
+		SPIRIT_NECKLACE = necklace("spirit_necklace", () ->
+				ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
+						new SpiritNecklace(), spiritSet()));
+	}
 
 	static {
 		// 海神王冠
@@ -295,10 +331,6 @@ public class CAItems {
 				ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
 						new SpiritCrown(), spiritSet()));
 	}
-
-	// back
-	public static final ItemEntry<Item> MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG;
-	public static final ItemEntry<Item> IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD;
 
 	static {
 		// 魔法箭袋
@@ -351,16 +383,12 @@ public class CAItems {
 				));
 	}
 
-	// 灾厄之册
-	public static final ItemEntry<Item> CATASTROPHE_SCROLL;
-	// etching
-	public static final ItemEntry<Item> CHAOTIC_ETCHING, ORIGIN_ETCHING, ETCHING_OF_LIFE, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
-
 	static {
 		CATASTROPHE_SCROLL = item("curios/", "catastrophe_scroll", () ->
 				ModularCurio.builder().curse().immune().rarity(IRarityUtils.DARK_PURPLE).hideAttr().build(
 						AttrFacet.add(CCAttributes.REPLY_POWER, () -> -0.5),
 						AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> -0.25),
+						SlotFacet.of("etching", 7),
 						new CatastropheScroll()
 				)).tag(curio("c_charm")).register();
 		// 混沌
