@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.impl.scroll;
 
-import com.xiaoyue.celestial_artifacts.content.curios.modular.SkillFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.SkillFeature;
 import com.xiaoyue.celestial_artifacts.content.curios.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SkywalkerScroll extends BaseTickingToken implements SkillFacet {
+public class SkywalkerScroll extends BaseTickingToken implements SkillFeature {
 
 	@Override
 	public void trigger(ServerPlayer player) {

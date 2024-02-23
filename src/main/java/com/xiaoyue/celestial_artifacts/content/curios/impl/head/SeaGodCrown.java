@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.impl.head;
 
-import com.xiaoyue.celestial_artifacts.content.curios.modular.SkillFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.SkillFeature;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SeaGodCrown implements TextFacet, TickFacet, SkillFacet {
+public class SeaGodCrown implements TextFacet, TickFacet, SkillFeature {
 
 	@Override
 	public void trigger(ServerPlayer player) {

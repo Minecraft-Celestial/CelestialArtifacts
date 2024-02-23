@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.impl.scroll;
 
-import com.xiaoyue.celestial_artifacts.content.curios.modular.BreakSpeedFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.BreakSpeedFeature;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.TickFacet;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SeaGodScroll implements TextFacet, TickFacet, BreakSpeedFacet {
+public class SeaGodScroll implements TextFacet, TickFacet, BreakSpeedFeature {
 
 	@Override
 	public void tick(LivingEntity player, ItemStack stack) {

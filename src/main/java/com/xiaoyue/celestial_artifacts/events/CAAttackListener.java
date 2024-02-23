@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_artifacts.events;
 
 import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
@@ -15,13 +16,13 @@ import java.util.function.Predicate;
 public class CAAttackListener implements AttackListener {
 
 	public static void fireEvent(Player player, Consumer<CAAttackToken> cons) {
-		for (var token : CurioCacheCap.HOLDER.get(player).getAtkTokens()) {
+		for (var token : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.ATK)) {
 			cons.accept(token);
 		}
 	}
 
 	public static boolean fireEventCancellable(Player player, Predicate<CAAttackToken> cons) {
-		for (var token : CurioCacheCap.HOLDER.get(player).getAtkTokens()) {
+		for (var token : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.ATK)) {
 			if (cons.test(token)) {
 				return true;
 			}

@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_artifacts.events;
 
 import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCItems;
 import net.minecraft.world.damagesource.DamageSource;
@@ -40,7 +41,7 @@ public class CAGeneralEventHandler {
 	public void onPlayerPickupXp(PlayerXpEvent.PickupXp event) {
 		Player player = event.getEntity();
 		double factor = 1;
-		for (var e : CurioCacheCap.HOLDER.get(player).getXp()) {
+		for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.EXP)) {
 			factor += e.getXpBonus(player);
 		}
 		event.getOrb().value = (int) (event.getOrb().value * factor);
@@ -50,7 +51,7 @@ public class CAGeneralEventHandler {
 	public void onPlayerBreak(PlayerEvent.BreakSpeed event) {
 		Player player = event.getEntity();
 		double factor = 1;
-		for (var e : CurioCacheCap.HOLDER.get(player).getMining()) {
+		for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.MINING)) {
 			factor *= e.getBreakFactor(player);
 		}
 		event.setNewSpeed((float) (event.getOriginalSpeed() * factor));

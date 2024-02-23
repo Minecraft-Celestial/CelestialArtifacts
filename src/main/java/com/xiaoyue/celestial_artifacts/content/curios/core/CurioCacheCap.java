@@ -1,10 +1,9 @@
 package com.xiaoyue.celestial_artifacts.content.curios.core;
 
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
-import com.xiaoyue.celestial_artifacts.content.curios.modular.BreakSpeedFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureMap;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.ModularCurio;
-import com.xiaoyue.celestial_artifacts.content.curios.modular.SkillFacet;
-import com.xiaoyue.celestial_artifacts.content.curios.modular.XpBonusFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;
@@ -18,7 +17,6 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 import top.theillusivec4.curios.api.CuriosApi;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,19 +33,14 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 	);
 
 	private final Map<Item, ItemStack> map = new HashMap<>();
-	private final List<CAAttackToken> token = new ArrayList<>();
-	private final List<BreakSpeedFacet> mining = new ArrayList<>();
-	private final List<XpBonusFacet> exp = new ArrayList<>();
-	private final List<SkillFacet> skill = new ArrayList<>();
+	private final FeatureMap features = new FeatureMap();
 	private long lastTime = -1;
 
 	private void refresh() {
 		if (player.level().getGameTime() != lastTime) {
 			lastTime = player.level().getGameTime();
 			map.clear();
-			token.clear();
-			mining.clear();
-			skill.clear();
+			features.clear();
 			var opt = CuriosApi.getCuriosInventory(player);
 			if (opt.resolve().isPresent()) {
 				for (var e : opt.resolve().get().getCurios().values()) {
@@ -55,17 +48,14 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 						ItemStack stack = e.getStacks().getStackInSlot(i);
 						map.put(stack.getItem(), stack);
 						if (stack.getItem() instanceof ModularCurio modular) {
-							token.addAll(modular.atkTokens());
-							mining.addAll(modular.miningTokens());
-							exp.addAll(modular.expTokens());
-							skill.addAll(modular.skillTokens());
+							features.addAll(modular.features());
 						}
 					}
 				}
 			}
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
 				if (e instanceof CAAttackToken t) {
-					token.add(t);
+					features.add(FeatureType.ATK, t);
 				}
 			}
 		}
@@ -89,24 +79,9 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 
 	}
 
-	public List<CAAttackToken> getAtkTokens() {
+	public <T> Iterable<T> getFeature(FeatureType<T> type) {
 		refresh();
-		return token;
-	}
-
-	public List<BreakSpeedFacet> getMining() {
-		refresh();
-		return mining;
-	}
-
-	public List<XpBonusFacet> getXp() {
-		refresh();
-		return exp;
-	}
-
-	public List<SkillFacet> getSkill() {
-		refresh();
-		return skill;
+		return features.get(type);
 	}
 
 }

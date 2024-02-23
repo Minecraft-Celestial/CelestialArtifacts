@@ -4,6 +4,8 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.BreakSpeedFeature;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.XpBonusFeature;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.back.TwistedScabbard;
@@ -23,7 +25,7 @@ import com.xiaoyue.celestial_artifacts.content.curios.impl.set.EmeraldSet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SeaGodSet;
 import com.xiaoyue.celestial_artifacts.content.curios.impl.set.SpiritSet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.*;
-import com.xiaoyue.celestial_artifacts.content.curios.set.SetTokenFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.token.SetTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.token.SkillTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
@@ -61,7 +63,7 @@ import java.util.List;
 @SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
 
-	// 46/84
+	// 6 + 21 + 3 + 6 = 36
 
 	// ring
 	// 金戒指
@@ -140,7 +142,7 @@ public class CAItems {
 	public static final ItemEntry<Item> SANDS_TALISMAN = charm("sands_talisman", () ->
 			ModularCurio.builder().loot(1).build(
 					new SandsTalisman(),
-					XpBonusFacet.simple(0.5)
+					XpBonusFeature.simple(0.5)
 			));
 	// 古代殉葬品
 	public static final ItemEntry<Item> SACRIFICIAL_OBJECT = charm("sacrificial_object", SacrificialObject::new);
@@ -184,7 +186,7 @@ public class CAItems {
 		// 贪婪者之心
 		GREEDY_HEART = heart("greedy_heart", () ->
 				ModularCurio.builder().rarity(Rarity.EPIC).fortune(1).loot(1).build(
-						XpBonusFacet.simple(2)
+						XpBonusFeature.simple(2)
 				));
 		// 恶魔之心
 		DEMON_HEART = heart("demon_heart", () ->
@@ -287,7 +289,7 @@ public class CAItems {
 				ModularCurio.builder().rarity(Rarity.UNCOMMON).fortune(1).build(
 						AttrFacet.add(() -> Attributes.ARMOR, () -> 2),
 						AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.05),
-						XpBonusFacet.simple(0.1)
+						XpBonusFeature.simple(0.1)
 				));
 		// 绿宝石项链
 		EMERALD_NECKLACE = necklace("emerald_necklace", () ->
@@ -394,7 +396,7 @@ public class CAItems {
 		// 混沌
 		CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 		// 始源
-		ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().hideAttr().build(BreakSpeedFacet.simple(1.25)));
+		ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().hideAttr().build(BreakSpeedFeature.simple(1.25)));
 		// 生命
 		ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().hideAttr().build(
 				AttrFacet.add(CCAttributes.REPLY_POWER, () -> 0.6),

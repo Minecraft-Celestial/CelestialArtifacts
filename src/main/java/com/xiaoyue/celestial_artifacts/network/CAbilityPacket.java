@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_artifacts.network;
 
 import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.old.generic.intf.GetCurioSkill;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -31,7 +32,7 @@ public class CAbilityPacket {
 		context.enqueueWork(() -> {
 			ServerPlayer player = context.getSender();
 			assert player != null;
-			for (var e : CurioCacheCap.HOLDER.get(player).getSkill()) {
+			for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.SKILL)) {
 				e.trigger(player);
 			}
 

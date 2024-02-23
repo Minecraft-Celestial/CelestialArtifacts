@@ -1,10 +1,8 @@
-package com.xiaoyue.celestial_artifacts.content.curios.set;
+package com.xiaoyue.celestial_artifacts.content.curios.token;
 
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.SetFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.TickFacet;
-import com.xiaoyue.celestial_artifacts.content.curios.token.BaseTickingToken;
-import com.xiaoyue.celestial_artifacts.content.curios.token.ClientTokenHelper;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.conditionals.Context;

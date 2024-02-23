@@ -3,7 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.modular;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.curios.core.BaseCurio;
-import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureMap;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -49,10 +49,7 @@ public final class ModularCurio extends BaseCurio {
 	private final List<TextFacet> text = new ArrayList<>();
 	private final List<TickFacet> tick = new ArrayList<>();
 	private final List<SetFacet> set = new ArrayList<>();
-	private final List<CAAttackToken> atk = new ArrayList<>();
-	private final List<BreakSpeedFacet> mining = new ArrayList<>();
-	private final List<XpBonusFacet> exp = new ArrayList<>();
-	private final List<SkillFacet> skill = new ArrayList<>();
+	private final FeatureMap features = new FeatureMap();
 
 	private final Prop prop;
 
@@ -70,26 +67,11 @@ public final class ModularCurio extends BaseCurio {
 		if (facet instanceof TextFacet e) text.add(e);
 		if (facet instanceof TickFacet e) tick.add(e);
 		if (facet instanceof SetFacet e) set.add(e);
-		if (facet instanceof CAAttackToken e) atk.add(e);
-		if (facet instanceof BreakSpeedFacet e) mining.add(e);
-		if (facet instanceof XpBonusFacet e) exp.add(e);
-		if (facet instanceof SkillFacet e) skill.add(e);
+		features.add(facet);
 	}
 
-	public List<CAAttackToken> atkTokens() {
-		return atk;
-	}
-
-	public List<BreakSpeedFacet> miningTokens() {
-		return mining;
-	}
-
-	public List<XpBonusFacet> expTokens() {
-		return exp;
-	}
-
-	public List<SkillFacet> skillTokens() {
-		return skill;
+	public FeatureMap features() {
+		return features;
 	}
 
 	@Override
