@@ -63,10 +63,18 @@ public record AttrFacet(Supplier<Attribute> attr, DoubleSupplier val,
 		return base.withStyle((val < 0 ^ attr == L2DamageTracker.REDUCTION.get()) ? ChatFormatting.RED : ChatFormatting.BLUE);
 	}
 
-	public static MutableComponent getSimple(Component text, int val) {
+	public static MutableComponent simpleAdd(Component text, int val) {
 		MutableComponent base = Component.literal(val < 0 ? "-" : "+");
 		base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val)));
 		base.append(" ");
+		base.append(text);
+		return base.withStyle(val < 0 ? ChatFormatting.RED : ChatFormatting.BLUE);
+	}
+
+	public static MutableComponent simpleMult(Component text, double val) {
+		MutableComponent base = Component.literal(val < 0 ? "-" : "+");
+		base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
+		base.append("% ");
 		base.append(text);
 		return base.withStyle(val < 0 ? ChatFormatting.RED : ChatFormatting.BLUE);
 	}

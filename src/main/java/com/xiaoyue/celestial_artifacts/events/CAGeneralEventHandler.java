@@ -10,6 +10,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -33,6 +34,16 @@ public class CAGeneralEventHandler {
 			}
 			CAAttackListener.fireEvent(player, t -> t.onPlayerKill(player, event));
 		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerPickupXp(PlayerXpEvent.PickupXp event) {
+		Player player = event.getEntity();
+		double factor = 1;
+		for (var e : CurioCacheCap.HOLDER.get(player).getXp()) {
+			factor += e.getXpBonus(player);
+		}
+		event.getOrb().value = (int) (event.getOrb().value * factor);
 	}
 
 	@SubscribeEvent

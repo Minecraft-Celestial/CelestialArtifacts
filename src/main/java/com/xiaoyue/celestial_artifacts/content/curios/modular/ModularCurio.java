@@ -51,6 +51,7 @@ public final class ModularCurio extends BaseCurio {
 	private final List<SetFacet> set = new ArrayList<>();
 	private final List<CAAttackToken> atk = new ArrayList<>();
 	private final List<BreakSpeedFacet> mining = new ArrayList<>();
+	private final List<XpBonusFacet> exp = new ArrayList<>();
 
 	private final Prop prop;
 
@@ -70,6 +71,7 @@ public final class ModularCurio extends BaseCurio {
 		if (facet instanceof SetFacet e) set.add(e);
 		if (facet instanceof CAAttackToken e) atk.add(e);
 		if (facet instanceof BreakSpeedFacet e) mining.add(e);
+		if (facet instanceof XpBonusFacet e) exp.add(e);
 	}
 
 	public List<CAAttackToken> atkTokens() {
@@ -78,6 +80,10 @@ public final class ModularCurio extends BaseCurio {
 
 	public List<BreakSpeedFacet> miningTokens() {
 		return mining;
+	}
+
+	public List<XpBonusFacet> expTokens() {
+		return exp;
 	}
 
 	@Override
@@ -178,9 +184,9 @@ public final class ModularCurio extends BaseCurio {
 		}
 		if (!prop.hideAttr()) {
 			if (prop.fortune != 0)
-				tooltips.add(AttrFacet.getSimple(CALang.Modular.FORTUNE.get(), prop.fortune));
+				tooltips.add(AttrFacet.simpleAdd(CALang.Modular.FORTUNE.get(), prop.fortune));
 			if (prop.loot != 0)
-				tooltips.add(AttrFacet.getSimple(CALang.Modular.LOOT.get(), prop.loot));
+				tooltips.add(AttrFacet.simpleAdd(CALang.Modular.LOOT.get(), prop.loot));
 		}
 		tooltips.removeIf(Objects::isNull);
 		return tooltips;

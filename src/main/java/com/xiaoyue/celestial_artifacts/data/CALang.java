@@ -48,7 +48,9 @@ public class CALang {
 		EFFECT_REFRESH("Grants wearer: ", 0),
 		EFFECT_FLASH("For every %s seconds, grants wearer: ", 1),
 		FORTUNE("Fortune", 0),
-		LOOT("Looting", 0);
+		LOOT("Looting", 0),
+		XP("Xp Gain", 0),
+		;
 
 		final Entry entry;
 

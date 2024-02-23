@@ -3,6 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.core;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.BreakSpeedFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.modular.ModularCurio;
+import com.xiaoyue.celestial_artifacts.content.curios.modular.XpBonusFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;
@@ -35,6 +36,7 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 	private final Map<Item, ItemStack> map = new HashMap<>();
 	private final List<CAAttackToken> token = new ArrayList<>();
 	private final List<BreakSpeedFacet> mining = new ArrayList<>();
+	private final List<XpBonusFacet> exp = new ArrayList<>();
 	private long lastTime = -1;
 
 	private void refresh() {
@@ -52,6 +54,7 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 						if (stack.getItem() instanceof ModularCurio modular) {
 							token.addAll(modular.atkTokens());
 							mining.addAll(modular.miningTokens());
+							exp.addAll(modular.expTokens());
 						}
 					}
 				}
@@ -90,6 +93,11 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 	public List<BreakSpeedFacet> getMining() {
 		refresh();
 		return mining;
+	}
+
+	public List<XpBonusFacet> getXp() {
+		refresh();
+		return exp;
 	}
 
 }
