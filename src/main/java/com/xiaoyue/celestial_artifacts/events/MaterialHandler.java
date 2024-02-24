@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -119,7 +119,7 @@ public class MaterialHandler {
 			}
 
 			if (CurioUtils.isCsOn(player)) {
-				if (entity.getMaxHealth() > CommonConfig.ETCHING_OF_LIFE_DROP_CONDITION.get()) {
+				if (entity.getMaxHealth() > CAModConfig.ETCHING_OF_LIFE_DROP_CONDITION.get()) {
 					if (0.15 > entity.getRandom().nextDouble()) {
 						entity.spawnAtLocation(CAItems.ETCHING_OF_LIFE.get());
 					}

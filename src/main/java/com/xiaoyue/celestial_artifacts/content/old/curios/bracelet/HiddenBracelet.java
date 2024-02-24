@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.old.curios.bracelet;
 
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -27,7 +27,7 @@ public class HiddenBracelet extends AttackICurio {
 	@Override
 	public void addCurioInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift1",
-				ChatFormatting.LIGHT_PURPLE, CommonConfig.HIDDEN_BRACELET_EFFECT_INTERVAL.get() / 20);
+				ChatFormatting.LIGHT_PURPLE, CAModConfig.HIDDEN_BRACELET_EFFECT_INTERVAL.get() / 20);
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift3");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift4");
@@ -35,7 +35,7 @@ public class HiddenBracelet extends AttackICurio {
 
 	@Override
 	public void equipmentTick(SlotContext context, Player player) {
-		if (player.tickCount % CommonConfig.HIDDEN_BRACELET_EFFECT_INTERVAL.get() == 0) {
+		if (player.tickCount % CAModConfig.HIDDEN_BRACELET_EFFECT_INTERVAL.get() == 0) {
 			EntityUtils.addEct(player, CCEffects.HIDDEN.get(), 40, 0);
 		}
 		if (player.getLastHurtMob() != null) {

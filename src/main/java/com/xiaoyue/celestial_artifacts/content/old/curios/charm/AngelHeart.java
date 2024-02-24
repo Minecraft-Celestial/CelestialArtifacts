@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.old.curios.charm;
 
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -26,18 +26,18 @@ public class AngelHeart extends AttackICurio {
     @Override
     public void addCurioInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift1",
-                ChatFormatting.GOLD, CommonConfig.ANGEL_HEART_BLOOD_INTERVAL.get() / 20);
+                ChatFormatting.GOLD, CAModConfig.ANGEL_HEART_BLOOD_INTERVAL.get() / 20);
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift2",
-                ChatFormatting.GOLD, CommonConfig.ANGEL_HEART_REMOVE_INTERVAL.get() / 20);
+                ChatFormatting.GOLD, CAModConfig.ANGEL_HEART_REMOVE_INTERVAL.get() / 20);
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift3");
     }
 
     @Override
     public void equipmentTick(SlotContext context, Player player) {
-        if (player.tickCount % CommonConfig.ANGEL_HEART_BLOOD_INTERVAL.get() == 0) {
-            player.heal(CommonConfig.ANGEL_HEART_HEAL_AMOUNT.get());
+        if (player.tickCount % CAModConfig.ANGEL_HEART_BLOOD_INTERVAL.get() == 0) {
+            player.heal(CAModConfig.ANGEL_HEART_HEAL_AMOUNT.get());
         }
-        if (player.tickCount % CommonConfig.ANGEL_HEART_REMOVE_INTERVAL.get() == 0) {
+        if (player.tickCount % CAModConfig.ANGEL_HEART_REMOVE_INTERVAL.get() == 0) {
             player.getActiveEffects().removeIf(EffectInstance -> EffectInstance.getEffect().getCategory() == MobEffectCategory.HARMFUL);
         }
     }

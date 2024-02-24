@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
-import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureType;
+import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCItems;
 import net.minecraft.world.damagesource.DamageSource;

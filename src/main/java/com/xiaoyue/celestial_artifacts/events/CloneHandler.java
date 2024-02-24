@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
@@ -46,7 +46,7 @@ public class CloneHandler {
                 CompoundTag data = player.getPersistentData();
                 if (!data.getBoolean("hello_world")) {
                     player.addItem(new ItemStack(CAItems.HEIRLOOM_NECKLACE.get()));
-                    if (!CommonConfig.CATASTROPHE_SCROLL_START.get()) {
+                    if (!CAModConfig.CATASTROPHE_SCROLL_START.get()) {
                         player.addItem(new ItemStack(CAItems.CATASTROPHE_SCROLL.get()));
                     }
                     data.putBoolean("hello_world", true);
@@ -57,7 +57,7 @@ public class CloneHandler {
 
     @SubscribeEvent
     public static void onPlayerLogged(PlayerEvent.PlayerLoggedInEvent event) {
-        if (CommonConfig.CATASTROPHE_SCROLL_START.get()) {
+        if (CAModConfig.CATASTROPHE_SCROLL_START.get()) {
             Player player = event.getEntity();
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();

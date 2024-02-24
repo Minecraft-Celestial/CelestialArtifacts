@@ -1,10 +1,9 @@
 package com.xiaoyue.celestial_artifacts.content.old.curios.charm;
 
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
@@ -36,11 +35,11 @@ public class HolySword extends AttackICurio {
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.holy_sword.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.holy_sword.shift3");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.holy_sword.shift4",
-				ChatFormatting.GOLD, CommonConfig.HOLY_SWORD_LOST_LIFE_ADD_DAMAGE.get() + "%");
+				ChatFormatting.GOLD, CAModConfig.HOLY_SWORD_LOST_LIFE_ADD_DAMAGE.get() + "%");
 	}
 
 	public static float lossLifeAdd(Player player) {
-		return (float) (((player.getMaxHealth() - player.getHealth()) / CommonConfig.HOLY_SWORD_LOST_LIFE_ADD_DAMAGE.get()) * 0.02f);
+		return (float) (((player.getMaxHealth() - player.getHealth()) / CAModConfig.HOLY_SWORD_LOST_LIFE_ADD_DAMAGE.get()) * 0.02f);
 	}
 
 	@Override
@@ -52,7 +51,7 @@ public class HolySword extends AttackICurio {
 	@Override
 	public void onPlayerHurtEntity(SlotContext context, Player player, LivingHurtEvent event) {
 		if (CurioUtils.hasCurio(player, this)) {
-			float min = (float) Math.min(HolySword.lossLifeAdd(player), CommonConfig.HOLY_SWORD_MAX_ADD_DAMAGE.get());
+			float min = (float) Math.min(HolySword.lossLifeAdd(player), CAModConfig.HOLY_SWORD_MAX_ADD_DAMAGE.get());
 			event.setAmount(event.getAmount() * (1 + min));
 			if (event.getEntity().getMobType() == MobType.UNDEAD) {
 				player.heal(event.getAmount());

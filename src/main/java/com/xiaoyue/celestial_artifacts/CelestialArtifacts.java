@@ -2,10 +2,10 @@ package com.xiaoyue.celestial_artifacts;
 
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CARecipeGen;
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.events.AttackMain;
 import com.xiaoyue.celestial_artifacts.events.CAAttackListener;
 import com.xiaoyue.celestial_artifacts.events.OtherMain;
@@ -45,7 +45,7 @@ public class CelestialArtifacts {
 		AttackEventHandler.register(3460, new CAAttackListener());
 		AttackEventHandler.register(4500, new AttackMain());
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.spec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CAModConfig.spec);
 
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CALang::addLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CARecipeGen::onRecipeGen);

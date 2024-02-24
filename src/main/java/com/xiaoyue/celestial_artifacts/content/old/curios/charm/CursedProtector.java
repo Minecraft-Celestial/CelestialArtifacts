@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.old.curios.charm;
 
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
@@ -32,8 +32,8 @@ public class CursedProtector extends AttackICurio {
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_protector.shift2");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_protector.shift3");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_protector.shift4",
-                ChatFormatting.LIGHT_PURPLE, (CommonConfig.CURSED_PROTECTOR_JUDGING_LIFE.get() * 100) + "%",
-                (CommonConfig.CURSED_PROTECTOR_REDUCE_INJURY.get() * 100) + "%");
+                ChatFormatting.LIGHT_PURPLE, (CAModConfig.CURSED_PROTECTOR_JUDGING_LIFE.get() * 100) + "%",
+                (CAModConfig.CURSED_PROTECTOR_REDUCE_INJURY.get() * 100) + "%");
     }
 
     @Override
@@ -55,8 +55,8 @@ public class CursedProtector extends AttackICurio {
     @Override
     public void onUnderHurt(SlotContext context, Player player, LivingHurtEvent event) {
         if (CurioUtils.hasCurio(player, this)) {
-            if (event.getAmount() > player.getHealth() * CommonConfig.CURSED_PROTECTOR_JUDGING_LIFE.get()) {
-                event.setAmount((float) (event.getAmount() * (1 - CommonConfig.CURSED_PROTECTOR_REDUCE_INJURY.get())));
+            if (event.getAmount() > player.getHealth() * CAModConfig.CURSED_PROTECTOR_JUDGING_LIFE.get()) {
+                event.setAmount((float) (event.getAmount() * (1 - CAModConfig.CURSED_PROTECTOR_REDUCE_INJURY.get())));
             }
             if (event.getSource().getEntity() instanceof LivingEntity entity) {
                 if (!EntityUtils.isLookingBehindTarget(player, entity.getEyePosition())) {

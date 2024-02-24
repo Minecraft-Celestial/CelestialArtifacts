@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.utils;
 
-import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.world.entity.player.Player;

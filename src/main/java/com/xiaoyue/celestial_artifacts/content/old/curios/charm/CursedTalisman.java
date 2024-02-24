@@ -2,9 +2,8 @@ package com.xiaoyue.celestial_artifacts.content.old.curios.charm;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_artifacts.data.CommonConfig;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.content.old.generic.XICurioBase;
-import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EnchUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -37,22 +36,22 @@ public class CursedTalisman extends XICurioBase {
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift1");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift2");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift3",
-                ChatFormatting.LIGHT_PURPLE, (CommonConfig.CURSED_TALISMAN_CRIT_RATE_ADD.get() * 100) + "%");
+                ChatFormatting.LIGHT_PURPLE, (CAModConfig.CURSED_TALISMAN_CRIT_RATE_ADD.get() * 100) + "%");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift4",
-                ChatFormatting.LIGHT_PURPLE, (CommonConfig.CURSED_TALISMAN_CRIT_DAMAGE_ADD.get() * 100) + "%");
+                ChatFormatting.LIGHT_PURPLE, (CAModConfig.CURSED_TALISMAN_CRIT_DAMAGE_ADD.get() * 100) + "%");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift5");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift6",
-                ChatFormatting.LIGHT_PURPLE, (cursed_talisman_add * CommonConfig.CURSED_TALISMAN_CRIT_RATE_ADD.get() * 100) + "%");
+                ChatFormatting.LIGHT_PURPLE, (cursed_talisman_add * CAModConfig.CURSED_TALISMAN_CRIT_RATE_ADD.get() * 100) + "%");
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift7",
-                ChatFormatting.LIGHT_PURPLE, (cursed_talisman_add * CommonConfig.CURSED_TALISMAN_CRIT_DAMAGE_ADD.get() * 100) + "%");
+                ChatFormatting.LIGHT_PURPLE, (cursed_talisman_add * CAModConfig.CURSED_TALISMAN_CRIT_DAMAGE_ADD.get() * 100) + "%");
     }
 
     public int cursed_talisman_add;
 
     private Multimap<Attribute, AttributeModifier> createAttributeMap() {
         Multimap<Attribute, AttributeModifier> attributesDefault = HashMultimap.create();
-        double cta = cursed_talisman_add * CommonConfig.CURSED_TALISMAN_CRIT_DAMAGE_ADD.get();
-        double ctr = cursed_talisman_add * CommonConfig.CURSED_TALISMAN_CRIT_RATE_ADD.get();
+        double cta = cursed_talisman_add * CAModConfig.CURSED_TALISMAN_CRIT_DAMAGE_ADD.get();
+        double ctr = cursed_talisman_add * CAModConfig.CURSED_TALISMAN_CRIT_RATE_ADD.get();
         attributesDefault.put(L2DamageTracker.CRIT_DMG.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "cbat", cta, AttributeModifier.Operation.ADDITION));
         attributesDefault.put(L2DamageTracker.CRIT_RATE.get(), new AttributeModifier(ToolTipUtils.getFUuid(), "cbas", ctr, AttributeModifier.Operation.ADDITION));
         return attributesDefault;

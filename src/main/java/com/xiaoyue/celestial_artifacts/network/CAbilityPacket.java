@@ -1,7 +1,7 @@
 package com.xiaoyue.celestial_artifacts.network;
 
-import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
-import com.xiaoyue.celestial_artifacts.content.curios.feature.FeatureType;
+import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.old.generic.intf.GetCurioSkill;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
