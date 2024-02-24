@@ -38,9 +38,9 @@ public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_chaotic.shift1", ChatFormatting.DARK_PURPLE);
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_chaotic.shift1",
-					ChatFormatting.DARK_RED, (CAModConfig.CATASTROPHE_SCROLL_EXPLOSION_DAMAGE.get() * 100) + "%");
+					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollExplosionDamage.get() * 100) + "%");
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_chaotic.shift2",
-					ChatFormatting.DARK_RED, (CAModConfig.CATASTROPHE_SCROLL_OTHER_DAMAGE.get() * 100) + "%");
+					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollOtherDamage.get() * 100) + "%");
 		}
 		if (ClientTokenHelper.hasCurio(level, CAItems.ORIGIN_ETCHING.get())) {
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_origin.shift1", ChatFormatting.YELLOW);
@@ -50,7 +50,7 @@ public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_origin.shift1", ChatFormatting.DARK_PURPLE);
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_origin.shift1",
-					ChatFormatting.DARK_RED, (CAModConfig.CATASTROPHE_SCROLL_ORIGIN_CURSE_DAMAGE.get()) * 100 + "%");
+					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollOriginCurseDamage.get()) * 100 + "%");
 		}
 		if (ClientTokenHelper.hasCurio(level, CAItems.ETCHING_OF_LIFE.get())) {
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_life.shift1", ChatFormatting.YELLOW);
@@ -98,7 +98,7 @@ public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_end.shift1", ChatFormatting.DARK_PURPLE);
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
 			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_end.shift1",
-					ChatFormatting.DARK_RED, (CAModConfig.CATASTROPHE_SCROLL_END_CURSE_DAMAGE.get() * 100) + "%");
+					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollEndCurseDamage.get() * 100) + "%");
 		}
 	}
 
@@ -122,7 +122,7 @@ public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
 		if (CurioUtils.hasCurio(player, CAItems.ORIGIN_ETCHING.get())) {
 			damage = 1.25f;
 		} else {
-			damage = (float) (1 - CAModConfig.CATASTROPHE_SCROLL_ORIGIN_CURSE_DAMAGE.get());
+			damage = (float) (1 - CAModConfig.COMMON.curse.catastropheScrollOriginCurseDamage.get());
 		}
 		cache.addHurtModifier(DamageModifier.multTotal(damage));
 		if (CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
@@ -137,9 +137,9 @@ public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
 			factor = 0.8f + 0.2f * player.getHealth() / player.getMaxHealth();
 		} else {
 			if (getSource(cache).is(DamageTypes.EXPLOSION)) {
-				factor = (float) (1 + CAModConfig.CATASTROPHE_SCROLL_EXPLOSION_DAMAGE.get());
+				factor = (float) (1 + CAModConfig.COMMON.curse.catastropheScrollExplosionDamage.get());
 			} else {
-				factor = (float) (1 + CAModConfig.CATASTROPHE_SCROLL_OTHER_DAMAGE.get());
+				factor = (float) (1 + CAModConfig.COMMON.curse.catastropheScrollOtherDamage.get());
 			}
 		}
 		if (CurioUtils.hasCurio(player, CAItems.NIHILITY_ETCHING.get())) {
@@ -162,7 +162,7 @@ public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
 	@Override
 	public void onPlayerDamagedFinal(Player player, AttackCache cache) {
 		if (!CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
-			if (cache.getDamageDealt() > player.getHealth() * CAModConfig.CATASTROPHE_SCROLL_END_CURSE_DAMAGE.get()) {
+			if (cache.getDamageDealt() > player.getHealth() * CAModConfig.COMMON.curse.catastropheScrollEndCurseDamage.get()) {
 				EntityUtils.addEct(player, MobEffects.MOVEMENT_SLOWDOWN, 600, 1);
 				EntityUtils.addEct(player, MobEffects.WEAKNESS, 600, 1);
 			}

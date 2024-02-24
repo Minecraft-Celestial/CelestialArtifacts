@@ -4,8 +4,8 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.data.CALang;
-import com.xiaoyue.celestial_artifacts.data.CARecipeGen;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
+import com.xiaoyue.celestial_artifacts.data.CARecipeGen;
 import com.xiaoyue.celestial_artifacts.events.AttackMain;
 import com.xiaoyue.celestial_artifacts.events.CAAttackListener;
 import com.xiaoyue.celestial_artifacts.events.OtherMain;
@@ -16,14 +16,14 @@ import dev.xkmc.l2library.base.L2Registrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 
 @Mod(CelestialArtifacts.MODID)
+@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CelestialArtifacts {
 	public static final String MODID = "celestial_artifacts";
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
@@ -33,26 +33,19 @@ public class CelestialArtifacts {
 					e -> e.icon(CAItems.AMETHYST_RING::asStack));
 
 	public CelestialArtifacts() {
-		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-		modEventBus.addListener(this::commonSetup);
 		CAItems.register();
 		CurioCacheCap.register();
-
-		MinecraftForge.EVENT_BUS.register(this);
-		MinecraftForge.EVENT_BUS.register(new AttackMain());
-		MinecraftForge.EVENT_BUS.register(new OtherMain());
+		CAModConfig.init();
+		MinecraftForge.EVENT_BUS.register(new AttackMain());//TODO remove
+		MinecraftForge.EVENT_BUS.register(new OtherMain());//TODO remove
 		AttackEventHandler.register(3460, new CAAttackListener());
-		AttackEventHandler.register(4500, new AttackMain());
-
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CAModConfig.spec);
-
+		AttackEventHandler.register(4500, new AttackMain());//TODO remove
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CALang::addLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CARecipeGen::onRecipeGen);
 	}
 
-
-	private void commonSetup(final FMLCommonSetupEvent event) {
+	@SubscribeEvent
+	public static void commonSetup(final FMLCommonSetupEvent event) {
 		CMessages.register();
 	}
 

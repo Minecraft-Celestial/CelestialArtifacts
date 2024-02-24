@@ -26,18 +26,18 @@ public class AngelHeart extends AttackICurio {
     @Override
     public void addCurioInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift1",
-                ChatFormatting.GOLD, CAModConfig.ANGEL_HEART_BLOOD_INTERVAL.get() / 20);
+                ChatFormatting.GOLD, CAModConfig.COMMON.charm.angelHeartBloodInterval.get() / 20);
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift2",
-                ChatFormatting.GOLD, CAModConfig.ANGEL_HEART_REMOVE_INTERVAL.get() / 20);
+                ChatFormatting.GOLD, CAModConfig.COMMON.charm.angelHeartRemoveInterval.get() / 20);
         ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift3");
     }
 
     @Override
     public void equipmentTick(SlotContext context, Player player) {
-        if (player.tickCount % CAModConfig.ANGEL_HEART_BLOOD_INTERVAL.get() == 0) {
-            player.heal(CAModConfig.ANGEL_HEART_HEAL_AMOUNT.get());
+        if (player.tickCount % CAModConfig.COMMON.charm.angelHeartBloodInterval.get() == 0) {
+            player.heal(CAModConfig.COMMON.charm.angelHeartHealAmount.get());
         }
-        if (player.tickCount % CAModConfig.ANGEL_HEART_REMOVE_INTERVAL.get() == 0) {
+        if (player.tickCount % CAModConfig.COMMON.charm.angelHeartRemoveInterval.get() == 0) {
             player.getActiveEffects().removeIf(EffectInstance -> EffectInstance.getEffect().getCategory() == MobEffectCategory.HARMFUL);
         }
     }

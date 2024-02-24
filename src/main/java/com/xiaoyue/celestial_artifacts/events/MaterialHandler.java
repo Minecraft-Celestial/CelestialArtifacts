@@ -119,7 +119,7 @@ public class MaterialHandler {
 			}
 
 			if (CurioUtils.isCsOn(player)) {
-				if (entity.getMaxHealth() > CAModConfig.ETCHING_OF_LIFE_DROP_CONDITION.get()) {
+				if (entity.getMaxHealth() > CAModConfig.COMMON.curse.etchingOfLifeDropCondition.get()) {
 					if (0.15 > entity.getRandom().nextDouble()) {
 						entity.spawnAtLocation(CAItems.ETCHING_OF_LIFE.get());
 					}

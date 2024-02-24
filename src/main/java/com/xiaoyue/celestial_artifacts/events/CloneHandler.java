@@ -46,7 +46,7 @@ public class CloneHandler {
                 CompoundTag data = player.getPersistentData();
                 if (!data.getBoolean("hello_world")) {
                     player.addItem(new ItemStack(CAItems.HEIRLOOM_NECKLACE.get()));
-                    if (!CAModConfig.CATASTROPHE_SCROLL_START.get()) {
+                    if (!CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
                         player.addItem(new ItemStack(CAItems.CATASTROPHE_SCROLL.get()));
                     }
                     data.putBoolean("hello_world", true);
@@ -57,7 +57,7 @@ public class CloneHandler {
 
     @SubscribeEvent
     public static void onPlayerLogged(PlayerEvent.PlayerLoggedInEvent event) {
-        if (CAModConfig.CATASTROPHE_SCROLL_START.get()) {
+        if (CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
             Player player = event.getEntity();
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();
