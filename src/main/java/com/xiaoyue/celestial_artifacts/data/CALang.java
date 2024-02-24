@@ -36,10 +36,10 @@ public class CALang {
 			return CelestialArtifacts.MODID + ".tooltip." + path() + "." + entry().id();
 		}
 
-		default MutableComponent get(Object... objs) {
+		default MutableComponent get(Component... objs) {
 			if (objs.length != entry().count())
 				throw new IllegalArgumentException("for " + entry().id() + ": expect " + entry().count() + " parameters, got " + objs.length);
-			return translate(desc(), objs);
+			return translate(desc(), (Object[]) objs);
 		}
 
 	}
@@ -65,7 +65,7 @@ public class CALang {
 	}
 
 	public enum Back implements Info {
-		;
+		LEECH("拥有%s效果时，攻击造成伤害的%s将用于治疗", 2);
 
 		final Entry entry;
 
@@ -79,9 +79,26 @@ public class CALang {
 
 	}
 
+	public enum Bracelet implements Info {
+		;
+
+		final Entry entry;
+
+		Bracelet(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+
 	static {
 		putLang(Modular.class, "modular", Modular.values());
 		putLang(Back.class, "back", Back.values());
+		putLang(Bracelet.class, "bracelet", Bracelet.values());
 	}
 
 	public static void addLang(RegistrateLangProvider pvd) {

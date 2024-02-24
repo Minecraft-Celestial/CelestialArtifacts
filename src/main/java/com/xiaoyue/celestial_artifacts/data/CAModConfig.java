@@ -20,9 +20,12 @@ public class CAModConfig {
 
 		public static class Back {
 
+			public ForgeConfigSpec.DoubleValue leechScabbardHealFactor;
+
 			private Back(ForgeConfigSpec.Builder builder) {
 				builder.push("back");
-
+				leechScabbardHealFactor = builder.comment("Leech Scabbard healing rate as percentage of damage dealt")
+						.defineInRange("leechScabbardHealFactor", 0.25, 0, 100);
 
 
 				builder.pop();
