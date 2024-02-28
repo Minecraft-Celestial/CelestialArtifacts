@@ -137,6 +137,7 @@ public final class ModularCurio extends BaseCurio {
 
 	@Override
 	public List<Component> getAttributesTooltip(List<Component> tooltips, ItemStack stack) {
+		if (Screen.hasShiftDown()) return List.of();
 		if (attributes.isEmpty()) return tooltips;
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < tooltips.size(); i++) {

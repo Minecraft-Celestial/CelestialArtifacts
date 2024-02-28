@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
@@ -22,22 +23,32 @@ public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, 
 		return new EffectFacet(eff, duration, amplifier, period);
 	}
 
-	@Override
-	public Component getLine() {
-		MobEffectInstance ins = get();
+	public static MutableComponent getDesc(MobEffectInstance ins) {
+		return getDesc(ins, true);
+	}
+
+	public static MutableComponent getDesc(MobEffectInstance ins, boolean showDuration) {
 		MutableComponent desc = Component.translatable(ins.getDescriptionId());
 		if (ins.getAmplifier() > 0) {
 			desc = Component.translatable("potion.withAmplifier", desc,
 					Component.translatable("potion.potency." + ins.getAmplifier()));
 		}
-		desc = desc.withStyle(ins.getEffect().getCategory().getTooltipFormatting());
-		MutableComponent ans;
-		if (period <= duration) {
-			ans = CALang.Modular.EFFECT_REFRESH.get().withStyle(ChatFormatting.GRAY);
-		} else {
-			ans = CALang.Modular.EFFECT_FLASH.get(period).withStyle(ChatFormatting.GRAY);
+		if (showDuration && !ins.endsWithin(20)) {
+			desc = Component.translatable("potion.withDuration", desc, MobEffectUtil.formatDuration(ins, 1));
 		}
-		return ans.append(desc);
+
+		return desc.withStyle(ins.getEffect().getCategory().getTooltipFormatting());
+	}
+
+	@Override
+	public Component getLine() {
+		MobEffectInstance ins = get();
+		if (period <= duration) {
+			return CALang.Modular.EFFECT_REFRESH.get().withStyle(ChatFormatting.GRAY).append(getDesc(ins, false));
+		} else {
+			var p = Component.literal("" + period).withStyle(ChatFormatting.AQUA);
+			return CALang.Modular.EFFECT_FLASH.get(p).withStyle(ChatFormatting.GRAY).append(getDesc(ins));
+		}
 	}
 
 	public MobEffectInstance get() {

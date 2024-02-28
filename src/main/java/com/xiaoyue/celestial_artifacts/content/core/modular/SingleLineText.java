@@ -14,7 +14,7 @@ public interface SingleLineText extends TextFacet {
 	@Override
 	default void addText(@Nullable Level level, List<Component> list) {
 		var line = getLine();
-		line = Component.literal("- ").withStyle(ChatFormatting.GRAY).append(line);
+		line = Component.literal("· ").withStyle(ChatFormatting.GRAY).append(line);
 		list.add(line);
 	}
 }

@@ -1,4 +1,10 @@
 {
+  "celestial_artifacts.tooltip.back.leech": "拥有%s效果时，攻击造成伤害的%s将用于治疗",
+  "celestial_artifacts.tooltip.modular.effect_flash": "For every %s seconds, grants wearer: ",
+  "celestial_artifacts.tooltip.modular.effect_refresh": "Grants wearer: ",
+  "celestial_artifacts.tooltip.modular.fortune": "Fortune",
+  "celestial_artifacts.tooltip.modular.loot": "Looting",
+  "celestial_artifacts.tooltip.modular.xp": "Xp Gain",
   "item.celestial_artifacts.abyss_core": "Abyss Core",
   "item.celestial_artifacts.abyss_will_badge": "Abyss Will Badge",
   "item.celestial_artifacts.amethyst_ring": "Amethyst Ring",
@@ -91,9 +97,5 @@
   "item.celestial_artifacts.unlucky_potato": "Unlucky Potato",
   "item.celestial_artifacts.unowned_pendant": "Unowned Pendant",
   "item.celestial_artifacts.war_dead_badge": "War Dead Badge",
-  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts",
-  "tooltip.celestial_artifacts.flame_arrow_bag.shift2": "",
-  "tooltip.celestial_artifacts.chaotic_pendant.shift2": "",
-  "tooltip.celestial_artifacts.twisted_scroll.shift1": "",
-  "tooltip.celestial_artifacts.traveler_scroll.shift2": ""
+  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts"
 }

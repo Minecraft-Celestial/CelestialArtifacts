@@ -158,7 +158,6 @@ public class CAModConfig {
 
 				// etching_of_life
 				etchingOfLifeDropCondition = builder
-						.pop()
 						.comment("This value determines how many enemies with maximum health you need to defeat in order to possibly drop it")
 						.defineInRange("etchingOfLifeDropCondition", 499, 1, Integer.MAX_VALUE);
 
