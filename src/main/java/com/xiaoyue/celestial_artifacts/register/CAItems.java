@@ -6,6 +6,10 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.feature.BreakSpeedFeature;
 import com.xiaoyue.celestial_artifacts.content.core.feature.XpBonusFeature;
+import com.xiaoyue.celestial_artifacts.content.core.modular.*;
+import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
+import com.xiaoyue.celestial_artifacts.content.core.token.SkillTokenFacet;
+import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
@@ -19,15 +23,15 @@ import com.xiaoyue.celestial_artifacts.content.curios.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.curios.heart.TwistedHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.necklace.*;
 import com.xiaoyue.celestial_artifacts.content.curios.pendant.ShadowPendant;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.FlightRing;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.FreezeRing;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.NetheriteRing;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.ThunderRing;
 import com.xiaoyue.celestial_artifacts.content.curios.scroll.SeaGodScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.scroll.SkywalkerScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.set.EmeraldSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SeaGodSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SpiritSet;
-import com.xiaoyue.celestial_artifacts.content.core.modular.*;
-import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.SkillTokenFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
 import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
@@ -41,7 +45,8 @@ import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.EnderProtector;
 import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.FangNecklace;
 import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.HolyNecklace;
-import com.xiaoyue.celestial_artifacts.content.old.curios.ring.*;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.NetherFire;
+import com.xiaoyue.celestial_artifacts.content.old.curios.ring.RingOfLife;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -65,33 +70,48 @@ public class CAItems {
 	// 6 + 21 + 3 + 6 = 36
 
 	// ring
-	// 金戒指
-	public static final ItemEntry<Item> GOLD_RING = ring("gold_ring", () ->
-			ModularCurio.of(new EffectFacet(() -> MobEffects.LUCK, 2, 0, 0)));
-	// 紫水晶戒指
-	public static final ItemEntry<Item> AMETHYST_RING = ring("amethyst_ring", () ->
-			ModularCurio.of(new EffectFacet(() -> MobEffects.NIGHT_VISION, 20, 0, 0),
-					AttrFacet.multBase(() -> Attributes.ATTACK_DAMAGE, () -> 0.1)));
-	// 钻石戒指
-	public static final ItemEntry<Item> DIAMOND_RING = ring("diamond_ring", () ->
-			ModularCurio.builder().rarity(Rarity.RARE).build(
-					new EffectFacet(() -> MobEffects.DAMAGE_BOOST, 2, 0, 0)));
-	// 绿宝石戒指
-	public static final ItemEntry<Item> EMERALD_RING = ring("emerald_ring", () ->
-			ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
-					AttrFacet.add(() -> Attributes.LUCK, () -> 1), emeraldSet()));
-	// 飞行戒指
-	public static final ItemEntry<Item> FLIGHT_RING = ring("flight_ring", FlightRing::new);
-	// 下界合金戒指
-	public static final ItemEntry<Item> NETHERITE_RING = ring("netherite_ring", NetheriteRing::new);
-	// 生息之戒
-	public static final ItemEntry<Item> RING_OF_LIFE = ring("ring_of_life", RingOfLife::new);
-	// 雷电之戒
-	public static final ItemEntry<Item> THUNDER_RING = ring("thunder_ring", ThunderRing::new);
-	// 地狱之火
-	public static final ItemEntry<Item> NETHER_FIRE = ring("nether_fire", NetherFire::new);
-	// 冰冻之戒
-	public static final ItemEntry<Item> FREEZE_RING = ring("freeze_ring", FreezeRing::new);
+	public static final ItemEntry<Item> GOLD_RING, AMETHYST_RING, DIAMOND_RING,
+			EMERALD_RING, FLIGHT_RING, NETHERITE_RING, RING_OF_LIFE,
+			THUNDER_RING, NETHER_FIRE, FREEZE_RING;
+
+	static {
+		// 金戒指
+		GOLD_RING = ring("gold_ring", () ->
+				ModularCurio.of(new EffectFacet(() -> MobEffects.LUCK, 2, 0, 0)));
+		// 紫水晶戒指
+		AMETHYST_RING = ring("amethyst_ring", () ->
+				ModularCurio.of(new EffectFacet(() -> MobEffects.NIGHT_VISION, 20, 0, 0),
+						AttrFacet.multBase(() -> Attributes.ATTACK_DAMAGE, () -> 0.1)));
+		// 钻石戒指
+		DIAMOND_RING = ring("diamond_ring", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						new EffectFacet(() -> MobEffects.DAMAGE_BOOST, 2, 0, 0)));
+		// 绿宝石戒指
+		EMERALD_RING = ring("emerald_ring", () ->
+				ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+						AttrFacet.add(() -> Attributes.LUCK, () -> 1), emeraldSet()));
+		// 飞行戒指
+		FLIGHT_RING = ring("flight_ring", () ->
+				ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
+						new TokenFacet<>("flight_ring", FlightRing::new)));
+		// 下界合金戒指
+		NETHERITE_RING = ring("netherite_ring", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(
+						new EffectFacet(() -> MobEffects.FIRE_RESISTANCE, 10, 0, 0),
+						new NetheriteRing()
+				));
+		// 生息之戒
+		RING_OF_LIFE = ring("ring_of_life", RingOfLife::new);
+		// 雷电之戒
+		THUNDER_RING = ring("thunder_ring", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(new ThunderRing()));
+		// 地狱之火
+		NETHER_FIRE = ring("nether_fire", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(new NetherFire()));
+		// 冰冻之戒
+		FREEZE_RING = ring("freeze_ring", () ->
+				ModularCurio.builder().rarity(Rarity.RARE).build(new FreezeRing()));
+	}
 
 	// charm
 	public static final ItemEntry<Item> WAR_DEAD_BADGE = charm("war_dead_badge", WarDeadBadge::new);

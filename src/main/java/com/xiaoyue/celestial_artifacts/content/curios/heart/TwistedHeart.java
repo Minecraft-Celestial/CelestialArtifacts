@@ -6,6 +6,7 @@ import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
+import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -15,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@SerialClass
 public class TwistedHeart extends BaseTickingToken implements CAAttackToken {
 
 	private boolean bonus(Player player) {

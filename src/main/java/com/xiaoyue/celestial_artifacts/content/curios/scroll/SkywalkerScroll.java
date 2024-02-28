@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@SerialClass
 public class SkywalkerScroll extends BaseTickingToken implements SkillFeature {
 
 	@Override
