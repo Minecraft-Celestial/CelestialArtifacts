@@ -1,16 +1,15 @@
 package com.xiaoyue.celestial_artifacts.content.core.token;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import dev.xkmc.l2library.capability.conditionals.ConditionalToken;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 @SerialClass
-public abstract class BaseTickingToken extends ConditionalToken {
+public abstract class BaseTickingToken extends ConditionalToken implements MultiLineText {
 
 	@SerialClass.SerialField
 	public int life;
@@ -33,8 +32,6 @@ public abstract class BaseTickingToken extends ConditionalToken {
 	protected abstract void removeImpl(Player player);
 
 	protected abstract void tickImpl(Player player);
-
-	public abstract void addText(@Nullable Level level, List<Component> list);
 
 	public void addTextNoData(List<Component> list) {
 		addText(null, list);

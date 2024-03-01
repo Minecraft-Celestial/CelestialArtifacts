@@ -7,6 +7,7 @@ import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -18,6 +19,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -87,11 +89,17 @@ public final class ModularCurio extends BaseCurio {
 			for (var e : text) {
 				e.addText(level, list);
 			}
+			if (prop.enderMask) {
+				list.add(CALang.Modular.ENDER_MASK.get().withStyle(ChatFormatting.GRAY));
+			}
+			if (prop.immune) {
+				list.add(CALang.Modular.IMMUNE.get().withStyle(ChatFormatting.GRAY));
+			}
 		} else {
 			if (prop.requireCS) {
-				ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.has_cs_curio");
+				list.add(CALang.Modular.curse());
 			}
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.has_shift_down");
+			list.add(CALang.Modular.shift());
 		}
 		if (!set.isEmpty()) {
 			if (Screen.hasAltDown()) {
@@ -99,10 +107,9 @@ public final class ModularCurio extends BaseCurio {
 					e.addText(level, list);
 				}
 			} else {
-				ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.has_alt_down");
+				list.add(CALang.Modular.alt());
 			}
 		}
-		super.appendHoverText(stack, level, list, flag);
 	}
 
 	@Override
@@ -181,6 +188,11 @@ public final class ModularCurio extends BaseCurio {
 	}
 
 	@Override
+	public boolean isEnderMask(ItemStack stack, Player player, EnderMan endermanEntity) {
+		return prop.enderMask;
+	}
+
+	@Override
 	public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
 		if (prop.requireCS()) {
 			if (!(entity instanceof Player player && CurioUtils.isCsOn(player))) {
@@ -202,7 +214,7 @@ public final class ModularCurio extends BaseCurio {
 	}
 
 	public record Prop(
-			boolean requireCS, boolean curse, boolean immune, boolean hideAttr,
+			boolean requireCS, boolean curse, boolean immune, boolean hideAttr, boolean enderMask,
 			int fortune, int loot
 	) {
 	}
@@ -210,7 +222,8 @@ public final class ModularCurio extends BaseCurio {
 	public static class Builder {
 
 		private final Item.Properties prop;
-		private boolean requireCS = false, curse = false, immune = false, hideAttr = false;
+		private boolean requireCS = false, curse = false, immune = false, hideAttr = false,
+				enderMask = false;
 		private int fortune = 0, loot = 0;
 
 		private Builder() {
@@ -238,6 +251,11 @@ public final class ModularCurio extends BaseCurio {
 			return this;
 		}
 
+		public Builder enderMask() {
+			this.enderMask = true;
+			return this;
+		}
+
 		public Builder rarity(Rarity rarity) {
 			this.prop.rarity(rarity);
 			return this;
@@ -255,7 +273,7 @@ public final class ModularCurio extends BaseCurio {
 
 		public ModularCurio build(IFacet... facet) {
 			return new ModularCurio(prop,
-					new Prop(requireCS, curse, immune, hideAttr, fortune, loot),
+					new Prop(requireCS, curse, immune, hideAttr, enderMask, fortune, loot),
 					facet);
 		}
 

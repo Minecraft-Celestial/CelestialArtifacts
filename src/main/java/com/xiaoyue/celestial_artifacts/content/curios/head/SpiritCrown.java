@@ -1,5 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.head;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -14,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SpiritCrown implements TextFacet, CAAttackToken {
+public class SpiritCrown implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {

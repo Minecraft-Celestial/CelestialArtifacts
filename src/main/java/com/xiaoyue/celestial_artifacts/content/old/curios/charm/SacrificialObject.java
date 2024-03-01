@@ -1,10 +1,10 @@
 package com.xiaoyue.celestial_artifacts.content.old.curios.charm;
 
 import com.google.common.collect.Multimap;
+import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
-import com.xiaoyue.celestial_core.register.CCAttributes;
-import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.network.chat.Component;
@@ -22,44 +22,44 @@ import java.util.List;
 import java.util.UUID;
 
 public class SacrificialObject extends AttackICurio {
-    public SacrificialObject() {
-        super(new Item.Properties().rarity(Rarity.EPIC));
-    }
+	public SacrificialObject() {
+		super(new Item.Properties().rarity(Rarity.EPIC));
+	}
 
-    @Override
-    public void addCurioInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift1");
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift2");
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift3");
-        ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift4");
-    }
+	@Override
+	public void addCurioInformation(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
+		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift1");
+		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift2");
+		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift3");
+		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift4");
+	}
 
-    @Override
-    public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
-        Modifiers.put(L2DamageTracker.REDUCTION.get(), new AttributeModifier(uuid, "soedr", -0.05, AttributeModifier.Operation.ADDITION));
-        return Modifiers;
-    }
+	@Override
+	public Multimap<Attribute, AttributeModifier> setModifiers(String identifier, UUID uuid, ItemStack stack, Multimap<Attribute, AttributeModifier> Modifiers) {
+		Modifiers.put(L2DamageTracker.REDUCTION.get(), new AttributeModifier(uuid, "soedr", -0.05, AttributeModifier.Operation.ADDITION));
+		return Modifiers;
+	}
 
-    @Override
-    public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
-        return super.getLootingLevel(slotContext, source, target, baseLooting, stack) + 1;
-    }
+	@Override
+	public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
+		return super.getLootingLevel(slotContext, source, target, baseLooting, stack) + 1;
+	}
 
-    @Override
-    public void onPlayerDeath(SlotContext context, Player player, LivingDeathEvent event) {
-        if (CurioUtils.hasCurio(player, this)) {
-            if (player.getRandom().nextFloat() < 0.5) {
-                player.spawnAtLocation(Items.GOLD_INGOT);
-            }
-            List<LivingEntity> entities = EntityUtils.getDelimitedMonster(player, 8);
-            entities.remove(player);
-            for (LivingEntity list : entities) {
-                if (list.getMaxHealth() < player.getMaxHealth()) {
-                    if (list.getRandom().nextFloat() < 0.5) {
-                        list.kill();
-                    }
-                }
-            }
-        }
-    }
+	@Override
+	public void onPlayerDeath(SlotContext context, Player player, LivingDeathEvent event) {
+		if (CurioUtils.hasCurio(player, this)) {
+			if (CAAttackToken.chance(player, 0.5)) {
+				player.spawnAtLocation(Items.GOLD_INGOT);
+			}
+			List<LivingEntity> entities = EntityUtils.getDelimitedMonster(player, 8);
+			entities.remove(player);
+			for (LivingEntity e : entities) {
+				if (e.getMaxHealth() < player.getMaxHealth()) {
+					if (CAAttackToken.chance(e, 0.5)) {
+						e.kill();
+					}
+				}
+			}
+		}
+	}
 }

@@ -6,11 +6,16 @@ import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.contents.damage.DamageTypeRoot;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 public interface CAAttackToken {
+
+	static boolean chance(LivingEntity player, double chance) {
+		return player.getRandom().nextDouble() < chance;
+	}
 
 	default DamageSource getSource(AttackCache cache) {
 		var event = cache.getLivingAttackEvent();

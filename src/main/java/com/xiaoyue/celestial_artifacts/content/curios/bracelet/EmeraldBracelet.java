@@ -1,5 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.bracelet;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EmeraldBracelet implements TextFacet, CAAttackToken {
+public class EmeraldBracelet implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
@@ -24,7 +25,7 @@ public class EmeraldBracelet implements TextFacet, CAAttackToken {
 	@Override
 	public void onPlayerDamagedFinal(Player player, AttackCache cache) {
 		if (player.getLuck() > 2) {
-			if (player.getRandom().nextDouble() > 0.5) {
+			if (CAAttackToken.chance(player, 0.5)) {
 				EntityUtils.addEct(player, MobEffects.ABSORPTION, 100, 1);
 			}
 		}

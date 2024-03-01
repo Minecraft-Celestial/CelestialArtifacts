@@ -43,7 +43,7 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 			cache.addHurtModifier(DamageModifier.multTotal(1.5f));
 		}
 		if (player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-			if (player.getRandom().nextDouble() > 0.5) {
+			if (CAAttackToken.chance(player, 0.5)) {
 				EntityUtils.addEct(cache.getAttackTarget(), MobEffects.MOVEMENT_SLOWDOWN, 50, 1);
 			}
 		}
@@ -52,7 +52,7 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 	@Override
 	public boolean onPlayerAttacked(Player player, AttackCache cache) {
 		if (isPhysics(cache)) {
-			return player.getRandom().nextDouble() < 0.2;
+			return CAAttackToken.chance(player, 0.2);
 		}
 		return false;
 	}

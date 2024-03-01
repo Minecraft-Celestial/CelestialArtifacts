@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-25T02:29:49.002271	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
-ea35920b50c462850d155aaaa7d719402803fd81 assets/celestial_artifacts/lang/en_ud.json
-08e3ae9bffa64eda7174e138aee65e48e2d27b01 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-03-01T15:04:30.753323	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+49462b37c9a45291f66c8c7a9fc9bd2197664d78 assets/celestial_artifacts/lang/en_ud.json
+d28f355a1c1352826c298889169d0fc12bc970c3 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json

@@ -1,5 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.ring;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class NetherFire implements TextFacet, CAAttackToken {
+public class NetherFire implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {

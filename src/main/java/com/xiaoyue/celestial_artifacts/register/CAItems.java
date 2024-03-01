@@ -7,6 +7,7 @@ import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.feature.BreakSpeedFeature;
 import com.xiaoyue.celestial_artifacts.content.core.feature.XpBonusFeature;
 import com.xiaoyue.celestial_artifacts.content.core.modular.*;
+import com.xiaoyue.celestial_artifacts.content.core.token.InvulToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.SkillTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
@@ -39,9 +40,6 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
-import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.EnderProtector;
-import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.FangNecklace;
-import com.xiaoyue.celestial_artifacts.content.old.curios.necklace.HolyNecklace;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
@@ -276,7 +274,7 @@ public class CAItems {
 
 			// 十字项链
 			CROSS_NECKLACE = necklace("cross_necklace", () ->
-					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(new CrossNecklace()));
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(InvulToken.of(() -> 8)));
 
 			// 疾行项链
 			GALLOP_NECKLACE = necklace("gallop_necklace", () ->
@@ -286,7 +284,11 @@ public class CAItems {
 					));
 
 			// 毒牙项链
-			FANG_NECKLACE = necklace("fang_necklace", FangNecklace::new);
+			FANG_NECKLACE = necklace("fang_necklace", () ->
+					ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
+							AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.1),
+							new FangNecklace()
+					));
 
 			// 珍钻项链
 			PRECIOUS_NECKLACE = necklace("precious_necklace", () ->
@@ -295,7 +297,12 @@ public class CAItems {
 							SlotFacet.of("charm", 1)
 					));
 			// 神圣项链
-			HOLY_NECKLACE = necklace("holy_necklace", HolyNecklace::new);
+			HOLY_NECKLACE = necklace("holy_necklace", () ->
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
+							AttrFacet.add(() -> Attributes.MAX_HEALTH, () -> 4),
+							InvulToken.of(() -> 5),
+							new HolyNecklace()
+					));
 
 			// 家传项链
 			HEIRLOOM_NECKLACE = necklace("heirloom_necklace", () ->
@@ -309,7 +316,11 @@ public class CAItems {
 					ModularCurio.builder().rarity(IRarityUtils.GREEN).fortune(1).build(
 							new EmeraldNecklace(), emeraldSet()));
 			// 末影庇佑者项链
-			ENDER_PROTECTOR = necklace("ender_protector", EnderProtector::new);
+			ENDER_PROTECTOR = necklace("ender_protector", () ->
+					ModularCurio.builder().rarity(Rarity.EPIC).enderMask().build(
+							AttrFacet.add(() -> Attributes.ARMOR_TOUGHNESS, () -> 4),
+							new EnderProtector()
+					));
 			// 红心项链
 			RED_HEART_NECKLACE = necklace("red_heart_necklace", () ->
 					ModularCurio.of(AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> 0.05)));
@@ -330,7 +341,9 @@ public class CAItems {
 							new SeaGodCrown(), seaGodSet()));
 			// 祷告者王冠
 			PRAYER_CROWN = head("prayer_crown", () ->
-					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(new PrayerCrown()));
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
+							InvulToken.of(() -> 10),
+							new PrayerCrown()));
 			// 深渊意志之核
 			ABYSS_CORE = head("abyss_core", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new AbyssCore()));

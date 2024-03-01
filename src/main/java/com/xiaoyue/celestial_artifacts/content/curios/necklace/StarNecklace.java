@@ -1,5 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.necklace;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class StarNecklace implements TextFacet, TickFacet, CAAttackToken {
+public class StarNecklace implements MultiLineText, TickFacet, CAAttackToken {
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {

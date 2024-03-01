@@ -1,5 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.curse;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
@@ -23,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CatastropheScroll implements TickFacet, TextFacet, CAAttackToken {
+public class CatastropheScroll implements TickFacet, MultiLineText, CAAttackToken {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {

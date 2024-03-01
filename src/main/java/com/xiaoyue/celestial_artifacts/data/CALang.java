@@ -2,6 +2,8 @@ package com.xiaoyue.celestial_artifacts.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
+import com.xiaoyue.celestial_artifacts.register.CAItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -50,7 +52,12 @@ public class CALang {
 		FORTUNE("Fortune", 0),
 		LOOT("Looting", 0),
 		XP("Xp Gain", 0),
-		;
+		ENDER_MASK("Looking at endermen will not aggravate them", 0),
+		IMMUNE("This item cannot be destroyed", 0),
+		CURSE("Requires %s to be equipped", 1),
+		SHIFT("Press [%s] to display curio effects", 1),
+		ALT("Press [%s] to display set effects", 1),
+		INVUL_TIME("Increase invulnerable time by %s", 1);
 
 		final Entry entry;
 
@@ -60,6 +67,22 @@ public class CALang {
 
 		public Entry entry() {
 			return entry;
+		}
+
+		public static MutableComponent curse() {
+			var stack = CAItems.CATASTROPHE_SCROLL.asStack();
+			return CURSE.get(stack.getHoverName().copy().withStyle(stack.getRarity().getStyleModifier()))
+					.withStyle(ChatFormatting.RED);
+		}
+
+		public static MutableComponent shift() {
+			return SHIFT.get(Component.literal("SHIFT").withStyle(ChatFormatting.YELLOW))
+					.withStyle(ChatFormatting.GRAY);
+		}
+
+		public static MutableComponent alt() {
+			return ALT.get(Component.literal("ALT").withStyle(ChatFormatting.YELLOW))
+					.withStyle(ChatFormatting.GRAY);
 		}
 
 	}
