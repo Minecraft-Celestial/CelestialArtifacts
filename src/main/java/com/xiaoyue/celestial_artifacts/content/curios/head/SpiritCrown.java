@@ -25,7 +25,7 @@ public class SpiritCrown implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		if (!isArrow(cache)) return;
+		if (!CAAttackToken.isArrow(cache)) return;
 		List<LivingEntity> entities = EntityUtils.getExceptForCentralEntity(player, 6, 2);
 		if (entities.size() < 3) {
 			cache.addHurtModifier(DamageModifier.multTotal(1.45f));

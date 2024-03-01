@@ -15,14 +15,9 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.content.core.modular.SlotFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.InvulToken;
-import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.SkillTokenFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
+import com.xiaoyue.celestial_artifacts.content.core.token.*;
 import com.xiaoyue.celestial_artifacts.content.curios.back.LeechScabbard;
-import com.xiaoyue.celestial_artifacts.content.curios.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
-import com.xiaoyue.celestial_artifacts.content.curios.bracelet.EmeraldBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.SpiritBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.head.*;
@@ -61,6 +56,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import top.theillusivec4.curios.Curios;
 
@@ -113,7 +109,11 @@ public class CAItems {
 			NETHERITE_RING = ring("netherite_ring", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
 							EffectFacet.of(() -> MobEffects.FIRE_RESISTANCE, 10, 0),
-							new NetheriteRing()
+							SimpleListener.protect(
+									CALang.Condition.NETHER::get,
+									(p, a, c) -> p.level().dimension().equals(Level.NETHER),
+									() -> 0.1
+							)
 					));
 			// 生息之戒
 			RING_OF_LIFE = ring("ring_of_life", () ->
@@ -180,7 +180,7 @@ public class CAItems {
 					ModularCurio.builder().loot(1).build(
 							SimpleListener.hurtBonus(
 									CALang.Condition.HOT_REGION::get,
-									(p, t) -> p.level().getBiome(p.blockPosition()).get().getBaseTemperature() >= 0.01,
+									(p, t, c) -> p.level().getBiome(p.blockPosition()).get().getBaseTemperature() >= 0.01,
 									() -> 0.3),
 							XpBonusFeature.simple(0.5)
 					));
@@ -200,7 +200,7 @@ public class CAItems {
 							),
 							SimpleListener.hurtBonus(
 									() -> CALang.Condition.REVENGE.get(TextFacet.num(3)),
-									(p, t) -> p.getLastHurtByMobTimestamp() >= p.tickCount - 3 * 20,
+									(p, t, c) -> p.getLastHurtByMobTimestamp() >= p.tickCount - 3 * 20,
 									() -> 0.25
 							)
 					));
@@ -238,7 +238,7 @@ public class CAItems {
 							new SeaGodScroll(),
 							ConditionalEffectFacet.of(false,
 									Player::isInWaterRainOrBubble,
-									CALang.Condition.PLAYER_WATER::get,
+									CALang.Condition.PLAYER_WET::get,
 									EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 2, 1),
 									EffectFacet.of(() -> MobEffects.DAMAGE_RESISTANCE, 2, 0)
 							),
@@ -260,7 +260,12 @@ public class CAItems {
 			EMERALD_BRACELET = bracelet("emerald_bracelet", () ->
 					ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
 							AttrFacet.add(L2DamageTracker.CRIT_RATE::get, () -> 0.1),
-							new EmeraldBracelet(), emeraldSet()));
+							HurtPlayerEffectFacet.of(
+									e -> e.getLuck() >= 2,
+									() -> CALang.Condition.LUCK.get(TextFacet.num(2)),
+									() -> 0.5,
+									EffectFacet.of(() -> MobEffects.ABSORPTION, 5, 1)),
+							emeraldSet()));
 			// 生命手环
 			LIFE_BRACELET = bracelet("life_bracelet", LifeBracelet::new);
 			// 珍钻手环
@@ -301,7 +306,7 @@ public class CAItems {
 					ModularCurio.builder().rarity(Rarity.RARE).build(
 							SimpleListener.hurtBonus(
 									CALang.Condition.ATTACK_BEHIND::get,
-									(p, t) -> EntityUtils.isLookingBehindTarget(t, p.getEyePosition()),
+									(p, t, c) -> EntityUtils.isLookingBehindTarget(t, p.getEyePosition()),
 									() -> 0.4),
 							ConditionalEffectFacet.of(false,
 									e -> e.level().isNight(), CALang.Condition.NIGHT::get,
@@ -325,7 +330,7 @@ public class CAItems {
 							AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.1),
 							SimpleListener.hurtBonus(
 									CALang.Condition.TARGET_HAS_ARMOR::get,
-									(p, t) -> EntityUtils.hasArmor(t),
+									(p, t, c) -> EntityUtils.hasArmor(t),
 									() -> 0.25),
 							HurtTargetEffectFacet.of(() -> 0.5,
 									() -> MobEffects.POISON, 100, 2)
@@ -382,7 +387,7 @@ public class CAItems {
 							new SeaGodCrown(),
 							ConditionalEffectFacet.of(false,
 									Player::isInWaterRainOrBubble,
-									CALang.Condition.PLAYER_WATER::get,
+									CALang.Condition.PLAYER_WET::get,
 									EffectFacet.of(() -> MobEffects.WATER_BREATHING, 2, 3),
 									EffectFacet.of(() -> MobEffects.NIGHT_VISION, 2, 0)
 							), seaGodSet()));
@@ -446,7 +451,11 @@ public class CAItems {
 			TITAN_SCABBARD = back("titan_scabbard", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
 							EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 10),
-							new TitanScabbard()
+							SimpleListener.hurtBonus(
+									() -> CALang.Condition.TITAN.get(TextFacet.eff(CCEffects.BLADE_MODIFIER.get())),
+									(p, t, c) -> CAAttackToken.isMelee(c) && p.hasEffect(CCEffects.BLADE_MODIFIER.get()) &&
+											t.getMaxHealth() > p.getMaxHealth(),
+									() -> 0.75)
 					));
 
 			// 扭曲剑鞘

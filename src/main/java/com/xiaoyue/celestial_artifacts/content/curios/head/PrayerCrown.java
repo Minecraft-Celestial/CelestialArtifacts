@@ -1,7 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.head;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
-import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -24,7 +23,8 @@ public class PrayerCrown implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
-		cache.addDealtModifier(DamageModifier.multTotal(0.75f));
+		if (player.isCrouching())
+			cache.addDealtModifier(DamageModifier.multTotal(0.75f));//TODO module
 	}
 
 	@Override

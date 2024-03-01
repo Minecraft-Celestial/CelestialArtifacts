@@ -41,7 +41,7 @@ public class SeaGodSet extends BaseTickingToken implements CAAttackToken {
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		if (getSource(cache).getDirectEntity() instanceof AbstractArrow e) {
+		if (CAAttackToken.getSource(cache).getDirectEntity() instanceof AbstractArrow e) {
 			ItemStack item = ((AbstractArrowAccessor) e).callGetPickupItem();
 			if (item != null && item.isDamageableItem())
 				cache.addHurtModifier(DamageModifier.multTotal(1.75f));
@@ -54,7 +54,7 @@ public class SeaGodSet extends BaseTickingToken implements CAAttackToken {
 	public void onPlayerDamaged(Player player, AttackCache cache) {
 		if (cache.getAttacker() instanceof Mob mob) {
 			if (mob.getMobType() == MobType.WATER) {
-				cache.addDealtModifier(DamageModifier.multTotal(0.65f));
+				cache.addDealtModifier(DamageModifier.multTotal(0.65f));//TODO module
 			}
 		}
 	}

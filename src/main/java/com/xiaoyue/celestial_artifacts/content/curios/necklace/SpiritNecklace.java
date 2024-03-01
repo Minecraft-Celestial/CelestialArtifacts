@@ -26,7 +26,7 @@ public class SpiritNecklace implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		if (!isArrow(cache)) return;
+		if (!CAAttackToken.isArrow(cache)) return;
 		if (!player.getCooldowns().isOnCooldown(CAItems.SPIRIT_NECKLACE.get())) {
 			cache.addHurtModifier(DamageModifier.multTotal(1.25f));
 			player.getCooldowns().addCooldown(CAItems.SPIRIT_NECKLACE.get(), 100);

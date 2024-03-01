@@ -7,7 +7,6 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -28,9 +27,9 @@ public record HurtPlayerEffectFacet(
 			Predicate<Player> pred,
 			Supplier<MutableComponent> text,
 			DoubleSupplier chance,
-			Supplier<MobEffect> eff, int duration, int amplifier) {
+			EffectFacet eff) {
 		return new HurtPlayerEffectFacet(pred, text, chance,
-				List.of(new EffectFacet(eff, duration, amplifier, 0)));
+				List.of(eff));
 	}
 
 	public static HurtPlayerEffectFacet of(EffectFacet... effs) {

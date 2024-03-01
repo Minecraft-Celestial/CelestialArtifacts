@@ -24,7 +24,7 @@ public class SpiritBracelet implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		if (!isArrow(cache)) return;
+		if (!CAAttackToken.isArrow(cache)) return;
 		player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 0, false, false, true));
 	}
 

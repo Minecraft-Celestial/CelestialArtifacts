@@ -47,7 +47,7 @@ public class GuardianEye implements TickFacet, MultiLineText, CAAttackToken {
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
 		if (player.isUnderWater()) {
-			cache.addDealtModifier(DamageModifier.multTotal(0.8f));
+			cache.addDealtModifier(DamageModifier.multTotal(0.8f));//TODO use module
 		}
 	}
 

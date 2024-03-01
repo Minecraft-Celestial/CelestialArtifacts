@@ -15,7 +15,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.function.BiPredicate;
 import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
@@ -23,14 +22,33 @@ public class SimpleListener {
 
 	public static IFacet hurtBonus(
 			Supplier<MutableComponent> text,
-			BiPredicate<Player, LivingEntity> condition,
+			HurtBonusPredicate condition,
 			DoubleSupplier bonus) {
 		return new HurtBonus(text, condition, bonus);
 	}
 
+	public static IFacet protect(
+			Supplier<MutableComponent> text,
+			ProtectPredicate condition,
+			DoubleSupplier bonus) {
+		return new Protection(text, condition, bonus);
+	}
+
+	public interface HurtBonusPredicate {
+
+		boolean test(Player player, LivingEntity target, AttackCache cache);
+
+	}
+
+	public interface ProtectPredicate {
+
+		boolean test(Player player, LivingEntity attacker, AttackCache cache);
+
+	}
+
 	record HurtBonus(
 			Supplier<MutableComponent> text,
-			BiPredicate<Player, LivingEntity> condition,
+			HurtBonusPredicate condition,
 			DoubleSupplier bonus)
 			implements TextFacet, CAAttackToken {
 
@@ -43,8 +61,29 @@ public class SimpleListener {
 
 		@Override
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
-			if (condition.test(player, cache.getAttackTarget())) {
+			if (condition.test(player, cache.getAttackTarget(), cache)) {
 				cache.addHurtModifier(DamageModifier.multTotal((float) (1 + bonus.getAsDouble())));
+			}
+		}
+	}
+
+	record Protection(
+			Supplier<MutableComponent> text,
+			ProtectPredicate condition,
+			DoubleSupplier bonus)
+			implements TextFacet, CAAttackToken {
+
+		@Override
+		public void addText(@Nullable Level level, List<Component> list) {
+			list.add(TextFacet.wrap(text.get()));
+			list.add(TextFacet.inner(CALang.Modular.PROTECT
+					.get(TextFacet.perc(bonus.getAsDouble())).withStyle(ChatFormatting.GRAY)));
+		}
+
+		@Override
+		public void onPlayerHurtTarget(Player player, AttackCache cache) {
+			if (condition.test(player, cache.getAttackTarget(), cache)) {
+				cache.addHurtModifier(DamageModifier.multTotal((float) (1 - bonus.getAsDouble())));
 			}
 		}
 	}

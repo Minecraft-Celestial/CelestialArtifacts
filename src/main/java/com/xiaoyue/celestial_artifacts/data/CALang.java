@@ -62,7 +62,8 @@ public class CALang {
 		SHIFT("Press [%s] to display curio effects", 1),
 		ALT("Press [%s] to display set effects", 1),
 		INVUL_TIME("Increase invulnerable time by %s", 1),
-		HURT_BONUS("Increase damage by %s", 1);
+		HURT_BONUS("Increase damage by %s", 1),
+		PROTECT("Reduce damage by %s", 1);
 
 		final Entry entry;
 
@@ -93,12 +94,16 @@ public class CALang {
 	}
 
 	public enum Condition implements Info {
-		PLAYER_WATER("When player is in water or rain:", 0),
+		PLAYER_WET("When player is in water or rain:", 0),
 		NIGHT("At Night:", 0),
 		HOT_REGION("When in hot biomes:", 0),
 		ATTACK_BEHIND("When attacking from behind:", 0),
 		TARGET_HAS_ARMOR("When target has armor:", 0),
 		REVENGE("When hurt, for the next %s seconds: ", 1),
+		LUCK("When you have %s or more Luck: ", 1),
+		TITAN("With %s, when you deal melee damage to mobs with higher max health than you: ", 1),
+		NETHER("When you are in nether: ", 0),
+		SNEAK("When you are sneaking: ",0)
 		;
 
 		final Entry entry;

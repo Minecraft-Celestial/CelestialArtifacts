@@ -24,14 +24,14 @@ public class LeechScabbard implements CAAttackToken, SingleLineText {
 
 	@Override
 	public MutableComponent getLine() {
-		var eff = getEff().getDisplayName().copy().withStyle(ChatFormatting.AQUA);
+		var eff = TextFacet.eff(getEff());
 		var val = TextFacet.perc(getHeal());
 		return CALang.Back.LEECH.get(eff, val).withStyle(ChatFormatting.GRAY);
 	}
 
 	@Override
 	public void onPlayerDamageTargetFinal(Player player, AttackCache cache) {
-		if (!isMelee(cache)) return;
+		if (!CAAttackToken.isMelee(cache)) return;
 		if (player.hasEffect(getEff())) {
 			player.heal(cache.getDamageDealt() * (float) getHeal());
 		}

@@ -17,17 +17,17 @@ public interface CAAttackToken {
 		return player.getRandom().nextDouble() < chance;
 	}
 
-	default DamageSource getSource(AttackCache cache) {
+	static DamageSource getSource(AttackCache cache) {
 		var event = cache.getLivingAttackEvent();
 		assert event != null;
 		return event.getSource();
 	}
 
-	default boolean isArrow(AttackCache cache) {
+	static boolean isArrow(AttackCache cache) {
 		return getSource(cache).getDirectEntity() instanceof AbstractArrow;
 	}
 
-	default boolean isMelee(AttackCache cache) {
+	static boolean isMelee(AttackCache cache) {
 		if (cache.getAttacker() == null) return false;
 		if (cache.getAttacker() == cache.getAttackTarget()) return false;
 		var event = cache.getLivingAttackEvent();
