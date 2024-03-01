@@ -105,7 +105,7 @@ public class CALang {
 		TITAN("With %s, when you deal melee damage to mobs with higher max health than you: ", 1),
 		NETHER("When you are in nether: ", 0),
 		SNEAK("When you are sneaking: ", 0),
-		HURT_MAGIC("When you are hurt with magic:", 0),
+		HURT_FIRE("When you are hurt with fire damage:", 0),
 		;
 
 		final Entry entry;
@@ -122,6 +122,7 @@ public class CALang {
 
 	public enum DamageType implements Info {
 		MAGIC("magic", 0),
+		FIRE("fire", 0),
 		;
 
 		final Entry entry;

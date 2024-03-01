@@ -23,7 +23,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class DemonCurse extends XICurioBase implements GetCurioHeal {
+public class DemonCurse extends XICurioBase implements GetCurioHeal {//FIXME token
     public DemonCurse() {
         super(new Item.Properties().rarity(IRarityUtils.DARK_PURPLE));
     }

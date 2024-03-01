@@ -19,7 +19,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class AbyssWillBadge extends AttackICurio implements GetCurioSkill {
+public class AbyssWillBadge extends AttackICurio implements GetCurioSkill {//FIXME token
     public AbyssWillBadge() {
         super(new Item.Properties().rarity(IRarityUtils.DARK_AQUA));
     }

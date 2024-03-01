@@ -18,7 +18,12 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.*;
 import com.xiaoyue.celestial_artifacts.content.curios.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
+import com.xiaoyue.celestial_artifacts.content.curios.bracelet.CharmingBracelet;
+import com.xiaoyue.celestial_artifacts.content.curios.bracelet.HiddenBracelet;
+import com.xiaoyue.celestial_artifacts.content.curios.bracelet.ScarletBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.SpiritBracelet;
+import com.xiaoyue.celestial_artifacts.content.curios.charm.GluttonyBadge;
+import com.xiaoyue.celestial_artifacts.content.curios.charm.TwistedBrain;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.head.*;
 import com.xiaoyue.celestial_artifacts.content.curios.heart.DemonHeart;
@@ -39,9 +44,6 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
-import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.CharmingBracelet;
-import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.HiddenBracelet;
-import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.ScarletBracelet;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_core.register.CCAttributes;
@@ -51,6 +53,7 @@ import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -134,16 +137,15 @@ public class CAItems {
 
 		// charms
 		{
-
+			//
 			WAR_DEAD_BADGE = charm("war_dead_badge", WarDeadBadge::new);
 			// 不死者护符
 			UNDEAD_CHARM = charm("undead_charm", UndeadCharm::new);
 			// 毁灭者徽章
 			DESTROYER_BADGE = charm("destroyer_badge", DestroyerBadge::new);
-
 			// 扭曲之脑
-			TWISTED_BRAIN = charm("twisted_brain", TwistedBrain::new);
-
+			TWISTED_BRAIN = charm("twisted_brain", () -> ModularCurio.builder()
+					.requireCS().rarity(Rarity.EPIC).build(new TwistedBrain()));
 			// 噬咒护符
 			CORRUPT_BADGE = charm("corrupt_badge", CorruptBadge::new);
 			// 腐化侵蚀徽章
@@ -169,11 +171,19 @@ public class CAItems {
 			// 太阳磁铁
 			SOLAR_MAGNET = charm("solar_magnet", SolarMagnet::new);
 			// 暴食徽章
-			GLUTTONY_BADGE = charm("gluttony_badge", GluttonyBadge::new);
-
+			GLUTTONY_BADGE = charm("gluttony_badge", () -> ModularCurio.builder()
+					.rarity(Rarity.EPIC).build(
+							EffectFacet.of(() -> MobEffects.HUNGER, 3, 1),
+							new GluttonyBadge()
+					));
 
 			// 魔法马掌
-			MAGIC_HORSESHOE = charm("magic_horseshoe", MagicHorseshoe::new);
+			MAGIC_HORSESHOE = charm("magic_horseshoe", () -> ModularCurio.builder()
+					.rarity(Rarity.EPIC).build(
+							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.25),
+							AttrFacet.add(() -> Attributes.LUCK, () -> 1)
+					));
+
 			// 生息胸花
 			BEARING_STAMEN = charm("bearing_stamen", BearingStamen::new);
 			// 深渊意志徽章
@@ -285,16 +295,24 @@ public class CAItems {
 			// 绯红石手环
 			RED_RUBY_BRACELET = bracelet("red_ruby_bracelet", () ->
 					ModularCurio.builder().rarity(IRarityUtils.RED).build(
-
+							SimpleListener.protectType(CALang.DamageType.FIRE::get, e -> e.is(DamageTypeTags.IS_FIRE), () -> 0.9),
+							HurtPlayerEffectFacet.ofType(e -> e.is(DamageTypeTags.IS_FIRE), CALang.Condition.HURT_FIRE::get,
+									EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 3, 0))
 					));
 
 
 			// 隐匿手环
-			HIDDEN_BRACELET = bracelet("hidden_bracelet", HiddenBracelet::new);
+			HIDDEN_BRACELET = bracelet("hidden_bracelet", () -> ModularCurio.builder()
+					.rarity(IRarityUtils.DARK_PURPLE).build(new HiddenBracelet()));
 			// 猩红手环
-			SCARLET_BRACELET = bracelet("scarlet_bracelet", ScarletBracelet::new);
+			SCARLET_BRACELET = bracelet("scarlet_bracelet", () -> ModularCurio.builder()
+					.rarity(IRarityUtils.RED).build(new ScarletBracelet()));
 			// 魅力手环
-			CHARMING_BRACELET = bracelet("charming_bracelet", CharmingBracelet::new);
+			CHARMING_BRACELET = bracelet("charming_bracelet", () -> ModularCurio.builder()
+					.rarity(Rarity.RARE).build(
+							AttrFacet.add(() -> Attributes.ARMOR, () -> 2),
+							new CharmingBracelet()
+					));
 			// 精灵手环
 			SPIRIT_BRACELET = bracelet("spirit_bracelet", () ->
 					ModularCurio.builder().rarity(IRarityUtils.GREEN).build(

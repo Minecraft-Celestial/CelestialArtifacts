@@ -36,15 +36,15 @@ public class CAModConfig {
 		public static class Bracelet {
 
 			// hidden_bracelet
-			public final ForgeConfigSpec.IntValue hiddenBraceletEffectInterval;
+			public final ForgeConfigSpec.IntValue hiddenBraceletEffectDuration;
 
 			private Bracelet(ForgeConfigSpec.Builder builder) {
 				builder.push("bracelet");
 
 				// hidden_bracelet
-				hiddenBraceletEffectInterval = builder
-						.comment("This value determines how many ticks you will receive a stealth effect once")
-						.defineInRange("hiddenBraceletEffectInterval", 140, 1, Integer.MAX_VALUE);
+				hiddenBraceletEffectDuration = builder
+						.comment("This value determines how many seconds you will receive a stealth effect once")
+						.defineInRange("hiddenBraceletEffectDuration", 7, 1, Integer.MAX_VALUE);
 
 				builder.pop();
 			}

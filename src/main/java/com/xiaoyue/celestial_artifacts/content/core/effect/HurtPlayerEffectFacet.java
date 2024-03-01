@@ -7,6 +7,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -18,6 +19,7 @@ import java.util.function.Supplier;
 
 public record HurtPlayerEffectFacet(
 		@Nullable Predicate<Player> pred,
+		@Nullable Predicate<DamageSource> type,
 		@Nullable Supplier<MutableComponent> text,
 		@Nullable DoubleSupplier chance,
 		List<EffectFacet> effs
@@ -28,12 +30,20 @@ public record HurtPlayerEffectFacet(
 			Supplier<MutableComponent> text,
 			DoubleSupplier chance,
 			EffectFacet eff) {
-		return new HurtPlayerEffectFacet(pred, text, chance,
+		return new HurtPlayerEffectFacet(pred, null, text, chance,
+				List.of(eff));
+	}
+
+	public static HurtPlayerEffectFacet ofType(
+			Predicate<DamageSource> pred,
+			Supplier<MutableComponent> text,
+			EffectFacet eff) {
+		return new HurtPlayerEffectFacet(null, pred, text, null,
 				List.of(eff));
 	}
 
 	public static HurtPlayerEffectFacet of(EffectFacet... effs) {
-		return new HurtPlayerEffectFacet(null, null, null, List.of(effs));
+		return new HurtPlayerEffectFacet(null, null, null, null, List.of(effs));
 	}
 
 	@Override

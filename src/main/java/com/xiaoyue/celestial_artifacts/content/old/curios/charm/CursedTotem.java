@@ -16,7 +16,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class CursedTotem extends AttackICurio {
+public class CursedTotem extends AttackICurio {//FIXME token
     public CursedTotem() {
         super(new Item.Properties().rarity(IRarityUtils.DARK_PURPLE));
     }

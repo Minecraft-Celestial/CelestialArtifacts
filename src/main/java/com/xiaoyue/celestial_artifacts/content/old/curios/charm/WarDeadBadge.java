@@ -24,7 +24,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class WarDeadBadge extends AttackICurio {
+public class WarDeadBadge extends AttackICurio {//FIXME token
     public WarDeadBadge() {
         super(new Item.Properties().rarity(IRarityUtils.DARK_PURPLE));
     }

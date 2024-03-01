@@ -23,7 +23,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class AngelPearl extends XICurioBase {
+public class AngelPearl extends XICurioBase {//FIXME token
     public AngelPearl() {
         super(new Item.Properties().rarity(Rarity.UNCOMMON));
     }

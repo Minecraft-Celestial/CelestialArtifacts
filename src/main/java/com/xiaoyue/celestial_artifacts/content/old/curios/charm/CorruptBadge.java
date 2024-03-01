@@ -27,7 +27,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class CorruptBadge extends XICurioBase implements GetCurioSkill, GetCurioBreak {
+public class CorruptBadge extends XICurioBase implements GetCurioSkill, GetCurioBreak {//FIXME token
     public CorruptBadge() {
         super(new Item.Properties().rarity(IRarityUtils.DARK_PURPLE));
     }

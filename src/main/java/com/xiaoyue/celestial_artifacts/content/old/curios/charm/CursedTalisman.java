@@ -21,7 +21,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class CursedTalisman extends XICurioBase {
+public class CursedTalisman extends XICurioBase {//FIXME token
     public CursedTalisman() {
         super(new Item.Properties().rarity(IRarityUtils.DARK_PURPLE));
     }
