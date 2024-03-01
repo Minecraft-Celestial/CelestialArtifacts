@@ -63,7 +63,8 @@ public class CALang {
 		ALT("Press [%s] to display set effects", 1),
 		INVUL_TIME("Increase invulnerable time by %s", 1),
 		HURT_BONUS("Increase damage by %s", 1),
-		PROTECT("Reduce damage by %s", 1);
+		PROTECT("Reduce damage by %s", 1),
+		PROTECT_TYPE("Reduce %s damage by %s", 2);
 
 		final Entry entry;
 
@@ -103,12 +104,29 @@ public class CALang {
 		LUCK("When you have %s or more Luck: ", 1),
 		TITAN("With %s, when you deal melee damage to mobs with higher max health than you: ", 1),
 		NETHER("When you are in nether: ", 0),
-		SNEAK("When you are sneaking: ",0)
+		SNEAK("When you are sneaking: ", 0),
+		HURT_MAGIC("When you are hurt with magic:", 0),
 		;
 
 		final Entry entry;
 
 		Condition(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum DamageType implements Info {
+		MAGIC("magic", 0),
+		;
+
+		final Entry entry;
+
+		DamageType(String def, int count) {
 			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
@@ -151,6 +169,8 @@ public class CALang {
 
 	static {
 		putLang(Modular.class, "modular", Modular.values());
+		putLang(Condition.class, "condition", Condition.values());
+		putLang(DamageType.class, "damage_type", DamageType.values());
 		putLang(Back.class, "back", Back.values());
 		putLang(Bracelet.class, "bracelet", Bracelet.values());
 	}

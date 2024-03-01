@@ -39,7 +39,9 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
-import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
+import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.CharmingBracelet;
+import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.HiddenBracelet;
+import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.ScarletBracelet;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_core.register.CCAttributes;
@@ -51,6 +53,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -267,11 +270,25 @@ public class CAItems {
 									EffectFacet.of(() -> MobEffects.ABSORPTION, 5, 1)),
 							emeraldSet()));
 			// 生命手环
-			LIFE_BRACELET = bracelet("life_bracelet", LifeBracelet::new);
+			LIFE_BRACELET = bracelet("life_bracelet", () ->
+					ModularCurio.builder().rarity(Rarity.RARE).build(
+							AttrFacet.add(CCAttributes.REPLY_POWER, () -> 0.15),
+							EffectFacet.of(() -> MobEffects.REGENERATION, 2, 0)
+					));
 			// 珍钻手环
-			PRECIOUS_BRACELET = bracelet("precious_bracelet", PreciousBracelet::new);
+			PRECIOUS_BRACELET = bracelet("precious_bracelet", () ->
+					ModularCurio.builder().rarity(Rarity.EPIC).build(
+							AttrFacet.add(ForgeMod.BLOCK_REACH, () -> 2),
+							SlotFacet.of("ring", 1),
+							SimpleListener.protectType(CALang.DamageType.MAGIC::get, e -> e.is(DamageTypes.MAGIC), () -> 0.4)
+					));
 			// 绯红石手环
-			RED_RUBY_BRACELET = bracelet("red_ruby_bracelet", RedRubyBracelet::new);
+			RED_RUBY_BRACELET = bracelet("red_ruby_bracelet", () ->
+					ModularCurio.builder().rarity(IRarityUtils.RED).build(
+
+					));
+
+
 			// 隐匿手环
 			HIDDEN_BRACELET = bracelet("hidden_bracelet", HiddenBracelet::new);
 			// 猩红手环
