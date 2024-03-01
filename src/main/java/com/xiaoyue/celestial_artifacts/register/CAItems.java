@@ -376,7 +376,9 @@ public class CAItems {
 			// 精灵项链
 			SPIRIT_NECKLACE = necklace("spirit_necklace", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
-							new SpiritNecklace(), spiritSet()));
+							AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.25),
+							HurtPlayerEffectFacet.of(EffectFacet.of(() -> MobEffects.MOVEMENT_SPEED, 5, 0)),
+							spiritSet()));
 		}
 
 		// head

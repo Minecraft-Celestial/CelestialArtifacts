@@ -137,14 +137,14 @@ public class CatastropheScroll implements TickFacet, MultiLineText, CAAttackToke
 		if (CurioUtils.hasCurio(player, CAItems.CHAOTIC_ETCHING.get())) {
 			factor = 0.8f + 0.2f * player.getHealth() / player.getMaxHealth();
 		} else {
-			if (getSource(cache).is(DamageTypes.EXPLOSION)) {
+			if (CAAttackToken.getSource(cache).is(DamageTypes.EXPLOSION)) {
 				factor = (float) (1 + CAModConfig.COMMON.curse.catastropheScrollExplosionDamage.get());
 			} else {
 				factor = (float) (1 + CAModConfig.COMMON.curse.catastropheScrollOtherDamage.get());
 			}
 		}
 		if (CurioUtils.hasCurio(player, CAItems.NIHILITY_ETCHING.get())) {
-			if (getSource(cache).is(DamageTypes.FELL_OUT_OF_WORLD)) {
+			if (CAAttackToken.getSource(cache).is(DamageTypes.FELL_OUT_OF_WORLD)) {
 				factor *= 0.25f;
 			}
 			if (cache.getAttacker() != null) {

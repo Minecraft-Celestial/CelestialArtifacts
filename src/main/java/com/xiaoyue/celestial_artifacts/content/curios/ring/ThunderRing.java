@@ -17,7 +17,7 @@ public class ThunderRing implements SingleLineText, CAAttackToken {
 
     @Override
     public boolean onPlayerAttacked(Player player, AttackCache cache) {
-        var source = getSource(cache);
+        var source = CAAttackToken.getSource(cache);
         return source.is(DamageTypeTags.IS_LIGHTNING) &&
                 !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
                 !source.is(DamageTypeTags.BYPASSES_EFFECTS);
