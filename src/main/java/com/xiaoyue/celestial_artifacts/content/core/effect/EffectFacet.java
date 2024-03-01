@@ -1,5 +1,9 @@
-package com.xiaoyue.celestial_artifacts.content.core.modular;
+package com.xiaoyue.celestial_artifacts.content.core.effect;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
+import com.xiaoyue.celestial_artifacts.content.core.token.ClientTokenHelper;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.ChatFormatting;
@@ -23,6 +27,10 @@ public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, 
 		return new EffectFacet(eff, duration, amplifier, period);
 	}
 
+	public static EffectFacet of(Supplier<MobEffect> eff, int duration, int amplifier) {
+		return new EffectFacet(eff, duration, amplifier, 0);
+	}
+
 	public static MutableComponent getDesc(MobEffectInstance ins) {
 		return getDesc(ins, true);
 	}
@@ -41,13 +49,21 @@ public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, 
 	}
 
 	@Override
-	public Component getLine() {
+	public MutableComponent getLine() {
+		return getLine(true);
+	}
+
+	MutableComponent getLine(boolean enable) {
 		MobEffectInstance ins = get();
+		var bad = ChatFormatting.DARK_GRAY;
+		ChatFormatting base = enable ? ChatFormatting.GRAY : bad;
 		if (period <= duration) {
-			return CALang.Modular.EFFECT_REFRESH.get().withStyle(ChatFormatting.GRAY).append(getDesc(ins, false));
+			return CALang.Modular.EFFECT_REFRESH.get().withStyle(base)
+					.append(ClientTokenHelper.disable(enable, getDesc(ins, false)));
 		} else {
-			var p = Component.literal("" + period).withStyle(ChatFormatting.AQUA);
-			return CALang.Modular.EFFECT_FLASH.get(p).withStyle(ChatFormatting.GRAY).append(getDesc(ins));
+			var p = ClientTokenHelper.disable(enable, TextFacet.num(period));
+			return CALang.Modular.EFFECT_FLASH.get(p).withStyle(base).append(
+					ClientTokenHelper.disable(enable, getDesc(ins)));
 		}
 	}
 
@@ -57,6 +73,7 @@ public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, 
 
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
+		if (entity.level().isClientSide()) return;
 		if (period <= duration || entity.tickCount % (period * 20) == 0) {
 			EffectUtil.refreshEffect(entity, get(), EffectUtil.AddReason.SELF, entity);
 		}

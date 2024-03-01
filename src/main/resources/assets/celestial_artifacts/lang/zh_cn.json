@@ -206,7 +206,7 @@
   "tooltip.celestial_artifacts.traveler_scroll.shift2": "§e· 每次进入新的维度时将获得速度与生命恢复效果",
 
   "item.celestial_artifacts.sea_god_scroll": "海神卷轴",
-  "tooltip.celestial_artifacts.sea_god_scroll.shift1": "§e· 处于水下或雨天时持续获得力量与抗性提升效果",
+  "tooltip.celestial_artifacts.sea_god_scroll.shift1": "§e· 持续获得力量与抗性提升效果",
   "tooltip.celestial_artifacts.sea_god_scroll.shift2": "§e· 处于水下时挖掘速度不会再受到影响",
 
   "item.celestial_artifacts.skywalker_scroll": "传送卷轴",
@@ -359,9 +359,7 @@
   "tooltip.celestial_artifacts.twisted_scabbard.shift8": "§5· 当前已积攒的[扭曲附着]: %1$s",
 
   "item.celestial_artifacts.sea_god_crown": "海神王冠",
-  "tooltip.celestial_artifacts.sea_god_crown.shift1": "§e· 主动效果:",
-  "tooltip.celestial_artifacts.sea_god_crown.shift2": "§e· 所处世界处于非雨天时将天气改为雨天，冷却300秒",
-  "tooltip.celestial_artifacts.sea_god_crown.shift3": "§e· 处于水下或雨天时持续获得夜视与水下呼吸效果",
+  "tooltip.celestial_artifacts.sea_god_crown.shift1": "§e· 主动效果: 所处世界处于非雨天时将天气改为雨天，冷却300秒",
   
   "item.celestial_artifacts.prayer_crown": "祷告者冠冕",
   "tooltip.celestial_artifacts.prayer_crown.shift1": "§e· 将受到攻击后的无敌时间提升至§610§e",

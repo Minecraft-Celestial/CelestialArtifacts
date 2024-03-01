@@ -4,6 +4,7 @@ import com.xiaoyue.celestial_artifacts.content.core.feature.ShieldingFeature;
 import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -12,7 +13,7 @@ import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 public class EnderProtector implements SingleLineText, ShieldingFeature {
 
 	@Override
-	public Component getLine() {
+	public MutableComponent getLine() {
 		return Component.translatable("tooltip.celestial_artifacts.ender_protector.shift3");
 	}
 

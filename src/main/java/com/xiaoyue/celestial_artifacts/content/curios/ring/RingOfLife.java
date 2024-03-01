@@ -4,6 +4,7 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BoneMealItem;
@@ -13,12 +14,11 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class RingOfLife implements SingleLineText, TickFacet {
 
 	@Override
-	public Component getLine() {
+	public MutableComponent getLine() {
 		return Component.translatable("tooltip.celestial_artifacts.ring_of_life.shift1");
 	}
 

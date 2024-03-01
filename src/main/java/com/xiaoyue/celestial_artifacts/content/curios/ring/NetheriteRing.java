@@ -5,13 +5,14 @@ import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 public class NetheriteRing implements SingleLineText, CAAttackToken {
 
 	@Override
-	public Component getLine() {
+	public MutableComponent getLine() {
 		return Component.translatable("tooltip.celestial_artifacts.netherite_ring.shift2");
 	}
 

@@ -4,9 +4,17 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
+import com.xiaoyue.celestial_artifacts.content.core.attack.SimpleListener;
+import com.xiaoyue.celestial_artifacts.content.core.effect.ConditionalEffectFacet;
+import com.xiaoyue.celestial_artifacts.content.core.effect.EffectFacet;
+import com.xiaoyue.celestial_artifacts.content.core.effect.HurtPlayerEffectFacet;
+import com.xiaoyue.celestial_artifacts.content.core.effect.HurtTargetEffectFacet;
 import com.xiaoyue.celestial_artifacts.content.core.feature.BreakSpeedFeature;
 import com.xiaoyue.celestial_artifacts.content.core.feature.XpBonusFeature;
-import com.xiaoyue.celestial_artifacts.content.core.modular.*;
+import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
+import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
+import com.xiaoyue.celestial_artifacts.content.core.modular.SlotFacet;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.InvulToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.SkillTokenFacet;
@@ -16,11 +24,9 @@ import com.xiaoyue.celestial_artifacts.content.curios.back.TitanScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.EmeraldBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.SpiritBracelet;
-import com.xiaoyue.celestial_artifacts.content.curios.charm.SandsTalisman;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.head.*;
 import com.xiaoyue.celestial_artifacts.content.curios.heart.DemonHeart;
-import com.xiaoyue.celestial_artifacts.content.curios.heart.HeartOfRevenge;
 import com.xiaoyue.celestial_artifacts.content.curios.heart.TwistedHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.necklace.*;
 import com.xiaoyue.celestial_artifacts.content.curios.pendant.ShadowPendant;
@@ -40,8 +46,10 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.content.old.curios.bracelet.*;
 import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
+import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
+import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.network.chat.Component;
@@ -50,6 +58,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.ForgeMod;
@@ -83,15 +92,15 @@ public class CAItems {
 		{
 			// 金戒指
 			GOLD_RING = ring("gold_ring", () ->
-					ModularCurio.of(new EffectFacet(() -> MobEffects.LUCK, 2, 0, 0)));
+					ModularCurio.of(EffectFacet.of(() -> MobEffects.LUCK, 2, 0)));
 			// 紫水晶戒指
 			AMETHYST_RING = ring("amethyst_ring", () ->
-					ModularCurio.of(new EffectFacet(() -> MobEffects.NIGHT_VISION, 20, 0, 0),
+					ModularCurio.of(EffectFacet.of(() -> MobEffects.NIGHT_VISION, 2, 0),
 							AttrFacet.multBase(() -> Attributes.ATTACK_DAMAGE, () -> 0.1)));
 			// 钻石戒指
 			DIAMOND_RING = ring("diamond_ring", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							new EffectFacet(() -> MobEffects.DAMAGE_BOOST, 2, 0, 0)));
+							EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 2, 0)));
 			// 绿宝石戒指
 			EMERALD_RING = ring("emerald_ring", () ->
 					ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
@@ -103,7 +112,7 @@ public class CAItems {
 			// 下界合金戒指
 			NETHERITE_RING = ring("netherite_ring", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							new EffectFacet(() -> MobEffects.FIRE_RESISTANCE, 10, 0, 0),
+							EffectFacet.of(() -> MobEffects.FIRE_RESISTANCE, 10, 0),
 							new NetheriteRing()
 					));
 			// 生息之戒
@@ -169,7 +178,10 @@ public class CAItems {
 			// 金沙护符
 			SANDS_TALISMAN = charm("sands_talisman", () ->
 					ModularCurio.builder().loot(1).build(
-							new SandsTalisman(),
+							SimpleListener.hurtBonus(
+									CALang.Condition.HOT_REGION::get,
+									(p, t) -> p.level().getBiome(p.blockPosition()).get().getBaseTemperature() >= 0.01,
+									() -> 0.3),
 							XpBonusFeature.simple(0.5)
 					));
 			// 古代殉葬品
@@ -182,8 +194,17 @@ public class CAItems {
 			HEART_OF_REVENGE = heart("heart_of_revenge", () ->
 					ModularCurio.builder().rarity(IRarityUtils.GOLD).build(
 							AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.06),
-							new HeartOfRevenge()
+							HurtPlayerEffectFacet.of(
+									EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 3, 1),
+									EffectFacet.of(() -> MobEffects.DAMAGE_RESISTANCE, 3, 0)
+							),
+							SimpleListener.hurtBonus(
+									() -> CALang.Condition.REVENGE.get(TextFacet.num(3)),
+									(p, t) -> p.getLastHurtByMobTimestamp() >= p.tickCount - 3 * 20,
+									() -> 0.25
+							)
 					));
+
 			// 扭曲之心
 			TWISTED_HEART = heart("twisted_heart", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).immune().build(
@@ -214,7 +235,14 @@ public class CAItems {
 			// 海神卷轴
 			SEA_GOD_SCROLL = scroll("sea_god_scroll", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							new SeaGodScroll(), seaGodSet()));
+							new SeaGodScroll(),
+							ConditionalEffectFacet.of(false,
+									Player::isInWaterRainOrBubble,
+									CALang.Condition.PLAYER_WATER::get,
+									EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 2, 1),
+									EffectFacet.of(() -> MobEffects.DAMAGE_RESISTANCE, 2, 0)
+							),
+							seaGodSet()));
 			// 传送卷轴
 			SKYWALKER_SCROLL = scroll("skywalker_scroll", () -> {
 				var token = new TokenFacet<>("skywalker_scroll", SkywalkerScroll::new);
@@ -270,7 +298,15 @@ public class CAItems {
 		{
 			// 星星项链
 			STAR_NECKLACE = necklace("star_necklace", () ->
-					ModularCurio.builder().rarity(Rarity.RARE).build(new StarNecklace()));
+					ModularCurio.builder().rarity(Rarity.RARE).build(
+							SimpleListener.hurtBonus(
+									CALang.Condition.ATTACK_BEHIND::get,
+									(p, t) -> EntityUtils.isLookingBehindTarget(t, p.getEyePosition()),
+									() -> 0.4),
+							ConditionalEffectFacet.of(false,
+									e -> e.level().isNight(), CALang.Condition.NIGHT::get,
+									EffectFacet.of(() -> MobEffects.DAMAGE_RESISTANCE, 2, 0))
+					));
 
 			// 十字项链
 			CROSS_NECKLACE = necklace("cross_necklace", () ->
@@ -287,7 +323,12 @@ public class CAItems {
 			FANG_NECKLACE = necklace("fang_necklace", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
 							AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.1),
-							new FangNecklace()
+							SimpleListener.hurtBonus(
+									CALang.Condition.TARGET_HAS_ARMOR::get,
+									(p, t) -> EntityUtils.hasArmor(t),
+									() -> 0.25),
+							HurtTargetEffectFacet.of(() -> 0.5,
+									() -> MobEffects.POISON, 100, 2)
 					));
 
 			// 珍钻项链
@@ -338,7 +379,13 @@ public class CAItems {
 			// 海神王冠
 			SEA_GOD_CROWN = head("sea_god_crown", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							new SeaGodCrown(), seaGodSet()));
+							new SeaGodCrown(),
+							ConditionalEffectFacet.of(false,
+									Player::isInWaterRainOrBubble,
+									CALang.Condition.PLAYER_WATER::get,
+									EffectFacet.of(() -> MobEffects.WATER_BREATHING, 2, 3),
+									EffectFacet.of(() -> MobEffects.NIGHT_VISION, 2, 0)
+							), seaGodSet()));
 			// 祷告者王冠
 			PRAYER_CROWN = head("prayer_crown", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(

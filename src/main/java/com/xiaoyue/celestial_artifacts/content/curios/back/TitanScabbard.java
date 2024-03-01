@@ -6,12 +6,13 @@ import com.xiaoyue.celestial_core.register.CCEffects;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
 public class TitanScabbard implements CAAttackToken, SingleLineText {
 
 	@Override
-	public Component getLine() {
+	public MutableComponent getLine() {
 		return Component.translatable("tooltip.celestial_artifacts.titan_scabbard.shift2");
 	}
 

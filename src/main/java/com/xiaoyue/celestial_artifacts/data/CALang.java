@@ -49,6 +49,10 @@ public class CALang {
 	public enum Modular implements Info {
 		EFFECT_REFRESH("Grants wearer: ", 0),
 		EFFECT_FLASH("For every %s seconds, grants wearer: ", 1),
+		EFFECT_INFLICT("On hit targets, inflicts: ", 0),
+		EFFECT_INFLICT_CHANCE("On hit targets, %s chance to inflict: ", 1),
+		EFFECT_HURT("On hurt, grants: ", 0),
+		EFFECT_HURT_CHANCE("On hurt, %s chance to grant: ", 1),
 		FORTUNE("Fortune", 0),
 		LOOT("Looting", 0),
 		XP("Xp Gain", 0),
@@ -57,7 +61,8 @@ public class CALang {
 		CURSE("Requires %s to be equipped", 1),
 		SHIFT("Press [%s] to display curio effects", 1),
 		ALT("Press [%s] to display set effects", 1),
-		INVUL_TIME("Increase invulnerable time by %s", 1);
+		INVUL_TIME("Increase invulnerable time by %s", 1),
+		HURT_BONUS("Increase damage by %s", 1);
 
 		final Entry entry;
 
@@ -83,6 +88,27 @@ public class CALang {
 		public static MutableComponent alt() {
 			return ALT.get(Component.literal("ALT").withStyle(ChatFormatting.YELLOW))
 					.withStyle(ChatFormatting.GRAY);
+		}
+
+	}
+
+	public enum Condition implements Info {
+		PLAYER_WATER("When player is in water or rain:", 0),
+		NIGHT("At Night:", 0),
+		HOT_REGION("When in hot biomes:", 0),
+		ATTACK_BEHIND("When attacking from behind:", 0),
+		TARGET_HAS_ARMOR("When target has armor:", 0),
+		REVENGE("When hurt, for the next %s seconds: ", 1),
+		;
+
+		final Entry entry;
+
+		Condition(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
 		}
 
 	}
