@@ -273,7 +273,7 @@
 
   "item.celestial_artifacts.star_necklace": "星星项链",
   "tooltip.celestial_artifacts.star_necklace.shift1": "§e· 处于夜晚时持续获得抗性提升效果",
-  "tooltip.celestial_artifacts.star_necklace.shift2": "§e· 从背后攻击目标时提高§640%§e攻击伤害",
+  "tooltip.celestial_artifacts.star_necklace.shift2": "§e· 提高§640%§e攻击伤害",
 
   "item.celestial_artifacts.cross_necklace": "十字项链",
   "tooltip.celestial_artifacts.cross_necklace.shift1": "§e· 将受到攻击后的无敌时间提升§68§e",
@@ -322,35 +322,19 @@
   "tooltip.celestial_artifacts.lock_of_abyss.shift4": "§3· 移除该效果并对目标造成原伤害§b250%§3的§b虚空伤害",
   
   "item.celestial_artifacts.spirit_necklace": "精灵项链",
-  "tooltip.celestial_artifacts.spirit_necklace.shift1": "§2· 每过§a5§2秒，使下一次射出的箭矢伤害提高§a25%",
-  "tooltip.celestial_artifacts.spirit_necklace.shift2": "§2· 受到伤害后获得移动速度提升效果，持续5秒",
   
   "item.celestial_artifacts.magic_arrow_bag": "魔法箭袋",
-  "tooltip.celestial_artifacts.magic_arrow_bag.shift1": "§e· 提高§610%§e箭矢伤害与§68%§e箭矢击退",
   
   "item.celestial_artifacts.flame_arrow_bag": "火焰箭袋",
-  "tooltip.celestial_artifacts.flame_arrow_bag.shift1": "§e· 提高§612%§e箭矢伤害与§610%§e箭矢击退",
   "tooltip.celestial_artifacts.flame_arrow_bag.shift2": "§e· 发射的箭矢命中目标后将使目标燃烧",
   
   "item.celestial_artifacts.spirit_arrow_bag": "精灵箭袋",
-  "tooltip.celestial_artifacts.spirit_arrow_bag.shift1": "§e· 提高§618%§e箭矢伤害与箭矢击退",
-  "tooltip.celestial_artifacts.spirit_arrow_bag.shift2": "§e· cs_is_chaotic§650%",
   
   "item.celestial_artifacts.iron_scabbard": "铁剑鞘",
-  "tooltip.celestial_artifacts.iron_scabbard.shift1": "§e· 每5秒获得2秒力量效果",
   
   "item.celestial_artifacts.leech_scabbard": "水蛭剑鞘",
-  "tooltip.celestial_artifacts.leech_scabbard.shift1": "§e· 每5秒获得2秒剑刃强化效果",
-  "tooltip.celestial_artifacts.leech_scabbard.shift2": "§e· 拥有剑刃强化效果时攻击造成伤害的§625%§e将用于治疗",
-  
   "item.celestial_artifacts.titan_scabbard": "泰坦剑鞘",
-  "tooltip.celestial_artifacts.titan_scabbard.shift1": "§e· 每10秒获得3秒剑刃强化效果",
-  "tooltip.celestial_artifacts.titan_scabbard.shift2": "§e· 拥有剑刃强化效果时攻击大于自身最大生命的目标提高§675%§e攻击伤害",
-  
   "item.celestial_artifacts.twisted_scabbard": "扭曲剑鞘",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift1": "§5· 攻击速度与击退提高 §d25%",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift2": "§5· 每§d5§5秒获得3秒剑刃强化",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift3": "§5· 治疗力降低 §d50%",
   "tooltip.celestial_artifacts.twisted_scabbard.shift4": "§5· 每次杀死生物都会积攒§d1§5层§d[扭曲附着]",
   "tooltip.celestial_artifacts.twisted_scabbard.shift5": "§5· 每§d5§5秒流失1层[扭曲附着]",
   "tooltip.celestial_artifacts.twisted_scabbard.shift6": "§5· 每层[扭曲附着]提高§d5%§5近战伤害",
@@ -474,5 +458,39 @@
   "curios.modifiers.etching": "佩戴刻蚀时：",
   
   "curios.identifier.pendant": "吊坠",
-  "curios.modifiers.pendant": "佩戴吊坠时："
+  "curios.modifiers.pendant": "佩戴吊坠时：",
+
+
+  "celestial_artifacts.tooltip.back.leech": "拥有%s效果时，攻击造成伤害的%s将用于治疗",
+  "celestial_artifacts.tooltip.condition.attack_behind": "从背后攻击目标时:",
+  "celestial_artifacts.tooltip.condition.hot_region": "处于炎热地区时:",
+  "celestial_artifacts.tooltip.condition.hurt_fire": "受到火焰伤害时:",
+  "celestial_artifacts.tooltip.condition.luck": "当你有至少%s点幸运时:",
+  "celestial_artifacts.tooltip.condition.nether": "当你处于下界时: ",
+  "celestial_artifacts.tooltip.condition.night": "夜晚时:",
+  "celestial_artifacts.tooltip.condition.player_wet": "当你处于水中或雨中时:",
+  "celestial_artifacts.tooltip.condition.revenge": "受到伤害后的%s秒内: ",
+  "celestial_artifacts.tooltip.condition.sneak": "潜行时: ",
+  "celestial_artifacts.tooltip.condition.target_has_armor": "目标穿有护甲时:",
+  "celestial_artifacts.tooltip.condition.titan": "%s状态下，当你对总血量比你高的生物造成近战伤害时: ",
+  "celestial_artifacts.tooltip.damage_type.fire": "火焰",
+  "celestial_artifacts.tooltip.damage_type.magic": "魔法",
+  "celestial_artifacts.tooltip.modular.alt": "按[%s]显示套装效果",
+  "celestial_artifacts.tooltip.modular.curse": "需要装备%s",
+  "celestial_artifacts.tooltip.modular.effect_flash": "每%s秒获得: ",
+  "celestial_artifacts.tooltip.modular.effect_hurt": "受伤时获得: ",
+  "celestial_artifacts.tooltip.modular.effect_hurt_chance": "受伤时%s概率获得: ",
+  "celestial_artifacts.tooltip.modular.effect_inflict": "击中目标施加: ",
+  "celestial_artifacts.tooltip.modular.effect_inflict_chance": "击中目标%s概率施加: ",
+  "celestial_artifacts.tooltip.modular.effect_refresh": "佩戴时提供: ",
+  "celestial_artifacts.tooltip.modular.ender_mask": "之时末影人不会激怒它们",
+  "celestial_artifacts.tooltip.modular.fortune": "幸运",
+  "celestial_artifacts.tooltip.modular.hurt_bonus": "+%s伤害",
+  "celestial_artifacts.tooltip.modular.immune": "不可摧毁",
+  "celestial_artifacts.tooltip.modular.invul_time": "+%s无敌时间",
+  "celestial_artifacts.tooltip.modular.loot": "抢夺",
+  "celestial_artifacts.tooltip.modular.protect": "-%s伤害",
+  "celestial_artifacts.tooltip.modular.protect_type": "-%2¥s%1$s伤害",
+  "celestial_artifacts.tooltip.modular.shift": "按[%s]显示饰品效果",
+  "celestial_artifacts.tooltip.modular.xp": "经验获取"
 }
