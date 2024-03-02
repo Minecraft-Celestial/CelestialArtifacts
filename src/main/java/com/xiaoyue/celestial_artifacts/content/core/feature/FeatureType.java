@@ -5,7 +5,7 @@ import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FeatureType<T> {
+public class FeatureType<T extends IFeature> {
 
 	static final List<FeatureType<?>> LIST = new ArrayList<>();
 

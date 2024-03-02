@@ -5,7 +5,6 @@ import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureMap;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -144,7 +143,7 @@ public final class ModularCurio extends BaseCurio {
 
 	@Override
 	public List<Component> getAttributesTooltip(List<Component> tooltips, ItemStack stack) {
-		if (Screen.hasShiftDown()) return List.of();
+		//if (Screen.hasShiftDown()) return List.of();
 		if (attributes.isEmpty()) return tooltips;
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < tooltips.size(); i++) {

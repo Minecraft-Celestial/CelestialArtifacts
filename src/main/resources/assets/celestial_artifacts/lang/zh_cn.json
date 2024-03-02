@@ -53,7 +53,6 @@
 
   "item.celestial_artifacts.destroyer_badge": "毁灭者徽章",
   "tooltip.celestial_artifacts.destroyer_badge.shift1": "§e· 受到伤害提高 §650%",
-  "tooltip.celestial_artifacts.destroyer_badge.shift2": "§e· 攻击伤害提高 §640%",
   "tooltip.celestial_artifacts.destroyer_badge.shift3": "§e· 生命低于最大生命的§650%§e时，星月暴伤提高§620%",
 
   "item.celestial_artifacts.heart_of_revenge": "复仇之心",
@@ -91,7 +90,6 @@
   "tooltip.celestial_artifacts.corrupt_badge.shift10": "§5· 攻击伤害: %1$s",
 
   "item.celestial_artifacts.cursed_protector": "受诅咒的坚盾",
-  "tooltip.celestial_artifacts.cursed_protector.shift1": "§5· 击退抗性提高 §d100%",
   "tooltip.celestial_artifacts.cursed_protector.shift2": "§5· 受到的正面伤害降低 §d30%",
   "tooltip.celestial_artifacts.cursed_protector.shift3": "§5· 副手装备的盾牌不会再进入冷却",
   "tooltip.celestial_artifacts.cursed_protector.shift4": "§5· 受到伤害大于当前生命的§d%1$s§5时，伤害降低§d%2$s",
@@ -99,7 +97,7 @@
   "item.celestial_artifacts.cursed_totem": "被咒者的图腾",
   "tooltip.celestial_artifacts.cursed_totem.shift1": "§5· 使用不死图腾时给予最近的攻击者§d凋零§5效果",
   "tooltip.celestial_artifacts.cursed_totem.shift2": "§5· 受到非致命伤害时会积攒1层[怨念]，上限§d5§5层",
-  "tooltip.celestial_artifacts.cursed_totem.shift3": "§5· 受到§d致命伤害§5时若最近的攻击者没死，则消耗1层[怨念]并规避该伤害",
+  "tooltip.celestial_artifacts.cursed_totem.shift3": "§5· 受到§d致命伤害§5时，则消耗1层[怨念]并规避该伤害",
   "tooltip.celestial_artifacts.cursed_totem.shift4": "§5· 当前已积攒的[怨念]: %1$s",
 
   "item.celestial_artifacts.holy_talisman": "神圣七彩护符",
@@ -128,10 +126,9 @@
   "tooltip.celestial_artifacts.angel_pearl.shift7": "§e· 护甲值: %1$s",
 
   "item.celestial_artifacts.demon_curse": "大恶魔之咒",
-  "tooltip.celestial_artifacts.demon_curse.shift1": "§5· 受治疗量降低 §d90%",
   "tooltip.celestial_artifacts.demon_curse.shift2": "§5· 每§d1%§5治疗力",
-  "tooltip.celestial_artifacts.demon_curse.shift3": "§5· 攻击伤害提高 §d2%",
-  "tooltip.celestial_artifacts.demon_curse.shift4": "§5· 移动速度提高 §d1%",
+  "tooltip.celestial_artifacts.demon_curse.shift3": "§5· 攻击伤害提高 §d20%",
+  "tooltip.celestial_artifacts.demon_curse.shift4": "§5· 移动速度提高 §d10%",
   "tooltip.celestial_artifacts.demon_curse.shift5": "§5· 当前提供的属性加成",
   "tooltip.celestial_artifacts.demon_curse.shift6": "§5· 攻击伤害: %1$s",
   "tooltip.celestial_artifacts.demon_curse.shift7": "§5· 移动速度: %1$s",
@@ -412,8 +409,8 @@
   "tooltip.celestial_artifacts.cs_has_life.shift1": "§e· 提高§620.0%§e最大生命与§610.0%§e治疗力",
   "tooltip.celestial_artifacts.cs_no_life.shift1": "§5· 降低§425.0%§5最大生命，降低§450.0%§5治疗力",
   "tooltip.celestial_artifacts.cs_is_truth.shift1": "· [真理]",
-  "tooltip.celestial_artifacts.cs_no_truth.shift1": "§5· 受到攻击时至少会受到自身最大生命§440.0%§5的伤害",
-  "tooltip.celestial_artifacts.cs_has_truth.shift1": "§3· 受到攻击时伤害不会超过自身最大生命的§640.0%",
+  "tooltip.celestial_artifacts.cs_no_truth.shift1": "§5· 受到生物攻击时至少会受到自身最大生命§440.0%§5的伤害",
+  "tooltip.celestial_artifacts.cs_has_truth.shift1": "§3· 受到生物攻击时伤害不会超过自身最大生命的§640.0%",
   "tooltip.celestial_artifacts.cs_is_desire.shift1": "· [欲望]",
   "tooltip.celestial_artifacts.cs_has_desire.shift1": "§e· 提高§61.0§e点时运与抢夺等级",
   "tooltip.celestial_artifacts.cs_no_desire.shift1": "§5· 周围的生物将远离你，中立生物会主动攻击你",

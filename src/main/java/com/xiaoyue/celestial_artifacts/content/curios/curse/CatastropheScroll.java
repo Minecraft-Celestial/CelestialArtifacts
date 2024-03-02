@@ -1,7 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.curse;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
-import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.ClientTokenHelper;
@@ -153,7 +152,7 @@ public class CatastropheScroll implements TickFacet, MultiLineText, CAAttackToke
 		}
 		cache.addDealtModifier(DamageModifier.multTotal(factor));
 		float hp = player.getMaxHealth() * 0.4f;
-		if (CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
+		if (cache.getAttacker() != null && CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
 			cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> Math.min(e, hp)));
 		} else {
 			cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> Math.max(e, hp)));

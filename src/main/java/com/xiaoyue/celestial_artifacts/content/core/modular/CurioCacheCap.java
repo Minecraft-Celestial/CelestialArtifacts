@@ -3,7 +3,6 @@ package com.xiaoyue.celestial_artifacts.content.core.modular;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureMap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
-import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
@@ -52,8 +51,8 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 				}
 			}
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-				if (e instanceof CAAttackToken t) {
-					features.add(FeatureType.ATK, t);
+				if (e instanceof IFacet t) {
+					features.add(t);
 				}
 			}
 		}

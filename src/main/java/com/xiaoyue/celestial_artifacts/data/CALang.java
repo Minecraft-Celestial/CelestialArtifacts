@@ -106,7 +106,7 @@ public class CALang {
 		NETHER("When you are in nether: ", 0),
 		SNEAK("When you are sneaking: ", 0),
 		HURT_FIRE("When you are hurt with fire damage:", 0),
-		;
+		LOW_HEALTH("When you are at %s or lower health:", 1);
 
 		final Entry entry;
 

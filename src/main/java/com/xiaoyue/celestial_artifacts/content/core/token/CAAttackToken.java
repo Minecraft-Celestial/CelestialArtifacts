@@ -1,5 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.core.token;
 
+import com.xiaoyue.celestial_artifacts.content.core.feature.IFeature;
+import com.xiaoyue.celestial_artifacts.content.core.modular.IFacet;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
@@ -11,7 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
-public interface CAAttackToken {
+public interface CAAttackToken extends IFeature {
 
 	static boolean chance(LivingEntity player, double chance) {
 		return player.getRandom().nextDouble() < chance;

@@ -7,7 +7,7 @@ import com.xiaoyue.celestial_artifacts.data.CALang;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
-public interface XpBonusFeature extends IFacet {
+public interface XpBonusFeature extends IFeature {
 
 	static XpBonusFeature simple(double val) {
 		return new Simple(val);

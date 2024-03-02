@@ -15,15 +15,17 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.content.core.modular.SlotFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.*;
+import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.content.core.token.InvulToken;
+import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
+import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.CharmingBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.HiddenBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.ScarletBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.SpiritBracelet;
-import com.xiaoyue.celestial_artifacts.content.curios.charm.GluttonyBadge;
-import com.xiaoyue.celestial_artifacts.content.curios.charm.TwistedBrain;
+import com.xiaoyue.celestial_artifacts.content.curios.charm.*;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.head.*;
 import com.xiaoyue.celestial_artifacts.content.curios.heart.DemonHeart;
@@ -44,7 +46,10 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
-import com.xiaoyue.celestial_artifacts.content.old.curios.charm.*;
+import com.xiaoyue.celestial_artifacts.content.old.curios.charm.AbyssWillBadge;
+import com.xiaoyue.celestial_artifacts.content.old.curios.charm.KnightShelter;
+import com.xiaoyue.celestial_artifacts.content.old.curios.charm.SacrificialObject;
+import com.xiaoyue.celestial_artifacts.content.old.curios.charm.SolarMagnet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
@@ -138,38 +143,79 @@ public class CAItems {
 		// charms
 		{
 			//
-			WAR_DEAD_BADGE = charm("war_dead_badge", WarDeadBadge::new);
+			WAR_DEAD_BADGE = charm("war_dead_badge", () -> ModularCurio.builder()
+					.requireCS().rarity(IRarityUtils.DARK_PURPLE)
+					.build(new TokenFacet<>("war_dead_badge", WarDeadBadge::new)));
 			// 不死者护符
-			UNDEAD_CHARM = charm("undead_charm", UndeadCharm::new);
+			UNDEAD_CHARM = charm("undead_charm", () -> ModularCurio.builder()
+					.rarity(Rarity.RARE).build(new UndeadCharm()));
 			// 毁灭者徽章
-			DESTROYER_BADGE = charm("destroyer_badge", DestroyerBadge::new);
+			DESTROYER_BADGE = charm("destroyer_badge", () -> ModularCurio.builder()
+					.rarity(Rarity.EPIC).build(
+							AttrFacet.add(() -> Attributes.ATTACK_DAMAGE, () -> 0.4),
+							AttrFacet.multBase(L2DamageTracker.REDUCTION, () -> 0.5),
+							SimpleListener.hurtBonus(
+									() -> CALang.Condition.LOW_HEALTH.get(TextFacet.perc(0.5)),
+									(p, t, c) -> p.getHealth() <= 0.5 * p.getMaxHealth(),
+									() -> 0.2)));
 			// 扭曲之脑
 			TWISTED_BRAIN = charm("twisted_brain", () -> ModularCurio.builder()
 					.requireCS().rarity(Rarity.EPIC).build(new TwistedBrain()));
 			// 噬咒护符
-			CORRUPT_BADGE = charm("corrupt_badge", CorruptBadge::new);
+			CORRUPT_BADGE = charm("corrupt_badge", () -> ModularCurio.builder()
+					.requireCS().rarity(IRarityUtils.DARK_PURPLE)
+					.build(new TokenFacet<>("corrupt_badge", CorruptBadge::new)));
 			// 腐化侵蚀徽章
-			CURSED_TALISMAN = charm("cursed_talisman", CursedTalisman::new);
+			CURSED_TALISMAN = charm("cursed_talisman", () -> ModularCurio.builder()
+					.requireCS().rarity(IRarityUtils.DARK_PURPLE)
+					.build(new TokenFacet<>("cursed_talisman", CursedTalisman::new)));
 			// 受诅咒的坚盾
-			CURSED_PROTECTOR = charm("cursed_protector", CursedProtector::new);
+			CURSED_PROTECTOR = charm("cursed_protector", () ->
+					ModularCurio.builder().rarity(Rarity.EPIC).build(
+							AttrFacet.add(() -> Attributes.KNOCKBACK_RESISTANCE, () -> 1),
+							new CursedProtector()
+					));
 			// 负咒的灵魂图腾
-			CURSED_TOTEM = charm("cursed_totem", CursedTotem::new);
+			CURSED_TOTEM = charm("cursed_totem", () -> ModularCurio.builder()
+					.requireCS().rarity(IRarityUtils.DARK_PURPLE).build(CursedTotem.TOKEN));
 			// 神圣七彩护符
-			HOLY_TALISMAN = charm("holy_talisman", HolyTalisman::new);
+			HOLY_TALISMAN = charm("holy_talisman", () ->
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
+							new HolyTalisman()
+					));
 			// 大天使之剑
-			HOLY_SWORD = charm("holy_sword", HolySword::new);
+			HOLY_SWORD = charm("holy_sword", () ->
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
+							AttrFacet.add(L2DamageTracker.CRIT_RATE::get, () -> 0.15),
+							new HolySword()
+					));
 			// 天使之心
-			ANGEL_HEART = charm("angel_heart", AngelHeart::new);
+			ANGEL_HEART = charm("angel_heart", () ->
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
+							new AngelHeart(),
+							SimpleListener.protect(
+									() -> CALang.Condition.LOW_HEALTH.get(TextFacet.perc(0.5)),
+									(p, a, c) -> p.getHealth() < p.getMaxHealth() * 0.5f,
+									() -> 0.1
+							)
+					));
 			// 天使珍珠
-			ANGEL_PEARL = charm("angel_pearl", AngelPearl::new);
+			ANGEL_PEARL = charm("angel_pearl", () ->
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
+							new TokenFacet<>("angel_pearl", AngelPearl::new)
+					));
 			// 大恶魔之咒
-			DEMON_CURSE = charm("demon_curse", DemonCurse::new);
+			DEMON_CURSE = charm("demon_curse", () -> ModularCurio.builder()
+					.rarity(IRarityUtils.DARK_PURPLE).build(
+							AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.9),
+							new TokenFacet<>("demon_curse", DemonCurse::new)));
 			// 骑士庇护
-			KNIGHT_SHELTER = charm("knight_shelter", KnightShelter::new);
+			KNIGHT_SHELTER = charm("knight_shelter", KnightShelter::new);//TODO
 			// 魂灵匣
-			SOUL_BOX = charm("soul_box", SoulBox::new);
+			SOUL_BOX = charm("soul_box", () -> ModularCurio.builder()
+					.rarity(Rarity.EPIC).build(new SoulBox()));
 			// 太阳磁铁
-			SOLAR_MAGNET = charm("solar_magnet", SolarMagnet::new);
+			SOLAR_MAGNET = charm("solar_magnet", SolarMagnet::new);//TODO
 			// 暴食徽章
 			GLUTTONY_BADGE = charm("gluttony_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
@@ -185,9 +231,14 @@ public class CAItems {
 					));
 
 			// 生息胸花
-			BEARING_STAMEN = charm("bearing_stamen", BearingStamen::new);
+			BEARING_STAMEN = charm("bearing_stamen", () -> ModularCurio.builder().rarity(IRarityUtils.GREEN)
+					.build(
+							AttrFacet.add(() -> Attributes.MAX_HEALTH, () -> 20),
+							AttrFacet.add(CCAttributes.REPLY_POWER, () -> 0.25),
+							EffectFacet.of(() -> MobEffects.REGENERATION, 2, 1)
+					));
 			// 深渊意志徽章
-			ABYSS_WILL_BADGE = charm("abyss_will_badge", AbyssWillBadge::new);
+			ABYSS_WILL_BADGE = charm("abyss_will_badge", AbyssWillBadge::new);//TODO
 			// 金沙护符
 			SANDS_TALISMAN = charm("sands_talisman", () ->
 					ModularCurio.builder().loot(1).build(
@@ -198,7 +249,7 @@ public class CAItems {
 							XpBonusFeature.simple(0.5)
 					));
 			// 古代殉葬品
-			SACRIFICIAL_OBJECT = charm("sacrificial_object", SacrificialObject::new);
+			SACRIFICIAL_OBJECT = charm("sacrificial_object", SacrificialObject::new);//TODO
 		}
 
 		// heart
@@ -257,10 +308,8 @@ public class CAItems {
 							),
 							seaGodSet()));
 			// 传送卷轴
-			SKYWALKER_SCROLL = scroll("skywalker_scroll", () -> {
-				var token = new TokenFacet<>("skywalker_scroll", SkywalkerScroll::new);
-				return ModularCurio.builder().rarity(Rarity.UNCOMMON).build(token, new SkillTokenFacet<>(token));
-			});
+			SKYWALKER_SCROLL = scroll("skywalker_scroll", () -> ModularCurio.builder().rarity(Rarity.UNCOMMON)
+					.build(SkywalkerScroll.TOKEN));
 			// 扭曲卷轴
 			TWISTED_SCROLL = scroll("twisted_scroll", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
