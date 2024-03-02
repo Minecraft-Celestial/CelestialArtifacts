@@ -1,9 +1,9 @@
 package com.xiaoyue.celestial_artifacts.events;
 
+import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
-import com.xiaoyue.celestial_artifacts.network.CAbilityPacket;
-import com.xiaoyue.celestial_artifacts.network.CMessages;
-import com.xiaoyue.celestial_artifacts.register.Keymapping;
+import com.xiaoyue.celestial_artifacts.register.CAKeyMapping;
+import com.xiaoyue.celestial_artifacts.register.CAbilityPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -27,8 +27,8 @@ public class ClientEvent {
 
 	@SubscribeEvent
 	public static void onInputKey(InputEvent.Key event) {
-		if (Keymapping.ABILITY_KEY.consumeClick()) {
-			CMessages.sendToServer(new CAbilityPacket());
+		if (CAKeyMapping.ABILITY_KEY.consumeClick()) {
+			CelestialArtifacts.HANDLER.toServer(new CAbilityPacket());
 		}
 	}
 }

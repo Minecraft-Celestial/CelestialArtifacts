@@ -1,10 +1,13 @@
 package com.xiaoyue.celestial_artifacts.events;
 
+import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import com.xiaoyue.celestial_core.content.generic.PlayerFlagData;
+import com.xiaoyue.celestial_core.events.CCGeneralEventHandler;
+import com.xiaoyue.celestial_core.register.CCItems;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -62,7 +65,9 @@ public class MaterialHandler {
 				if (entity instanceof WitherBoss witherBoss) {
 					if (event.getLootingLevel() > 7) {
 						if (0.25 > entity.getRandom().nextDouble()) {
-							event.getDrops().add(new ItemEntity(witherBoss.level(), witherBoss.getX(), witherBoss.getY(), witherBoss.getZ(), new ItemStack(CAItems.DESIRE_ETCHING.get())));
+							event.getDrops().add(new ItemEntity(witherBoss.level(),
+									witherBoss.getX(), witherBoss.getY(), witherBoss.getZ(),
+									new ItemStack(CAItems.DESIRE_ETCHING.get())));
 						}
 					}
 				}
@@ -77,21 +82,25 @@ public class MaterialHandler {
 		Entity attacker = source.getEntity();
 
 		if (attacker instanceof Player player) {
-			CompoundTag data = player.getPersistentData();
-			if (data.getBoolean("the_next")) {
-
-				if (entity instanceof Vex vex) {
-					if (0.03 > entity.getRandom().nextDouble()) {
-						vex.spawnAtLocation(CAItems.DEMON_CURSE.get());
+			if (CurioUtils.isCsOn(player)) {
+				if (entity instanceof Monster monster) {
+					if (0.02 > monster.getRandom().nextDouble()) {
+						monster.spawnAtLocation(CCItems.THE_END_DUST.get());
 					}
 				}
-			}
 
-			if (entity instanceof WitherBoss witherBoss) {
-				if (!data.getBoolean("the_next")) {
-					data.putBoolean("the_next", true);
+				if (EntityUtils.getHarmfulEffect(player) > 9) {
+					if (entity instanceof Warden warden) {
+						if (0.75 > entity.getRandom().nextDouble()) {
+							warden.spawnAtLocation(CAItems.END_ETCHING.get());
+						}
+					}
 				}
-
+				if (entity.getMaxHealth() > CAModConfig.COMMON.curse.etchingOfLifeDropCondition.get()) {
+					if (0.15 > entity.getRandom().nextDouble()) {
+						entity.spawnAtLocation(CAItems.ETCHING_OF_LIFE.get());
+					}
+				}
 			}
 
 			if (entity instanceof Villager villager) {
@@ -108,20 +117,11 @@ public class MaterialHandler {
 				}
 			}
 
-			if (CurioUtils.isCsOn(player)) {
-				if (EntityUtils.getHarmfulEffect(player) > 9) {
-					if (entity instanceof Warden warden) {
-						if (0.75 > entity.getRandom().nextDouble()) {
-							warden.spawnAtLocation(CAItems.END_ETCHING.get());
-						}
-					}
-				}
-			}
-
-			if (CurioUtils.isCsOn(player)) {
-				if (entity.getMaxHealth() > CAModConfig.COMMON.curse.etchingOfLifeDropCondition.get()) {
-					if (0.15 > entity.getRandom().nextDouble()) {
-						entity.spawnAtLocation(CAItems.ETCHING_OF_LIFE.get());
+			var data = PlayerFlagData.HOLDER.get(player);
+			if (data.hasFlag(CCGeneralEventHandler.NETHER_STAGE)) {
+				if (entity instanceof Vex vex) {
+					if (CAAttackToken.chance(entity, 0.03)) {
+						vex.spawnAtLocation(CAItems.DEMON_CURSE.get());
 					}
 				}
 			}

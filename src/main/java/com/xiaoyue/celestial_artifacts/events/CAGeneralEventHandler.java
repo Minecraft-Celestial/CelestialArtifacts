@@ -24,17 +24,9 @@ public class CAGeneralEventHandler {
 
 	@SubscribeEvent
 	public static void onLivingDeath(LivingDeathEvent event) {
-		LivingEntity entity = event.getEntity();
 		DamageSource source = event.getSource();
 		Entity attacker = source.getEntity();
 		if (attacker instanceof Player player) {
-			if (CurioUtils.isCsOn(player)) {
-				if (entity instanceof Monster monster) {
-					if (0.02 > monster.getRandom().nextDouble()) {
-						monster.spawnAtLocation(CCItems.THE_END_DUST.get());
-					}
-				}
-			}
 			CAAttackListener.fireEvent(player, t -> t.onPlayerKill(player, event));
 		}
 	}

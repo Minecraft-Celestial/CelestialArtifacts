@@ -30,7 +30,7 @@ import java.util.List;
 import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class CuriosHandler {
+public class MiscCuriosHandler {
 
 	@SubscribeEvent
 	public static void onArrowHit(ProjectileImpactEvent event) {
