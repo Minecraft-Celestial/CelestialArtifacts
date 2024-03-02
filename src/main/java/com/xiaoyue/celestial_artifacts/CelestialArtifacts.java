@@ -6,16 +6,13 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.data.CARecipeGen;
-import com.xiaoyue.celestial_artifacts.events.AttackMain;
 import com.xiaoyue.celestial_artifacts.events.CAAttackListener;
-import com.xiaoyue.celestial_artifacts.events.OtherMain;
 import com.xiaoyue.celestial_artifacts.network.CMessages;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -36,10 +33,7 @@ public class CelestialArtifacts {
 		CAItems.register();
 		CurioCacheCap.register();
 		CAModConfig.init();
-		MinecraftForge.EVENT_BUS.register(new AttackMain());//TODO remove
-		MinecraftForge.EVENT_BUS.register(new OtherMain());//TODO remove
 		AttackEventHandler.register(3460, new CAAttackListener());
-		AttackEventHandler.register(4500, new AttackMain());//TODO remove
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CALang::addLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CARecipeGen::onRecipeGen);
 	}

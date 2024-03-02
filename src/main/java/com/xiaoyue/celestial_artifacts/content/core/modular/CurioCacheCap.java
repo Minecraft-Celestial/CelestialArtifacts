@@ -3,6 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.core.modular;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureMap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
+import com.xiaoyue.celestial_artifacts.content.core.feature.IFeature;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
@@ -76,7 +77,7 @@ public class CurioCacheCap extends PlayerCapabilityTemplate<CurioCacheCap> {
 
 	}
 
-	public <T> Iterable<T> getFeature(FeatureType<T> type) {
+	public <T extends IFeature> Iterable<T> getFeature(FeatureType<T> type) {
 		refresh();
 		return features.get(type);
 	}

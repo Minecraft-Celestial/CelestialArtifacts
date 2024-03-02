@@ -2,7 +2,6 @@ package com.xiaoyue.celestial_artifacts.events;
 
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
-import com.xiaoyue.celestial_artifacts.content.old.generic.intf.GetCurioShield;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCItems;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,10 +16,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
-
-import java.util.List;
 
 import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 

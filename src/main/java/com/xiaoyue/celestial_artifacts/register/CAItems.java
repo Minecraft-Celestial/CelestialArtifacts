@@ -46,10 +46,6 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
-import com.xiaoyue.celestial_artifacts.content.old.curios.charm.AbyssWillBadge;
-import com.xiaoyue.celestial_artifacts.content.old.curios.charm.KnightShelter;
-import com.xiaoyue.celestial_artifacts.content.old.curios.charm.SacrificialObject;
-import com.xiaoyue.celestial_artifacts.content.old.curios.charm.SolarMagnet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
@@ -73,10 +69,7 @@ import top.theillusivec4.curios.Curios;
 
 import java.util.List;
 
-@SuppressWarnings("unused")//TODO remove to check loot gen
 public class CAItems {
-
-	// 6 + 21 + 3 + 6 = 36
 
 	public static final ItemEntry<Item> GOLD_RING, AMETHYST_RING, DIAMOND_RING, EMERALD_RING, FLIGHT_RING, NETHERITE_RING, RING_OF_LIFE, THUNDER_RING, NETHER_FIRE, FREEZE_RING;
 	public static final ItemEntry<Item> WAR_DEAD_BADGE, UNDEAD_CHARM, DESTROYER_BADGE, TWISTED_BRAIN, CORRUPT_BADGE,
@@ -153,7 +146,7 @@ public class CAItems {
 			DESTROYER_BADGE = charm("destroyer_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
 							AttrFacet.add(() -> Attributes.ATTACK_DAMAGE, () -> 0.4),
-							AttrFacet.multBase(L2DamageTracker.REDUCTION, () -> 0.5),
+							AttrFacet.multTotal(L2DamageTracker.REDUCTION, () -> 0.5),
 							SimpleListener.hurtBonus(
 									() -> CALang.Condition.LOW_HEALTH.get(TextFacet.perc(0.5)),
 									(p, t, c) -> p.getHealth() <= 0.5 * p.getMaxHealth(),
@@ -210,12 +203,19 @@ public class CAItems {
 							AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.9),
 							new TokenFacet<>("demon_curse", DemonCurse::new)));
 			// 骑士庇护
-			KNIGHT_SHELTER = charm("knight_shelter", KnightShelter::new);//TODO
+			KNIGHT_SHELTER = charm("knight_shelter", () -> ModularCurio.builder().rarity(Rarity.UNCOMMON)
+					.build(
+							AttrFacet.add(() -> Attributes.ARMOR, () -> 8),
+							AttrFacet.add(L2DamageTracker.ABSORB, () -> 4),
+							new KnightShelter()));
 			// 魂灵匣
 			SOUL_BOX = charm("soul_box", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(new SoulBox()));
 			// 太阳磁铁
-			SOLAR_MAGNET = charm("solar_magnet", SolarMagnet::new);//TODO
+			SOLAR_MAGNET = charm("solar_magnet", () -> ModularCurio.builder().rarity(Rarity.RARE)
+					.build(new SolarMagnet(), SimpleListener.hurtBonus(
+							CALang.Condition.DAY::get, (p, t, c) -> p.level().isDay(), () -> 0.25
+					)));
 			// 暴食徽章
 			GLUTTONY_BADGE = charm("gluttony_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
@@ -227,7 +227,9 @@ public class CAItems {
 			MAGIC_HORSESHOE = charm("magic_horseshoe", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
 							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.25),
-							AttrFacet.add(() -> Attributes.LUCK, () -> 1)
+							AttrFacet.add(() -> Attributes.LUCK, () -> 1),
+							SimpleListener.protectType(CALang.DamageType.FALL::get,
+									e -> e.is(DamageTypes.FALL), () -> 0.95)
 					));
 
 			// 生息胸花
@@ -238,7 +240,8 @@ public class CAItems {
 							EffectFacet.of(() -> MobEffects.REGENERATION, 2, 1)
 					));
 			// 深渊意志徽章
-			ABYSS_WILL_BADGE = charm("abyss_will_badge", AbyssWillBadge::new);//TODO
+			ABYSS_WILL_BADGE = charm("abyss_will_badge", () -> ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA)
+					.build(AbyssWillBadge.TOKEN));
 			// 金沙护符
 			SANDS_TALISMAN = charm("sands_talisman", () ->
 					ModularCurio.builder().loot(1).build(
@@ -249,7 +252,9 @@ public class CAItems {
 							XpBonusFeature.simple(0.5)
 					));
 			// 古代殉葬品
-			SACRIFICIAL_OBJECT = charm("sacrificial_object", SacrificialObject::new);//TODO
+			SACRIFICIAL_OBJECT = charm("sacrificial_object", () -> ModularCurio.builder().rarity(Rarity.EPIC)
+					.loot(1).build(AttrFacet.multTotal(L2DamageTracker.REDUCTION, () -> -0.05),
+							new SacrificialObject()));
 		}
 
 		// heart

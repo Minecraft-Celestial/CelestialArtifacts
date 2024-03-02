@@ -9,18 +9,18 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public class EvilEye implements SingleLineText, TickFacet {
-    @Override
-    public MutableComponent getLine() {
-        return Component.translatable("tooltip.celestial_artifacts.evil_eye.shift1");
-    }
+	@Override
+	public MutableComponent getLine() {
+		return Component.translatable("tooltip.celestial_artifacts.evil_eye.shift1");
+	}
 
-    @Override
-    public void tick(LivingEntity player, ItemStack stack) {
-        if (player.hasEffect(MobEffects.DARKNESS)) {
-            player.removeEffect(MobEffects.DARKNESS);
-        } else if (player.hasEffect(MobEffects.BLINDNESS)) {
-            player.removeEffect(MobEffects.BLINDNESS);
-        }
-    }
+	@Override
+	public void tick(LivingEntity player, ItemStack stack) {
+		if (player.hasEffect(MobEffects.DARKNESS)) {
+			player.removeEffect(MobEffects.DARKNESS);
+		} else if (player.hasEffect(MobEffects.BLINDNESS)) {
+			player.removeEffect(MobEffects.BLINDNESS);
+		}
+	}
 
 }

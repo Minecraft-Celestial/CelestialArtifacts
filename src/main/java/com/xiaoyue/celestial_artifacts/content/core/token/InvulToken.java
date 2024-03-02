@@ -4,7 +4,6 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 

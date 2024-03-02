@@ -147,8 +147,6 @@
 
   "item.celestial_artifacts.solar_magnet": "太阳磁铁",
   "tooltip.celestial_artifacts.solar_magnet.shift1": "§e· 所处世界为白天时免疫燃烧",
-  "tooltip.celestial_artifacts.solar_magnet.shift2": "§e· 攻击后使最近的攻击目标陷入燃烧，冷却2.5秒",
-  "tooltip.celestial_artifacts.solar_magnet.shift3": "§e· 所处世界为白天时对亡灵生物伤害提高 §625%",
   "tooltip.celestial_artifacts.solar_magnet.shift4": "§e· 吸引周围的物品",
 
   "item.celestial_artifacts.gluttony_badge": "暴食徽章",

@@ -1,7 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.core.token;
 
 import com.xiaoyue.celestial_artifacts.content.core.feature.IFeature;
-import com.xiaoyue.celestial_artifacts.content.core.modular.IFacet;
 import com.xiaoyue.celestial_core.utils.LevelUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;

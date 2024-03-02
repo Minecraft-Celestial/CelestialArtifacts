@@ -1,16 +1,10 @@
 package com.xiaoyue.celestial_artifacts.utils;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
-import com.xiaoyue.celestial_artifacts.content.old.generic.AttackICurio;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.UseAnim;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CurioUtils {
 
@@ -33,15 +27,6 @@ public class CurioUtils {
 		if (hasCurio(player, CAItems.ORIGIN_ETCHING.get())) total--;
 		if (hasCurio(player, CAItems.NIHILITY_ETCHING.get())) total--;
 		return total;
-	}
-
-	public static List<SlotResult> getACResult(Player player) {
-		List<SlotResult> list = new ArrayList<SlotResult>();
-		CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-			List<SlotResult> curios = handler.findCurios(itemStack -> itemStack.getItem() instanceof AttackICurio);
-			list.addAll(curios);
-		});
-		return list;
 	}
 
 	public static boolean hasCurio(Player player, Item... item) {

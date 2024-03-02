@@ -1,16 +1,11 @@
 package com.xiaoyue.celestial_artifacts.network;
 
-import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
-import com.xiaoyue.celestial_artifacts.content.old.generic.intf.GetCurioSkill;
+import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class CAbilityPacket {
@@ -35,15 +30,6 @@ public class CAbilityPacket {
 			for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.SKILL)) {
 				e.trigger(player);
 			}
-
-			ServerLevel level = player.serverLevel();
-			CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-				List<SlotResult> curios = handler.findCurios(itemStack -> itemStack.getItem() instanceof GetCurioSkill);
-				for (SlotResult result : curios) {
-					GetCurioSkill curio = (GetCurioSkill) result.stack().getItem();
-					curio.getCurioSkill(level, player, result.slotContext());
-				}
-			});
 		});
 		return true;
 	}

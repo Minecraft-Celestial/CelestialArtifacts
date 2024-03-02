@@ -1,7 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.head;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
-import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_core.utils.EntityUtils;

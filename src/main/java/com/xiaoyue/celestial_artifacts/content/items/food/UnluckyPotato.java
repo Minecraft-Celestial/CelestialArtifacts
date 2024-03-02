@@ -17,35 +17,35 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
 public class UnluckyPotato extends Item {
-    public UnluckyPotato() {
-        super(new Item.Properties().rarity(Rarity.UNCOMMON).food(
-                new FoodProperties.Builder().nutrition(3).build()));
-    }
+	public UnluckyPotato() {
+		super(new Item.Properties().rarity(Rarity.UNCOMMON).food(
+				new FoodProperties.Builder().nutrition(3).build()));
+	}
 
-    @Override
-    public int getUseDuration(ItemStack itemStack) {
-        return 32;
-    }
+	@Override
+	public int getUseDuration(ItemStack itemStack) {
+		return 32;
+	}
 
-    @Override
-    public UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.EAT;
-    }
+	@Override
+	public UseAnim getUseAnimation(ItemStack itemStack) {
+		return UseAnim.EAT;
+	}
 
-    @Override
-    public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
-        if (livingEntity instanceof Player player) {
-            if (LevelUtils.isServerLevel(player.level())) {
-                EntityUtils.addEct(player, MobEffects.UNLUCK, 200 ,2);
-            }
-            player.awardStat(Stats.ITEM_USED.get(this));
-        }
-        return itemStack;
-    }
+	@Override
+	public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
+		if (livingEntity instanceof Player player) {
+			if (LevelUtils.isServerLevel(player.level())) {
+				EntityUtils.addEct(player, MobEffects.UNLUCK, 200, 2);
+			}
+			player.awardStat(Stats.ITEM_USED.get(this));
+		}
+		return itemStack;
+	}
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        player.startUsingItem(hand);
-        return new InteractionResultHolder<>(InteractionResult.CONSUME, player.getItemInHand(hand));
-    }
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		player.startUsingItem(hand);
+		return new InteractionResultHolder<>(InteractionResult.CONSUME, player.getItemInHand(hand));
+	}
 }

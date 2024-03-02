@@ -1,7 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.core.feature;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
-import com.xiaoyue.celestial_artifacts.content.core.modular.IFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import net.minecraft.network.chat.MutableComponent;

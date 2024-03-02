@@ -97,6 +97,7 @@ public class CALang {
 	public enum Condition implements Info {
 		PLAYER_WET("When player is in water or rain:", 0),
 		NIGHT("At Night:", 0),
+		DAY("At Day:", 0),
 		HOT_REGION("When in hot biomes:", 0),
 		ATTACK_BEHIND("When attacking from behind:", 0),
 		TARGET_HAS_ARMOR("When target has armor:", 0),
@@ -123,7 +124,7 @@ public class CALang {
 	public enum DamageType implements Info {
 		MAGIC("magic", 0),
 		FIRE("fire", 0),
-		;
+		FALL("fall", 0);
 
 		final Entry entry;
 

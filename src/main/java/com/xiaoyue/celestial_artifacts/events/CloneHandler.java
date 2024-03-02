@@ -23,63 +23,63 @@ import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CloneHandler {
 
-    @SubscribeEvent
-    public static void onPlayerClone(PlayerEvent.Clone event) {
-        Player original = event.getOriginal();
-        Player player = event.getEntity();
-        CompoundTag data = original.getPersistentData();
-        CompoundTag newData = player.getPersistentData();
+	@SubscribeEvent
+	public static void onPlayerClone(PlayerEvent.Clone event) {
+		Player original = event.getOriginal();
+		Player player = event.getEntity();
+		CompoundTag data = original.getPersistentData();
+		CompoundTag newData = player.getPersistentData();
 
-        if (data.getBoolean("hello_world")) {
-            newData.putBoolean("hello_world", true);
-        }
+		if (data.getBoolean("hello_world")) {
+			newData.putBoolean("hello_world", true);
+		}
 
-        if (data.getBoolean("cs")) {
-            newData.putBoolean("cs", true);
-        }
-    }
+		if (data.getBoolean("cs")) {
+			newData.putBoolean("cs", true);
+		}
+	}
 
-    @SubscribeEvent
-    public static void onPlayerJoin(EntityJoinLevelEvent event) {
-        if (event.getEntity() instanceof Player player) {
-            if (LevelUtils.isServerLevel(player.level())) {
-                CompoundTag data = player.getPersistentData();
-                if (!data.getBoolean("hello_world")) {
-                    player.addItem(new ItemStack(CAItems.HEIRLOOM_NECKLACE.get()));
-                    if (!CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
-                        player.addItem(new ItemStack(CAItems.CATASTROPHE_SCROLL.get()));
-                    }
-                    data.putBoolean("hello_world", true);
-                }
-            }
-        }
-    }
+	@SubscribeEvent
+	public static void onPlayerJoin(EntityJoinLevelEvent event) {
+		if (event.getEntity() instanceof Player player) {
+			if (LevelUtils.isServerLevel(player.level())) {
+				CompoundTag data = player.getPersistentData();
+				if (!data.getBoolean("hello_world")) {
+					player.addItem(new ItemStack(CAItems.HEIRLOOM_NECKLACE.get()));
+					if (!CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
+						player.addItem(new ItemStack(CAItems.CATASTROPHE_SCROLL.get()));
+					}
+					data.putBoolean("hello_world", true);
+				}
+			}
+		}
+	}
 
-    @SubscribeEvent
-    public static void onPlayerLogged(PlayerEvent.PlayerLoggedInEvent event) {
-        if (CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
-            Player player = event.getEntity();
-            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                for (Map.Entry<String, ICurioStacksHandler> map : curios.entrySet()) {
-                    IDynamicStackHandler stacks = map.getValue().getStacks();
-                    for (int i = 0; i < stacks.getSlots(); i++) {
-                        ItemStack stack = stacks.getStackInSlot(i);
-                        if (stack.isEmpty()) {
-                            if (!CurioUtils.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
-                                if (!player.getPersistentData().getBoolean("cs")) {
-                                    for (ISlotType value : CuriosApi.getSlots().values()) {
-                                        if (value.getIdentifier().contains("c_charm")) {
-                                            handler.setEquippedCurio("c_charm", i, CAItems.CATASTROPHE_SCROLL.get().getDefaultInstance());
-                                            player.getPersistentData().putBoolean("cs", true);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-    }
+	@SubscribeEvent
+	public static void onPlayerLogged(PlayerEvent.PlayerLoggedInEvent event) {
+		if (CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
+			Player player = event.getEntity();
+			CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+				Map<String, ICurioStacksHandler> curios = handler.getCurios();
+				for (Map.Entry<String, ICurioStacksHandler> map : curios.entrySet()) {
+					IDynamicStackHandler stacks = map.getValue().getStacks();
+					for (int i = 0; i < stacks.getSlots(); i++) {
+						ItemStack stack = stacks.getStackInSlot(i);
+						if (stack.isEmpty()) {
+							if (!CurioUtils.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
+								if (!player.getPersistentData().getBoolean("cs")) {
+									for (ISlotType value : CuriosApi.getSlots().values()) {
+										if (value.getIdentifier().contains("c_charm")) {
+											handler.setEquippedCurio("c_charm", i, CAItems.CATASTROPHE_SCROLL.get().getDefaultInstance());
+											player.getPersistentData().putBoolean("cs", true);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+		}
+	}
 }

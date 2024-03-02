@@ -1,5 +1,6 @@
 package com.xiaoyue.celestial_artifacts.events;
 
+import com.xiaoyue.celestial_artifacts.content.curios.charm.SacrificialObject;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -46,17 +47,6 @@ public class CuriosHandler {
 	}
 
 	@SubscribeEvent
-	public static void onLivingFall(LivingFallEvent event) {
-		LivingEntity entity = event.getEntity();
-		if (entity instanceof Player player) {
-			// 魔法马掌
-			if (CurioUtils.hasCurio(player, CAItems.MAGIC_HORSESHOE.get())) {
-				event.setDamageMultiplier(event.getDamageMultiplier() * 0.05f);
-			}
-		}
-	}
-
-	@SubscribeEvent
 	public static void onAddedEffect(MobEffectEvent.Added event) {
 		MobEffectInstance instance = event.getEffectInstance();
 		if (event.getEntity() instanceof Player player) {
@@ -94,7 +84,7 @@ public class CuriosHandler {
 		ItemStack itemStack = event.getItem();
 		LivingEntity entity = event.getEntity();
 		if (entity instanceof Player player) {
-			// 精灵手环
+			// 精灵手环 TODO works?
 			if (CurioUtils.hasCurio(player, CAItems.SPIRIT_BRACELET.get())) {
 				if (CurioUtils.isRangeUseAnim(itemStack.getUseAnimation())) {
 					event.setDuration((int) (event.getDuration() * 0.75f));
@@ -118,15 +108,6 @@ public class CuriosHandler {
 	}
 
 	@SubscribeEvent
-	public static void onEnderManAnger(EnderManAngerEvent event) {
-		Player player = event.getPlayer();
-		// 末影庇佑者
-		if (CurioUtils.hasCurio(player, CAItems.ENDER_PROTECTOR.get())) {
-			event.setCanceled(true);
-		}
-	}
-
-	@SubscribeEvent
 	public static void onSpawnPhantom(PlayerSpawnPhantomsEvent event) {
 		Player player = event.getEntity();
 		// 怨影吊坠
@@ -138,7 +119,7 @@ public class CuriosHandler {
 	@SubscribeEvent
 	public static void onSpawnEntity(MobSpawnEvent.FinalizeSpawn event) {
 		Mob entity = event.getEntity();
-		// 扭曲卷轴
+		// 扭曲卷轴 TODO
 		if (LevelUtils.isServerLevel(entity.level()) && entity instanceof Monster) {
 			List<Player> entities = entity.level().getEntitiesOfClass(Player.class, EntityUtils.getAABB(entity, 6, 2));
 			for (Player list : entities) {
@@ -160,4 +141,14 @@ public class CuriosHandler {
 			EntityUtils.addEct(entity, MobEffects.REGENERATION, 300, 0);
 		}
 	}
+
+	@SubscribeEvent
+	public static void onLivingDeath(LivingDeathEvent event) {
+		if (event.getEntity() instanceof Player player) {
+			if (CurioUtils.hasCurio(player, CAItems.SACRIFICIAL_OBJECT.get())) {
+				SacrificialObject.onPlayerDeath(player);
+			}
+		}
+	}
+
 }

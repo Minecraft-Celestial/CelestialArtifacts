@@ -11,11 +11,11 @@ public class FeatureMap {
 	private final HashMap<FeatureType<?>, List<?>> map = new HashMap<>();
 	private boolean empty = false;
 
-	public <T> List<T> get(FeatureType<T> type) {
+	public <T extends IFeature> List<T> get(FeatureType<T> type) {
 		return Wrappers.cast(map.computeIfAbsent(type, t -> new ArrayList<>()));
 	}
 
-	public <T> void add(FeatureType<T> type, T val) {
+	public <T extends IFeature> void add(FeatureType<T> type, T val) {
 		get(type).add(val);
 		empty = false;
 	}
@@ -42,7 +42,7 @@ public class FeatureMap {
 		empty = false;
 	}
 
-	private <T> void merge(FeatureType<T> type, FeatureMap features) {
+	private <T extends IFeature> void merge(FeatureType<T> type, FeatureMap features) {
 		get(type).addAll(features.get(type));
 	}
 
