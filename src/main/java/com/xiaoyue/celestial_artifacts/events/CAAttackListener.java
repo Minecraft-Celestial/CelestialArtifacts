@@ -1,12 +1,12 @@
 package com.xiaoyue.celestial_artifacts.events;
 
-import com.xiaoyue.celestial_artifacts.content.curios.core.CurioCacheCap;
-import com.xiaoyue.celestial_artifacts.content.curios.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
+import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -16,20 +16,15 @@ import java.util.function.Predicate;
 public class CAAttackListener implements AttackListener {
 
 	public static void fireEvent(Player player, Consumer<CAAttackToken> cons) {
-		for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-			if (e instanceof CAAttackToken token) {
-				cons.accept(token);
-			}
+		for (var token : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.ATK)) {
+			cons.accept(token);
 		}
-		//var list = CurioCacheCap.HOLDER.get(player).getSimpleAttack();
 	}
 
 	public static boolean fireEventCancellable(Player player, Predicate<CAAttackToken> cons) {
-		for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-			if (e instanceof CAAttackToken token) {
-				if (cons.test(token)) {
-					return true;
-				}
+		for (var token : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.ATK)) {
+			if (cons.test(token)) {
+				return true;
 			}
 		}
 		return false;

@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "celestial_artifacts.refmap.json",
   "mixins": [
-    "MixinEnchTable"
+	"AbstractArrowAccessor",
+	"MixinEnchTable"
   ],
   "minVersion": "0.8"
 }

@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts;
 
-import com.xiaoyue.celestial_artifacts.register.Keymapping;
+import com.xiaoyue.celestial_artifacts.register.CAKeyMapping;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,6 +11,6 @@ public class CArtifactsClient {
 
 	@SubscribeEvent
 	public static void keyRegister(RegisterKeyMappingsEvent event) {
-		event.register(Keymapping.ABILITY_KEY);
+		event.register(CAKeyMapping.ABILITY_KEY);
 	}
 }

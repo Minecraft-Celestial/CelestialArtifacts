@@ -53,7 +53,6 @@
 
   "item.celestial_artifacts.destroyer_badge": "毁灭者徽章",
   "tooltip.celestial_artifacts.destroyer_badge.shift1": "§e· 受到伤害提高 §650%",
-  "tooltip.celestial_artifacts.destroyer_badge.shift2": "§e· 攻击伤害提高 §640%",
   "tooltip.celestial_artifacts.destroyer_badge.shift3": "§e· 生命低于最大生命的§650%§e时，星月暴伤提高§620%",
 
   "item.celestial_artifacts.heart_of_revenge": "复仇之心",
@@ -91,7 +90,6 @@
   "tooltip.celestial_artifacts.corrupt_badge.shift10": "§5· 攻击伤害: %1$s",
 
   "item.celestial_artifacts.cursed_protector": "受诅咒的坚盾",
-  "tooltip.celestial_artifacts.cursed_protector.shift1": "§5· 击退抗性提高 §d100%",
   "tooltip.celestial_artifacts.cursed_protector.shift2": "§5· 受到的正面伤害降低 §d30%",
   "tooltip.celestial_artifacts.cursed_protector.shift3": "§5· 副手装备的盾牌不会再进入冷却",
   "tooltip.celestial_artifacts.cursed_protector.shift4": "§5· 受到伤害大于当前生命的§d%1$s§5时，伤害降低§d%2$s",
@@ -99,7 +97,7 @@
   "item.celestial_artifacts.cursed_totem": "被咒者的图腾",
   "tooltip.celestial_artifacts.cursed_totem.shift1": "§5· 使用不死图腾时给予最近的攻击者§d凋零§5效果",
   "tooltip.celestial_artifacts.cursed_totem.shift2": "§5· 受到非致命伤害时会积攒1层[怨念]，上限§d5§5层",
-  "tooltip.celestial_artifacts.cursed_totem.shift3": "§5· 受到§d致命伤害§5时若最近的攻击者没死，则消耗1层[怨念]并规避该伤害",
+  "tooltip.celestial_artifacts.cursed_totem.shift3": "§5· 受到§d致命伤害§5时，则消耗1层[怨念]并规避该伤害",
   "tooltip.celestial_artifacts.cursed_totem.shift4": "§5· 当前已积攒的[怨念]: %1$s",
 
   "item.celestial_artifacts.holy_talisman": "神圣七彩护符",
@@ -128,10 +126,9 @@
   "tooltip.celestial_artifacts.angel_pearl.shift7": "§e· 护甲值: %1$s",
 
   "item.celestial_artifacts.demon_curse": "大恶魔之咒",
-  "tooltip.celestial_artifacts.demon_curse.shift1": "§5· 受治疗量降低 §d90%",
   "tooltip.celestial_artifacts.demon_curse.shift2": "§5· 每§d1%§5治疗力",
-  "tooltip.celestial_artifacts.demon_curse.shift3": "§5· 攻击伤害提高 §d2%",
-  "tooltip.celestial_artifacts.demon_curse.shift4": "§5· 移动速度提高 §d1%",
+  "tooltip.celestial_artifacts.demon_curse.shift3": "§5· 攻击伤害提高 §d20%",
+  "tooltip.celestial_artifacts.demon_curse.shift4": "§5· 移动速度提高 §d10%",
   "tooltip.celestial_artifacts.demon_curse.shift5": "§5· 当前提供的属性加成",
   "tooltip.celestial_artifacts.demon_curse.shift6": "§5· 攻击伤害: %1$s",
   "tooltip.celestial_artifacts.demon_curse.shift7": "§5· 移动速度: %1$s",
@@ -150,8 +147,6 @@
 
   "item.celestial_artifacts.solar_magnet": "太阳磁铁",
   "tooltip.celestial_artifacts.solar_magnet.shift1": "§e· 所处世界为白天时免疫燃烧",
-  "tooltip.celestial_artifacts.solar_magnet.shift2": "§e· 攻击后使最近的攻击目标陷入燃烧，冷却2.5秒",
-  "tooltip.celestial_artifacts.solar_magnet.shift3": "§e· 所处世界为白天时对亡灵生物伤害提高 §625%",
   "tooltip.celestial_artifacts.solar_magnet.shift4": "§e· 吸引周围的物品",
 
   "item.celestial_artifacts.gluttony_badge": "暴食徽章",
@@ -203,11 +198,10 @@
   "tooltip.celestial_artifacts.demon_heart.shift6": "§5· 背负大于等于§d5§5条诅咒时，免疫缓慢与虚弱效果",
 
   "item.celestial_artifacts.traveler_scroll": "旅行者卷轴",
-  "tooltip.celestial_artifacts.traveler_scroll.shift1": "§e· 提高§625%§e移动速度，§625%§e飞行速度，§625%§e游泳速度",
   "tooltip.celestial_artifacts.traveler_scroll.shift2": "§e· 每次进入新的维度时将获得速度与生命恢复效果",
 
   "item.celestial_artifacts.sea_god_scroll": "海神卷轴",
-  "tooltip.celestial_artifacts.sea_god_scroll.shift1": "§e· 处于水下或雨天时持续获得力量与抗性提升效果",
+  "tooltip.celestial_artifacts.sea_god_scroll.shift1": "§e· 持续获得力量与抗性提升效果",
   "tooltip.celestial_artifacts.sea_god_scroll.shift2": "§e· 处于水下时挖掘速度不会再受到影响",
 
   "item.celestial_artifacts.skywalker_scroll": "传送卷轴",
@@ -228,7 +222,6 @@
   "tooltip.celestial_artifacts.emerald_bracelet.shift3": "§2· 受到伤害有§a50%§2概率获得§a伤害吸收§2效果",
 
   "item.celestial_artifacts.life_bracelet": "生命手环",
-  "tooltip.celestial_artifacts.life_bracelet.shift1": "§e· 提高§615%§e治疗力",
   "tooltip.celestial_artifacts.life_bracelet.shift2": "§e· 缓慢的持续恢复生命值",
 
   "item.celestial_artifacts.precious_bracelet": "珍钻手环",
@@ -275,10 +268,10 @@
 
   "item.celestial_artifacts.star_necklace": "星星项链",
   "tooltip.celestial_artifacts.star_necklace.shift1": "§e· 处于夜晚时持续获得抗性提升效果",
-  "tooltip.celestial_artifacts.star_necklace.shift2": "§e· 从背后攻击目标时提高§640%§e攻击伤害",
+  "tooltip.celestial_artifacts.star_necklace.shift2": "§e· 提高§640%§e攻击伤害",
 
   "item.celestial_artifacts.cross_necklace": "十字项链",
-  "tooltip.celestial_artifacts.cross_necklace.shift1": "§e· 将受到攻击后的无敌时间提升至§68§e",
+  "tooltip.celestial_artifacts.cross_necklace.shift1": "§e· 将受到攻击后的无敌时间提升§68§e",
 
   "item.celestial_artifacts.gallop_necklace": "疾行项链",
   "tooltip.celestial_artifacts.gallop_necklace.shift1": "§e· 增加§60.08§e点移动速度",
@@ -295,7 +288,7 @@
   "tooltip.celestial_artifacts.precious_necklace.shift3": "§e· 提高§620%§e星月暴伤",
   
   "item.celestial_artifacts.holy_necklace": "神圣项链",
-  "tooltip.celestial_artifacts.holy_necklace.shift1": "§e· 将受到攻击后的无敌时间提升至§610§e",
+  "tooltip.celestial_artifacts.holy_necklace.shift1": "§e· 将受到攻击后的无敌时间提升§610§e",
   "tooltip.celestial_artifacts.holy_necklace.shift2": "§e· 每次受到治疗后获得抗性提升效果，冷却3秒",
   "tooltip.celestial_artifacts.holy_necklace.shift3": "§e· 增加§64§e点最大生命",
   
@@ -324,35 +317,19 @@
   "tooltip.celestial_artifacts.lock_of_abyss.shift4": "§3· 移除该效果并对目标造成原伤害§b250%§3的§b虚空伤害",
   
   "item.celestial_artifacts.spirit_necklace": "精灵项链",
-  "tooltip.celestial_artifacts.spirit_necklace.shift1": "§2· 每过§a5§2秒，使下一次射出的箭矢伤害提高§a25%",
-  "tooltip.celestial_artifacts.spirit_necklace.shift2": "§2· 受到伤害后获得移动速度提升效果，持续5秒",
   
   "item.celestial_artifacts.magic_arrow_bag": "魔法箭袋",
-  "tooltip.celestial_artifacts.magic_arrow_bag.shift1": "§e· 提高§610%§e箭矢伤害与§68%§e箭矢击退",
   
   "item.celestial_artifacts.flame_arrow_bag": "火焰箭袋",
-  "tooltip.celestial_artifacts.flame_arrow_bag.shift1": "§e· 提高§612%§e箭矢伤害与§610%§e箭矢击退",
   "tooltip.celestial_artifacts.flame_arrow_bag.shift2": "§e· 发射的箭矢命中目标后将使目标燃烧",
   
   "item.celestial_artifacts.spirit_arrow_bag": "精灵箭袋",
-  "tooltip.celestial_artifacts.spirit_arrow_bag.shift1": "§e· 提高§618%§e箭矢伤害与箭矢击退",
-  "tooltip.celestial_artifacts.spirit_arrow_bag.shift2": "§e· cs_is_chaotic§650%",
   
   "item.celestial_artifacts.iron_scabbard": "铁剑鞘",
-  "tooltip.celestial_artifacts.iron_scabbard.shift1": "§e· 每5秒获得2秒力量效果",
   
   "item.celestial_artifacts.leech_scabbard": "水蛭剑鞘",
-  "tooltip.celestial_artifacts.leech_scabbard.shift1": "§e· 每5秒获得2秒剑刃强化效果",
-  "tooltip.celestial_artifacts.leech_scabbard.shift2": "§e· 拥有剑刃强化效果时攻击造成伤害的§625%§e将用于治疗",
-  
   "item.celestial_artifacts.titan_scabbard": "泰坦剑鞘",
-  "tooltip.celestial_artifacts.titan_scabbard.shift1": "§e· 每10秒获得3秒剑刃强化效果",
-  "tooltip.celestial_artifacts.titan_scabbard.shift2": "§e· 拥有剑刃强化效果时攻击大于自身最大生命的目标提高§675%§e攻击伤害",
-  
   "item.celestial_artifacts.twisted_scabbard": "扭曲剑鞘",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift1": "§5· 攻击速度与击退提高 §d25%",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift2": "§5· 每§d5§5秒获得3秒剑刃强化",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift3": "§5· 治疗力降低 §d50%",
   "tooltip.celestial_artifacts.twisted_scabbard.shift4": "§5· 每次杀死生物都会积攒§d1§5层§d[扭曲附着]",
   "tooltip.celestial_artifacts.twisted_scabbard.shift5": "§5· 每§d5§5秒流失1层[扭曲附着]",
   "tooltip.celestial_artifacts.twisted_scabbard.shift6": "§5· 每层[扭曲附着]提高§d5%§5近战伤害",
@@ -360,9 +337,7 @@
   "tooltip.celestial_artifacts.twisted_scabbard.shift8": "§5· 当前已积攒的[扭曲附着]: %1$s",
 
   "item.celestial_artifacts.sea_god_crown": "海神王冠",
-  "tooltip.celestial_artifacts.sea_god_crown.shift1": "§e· 主动效果:",
-  "tooltip.celestial_artifacts.sea_god_crown.shift2": "§e· 所处世界处于非雨天时将天气改为雨天，冷却300秒",
-  "tooltip.celestial_artifacts.sea_god_crown.shift3": "§e· 处于水下或雨天时持续获得夜视与水下呼吸效果",
+  "tooltip.celestial_artifacts.sea_god_crown.shift1": "§e· 主动效果: 所处世界处于非雨天时将天气改为雨天，冷却300秒",
   
   "item.celestial_artifacts.prayer_crown": "祷告者冠冕",
   "tooltip.celestial_artifacts.prayer_crown.shift1": "§e· 将受到攻击后的无敌时间提升至§610§e",
@@ -432,15 +407,13 @@
   "tooltip.celestial_artifacts.cs_has_life.shift1": "§e· 提高§620.0%§e最大生命与§610.0%§e治疗力",
   "tooltip.celestial_artifacts.cs_no_life.shift1": "§5· 降低§425.0%§5最大生命，降低§450.0%§5治疗力",
   "tooltip.celestial_artifacts.cs_is_truth.shift1": "· [真理]",
-  "tooltip.celestial_artifacts.cs_has_truth.shift1": "§3· 自身最大生命小于40时，受到攻击时伤害不会超过自身最大生命的§640.0%",
-  "tooltip.celestial_artifacts.cs_no_truth.shift1": "§5· 自身最大生命大于40时，受到攻击时至少会受到自身最大生命§440.0%§5的伤害",
-  "tooltip.celestial_artifacts.cs_has_truth.shift2": "§3· 自身最大生命大于40时，受到攻击时伤害不会超过自身最大生命的§640.0%",
-  "tooltip.celestial_artifacts.cs_no_truth.shift2": "§5· 自身最大生命小于40时，受到攻击时至少会受到自身最大生命§440.0%§5的伤害",
+  "tooltip.celestial_artifacts.cs_no_truth.shift1": "§5· 受到生物攻击时至少会受到自身最大生命§440.0%§5的伤害",
+  "tooltip.celestial_artifacts.cs_has_truth.shift1": "§3· 受到生物攻击时伤害不会超过自身最大生命的§640.0%",
   "tooltip.celestial_artifacts.cs_is_desire.shift1": "· [欲望]",
   "tooltip.celestial_artifacts.cs_has_desire.shift1": "§e· 提高§61.0§e点时运与抢夺等级",
   "tooltip.celestial_artifacts.cs_no_desire.shift1": "§5· 周围的生物将远离你，中立生物会主动攻击你",
   "tooltip.celestial_artifacts.cs_is_nihility.shift1": "· [虚无]",
-  "tooltip.celestial_artifacts.cs_has_nihility.shift1": "§e· 降低§675.0%§e收到虚空伤害，受到攻击时使攻击者获得§63§e级中毒",
+  "tooltip.celestial_artifacts.cs_has_nihility.shift1": "§e· 降低§675.0%§e收到虚空伤害，受到攻击时使攻击者获得§63§e级剧毒",
   "tooltip.celestial_artifacts.cs_no_nihility.shift1": "§5· 受到负面效果时长提高§450.0%§5，等级加§41.0§5",
   "tooltip.celestial_artifacts.cs_is_end.shift1": "· [终焉]",
   "tooltip.celestial_artifacts.cs_has_end.shift1": "§e· 攻击后恢复自身相当于已损失生命§612.0%§e生命",
@@ -480,5 +453,45 @@
   "curios.modifiers.etching": "佩戴刻蚀时：",
   
   "curios.identifier.pendant": "吊坠",
-  "curios.modifiers.pendant": "佩戴吊坠时："
+  "curios.modifiers.pendant": "佩戴吊坠时：",
+
+
+  "celestial_artifacts.tooltip.back.leech": "拥有%s效果时，攻击造成伤害的%s将用于治疗",
+
+  "celestial_artifacts.tooltip.condition.attack_behind": "从背后攻击目标时:",
+  "celestial_artifacts.tooltip.condition.hot_region": "处于炎热地区时:",
+  "celestial_artifacts.tooltip.condition.hurt_fire": "受到火焰伤害时:",
+  "celestial_artifacts.tooltip.condition.luck": "当你有至少%s点幸运时:",
+  "celestial_artifacts.tooltip.condition.nether": "当你处于下界时: ",
+  "celestial_artifacts.tooltip.condition.night": "夜晚时:",
+  "celestial_artifacts.tooltip.condition.player_wet": "当你处于水中或雨中时:",
+  "celestial_artifacts.tooltip.condition.revenge": "受到伤害后的%s秒内: ",
+  "celestial_artifacts.tooltip.condition.sneak": "潜行时: ",
+  "celestial_artifacts.tooltip.condition.target_has_armor": "目标穿有护甲时:",
+  "celestial_artifacts.tooltip.condition.titan": "%s状态下，当你对总血量比你高的生物造成近战伤害时: ",
+  "celestial_artifacts.tooltip.condition.day": "白天时:",
+  "celestial_artifacts.tooltip.condition.low_health": "当你血量在%s及以下时:",
+
+  "celestial_artifacts.tooltip.damage_type.fall": "摔落",
+  "celestial_artifacts.tooltip.damage_type.fire": "火焰",
+  "celestial_artifacts.tooltip.damage_type.magic": "魔法",
+
+  "celestial_artifacts.tooltip.modular.alt": "按[%s]显示套装效果",
+  "celestial_artifacts.tooltip.modular.curse": "需要装备%s",
+  "celestial_artifacts.tooltip.modular.effect_flash": "每%s秒获得: ",
+  "celestial_artifacts.tooltip.modular.effect_hurt": "受伤时获得: ",
+  "celestial_artifacts.tooltip.modular.effect_hurt_chance": "受伤时%s概率获得: ",
+  "celestial_artifacts.tooltip.modular.effect_inflict": "击中目标施加: ",
+  "celestial_artifacts.tooltip.modular.effect_inflict_chance": "击中目标%s概率施加: ",
+  "celestial_artifacts.tooltip.modular.effect_refresh": "佩戴时提供: ",
+  "celestial_artifacts.tooltip.modular.ender_mask": "之时末影人不会激怒它们",
+  "celestial_artifacts.tooltip.modular.fortune": "幸运",
+  "celestial_artifacts.tooltip.modular.hurt_bonus": "+%s伤害",
+  "celestial_artifacts.tooltip.modular.immune": "不可摧毁",
+  "celestial_artifacts.tooltip.modular.invul_time": "+%s无敌时间",
+  "celestial_artifacts.tooltip.modular.loot": "抢夺",
+  "celestial_artifacts.tooltip.modular.protect": "-%s伤害",
+  "celestial_artifacts.tooltip.modular.protect_type": "-%2$s%1$s伤害",
+  "celestial_artifacts.tooltip.modular.shift": "按[%s]显示饰品效果",
+  "celestial_artifacts.tooltip.modular.xp": "经验获取"
 }
