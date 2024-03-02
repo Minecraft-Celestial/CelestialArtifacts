@@ -4,11 +4,9 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.content.generic.PlayerFlagData;
-import com.xiaoyue.celestial_core.utils.LevelUtils;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -20,26 +18,18 @@ import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 public class StartUpGiveHandler {
 
 	@SubscribeEvent
-	public static void onPlayerJoin(EntityJoinLevelEvent event) {
-		if (event.getEntity() instanceof Player player) {
-			if (LevelUtils.isServerLevel(player.level())) {
-				var data = PlayerFlagData.HOLDER.get(player);
-				if (!data.hasFlag("hello_world")) {
-					player.addItem(new ItemStack(CAItems.HEIRLOOM_NECKLACE.get()));
-					if (!CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
-						player.addItem(new ItemStack(CAItems.CATASTROPHE_SCROLL.get()));
-					}
-					data.addFlag("hello_world");
-				}
+	public static void tickPlayer(TickEvent.PlayerTickEvent event) {
+		var player = event.player;
+		if (player.level().isClientSide()) return;
+		var data = PlayerFlagData.HOLDER.get(player);
+		if (!data.hasFlag("hello_world")) {
+			player.addItem(new ItemStack(CAItems.HEIRLOOM_NECKLACE.get()));
+			if (!CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
+				player.addItem(new ItemStack(CAItems.CATASTROPHE_SCROLL.get()));
 			}
+			data.addFlag("hello_world");
 		}
-	}
-
-	@SubscribeEvent
-	public static void onPlayerLogged(PlayerEvent.PlayerLoggedInEvent event) {
 		if (CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
-			Player player = event.getEntity();
-			var data = PlayerFlagData.HOLDER.get(player);
 			if (!data.hasFlag("cs")) {
 				if (!CurioUtils.isCsOn(player)) {
 					var opt = CuriosApi.getCuriosInventory(player).resolve()

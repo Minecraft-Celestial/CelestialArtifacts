@@ -1,6 +1,5 @@
 package com.xiaoyue.celestial_artifacts.content.items.item;
 
-import com.xiaoyue.celestial_core.utils.LevelUtils;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -35,7 +34,7 @@ public class RepentMirror extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack itemInHand = player.getItemInHand(hand);
-		if (LevelUtils.isServerLevel(player.level())) {
+		if (!player.level().isClientSide()) {
 			if (player instanceof ServerPlayer serverPlayer) {
 				if (serverPlayer.getLastDeathLocation().isPresent() && !player.getCooldowns().isOnCooldown(itemInHand.getItem())) {
 					BlockPos deathPos = serverPlayer.getLastDeathLocation().get().pos();

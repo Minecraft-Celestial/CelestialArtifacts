@@ -1,7 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.items.food;
 
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_core.utils.LevelUtils;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -35,7 +34,7 @@ public class UnluckyPotato extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
 		if (livingEntity instanceof Player player) {
-			if (LevelUtils.isServerLevel(player.level())) {
+			if (!player.level().isClientSide()) {
 				EntityUtils.addEct(player, MobEffects.UNLUCK, 200, 2);
 			}
 			player.awardStat(Stats.ITEM_USED.get(this));

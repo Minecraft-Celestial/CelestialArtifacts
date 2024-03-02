@@ -98,7 +98,9 @@ public final class ModularCurio extends BaseCurio {
 			if (prop.requireCS) {
 				list.add(CALang.Modular.curse());
 			}
-			list.add(CALang.Modular.shift());
+			if (!text.isEmpty()) {
+				list.add(CALang.Modular.shift());
+			}
 		}
 		if (!set.isEmpty()) {
 			if (Screen.hasAltDown()) {

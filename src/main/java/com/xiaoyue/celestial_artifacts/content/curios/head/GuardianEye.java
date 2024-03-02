@@ -4,7 +4,6 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_core.utils.LevelUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -30,7 +29,7 @@ public class GuardianEye implements TickFacet, MultiLineText, CAAttackToken {
 
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
-		if (LevelUtils.isServerLevel(entity.level())) {
+		if (!entity.level().isClientSide()) {
 			if (entity.tickCount % 20 == 0) {
 				List<LivingEntity> entities = EntityUtils.getDelimitedMonster(entity, 16);
 				for (LivingEntity target : entities) {

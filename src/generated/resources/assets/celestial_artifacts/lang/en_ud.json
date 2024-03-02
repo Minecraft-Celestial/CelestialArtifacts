@@ -1,8 +1,10 @@
 {
   "celestial_artifacts.tooltip.back.leech": "疗治于用将%s的害伤成造击攻，时果效%s有拥",
   "celestial_artifacts.tooltip.condition.attack_behind": ":puıɥǝq ɯoɹɟ buıʞɔɐʇʇɐ uǝɥM",
+  "celestial_artifacts.tooltip.condition.day": ":ʎɐᗡ ʇⱯ",
   "celestial_artifacts.tooltip.condition.hot_region": ":sǝɯoıq ʇoɥ uı uǝɥM",
   "celestial_artifacts.tooltip.condition.hurt_fire": ":ǝbɐɯɐp ǝɹıɟ ɥʇıʍ ʇɹnɥ ǝɹɐ noʎ uǝɥM",
+  "celestial_artifacts.tooltip.condition.low_health": ":ɥʇןɐǝɥ ɹǝʍoן ɹo %s ʇɐ ǝɹɐ noʎ uǝɥM",
   "celestial_artifacts.tooltip.condition.luck": " :ʞɔnꞀ ǝɹoɯ ɹo %s ǝʌɐɥ noʎ uǝɥM",
   "celestial_artifacts.tooltip.condition.nether": " :ɹǝɥʇǝu uı ǝɹɐ noʎ uǝɥM",
   "celestial_artifacts.tooltip.condition.night": ":ʇɥbıN ʇⱯ",
@@ -11,6 +13,7 @@
   "celestial_artifacts.tooltip.condition.sneak": " :buıʞɐǝus ǝɹɐ noʎ uǝɥM",
   "celestial_artifacts.tooltip.condition.target_has_armor": ":ɹoɯɹɐ sɐɥ ʇǝbɹɐʇ uǝɥM",
   "celestial_artifacts.tooltip.condition.titan": " :noʎ uɐɥʇ ɥʇןɐǝɥ xɐɯ ɹǝɥbıɥ ɥʇıʍ sqoɯ oʇ ǝbɐɯɐp ǝǝןǝɯ ןɐǝp noʎ uǝɥʍ '%s ɥʇıM",
+  "celestial_artifacts.tooltip.damage_type.fall": "ןןɐɟ",
   "celestial_artifacts.tooltip.damage_type.fire": "ǝɹıɟ",
   "celestial_artifacts.tooltip.damage_type.magic": "ɔıbɐɯ",
   "celestial_artifacts.tooltip.modular.alt": "sʇɔǝɟɟǝ ʇǝs ʎɐןdsıp oʇ ]%s[ ssǝɹԀ",

@@ -4,7 +4,6 @@ import com.xiaoyue.celestial_artifacts.content.curios.charm.SacrificialObject;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_core.utils.LevelUtils;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -120,7 +119,7 @@ public class MiscCuriosHandler {
 	public static void onSpawnEntity(MobSpawnEvent.FinalizeSpawn event) {
 		Mob entity = event.getEntity();
 		// 扭曲卷轴 TODO
-		if (LevelUtils.isServerLevel(entity.level()) && entity instanceof Monster) {
+		if (!entity.level().isClientSide() && entity instanceof Monster) {
 			List<Player> entities = entity.level().getEntitiesOfClass(Player.class, EntityUtils.getAABB(entity, 6, 2));
 			for (Player list : entities) {
 				if (CurioUtils.hasCurio(list, CAItems.TWISTED_SCROLL.get())) {

@@ -1,8 +1,10 @@
 {
   "celestial_artifacts.tooltip.back.leech": "拥有%s效果时，攻击造成伤害的%s将用于治疗",
   "celestial_artifacts.tooltip.condition.attack_behind": "When attacking from behind:",
+  "celestial_artifacts.tooltip.condition.day": "At Day:",
   "celestial_artifacts.tooltip.condition.hot_region": "When in hot biomes:",
   "celestial_artifacts.tooltip.condition.hurt_fire": "When you are hurt with fire damage:",
+  "celestial_artifacts.tooltip.condition.low_health": "When you are at %s or lower health:",
   "celestial_artifacts.tooltip.condition.luck": "When you have %s or more Luck: ",
   "celestial_artifacts.tooltip.condition.nether": "When you are in nether: ",
   "celestial_artifacts.tooltip.condition.night": "At Night:",
@@ -11,6 +13,7 @@
   "celestial_artifacts.tooltip.condition.sneak": "When you are sneaking: ",
   "celestial_artifacts.tooltip.condition.target_has_armor": "When target has armor:",
   "celestial_artifacts.tooltip.condition.titan": "With %s, when you deal melee damage to mobs with higher max health than you: ",
+  "celestial_artifacts.tooltip.damage_type.fall": "fall",
   "celestial_artifacts.tooltip.damage_type.fire": "fire",
   "celestial_artifacts.tooltip.damage_type.magic": "magic",
   "celestial_artifacts.tooltip.modular.alt": "Press [%s] to display set effects",
@@ -123,10 +126,5 @@
   "item.celestial_artifacts.unlucky_potato": "Unlucky Potato",
   "item.celestial_artifacts.unowned_pendant": "Unowned Pendant",
   "item.celestial_artifacts.war_dead_badge": "War Dead Badge",
-  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift5": "",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift7": "",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift4": "",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift6": "",
-  "tooltip.celestial_artifacts.twisted_scabbard.shift8": ""
+  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts"
 }

@@ -457,6 +457,7 @@
 
 
   "celestial_artifacts.tooltip.back.leech": "拥有%s效果时，攻击造成伤害的%s将用于治疗",
+
   "celestial_artifacts.tooltip.condition.attack_behind": "从背后攻击目标时:",
   "celestial_artifacts.tooltip.condition.hot_region": "处于炎热地区时:",
   "celestial_artifacts.tooltip.condition.hurt_fire": "受到火焰伤害时:",
@@ -468,8 +469,13 @@
   "celestial_artifacts.tooltip.condition.sneak": "潜行时: ",
   "celestial_artifacts.tooltip.condition.target_has_armor": "目标穿有护甲时:",
   "celestial_artifacts.tooltip.condition.titan": "%s状态下，当你对总血量比你高的生物造成近战伤害时: ",
+  "celestial_artifacts.tooltip.condition.day": "白天时:",
+  "celestial_artifacts.tooltip.condition.low_health": "当你血量在%s及以下时:",
+
+  "celestial_artifacts.tooltip.damage_type.fall": "摔落",
   "celestial_artifacts.tooltip.damage_type.fire": "火焰",
   "celestial_artifacts.tooltip.damage_type.magic": "魔法",
+
   "celestial_artifacts.tooltip.modular.alt": "按[%s]显示套装效果",
   "celestial_artifacts.tooltip.modular.curse": "需要装备%s",
   "celestial_artifacts.tooltip.modular.effect_flash": "每%s秒获得: ",
@@ -485,7 +491,7 @@
   "celestial_artifacts.tooltip.modular.invul_time": "+%s无敌时间",
   "celestial_artifacts.tooltip.modular.loot": "抢夺",
   "celestial_artifacts.tooltip.modular.protect": "-%s伤害",
-  "celestial_artifacts.tooltip.modular.protect_type": "-%2¥s%1$s伤害",
+  "celestial_artifacts.tooltip.modular.protect_type": "-%2$s%1$s伤害",
   "celestial_artifacts.tooltip.modular.shift": "按[%s]显示饰品效果",
   "celestial_artifacts.tooltip.modular.xp": "经验获取"
 }

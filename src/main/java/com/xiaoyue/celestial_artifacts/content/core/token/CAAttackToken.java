@@ -1,12 +1,12 @@
 package com.xiaoyue.celestial_artifacts.content.core.token;
 
 import com.xiaoyue.celestial_artifacts.content.core.feature.IFeature;
-import com.xiaoyue.celestial_core.utils.LevelUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.contents.damage.DamageTypeRoot;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -39,7 +39,9 @@ public interface CAAttackToken extends IFeature {
 	}
 
 	default boolean isPhysics(AttackCache cache) {
-		return LevelUtils.sourceIsPhysics(getSource(cache));
+		var source = getSource(cache);
+		return source.is(DamageTypes.ARROW) ||
+				source.is(DamageTypes.GENERIC);
 	}
 
 	default void onPlayerDamagedFinal(Player player, AttackCache cache) {
