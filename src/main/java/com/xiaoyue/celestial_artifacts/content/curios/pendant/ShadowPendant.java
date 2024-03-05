@@ -2,13 +2,14 @@ package com.xiaoyue.celestial_artifacts.content.curios.pendant;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_core.utils.CCUtils;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -40,11 +41,14 @@ public class ShadowPendant implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
-		int brightness = player.level().getBrightness(LightLayer.BLOCK, player.blockPosition());
-		if (brightness < 7) {
-			int add = 7 - brightness;
-			cache.addDealtModifier(DamageModifier.multTotal(1 - (add * 0.05f)));
+		if (player.level() instanceof ServerLevel sl) {
+			int brightness = CCUtils.getLight(sl, player.blockPosition());
+			if (brightness < 7) {
+				int add = 7 - brightness;
+				cache.addDealtModifier(DamageModifier.multTotal(1 - (add * 0.05f)));
+			}
 		}
+
 	}
 
 }

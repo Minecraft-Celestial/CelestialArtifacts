@@ -4,6 +4,7 @@ import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
@@ -44,7 +45,7 @@ public class TwistedScabbard extends BaseTickingToken
 
 	private double getVal(Player player) {
 		double factor = 0.05f;
-		if (CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
+		if (CatastropheScroll.Curses.END.cursing(player)) {
 			factor = 0.1f;
 		}
 		return 1 + twisted_scabbard_add * factor;

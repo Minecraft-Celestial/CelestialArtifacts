@@ -3,10 +3,13 @@ package com.xiaoyue.celestial_artifacts.events;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -74,9 +77,17 @@ public class CAAttackListener implements AttackListener {
 		assert event != null;
 		if (cache.getAttacker() instanceof Player player) {
 			fireEvent(player, t -> t.onPlayerHurtTarget(player, cache));
+			if (cache.getAttackTarget() instanceof Enemy)
+				CatastropheScroll.Curses.TRUTH.trigger(player);
+			if (cache.getAttackTarget() instanceof Mob mob) {
+				if (mob.targetSelector.getAvailableGoals().isEmpty()) {
+					CatastropheScroll.Curses.DESIRE.trigger(player);
+				}
+			}
 		}
 		if (cache.getAttackTarget() instanceof Player player) {
 			fireEvent(player, t -> t.onPlayerHurt(player, cache));
+			CatastropheScroll.Curses.LIFE.trigger(player);
 		}
 	}
 

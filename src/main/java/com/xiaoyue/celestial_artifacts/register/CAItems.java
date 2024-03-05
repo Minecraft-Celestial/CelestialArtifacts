@@ -564,20 +564,17 @@ public class CAItems {
 		{
 			CATASTROPHE_SCROLL = item("curios/", "catastrophe_scroll", () ->
 					ModularCurio.builder().curse().immune().rarity(IRarityUtils.DARK_PURPLE).hideAttr().build(
-							AttrFacet.add(CCAttributes.REPLY_POWER, () -> -0.5),
-							AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> -0.25),
 							SlotFacet.of("etching", 7),
 							new CatastropheScroll()
 					)).tag(curio("c_charm")).register();
 			// 混沌
 			CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 			// 始源
-			ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().hideAttr().build(BreakSpeedFeature.simple(1.25)));
-			// 生命
-			ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().hideAttr().build(
-					AttrFacet.add(CCAttributes.REPLY_POWER, () -> 0.6),
-					AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> 0.45)
+			ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().hideAttr().build(
+					BreakSpeedFeature.simple(CatastropheScroll::getOriginBonus)
 			));
+			// 生命
+			ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().hideAttr().build());
 			// 真理
 			TRUTH_ETCHING = etching("truth_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 			// 欲望

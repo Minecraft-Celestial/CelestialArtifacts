@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.core.token;
 
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import com.xiaoyue.celestial_core.content.generic.PlayerFlagData;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.conditionals.TokenProvider;
 import net.minecraft.ChatFormatting;
@@ -35,6 +36,12 @@ public class ClientTokenHelper {
 		var player = Minecraft.getInstance().player;
 		if (player == null) return false;
 		return pred.test(player);
+	}
+	public static boolean flag(@Nullable Level level, String flag) {
+		if (level == null) return false;
+		var player = Minecraft.getInstance().player;
+		if (player == null) return false;
+		return PlayerFlagData.HOLDER.get(player).hasFlag(flag);
 	}
 
 	public static MutableComponent disable(boolean pass, MutableComponent comp) {

@@ -149,7 +149,7 @@ public class CAModConfig {
 
 				catastropheScrollEndCurseDamage = builder
 						.comment("This value determines how much damage is negatively affected")
-						.defineInRange("catastropheScrollEndCurseDamage", 0.25, 0.01, 1);
+						.defineInRange("catastropheScrollEndCurseDamage", 0.1, 0.01, 1);
 
 				catastropheScrollOriginCurseDamage = builder
 						.comment("This value determines how much your damage will be reduced due to the Origin Curse")

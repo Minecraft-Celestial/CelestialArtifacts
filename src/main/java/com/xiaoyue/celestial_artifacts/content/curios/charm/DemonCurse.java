@@ -28,9 +28,9 @@ public class DemonCurse extends BaseTickingToken {
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_curse.shift4");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_curse.shift5");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_curse.shift6",
-				ChatFormatting.LIGHT_PURPLE, ToolTipUtils.getNoZeroValue(demon_curse_add * 200) + "%");
+				ChatFormatting.LIGHT_PURPLE, demon_curse_add * 200 + "%");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_curse.shift7",
-				ChatFormatting.LIGHT_PURPLE, ToolTipUtils.getNoZeroValue(demon_curse_add * 100) + "%");
+				ChatFormatting.LIGHT_PURPLE, demon_curse_add * 100 + "%");
 	}
 
 	private AttrAdder atk() {

@@ -1,9 +1,11 @@
 package com.xiaoyue.celestial_artifacts.events;
 
 import com.xiaoyue.celestial_artifacts.content.curios.charm.SacrificialObject;
+import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
+import dev.xkmc.l2library.base.effects.EffectBuilder;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,6 +18,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -29,7 +33,31 @@ import java.util.List;
 import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class MiscCuriosHandler {
+public class CAMiscCuriosHandler {
+
+	@SubscribeEvent
+	public static void playerTick(TickEvent.PlayerTickEvent event) {
+		if (event.phase != TickEvent.Phase.END) return;
+		Player player = event.player;
+		Level level = player.level();
+		if (level.isClientSide()) return;
+		ItemStack stack = player.getMainHandItem();
+		if (stack.isDamageableItem() && stack.getMaxDamage() >= CatastropheScroll.getOriginTrigger()) {
+			CatastropheScroll.Curses.ORIGIN.trigger(player);
+		}
+		for (var e : player.getArmorSlots()) {
+			if (e.isEnchanted()) {
+				CatastropheScroll.Curses.CHAOS.trigger(player);
+				break;
+			}
+		}
+		if (!level.isNight() || player.isSleeping()) return;
+		float time = level.getTimeOfDay(1);
+		if (0.49 < time && time < 0.51) {
+			CatastropheScroll.Curses.END.trigger(player);
+		}
+
+	}
 
 	@SubscribeEvent
 	public static void onArrowHit(ProjectileImpactEvent event) {
@@ -48,19 +76,14 @@ public class MiscCuriosHandler {
 	@SubscribeEvent
 	public static void onAddedEffect(MobEffectEvent.Added event) {
 		MobEffectInstance instance = event.getEffectInstance();
-		if (event.getEntity() instanceof Player player) {
-			// 灾厄之册
-			if (CurioUtils.hasCurio(player, CAItems.CATASTROPHE_SCROLL.get())) {
-				if (CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, CAItems.NIHILITY_ETCHING.get())) {
-					if (!player.hasEffect(instance.getEffect())) {
-						if (instance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
-							instance.update(new MobEffectInstance(instance.getEffect(),
-									(int) (instance.getDuration() * 1.5f), instance.getAmplifier() + 1));
-						}
-					}
-				}
-			}
-		}
+		if (!(event.getEntity() instanceof Player player)) return;
+		if (instance.getEffect().isBeneficial())
+			CatastropheScroll.Curses.NIHILITY.trigger(player);
+		if (instance.getEffect().getCategory() != MobEffectCategory.HARMFUL) return;
+		if (!CatastropheScroll.Curses.NIHILITY.cursing(player)) return;
+		double factor = CatastropheScroll.getNihilityCurse();
+		new EffectBuilder(instance).setDuration((int) (instance.getDuration() * factor));
+
 	}
 
 	@SubscribeEvent
@@ -79,14 +102,13 @@ public class MiscCuriosHandler {
 	}
 
 	@SubscribeEvent
-	public static void onStarItemUse(LivingEntityUseItemEvent.Start event) {
+	public static void onStarItemUse(LivingEntityUseItemEvent.Tick event) {
 		ItemStack itemStack = event.getItem();
 		LivingEntity entity = event.getEntity();
 		if (entity instanceof Player player) {
-			// 精灵手环 TODO works?
 			if (CurioUtils.hasCurio(player, CAItems.SPIRIT_BRACELET.get())) {
 				if (CurioUtils.isRangeUseAnim(itemStack.getUseAnimation())) {
-					event.setDuration((int) (event.getDuration() * 0.75f));
+					event.setDuration(event.getDuration() + 1);
 				}
 			}
 		}

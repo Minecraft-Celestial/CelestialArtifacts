@@ -1,112 +1,227 @@
 package com.xiaoyue.celestial_artifacts.content.curios.curse;
 
-import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
-import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
+import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
+import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.ClientTokenHelper;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import com.xiaoyue.celestial_core.content.generic.PlayerFlagData;
+import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Supplier;
 
-public class CatastropheScroll implements TickFacet, MultiLineText, CAAttackToken {
+import static com.xiaoyue.celestial_artifacts.data.CALang.Curse.*;
 
-	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.catastrophe_scroll.shift1");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.catastrophe_scroll.shift2");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.catastrophe_scroll.shift3");
-		if (ClientTokenHelper.hasCurio(level, CAItems.CHAOTIC_ETCHING.get())) {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_chaotic.shift1", ChatFormatting.YELLOW);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_chaotic.shift1");
-		} else {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_chaotic.shift1", ChatFormatting.DARK_PURPLE);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_chaotic.shift1",
-					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollExplosionDamage.get() * 100) + "%");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_chaotic.shift2",
-					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollOtherDamage.get() * 100) + "%");
+@SerialClass
+public class CatastropheScroll extends BaseTickingToken implements CAAttackToken {
+
+	private static double getChaosBonus() {
+		return 0.2;
+	}
+
+	private static double getChaosCurseExplosion() {
+		return CAModConfig.COMMON.curse.catastropheScrollExplosionDamage.get();
+	}
+
+	private static double getChaosCurse() {
+		return CAModConfig.COMMON.curse.catastropheScrollOtherDamage.get();
+	}
+
+	public static int getOriginTrigger() {
+		return 500;
+	}
+
+	public static double getOriginCurse() {
+		return CAModConfig.COMMON.curse.catastropheScrollOriginCurseDamage.get();
+	}
+
+	public static double getOriginBonus() {
+		return 0.25;
+	}
+
+	public static double getLifeCurseHealth() {
+		return 0.25;
+	}
+
+	public static double getLifeCurseHeal() {
+		return 0.5;
+	}
+
+	public static double getLifeBonusHealth() {
+		return 0.2;
+	}
+
+	public static double getLifeBonusHeal() {
+		return 0.1;
+	}
+
+	private static double getTruthCurse() {
+		return 0.4;
+	}
+
+	private static double getTruthBonus() {
+		return 0.6;
+	}
+
+	public static double getNihilityCurse() {
+		return 1;
+	}
+
+	private static double getNihilityBonus() {
+		return 0.75;
+	}
+
+	private static double getEndCurse() {
+		return CAModConfig.COMMON.curse.catastropheScrollEndCurseDamage.get();
+	}
+
+	private static double getEndBonus() {
+		return 0.2;
+	}
+
+	public enum Curses {
+		CHAOS(CAItems.CHAOTIC_ETCHING, CHAOS_TITLE::get, CHAOS_TRIGGER::get,
+				List.of(() -> CHAOS_CURSE_0.get(TextFacet.perc(getChaosCurseExplosion())),
+						() -> CHAOS_CURSE_1.get(TextFacet.perc(getChaosCurse()))),
+				() -> CHAOS_BONUS.get(TextFacet.perc(0.01), TextFacet.percSmall(getChaosBonus() * 0.01))),
+		ORIGIN(CAItems.ORIGIN_ETCHING, ORIGIN_TITLE::get,
+				() -> ORIGIN_TRIGGER.get(TextFacet.num(getOriginTrigger())),
+				() -> ORIGIN_CURSE.get(TextFacet.perc(getOriginCurse())),
+				() -> ORIGIN_BONUS.get(TextFacet.perc(getOriginBonus()))),
+		LIFE(CAItems.ETCHING_OF_LIFE, LIFE_TITLE::get, LIFE_TRIGGER::get,
+				() -> LIFE_CURSE.get(TextFacet.perc(getLifeCurseHealth()), TextFacet.perc(getLifeCurseHeal())),
+				() -> LIFE_BONUS.get(TextFacet.perc(getLifeBonusHealth()), TextFacet.perc(getLifeBonusHeal()))),
+		TRUTH(CAItems.TRUTH_ETCHING, TRUTH_TITLE::get, TRUTH_TRIGGER::get,
+				() -> TRUTH_CURSE.get(TextFacet.perc(getTruthCurse())),
+				() -> TRUTH_BONUS.get(TextFacet.perc(getTruthBonus()))),
+		DESIRE(CAItems.DESIRE_ETCHING, DESIRE_TITLE::get, DESIRE_TRIGGER::get, DESIRE_CURSE::get,
+				() -> DESIRE_BONUS.get(TextFacet.num(1))),
+		NIHILITY(CAItems.NIHILITY_ETCHING, NIHILITY_TITLE::get, NIHILITY_TRIGGER::get,
+				() -> NIHILITY_CURSE.get(TextFacet.perc(getNihilityCurse())),
+				() -> NIHILITY_BONUS.get(TextFacet.perc(getNihilityBonus()), TextFacet.num(3))),
+		END(CAItems.END_ETCHING, END_TITLE::get, END_TRIGGER::get,
+				() -> END_CURSE.get(TextFacet.perc(getEndCurse())),
+				() -> END_BONUS.get(TextFacet.perc(getEndBonus()))),
+		;
+
+		private final Supplier<Item> etching;
+		private final Supplier<MutableComponent> title, trigger, bonus;
+		private final List<Supplier<MutableComponent>> curse;
+
+
+		Curses(Supplier<Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, List<Supplier<MutableComponent>> curse, Supplier<MutableComponent> bonus) {
+			this.etching = etching;
+			this.title = title;
+			this.trigger = trigger;
+			this.curse = curse;
+			this.bonus = bonus;
 		}
-		if (ClientTokenHelper.hasCurio(level, CAItems.ORIGIN_ETCHING.get())) {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_origin.shift1", ChatFormatting.YELLOW);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_origin.shift1");
-		} else {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_origin.shift1", ChatFormatting.DARK_PURPLE);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_origin.shift1",
-					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollOriginCurseDamage.get()) * 100 + "%");
+
+		Curses(Supplier<Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, Supplier<MutableComponent> curse, Supplier<MutableComponent> bonus) {
+			this(etching, title, trigger, List.of(curse), bonus);
 		}
-		if (ClientTokenHelper.hasCurio(level, CAItems.ETCHING_OF_LIFE.get())) {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_life.shift1", ChatFormatting.YELLOW);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_life.shift1");
-		} else {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_life.shift1", ChatFormatting.DARK_PURPLE);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_life.shift1");
+
+		private static void wrap(List<Component> list, MutableComponent comp) {
+			list.add(TextFacet.wrap(comp.withStyle(ChatFormatting.GRAY)));
 		}
-		if (ClientTokenHelper.hasCurio(level, CAItems.TRUTH_ETCHING.get())) {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_truth.shift1", ChatFormatting.YELLOW);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_truth.shift2");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_truth.shift2");
-		} else {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_truth.shift1", ChatFormatting.DARK_PURPLE);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_truth.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_truth.shift1");
+
+		private static void inner(List<Component> list, MutableComponent comp) {
+			list.add(TextFacet.inner(comp.withStyle(ChatFormatting.GRAY)));
 		}
-		if (ClientTokenHelper.hasCurio(level, CAItems.DESIRE_ETCHING.get())) {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_desire.shift1", ChatFormatting.YELLOW);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_desire.shift1");
-		} else {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_desire.shift1", ChatFormatting.DARK_PURPLE);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_desire.shift1");
+
+		private static void addText(@Nullable Level level, List<Component> list) {
+			wrap(list, SCROLL_0.get());
+			wrap(list, SCROLL_1.get());
+			wrap(list, SCROLL_2.get());
+			list.add(Component.empty());
+			for (var curse : Curses.values()) {
+				boolean disabled = !ClientTokenHelper.flag(level, curse.name());
+				boolean bonus = ClientTokenHelper.hasCurio(level, curse.etching.get());
+				list.add(TextFacet.wrap(curse.title.get().withStyle(!disabled ?
+						ChatFormatting.GRAY :
+						bonus ? ChatFormatting.RED :
+								ChatFormatting.YELLOW)));
+				if (disabled) {
+					inner(list, curse.trigger.get());
+				} else if (bonus) {
+					inner(list, curse.bonus.get());
+				} else {
+					for (var e : curse.curse) {
+						inner(list, e.get());
+					}
+				}
+			}
 		}
-		if (ClientTokenHelper.hasCurio(level, CAItems.NIHILITY_ETCHING.get())) {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_nihility.shift1", ChatFormatting.YELLOW);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_nihility.shift1");
-		} else {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_nihility.shift1", ChatFormatting.DARK_PURPLE);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_nihility.shift1");
+
+		public void trigger(Player player) {
+			var flags = PlayerFlagData.HOLDER.get(player);
+			if (!flags.hasFlag(name())) {
+				flags.addFlag(name());
+				if (CurioUtils.isCsOn(player)) {
+					player.sendSystemMessage(TRIGGER.get(title.get()).withStyle(ChatFormatting.RED));
+				}
+			}
 		}
-		if (ClientTokenHelper.hasCurio(level, CAItems.END_ETCHING.get())) {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_end.shift1", ChatFormatting.YELLOW);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_has_end.shift1");
-		} else {
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_is_end.shift1", ChatFormatting.DARK_PURPLE);
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_liberate.shift1");
-			ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cs_no_end.shift1",
-					ChatFormatting.DARK_RED, (CAModConfig.COMMON.curse.catastropheScrollEndCurseDamage.get() * 100) + "%");
+
+		public boolean cursing(Player player) {
+			return PlayerFlagData.HOLDER.get(player).hasFlag(name()) &&
+					CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, etching.get());
+		}
+
+		public boolean blessing(Player player) {
+			return PlayerFlagData.HOLDER.get(player).hasFlag(name()) &&
+					CurioUtils.isCsOn(player) && CurioUtils.hasCurio(player, etching.get());
 		}
 	}
 
 	@Override
-	public void tick(LivingEntity entity, ItemStack stack) {
-		if (!(entity instanceof Player player)) return;
-		if (!CurioUtils.hasCurio(player, CAItems.DESIRE_ETCHING.get())) {
-			List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, EntityUtils.getAABB(player, 8, 2));
+	public void addText(@Nullable Level level, List<Component> list) {
+		Curses.addText(level, list);
+	}
+
+	private List<AttrAdder> attrs(Player player) {
+		String name = "catastroph_scroll";
+		return List.of(
+				AttrAdder.of(name, () -> Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADDITION, () ->
+						Curses.ORIGIN.cursing(player) ? getOriginCurse() : Curses.ORIGIN.blessing(player) ? getOriginBonus() : 0),
+				AttrAdder.of(name, () -> Attributes.MAX_HEALTH, AttributeModifier.Operation.MULTIPLY_BASE, () ->
+						Curses.LIFE.cursing(player) ? getLifeCurseHealth() : Curses.LIFE.blessing(player) ? getLifeBonusHealth() : 0),
+				AttrAdder.of(name, CCAttributes.REPLY_POWER, AttributeModifier.Operation.ADDITION, () ->
+						Curses.LIFE.cursing(player) ? getLifeCurseHeal() : Curses.LIFE.blessing(player) ? getLifeBonusHeal() : 0)
+		);
+	}
+
+	@Override
+	protected void removeImpl(Player player) {
+		attrs(player).forEach(e -> e.removeImpl(player));
+	}
+
+	@Override
+	protected void tickImpl(Player player) {
+		attrs(player).forEach(e -> e.tickImpl(player));
+		if (player.tickCount % 20 == 0 && Curses.DESIRE.cursing(player)) {
+			List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class,
+					EntityUtils.getAABB(player, 8, 2));
 			for (LivingEntity e : entities) {
 				if (e.getLastHurtMobTimestamp() < e.tickCount - 20)
 					e.setLastHurtMob(player);
@@ -118,54 +233,54 @@ public class CatastropheScroll implements TickFacet, MultiLineText, CAAttackToke
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		float damage;
-		if (CurioUtils.hasCurio(player, CAItems.ORIGIN_ETCHING.get())) {
-			damage = 1.25f;
-		} else {
-			damage = (float) (1 - CAModConfig.COMMON.curse.catastropheScrollOriginCurseDamage.get());
-		}
-		cache.addHurtModifier(DamageModifier.multTotal(damage));
-		if (CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
-			player.heal(player.getMaxHealth() - player.getHealth() * 0.12f);
+		if (Curses.END.blessing(player)) {
+			player.heal(player.getMaxHealth() - player.getHealth() * (float) getEndBonus());
 		}
 	}
 
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
-		float factor;
-		if (CurioUtils.hasCurio(player, CAItems.CHAOTIC_ETCHING.get())) {
-			factor = 0.8f + 0.2f * player.getHealth() / player.getMaxHealth();
-		} else {
+		float factor = 1;
+		if (Curses.CHAOS.blessing(player)) {
+			float max = (float) getChaosBonus();
+			factor *= 1 - max * (1 - player.getHealth() / player.getMaxHealth());
+		}
+		if (Curses.CHAOS.cursing(player)) {
 			if (CAAttackToken.getSource(cache).is(DamageTypes.EXPLOSION)) {
-				factor = (float) (1 + CAModConfig.COMMON.curse.catastropheScrollExplosionDamage.get());
+				factor *= (float) (1 + getChaosCurseExplosion());
 			} else {
-				factor = (float) (1 + CAModConfig.COMMON.curse.catastropheScrollOtherDamage.get());
+				factor *= (float) (1 + getChaosCurse());
 			}
 		}
-		if (CurioUtils.hasCurio(player, CAItems.NIHILITY_ETCHING.get())) {
+		if (Curses.NIHILITY.blessing(player)) {
 			if (CAAttackToken.getSource(cache).is(DamageTypes.FELL_OUT_OF_WORLD)) {
-				factor *= 0.25f;
+				factor *= 1 - (float) getNihilityBonus();
 			}
 			if (cache.getAttacker() != null) {
 				EntityUtils.addEct(cache.getAttacker(), MobEffects.POISON, 200, 2);
 			}
 		}
 		cache.addDealtModifier(DamageModifier.multTotal(factor));
-		float hp = player.getMaxHealth() * 0.4f;
-		if (cache.getAttacker() != null && CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
-			cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> Math.min(e, hp)));
-		} else {
-			cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> Math.max(e, hp)));
+		if (cache.getAttacker() != null) {
+			if (Curses.TRUTH.blessing(player)) {
+				float hp = player.getMaxHealth() * (float) getTruthBonus();
+				cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> Math.min(e, hp)));
+			}
+			if (Curses.TRUTH.cursing(player)) {
+				float hp = player.getMaxHealth() * (float) getTruthCurse();
+				cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> Math.max(e, hp)));
+			}
 		}
 	}
 
 	@Override
 	public void onPlayerDamagedFinal(Player player, AttackCache cache) {
-		if (!CurioUtils.hasCurio(player, CAItems.END_ETCHING.get())) {
-			if (cache.getDamageDealt() > player.getHealth() * CAModConfig.COMMON.curse.catastropheScrollEndCurseDamage.get()) {
+		if (Curses.END.cursing(player)) {
+			if (cache.getDamageDealt() > player.getHealth() * getEndCurse()) {
 				EntityUtils.addEct(player, MobEffects.MOVEMENT_SLOWDOWN, 600, 1);
 				EntityUtils.addEct(player, MobEffects.WEAKNESS, 600, 1);
 			}
 		}
 	}
+
 }

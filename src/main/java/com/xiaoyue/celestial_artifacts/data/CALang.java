@@ -168,6 +168,180 @@ public class CALang {
 
 	}
 
+	public enum Charm implements Info {
+		;
+
+		final Entry entry;
+
+		Charm(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Curse implements Info {
+		SCROLL_0("一旦戴上，你将无法以正常的方式将它摘下", 0),
+		SCROLL_1("一些生物会产出独特的掉落物", 0),
+		SCROLL_2("允许佩戴与使用一些独特的饰品", 0),
+		TRIGGER("诅咒%s已生效", 1),
+
+		CHAOS_TITLE("[混沌]", 0),
+		CHAOS_TRIGGER("装备附魔盔甲时触发", 0),
+		CHAOS_CURSE_0("受到的爆炸伤害提高%s", 1),
+		CHAOS_CURSE_1("受到的非爆炸伤害提高%s", 1),
+		CHAOS_BONUS("每损失%s生命，提高%s伤害减免", 2),
+
+		ORIGIN_TITLE("[始源]", 0),
+		ORIGIN_TRIGGER("持有%s耐久以上物品时触发", 1),
+		ORIGIN_CURSE("攻击伤害降低%s", 1),
+		ORIGIN_BONUS("提高%s挖掘速度与攻击伤害", 1),
+
+		LIFE_TITLE("[生命]", 0),
+		LIFE_TRIGGER("受到伤害时触发", 0),
+		LIFE_CURSE("降低%s最大生命，降低%s治疗力", 2),
+		LIFE_BONUS("提高%s最大生命与%s治疗力", 2),
+
+		TRUTH_TITLE("[真理]", 0),
+		TRUTH_TRIGGER("对怪物造成伤害时触发", 0),
+		TRUTH_CURSE("受到生物攻击时至少会受到自身最大生命%s的伤害", 1),
+		TRUTH_BONUS("受到生物攻击时伤害不会超过自身最大生命的s%", 1),
+
+		DESIRE_TITLE("[欲望]", 0),
+		DESIRE_TRIGGER("对被动生物造成伤害时触发", 0),
+		DESIRE_CURSE("周围的生物将远离你，中立生物会主动攻击你", 0),
+		DESIRE_BONUS("提高%s点时运与抢夺等级", 1),
+
+		NIHILITY_TITLE("[虚无]", 0),
+		NIHILITY_TRIGGER("获得增益效果时触发", 0),
+		NIHILITY_CURSE("受到负面效果时长提高%s", 1),
+		NIHILITY_BONUS("降低%s收到虚空伤害，受到攻击时使攻击者获得%s级剧毒", 2),
+
+		END_TITLE("[终焉]", 0),
+		END_TRIGGER("午夜时未入睡触发", 0),
+		END_CURSE("受到大于当前生命%s的伤害时会受到虚弱与缓慢影响", 1),
+		END_BONUS("攻击后恢复自身相当于已损失生命%s生命", 1),
+		;
+
+		final Entry entry;
+
+		Curse(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Head implements Info {
+		;
+
+		final Entry entry;
+
+		Head(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Heart implements Info {
+		;
+
+		final Entry entry;
+
+		Heart(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Necklace implements Info {
+		;
+
+		final Entry entry;
+
+		Necklace(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Pendant implements Info {
+		;
+
+		final Entry entry;
+
+		Pendant(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Ring implements Info {
+		;
+
+		final Entry entry;
+
+		Ring(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Scroll implements Info {
+		;
+
+		final Entry entry;
+
+		Scroll(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Sets implements Info {
+		;
+
+		final Entry entry;
+
+		Sets(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
 
 	static {
 		putLang(Modular.class, "modular", Modular.values());
@@ -175,6 +349,15 @@ public class CALang {
 		putLang(DamageType.class, "damage_type", DamageType.values());
 		putLang(Back.class, "back", Back.values());
 		putLang(Bracelet.class, "bracelet", Bracelet.values());
+		putLang(Charm.class, "charms", Charm.values());
+		putLang(Curse.class, "curse", Curse.values());
+		putLang(Head.class, "head", Head.values());
+		putLang(Heart.class, "heart", Heart.values());
+		putLang(Necklace.class, "necklace", Necklace.values());
+		putLang(Pendant.class, "pendant", Pendant.values());
+		putLang(Ring.class, "ring", Ring.values());
+		putLang(Scroll.class, "scroll", Scroll.values());
+		putLang(Sets.class, "sets", Sets.values());
 	}
 
 	public static void addLang(RegistrateLangProvider pvd) {

@@ -36,6 +36,10 @@ public interface TextFacet extends IFacet {
 		return Component.literal(Math.round(val * 100) + "%").withStyle(ChatFormatting.AQUA);
 	}
 
+	static MutableComponent percSmall(double val) {
+		return Component.literal(val * 100 + "%").withStyle(ChatFormatting.AQUA);
+	}
+
 	void addText(@Nullable Level level, List<Component> list);
 
 }

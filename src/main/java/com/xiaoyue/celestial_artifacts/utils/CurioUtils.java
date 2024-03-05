@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_artifacts.utils;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -18,15 +19,11 @@ public class CurioUtils {
 
 	public static int getCurseAmount(Player player) {
 		if (!isCsOn(player)) return 0;
-		int total = 7;
-		if (hasCurio(player, CAItems.CHAOTIC_ETCHING.get())) total--;
-		if (hasCurio(player, CAItems.DESIRE_ETCHING.get())) total--;
-		if (hasCurio(player, CAItems.END_ETCHING.get())) total--;
-		if (hasCurio(player, CAItems.ETCHING_OF_LIFE.get())) total--;
-		if (hasCurio(player, CAItems.TRUTH_ETCHING.get())) total--;
-		if (hasCurio(player, CAItems.ORIGIN_ETCHING.get())) total--;
-		if (hasCurio(player, CAItems.NIHILITY_ETCHING.get())) total--;
-		return total;
+		int ans = 0;
+		for (var e : CatastropheScroll.Curses.values()) {
+			if (e.cursing(player)) ans++;
+		}
+		return ans;
 	}
 
 	public static boolean hasCurio(Player player, Item... item) {

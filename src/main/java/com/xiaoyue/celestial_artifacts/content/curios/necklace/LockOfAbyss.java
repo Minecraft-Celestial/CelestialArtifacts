@@ -8,7 +8,6 @@ import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -34,10 +33,8 @@ public class LockOfAbyss implements MultiLineText, CAAttackToken {
 			int amplifier = ins.getAmplifier();
 			if (amplifier >= 7) {
 				entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
-				var type = CCDamageTypes.getDamageSource(player.level(), CCDamageTypes.ABYSSAL_MAGIC);
-				var source = new DamageSource(type, player);
 				var dmg = cache.getDamageDealt() * 2.5f;
-				GeneralEventHandler.schedule(() -> entity.hurt(source, dmg));
+				GeneralEventHandler.schedule(() -> entity.hurt(CCDamageTypes.abyss(player), dmg));
 			} else {
 				EntityUtils.addEct(entity, MobEffects.MOVEMENT_SLOWDOWN, 200, amplifier + 1);
 			}

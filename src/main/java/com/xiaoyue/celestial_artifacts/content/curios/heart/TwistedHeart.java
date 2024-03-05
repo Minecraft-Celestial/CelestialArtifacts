@@ -3,8 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.heart;
 import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
-import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.network.chat.Component;
@@ -20,7 +19,7 @@ import java.util.List;
 public class TwistedHeart extends BaseTickingToken implements CAAttackToken {
 
 	private boolean bonus(Player player) {
-		return CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, CAItems.NIHILITY_ETCHING.get());
+		return CatastropheScroll.Curses.NIHILITY.cursing(player);
 	}
 
 	private AttrAdder armor(Player player) {

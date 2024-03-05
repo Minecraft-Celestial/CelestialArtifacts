@@ -3,6 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -77,7 +78,7 @@ public class WarDeadBadge extends BaseTickingToken implements CAAttackToken {
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		if (CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, CAItems.CHAOTIC_ETCHING.get())) {
+		if (CatastropheScroll.Curses.CHAOS.cursing(player)) {
 			if (player.getHealth() < player.getMaxHealth() * 0.1f) {
 				List<LivingEntity> entities = EntityUtils.getExceptForCentralEntity(player, 8, 2);
 				player.heal((player.getMaxHealth() - player.getHealth()) * 0.01f * entities.size());
