@@ -27,7 +27,7 @@ public class CorruptBadge extends BaseTickingToken implements SkillFeature, Brea
 	public int corrupt_badge_add;
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.corrupt_badge.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.corrupt_badge.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.corrupt_badge.shift3");

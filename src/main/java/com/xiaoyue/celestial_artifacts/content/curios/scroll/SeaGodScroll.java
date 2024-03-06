@@ -18,7 +18,7 @@ public class SeaGodScroll implements SingleLineText, BreakSpeedFeature {
 	}
 
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.sea_god_scroll.shift2");
 	}
 

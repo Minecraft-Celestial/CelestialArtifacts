@@ -17,7 +17,7 @@ import java.util.List;
 public class ShadowPendant implements MultiLineText, CAAttackToken {
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.shadow_pendant.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.shadow_pendant.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.shadow_pendant.shift3");

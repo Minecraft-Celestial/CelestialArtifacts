@@ -16,7 +16,7 @@ import java.util.List;
 public class PrayerCrown implements MultiLineText, CAAttackToken {
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.prayer_crown.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.prayer_crown.shift3");
 	}

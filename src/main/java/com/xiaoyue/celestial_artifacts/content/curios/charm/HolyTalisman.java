@@ -24,7 +24,7 @@ import java.util.List;
 public class HolyTalisman implements MultiLineText, TickFacet, CAAttackToken {
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.holy_talisman.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.holy_talisman.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.holy_talisman.shift3");

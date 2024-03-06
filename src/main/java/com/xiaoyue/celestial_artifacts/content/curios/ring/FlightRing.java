@@ -25,7 +25,7 @@ public class FlightRing extends BaseTickingToken implements SingleLineText {
 	}
 
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.flight_ring.shift1");
 	}
 

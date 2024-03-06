@@ -18,7 +18,7 @@ import java.util.List;
 public class LockOfAbyss implements MultiLineText, CAAttackToken {
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.lock_of_abyss.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.lock_of_abyss.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.lock_of_abyss.shift3");

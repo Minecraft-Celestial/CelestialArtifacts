@@ -11,8 +11,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 
 public class UndeadCharm implements SingleLineText, CAAttackToken {
+
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.undead_charm.shift1");
 	}
 

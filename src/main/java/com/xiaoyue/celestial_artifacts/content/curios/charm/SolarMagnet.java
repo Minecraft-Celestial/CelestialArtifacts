@@ -17,7 +17,7 @@ import java.util.List;
 public class SolarMagnet implements MultiLineText, TickFacet {
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.solar_magnet.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.solar_magnet.shift4");
 	}

@@ -27,7 +27,7 @@ public class HiddenBracelet implements MultiLineText, TickFacet, CAAttackToken {
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift1",
 				ChatFormatting.LIGHT_PURPLE, getDur());
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift2");

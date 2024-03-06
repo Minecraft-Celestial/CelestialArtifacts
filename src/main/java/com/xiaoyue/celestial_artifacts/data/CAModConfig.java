@@ -85,29 +85,46 @@ public class CAModConfig {
 
 		public static class Charm {
 
+			// destroyer badge
 			public final ForgeConfigSpec.DoubleValue destroyerBadgeAttack;
 			public final ForgeConfigSpec.DoubleValue destroyerBadgeDamagePenalty;
 			public final ForgeConfigSpec.DoubleValue destroyerBadgeThreshold;
 			public final ForgeConfigSpec.DoubleValue destroyerBadgeHurtBonus;
 
-			// holy_sword
+			// holy sword
 			public final ForgeConfigSpec.DoubleValue holySwordCritRate;
 			public final ForgeConfigSpec.DoubleValue holySwordMaxAddDamage;
 			public final ForgeConfigSpec.DoubleValue holySwordLostLifeAddDamage;
 
-			// angel_heart
+			// angel heart
 			public final ForgeConfigSpec.DoubleValue angelHeartThreshold;
 			public final ForgeConfigSpec.DoubleValue angelHeartProtection;
 			public final ForgeConfigSpec.IntValue angelHeartRemoveInterval;
 			public final ForgeConfigSpec.IntValue angelHeartBloodInterval;
 			public final ForgeConfigSpec.IntValue angelHeartHealAmount;
-			// cursed_protector
-			public final ForgeConfigSpec.DoubleValue cursedProtectorJudgingLife;
-			public final ForgeConfigSpec.DoubleValue cursedProtectorReduceInjury;
 
-			// cursed_talisman
+			// cursed protector
+			public final ForgeConfigSpec.DoubleValue cursedProtectorThreshold;
+			public final ForgeConfigSpec.DoubleValue cursedProtectorReduction;
+			public final ForgeConfigSpec.DoubleValue cursedProtectorFrontProtect;
+
+			// cursed talisman
 			public final ForgeConfigSpec.DoubleValue cursedTalismanCritRateAdd;
 			public final ForgeConfigSpec.DoubleValue cursedTalismanCritDamageAdd;
+
+			// magic horseshoe
+			public final ForgeConfigSpec.DoubleValue magicHorseshoeSpeedBonus;
+			public final ForgeConfigSpec.DoubleValue magicHorseshoeLuck;
+			public final ForgeConfigSpec.DoubleValue magicHorseshoeFallReduction;
+
+			// bearing stamen
+			public final ForgeConfigSpec.DoubleValue bearingStamenMaxHealth;
+			public final ForgeConfigSpec.DoubleValue bearingStamenRegen;
+			public final ForgeConfigSpec.IntValue bearingStamenLevel;
+
+			// sands talisman
+			public final ForgeConfigSpec.DoubleValue sandsTalismanDamageBonus;
+			public final ForgeConfigSpec.DoubleValue sandsTalismanExpBonus;
 
 			private Charm(ForgeConfigSpec.Builder builder) {
 				builder.push("charm");
@@ -165,22 +182,68 @@ public class CAModConfig {
 				}
 
 				// cursed_protector
-				cursedProtectorJudgingLife = builder
-						.comment("This value determines how much health is greater than the current one in order to trigger damage reduction")
-						.defineInRange("cursedProtectorJudgingLife", 0.35, 0.01, 1);
+				{
+					cursedProtectorFrontProtect = builder
+							.comment("Cursed Protector: damage reduction from front")
+							.defineInRange("cursedProtectorFrontProtect", 0.3, 0, 1);
+					cursedProtectorThreshold = builder
+							.comment("Cursed Protector: health threshold to trigger damage reduction")
+							.defineInRange("cursedProtectorThreshold", 0.35, 0.01, 1);
 
-				cursedProtectorReduceInjury = builder
-						.comment("This value determines its damage reduction amount")
-						.defineInRange("cursedProtectorReduceInjury", 0.25, 0.01, 1);
+					cursedProtectorReduction = builder
+							.comment("Cursed Protector: damage reduction percentage")
+							.defineInRange("cursedProtectorReduction", 0.25, 0.01, 1);
+				}
 
 				// cursed_talisman
-				cursedTalismanCritRateAdd = builder
-						.comment("This value determines the critical hit rate increased by each enchantment")
-						.defineInRange("cursedTalismanCritRateAdd", 0.04, 0.01, 1);
+				{
+					cursedTalismanCritRateAdd = builder
+							.comment("Cursed Talisman: critical hit rate increased by each enchantment")
+							.defineInRange("cursedTalismanCritRateAdd", 0.04, 0.01, 1);
 
-				cursedTalismanCritDamageAdd = builder
-						.comment("This value determines the critical hit damage increased by each enchantment")
-						.defineInRange("cursedTalismanCritDamageAdd", 0.08, 0.01, 1);
+					cursedTalismanCritDamageAdd = builder
+							.comment("Cursed Talisman: critical hit damage increased by each enchantment")
+							.defineInRange("cursedTalismanCritDamageAdd", 0.08, 0.01, 1);
+				}
+
+				// magic horseshoe
+				{
+					magicHorseshoeSpeedBonus = builder
+							.comment("Magic Horseshoe: speed bonus")
+							.defineInRange("magicHorseshoeSpeedBonus", 0.25, 0, 10);
+
+					magicHorseshoeLuck = builder
+							.comment("Magic Horseshoe: luck")
+							.defineInRange("magicHorseshoeLuck", 1.0, 0, 10);
+
+					magicHorseshoeFallReduction = builder
+							.comment("Magic Horseshoe: fall damage reduction")
+							.defineInRange("magicHorseshoeFallReduction", 0.95, 0, 10);
+
+				}
+
+				// bearing stamen
+				{
+					bearingStamenMaxHealth = builder
+							.comment("Bearing Stamen: max health bonus")
+							.defineInRange("bearingStamenMaxHealth", 20d, 0, 1000);
+					bearingStamenRegen = builder
+							.comment("Bearing Stamen: regen bonus")
+							.defineInRange("bearingStamenRegen", 0.25, 0, 10);
+					bearingStamenLevel = builder
+							.comment("Bearing Stamen: effect level (0 means Lv.I)")
+							.defineInRange("bearingStamenLevel", 1, 0, 10);
+				}
+
+				// sands talisman
+				{
+					sandsTalismanDamageBonus = builder
+							.comment("Sands Talisman: damage bonus in hot regions")
+							.defineInRange("sandsTalismanDamageBonus", 0.3, 0, 10);
+					sandsTalismanExpBonus = builder
+							.comment("Sands Talisman: exp bonus")
+							.defineInRange("sandsTalismanExpBonus", 0.5, 0, 10);
+				}
 
 				builder.pop();
 			}
@@ -242,7 +305,7 @@ public class CAModConfig {
 
 				originTriggerDurability = builder
 						.comment("Origin Curse: Durability threshold to trigger curse ")
-						.defineInRange("originTriggerDurability", 500, 1, 1000000);
+						.defineInRange("originTriggerDurability", 500, 0, 1000000);
 
 				originCurseDamage = builder
 						.comment("Origin Curse: Player attack damage reduction")
@@ -323,8 +386,21 @@ public class CAModConfig {
 
 		public static class Heart {
 
+			public final ForgeConfigSpec.DoubleValue heartOfRevengeBowStrength;
+			public final ForgeConfigSpec.IntValue heartOfRevengeValidTime;
+			public final ForgeConfigSpec.DoubleValue heartOfRevengeDamageBonus;
+
 			private Heart(ForgeConfigSpec.Builder builder) {
 				builder.push("heart");
+				heartOfRevengeBowStrength = builder
+						.comment("Heart of Revenge: bow strength")
+						.defineInRange("heartOfRevengeBowStrength", 0.06, 0, 1);
+				heartOfRevengeValidTime = builder
+						.comment("Heart of Revenge: valid time for revenge")
+						.defineInRange("heartOfRevengeValidTime", 3, 0, 10);
+				heartOfRevengeDamageBonus = builder
+						.comment("Heart of Revenge: revenge damage")
+						.defineInRange("heartOfRevengeDamageBonus", 0.25, 0, 10);
 
 
 				builder.pop();
@@ -338,6 +414,17 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue crossNecklaceInvulTick;
 			public final ForgeConfigSpec.DoubleValue gallopNecklaceSpeedBonus;
 			public final ForgeConfigSpec.DoubleValue gallopNecklaceDamageFactor;
+			public final ForgeConfigSpec.DoubleValue fangNecklaceAttack;
+			public final ForgeConfigSpec.DoubleValue fangNecklaceDamageBonus;
+			public final ForgeConfigSpec.DoubleValue fangNecklacePoisonChance;
+			public final ForgeConfigSpec.IntValue fangNecklacePoisonDuration;
+			public final ForgeConfigSpec.IntValue fangNecklacePoisonLevel;
+			public final ForgeConfigSpec.DoubleValue preciousNecklaceCritDmg;
+			public final ForgeConfigSpec.DoubleValue holyNecklaceMaxHealth;
+			public final ForgeConfigSpec.IntValue holyNecklaceInvulTick;
+			public final ForgeConfigSpec.DoubleValue hierloomNecklaceArmor;
+			public final ForgeConfigSpec.DoubleValue hierloomNecklaceSpeed;
+			public final ForgeConfigSpec.DoubleValue hierloomNecklaceExp;
 
 			private Necklace(ForgeConfigSpec.Builder builder) {
 				builder.push("necklace");
@@ -353,7 +440,47 @@ public class CAModConfig {
 				gallopNecklaceDamageFactor = builder
 						.comment("Gallop Necklace: damage factor of speed")
 						.defineInRange("gallopNecklaceDamageFactor", 1.5, 0, 100000);
+				// fang necklace
+				{
+					fangNecklaceAttack = builder
+							.comment("Fang Necklace: Attack bonus")
+							.defineInRange("fangNecklaceAttack", 0.1, 0, 10);
+					fangNecklaceDamageBonus = builder
+							.comment("Fang Necklace: Damage bonus from behind")
+							.defineInRange("fangNecklaceDamageBonus", 0.25, 0, 10);
+					fangNecklacePoisonChance = builder
+							.comment("Fang Necklace: poison inflict chance")
+							.defineInRange("fangNecklacePoisonChance", 0.5, 0, 1);
+					fangNecklacePoisonDuration = builder
+							.comment("Fang Necklace: poison inflicted duration in seconds")
+							.defineInRange("fangNecklacePoisonDuration", 5, 0, 1000);
+					fangNecklacePoisonLevel = builder
+							.comment("Fang Necklace: poison inflicted level (0 means Lv.I)")
+							.defineInRange("fangNecklacePoisonLevel", 2, 0, 5);
 
+				}
+				preciousNecklaceCritDmg = builder
+						.comment("Precious Necklace: crit damage bonus")
+						.defineInRange("preciousNecklaceCritDmg", 0.2, 0, 10);
+				holyNecklaceMaxHealth = builder
+						.comment("Holy Necklace: Max health boost")
+						.defineInRange("holyNecklaceMaxHealth", 4d, 0, 100);
+				holyNecklaceInvulTick = builder
+						.comment("Holy Necklace: additional invul tick")
+						.defineInRange("holyNecklaceInvulTick", 5, 0, 100);
+				//hierloom necklace
+				{
+
+					hierloomNecklaceArmor = builder
+							.comment("Hierloom Necklace: armor bonus")
+							.defineInRange("hierloomNecklaceArmor", 2d, 0, 100);
+					hierloomNecklaceSpeed = builder
+							.comment("Hierloom Necklace: movement speed bonus")
+							.defineInRange("hierloomNecklaceSpeed", 0.05, 0, 10);
+					hierloomNecklaceExp = builder
+							.comment("Hierloom Necklace: exp pickup bonus")
+							.defineInRange("hierloomNecklaceExp", 0.1, 0, 10);
+				}
 				builder.pop();
 			}
 

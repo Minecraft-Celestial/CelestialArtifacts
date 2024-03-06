@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class EvilEye implements SingleLineText, TickFacet {
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.evil_eye.shift1");
 	}
 

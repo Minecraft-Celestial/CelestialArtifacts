@@ -20,7 +20,7 @@ import java.util.List;
 public class SoulBox implements MultiLineText, CAAttackToken {
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.soul_box.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.soul_box.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.soul_box.shift3");

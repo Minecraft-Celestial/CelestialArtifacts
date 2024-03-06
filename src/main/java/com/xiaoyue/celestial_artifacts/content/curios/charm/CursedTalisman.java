@@ -23,7 +23,7 @@ public class CursedTalisman extends BaseTickingToken {
 	public int cursed_talisman_add;
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.cursed_talisman.shift3",

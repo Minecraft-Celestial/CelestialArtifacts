@@ -1,8 +1,10 @@
 package com.xiaoyue.celestial_artifacts.content.curios.set;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.mixin.AbstractArrowAccessor;
+import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -33,8 +35,8 @@ public class SeaGodSet extends BaseTickingToken implements CAAttackToken {
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sea_god.alt1");
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
+		list.add(TextFacet.set(level, CAItems.seaGodSet()));
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sea_god.alt2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sea_god.alt3");
 	}

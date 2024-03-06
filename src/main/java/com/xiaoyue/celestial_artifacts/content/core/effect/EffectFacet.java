@@ -15,19 +15,24 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
 /**
  * duration and period are in seconds
  */
-public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, int period)
+public record EffectFacet(Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier, int period)
 		implements TickFacet, SingleLineText {
 
 	public static EffectFacet of(Supplier<MobEffect> eff, int duration, int amplifier, int period) {
-		return new EffectFacet(eff, duration, amplifier, period);
+		return new EffectFacet(eff, () -> duration, () -> amplifier, period);
 	}
 
 	public static EffectFacet of(Supplier<MobEffect> eff, int duration, int amplifier) {
+		return new EffectFacet(eff, () -> duration, () -> amplifier, 0);
+	}
+
+	public static EffectFacet of(Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier) {
 		return new EffectFacet(eff, duration, amplifier, 0);
 	}
 
@@ -57,7 +62,7 @@ public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, 
 		MobEffectInstance ins = get();
 		var bad = ChatFormatting.DARK_GRAY;
 		ChatFormatting base = enable ? ChatFormatting.GRAY : bad;
-		if (period <= duration) {
+		if (period <= duration.getAsInt()) {
 			return CALang.Modular.EFFECT_REFRESH.get().withStyle(base)
 					.append(ClientTokenHelper.disable(enable, getDesc(ins, false)));
 		} else {
@@ -68,13 +73,13 @@ public record EffectFacet(Supplier<MobEffect> eff, int duration, int amplifier, 
 	}
 
 	public MobEffectInstance get() {
-		return new MobEffectInstance(eff.get(), duration * 20, amplifier, true, true);
+		return new MobEffectInstance(eff.get(), duration.getAsInt() * 20, amplifier.getAsInt(), true, true);
 	}
 
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
 		if (entity.level().isClientSide()) return;
-		if (period <= duration || entity.tickCount % (period * 20) == 0) {
+		if (period <= duration.getAsInt() || entity.tickCount % (period * 20) == 0) {
 			EffectUtil.refreshEffect(entity, get(), EffectUtil.AddReason.SELF, entity);
 		}
 	}

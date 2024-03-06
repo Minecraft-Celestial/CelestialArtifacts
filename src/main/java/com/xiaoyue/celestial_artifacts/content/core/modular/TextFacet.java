@@ -1,5 +1,9 @@
 package com.xiaoyue.celestial_artifacts.content.core.modular;
 
+import com.xiaoyue.celestial_artifacts.content.core.token.ClientTokenHelper;
+import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -38,6 +42,21 @@ public interface TextFacet extends IFacet {
 
 	static MutableComponent percSmall(double val) {
 		return Component.literal(val * 100 + "%").withStyle(ChatFormatting.AQUA);
+	}
+
+	static MutableComponent set(@Nullable Level level, SetTokenFacet<?> set) {
+		boolean first = true;
+		MutableComponent comp = Component.empty();
+		boolean all = true;
+		for (var e : set.list()) {
+			if (first) first = false;
+			else comp = comp.append(CALang.Modular.comma().withStyle(ChatFormatting.GRAY));
+			boolean has = ClientTokenHelper.pred(level, p -> CurioUtils.hasCurio(p, e.asItem()));
+			all &= has;
+			comp = comp.append(ClientTokenHelper.disable(has,
+					CALang.Modular.item(e.asItem().getDefaultInstance())));
+		}
+		return CALang.Modular.SET.get(comp).withStyle(all ? ChatFormatting.YELLOW : ChatFormatting.GRAY);
 	}
 
 	void addText(@Nullable Level level, List<Component> list);

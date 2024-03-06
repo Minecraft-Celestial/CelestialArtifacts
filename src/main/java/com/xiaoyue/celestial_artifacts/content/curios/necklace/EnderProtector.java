@@ -13,7 +13,7 @@ import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 public class EnderProtector implements SingleLineText, ShieldingFeature {
 
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.ender_protector.shift3");
 	}
 

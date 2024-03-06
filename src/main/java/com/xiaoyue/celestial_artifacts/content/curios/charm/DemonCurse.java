@@ -22,7 +22,7 @@ public class DemonCurse extends BaseTickingToken {
 	public double demon_curse_add;
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_curse.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_curse.shift3");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_curse.shift4");

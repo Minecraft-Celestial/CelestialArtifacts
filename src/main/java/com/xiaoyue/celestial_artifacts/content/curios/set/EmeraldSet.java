@@ -1,7 +1,9 @@
 package com.xiaoyue.celestial_artifacts.content.curios.set;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
+import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.network.chat.Component;
@@ -34,6 +36,7 @@ public class EmeraldSet extends BaseTickingToken {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.set(level, CAItems.emeraldSet()));
 		list.add(LUCK.getTooltip());
 		list.add(CRIT.getTooltip());
 	}

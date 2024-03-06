@@ -10,7 +10,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 public class EmeraldNecklace implements SingleLineText, CAAttackToken {
 
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.emerald_necklace.shift2");
 	}
 

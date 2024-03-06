@@ -29,7 +29,7 @@ public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.knight_shelter.shift3");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.knight_shelter.shift4");
 	}

@@ -25,7 +25,7 @@ public class AngelPearl extends BaseTickingToken {
 	private int angel_pearl_add;
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_pearl.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_pearl.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_pearl.shift3");

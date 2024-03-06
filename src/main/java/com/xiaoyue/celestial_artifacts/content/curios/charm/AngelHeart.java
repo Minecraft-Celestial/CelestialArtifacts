@@ -19,7 +19,7 @@ public class AngelHeart implements MultiLineText, TickFacet, CAAttackToken {
 
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift1",
 				ChatFormatting.GOLD, CAModConfig.COMMON.charm.angelHeartBloodInterval.get() / 20);
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.angel_heart.shift2",

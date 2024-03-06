@@ -6,6 +6,7 @@ import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -64,7 +65,9 @@ public class CALang {
 		INVUL_TIME("Increase invulnerable time by %s", 1),
 		HURT_BONUS("Increase damage by %s", 1),
 		PROTECT("Reduce damage by %s", 1),
-		PROTECT_TYPE("Reduce %s damage by %s", 2);
+		PROTECT_TYPE("Reduce %s damage by %s", 2),
+		COMMA(", ", 0),
+		SET("Requires [%s] to take effect:", 1);
 
 		final Entry entry;
 
@@ -72,8 +75,18 @@ public class CALang {
 			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
+
+
 		public Entry entry() {
 			return entry;
+		}
+
+		public static MutableComponent comma() {
+			return COMMA.get();
+		}
+
+		public static MutableComponent item(ItemStack stack) {
+			return stack.getHoverName().copy().withStyle(stack.getRarity().getStyleModifier());
 		}
 
 		public static MutableComponent curse() {
@@ -100,6 +113,7 @@ public class CALang {
 		DAY("At Day:", 0),
 		HOT_REGION("When in hot biomes:", 0),
 		ATTACK_BEHIND("When attacking from behind:", 0),
+		FRONT_DAMAGE("When attacked by mobs in front:", 0),
 		TARGET_HAS_ARMOR("When target has armor:", 0),
 		REVENGE("When hurt, for the next %s seconds: ", 1),
 		LUCK("When you have %s or more Luck: ", 1),
@@ -170,7 +184,8 @@ public class CALang {
 	}
 
 	public enum Charm implements Info {
-		;
+		CURSED_PROTECTOR_0("副手装备的盾牌不会再进入冷却", 0),
+		CURSED_PROTECTOR_1("受到伤害大于当前生命的%s时，伤害降低%s", 2);
 
 		final Entry entry;
 

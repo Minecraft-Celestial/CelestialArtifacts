@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class RingOfLife implements SingleLineText, TickFacet {
 
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.ring_of_life.shift1");
 	}
 

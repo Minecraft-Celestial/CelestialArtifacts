@@ -13,30 +13,31 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.DoubleSupplier;
+import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
 public record HurtTargetEffectFacet(
 		@Nullable DoubleSupplier chance,
-		Supplier<MobEffect> eff, int duration, int amplifier
+		Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier
 ) implements SingleLineText, CAAttackToken {
 
 	public static HurtTargetEffectFacet of(
-			DoubleSupplier chance, Supplier<MobEffect> eff, int duration, int amplifier) {
+			DoubleSupplier chance, Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier) {
 		return new HurtTargetEffectFacet(chance, eff, duration, amplifier);
 	}
 
-	public static HurtTargetEffectFacet of(Supplier<MobEffect> eff, int duration, int amplifier) {
+	public static HurtTargetEffectFacet of(Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier) {
 		return new HurtTargetEffectFacet(null, eff, duration, amplifier);
 	}
 
 	public MobEffectInstance get() {
-		return new MobEffectInstance(eff.get(), duration * 20, amplifier, true, true);
+		return new MobEffectInstance(eff.get(), duration.getAsInt() * 20, amplifier.getAsInt(), true, true);
 	}
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
 		if (chance == null || CAAttackToken.chance(player, chance.getAsDouble())) {
-			cache.getAttackTarget().addEffect(new MobEffectInstance(eff.get(), duration, amplifier));
+			cache.getAttackTarget().addEffect(new MobEffectInstance(eff.get(), duration.getAsInt(), amplifier.getAsInt()));
 		}
 	}
 

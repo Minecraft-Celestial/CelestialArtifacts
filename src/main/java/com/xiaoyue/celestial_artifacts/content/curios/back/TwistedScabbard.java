@@ -69,7 +69,7 @@ public class TwistedScabbard extends BaseTickingToken
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift4"));
 		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift5"));
 		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift6"));

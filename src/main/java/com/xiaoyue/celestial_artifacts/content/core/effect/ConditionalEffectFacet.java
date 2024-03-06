@@ -37,7 +37,7 @@ public record ConditionalEffectFacet(
 		boolean first = true;
 		for (var e : effs) {
 			if (first) first = false;
-			else effLine = effLine.append(Component.literal(", ").withStyle(base));
+			else effLine = effLine.append(CALang.Modular.comma().withStyle(base));
 			effLine = effLine.append(ClientTokenHelper.disable(met,
 					EffectFacet.getDesc(e.get(), true)));
 		}

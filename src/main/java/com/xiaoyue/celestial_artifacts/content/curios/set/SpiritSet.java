@@ -1,7 +1,9 @@
 package com.xiaoyue.celestial_artifacts.content.curios.set;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -65,8 +67,8 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt1");
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
+		list.add(TextFacet.set(level, CAItems.spiritSet()));
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt3");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt4");

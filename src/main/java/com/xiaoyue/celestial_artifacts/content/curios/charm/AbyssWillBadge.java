@@ -32,7 +32,7 @@ public class AbyssWillBadge extends BaseTickingToken
 	public float abyss_will_badge_damage;
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
+	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.abyss_will_badge.shift1");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.abyss_will_badge.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.abyss_will_badge.shift3");

@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 public class FreezeRing implements SingleLineText, CAAttackToken {
 
 	@Override
-	public MutableComponent getLine() {
+	public MutableComponent getLine() {//TODO text
 		return Component.translatable("tooltip.celestial_artifacts.freeze_ring.shift1");
 	}
 

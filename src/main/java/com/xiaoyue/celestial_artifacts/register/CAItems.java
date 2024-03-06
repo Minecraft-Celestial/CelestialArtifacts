@@ -69,6 +69,7 @@ import net.minecraftforge.common.ForgeMod;
 import top.theillusivec4.curios.Curios;
 
 import java.util.List;
+import java.util.function.IntSupplier;
 
 public class CAItems {
 
@@ -137,13 +138,15 @@ public class CAItems {
 
 		// charms
 		{
-			//
+			//战争亡者之徽
 			WAR_DEAD_BADGE = charm("war_dead_badge", () -> ModularCurio.builder()
 					.requireCS().rarity(IRarityUtils.DARK_PURPLE)
 					.build(new TokenFacet<>("war_dead_badge", WarDeadBadge::new)));
+
 			// 不死者护符
 			UNDEAD_CHARM = charm("undead_charm", () -> ModularCurio.builder()
 					.rarity(Rarity.RARE).build(new UndeadCharm()));
+
 			// 毁灭者徽章
 			DESTROYER_BADGE = charm("destroyer_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
@@ -153,31 +156,43 @@ public class CAItems {
 									() -> CALang.Condition.LOW_HEALTH.get(TextFacet.perc(CAModConfig.COMMON.charm.destroyerBadgeThreshold.get())),
 									(p, t, c) -> p.getHealth() <= CAModConfig.COMMON.charm.destroyerBadgeThreshold.get() * p.getMaxHealth(),
 									CAModConfig.COMMON.charm.destroyerBadgeHurtBonus::get)));
+
 			// 扭曲之脑
 			TWISTED_BRAIN = charm("twisted_brain", () -> ModularCurio.builder()
 					.requireCS().rarity(Rarity.EPIC).build(new TwistedBrain()));
+
 			// 噬咒护符
 			CORRUPT_BADGE = charm("corrupt_badge", () -> ModularCurio.builder()
 					.requireCS().rarity(IRarityUtils.DARK_PURPLE)
 					.build(new TokenFacet<>("corrupt_badge", CorruptBadge::new)));
+
 			// 腐化侵蚀徽章
 			CURSED_TALISMAN = charm("cursed_talisman", () -> ModularCurio.builder()
 					.requireCS().rarity(IRarityUtils.DARK_PURPLE)
 					.build(new TokenFacet<>("cursed_talisman", CursedTalisman::new)));
+
 			// 受诅咒的坚盾
 			CURSED_PROTECTOR = charm("cursed_protector", () ->
 					ModularCurio.builder().rarity(Rarity.EPIC).build(
 							AttrFacet.add(() -> Attributes.KNOCKBACK_RESISTANCE, () -> 1),
+							SimpleListener.protect(
+									CALang.Condition.FRONT_DAMAGE::get,
+									(p, a, c) -> !EntityUtils.isLookingBehindTarget(p, a.getEyePosition()),
+									CAModConfig.COMMON.charm.cursedProtectorReduction::get
+							),
 							new CursedProtector()
 					));
+
 			// 负咒的灵魂图腾
 			CURSED_TOTEM = charm("cursed_totem", () -> ModularCurio.builder()
 					.requireCS().rarity(IRarityUtils.DARK_PURPLE).build(CursedTotem.TOKEN));
+
 			// 神圣七彩护符
 			HOLY_TALISMAN = charm("holy_talisman", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
 							new HolyTalisman()
 					));
+
 			// 大天使之剑
 			HOLY_SWORD = charm("holy_sword", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
@@ -185,6 +200,7 @@ public class CAItems {
 									CAModConfig.COMMON.charm.holySwordCritRate::get),
 							new HolySword()
 					));
+
 			// 天使之心
 			ANGEL_HEART = charm("angel_heart", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
@@ -195,25 +211,30 @@ public class CAItems {
 									CAModConfig.COMMON.charm.angelHeartProtection::get
 							)
 					));
+
 			// 天使珍珠
 			ANGEL_PEARL = charm("angel_pearl", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
 							new TokenFacet<>("angel_pearl", AngelPearl::new)
 					));
+
 			// 大恶魔之咒 TODO config
 			DEMON_CURSE = charm("demon_curse", () -> ModularCurio.builder()
 					.rarity(IRarityUtils.DARK_PURPLE).build(
 							AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.9),
 							new TokenFacet<>("demon_curse", DemonCurse::new)));
+
 			// 骑士庇护 TODO config
 			KNIGHT_SHELTER = charm("knight_shelter", () -> ModularCurio.builder().rarity(Rarity.UNCOMMON)
-					.build(
+					.build(new KnightShelter(),
 							AttrFacet.add(() -> Attributes.ARMOR, () -> 8),
-							AttrFacet.add(L2DamageTracker.ABSORB, () -> 4),
-							new KnightShelter()));
+							AttrFacet.add(L2DamageTracker.ABSORB, () -> 4)
+					));
+
 			// 魂灵匣
 			SOUL_BOX = charm("soul_box", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(new SoulBox()));
+
 			// 太阳磁铁 TODO config
 			SOLAR_MAGNET = charm("solar_magnet", () -> ModularCurio.builder().rarity(Rarity.RARE)
 					.build(new SolarMagnet(), SimpleListener.hurtBonus(
@@ -221,39 +242,46 @@ public class CAItems {
 					)));
 			// 暴食徽章
 			GLUTTONY_BADGE = charm("gluttony_badge", () -> ModularCurio.builder()
-					.rarity(Rarity.EPIC).build(
-							EffectFacet.of(() -> MobEffects.HUNGER, 3, 1),
-							new GluttonyBadge()
+					.rarity(Rarity.EPIC).build(new GluttonyBadge(),
+							EffectFacet.of(() -> MobEffects.HUNGER, 3, 1)
 					));
 
-			// 魔法马掌 TODO config
+			// 魔法马掌
 			MAGIC_HORSESHOE = charm("magic_horseshoe", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
-							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.25),
-							AttrFacet.add(() -> Attributes.LUCK, () -> 1),
+							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED,
+									CAModConfig.COMMON.charm.magicHorseshoeSpeedBonus::get),
+							AttrFacet.add(() -> Attributes.LUCK,
+									CAModConfig.COMMON.charm.magicHorseshoeLuck::get),
 							SimpleListener.protectType(CALang.DamageType.FALL::get,
-									e -> e.is(DamageTypes.FALL), () -> 0.95)
+									e -> e.is(DamageTypes.FALL),
+									CAModConfig.COMMON.charm.magicHorseshoeFallReduction::get)
 					));
 
-			// 生息胸花 TODO config
+			// 生息胸花
 			BEARING_STAMEN = charm("bearing_stamen", () -> ModularCurio.builder().rarity(IRarityUtils.GREEN)
 					.build(
-							AttrFacet.add(() -> Attributes.MAX_HEALTH, () -> 20),
-							AttrFacet.add(CCAttributes.REPLY_POWER, () -> 0.25),
-							EffectFacet.of(() -> MobEffects.REGENERATION, 2, 1)
+							AttrFacet.add(() -> Attributes.MAX_HEALTH,
+									CAModConfig.COMMON.charm.bearingStamenMaxHealth::get),
+							AttrFacet.add(CCAttributes.REPLY_POWER,
+									CAModConfig.COMMON.charm.bearingStamenRegen::get),
+							EffectFacet.of(() -> MobEffects.REGENERATION, () -> 2,
+									CAModConfig.COMMON.charm.bearingStamenLevel::get)
 					));
 			// 深渊意志徽章
 			ABYSS_WILL_BADGE = charm("abyss_will_badge", () -> ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA)
 					.build(AbyssWillBadge.TOKEN));
-			// 金沙护符 TODO config
+
+			// 金沙护符
 			SANDS_TALISMAN = charm("sands_talisman", () ->
 					ModularCurio.builder().loot(1).build(
 							SimpleListener.hurtBonus(
 									CALang.Condition.HOT_REGION::get,
 									(p, t, c) -> p.level().getBiome(p.blockPosition()).get().getBaseTemperature() >= 0.01,
-									() -> 0.3),
-							XpBonusFeature.simple(() -> 0.5)
+									CAModConfig.COMMON.charm.sandsTalismanDamageBonus::get),
+							XpBonusFeature.simple(CAModConfig.COMMON.charm.sandsTalismanExpBonus::get)
 					));
+
 			// 古代殉葬品 TODO config
 			SACRIFICIAL_OBJECT = charm("sacrificial_object", () -> ModularCurio.builder().rarity(Rarity.EPIC)
 					.loot(1).build(AttrFacet.multTotal(L2DamageTracker.REDUCTION, () -> -0.05),
@@ -262,20 +290,23 @@ public class CAItems {
 
 		// heart
 		{
-			// 复仇之心 TODO config
-			HEART_OF_REVENGE = heart("heart_of_revenge", () ->
-					ModularCurio.builder().rarity(IRarityUtils.GOLD).build(
-							AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get, () -> 0.06),
-							HurtPlayerEffectFacet.of(
-									EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 3, 1),
-									EffectFacet.of(() -> MobEffects.DAMAGE_RESISTANCE, 3, 0)
-							),
-							SimpleListener.hurtBonus(
-									() -> CALang.Condition.REVENGE.get(TextFacet.num(3)),
-									(p, t, c) -> p.getLastHurtByMobTimestamp() >= p.tickCount - 3 * 20,
-									() -> 0.25
-							)
-					));
+			// 复仇之心
+			HEART_OF_REVENGE = heart("heart_of_revenge", () -> {
+				IntSupplier dur = CAModConfig.COMMON.heart.heartOfRevengeValidTime::get;
+				return ModularCurio.builder().rarity(IRarityUtils.GOLD).build(
+						AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get,
+								CAModConfig.COMMON.heart.heartOfRevengeBowStrength::get),
+						HurtPlayerEffectFacet.of(
+								EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, dur, () -> 1),
+								EffectFacet.of(() -> MobEffects.DAMAGE_RESISTANCE, dur, () -> 0)
+						),
+						SimpleListener.hurtBonus(
+								() -> CALang.Condition.REVENGE.get(TextFacet.num(dur.getAsInt())),
+								(p, t, c) -> p.getLastHurtByMobTimestamp() >= p.tickCount - dur.getAsInt() * 20,
+								CAModConfig.COMMON.heart.heartOfRevengeDamageBonus::get
+						)
+				);
+			});
 
 			// 扭曲之心
 			TWISTED_HEART = heart("twisted_heart", () ->
@@ -419,57 +450,69 @@ public class CAItems {
 							new GallopNecklace()
 					));
 
-			// 毒牙项链 TODO config
+			// 毒牙项链
 			FANG_NECKLACE = necklace("fang_necklace", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
-							AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.1),
+							AttrFacet.multBase(() -> Attributes.ATTACK_SPEED,
+									CAModConfig.COMMON.necklace.fangNecklaceAttack::get),
 							SimpleListener.hurtBonus(
 									CALang.Condition.TARGET_HAS_ARMOR::get,
 									(p, t, c) -> EntityUtils.hasArmor(t),
-									() -> 0.25),
-							HurtTargetEffectFacet.of(() -> 0.5,
-									() -> MobEffects.POISON, 100, 2)
+									CAModConfig.COMMON.necklace.fangNecklaceDamageBonus::get),
+							HurtTargetEffectFacet.of(
+									CAModConfig.COMMON.necklace.fangNecklacePoisonChance::get,
+									() -> MobEffects.POISON,
+									CAModConfig.COMMON.necklace.fangNecklacePoisonDuration::get,
+									CAModConfig.COMMON.necklace.fangNecklacePoisonLevel::get)
 					));
 
-			// 珍钻项链 TODO config
+			// 珍钻项链
 			PRECIOUS_NECKLACE = necklace("precious_necklace", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).fortune(1).build(
-							AttrFacet.add(L2DamageTracker.CRIT_DMG::get, () -> 0.2),
+							AttrFacet.add(L2DamageTracker.CRIT_DMG::get,
+									CAModConfig.COMMON.necklace.preciousNecklaceCritDmg::get),
 							SlotFacet.of("charm", 1)
 					));
 
-			// 神圣项链 TODO config
+			// 神圣项链
 			HOLY_NECKLACE = necklace("holy_necklace", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
-							AttrFacet.add(() -> Attributes.MAX_HEALTH, () -> 4),
-							InvulToken.of(() -> 5),
+							AttrFacet.add(() -> Attributes.MAX_HEALTH,
+									CAModConfig.COMMON.necklace.holyNecklaceMaxHealth::get),
+							InvulToken.of(CAModConfig.COMMON.necklace.holyNecklaceInvulTick::get),
 							new HolyNecklace()
 					));
 
-			// 家传项链 TODO config
+			// 家传项链
 			HEIRLOOM_NECKLACE = necklace("heirloom_necklace", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).fortune(1).build(
-							AttrFacet.add(() -> Attributes.ARMOR, () -> 2),
-							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.05),
-							XpBonusFeature.simple(() -> 0.1)
+							AttrFacet.add(() -> Attributes.ARMOR,
+									CAModConfig.COMMON.necklace.hierloomNecklaceArmor::get),
+							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED,
+									CAModConfig.COMMON.necklace.hierloomNecklaceSpeed::get),
+							XpBonusFeature.simple(CAModConfig.COMMON.necklace.hierloomNecklaceExp::get)
 					));
 
 			// 绿宝石项链
 			EMERALD_NECKLACE = necklace("emerald_necklace", () ->
 					ModularCurio.builder().rarity(IRarityUtils.GREEN).fortune(1).build(
 							new EmeraldNecklace(), emeraldSet()));
+
 			// 末影庇佑者项链 TODO config
 			ENDER_PROTECTOR = necklace("ender_protector", () ->
 					ModularCurio.builder().rarity(Rarity.EPIC).enderMask().build(
 							AttrFacet.add(() -> Attributes.ARMOR_TOUGHNESS, () -> 4),
 							new EnderProtector()
 					));
+
 			// 红心项链 TODO config
 			RED_HEART_NECKLACE = necklace("red_heart_necklace", () ->
 					ModularCurio.of(AttrFacet.multBase(() -> Attributes.MAX_HEALTH, () -> 0.05)));
+
 			// 深渊之锁
 			LOCK_OF_ABYSS = necklace("lock_of_abyss", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new LockOfAbyss()));
+
 			// 精灵项链 TODO config
 			SPIRIT_NECKLACE = necklace("spirit_necklace", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
@@ -490,6 +533,7 @@ public class CAItems {
 									EffectFacet.of(() -> MobEffects.WATER_BREATHING, 2, 3),
 									EffectFacet.of(() -> MobEffects.NIGHT_VISION, 2, 0)
 							), seaGodSet()));
+
 			// 祷告者王冠 TODO config
 			PRAYER_CROWN = head("prayer_crown", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
@@ -640,15 +684,15 @@ public class CAItems {
 	private static final SetTokenFacet<SeaGodSet> SEA_GOD_SET = new SetTokenFacet<>("sea_god",
 			List.of(SEA_GOD_CROWN, SEA_GOD_SCROLL), SeaGodSet::new);
 
-	private static SetTokenFacet<SpiritSet> spiritSet() {
+	public static SetTokenFacet<SpiritSet> spiritSet() {
 		return SPIRIT_SET;
 	}
 
-	private static SetTokenFacet<EmeraldSet> emeraldSet() {
+	public static SetTokenFacet<EmeraldSet> emeraldSet() {
 		return EMERALD_SET;
 	}
 
-	private static SetTokenFacet<SeaGodSet> seaGodSet() {
+	public static SetTokenFacet<SeaGodSet> seaGodSet() {
 		return SEA_GOD_SET;
 	}
 
