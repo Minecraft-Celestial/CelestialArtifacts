@@ -1,28 +1,29 @@
 package com.xiaoyue.celestial_artifacts.content.curios.necklace;
 
-import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+public class GallopNecklace implements SingleLineText, CAAttackToken {
 
-public class GallopNecklace implements MultiLineText, CAAttackToken {
+	private static double factor() {
+		return CAModConfig.COMMON.necklace.gallopNecklaceDamageFactor.get();
+	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.gallop_necklace.shift1");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.gallop_necklace.shift2");
+	public MutableComponent getLine() {
+		return CALang.Necklace.GALLOP.get(TextFacet.perc(factor()));
 	}
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		cache.addHurtModifier(DamageModifier.add(player.getSpeed() * 1.5f));
+		cache.addHurtModifier(DamageModifier.add(player.getSpeed() * (float) factor()));
 	}
 
 }

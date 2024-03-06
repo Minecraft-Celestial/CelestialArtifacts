@@ -2,6 +2,7 @@ package com.xiaoyue.celestial_artifacts.events;
 
 import com.xiaoyue.celestial_artifacts.content.curios.charm.SacrificialObject;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -67,7 +68,7 @@ public class CAMiscCuriosHandler {
 			if (arrow.getOwner() instanceof Player player) {
 				// 火焰箭袋
 				if (CurioUtils.hasCurio(player, CAItems.FLAME_ARROW_BAG.get())) {
-					entity.setSecondsOnFire(60);
+					entity.setSecondsOnFire(CAModConfig.COMMON.back.flameArrowBagTime.get());
 				}
 			}
 		}

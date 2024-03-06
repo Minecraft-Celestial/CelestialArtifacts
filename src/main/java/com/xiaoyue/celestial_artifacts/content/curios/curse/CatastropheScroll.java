@@ -17,7 +17,9 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -36,67 +38,99 @@ import static com.xiaoyue.celestial_artifacts.data.CALang.Curse.*;
 public class CatastropheScroll extends BaseTickingToken implements CAAttackToken {
 
 	private static double getChaosBonus() {
-		return 0.2;
+		return CAModConfig.COMMON.curse.chaoticBlessDamageReduction.get();
 	}
 
 	private static double getChaosCurseExplosion() {
-		return CAModConfig.COMMON.curse.catastropheScrollExplosionDamage.get();
+		return CAModConfig.COMMON.curse.chaoticExplosionDamage.get();
 	}
 
 	private static double getChaosCurse() {
-		return CAModConfig.COMMON.curse.catastropheScrollOtherDamage.get();
+		return CAModConfig.COMMON.curse.chaoticOtherDamage.get();
 	}
 
 	public static int getOriginTrigger() {
-		return 500;
+		return CAModConfig.COMMON.curse.originTriggerDurability.get();
 	}
 
 	public static double getOriginCurse() {
-		return CAModConfig.COMMON.curse.catastropheScrollOriginCurseDamage.get();
+		return CAModConfig.COMMON.curse.originCurseDamage.get();
 	}
 
 	public static double getOriginBonus() {
-		return 0.25;
+		return CAModConfig.COMMON.curse.originBlessDamage.get();
 	}
 
 	public static double getLifeCurseHealth() {
-		return 0.25;
+		return CAModConfig.COMMON.curse.lifeCurseHealth.get();
 	}
 
 	public static double getLifeCurseHeal() {
-		return 0.5;
+		return CAModConfig.COMMON.curse.lifeCurseHeal.get();
 	}
 
 	public static double getLifeBonusHealth() {
-		return 0.2;
+		return CAModConfig.COMMON.curse.lifeBlessHealth.get();
 	}
 
 	public static double getLifeBonusHeal() {
-		return 0.1;
+		return CAModConfig.COMMON.curse.lifeBlessHeal.get();
 	}
 
 	private static double getTruthCurse() {
-		return 0.4;
+		return CAModConfig.COMMON.curse.truthCurseThreshold.get();
 	}
 
 	private static double getTruthBonus() {
-		return 0.6;
+		return CAModConfig.COMMON.curse.truthBlessThreshold.get();
 	}
 
 	public static double getNihilityCurse() {
-		return 1;
+		return CAModConfig.COMMON.curse.nihilityCurseDuration.get();
 	}
 
 	private static double getNihilityBonus() {
-		return 0.75;
+		return CAModConfig.COMMON.curse.nihilityBlessReduction.get();
 	}
 
-	private static double getEndCurse() {
-		return CAModConfig.COMMON.curse.catastropheScrollEndCurseDamage.get();
+	private static int getNihilityDuration() {
+		return CAModConfig.COMMON.curse.nihilityBlessDuration.get();
+	}
+
+	private static int getNihilityLevel() {
+		return 3;
+	}
+
+	private static MobEffect getNihilityEffect() {
+		return MobEffects.POISON;
+	}
+
+	private static double getEndCurseThreshold() {
+		return CAModConfig.COMMON.curse.endCurseThreshold.get();
 	}
 
 	private static double getEndBonus() {
-		return 0.2;
+		return CAModConfig.COMMON.curse.endBlessHeal.get();
+	}
+
+	private static int getEndCurseDuration() {
+		return CAModConfig.COMMON.curse.endCurseDuration.get();
+	}
+
+	private static int getEndLevelA() {
+		return 2;
+	}
+
+	private static MobEffect getEndEffectA() {
+		return MobEffects.WEAKNESS;
+	}
+
+	private static int getEndLevelB() {
+		return 2;
+	}
+
+	private static MobEffect getEndEffectB() {
+		return MobEffects.MOVEMENT_SLOWDOWN;
 	}
 
 	public enum Curses {
@@ -118,9 +152,12 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 				() -> DESIRE_BONUS.get(TextFacet.num(1))),
 		NIHILITY(CAItems.NIHILITY_ETCHING, NIHILITY_TITLE::get, NIHILITY_TRIGGER::get,
 				() -> NIHILITY_CURSE.get(TextFacet.perc(getNihilityCurse())),
-				() -> NIHILITY_BONUS.get(TextFacet.perc(getNihilityBonus()), TextFacet.num(3))),
+				() -> NIHILITY_BONUS.get(TextFacet.perc(getNihilityBonus()), TextFacet.num(getNihilityDuration()),
+						TextFacet.num(getNihilityLevel()), TextFacet.eff(getNihilityEffect()))),
 		END(CAItems.END_ETCHING, END_TITLE::get, END_TRIGGER::get,
-				() -> END_CURSE.get(TextFacet.perc(getEndCurse())),
+				() -> END_CURSE.get(TextFacet.perc(getEndCurseThreshold()), TextFacet.num(getEndCurseDuration()),
+						TextFacet.num(getEndLevelA()), TextFacet.eff(getEndEffectA()),
+						TextFacet.num(getEndLevelB()), TextFacet.eff(getEndEffectB())),
 				() -> END_BONUS.get(TextFacet.perc(getEndBonus()))),
 		;
 
@@ -177,8 +214,8 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 			var flags = PlayerFlagData.HOLDER.get(player);
 			if (!flags.hasFlag(name())) {
 				flags.addFlag(name());
-				if (CurioUtils.isCsOn(player)) {
-					player.sendSystemMessage(TRIGGER.get(title.get()).withStyle(ChatFormatting.RED));
+				if (CurioUtils.isCsOn(player) && player instanceof ServerPlayer sp) {
+					sp.sendSystemMessage(TRIGGER.get(title.get()).withStyle(ChatFormatting.RED), true);
 				}
 			}
 		}
@@ -200,14 +237,14 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 	}
 
 	private List<AttrAdder> attrs(Player player) {
-		String name = "catastroph_scroll";
+		String name = "catastrophe_scroll";
 		return List.of(
 				AttrAdder.of(name, () -> Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADDITION, () ->
-						Curses.ORIGIN.cursing(player) ? getOriginCurse() : Curses.ORIGIN.blessing(player) ? getOriginBonus() : 0),
+						Curses.ORIGIN.cursing(player) ? -getOriginCurse() : Curses.ORIGIN.blessing(player) ? getOriginBonus() : 0),
 				AttrAdder.of(name, () -> Attributes.MAX_HEALTH, AttributeModifier.Operation.MULTIPLY_BASE, () ->
-						Curses.LIFE.cursing(player) ? getLifeCurseHealth() : Curses.LIFE.blessing(player) ? getLifeBonusHealth() : 0),
+						Curses.LIFE.cursing(player) ? -getLifeCurseHealth() : Curses.LIFE.blessing(player) ? getLifeBonusHealth() : 0),
 				AttrAdder.of(name, CCAttributes.REPLY_POWER, AttributeModifier.Operation.ADDITION, () ->
-						Curses.LIFE.cursing(player) ? getLifeCurseHeal() : Curses.LIFE.blessing(player) ? getLifeBonusHeal() : 0)
+						Curses.LIFE.cursing(player) ? -getLifeCurseHeal() : Curses.LIFE.blessing(player) ? getLifeBonusHeal() : 0)
 		);
 	}
 
@@ -219,6 +256,9 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 	@Override
 	protected void tickImpl(Player player) {
 		attrs(player).forEach(e -> e.tickImpl(player));
+		if (player.getHealth() > player.getMaxHealth()) {
+			player.setHealth(player.getMaxHealth());
+		}
 		if (player.tickCount % 20 == 0 && Curses.DESIRE.cursing(player)) {
 			List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class,
 					EntityUtils.getAABB(player, 8, 2));
@@ -234,7 +274,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
 		if (Curses.END.blessing(player)) {
-			player.heal(player.getMaxHealth() - player.getHealth() * (float) getEndBonus());
+			player.heal((player.getMaxHealth() - player.getHealth()) * (float) getEndBonus());
 		}
 	}
 
@@ -257,7 +297,8 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 				factor *= 1 - (float) getNihilityBonus();
 			}
 			if (cache.getAttacker() != null) {
-				EntityUtils.addEct(cache.getAttacker(), MobEffects.POISON, 200, 2);
+				int dura = getNihilityDuration() * 20;
+				EntityUtils.addEct(cache.getAttacker(), getNihilityEffect(), dura, getNihilityLevel() - 1);
 			}
 		}
 		cache.addDealtModifier(DamageModifier.multTotal(factor));
@@ -276,9 +317,10 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 	@Override
 	public void onPlayerDamagedFinal(Player player, AttackCache cache) {
 		if (Curses.END.cursing(player)) {
-			if (cache.getDamageDealt() > player.getHealth() * getEndCurse()) {
-				EntityUtils.addEct(player, MobEffects.MOVEMENT_SLOWDOWN, 600, 1);
-				EntityUtils.addEct(player, MobEffects.WEAKNESS, 600, 1);
+			if (cache.getDamageDealt() > player.getHealth() * getEndCurseThreshold()) {
+				int duration = getEndCurseDuration() * 20;
+				EntityUtils.addEct(player, getEndEffectA(), duration, getEndLevelA() - 1);
+				EntityUtils.addEct(player, getEndEffectB(), duration, getEndLevelB() - 1);
 			}
 		}
 	}

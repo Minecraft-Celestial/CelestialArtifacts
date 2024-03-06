@@ -139,6 +139,7 @@ public class CALang {
 	}
 
 	public enum Back implements Info {
+		FLAME("发射的箭矢命中目标后将使目标燃烧%s秒", 1),
 		LEECH("拥有%s效果时，攻击造成伤害的%s将用于治疗", 2);
 
 		final Entry entry;
@@ -208,7 +209,7 @@ public class CALang {
 		TRUTH_TITLE("[真理]", 0),
 		TRUTH_TRIGGER("对怪物造成伤害时触发", 0),
 		TRUTH_CURSE("受到生物攻击时至少会受到自身最大生命%s的伤害", 1),
-		TRUTH_BONUS("受到生物攻击时伤害不会超过自身最大生命的s%", 1),
+		TRUTH_BONUS("受到生物攻击时伤害不会超过自身最大生命的%s", 1),
 
 		DESIRE_TITLE("[欲望]", 0),
 		DESIRE_TRIGGER("对被动生物造成伤害时触发", 0),
@@ -218,11 +219,11 @@ public class CALang {
 		NIHILITY_TITLE("[虚无]", 0),
 		NIHILITY_TRIGGER("获得增益效果时触发", 0),
 		NIHILITY_CURSE("受到负面效果时长提高%s", 1),
-		NIHILITY_BONUS("降低%s收到虚空伤害，受到攻击时使攻击者获得%s级剧毒", 2),
+		NIHILITY_BONUS("降低%s收到虚空伤害，受到攻击时使攻击者获得%s秒的%s级%s", 4),
 
 		END_TITLE("[终焉]", 0),
 		END_TRIGGER("午夜时未入睡触发", 0),
-		END_CURSE("受到大于当前生命%s的伤害时会受到虚弱与缓慢影响", 1),
+		END_CURSE("受到大于当前生命%s的伤害时会受到%s秒的%s级%s与%s级%s影响", 6),
 		END_BONUS("攻击后恢复自身相当于已损失生命%s生命", 1),
 		;
 
@@ -269,7 +270,7 @@ public class CALang {
 	}
 
 	public enum Necklace implements Info {
-		;
+		GALLOP("移动时攻击会增加相当于移动速度的%s的攻击伤害", 1);
 
 		final Entry entry;
 
