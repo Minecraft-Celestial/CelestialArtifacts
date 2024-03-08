@@ -10,7 +10,7 @@
       }
     },
     {
-      "condition": "celestial_core:player_flag",
+      "condition": "celestial_core:entity_health",
       "min": "celestial_configs/celestial_artifacts-common.toml/materials.twistedHeartHealthRequirement"
     }
   ],
