@@ -100,13 +100,14 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     compileOnly fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.2.1-pre4-slim")
+    implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.2.1-pre7-slim")
     implementation fg.deobf("dev.xkmc.l2serial:l2serial:1.2.2")
     implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.1")
     implementation fg.deobf("dev.xkmc.l2screentracker:l2screentracker:0.1.4")
     implementation fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.2.8")
-    runtimeOnly fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.7")
     implementation fg.deobf("dev.xkmc.l2library:l2library:2.4.23-slim")
+    runtimeOnly fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.7")
+
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("curse.maven:patchouli-306770:4636277")

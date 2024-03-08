@@ -1,0 +1,22 @@
+{
+  "type": "celestial_core:add_item",
+  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.endEtchingDropChance",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:warden"
+      }
+    },
+    {
+      "condition": "celestial_artifacts:curse_on"
+    },
+    {
+      "category": "HARMFUL",
+      "condition": "celestial_core:player_effect",
+      "count": "celestial_configs/celestial_artifacts-common.toml/materials.endEtchingEffectRequirement"
+    }
+  ],
+  "item": "celestial_artifacts:end_etching"
+}

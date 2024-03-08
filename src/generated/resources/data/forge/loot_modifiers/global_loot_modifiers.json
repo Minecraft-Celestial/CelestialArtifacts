@@ -1,0 +1,17 @@
+{
+  "entries": [
+    "celestial_artifacts:drops/twisted_brain",
+    "celestial_artifacts:drops/guardian_eye",
+    "celestial_artifacts:drops/desire_etching",
+    "celestial_artifacts:drops/chaotic_etching",
+    "celestial_artifacts:drops/twisted_heart",
+    "celestial_artifacts:drops/the_end_dust",
+    "celestial_artifacts:drops/charming_bracelet",
+    "celestial_artifacts:drops/truth_etching",
+    "celestial_artifacts:drops/end_etching",
+    "celestial_artifacts:drops/life_etching",
+    "celestial_artifacts:drops/nihility_etching",
+    "celestial_artifacts:drops/demon_curse"
+  ],
+  "replace": false
+}

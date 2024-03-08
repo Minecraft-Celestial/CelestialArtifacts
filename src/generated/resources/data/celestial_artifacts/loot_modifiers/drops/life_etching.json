@@ -1,0 +1,14 @@
+{
+  "type": "celestial_core:add_item",
+  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.lifeEtchingDropChance",
+  "conditions": [
+    {
+      "condition": "celestial_artifacts:curse_on"
+    },
+    {
+      "condition": "celestial_core:player_flag",
+      "min": "celestial_configs/celestial_artifacts-common.toml/materials.lifeEtchingHealthRequirement"
+    }
+  ],
+  "item": "celestial_artifacts:life_etching"
+}

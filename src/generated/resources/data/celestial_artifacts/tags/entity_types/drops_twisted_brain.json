@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#minecraft:raiders",
+    "minecraft:villager",
+    "minecraft:wandering_trader",
+    "minecraft:enderman",
+    "minecraft:piglin",
+    "minecraft:piglin_brute"
+  ]
+}

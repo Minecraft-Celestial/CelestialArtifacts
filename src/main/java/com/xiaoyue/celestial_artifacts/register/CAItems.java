@@ -2,6 +2,7 @@ package com.xiaoyue.celestial_artifacts.register;
 
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.attack.SimpleListener;
@@ -48,6 +49,7 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
+import com.xiaoyue.celestial_core.content.generic.CCTooltipItem;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
@@ -73,6 +75,10 @@ import java.util.function.IntSupplier;
 
 public class CAItems {
 
+	public static final ItemEntry<CCTooltipItem> THE_END_DUST = material("the_end_dust",
+			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false,
+					() -> Component.literal("Rarely dropped when player equipped with Catastrophe Scroll kills mobs")));
+
 	public static final ItemEntry<Item> GOLD_RING, AMETHYST_RING, DIAMOND_RING, EMERALD_RING, FLIGHT_RING, NETHERITE_RING, RING_OF_LIFE, THUNDER_RING, NETHER_FIRE, FREEZE_RING;
 	public static final ItemEntry<Item> WAR_DEAD_BADGE, UNDEAD_CHARM, DESTROYER_BADGE, TWISTED_BRAIN, CORRUPT_BADGE,
 			CURSED_TALISMAN, CURSED_PROTECTOR, CURSED_TOTEM, HOLY_TALISMAN, HOLY_SWORD, ANGEL_HEART,
@@ -86,7 +92,7 @@ public class CAItems {
 			HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE, ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE;
 	public static final ItemEntry<Item> SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN;
 	public static final ItemEntry<Item> MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG, IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD;
-	public static final ItemEntry<Item> CATASTROPHE_SCROLL, CHAOTIC_ETCHING, ORIGIN_ETCHING, ETCHING_OF_LIFE, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
+	public static final ItemEntry<Item> CATASTROPHE_SCROLL, CHAOTIC_ETCHING, ORIGIN_ETCHING, LIFE_ETCHING, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
 
 	static {
 
@@ -634,7 +640,7 @@ public class CAItems {
 					BreakSpeedFeature.simple(CatastropheScroll::getOriginBonus)
 			));
 			// 生命
-			ETCHING_OF_LIFE = etching("etching_of_life", () -> ModularCurio.builder().immune().hideAttr().build());
+			LIFE_ETCHING = etching("life_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 			// 真理
 			TRUTH_ETCHING = etching("truth_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 			// 欲望
@@ -743,6 +749,12 @@ public class CAItems {
 
 	private static TagKey<Item> curio(String id) {
 		return ItemTags.create(new ResourceLocation(Curios.MODID, id));
+	}
+
+	public static <T extends Item> ItemEntry<T> material(String id, NonNullFunction<Item.Properties, T> factory) {
+		return CelestialArtifacts.REGISTRATE.item(id, factory)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/materials/" + ctx.getName())))
+				.register();
 	}
 
 	public static void register() {

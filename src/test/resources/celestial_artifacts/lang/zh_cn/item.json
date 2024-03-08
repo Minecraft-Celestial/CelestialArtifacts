@@ -321,5 +321,8 @@
   "curios.identifier.etching": "刻蚀",
   "curios.modifiers.etching": "佩戴刻蚀时：",
   "curios.identifier.pendant": "吊坠",
-  "curios.modifiers.pendant": "佩戴吊坠时："
+  "curios.modifiers.pendant": "佩戴吊坠时：",
+
+  "item.celestial_core.the_end_dust": "终焉之尘",
+  "tooltip.item.celestial_core.the_end_dust": "携带灾厄之册[星月遗物]杀死怪物小概率掉落"
 }

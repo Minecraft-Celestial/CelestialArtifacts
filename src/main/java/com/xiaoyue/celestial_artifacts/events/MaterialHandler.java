@@ -9,6 +9,7 @@ import com.xiaoyue.celestial_core.events.CCGeneralEventHandler;
 import com.xiaoyue.celestial_core.register.CCItems;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
@@ -56,108 +57,4 @@ public class MaterialHandler {
 		}
 	}
 
-	@SubscribeEvent
-	public static void onLivingDrop(LivingDropsEvent event) {
-		LivingEntity entity = event.getEntity();
-		Entity attack = event.getSource().getEntity();
-		if (attack instanceof Player player) {
-			if (CurioUtils.isCsOn(player)) {
-				if (entity instanceof WitherBoss witherBoss) {
-					if (event.getLootingLevel() > 7) {
-						if (0.25 > entity.getRandom().nextDouble()) {
-							event.getDrops().add(new ItemEntity(witherBoss.level(),
-									witherBoss.getX(), witherBoss.getY(), witherBoss.getZ(),
-									new ItemStack(CAItems.DESIRE_ETCHING.get())));
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public static void onLivingDeath(LivingDeathEvent event) {
-		LivingEntity entity = event.getEntity();
-		DamageSource source = event.getSource();
-		Entity attacker = source.getEntity();
-
-		if (attacker instanceof Player player) {
-			if (CurioUtils.isCsOn(player)) {
-				if (entity instanceof Monster monster) {
-					if (0.02 > monster.getRandom().nextDouble()) {
-						monster.spawnAtLocation(CCItems.THE_END_DUST.get());
-					}
-				}
-
-				if (EntityUtils.getHarmfulEffect(player) > 9) {
-					if (entity instanceof Warden warden) {
-						if (0.75 > entity.getRandom().nextDouble()) {
-							warden.spawnAtLocation(CAItems.END_ETCHING.get());
-						}
-					}
-				}
-				if (entity.getMaxHealth() > CAModConfig.COMMON.curse.etchingOfLifeDropCondition.get()) {
-					if (0.15 > entity.getRandom().nextDouble()) {
-						entity.spawnAtLocation(CAItems.ETCHING_OF_LIFE.get());
-					}
-				}
-			}
-
-			if (entity instanceof Villager villager) {
-				if (villager.getPlayerReputation(player) > 100) {
-					if (0.5 > entity.getRandom().nextDouble()) {
-						villager.spawnAtLocation(CAItems.CHARMING_BRACELET.get());
-					}
-				}
-			}
-
-			if (entity instanceof ElderGuardian elderGuardian) {
-				if (0.5 > entity.getRandom().nextDouble()) {
-					elderGuardian.spawnAtLocation(CAItems.GUARDIAN_EYE.get());
-				}
-			}
-
-			var data = PlayerFlagData.HOLDER.get(player);
-			if (data.hasFlag(CCGeneralEventHandler.NETHER_STAGE)) {
-				if (entity instanceof Vex vex) {
-					if (CAAttackToken.chance(entity, 0.03)) {
-						vex.spawnAtLocation(CAItems.DEMON_CURSE.get());
-					}
-				}
-			}
-		}
-
-		if (attacker instanceof WitherBoss) {
-			if (entity.getMaxHealth() > 20) {
-				if (0.1 > entity.getRandom().nextDouble()) {
-					entity.spawnAtLocation(CAItems.TWISTED_HEART.get());
-				}
-			}
-		}
-
-		if (attacker instanceof WitherBoss) {
-			if (entity instanceof Villager || entity instanceof EnderMan || entity instanceof Pillager
-					|| entity instanceof Evoker || entity instanceof Piglin) {
-				if (0.1 > entity.getRandom().nextDouble()) {
-					entity.spawnAtLocation(CAItems.TWISTED_BRAIN.get());
-				}
-			}
-		}
-
-		if (entity instanceof WitherBoss witherBoss) {
-			if (source.is(DamageTypeTags.IS_EXPLOSION)) {
-				if (0.3 > entity.getRandom().nextDouble()) {
-					witherBoss.spawnAtLocation(CAItems.CHAOTIC_ETCHING.get());
-				}
-			}
-		}
-
-		if (entity instanceof Warden warden) {
-			if (source.is(DamageTypes.FELL_OUT_OF_WORLD)) {
-				if (0.5 > entity.getRandom().nextDouble()) {
-					warden.spawnAtLocation(CAItems.NIHILITY_ETCHING.get());
-				}
-			}
-		}
-	}
 }

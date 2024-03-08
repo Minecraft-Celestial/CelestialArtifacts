@@ -18,6 +18,50 @@ public class CAModConfig {
 
 	public static class Common {
 
+		public static class Materials {
+
+			public final ForgeConfigSpec.DoubleValue desireEtchingDropChance;
+			public final ForgeConfigSpec.IntValue desireEtchingLootingRequirement;
+			public final ForgeConfigSpec.DoubleValue endEtchingDropChance;
+			public final ForgeConfigSpec.IntValue endEtchingEffectRequirement;
+			public final ForgeConfigSpec.DoubleValue lifeEtchingDropChance;
+			public final ForgeConfigSpec.IntValue lifeEtchingHealthRequirement;
+			public final ForgeConfigSpec.DoubleValue chaoticEtchingDropChance;
+			public final ForgeConfigSpec.DoubleValue nihilityEtchingDropChance;
+
+			public final ForgeConfigSpec.DoubleValue endDustDropChance;
+			public final ForgeConfigSpec.DoubleValue charmingBraceletDropChance;
+			public final ForgeConfigSpec.IntValue charmingBraceletReputationRequirement;
+			public final ForgeConfigSpec.DoubleValue guardianEyeDropChance;
+			public final ForgeConfigSpec.DoubleValue demonCurseDropChance;
+			public final ForgeConfigSpec.DoubleValue twistedHeartDropChance;
+			public final ForgeConfigSpec.IntValue twistedHeartHealthRequirement;
+			public final ForgeConfigSpec.DoubleValue twistedBrainDropChance;
+
+			private Materials(ForgeConfigSpec.Builder builder) {
+				builder.push("materials");
+				desireEtchingDropChance = builder.defineInRange("desireEtchingDropChance", 0.25, 0, 1);
+				desireEtchingLootingRequirement = builder.defineInRange("desireEtchingLootingRequirement", 7, 0, 100);
+				endEtchingDropChance = builder.defineInRange("endEtchingDropChance", 0.75, 0, 1);
+				endEtchingEffectRequirement = builder.defineInRange("endEtchingEffectRequirement", 9, 0, 100);
+				lifeEtchingDropChance = builder.defineInRange("lifeEtchingDropChance", 0.15, 0, 1);
+				lifeEtchingHealthRequirement = builder.defineInRange("lifeEtchingHealthRequirement", 500, 1, 1000000);
+				chaoticEtchingDropChance = builder.defineInRange("chaoticEtchingDropChance", 0.3, 0, 1);
+				nihilityEtchingDropChance = builder.defineInRange("nihilityEtchingDropChance", 0.5, 0, 1);
+
+				endDustDropChance = builder.defineInRange("endDustDropChance", 0.02, 0, 1);
+				charmingBraceletDropChance = builder.defineInRange("charmingBraceletDropChance", 0.5, 0, 1);
+				charmingBraceletReputationRequirement = builder.defineInRange("charmingBraceletReputationRequirement", 100, 0, 10000);
+				guardianEyeDropChance = builder.defineInRange("guardianEyeDropChance", 0.5, 0, 1);
+				demonCurseDropChance = builder.defineInRange("demonCurseDropChance", 0.03, 0, 1);
+				twistedHeartDropChance = builder.defineInRange("twistedHeartDropChance", 0.1, 0, 1);
+				twistedHeartHealthRequirement = builder.defineInRange("twistedHeartHealthRequirement", 20, 0, 10000);
+				twistedBrainDropChance = builder.defineInRange("twistedBrainDropChance", 0.1, 0, 1);
+				builder.pop();
+			}
+
+		}
+
 		public static class Back {
 
 			public ForgeConfigSpec.DoubleValue magicArrowBagBowStrength;
@@ -279,10 +323,6 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue endCurseDuration;
 			public final ForgeConfigSpec.DoubleValue endBlessHeal;
 
-
-			// etching_of_life
-			public final ForgeConfigSpec.IntValue etchingOfLifeDropCondition;
-
 			private Curse(ForgeConfigSpec.Builder builder) {
 				builder.push("curse");
 
@@ -362,11 +402,6 @@ public class CAModConfig {
 				endBlessHeal = builder
 						.comment("End Bless: healing as percentage of health lost")
 						.defineInRange("endBlessHeal", 0.2, 0.01, 1);
-
-				// etching_of_life
-				etchingOfLifeDropCondition = builder
-						.comment("This value determines how many enemies with maximum health you need to defeat in order to possibly drop it")
-						.defineInRange("etchingOfLifeDropCondition", 499, 1, Integer.MAX_VALUE);
 
 				builder.pop();
 			}
@@ -535,6 +570,7 @@ public class CAModConfig {
 
 		}
 
+		public final Materials materials;
 		public final Back back;
 		public final Bracelet bracelet;
 		public final Charm charm;
@@ -548,6 +584,7 @@ public class CAModConfig {
 		public final Set set;
 
 		Common(ForgeConfigSpec.Builder builder) {
+			materials = new Materials(builder);
 			back = new Back(builder);
 			bracelet = new Bracelet(builder);
 			charm = new Charm(builder);
@@ -570,6 +607,8 @@ public class CAModConfig {
 	public static final ForgeConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
 
+	public static String COMMON_PATH;
+
 	static {
 		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
 		CLIENT_SPEC = client.getRight();
@@ -585,13 +624,14 @@ public class CAModConfig {
 	 */
 	public static void init() {
 		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		register(ModConfig.Type.COMMON, COMMON_SPEC);
+		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
 	}
 
-	private static void register(ModConfig.Type type, IConfigSpec<?> spec) {
+	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {
 		var mod = ModLoadingContext.get().getActiveContainer();
 		String path = "celestial_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
 		ModLoadingContext.get().registerConfig(type, spec, path);
+		return path;
 	}
 
 }

@@ -142,7 +142,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 				() -> ORIGIN_TRIGGER.get(TextFacet.num(getOriginTrigger())),
 				() -> ORIGIN_CURSE.get(TextFacet.perc(getOriginCurse())),
 				() -> ORIGIN_BONUS.get(TextFacet.perc(getOriginBonus()))),
-		LIFE(CAItems.ETCHING_OF_LIFE, LIFE_TITLE::get, LIFE_TRIGGER::get,
+		LIFE(CAItems.LIFE_ETCHING, LIFE_TITLE::get, LIFE_TRIGGER::get,
 				() -> LIFE_CURSE.get(TextFacet.perc(getLifeCurseHealth()), TextFacet.perc(getLifeCurseHeal())),
 				() -> LIFE_BONUS.get(TextFacet.perc(getLifeBonusHealth()), TextFacet.perc(getLifeBonusHeal()))),
 		TRUTH(CAItems.TRUTH_ETCHING, TRUTH_TITLE::get, TRUTH_TRIGGER::get,
@@ -194,10 +194,8 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 			for (var curse : Curses.values()) {
 				boolean disabled = !ClientTokenHelper.flag(level, curse.name());
 				boolean bonus = ClientTokenHelper.hasCurio(level, curse.etching.get());
-				list.add(TextFacet.wrap(curse.title.get().withStyle(!disabled ?
-						ChatFormatting.GRAY :
-						bonus ? ChatFormatting.RED :
-								ChatFormatting.YELLOW)));
+				list.add(TextFacet.wrap(curse.title.get().withStyle(disabled ? ChatFormatting.GRAY :
+						bonus ? ChatFormatting.YELLOW : ChatFormatting.RED)));
 				if (disabled) {
 					inner(list, curse.trigger.get());
 				} else if (bonus) {

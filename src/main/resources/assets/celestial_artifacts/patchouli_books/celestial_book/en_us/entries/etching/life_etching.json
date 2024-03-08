@@ -1,6 +1,6 @@
 {
   "name": "生命刻蚀",
-  "icon": "celestial_artifacts:etching_of_life",
+  "icon": "celestial_artifacts:life_etching",
   "category": "celestial_artifacts:etching",
   "priority": false,
   "sortnum": 10,
@@ -11,9 +11,9 @@
     },
     {
       "type": "spotlight",
-      "item": "celestial_artifacts:etching_of_life",
+      "item": "celestial_artifacts:life_etching",
       "title": "生命刻蚀",
-      "text": "穿戴灾厄之册后，击败最大生命大于499点的生物时有15%概率掉落。"
+      "text": "穿戴灾厄之册后，击败最大生命至少500点的生物时有15%概率掉落。"
     }
   ]
 }

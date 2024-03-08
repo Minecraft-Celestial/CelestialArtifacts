@@ -25,6 +25,7 @@ public class ClientTokenHelper {
 	}
 
 	public static boolean hasCurio(@Nullable Level level, Item item) {
+		level = Minecraft.getInstance().level;
 		if (level == null) return false;
 		var player = Minecraft.getInstance().player;
 		if (player == null) return false;
@@ -32,12 +33,14 @@ public class ClientTokenHelper {
 	}
 
 	public static boolean pred(@Nullable Level level, Predicate<Player> pred) {
+		level = Minecraft.getInstance().level;
 		if (level == null) return false;
 		var player = Minecraft.getInstance().player;
 		if (player == null) return false;
 		return pred.test(player);
 	}
 	public static boolean flag(@Nullable Level level, String flag) {
+		level = Minecraft.getInstance().level;
 		if (level == null) return false;
 		var player = Minecraft.getInstance().player;
 		if (player == null) return false;
