@@ -1,0 +1,11 @@
+{
+  "add_cosmetic": false,
+  "conditions": [],
+  "icon": "celestial_artifacts:slot/empty_etching_slot",
+  "operation": "SET",
+  "order": 24,
+  "render_toggle": true,
+  "replace": false,
+  "size": 0,
+  "use_native_gui": true
+}

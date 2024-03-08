@@ -77,10 +77,10 @@ public class CAItems {
 
 	public static final ItemEntry<CCTooltipItem> THE_END_DUST = material("the_end_dust",
 			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false,
-					() -> CALang.Tooltip.END_DUST.get(TextFacet.perc(CAModConfig.COMMON.materials.endDustDropChance.get()))));
+					() -> CALang.Tooltip.END_DUST.get(CALang.Modular.curseItem(),
+							TextFacet.perc(CAModConfig.COMMON.materials.endDustDropChance.get()))));
 	public static final ItemEntry<CCTooltipItem> NEBULA_CUBE = material("nebula_cube",
-			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false,
-					() -> Component.literal("Dropped when you meet the conditions for etching drops but still failed to get them")));
+			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false, CALang.Tooltip.NEBULA_CUBE::get));
 
 	public static final ItemEntry<Item> GOLD_RING, AMETHYST_RING, DIAMOND_RING, EMERALD_RING, FLIGHT_RING, NETHERITE_RING, RING_OF_LIFE, THUNDER_RING, NETHER_FIRE, FREEZE_RING;
 	public static final ItemEntry<Item> WAR_DEAD_BADGE, UNDEAD_CHARM, DESTROYER_BADGE, TWISTED_BRAIN, CORRUPT_BADGE,
@@ -634,6 +634,7 @@ public class CAItems {
 			CATASTROPHE_SCROLL = item("curios/", "catastrophe_scroll", () ->
 					ModularCurio.builder().curse().immune().rarity(IRarityUtils.DARK_PURPLE).hideAttr().build(
 							SlotFacet.of("etching", 7),
+							SlotFacet.of("charm", 3),
 							new TokenFacet<>("catastrophe_scroll", CatastropheScroll::new)
 					)).tag(curio("c_charm")).register();
 			// 混沌

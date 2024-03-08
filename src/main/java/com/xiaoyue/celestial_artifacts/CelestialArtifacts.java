@@ -51,11 +51,12 @@ public class CelestialArtifacts {
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
 		boolean included = event.includeServer();
-		var provider = event.getLookupProvider();
+		var pvd = event.getLookupProvider();
 		ExistingFileHelper helper = event.getExistingFileHelper();
-		DataGenerator generator = event.getGenerator();
-		PackOutput output = generator.getPackOutput();
-		generator.addProvider(included, new CAGLMProvider(output));
+		DataGenerator gen = event.getGenerator();
+		PackOutput output = gen.getPackOutput();
+		gen.addProvider(included, new CAGLMProvider(output));
+		gen.addProvider(included, new CASlotGen(gen));
 	}
 
 

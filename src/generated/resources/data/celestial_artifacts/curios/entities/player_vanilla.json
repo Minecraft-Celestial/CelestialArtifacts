@@ -1,0 +1,15 @@
+{
+  "conditions": [],
+  "entities": [
+    "minecraft:player"
+  ],
+  "slots": [
+    "back",
+    "body",
+    "bracelet",
+    "charm",
+    "head",
+    "necklace",
+    "ring"
+  ]
+}

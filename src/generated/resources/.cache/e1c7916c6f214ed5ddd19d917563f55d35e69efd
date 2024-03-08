@@ -1,6 +1,6 @@
-// 1.20.1	2024-03-08T19:25:27.332869	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
-ebb392810e1ec59d054a76b76a9623882eaf7267 assets/celestial_artifacts/lang/en_ud.json
-46076ca0c86cfbf213be7f2bc6784e10a2d836f9 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-03-08T20:09:32.025964	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+8d792560c73eedad219a348065147660aebe3a4f assets/celestial_artifacts/lang/en_ud.json
+58c3ea27ed888afdd7054ae067a831ce7ca31592 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
@@ -108,6 +108,10 @@ b570e94ea8c38c2ee583ad64e36ef8510db7b635 data/celestial_artifacts/advancements/r
 c42f14c142802942ca524d25aee62e1e669b3492 data/celestial_artifacts/advancements/recipes/misc/cursed_totem.json
 0df04ffa7f70aab77ff5e03991567cb14b0a7cc7 data/celestial_artifacts/advancements/recipes/misc/destroyer_badge.json
 3d8631f2c878532a3cff45d9a30663250eefcd2f data/celestial_artifacts/advancements/recipes/misc/diamond_ring.json
+1287bd0856f37277f0dec6a20a0cf1ee6a48bd23 data/celestial_artifacts/advancements/recipes/misc/earth_axe.json
+0bdc4a4dcf59d84b7c775893bc9052148099373d data/celestial_artifacts/advancements/recipes/misc/earth_hoe.json
+e8e7d2afec8dab415899bcc91626a60b1b02d59b data/celestial_artifacts/advancements/recipes/misc/earth_pickaxe.json
+e7f82cbd6898304a55b14750b3abf397c85544a9 data/celestial_artifacts/advancements/recipes/misc/earth_shovel.json
 5c0902f62ab74c4e7d1571f8ad6eecdb1a65567b data/celestial_artifacts/advancements/recipes/misc/emerald_bracelet.json
 cafd7249fc3d39e6f91410fd728fa42c5e011b00 data/celestial_artifacts/advancements/recipes/misc/emerald_necklace.json
 e5b5bf7e4c8051e91a605313b741c6c2164178cf data/celestial_artifacts/advancements/recipes/misc/emerald_ring.json
@@ -170,6 +174,10 @@ aadc115c9cc6d64d73e67e1ba58068f7171cf77e data/celestial_artifacts/recipes/cursed
 05e2e7a66db87785f84c13fb1c87b550919baa1f data/celestial_artifacts/recipes/cursed_totem.json
 1f74770271cae250ce41ec6b8f6fd04d688dd3aa data/celestial_artifacts/recipes/destroyer_badge.json
 03452e6b9f67755146b54cbbbedb03af115a1dc2 data/celestial_artifacts/recipes/diamond_ring.json
+644787e2d9ea9035cb578ff603aae0943e4de473 data/celestial_artifacts/recipes/earth_axe.json
+15c3250aafb2050929a99dedc0774a25b8b45014 data/celestial_artifacts/recipes/earth_hoe.json
+5a60d6fdac053611230f94e82fced588f4086d7f data/celestial_artifacts/recipes/earth_pickaxe.json
+82a67719d106f78f7f11168cd3a878d262e2a94a data/celestial_artifacts/recipes/earth_shovel.json
 f9d0652a69734182068b87e3c725a0c3aa6b7491 data/celestial_artifacts/recipes/emerald_bracelet.json
 715a0a6a9f7c2cb9583d476b45d2252095d63c5d data/celestial_artifacts/recipes/emerald_necklace.json
 0023be12c03bd9e39eda700592d7faaf211f953a data/celestial_artifacts/recipes/emerald_ring.json

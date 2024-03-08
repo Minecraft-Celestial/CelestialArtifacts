@@ -4,12 +4,12 @@
     "item": "celestial_core:earth_core"
   },
   "base": {
-    "item": "minecraft:netherite_shovel"
+    "item": "minecraft:netherite_hoe"
   },
   "result": {
-    "item": "celestial_artifacts:earth_shovel"
+    "item": "celestial_artifacts:earth_hoe"
   },
   "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "celestial_artifacts:nebula_cube"
   }
 }

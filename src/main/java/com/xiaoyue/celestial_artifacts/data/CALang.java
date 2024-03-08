@@ -36,7 +36,7 @@ public class CALang {
 		}
 
 		default String desc() {
-			return CelestialArtifacts.MODID + ".tooltip." + path() + "." + entry().id();
+			return CelestialArtifacts.MODID + "." + path() + "." + entry().id();
 		}
 
 		default MutableComponent get(Component... objs) {
@@ -48,7 +48,7 @@ public class CALang {
 	}
 
 	public enum Tooltip implements Info {
-		END_DUST("%s chance to drop when players equipped with Catastrophe Scroll kill monsters targeting them", 1),
+		END_DUST("%s chance to drop when players equipped with [%s] kill monsters targeting them", 1),
 		NEBULA_CUBE("Dropped when player failed to get etchings while meeting conditions", 0),
 		;
 
@@ -106,10 +106,12 @@ public class CALang {
 			return stack.getHoverName().copy().withStyle(stack.getRarity().getStyleModifier());
 		}
 
+		public static MutableComponent curseItem() {
+			return item(CAItems.CATASTROPHE_SCROLL.asStack());
+		}
+
 		public static MutableComponent curse() {
-			var stack = CAItems.CATASTROPHE_SCROLL.asStack();
-			return CURSE.get(stack.getHoverName().copy().withStyle(stack.getRarity().getStyleModifier()))
-					.withStyle(ChatFormatting.RED);
+			return CURSE.get(curseItem()).withStyle(ChatFormatting.RED);
 		}
 
 		public static MutableComponent shift() {
@@ -399,6 +401,10 @@ public class CALang {
 			for (var e : ent.info()) {
 				pvd.add(e.desc(), e.entry().def());
 			}
+		}
+		for (var type : CASlotGen.Type.values()) {
+			pvd.add("curios.identifier." + type.id(), "Celestial - " + RegistrateLangProvider.toEnglishName(type.id()));
+			pvd.add("curios.modifiers." + type.id(), "When wearing as " + RegistrateLangProvider.toEnglishName(type.id()) + ": ");
 		}
 	}
 
