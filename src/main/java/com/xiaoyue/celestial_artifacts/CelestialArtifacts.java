@@ -45,6 +45,7 @@ public class CelestialArtifacts {
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CALang::addLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CARecipeGen::onRecipeGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, CATagGen::onEntityTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, CALootTableGen::onLootGen);
 	}
 
 	@SubscribeEvent

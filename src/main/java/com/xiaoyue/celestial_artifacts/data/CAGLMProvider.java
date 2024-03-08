@@ -22,6 +22,9 @@ import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import net.minecraftforge.common.loot.LootTableIdCondition;
+
+import java.util.Locale;
 
 public class CAGLMProvider extends GlobalLootModifierProvider {
 
@@ -31,6 +34,11 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 
 	@Override
 	protected void start() {
+		for (var e : CALootTableGen.values()) {
+			add(e.id().getPath(), new AddLootTableModifier(e.id(),
+					LootTableIdCondition.builder(e.target).build()));
+		}
+
 		add("drops/desire_etching", new AddItemModifier(CAItems.DESIRE_ETCHING.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.desireEtchingDropChance),
 				entityType(EntityType.WITHER), new CurseOnCondition(), new PlayerStatCondition(PlayerStatCondition.Type.LOOT,

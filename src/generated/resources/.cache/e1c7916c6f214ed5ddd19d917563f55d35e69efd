@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-08T15:37:57.536345	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2024-03-08T16:15:59.402129	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 d750cb24f044b2401e519efff56c6c387a0805da assets/celestial_artifacts/lang/en_ud.json
 7700d151bbfacae042e153cea4690d18aa88eb68 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
@@ -147,6 +147,14 @@ dd92717026b680c3c1f7d154b78803c62fb3f1a2 data/celestial_artifacts/advancements/r
 06d5a4998091eda036492247d5ef71351917fe8c data/celestial_artifacts/advancements/recipes/misc/twisted_scroll.json
 c4e842c7eb8446ee8d5fa4f39d77dbb123a07f4d data/celestial_artifacts/advancements/recipes/misc/undead_charm.json
 29850cbd83c15049df27db5490edab1fb2e6315d data/celestial_artifacts/advancements/recipes/misc/war_dead_badge.json
+f729b7c5738e8dd9a166c285669d4adcbbef498d data/celestial_artifacts/loot_tables/chests/abandoned_mineshaft.json
+a8c8a46d7ca705853f7d600ecdf68a59aba2b8bf data/celestial_artifacts/loot_tables/chests/ancient_city.json
+c283e8572f7c1d58be59547bd506aa76a39d6a24 data/celestial_artifacts/loot_tables/chests/bastion_treasure.json
+c2242a89981878a4a6850c49b7ba1fba3646e2e4 data/celestial_artifacts/loot_tables/chests/desert_pyramid.json
+957d59431c5945a271fe5ac68fdf796d0d9f600d data/celestial_artifacts/loot_tables/chests/jungle_temple.json
+dd2f91a08703f50a84c35f5e71c7508740fa2aa7 data/celestial_artifacts/loot_tables/chests/nether_bridge.json
+4d442d1cf695d169d8dea4702169574681f92744 data/celestial_artifacts/loot_tables/chests/underwater_ruin_big.json
+48863a9edb4adac90890711a35765d271a94c169 data/celestial_artifacts/loot_tables/chests/village_plains_house.json
 fc1f30cc59e3264c7573b59ac746ae4db4cca95c data/celestial_artifacts/recipes/abyss_core.json
 71c930f7296f616398371d1e0bd8f180d6bd420c data/celestial_artifacts/recipes/abyss_will_badge.json
 c639702baca3cda2eabc59272efb527b2ff7df68 data/celestial_artifacts/recipes/amethyst_ring.json

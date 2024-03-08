@@ -6,5 +6,5 @@
       "loot_table_id": "minecraft:chests/village/village_plains_house"
     }
   ],
-  "lootTable": "celestial_artifacts:chests/village/village_plains_house"
+  "lootTable": "celestial_artifacts:chests/village_plains_house"
 }
