@@ -7,8 +7,13 @@
     },
     {
       "condition": "celestial_core:player_flag",
+      "flag": "LIFE"
+    },
+    {
+      "condition": "celestial_core:player_flag",
       "min": "celestial_configs/celestial_artifacts-common.toml/materials.lifeEtchingHealthRequirement"
     }
   ],
+  "fail": "celestial_artifacts:nebula_cube",
   "item": "celestial_artifacts:life_etching"
 }

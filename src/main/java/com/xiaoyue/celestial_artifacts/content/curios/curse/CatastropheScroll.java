@@ -9,6 +9,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.content.generic.PlayerFlagData;
+import com.xiaoyue.celestial_core.content.loot.PlayerFlagCondition;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -27,6 +28,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -226,6 +228,10 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 		public boolean blessing(Player player) {
 			return PlayerFlagData.HOLDER.get(player).hasFlag(name()) &&
 					CurioUtils.isCsOn(player) && CurioUtils.hasCurio(player, etching.get());
+		}
+
+		public LootItemCondition asCondition() {
+			return new PlayerFlagCondition(name());
 		}
 	}
 

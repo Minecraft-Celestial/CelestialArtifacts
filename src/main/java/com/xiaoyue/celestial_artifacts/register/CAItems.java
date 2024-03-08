@@ -77,7 +77,10 @@ public class CAItems {
 
 	public static final ItemEntry<CCTooltipItem> THE_END_DUST = material("the_end_dust",
 			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false,
-					() -> Component.literal("Rarely dropped when player equipped with Catastrophe Scroll kills mobs")));
+					() -> CALang.Tooltip.END_DUST.get(TextFacet.perc(CAModConfig.COMMON.materials.endDustDropChance.get()))));
+	public static final ItemEntry<CCTooltipItem> NEBULA_CUBE = material("nebula_cube",
+			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false,
+					() -> Component.literal("Dropped when you meet the conditions for etching drops but still failed to get them")));
 
 	public static final ItemEntry<Item> GOLD_RING, AMETHYST_RING, DIAMOND_RING, EMERALD_RING, FLIGHT_RING, NETHERITE_RING, RING_OF_LIFE, THUNDER_RING, NETHER_FIRE, FREEZE_RING;
 	public static final ItemEntry<Item> WAR_DEAD_BADGE, UNDEAD_CHARM, DESTROYER_BADGE, TWISTED_BRAIN, CORRUPT_BADGE,

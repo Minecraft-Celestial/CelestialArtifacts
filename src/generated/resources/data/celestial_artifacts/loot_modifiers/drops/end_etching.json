@@ -3,6 +3,13 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.endEtchingDropChance",
   "conditions": [
     {
+      "condition": "celestial_artifacts:curse_on"
+    },
+    {
+      "condition": "celestial_core:player_flag",
+      "flag": "END"
+    },
+    {
       "condition": "minecraft:entity_properties",
       "entity": "this",
       "predicate": {
@@ -10,13 +17,11 @@
       }
     },
     {
-      "condition": "celestial_artifacts:curse_on"
-    },
-    {
       "category": "HARMFUL",
       "condition": "celestial_core:player_effect",
       "count": "celestial_configs/celestial_artifacts-common.toml/materials.endEtchingEffectRequirement"
     }
   ],
+  "fail": "celestial_artifacts:nebula_cube",
   "item": "celestial_artifacts:end_etching"
 }

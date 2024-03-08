@@ -47,6 +47,24 @@ public class CALang {
 
 	}
 
+	public enum Tooltip implements Info {
+		END_DUST("%s chance to drop when players equipped with Catastrophe Scroll kill monsters targeting them", 1),
+		NEBULA_CUBE("Dropped when player failed to get etchings while meeting conditions", 0),
+		;
+
+		final Entry entry;
+
+		Tooltip(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		@Override
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
 	public enum Modular implements Info {
 		EFFECT_REFRESH("Grants wearer: ", 0),
 		EFFECT_FLASH("For every %s seconds, grants wearer: ", 1),
@@ -74,7 +92,6 @@ public class CALang {
 		Modular(String def, int count) {
 			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
-
 
 
 		public Entry entry() {
@@ -360,6 +377,7 @@ public class CALang {
 	}
 
 	static {
+		putLang(Tooltip.class, "tooltip", Tooltip.values());
 		putLang(Modular.class, "modular", Modular.values());
 		putLang(Condition.class, "condition", Condition.values());
 		putLang(DamageType.class, "damage_type", DamageType.values());

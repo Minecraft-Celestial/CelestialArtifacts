@@ -299,7 +299,7 @@
   "item.celestial_artifacts.catastrophe_scroll": "灾厄之册",
   "item.celestial_artifacts.chaotic_etching": "混沌刻蚀板",
   "item.celestial_artifacts.origin_etching": "始源刻蚀板",
-  "item.celestial_artifacts.etching_of_life": "生命刻蚀板",
+  "item.celestial_artifacts.life_etching": "生命刻蚀板",
   "item.celestial_artifacts.truth_etching": "真理刻蚀板",
   "item.celestial_artifacts.desire_etching": "欲望刻蚀板",
   "item.celestial_artifacts.nihility_etching": "虚无刻蚀板",
@@ -396,5 +396,14 @@
   "celestial_artifacts.tooltip.back.flame": "发射的箭矢命中目标后将使目标燃烧%s秒",
   "celestial_artifacts.tooltip.necklace.gallop": "移动时攻击会增加相当于移动速度的%s的攻击伤害",
   "celestial_artifacts.tooltip.charms.cursed_protector_0": "副手装备的盾牌不会再进入冷却",
-  "celestial_artifacts.tooltip.charms.cursed_protector_1": "受到伤害大于当前生命的%s时，伤害降低%s"
+  "celestial_artifacts.tooltip.charms.cursed_protector_1": "受到伤害大于当前生命的%s时，伤害降低%s",
+
+
+  "item.celestial_artifacts.the_end_dust": "终焉之尘",
+  "item.celestial_artifacts.equipment_fragment": "装备精华板",
+  "item.celestial_artifacts.nebula_cube": "星云立方",
+  "item.celestial_artifacts.ice_fragment": "极冰碎块",
+  "item.celestial_artifacts.curse_essence": "诅咒精华",
+  "tooltip.item.celestial_artifacts.the_end_dust": "携带灾厄之册[星月遗物]杀死怪物小概率掉落"
+
 }

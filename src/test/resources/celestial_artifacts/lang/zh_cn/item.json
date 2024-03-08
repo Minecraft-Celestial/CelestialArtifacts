@@ -323,6 +323,10 @@
   "curios.identifier.pendant": "吊坠",
   "curios.modifiers.pendant": "佩戴吊坠时：",
 
-  "item.celestial_core.the_end_dust": "终焉之尘",
-  "tooltip.item.celestial_core.the_end_dust": "携带灾厄之册[星月遗物]杀死怪物小概率掉落"
+  "item.celestial_artifacts.the_end_dust": "终焉之尘",
+  "item.celestial_artifacts.equipment_fragment": "装备精华板",
+  "item.celestial_artifacts.nebula_cube": "星云立方",
+  "item.celestial_artifacts.ice_fragment": "极冰碎块",
+  "item.celestial_artifacts.curse_essence": "诅咒精华",
+  "tooltip.item.celestial_artifacts.the_end_dust": "携带灾厄之册[星月遗物]杀死怪物小概率掉落"
 }

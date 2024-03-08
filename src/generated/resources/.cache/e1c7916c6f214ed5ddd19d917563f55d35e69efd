@@ -1,6 +1,6 @@
-// 1.20.1	2024-03-08T16:15:59.402129	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
-d750cb24f044b2401e519efff56c6c387a0805da assets/celestial_artifacts/lang/en_ud.json
-7700d151bbfacae042e153cea4690d18aa88eb68 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-03-08T19:25:27.332869	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+ebb392810e1ec59d054a76b76a9623882eaf7267 assets/celestial_artifacts/lang/en_ud.json
+46076ca0c86cfbf213be7f2bc6784e10a2d836f9 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
@@ -55,6 +55,7 @@ eef8bc16459b54ed7e467f642582963abdacb5fb assets/celestial_artifacts/models/item/
 ef8bfa562cc5943e76593413d27c5c1ba88ffb2f assets/celestial_artifacts/models/item/lock_of_abyss.json
 cb332bc50e53a4265bc02c57829c37ff8878229a assets/celestial_artifacts/models/item/magic_arrow_bag.json
 0520b546b5042013b42adec5f645ab53c098a0f6 assets/celestial_artifacts/models/item/magic_horseshoe.json
+0238041680b1898f0a24e00c6801cc886dc5add4 assets/celestial_artifacts/models/item/nebula_cube.json
 5527205ac039fe5c9c9a6fc3d275177993122c1e assets/celestial_artifacts/models/item/nether_fire.json
 5a51a4016ba8992bad25cec2df2b918abef46d0d assets/celestial_artifacts/models/item/netherite_ring.json
 8285b557f74cf672aebad0179b217e059e907e98 assets/celestial_artifacts/models/item/nihility_etching.json
@@ -151,6 +152,7 @@ f729b7c5738e8dd9a166c285669d4adcbbef498d data/celestial_artifacts/loot_tables/ch
 a8c8a46d7ca705853f7d600ecdf68a59aba2b8bf data/celestial_artifacts/loot_tables/chests/ancient_city.json
 c283e8572f7c1d58be59547bd506aa76a39d6a24 data/celestial_artifacts/loot_tables/chests/bastion_treasure.json
 c2242a89981878a4a6850c49b7ba1fba3646e2e4 data/celestial_artifacts/loot_tables/chests/desert_pyramid.json
+bbba0f8a04e93f64d781f116c78ecdc2ad4f8965 data/celestial_artifacts/loot_tables/chests/fishing_treasure.json
 957d59431c5945a271fe5ac68fdf796d0d9f600d data/celestial_artifacts/loot_tables/chests/jungle_temple.json
 dd2f91a08703f50a84c35f5e71c7508740fa2aa7 data/celestial_artifacts/loot_tables/chests/nether_bridge.json
 4d442d1cf695d169d8dea4702169574681f92744 data/celestial_artifacts/loot_tables/chests/underwater_ruin_big.json

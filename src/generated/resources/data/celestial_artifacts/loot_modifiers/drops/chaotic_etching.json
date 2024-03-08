@@ -21,5 +21,6 @@
       }
     }
   ],
+  "fail": "celestial_artifacts:nebula_cube",
   "item": "celestial_artifacts:chaotic_etching"
 }
