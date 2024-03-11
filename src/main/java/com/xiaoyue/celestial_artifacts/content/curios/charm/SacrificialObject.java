@@ -17,8 +17,6 @@ public class SacrificialObject implements MultiLineText {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {//TODO text
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift1");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift2");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift3");
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.sacrificial_object.shift4");
 	}

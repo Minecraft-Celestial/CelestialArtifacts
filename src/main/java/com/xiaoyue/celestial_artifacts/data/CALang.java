@@ -3,13 +3,19 @@ package com.xiaoyue.celestial_artifacts.data;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
+import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.function.Predicate;
 
 public class CALang {
 
@@ -84,6 +90,8 @@ public class CALang {
 		HURT_BONUS("Increase damage by %s", 1),
 		PROTECT("Reduce damage by %s", 1),
 		PROTECT_TYPE("Reduce %s damage by %s", 2),
+		AVOID_TYPE("%s chance to avoid %s damage", 2),
+		NEGATE_TYPE("Negates %s damage", 1),
 		COMMA(", ", 0),
 		SET("Requires [%s] to take effect:", 1);
 
@@ -154,21 +162,31 @@ public class CALang {
 
 	}
 
-	public enum DamageType implements Info {
-		MAGIC("magic", 0),
-		FIRE("fire", 0),
-		FALL("fall", 0);
+	public enum DamageTypes implements Info {
+		MAGIC("magic", e -> e.is(L2DamageTypes.MAGIC)),
+		FIRE("fire", e -> e.is(DamageTypeTags.IS_FIRE)),
+		FALL("fall", e -> e.is(DamageTypeTags.IS_FALL)),
+		FREEZE("freezing", e -> e.is(DamageTypeTags.IS_FREEZING)),
+		LIGHTNING("lightning", e -> e.is(DamageTypeTags.IS_LIGHTNING)),
+		PROJECTILE("projectile", e -> e.is(DamageTypeTags.IS_PROJECTILE)),
+		WATER_MOB("water mob", e -> e.getEntity() instanceof Mob mob && mob.getMobType() == MobType.WATER),
+		;
 
 		final Entry entry;
+		final Predicate<DamageSource> pred;
 
-		DamageType(String def, int count) {
-			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		DamageTypes(String def, Predicate<DamageSource> pred) {
+			this.entry = new Entry(name().toLowerCase(Locale.ROOT), def, 0);
+			this.pred = pred;
 		}
 
 		public Entry entry() {
 			return entry;
 		}
 
+		public boolean pred(DamageSource source) {
+			return pred.test(source);
+		}
 	}
 
 	public enum Back implements Info {
@@ -364,7 +382,11 @@ public class CALang {
 	}
 
 	public enum Sets implements Info {
-		;
+		SEA_GOD("手持三叉戟时：", 0),
+		SPIRIT_0("拉弓%s秒后获得%s", 2),
+		SPIRIT_1("从目标背后射出的%s伤害提高%s", 2),
+		SPIRIT_2("拥有%s效果时", 1),
+		SPIRIT_3("射出的箭矢有%s概率施加%s", 2);
 
 		final Entry entry;
 
@@ -382,7 +404,7 @@ public class CALang {
 		putLang(Tooltip.class, "tooltip", Tooltip.values());
 		putLang(Modular.class, "modular", Modular.values());
 		putLang(Condition.class, "condition", Condition.values());
-		putLang(DamageType.class, "damage_type", DamageType.values());
+		putLang(DamageTypes.class, "damage_type", DamageTypes.values());
 		putLang(Back.class, "back", Back.values());
 		putLang(Bracelet.class, "bracelet", Bracelet.values());
 		putLang(Charm.class, "charms", Charm.values());

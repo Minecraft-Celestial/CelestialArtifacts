@@ -5,11 +5,10 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.contents.damage.DamageTypeRoot;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 public interface CAAttackToken extends IFeature {
@@ -25,7 +24,7 @@ public interface CAAttackToken extends IFeature {
 	}
 
 	static boolean isArrow(AttackCache cache) {
-		return getSource(cache).getDirectEntity() instanceof AbstractArrow;
+		return getSource(cache).is(DamageTypeTags.IS_PROJECTILE);
 	}
 
 	static boolean isMelee(AttackCache cache) {
@@ -36,12 +35,6 @@ public interface CAAttackToken extends IFeature {
 		if (event.getSource().getDirectEntity() != cache.getAttacker()) return false;
 		var ans = event.getSource().typeHolder().unwrapKey().map(DamageTypeRoot::of);
 		return ans.isPresent() && (ans.get() == L2DamageTypes.PLAYER_ATTACK || ans.get() == L2DamageTypes.MOB_ATTACK);
-	}
-
-	default boolean isPhysics(AttackCache cache) {
-		var source = getSource(cache);
-		return source.is(DamageTypes.ARROW) ||
-				source.is(DamageTypes.GENERIC);
 	}
 
 	default void onPlayerDamagedFinal(Player player, AttackCache cache) {

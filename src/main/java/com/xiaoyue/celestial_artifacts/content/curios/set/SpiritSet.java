@@ -1,17 +1,22 @@
 package com.xiaoyue.celestial_artifacts.content.curios.set;
 
+import com.xiaoyue.celestial_artifacts.content.core.effect.EffectFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -22,6 +27,43 @@ import java.util.List;
 @SerialClass
 public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 
+	private static int getEffectThreshold() {
+		return 3;
+	}
+
+	private static double getBackShootDamage() {
+		return 0.5;
+	}
+
+	private static double getInflictChance() {
+		return 0.5;
+	}
+
+	private static double getAvoidChance() {
+		return 0.2;
+	}
+
+	private static double getProtect() {
+		return 0.2;
+	}
+
+	private static CALang.DamageTypes type() {
+		return CALang.DamageTypes.PROJECTILE;
+	}
+
+	private static MobEffect getTrigger() {
+		return MobEffects.MOVEMENT_SPEED;
+	}
+
+	private static MobEffectInstance getPullEff() {
+		return new MobEffectInstance(CCEffects.ARROW_DAMAGE.get(),
+				40, 0, true, true);
+	}
+
+	private static MobEffectInstance getInflictEff() {
+		return new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1);
+	}
+
 	@Override
 	protected void removeImpl(Player player) {
 
@@ -31,8 +73,8 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 	protected void tickImpl(Player player) {
 		if (player.isUsingItem()) {
 			if (CurioUtils.isRangeUseAnim(player.getUseItem().getUseAnimation())) {
-				if (player.getTicksUsingItem() > 60) {
-					EntityUtils.addEct(player, CCEffects.ARROW_DAMAGE.get(), 70, 0);
+				if (player.getTicksUsingItem() >= getEffectThreshold() * 20) {
+					EffectUtil.refreshEffect(player, getPullEff(), EffectUtil.AddReason.SELF, player);
 				}
 			}
 		}
@@ -42,38 +84,55 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
 		if (!CAAttackToken.isArrow(cache)) return;
 		if (EntityUtils.isLookingBehindTarget(cache.getAttackTarget(), player.getEyePosition())) {
-			cache.addHurtModifier(DamageModifier.multTotal(1.5f));//TODO module
+			float factor = 1 + (float) getBackShootDamage();
+			cache.addHurtModifier(DamageModifier.multTotal(factor));
 		}
-		if (player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-			if (CAAttackToken.chance(player, 0.5)) {
-				EntityUtils.addEct(cache.getAttackTarget(), MobEffects.MOVEMENT_SLOWDOWN, 50, 1);// TODO module
+		if (player.hasEffect(getTrigger())) {
+			if (CAAttackToken.chance(player, getInflictChance())) {
+				cache.getAttackTarget().addEffect(getInflictEff());
 			}
 		}
 	}
 
 	@Override
 	public boolean onPlayerAttacked(Player player, AttackCache cache) {
-		if (isPhysics(cache)) {
-			return CAAttackToken.chance(player, 0.2);
+		if (player.hasEffect(getTrigger()) && CAAttackToken.isArrow(cache)) {
+			return CAAttackToken.chance(player, getAvoidChance());
 		}
 		return false;
 	}
 
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
-		if (isPhysics(cache)) {
-			cache.addDealtModifier(DamageModifier.multTotal(0.8f));//TODO module
+		if (player.hasEffect(getTrigger()) && CAAttackToken.isArrow(cache)) {
+			float factor = 1 - (float) getProtect();
+			cache.addDealtModifier(DamageModifier.multTotal(factor));
 		}
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {//TODO text
+	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.set(level, CAItems.spiritSet()));
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt2");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt3");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt4");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt5");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt6");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.spirit.alt7");
+		list.add(TextFacet.wrap(CALang.Sets.SPIRIT_0.get(
+				TextFacet.num(getEffectThreshold()),
+				EffectFacet.getDesc(getPullEff(), false)
+		)).withStyle(ChatFormatting.GRAY));
+		list.add(TextFacet.wrap(CALang.Sets.SPIRIT_1.get(
+				type().get(), TextFacet.perc(getBackShootDamage())
+		).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Sets.SPIRIT_2.get(
+				TextFacet.eff(getTrigger())
+		).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.inner(CALang.Sets.SPIRIT_3.get(
+				TextFacet.perc(getInflictChance()),
+				EffectFacet.getDesc(getInflictEff(), true)
+		).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.inner(CALang.Modular.AVOID_TYPE.get(
+				TextFacet.perc(getAvoidChance()), type().get()
+		).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.inner(CALang.Modular.PROTECT_TYPE.get(
+				type().get(), TextFacet.perc(getProtect())
+		).withStyle(ChatFormatting.GRAY)));
 	}
+
 }

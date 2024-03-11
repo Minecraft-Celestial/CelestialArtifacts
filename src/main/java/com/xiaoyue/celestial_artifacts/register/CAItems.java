@@ -33,7 +33,9 @@ import com.xiaoyue.celestial_artifacts.content.curios.heart.DemonHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.heart.TwistedHeart;
 import com.xiaoyue.celestial_artifacts.content.curios.necklace.*;
 import com.xiaoyue.celestial_artifacts.content.curios.pendant.ShadowPendant;
-import com.xiaoyue.celestial_artifacts.content.curios.ring.*;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.FlightRing;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.NetherFire;
+import com.xiaoyue.celestial_artifacts.content.curios.ring.RingOfLife;
 import com.xiaoyue.celestial_artifacts.content.curios.scroll.SeaGodScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.scroll.SkywalkerScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.set.EmeraldSet;
@@ -60,7 +62,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -132,17 +133,17 @@ public class CAItems {
 							)
 					));
 			// 生息之戒
-			RING_OF_LIFE = ring("ring_of_life", () ->
-					ModularCurio.builder().rarity(IRarityUtils.GREEN).build(new RingOfLife()));
+			RING_OF_LIFE = ring("ring_of_life", () -> ModularCurio.builder().rarity(IRarityUtils.GREEN)
+					.build(new RingOfLife()));
 			// 雷电之戒
-			THUNDER_RING = ring("thunder_ring", () ->
-					ModularCurio.builder().rarity(Rarity.RARE).build(new ThunderRing()));
+			THUNDER_RING = ring("thunder_ring", () -> ModularCurio.builder().rarity(Rarity.RARE)
+					.build(SimpleListener.negateType(CALang.DamageTypes.LIGHTNING)));
 			// 地狱之火
-			NETHER_FIRE = ring("nether_fire", () ->
-					ModularCurio.builder().rarity(Rarity.RARE).build(new NetherFire()));
+			NETHER_FIRE = ring("nether_fire", () -> ModularCurio.builder().rarity(Rarity.RARE)
+					.build(SimpleListener.negateType(CALang.DamageTypes.FIRE), new NetherFire()));
 			// 冰冻之戒
-			FREEZE_RING = ring("freeze_ring", () ->
-					ModularCurio.builder().rarity(Rarity.RARE).build(new FreezeRing()));
+			FREEZE_RING = ring("freeze_ring", () -> ModularCurio.builder().rarity(Rarity.RARE)
+					.build(SimpleListener.negateType(CALang.DamageTypes.FREEZE)));
 		}
 
 		// charms
@@ -262,8 +263,7 @@ public class CAItems {
 									CAModConfig.COMMON.charm.magicHorseshoeSpeedBonus::get),
 							AttrFacet.add(() -> Attributes.LUCK,
 									CAModConfig.COMMON.charm.magicHorseshoeLuck::get),
-							SimpleListener.protectType(CALang.DamageType.FALL::get,
-									e -> e.is(DamageTypes.FALL),
+							SimpleListener.protectType(CALang.DamageTypes.FALL,
 									CAModConfig.COMMON.charm.magicHorseshoeFallReduction::get)
 					));
 
@@ -387,12 +387,12 @@ public class CAItems {
 					ModularCurio.builder().rarity(Rarity.EPIC).build(
 							AttrFacet.add(ForgeMod.BLOCK_REACH, () -> 2),
 							SlotFacet.of("ring", 1),
-							SimpleListener.protectType(CALang.DamageType.MAGIC::get, e -> e.is(DamageTypes.MAGIC), () -> 0.4)
+							SimpleListener.protectType(CALang.DamageTypes.MAGIC, () -> 0.4)
 					));
 			// 绯红石手环 TODO config
 			RED_RUBY_BRACELET = bracelet("red_ruby_bracelet", () ->
 					ModularCurio.builder().rarity(IRarityUtils.RED).build(
-							SimpleListener.protectType(CALang.DamageType.FIRE::get, e -> e.is(DamageTypeTags.IS_FIRE), () -> 0.9),
+							SimpleListener.protectType(CALang.DamageTypes.FIRE, () -> 0.9),
 							HurtPlayerEffectFacet.ofType(e -> e.is(DamageTypeTags.IS_FIRE), CALang.Condition.HURT_FIRE::get,
 									EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 3, 0))
 					));

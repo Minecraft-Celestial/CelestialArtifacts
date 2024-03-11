@@ -37,8 +37,8 @@ public class EmeraldSet extends BaseTickingToken {
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.set(level, CAItems.emeraldSet()));
-		list.add(LUCK.getTooltip());
-		list.add(CRIT.getTooltip());
+		list.add(TextFacet.wrap(LUCK.getTooltip()));
+		list.add(TextFacet.wrap(CRIT.getTooltip()));
 	}
 
 }

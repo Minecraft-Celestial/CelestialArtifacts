@@ -31,7 +31,7 @@ public record HurtTargetEffectFacet(
 	}
 
 	public MobEffectInstance get() {
-		return new MobEffectInstance(eff.get(), duration.getAsInt() * 20, amplifier.getAsInt(), true, true);
+		return new MobEffectInstance(eff.get(), duration.getAsInt() * 20, amplifier.getAsInt());
 	}
 
 	@Override

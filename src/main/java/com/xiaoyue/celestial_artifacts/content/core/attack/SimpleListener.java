@@ -37,10 +37,19 @@ public class SimpleListener {
 	}
 
 	public static IFacet protectType(
-			Supplier<MutableComponent> text,
-			Predicate<DamageSource> condition,
+			CALang.DamageTypes text,
 			DoubleSupplier bonus) {
-		return new ProtectionType(text, condition, bonus);
+		return new ProtectionType(text::get, text::pred, bonus);
+	}
+
+	public static IFacet avoidType(
+			CALang.DamageTypes text,
+			DoubleSupplier chance) {
+		return new AvoidType(text::get, text::pred, chance);
+	}
+
+	public static IFacet negateType(CALang.DamageTypes text) {
+		return new AvoidType(text::get, text::pred, null);
 	}
 
 	public interface HurtBonusPredicate {
@@ -111,10 +120,35 @@ public class SimpleListener {
 		}
 
 		@Override
-		public void onPlayerHurtTarget(Player player, AttackCache cache) {
+		public void onPlayerDamaged(Player player, AttackCache cache) {
 			if (condition.test(CAAttackToken.getSource(cache))) {
 				cache.addHurtModifier(DamageModifier.multTotal((float) (1 - bonus.getAsDouble())));
 			}
+		}
+
+	}
+
+	record AvoidType(
+			Supplier<MutableComponent> text,
+			Predicate<DamageSource> condition,
+			@Nullable DoubleSupplier chance)
+			implements TextFacet, CAAttackToken {
+
+		@Override
+		public void addText(@Nullable Level level, List<Component> list) {
+			if (chance == null) {
+				list.add(TextFacet.wrap(CALang.Modular.NEGATE_TYPE.get(text.get()).withStyle(ChatFormatting.GRAY)));
+			} else {
+				list.add(TextFacet.wrap(CALang.Modular.AVOID_TYPE.get(
+						TextFacet.perc(chance.getAsDouble()), text.get()
+				).withStyle(ChatFormatting.GRAY)));
+			}
+		}
+
+		@Override
+		public boolean onPlayerAttacked(Player player, AttackCache cache) {
+			return condition.test(CAAttackToken.getSource(cache)) &&
+					(chance == null || CAAttackToken.chance(player, chance.getAsDouble()));
 		}
 
 	}

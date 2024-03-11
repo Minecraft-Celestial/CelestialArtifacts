@@ -22,9 +22,11 @@
 	  "immune": "不可摧毁",
 	  "invul_time": "+%s无敌时间",
 	  "loot": "抢夺",
+	  "xp": "经验获取",
 	  "protect": "-%s伤害",
 	  "protect_type": "-%2$s%1$s伤害",
-	  "xp": "经验获取"
+	  "avoid_type": "%s概率回避%s伤害",
+	  "negate_type": "免疫%s伤害"
 	},
 	"condition": {
 	  "attack_behind": "从背后攻击目标时:",
@@ -45,7 +47,9 @@
 	"damage_type": {
 	  "fall": "摔落",
 	  "fire": "火焰",
-	  "magic": "魔法"
+	  "magic": "魔法",
+	  "projectile": "弹射物",
+	  "water_mob": "水生生物"
 	},
 	"curse": {
 	  "scroll_0": "一旦戴上，你将无法以正常的方式将它摘下",
@@ -92,6 +96,13 @@
 	"charms": {
 	  "cursed_protector_0": "副手装备的盾牌不会再进入冷却",
 	  "cursed_protector_1": "受到伤害大于当前生命的%s时，伤害降低%s"
+	},
+	"sets": {
+	  "sea_god": "手持三叉戟时：",
+	  "spirit_0": "拉弓%s秒后获得%s",
+	  "spirit_1": "从目标背后射出的%s伤害提高%s",
+	  "spirit_2": "拥有%s效果时",
+	  "spirit_3": "射出的箭矢有%s概率施加%s"
 	}
   },
   "curios": {
