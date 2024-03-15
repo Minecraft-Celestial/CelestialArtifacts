@@ -54,7 +54,7 @@ public class CALang {
 	}
 
 	public enum Tooltip implements Info {
-		END_DUST("%s chance to drop when players equipped with [%s] kill monsters targeting them", 1),
+		END_DUST("%s chance to drop when players equipped with [%s] kill monsters targeting them", 2),
 		NEBULA_CUBE("Dropped when player failed to get etchings while meeting conditions", 0),
 		;
 
