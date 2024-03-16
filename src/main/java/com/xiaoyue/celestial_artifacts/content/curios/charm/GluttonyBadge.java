@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class GluttonyBadge implements MultiLineText, CAAttackToken {
+public class GluttonyBadge implements MultiLineText, CAAttackToken {//TODO check
 
 	private static double protection() {
 		return CAModConfig.COMMON.charm.glubadgeimmunity.get();

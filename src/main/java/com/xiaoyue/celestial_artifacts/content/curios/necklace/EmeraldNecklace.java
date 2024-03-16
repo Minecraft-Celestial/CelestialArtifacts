@@ -9,7 +9,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
-public class EmeraldNecklace implements SingleLineText, CAAttackToken {
+public class EmeraldNecklace implements SingleLineText, CAAttackToken {//TODO check
 
 	private static double dropFactor() {
 		return CAModConfig.COMMON.necklace.emeraldNecklaceDrop.get();

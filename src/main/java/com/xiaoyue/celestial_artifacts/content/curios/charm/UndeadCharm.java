@@ -13,7 +13,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 
-public class UndeadCharm implements SingleLineText, CAAttackToken {
+public class UndeadCharm implements SingleLineText, CAAttackToken {//TODO check
 
 	private static int cooldownFactor() {
 		return CAModConfig.COMMON.charm.undeadCD.get();

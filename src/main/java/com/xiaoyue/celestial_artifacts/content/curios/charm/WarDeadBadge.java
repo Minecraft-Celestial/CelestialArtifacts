@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class WarDeadBadge extends BaseTickingToken implements CAAttackToken {
+public class WarDeadBadge extends BaseTickingToken implements CAAttackToken {//TODO check
 
 	@SerialClass.SerialField
 	public float war_dead_badge_add;

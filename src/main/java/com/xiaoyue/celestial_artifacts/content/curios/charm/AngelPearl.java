@@ -7,9 +7,7 @@ import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,36 +25,32 @@ public class AngelPearl extends BaseTickingToken {
 	@SerialClass.SerialField
 	private int angel_pearl_add;
 
-	private static int effectAmount() {
-		return CAModConfig.COMMON.charm.angelPearlBuffNur.get();
-	}
-
 	private static int armorAmount() {
-		return CAModConfig.COMMON.charm.angelPearlArmorenhan.get();
+		return CAModConfig.COMMON.charm.angelPearlArmor.get();
 	}
 
 	private static double replyAmount() {
-		return CAModConfig.COMMON.charm.angelPearlHealeff.get();
+		return CAModConfig.COMMON.charm.angelPearlRegen.get();
 	}
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_1.get()));
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_2.get(TextFacet.num(effectAmount()))));
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_3.get(TextFacet.perc(replyAmount()))));
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_4.get(TextFacet.num(armorAmount()))));
+		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_2.get()));
+		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_3.get(TextFacet.perc(replyAmount()))));
+		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_4.get(TextFacet.num(armorAmount()))));
 		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_5.get()));
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_6.get(TextFacet.perc(angel_pearl_add * replyAmount()))));
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_7.get(TextFacet.perc(angel_pearl_add * armorAmount()))));
+		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_6.get(TextFacet.perc(angel_pearl_add * replyAmount()))));
+		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_7.get(TextFacet.num(angel_pearl_add * armorAmount()))));
 	}
 
 	private AttrAdder reply() {
-		double val = angel_pearl_add * replyAmount() / effectAmount();
+		double val = angel_pearl_add * replyAmount();
 		return AttrAdder.of("angel_pearl", CCAttributes.REPLY_POWER, AttributeModifier.Operation.ADDITION, val);
 	}
 
 	private AttrAdder armor() {
-		double val = angel_pearl_add * armorAmount() / effectAmount();
+		double val = angel_pearl_add * armorAmount();
 		return AttrAdder.of("angel_pearl", () -> Attributes.ARMOR, AttributeModifier.Operation.ADDITION, val);
 
 	}

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SolarMagnet implements MultiLineText, TickFacet {
+public class SolarMagnet implements MultiLineText, TickFacet {//TODO check
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {

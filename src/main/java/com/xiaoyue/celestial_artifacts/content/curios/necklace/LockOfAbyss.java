@@ -18,9 +18,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class LockOfAbyss implements MultiLineText, CAAttackToken {
+public class LockOfAbyss implements MultiLineText, CAAttackToken {//TODO check
 
-	private final double extraDamageFactor() {
+	private double extraDamageFactor() {
 		return CAModConfig.COMMON.necklace.lockOfAbyssExtraDamage.get();
 	}
 

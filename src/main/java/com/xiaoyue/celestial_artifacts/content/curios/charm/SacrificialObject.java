@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SacrificialObject implements MultiLineText {
+public class SacrificialObject implements MultiLineText {//TODO check
 
 	private static int goldAmount() {
 		return CAModConfig.COMMON.charm.sacriheritage.get();

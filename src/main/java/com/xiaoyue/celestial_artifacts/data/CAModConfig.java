@@ -148,19 +148,19 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue holytaliCD;
 
 			//AbyssWillBadge
-			public final ForgeConfigSpec.IntValue AbyssWillBadgetrigger;
-			public final ForgeConfigSpec.IntValue AbyssWillBadgeduration;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgeremainingHP;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerPA;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerPB;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDA1;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDA2;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDB1;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDB2;
-			public final ForgeConfigSpec.IntValue AbyssWillBadgedeveloptime;
-			public final ForgeConfigSpec.IntValue AbyssWillBadgedeveloplimit;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgeincreasedrate;
-			public final ForgeConfigSpec.DoubleValue AbyssWillBadgeinjuryrate;
+			public final ForgeConfigSpec.IntValue abyssWillBadgeInitialLevel;
+			public final ForgeConfigSpec.IntValue abyssWillBadgeDuration;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgeRemainingHealth;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgeChanceSmall;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgeChanceLarge;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgeBonusSmall;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgeBonusLarge;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgePenaltySmall;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgePenaltyLarge;
+			public final ForgeConfigSpec.IntValue abyssWillBadgeGrowInterval;
+			public final ForgeConfigSpec.IntValue abyssWillBadgeLimit;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgeDamageBonus;
+			public final ForgeConfigSpec.DoubleValue abyssWillBadgeDamagePenalty;
 
 			// angel heart
 			public final ForgeConfigSpec.DoubleValue angelHeartThreshold;
@@ -170,16 +170,15 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue angelHeartHealAmount;
 
 			// AngelPearl
-			public final ForgeConfigSpec.IntValue angelPearlBuffNur;
-			public final ForgeConfigSpec.DoubleValue angelPearlHealeff;
-			public final ForgeConfigSpec.IntValue angelPearlArmorenhan;
+			public final ForgeConfigSpec.DoubleValue angelPearlRegen;
+			public final ForgeConfigSpec.IntValue angelPearlArmor;
 
 			//corrupt badge
-			public final ForgeConfigSpec.IntValue corbadDEBUFF;
-			public final ForgeConfigSpec.IntValue corbadDEBUFFNur;
-			public final ForgeConfigSpec.DoubleValue corbaddigrate;
-			public final ForgeConfigSpec.DoubleValue corbadattack;
-			public final ForgeConfigSpec.DoubleValue corbaddamage;
+			public final ForgeConfigSpec.IntValue corruptBadgeDebuffDuration;
+			public final ForgeConfigSpec.DoubleValue corruptBadgeDigSpeedBonus;
+			public final ForgeConfigSpec.DoubleValue corruptBadgeAttackSpeedBonus;
+			public final ForgeConfigSpec.DoubleValue corruptBadgeAttackBonus;
+			public final ForgeConfigSpec.IntValue corruptBadgeCooldown;
 
 			// cursed protector
 			public final ForgeConfigSpec.DoubleValue cursedProtectorThreshold;
@@ -302,45 +301,45 @@ public class CAModConfig {
 
 				//AbyssWillBadge
 				{
-					AbyssWillBadgetrigger = builder
+					abyssWillBadgeInitialLevel = builder
 							.comment("AbyssWillBadge: The levels after triggering the skill")
-							.defineInRange("AbyssWillBadgetrigger", 15, 0, Integer.MAX_VALUE);
-					AbyssWillBadgeduration = builder
-							.comment("AbyssWillBadge: The time of during the skill")
-							.defineInRange("AbyssWillBadgetrigger", 15, 0, Integer.MAX_VALUE);
-					AbyssWillBadgeremainingHP = builder
-							.comment("AbyssWillBadge:remainingHP after skill")
-							.defineInRange("AbyssWillBadgeremainingHP", 0.2, 0.01, 1.00);
-					AbyssWillBadgetriggerPA = builder
-							.comment("AbyssWillBadge:The probability of event a")
-							.defineInRange("AbyssWillBadgeprobability", 0.4, 0.0, 1.0);
-					AbyssWillBadgetriggerPB = builder
-							.comment("AbyssWillBadge:The probability of event b")
-							.defineInRange("AbyssWillBadgeprobability", 0.1, 0.0, 1.0);
-					AbyssWillBadgetriggerDA1 = builder
-							.comment("AbyssWillBadge:The damage of event a1")
-							.defineInRange("AbyssWillBadgedamage", 1.5, 0.0, 10);
-					AbyssWillBadgetriggerDA2 = builder
-							.comment("AbyssWillBadge:The damage of event a2")
-							.defineInRange("AbyssWillBadgeprobability", 2.0, 0.0, 50);
-					AbyssWillBadgetriggerDB1 = builder
-							.comment("AbyssWillBadge:The damage of event b1")
-							.defineInRange("AbyssWillBadgedamage", 2.0, 0.0, 10);
-					AbyssWillBadgetriggerDB2 = builder
-							.comment("AbyssWillBadge:The damage of event b2")
-							.defineInRange("AbyssWillBadgeprobability", 2.5, 0.0, 50);
-					AbyssWillBadgedeveloptime = builder
-							.comment("AbyssWillBadge:how long will it glow")
-							.defineInRange("AbyssWillBadge", 20, 1, Integer.MAX_VALUE);
-					AbyssWillBadgedeveloplimit = builder
-							.comment("AbyssWillBadge:how high will it glow")
-							.defineInRange("AbyssWillBadge", 10, 1, Integer.MAX_VALUE);
-					AbyssWillBadgeincreasedrate = builder
-							.comment("AbyssWillBadge:increased damage rate")
-							.defineInRange("AbyssWillBadge", 0.20, 0.01, 1.00);
-					AbyssWillBadgeinjuryrate = builder
-							.comment("AbyssWillBadge:injury rate")
-							.defineInRange("AbyssWillBadge", 0.25, 0.01, 1.00);
+							.defineInRange("abyssWillBadgeInitialLevel", 15, 0, Integer.MAX_VALUE);
+					abyssWillBadgeDuration = builder
+							.comment("AbyssWillBadge: The duration of the skill in seconds")
+							.defineInRange("abyssWillBadgeDuration", 15, 0, Integer.MAX_VALUE);
+					abyssWillBadgeRemainingHealth = builder
+							.comment("AbyssWillBadge: Remaining HP in percentage after skill ends")
+							.defineInRange("abyssWillBadgeRemainingHealth", 0.2, 0.01, 1.00);
+					abyssWillBadgeChanceSmall = builder
+							.comment("AbyssWillBadge: Chance of small damage bonus")
+							.defineInRange("abyssWillBadgeChanceSmall", 0.4, 0.0, 1.0);
+					abyssWillBadgeChanceLarge = builder
+							.comment("AbyssWillBadge: Chance of large damage bonus")
+							.defineInRange("abyssWillBadgeChanceLarge", 0.1, 0.0, 1.0);
+					abyssWillBadgeBonusSmall = builder
+							.comment("AbyssWillBadge: Small damage bonus")
+							.defineInRange("abyssWillBadgeBonusSmall", 1.5, 0.0, 10);
+					abyssWillBadgeBonusLarge = builder
+							.comment("AbyssWillBadge: Large damage bonus")
+							.defineInRange("abyssWillBadgeBonusLarge", 2.0, 0.0, 50);
+					abyssWillBadgePenaltySmall = builder
+							.comment("AbyssWillBadge: Small hurt penalty")
+							.defineInRange("abyssWillBadgePenaltySmall", 2.0, 0.0, 10);
+					abyssWillBadgePenaltyLarge = builder
+							.comment("AbyssWillBadge: Large hurt penalty")
+							.defineInRange("abyssWillBadgePenaltyLarge", 2.5, 0.0, 50);
+					abyssWillBadgeGrowInterval = builder
+							.comment("AbyssWillBadge: Interval for adding levels in seconds")
+							.defineInRange("abyssWillBadgeGrowInterval", 20, 1, Integer.MAX_VALUE);
+					abyssWillBadgeLimit = builder
+							.comment("AbyssWillBadge: Maximum level for passive growth")
+							.defineInRange("abyssWillBadgeLimit", 10, 1, Integer.MAX_VALUE);
+					abyssWillBadgeDamageBonus = builder
+							.comment("AbyssWillBadge: damage bonus per level")
+							.defineInRange("abyssWillBadgeDamageBonus", 0.20, 0.01, 1.00);
+					abyssWillBadgeDamagePenalty = builder
+							.comment("AbyssWillBadge: damage penalty per level")
+							.defineInRange("abyssWillBadgeDamagePenalty", 0.25, 0.01, 1.00);
 
 				}
 
@@ -354,47 +353,44 @@ public class CAModConfig {
 							.defineInRange("angelHeartProtection", 0.2, 0, 1);
 
 					angelHeartRemoveInterval = builder
-							.comment("This value determines how many ticks remove negative effects once")
-							.defineInRange("angelHeartRemoveInterval", 600, 1, Integer.MAX_VALUE);
+							.comment("Angel Heart: interval in seconds to remove negative effects")
+							.defineInRange("angelHeartRemoveInterval", 30, 1, Integer.MAX_VALUE);
 
 					angelHeartBloodInterval = builder
-							.comment("This value determines how many ticks restore health once")
-							.defineInRange("angelHeartBloodInterval", 30, 1, Integer.MAX_VALUE);
+							.comment("Angel Heart: interval in seconds to restore health")
+							.defineInRange("angelHeartBloodInterval", 2, 1, Integer.MAX_VALUE);
 
 					angelHeartHealAmount = builder
-							.comment("This value determines how much health is restored at once")
+							.comment("Angel Heart: how much health is restored at once")
 							.defineInRange("angelHeartHealAmount", 1, 1, Integer.MAX_VALUE);
 				}
 
 				// angel_pearl
 				{
-					angelPearlBuffNur = builder
-							.comment("each BUFF owend")
-							.defineInRange("angelHeartBuffNurmber", 1, 1, Integer.MAX_VALUE);
-					angelPearlHealeff = builder
-							.comment("BUFF healing efficacy")
-							.defineInRange("angelPearlHealefficacy", 0.08, 0.01, 1.00);
-					angelPearlArmorenhan = builder
-							.comment("BUFF Armor Enhancement")
-							.defineInRange("angelPearlArmorenhance", 1, 0, Integer.MAX_VALUE);
+					angelPearlRegen = builder
+							.comment("Angel Pearl: Regen rate per beneficial effect")
+							.defineInRange("angelPearlRegen", 0.08, 0.01, 1.00);
+					angelPearlArmor = builder
+							.comment("Angel Pearl: armor bonus per beneficial effect")
+							.defineInRange("angelPearlArmor", 1, 0, Integer.MAX_VALUE);
 				}
 				//CorruptBadge
 				{
-					corbadDEBUFF = builder
-							.comment("Time to obtain debuff")
-							.defineInRange("corruptbadgeDEBUFF", 15, 1, Integer.MAX_VALUE);
-					corbadDEBUFFNur = builder
-							.comment("each DEBUFF owend")
-							.defineInRange("corbadDEBUFFNur", 1, 1, Integer.MAX_VALUE);
-					corbaddigrate = builder
-							.comment("How speed in digging")
-							.defineInRange("corbaddigrate", 0.09, 0.00, Integer.MAX_VALUE);
-					corbadattack = builder
-							.comment("How speed in attacking")
-							.defineInRange("corbadattackrate", 0.03, 0.00, Integer.MAX_VALUE);
-					corbaddamage = builder
-							.comment("How much damage does it increase")
-							.defineInRange("corbaddamage", 0.14, 0.00, Integer.MAX_VALUE);
+					corruptBadgeDebuffDuration = builder
+							.comment("Corrupt Badge: Negative effect duration in seconds")
+							.defineInRange("corruptBadgeDebuffDuration", 15, 1, Integer.MAX_VALUE);
+					corruptBadgeDigSpeedBonus = builder
+							.comment("Corrupt Badge: dig speed bonus per negative effect")
+							.defineInRange("corruptBadgeDigSpeedBonus", 0.09, 0.00, Integer.MAX_VALUE);
+					corruptBadgeAttackSpeedBonus = builder
+							.comment("Corrupt Badge: attack speed bonus per negative effect")
+							.defineInRange("corruptBadgeAttackSpeedBonus", 0.03, 0.00, Integer.MAX_VALUE);
+					corruptBadgeAttackBonus = builder
+							.comment("Corrupt Badge: attack bonus per negative effect")
+							.defineInRange("corruptBadgeAttackBonus", 0.14, 0.00, Integer.MAX_VALUE);
+					corruptBadgeCooldown = builder
+							.comment("Corrupt Badge: Skill cooldown in seconds")
+							.defineInRange("corruptBadgeCooldown", 60, 1, Integer.MAX_VALUE);
 				}
 
 				// cursed_protector

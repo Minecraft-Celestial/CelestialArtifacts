@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class CursedTalisman extends BaseTickingToken {
+public class CursedTalisman extends BaseTickingToken {//TODO check
 
 	@SerialClass.SerialField
 	public int cursed_talisman_add;

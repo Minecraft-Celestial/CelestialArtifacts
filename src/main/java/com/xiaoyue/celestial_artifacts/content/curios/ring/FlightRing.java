@@ -8,7 +8,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
 @SerialClass
-public class FlightRing extends BaseTickingToken implements SingleLineText {
+public class FlightRing extends BaseTickingToken implements SingleLineText {//TODO check
 
 	@Override
 	protected void removeImpl(Player player) {

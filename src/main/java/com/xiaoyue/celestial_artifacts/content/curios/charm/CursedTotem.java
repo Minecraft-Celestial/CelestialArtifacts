@@ -20,7 +20,7 @@ import java.util.List;
 
 @SerialClass
 public class CursedTotem extends BaseTickingToken
-		implements NetworkSensitiveToken<CursedTotem>, CAAttackToken {
+		implements NetworkSensitiveToken<CursedTotem>, CAAttackToken {//TODO check
 
 	public static final TokenFacet<CursedTotem> TOKEN = new TokenFacet<>("cursed_totem", CursedTotem::new);
 

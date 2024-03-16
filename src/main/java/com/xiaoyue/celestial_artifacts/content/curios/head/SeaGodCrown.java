@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 
-public class SeaGodCrown implements SingleLineText, SkillFeature {
+public class SeaGodCrown implements SingleLineText, SkillFeature {//TODO check
 
 	@Override
 	public void trigger(ServerPlayer player) {

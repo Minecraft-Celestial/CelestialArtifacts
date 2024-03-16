@@ -547,9 +547,10 @@ public class CAItems {
 			PRAYER_CROWN = head("prayer_crown", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
 							InvulToken.of(() -> 10),
-							SimpleListener.protect(CALang.Head.PRAYER_CROWN_2::get,
+							SimpleListener.protect(CALang.Condition.SNEAK::get,
 									(player, attacker, cache) -> player.isCrouching(),
-									CAModConfig.COMMON.head.prayerCrownProtection::get), new PrayerCrown()));
+									CAModConfig.COMMON.head.prayerCrownProtection::get),
+							new PrayerCrown()));
 			// 深渊意志之核
 			ABYSS_CORE = head("abyss_core", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new AbyssCore()));
@@ -557,10 +558,10 @@ public class CAItems {
 			GUARDIAN_EYE = head("guardian_eye", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
 							AttrFacet.multBase(ForgeMod.SWIM_SPEED, () -> 0.15),
-							SimpleListener.protect(() ->
-									CALang.Head.GUARDIAN_EYE_2.get(TextFacet.perc(CAModConfig.COMMON.head.guardianEyeProtection.get())),
-									(player, attacker, cache) -> player.isUnderWater(),
-                                    CAModConfig.COMMON.head.guardianEyeProtection::get), new GuardianEye()));
+							SimpleListener.protect(CALang.Condition.PLAYER_WET::get,
+									(player, attacker, cache) -> player.isInWaterRainOrBubble(),
+									CAModConfig.COMMON.head.guardianEyeProtection::get),
+							new GuardianEye()));
 			// 邪恶之瞳
 			EVIL_EYE = head("evil_eye", () ->
 					ModularCurio.builder().rarity(Rarity.EPIC).build(new EvilEye()));

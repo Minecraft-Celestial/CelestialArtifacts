@@ -11,7 +11,7 @@ import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
-public class AbyssCore implements SingleLineText, CAAttackToken {
+public class AbyssCore implements SingleLineText, CAAttackToken {//TODO check
 
 	private static int cooldownFactor() {
 		return CAModConfig.COMMON.head.abyssCoreCooldown.get();

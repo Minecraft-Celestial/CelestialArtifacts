@@ -8,12 +8,10 @@ import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -32,69 +30,69 @@ public class AbyssWillBadge extends BaseTickingToken implements NetworkSensitive
 	@SerialClass.SerialField
 	public float abyss_will_badge_damage;
 
-	private static int triggerFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgetrigger.get();
+	private static int initial() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeInitialLevel.get();
 	}
 
-	private static int durationFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgeduration.get();
+	private static int duration() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeDuration.get();
 	}
 
-	private static double afterHealthFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgeremainingHP.get();
+	private static double remainHP() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeRemainingHealth.get();
 	}
 
-	private static double triggerPAFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgetriggerPA.get();
+	private static double pa() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeChanceSmall.get();
 	}
 
-	private static double triggerPBFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgetriggerPB.get();
+	private static double pb() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeChanceLarge.get();
 	}
 
-	private static double triggerDA1Factor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgetriggerDA1.get();
+	private static double atkA() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeBonusSmall.get();
 	}
 
-	private static double triggerDA2Factor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgetriggerDA2.get();
+	private static double atkB() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeBonusLarge.get();
 	}
 
-	private static double triggerDB1Factor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgetriggerDB1.get();
+	private static double dmgA() {
+		return CAModConfig.COMMON.charm.abyssWillBadgePenaltySmall.get();
 	}
 
-	private static double triggerDB2Factor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgetriggerDB2.get();
+	private static double dmgB() {
+		return CAModConfig.COMMON.charm.abyssWillBadgePenaltyLarge.get();
 	}
 
-	private static double developtimeFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgedeveloptime.get();
+	private static int interval() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeGrowInterval.get();
 	}
 
-	private static int developlimitFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgedeveloplimit.get();
+	private static int limit() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeLimit.get();
 	}
 
-	private static double increasedrateFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgeincreasedrate.get();
+	private static double atkBonus() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeDamageBonus.get();
 	}
 
-	private static double injuryrateFactor() {
-		return CAModConfig.COMMON.charm.AbyssWillBadgeinjuryrate.get();
+	private static double hurtPenalty() {
+		return CAModConfig.COMMON.charm.abyssWillBadgeDamagePenalty.get();
 	}
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_4.get(TextFacet.perc(pb()), TextFacet.perc(atkA()),
+				TextFacet.perc(pa()), TextFacet.perc(atkB()))));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_5.get(TextFacet.perc(pb()), TextFacet.perc(dmgB()),
+				TextFacet.perc(pa()), TextFacet.perc(dmgA()))));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_6.get(TextFacet.num(interval()), TextFacet.num(limit()))));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_7.get(TextFacet.perc(atkBonus()), TextFacet.perc(hurtPenalty()))));
 		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_1.get()));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_2.get(TextFacet.num(triggerFactor()), TextFacet.num(durationFactor() * 20))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_3.get(TextFacet.perc(afterHealthFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_4.get(TextFacet.perc(triggerPBFactor()), TextFacet.perc(triggerDA1Factor()),
-				TextFacet.perc(triggerPBFactor() + triggerPAFactor()), TextFacet.perc(triggerDA2Factor()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_5.get(TextFacet.perc(triggerPBFactor()), TextFacet.perc(triggerDB2Factor()),
-				TextFacet.perc(triggerPBFactor() + triggerPAFactor()), TextFacet.perc(triggerDB1Factor()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_6.get(TextFacet.num((int) (developtimeFactor() * 20)), TextFacet.num(developlimitFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_7.get(TextFacet.perc(increasedrateFactor()), TextFacet.perc(injuryrateFactor()))));
+		list.add(TextFacet.inner(CALang.Charm.ABYSS_WILL_BADGE_2.get(TextFacet.num(initial()), TextFacet.num(duration()))));
+		list.add(TextFacet.inner(CALang.Charm.ABYSS_WILL_BADGE_3.get(TextFacet.perc(remainHP()))));
 		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_8.get(TextFacet.num(abyss_will_badge_add))));
 	}
 
@@ -102,27 +100,27 @@ public class AbyssWillBadge extends BaseTickingToken implements NetworkSensitive
 	public void trigger(ServerPlayer player) {
 		var item = CAItems.ABYSS_WILL_BADGE.get();
 		if (!player.getCooldowns().isOnCooldown(item)) {
-			abyss_will_badge_add = triggerFactor();
+			abyss_will_badge_add = initial();
 			sync(TOKEN.getKey(), this, player);
-			player.getCooldowns().addCooldown(item, durationFactor() * 20);
+			player.getCooldowns().addCooldown(item, duration() * 20);
 		}
 	}
 
 	@Override
 	protected void tickImpl(Player player) {
 		var item = CAItems.ABYSS_WILL_BADGE.get();
-		if (player.tickCount % developtimeFactor() * 20 == 0) {
-			if (abyss_will_badge_add < developlimitFactor()) {
+		if (player.tickCount % (interval() * 20) == 0) {
+			if (abyss_will_badge_add < limit()) {
 				abyss_will_badge_add++;
 			}
 		}
 		if (!player.getCooldowns().isOnCooldown(item)) {
-			if (abyss_will_badge_add > developtimeFactor() + 1) {
+			if (abyss_will_badge_add > limit() + 1) {
 				abyss_will_badge_add = 0;
 			}
 			if (abyss_will_badge_damage != 0) {
 				if (!player.level().isClientSide())
-					player.setHealth((float) (player.getHealth() * afterHealthFactor()));
+					player.setHealth((float) (player.getHealth() * remainHP()));
 				abyss_will_badge_damage = 0;
 			}
 		}
@@ -132,15 +130,15 @@ public class AbyssWillBadge extends BaseTickingToken implements NetworkSensitive
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
 		double random = player.getRandom().nextDouble();
 		float bonus;
-		if (triggerPBFactor() > random) {
-			bonus = (float) triggerDA1Factor();
-		} else if (triggerPBFactor() < random && triggerPBFactor() + triggerPAFactor() > random) {
-			bonus = (float) triggerDA2Factor();
+		if (pb() > random) {
+			bonus = (float) atkA();
+		} else if (pb() < random && pb() + pa() > random) {
+			bonus = (float) atkB();
 		} else {
 			bonus = 1;
 		}
 		if (abyss_will_badge_add > 0) {
-			bonus *= (float) (1 + (abyss_will_badge_add * increasedrateFactor()));
+			bonus *= (float) (1 + (abyss_will_badge_add * atkBonus()));
 		}
 		cache.addHurtModifier(DamageModifier.multTotal(bonus));
 	}
@@ -158,15 +156,15 @@ public class AbyssWillBadge extends BaseTickingToken implements NetworkSensitive
 	public void onPlayerDamaged(Player player, AttackCache cache) {
 		double random = player.getRandom().nextDouble();
 		float bonus;
-		if (triggerPAFactor() > random) {
-			bonus = (float) triggerDB2Factor();
-		} else if (triggerPBFactor() < random && triggerPAFactor() + triggerPBFactor() > random) {
-			bonus = (float) triggerDB1Factor();
+		if (pa() > random) {
+			bonus = (float) dmgB();
+		} else if (pb() < random && pa() + pb() > random) {
+			bonus = (float) dmgA();
 		} else {
 			bonus = 1;
 		}
 		if (abyss_will_badge_add > 0) {
-			bonus *= (float) (1 + abyss_will_badge_add * injuryrateFactor());
+			bonus *= (float) (1 + abyss_will_badge_add * hurtPenalty());
 		}
 		cache.addDealtModifier(DamageModifier.multTotal(bonus));
 	}

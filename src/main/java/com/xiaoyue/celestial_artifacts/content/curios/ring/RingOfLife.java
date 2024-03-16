@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
 
-public class RingOfLife implements SingleLineText, TickFacet {
+public class RingOfLife implements SingleLineText, TickFacet {//TODO check
 
 	private static int intervalFactor() {
 		return CAModConfig.COMMON.ring.ringOfLifeEffectInterval.get();

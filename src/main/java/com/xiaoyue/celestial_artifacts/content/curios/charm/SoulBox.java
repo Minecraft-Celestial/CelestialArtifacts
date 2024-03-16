@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SoulBox implements MultiLineText, CAAttackToken {
+public class SoulBox implements MultiLineText, CAAttackToken {//TODO check
 
 	private static int cooldownFactor() {
 		return CAModConfig.COMMON.charm.soulboximmortalCD.get();

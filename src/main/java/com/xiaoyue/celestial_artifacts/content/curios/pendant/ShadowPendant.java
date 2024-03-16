@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ShadowPendant implements MultiLineText, CAAttackToken {
+public class ShadowPendant implements MultiLineText, CAAttackToken {//TODO check
 
 	private static double damageHealFactor() {
 		return CAModConfig.COMMON.pendant.shadowPendantDamageHeal.get();

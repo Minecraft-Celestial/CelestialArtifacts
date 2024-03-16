@@ -17,7 +17,7 @@ import java.util.List;
 
 public class AngelHeart implements MultiLineText, TickFacet, CAAttackToken {
 
-	private static int RemoveInterval() {
+	private static int removeInterval() {
 		return CAModConfig.COMMON.charm.angelHeartRemoveInterval.get();
 	}
 
@@ -32,16 +32,16 @@ public class AngelHeart implements MultiLineText, TickFacet, CAAttackToken {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_HEART_1.get(TextFacet.num(bloodInterval() / 20), TextFacet.num(healAmount()))));
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_HEART_2.get(TextFacet.num(RemoveInterval() / 20))));
+		list.add(TextFacet.wrap(CALang.Charm.ANGEL_HEART_1.get(TextFacet.num(bloodInterval()), TextFacet.num(healAmount()))));
+		list.add(TextFacet.wrap(CALang.Charm.ANGEL_HEART_2.get(TextFacet.num(removeInterval()))));
 	}
 
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
-		if (entity.tickCount % bloodInterval() == 0) {
+		if (entity.tickCount % (bloodInterval() * 20) == 0) {
 			entity.heal(healAmount());
 		}
-		if (entity.tickCount % RemoveInterval() == 0) {
+		if (entity.tickCount % (removeInterval() * 20) == 0) {
 			entity.getActiveEffects().removeIf(ins -> ins.getEffect().getCategory() == MobEffectCategory.HARMFUL);
 		}
 	}

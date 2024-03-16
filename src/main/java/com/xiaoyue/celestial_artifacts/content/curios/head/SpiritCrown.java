@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SpiritCrown implements MultiLineText, CAAttackToken {
+public class SpiritCrown implements MultiLineText, CAAttackToken {//TODO check
 
 	private static double arrowDamageMultiplierFactor() {
 		return CAModConfig.COMMON.head.spiritCrownArrowDamageMultiplier.get();

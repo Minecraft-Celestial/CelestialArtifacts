@@ -13,7 +13,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 
-public class TwistedBrain implements SingleLineText, CAAttackToken {
+public class TwistedBrain implements SingleLineText, CAAttackToken {//TODO check
 
 	private static double chance() {
 		return CAModConfig.COMMON.charm.twistedbrainAvoid.get();

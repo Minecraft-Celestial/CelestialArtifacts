@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature {
+public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature {//TODO check
 
 	private static int healTime() {
 		return CAModConfig.COMMON.charm.knightholder.get();

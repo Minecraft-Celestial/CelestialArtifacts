@@ -9,6 +9,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +20,7 @@ import java.util.List;
 
 @SerialClass
 public class SkywalkerScroll extends BaseTickingToken
-		implements NetworkSensitiveToken<SkywalkerScroll>, SkillFeature {
+		implements NetworkSensitiveToken<SkywalkerScroll>, SkillFeature {//TODO check
 
 	public static final TokenFacet<SkywalkerScroll> TOKEN = new TokenFacet<>("skywalker_scroll", SkywalkerScroll::new);
 

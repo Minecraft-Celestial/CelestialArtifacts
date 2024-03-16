@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class TwistedHeart extends BaseTickingToken implements CAAttackToken {
+public class TwistedHeart extends BaseTickingToken implements CAAttackToken {//TODO check
 
 	private static double damageFactor() {
 		return CAModConfig.COMMON.heart.twistedHeartDamage.get();

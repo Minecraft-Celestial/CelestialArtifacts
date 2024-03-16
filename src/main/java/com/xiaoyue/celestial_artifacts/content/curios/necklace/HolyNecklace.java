@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 
-public class HolyNecklace implements SingleLineText, HealFeature {
+public class HolyNecklace implements SingleLineText, HealFeature {//TODO check
 
 	private static int cooldowmFactor() {
 		return CAModConfig.COMMON.necklace.holyNecklaceCooldown.get();
