@@ -1,7 +1,10 @@
 package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import net.minecraft.network.chat.Component;
@@ -12,9 +15,13 @@ import net.minecraft.world.entity.player.Player;
 
 public class TwistedBrain implements SingleLineText, CAAttackToken {
 
+	private static double chance() {
+		return CAModConfig.COMMON.charm.twistedbrainAvoid.get();
+	}
+
 	@Override
-	public MutableComponent getLine() {//TODO text
-		return Component.translatable("tooltip.celestial_artifacts.twisted_brain.shift1");
+	public MutableComponent getLine() {
+		return CALang.Charm.TWISTED_BRAIN.get(TextFacet.perc(chance()));
 	}
 
 	@Override
@@ -23,7 +30,7 @@ public class TwistedBrain implements SingleLineText, CAAttackToken {
 		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) ||
 				source.is(DamageTypeTags.BYPASSES_EFFECTS))
 			return false;
-		if (CAAttackToken.chance(player, 0.17)) {
+		if (CAAttackToken.chance(player, chance())) {
 			EntityUtils.addEct(player, MobEffects.DAMAGE_BOOST, 100, 1);
 			return true;
 		}

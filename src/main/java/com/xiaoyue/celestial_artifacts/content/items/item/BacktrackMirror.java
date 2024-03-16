@@ -18,7 +18,7 @@ import java.util.List;
 
 public class BacktrackMirror extends Item {
 	public BacktrackMirror() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+		super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

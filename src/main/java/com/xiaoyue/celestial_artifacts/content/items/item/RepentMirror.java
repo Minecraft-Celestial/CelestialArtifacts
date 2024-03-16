@@ -18,7 +18,7 @@ import java.util.List;
 
 public class RepentMirror extends Item {
 	public RepentMirror() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+		super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

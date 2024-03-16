@@ -140,12 +140,46 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue holySwordMaxAddDamage;
 			public final ForgeConfigSpec.DoubleValue holySwordLostLifeAddDamage;
 
+			//holy talisman
+			public final ForgeConfigSpec.IntValue holytaliweak;
+			public final ForgeConfigSpec.DoubleValue holytaliprotect;
+			public final ForgeConfigSpec.DoubleValue holytalideadprotect;
+			public final ForgeConfigSpec.IntValue holytaliimmortal;
+			public final ForgeConfigSpec.IntValue holytaliCD;
+
+			//AbyssWillBadge
+			public final ForgeConfigSpec.IntValue AbyssWillBadgetrigger;
+			public final ForgeConfigSpec.IntValue AbyssWillBadgeduration;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgeremainingHP;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerPA;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerPB;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDA1;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDA2;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDB1;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgetriggerDB2;
+			public final ForgeConfigSpec.IntValue AbyssWillBadgedeveloptime;
+			public final ForgeConfigSpec.IntValue AbyssWillBadgedeveloplimit;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgeincreasedrate;
+			public final ForgeConfigSpec.DoubleValue AbyssWillBadgeinjuryrate;
+
 			// angel heart
 			public final ForgeConfigSpec.DoubleValue angelHeartThreshold;
 			public final ForgeConfigSpec.DoubleValue angelHeartProtection;
 			public final ForgeConfigSpec.IntValue angelHeartRemoveInterval;
 			public final ForgeConfigSpec.IntValue angelHeartBloodInterval;
 			public final ForgeConfigSpec.IntValue angelHeartHealAmount;
+
+			// AngelPearl
+			public final ForgeConfigSpec.IntValue angelPearlBuffNur;
+			public final ForgeConfigSpec.DoubleValue angelPearlHealeff;
+			public final ForgeConfigSpec.IntValue angelPearlArmorenhan;
+
+			//corrupt badge
+			public final ForgeConfigSpec.IntValue corbadDEBUFF;
+			public final ForgeConfigSpec.IntValue corbadDEBUFFNur;
+			public final ForgeConfigSpec.DoubleValue corbaddigrate;
+			public final ForgeConfigSpec.DoubleValue corbadattack;
+			public final ForgeConfigSpec.DoubleValue corbaddamage;
 
 			// cursed protector
 			public final ForgeConfigSpec.DoubleValue cursedProtectorThreshold;
@@ -156,11 +190,42 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue cursedTalismanCritRateAdd;
 			public final ForgeConfigSpec.DoubleValue cursedTalismanCritDamageAdd;
 
+			//cursed totem
+			public final ForgeConfigSpec.IntValue curtemlevels;
+			public final ForgeConfigSpec.IntValue curtemlvlimit;
+			public final ForgeConfigSpec.IntValue curtomconsume;
+
+			//demon curse
+			public final ForgeConfigSpec.DoubleValue democurHealeff;
+			public final ForgeConfigSpec.DoubleValue democurintensify;
+			public final ForgeConfigSpec.DoubleValue democurspeed;
+
+			//gluttony badge
+			public final ForgeConfigSpec.IntValue glubadgestarve;
+			public final ForgeConfigSpec.DoubleValue glubadgeimmunity;
+
+			//knight shelter
+			public final ForgeConfigSpec.IntValue knightarmor;
+			public final ForgeConfigSpec.IntValue knightDEinjury;
+			public final ForgeConfigSpec.IntValue knightholder;
+			public final ForgeConfigSpec.DoubleValue knightrevenge;
+
 			// magic horseshoe
 			public final ForgeConfigSpec.DoubleValue magicHorseshoeSpeedBonus;
 			public final ForgeConfigSpec.DoubleValue magicHorseshoeLuck;
 			public final ForgeConfigSpec.DoubleValue magicHorseshoeFallReduction;
 
+			//sacrificial object
+			public final ForgeConfigSpec.IntValue sacriloot;
+			public final ForgeConfigSpec.DoubleValue sacriReduction;
+			public final ForgeConfigSpec.IntValue sacriheritage;
+			public final ForgeConfigSpec.DoubleValue sacriselfexplode;
+			
+			//soul box
+			public final ForgeConfigSpec.DoubleValue soulboxbreak; 
+			public final ForgeConfigSpec.DoubleValue soulboxwitherblast;
+			public final ForgeConfigSpec.IntValue soulboximmortalCD;
+			
 			// bearing stamen
 			public final ForgeConfigSpec.DoubleValue bearingStamenMaxHealth;
 			public final ForgeConfigSpec.DoubleValue bearingStamenRegen;
@@ -169,7 +234,20 @@ public class CAModConfig {
 			// sands talisman
 			public final ForgeConfigSpec.DoubleValue sandsTalismanDamageBonus;
 			public final ForgeConfigSpec.DoubleValue sandsTalismanExpBonus;
+			
+			//twisted brain
+			public final ForgeConfigSpec.DoubleValue twistedbrainAvoid;
+			public final ForgeConfigSpec.DoubleValue twistedbrainArmorless;
+			public final ForgeConfigSpec.DoubleValue twistedbrainDamageless;
+			
+			//undead charm
+			public final ForgeConfigSpec.IntValue undeadCD;
 
+			//wardead badge
+			public final ForgeConfigSpec.DoubleValue wardeadBleeds;
+			public final ForgeConfigSpec.DoubleValue wardeadStrength;
+			public final ForgeConfigSpec.DoubleValue wardeadArmor;
+			public final ForgeConfigSpec.DoubleValue wardeadSpeed;
 			private Charm(ForgeConfigSpec.Builder builder) {
 				builder.push("charm");
 
@@ -202,12 +280,75 @@ public class CAModConfig {
 							.defineInRange("holySwordLostLifeAddDamage", 1, 1.0, 10000);
 				}
 
+				//holy talisman
+				{
+					holytaliweak = builder
+							.comment("weak stance")
+							.defineInRange("holytaliweak", 10, 1, Integer.MAX_VALUE);
+					holytaliprotect = builder
+							.comment("reduce damage under attack")
+							.defineInRange("holytaliprotect", 0.25, 0, 1.00);
+					holytalideadprotect = builder
+							.comment("reduce damage under dead attack")
+							.defineInRange("holytalizomprotect", 0.35, 0, 1.00);
+					holytaliimmortal = builder
+							.comment("reserve some health")
+							.defineInRange("holytaliimmortal", 1, 1, Integer.MAX_VALUE);
+					holytaliCD = builder
+							.comment("skill cooling down")
+							.defineInRange("holytaliCD", 600, 1, Integer.MAX_VALUE);
+				}
+
+
+				//AbyssWillBadge
+				{
+					AbyssWillBadgetrigger = builder
+							.comment("AbyssWillBadge: The levels after triggering the skill")
+							.defineInRange("AbyssWillBadgetrigger", 15, 0, Integer.MAX_VALUE);
+					AbyssWillBadgeduration = builder
+							.comment("AbyssWillBadge: The time of during the skill")
+							.defineInRange("AbyssWillBadgetrigger", 15, 0, Integer.MAX_VALUE);
+					AbyssWillBadgeremainingHP = builder
+							.comment("AbyssWillBadge:remainingHP after skill")
+							.defineInRange("AbyssWillBadgeremainingHP", 0.2, 0.01, 1.00);
+					AbyssWillBadgetriggerPA = builder
+							.comment("AbyssWillBadge:The probability of event a")
+							.defineInRange("AbyssWillBadgeprobability", 0.4, 0.0, 1.0);
+					AbyssWillBadgetriggerPB = builder
+							.comment("AbyssWillBadge:The probability of event b")
+							.defineInRange("AbyssWillBadgeprobability", 0.1, 0.0, 1.0);
+					AbyssWillBadgetriggerDA1 = builder
+							.comment("AbyssWillBadge:The damage of event a1")
+							.defineInRange("AbyssWillBadgedamage", 1.5, 0.0, 10);
+					AbyssWillBadgetriggerDA2 = builder
+							.comment("AbyssWillBadge:The damage of event a2")
+							.defineInRange("AbyssWillBadgeprobability", 2.0, 0.0, 50);
+					AbyssWillBadgetriggerDB1 = builder
+							.comment("AbyssWillBadge:The damage of event b1")
+							.defineInRange("AbyssWillBadgedamage", 2.0, 0.0, 10);
+					AbyssWillBadgetriggerDB2 = builder
+							.comment("AbyssWillBadge:The damage of event b2")
+							.defineInRange("AbyssWillBadgeprobability", 2.5, 0.0, 50);
+					AbyssWillBadgedeveloptime = builder
+							.comment("AbyssWillBadge:how long will it glow")
+							.defineInRange("AbyssWillBadge", 20, 1, Integer.MAX_VALUE);
+					AbyssWillBadgedeveloplimit = builder
+							.comment("AbyssWillBadge:how high will it glow")
+							.defineInRange("AbyssWillBadge", 10, 1, Integer.MAX_VALUE);
+					AbyssWillBadgeincreasedrate = builder
+							.comment("AbyssWillBadge:increased damage rate")
+							.defineInRange("AbyssWillBadge", 0.20, 0.01, 1.00);
+					AbyssWillBadgeinjuryrate = builder
+							.comment("AbyssWillBadge:injury rate")
+							.defineInRange("AbyssWillBadge", 0.25, 0.01, 1.00);
+
+				}
+
 				// angel_heart
 				{
 					angelHeartThreshold = builder
 							.comment("Angel Heart: health threshold for protection")
 							.defineInRange("angelHeartThreshold", 0.5, 0, 1);
-
 					angelHeartProtection = builder
 							.comment("Angel Heart: damage reduction")
 							.defineInRange("angelHeartProtection", 0.2, 0, 1);
@@ -223,6 +364,37 @@ public class CAModConfig {
 					angelHeartHealAmount = builder
 							.comment("This value determines how much health is restored at once")
 							.defineInRange("angelHeartHealAmount", 1, 1, Integer.MAX_VALUE);
+				}
+
+				// angel_pearl
+				{
+					angelPearlBuffNur = builder
+							.comment("each BUFF owend")
+							.defineInRange("angelHeartBuffNurmber", 1, 1, Integer.MAX_VALUE);
+					angelPearlHealeff = builder
+							.comment("BUFF healing efficacy")
+							.defineInRange("angelPearlHealefficacy", 0.08, 0.01, 1.00);
+					angelPearlArmorenhan = builder
+							.comment("BUFF Armor Enhancement")
+							.defineInRange("angelPearlArmorenhance", 1, 0, Integer.MAX_VALUE);
+				}
+				//CorruptBadge
+				{
+					corbadDEBUFF = builder
+							.comment("Time to obtain debuff")
+							.defineInRange("corruptbadgeDEBUFF", 15, 1, Integer.MAX_VALUE);
+					corbadDEBUFFNur = builder
+							.comment("each DEBUFF owend")
+							.defineInRange("corbadDEBUFFNur", 1, 1, Integer.MAX_VALUE);
+					corbaddigrate = builder
+							.comment("How speed in digging")
+							.defineInRange("corbaddigrate", 0.09, 0.00, Integer.MAX_VALUE);
+					corbadattack = builder
+							.comment("How speed in attacking")
+							.defineInRange("corbadattackrate", 0.03, 0.00, Integer.MAX_VALUE);
+					corbaddamage = builder
+							.comment("How much damage does it increase")
+							.defineInRange("corbaddamage", 0.14, 0.00, Integer.MAX_VALUE);
 				}
 
 				// cursed_protector
@@ -250,6 +422,58 @@ public class CAModConfig {
 							.defineInRange("cursedTalismanCritDamageAdd", 0.08, 0.01, 1);
 				}
 
+				//cursed_totem
+				{
+					curtemlevels = builder
+							.comment("Cursed Totem:levels under attack")
+							.defineInRange("curtemlevels", 1, 0, Integer.MAX_VALUE);
+					curtemlvlimit = builder
+							.comment("Cursed Totem:limit of levels")
+							.defineInRange("curtemlvlimit", 5, 0, Integer.MAX_VALUE);
+					curtomconsume = builder
+							.comment("Cursed Totem:consume of levels")
+							.defineInRange("curtomconsume", 5, 0, Integer.MAX_VALUE);
+				}
+
+				//demon curse
+				{
+					democurHealeff = builder
+							.comment("demoncurseHealeff:Healing efficacy per percentage")
+							.defineInRange("democurHealeff", 0.01, 0.01, 1);
+					democurintensify = builder
+							.comment("democurintensify:attack speed intensify")
+							.defineInRange("democurintensify", 0.2, 0.0, 10.0);
+					democurspeed = builder
+							.comment("democurspeed: speed intensify")
+							.defineInRange("democurspeed", 0.1, 0.0, 10.0);
+				}
+
+				//gluttony badge
+				{
+					glubadgestarve = builder
+							.comment("hunger lavel?")
+							.defineInRange("glubadgestarve", 2, 1, 255);
+					glubadgeimmunity = builder
+							.comment("injury immunity")
+							.defineInRange("glubadgeimmunity", 0.01, 0, 1.00);
+				}
+
+				//knight shelter
+				{
+					knightarmor = builder
+							.comment("enhance armor")
+							.defineInRange("knightarmor", 8, 0,Integer.MAX_VALUE);
+					knightDEinjury = builder
+							.comment("reduce any injury")
+							.defineInRange("knightDEinjury", 4, 0,Integer.MAX_VALUE);
+					knightholder = builder
+							.comment("how long to treat")
+							.defineInRange("knightholder", 4, 0,Integer.MAX_VALUE);
+					knightrevenge = builder
+							.comment("counterattack after blocking")
+							.defineInRange("magicHorseshoeSpeedBonus", 0.30, 0.00, 1);
+				}
+
 				// magic horseshoe
 				{
 					magicHorseshoeSpeedBonus = builder
@@ -264,6 +488,35 @@ public class CAModConfig {
 							.comment("Magic Horseshoe: fall damage reduction")
 							.defineInRange("magicHorseshoeFallReduction", 0.95, 0, 10);
 
+				}
+
+				//sacrificial object
+				{
+					sacriloot = builder
+							.comment("sacrificial: loot level improve")
+							.defineInRange("sacriloot", 1, 0,Integer.MAX_VALUE);
+					sacriReduction = builder
+							.comment("sacrificial: damage reduction percentage")
+							.defineInRange("cursedProtectorReduction", 0.05, 0.01, 1);
+					sacriheritage = builder
+							.comment("sacrificial:deadth drop gold ingots")
+							.defineInRange("sacriheritage", 1, 0,Integer.MAX_VALUE);
+					sacriselfexplode = builder
+							.comment("sacrificial:death explode percentage")
+							.defineInRange("sacriselfexplode", 0.45, 0.01, 1);
+				}
+				
+				//soul box
+				{
+					soulboxbreak = builder
+							.comment("soulboxbreak:break the soul of attacker")
+							.defineInRange("cursedProtectorReduction", 0.30, 0.01, 1);
+					soulboxwitherblast = builder
+							.comment("soulboxwitherblast:strike back with wither blast")
+							.defineInRange("cursedProtectorReduction", 2.50, 0.01,100);
+					soulboximmortalCD = builder
+							.comment("soulboximmortalCD:can die within a period of time")
+							.defineInRange("soulboximmortalCD", 240, 1,Integer.MAX_VALUE);
 				}
 
 				// bearing stamen
@@ -287,6 +540,42 @@ public class CAModConfig {
 					sandsTalismanExpBonus = builder
 							.comment("Sands Talisman: exp bonus")
 							.defineInRange("sandsTalismanExpBonus", 0.5, 0, 10);
+				}
+				
+				//twisted brain
+				{
+					twistedbrainAvoid = builder
+							.comment("twistedbrainAvoid:possible to avoid harm")
+						    .defineInRange("twistedbrainAvoid", 0.17, 0, 1);
+					twistedbrainArmorless = builder
+							.comment("twistedbrainArmorless:armor less")
+							.defineInRange("twistedbrainArmorless", 0.20, 0, 1);
+					twistedbrainDamageless = builder
+							.comment("twistedbrainDamageless:damage less")
+							.defineInRange("twistedbrainArmorless", 0.33, 0, 1);
+				}
+
+				//undead charm
+				{
+					undeadCD = builder
+							.comment("undeadCD:possible to avoid harm")
+							.defineInRange("undeadCD", 180, 1,Integer.MAX_VALUE);
+				}
+				
+				//wardead badge
+				{
+					wardeadBleeds = builder
+							.comment("wardeadbleeds:percentage health reduction")
+							.defineInRange("wardeadbleedss", 0.01, 0.01, 1);
+					wardeadStrength = builder
+							.comment("wardeadstrength:percentage damage increase")
+							.defineInRange("wardeadbleedss", 0.02, 0.01, 1);
+					wardeadArmor = builder
+							.comment("wardeadwardeadArmorprot :percentage armorresilience improve")
+							.defineInRange("wardeadArmor", 0.02, 0.01, 1);
+					wardeadSpeed = builder
+							.comment("wardeadwardeadSpeed :percentage Speed improve")
+							.defineInRange("wardeadSpeed", 0.01, 0.01, 1);
 				}
 
 				builder.pop();
@@ -410,9 +699,45 @@ public class CAModConfig {
 
 		public static class Head {
 
+			public final ForgeConfigSpec.IntValue abyssCoreCooldown;
+			public final ForgeConfigSpec.IntValue abyssCoreReduce;
+			public final ForgeConfigSpec.IntValue abyssCoreDamageJudgement;
+			public final ForgeConfigSpec.DoubleValue guardianEyeSwimSpeedBonus;
+			public final ForgeConfigSpec.DoubleValue guardianEyeProtection;
+			public final ForgeConfigSpec.DoubleValue prayerCrownHealAmount;
+			public final ForgeConfigSpec.DoubleValue prayerCrownProtection;
+			public final ForgeConfigSpec.DoubleValue spiritCrownArrowDamageMultiplier;
+			public final ForgeConfigSpec.DoubleValue spiritCrownDistanceDamage;
+
 			private Head(ForgeConfigSpec.Builder builder) {
 				builder.push("head");
-
+				abyssCoreCooldown = builder
+						.comment("Abyss Core: effect cooldown")
+						.defineInRange("abyssCoreCooldown", 60, 0, 100000);
+				abyssCoreDamageJudgement = builder
+						.comment("Abyss Core: damage judgement")
+						.defineInRange("abyssCoreDamageJudgement", 12, 1, 100000);
+				abyssCoreReduce = builder
+						.comment("Abyss Core: damage reduce")
+						.defineInRange("abyssCoreReduce", 12, 0, 100000);
+				guardianEyeSwimSpeedBonus = builder
+						.comment("Guardian Eye: swim speed bonus")
+						.defineInRange("guardianEyeSwimSpeedBonus", 0.15, 0, 100);
+				guardianEyeProtection = builder
+						.comment("Guardian Eye: protection")
+						.defineInRange("guardianEyeProtection", 0.2, 0, 1);
+				prayerCrownHealAmount = builder
+						.comment("Prayer Crown: heal amount")
+						.defineInRange("prayerCrownHealAmount", 0.25, 0.01, 10);
+				prayerCrownProtection = builder
+						.comment("Prayer Crown: protection")
+						.defineInRange("prayerCrownProtection", 0.25, 0.01, 10);
+				spiritCrownArrowDamageMultiplier = builder
+						.comment("Spirit Crown: arrow damage multiplier")
+						.defineInRange("spiritCrownArrowDamageMultiplier", 0.45, 0, 100);
+				spiritCrownDistanceDamage = builder
+						.comment("Spirit Crown: distance damage multiplier")
+						.defineInRange("spiritCrownDistanceDamage", 0.02, 0, 1);
 
 				builder.pop();
 			}
@@ -424,6 +749,10 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue heartOfRevengeBowStrength;
 			public final ForgeConfigSpec.IntValue heartOfRevengeValidTime;
 			public final ForgeConfigSpec.DoubleValue heartOfRevengeDamageBonus;
+			public final ForgeConfigSpec.DoubleValue demonHeartDamageBonus;
+			public final ForgeConfigSpec.DoubleValue demonHeartDamageReduction;
+			public final ForgeConfigSpec.DoubleValue twistedHeartDamage;
+			public final ForgeConfigSpec.DoubleValue twistedHeartToughness;
 
 			private Heart(ForgeConfigSpec.Builder builder) {
 				builder.push("heart");
@@ -436,6 +765,18 @@ public class CAModConfig {
 				heartOfRevengeDamageBonus = builder
 						.comment("Heart of Revenge: revenge damage")
 						.defineInRange("heartOfRevengeDamageBonus", 0.25, 0, 10);
+				demonHeartDamageBonus = builder
+						.comment("Demon Heart: damage bonus")
+						.defineInRange("demonHeartDamageBonus", 0.1, 0, 1);
+				demonHeartDamageReduction = builder
+						.comment("Demon Heart: damage reduction")
+						.defineInRange("demonHeartDamageReduction", 0.05, 0, 1);
+				twistedHeartDamage = builder
+						.comment("Twisted Heart: damage")
+						.defineInRange("twistedHeartDamage", 0.33, 0.01, 1);
+				twistedHeartToughness = builder
+						.comment("Twisted Heart: toughness")
+						.defineInRange("twistedHeartToughness", 0.2, 0.01, 1);
 
 
 				builder.pop();
@@ -460,6 +801,10 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue hierloomNecklaceArmor;
 			public final ForgeConfigSpec.DoubleValue hierloomNecklaceSpeed;
 			public final ForgeConfigSpec.DoubleValue hierloomNecklaceExp;
+			public final ForgeConfigSpec.DoubleValue emeraldNecklaceDrop;
+			public final ForgeConfigSpec.DoubleValue enderProtectorChance;
+			public final ForgeConfigSpec.IntValue holyNecklaceCooldown;
+			public final ForgeConfigSpec.DoubleValue lockOfAbyssExtraDamage;
 
 			private Necklace(ForgeConfigSpec.Builder builder) {
 				builder.push("necklace");
@@ -475,6 +820,18 @@ public class CAModConfig {
 				gallopNecklaceDamageFactor = builder
 						.comment("Gallop Necklace: damage factor of speed")
 						.defineInRange("gallopNecklaceDamageFactor", 1.5, 0, 100000);
+				emeraldNecklaceDrop = builder
+						.comment("Emerald Necklace: factor of dropping an emerald")
+						.defineInRange("emeraldNecklaceDropEmerald", 0.02, 0, 1);
+				enderProtectorChance = builder
+						.comment("Ender Protector: teleport chance")
+						.defineInRange("enderProtectorTeleportChance", 0.5, 0, 1);
+				holyNecklaceCooldown = builder
+						.comment("Holy Necklace: cooldown")
+						.defineInRange("holyNecklaceCooldown", 3, 0, 60);
+				lockOfAbyssExtraDamage = builder
+						.comment("Lock Of Abyss: extra damage multiplier")
+						.defineInRange("lockOfAbyssExtraDamage", 2.5, 0.01, 10);
 				// fang necklace
 				{
 					fangNecklaceAttack = builder
@@ -523,10 +880,21 @@ public class CAModConfig {
 
 		public static class Pendant {
 
+			public final ForgeConfigSpec.DoubleValue shadowPendantDamageHeal;
+			public final ForgeConfigSpec.DoubleValue shadowPendantDamageBonus;
+			public final ForgeConfigSpec.DoubleValue shadowPendantDamageReduction;
+
 			private Pendant(ForgeConfigSpec.Builder builder) {
 				builder.push("pendant");
-
-
+				shadowPendantDamageHeal = builder
+						.comment("Shadow Pendant: damage heal multiplier")
+						.defineInRange("shadowPendantDamageHeal", 0.25, 0, 1);
+				shadowPendantDamageBonus = builder
+						.comment("Shadow Pendant: damage bonus")
+						.defineInRange("shadowPendantDamageBonus", 0.05, 0, 1);
+				shadowPendantDamageReduction = builder
+						.comment("Shadow Pendant: damage reduction")
+						.defineInRange("shadowPendantDamageReduction", 0.05, 0, 1);
 				builder.pop();
 			}
 
@@ -536,6 +904,8 @@ public class CAModConfig {
 
 			public final ForgeConfigSpec.DoubleValue amethystRingDamage;
 			public final ForgeConfigSpec.DoubleValue netheriteRingProtection;
+			public final ForgeConfigSpec.IntValue netherFireRingFireTime;
+			public final ForgeConfigSpec.IntValue ringOfLifeEffectInterval;
 
 			private Ring(ForgeConfigSpec.Builder builder) {
 				builder.push("ring");
@@ -543,6 +913,12 @@ public class CAModConfig {
 						.defineInRange("amethystRingDamage", 0.1, 0, 100);
 				netheriteRingProtection = builder.comment("Netherite Ring protection in nether")
 						.defineInRange("netheriteRingProtection", 0.1, 0, 1);
+				netherFireRingFireTime = builder
+						.comment("Nether Fire Ring: fire burning time")
+						.defineInRange("netherFireRingFireBurningTime", 5, 0, 1000);
+				ringOfLifeEffectInterval = builder
+						.comment("Ring Of Life: effect interval")
+						.defineInRange("ringOfLifeEffectInterval", 5, 1, 100);
 				builder.pop();
 			}
 
@@ -550,9 +926,14 @@ public class CAModConfig {
 
 		public static class Scroll {
 
+			public final ForgeConfigSpec.IntValue skyWalkerCooldwon;
+
 			private Scroll(ForgeConfigSpec.Builder builder) {
 				builder.push("scroll");
 
+				skyWalkerCooldwon = builder
+						.comment("Sky Walker Scroll: teleport cooldown")
+						.defineInRange("skyWalkerScrollTeleportCooldown", 60, 0, 600);
 
 				builder.pop();
 			}

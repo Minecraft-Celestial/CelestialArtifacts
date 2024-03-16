@@ -1,7 +1,10 @@
 package com.xiaoyue.celestial_artifacts.content.curios.ring;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -17,15 +20,19 @@ import java.util.ArrayList;
 
 public class RingOfLife implements SingleLineText, TickFacet {
 
+	private static int intervalFactor() {
+		return CAModConfig.COMMON.ring.ringOfLifeEffectInterval.get();
+	}
+
 	@Override
-	public MutableComponent getLine() {//TODO text
-		return Component.translatable("tooltip.celestial_artifacts.ring_of_life.shift1");
+	public MutableComponent getLine() {
+		return CALang.Ring.RING_OF_LIFE.get(TextFacet.num(intervalFactor()));
 	}
 
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
 		if (entity instanceof Player player && !player.level().isClientSide()) {
-			if (player.tickCount % 100 == 0) {
+			if (player.tickCount % intervalFactor() * 20 == 0) {
 				BlockPos entityPos = new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
 				int range = 5;
 				int limit = 0;
