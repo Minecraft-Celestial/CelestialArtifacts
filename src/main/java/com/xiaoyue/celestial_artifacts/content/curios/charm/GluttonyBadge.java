@@ -5,7 +5,6 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.network.chat.Component;
@@ -15,10 +14,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class GluttonyBadge implements MultiLineText, CAAttackToken {//TODO check
+public class GluttonyBadge implements MultiLineText, CAAttackToken {
 
 	private static double protection() {
-		return CAModConfig.COMMON.charm.glubadgeimmunity.get();
+		return CAModConfig.COMMON.charm.gluttonyBadgeProtection.get();
 	}
 
 	@Override

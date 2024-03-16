@@ -51,4 +51,8 @@ public record AttrAdder(String name, Supplier<Attribute> attr, UUID uuid,
 		return AttrFacet.getDesc(attr.get(), value.getAsDouble(), op());
 	}
 
+	public MutableComponent getText(double val) {
+		return AttrFacet.getText(attr.get(), val, op());
+	}
+
 }

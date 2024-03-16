@@ -8,6 +8,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -37,11 +38,11 @@ public class AngelPearl extends BaseTickingToken {
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_1.get()));
 		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_2.get()));
-		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_3.get(TextFacet.perc(replyAmount()))));
-		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_4.get(TextFacet.num(armorAmount()))));
-		list.add(TextFacet.wrap(CALang.Charm.ANGEL_PEARL_5.get()));
-		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_6.get(TextFacet.perc(angel_pearl_add * replyAmount()))));
-		list.add(TextFacet.inner(CALang.Charm.ANGEL_PEARL_7.get(TextFacet.num(angel_pearl_add * armorAmount()))));
+		list.add(TextFacet.inner(reply().getText(replyAmount())));
+		list.add(TextFacet.inner(armor().getText(armorAmount())));
+		list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.DARK_PURPLE));
+		list.add(TextFacet.wrap(reply().getTooltip()));
+		list.add(TextFacet.wrap(armor().getTooltip()));
 	}
 
 	private AttrAdder reply() {

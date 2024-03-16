@@ -229,10 +229,8 @@ public class CAItems {
 					));
 
 			// 大恶魔之咒 TODO config
-			DEMON_CURSE = charm("demon_curse", () -> ModularCurio.builder()
-					.rarity(IRarityUtils.DARK_PURPLE).build(
-							AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.9),
-							new TokenFacet<>("demon_curse", DemonCurse::new)));
+			DEMON_CURSE = charm("demon_curse", () -> ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE)
+					.build(new TokenFacet<>("demon_curse", DemonCurse::new)));
 
 			// 骑士庇护 TODO config
 			KNIGHT_SHELTER = charm("knight_shelter", () -> ModularCurio.builder().rarity(Rarity.UNCOMMON)
@@ -253,7 +251,8 @@ public class CAItems {
 			// 暴食徽章
 			GLUTTONY_BADGE = charm("gluttony_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(new GluttonyBadge(),
-							EffectFacet.of(() -> MobEffects.HUNGER, 3, 1)
+							EffectFacet.of(() -> MobEffects.HUNGER, () -> 3,
+									CAModConfig.COMMON.charm.gluttonyBadgeHungerLevel::get)
 					));
 
 			// 魔法马掌
@@ -284,11 +283,11 @@ public class CAItems {
 			// 金沙护符
 			SANDS_TALISMAN = charm("sands_talisman", () ->
 					ModularCurio.builder().loot(1).build(
+							XpBonusFeature.simple(CAModConfig.COMMON.charm.sandsTalismanExpBonus::get),
 							SimpleListener.hurtBonus(
 									CALang.Condition.HOT_REGION::get,
 									(p, t, c) -> p.level().getBiome(p.blockPosition()).get().getBaseTemperature() >= 0.01,
-									CAModConfig.COMMON.charm.sandsTalismanDamageBonus::get),
-							XpBonusFeature.simple(CAModConfig.COMMON.charm.sandsTalismanExpBonus::get)
+									CAModConfig.COMMON.charm.sandsTalismanDamageBonus::get)
 					));
 
 			// 古代殉葬品 TODO config
@@ -454,7 +453,7 @@ public class CAItems {
 			// 疾行项链
 			GALLOP_NECKLACE = necklace("gallop_necklace", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							AttrFacet.add(() -> Attributes.MOVEMENT_SPEED,
+							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED,
 									CAModConfig.COMMON.necklace.gallopNecklaceSpeedBonus::get),
 							new GallopNecklace()
 					));

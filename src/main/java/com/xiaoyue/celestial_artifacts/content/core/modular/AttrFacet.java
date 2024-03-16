@@ -36,6 +36,34 @@ public record AttrFacet(Supplier<Attribute> attr, DoubleSupplier val,
 		ans.put(attr.get(), new AttributeModifier(uuid, id, val.getAsDouble(), op));
 	}
 
+	public static MutableComponent getText(Attribute attr, double val, AttributeModifier.Operation op) {
+		var text = Component.translatable(attr.getDescriptionId());
+		MutableComponent base;
+		if (isMult(attr)) {
+			if (op == AttributeModifier.Operation.ADDITION) {
+				base = Component.literal(val < 0 ? "-" : "+");
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
+				base.append("%");
+
+			} else {
+				base = Component.literal("x");
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(val + 1));
+			}
+		} else {
+			base = Component.literal(val < 0 ? "-" : "+");
+			if (op == AttributeModifier.Operation.ADDITION) {
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val)));
+			} else {
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
+				base.append("%");
+			}
+		}
+		base = Component.empty().append(base.withStyle(ChatFormatting.AQUA));
+		base.append(" ");
+		base.append(text);
+		return base.withStyle(ChatFormatting.GRAY);
+	}
+
 	public static MutableComponent getDesc(Attribute attr, double val, AttributeModifier.Operation op) {
 		var text = Component.translatable(attr.getDescriptionId());
 		MutableComponent base;
@@ -77,6 +105,15 @@ public record AttrFacet(Supplier<Attribute> attr, DoubleSupplier val,
 		base.append("% ");
 		base.append(text);
 		return base.withStyle(val < 0 ? ChatFormatting.RED : ChatFormatting.BLUE);
+	}
+
+	public static MutableComponent textMult(Component text, double val) {
+		MutableComponent base = Component.literal(val < 0 ? "-" : "+");
+		base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
+		base.append("%");
+		base = Component.empty().append(base.withStyle(ChatFormatting.AQUA)).append(" ");
+		base.append(text);
+		return base.withStyle(ChatFormatting.GRAY);
 	}
 
 	public static boolean isMult(Attribute attr) {

@@ -65,15 +65,15 @@ public class CAModConfig {
 		public static class Back {
 
 			public ForgeConfigSpec.DoubleValue magicArrowBagBowStrength;
-			public ForgeConfigSpec.DoubleValue magicArrowBagArrowKnock;
+			public ForgeConfigSpec.IntValue magicArrowBagArrowKnock;
 
 			public ForgeConfigSpec.DoubleValue flameArrowBagBowStrength;
-			public ForgeConfigSpec.DoubleValue flameArrowBagArrowKnock;
+			public ForgeConfigSpec.IntValue flameArrowBagArrowKnock;
 			public ForgeConfigSpec.IntValue flameArrowBagTime;
 
 			public ForgeConfigSpec.DoubleValue spiritArrowBagBowStrength;
 			public ForgeConfigSpec.DoubleValue spiritArrowBagArrowSpeed;
-			public ForgeConfigSpec.DoubleValue spiritArrowBagArrowKnock;
+			public ForgeConfigSpec.IntValue spiritArrowBagArrowKnock;
 
 			public ForgeConfigSpec.DoubleValue leechScabbardHealFactor;
 
@@ -83,12 +83,12 @@ public class CAModConfig {
 				magicArrowBagBowStrength = builder.comment("Magic Arrow Bag: bow strength")
 						.defineInRange("magicArrowBagBowStrength", 0.1, 0, 10);
 				magicArrowBagArrowKnock = builder.comment("Magic Arrow Bag: arrow knock")
-						.defineInRange("magicArrowBagBowStrength", 0.1, 0, 10);
+						.defineInRange("magicArrowBagBowStrength", 1, 0, 100);
 
 				flameArrowBagBowStrength = builder.comment("Flame Arrow Bag: bow strength")
 						.defineInRange("flameArrowBagBowStrength", 0.1, 0, 10);
 				flameArrowBagArrowKnock = builder.comment("Flame Arrow Bag: arrow knock")
-						.defineInRange("flameArrowBagArrowKnock", 0.1, 0, 10);
+						.defineInRange("flameArrowBagArrowKnock", 1, 0, 100);
 				flameArrowBagTime = builder.comment("Flame Arrow Bag: flame")
 						.defineInRange("flameArrowBagTime", 60, 1, 36000);
 
@@ -96,8 +96,8 @@ public class CAModConfig {
 						.defineInRange("spiritArrowBagBowStrength", 0.2, 0, 1);
 				spiritArrowBagArrowSpeed = builder.comment("Spirit Arrow Bag: arrow speed")
 						.defineInRange("spiritArrowBagArrowSpeed", 0.5, 0, 10);
-				spiritArrowBagArrowKnock = builder.comment("Flame Arrow Bag: arrow knock")
-						.defineInRange("spiritArrowBagArrowKnock", 1.0, 0, 10);
+				spiritArrowBagArrowKnock = builder.comment("Spirit Arrow Bag: arrow knock")
+						.defineInRange("spiritArrowBagArrowKnock", 2, 0, 100);
 
 
 				leechScabbardHealFactor = builder.comment("Leech Scabbard healing rate as percentage of damage dealt")
@@ -190,18 +190,16 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue cursedTalismanCritDamageAdd;
 
 			//cursed totem
-			public final ForgeConfigSpec.IntValue curtemlevels;
-			public final ForgeConfigSpec.IntValue curtemlvlimit;
-			public final ForgeConfigSpec.IntValue curtomconsume;
+			public final ForgeConfigSpec.IntValue cursedTotemMaxLevel;
+			public final ForgeConfigSpec.IntValue cursedTotemConsumption;
 
 			//demon curse
-			public final ForgeConfigSpec.DoubleValue democurHealeff;
-			public final ForgeConfigSpec.DoubleValue democurintensify;
-			public final ForgeConfigSpec.DoubleValue democurspeed;
+			public final ForgeConfigSpec.DoubleValue demonCurseAttackBonus;
+			public final ForgeConfigSpec.DoubleValue demonCurseSpeedBonus;
 
 			//gluttony badge
-			public final ForgeConfigSpec.IntValue glubadgestarve;
-			public final ForgeConfigSpec.DoubleValue glubadgeimmunity;
+			public final ForgeConfigSpec.IntValue gluttonyBadgeHungerLevel;
+			public final ForgeConfigSpec.DoubleValue gluttonyBadgeProtection;
 
 			//knight shelter
 			public final ForgeConfigSpec.IntValue knightarmor;
@@ -219,12 +217,12 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue sacriReduction;
 			public final ForgeConfigSpec.IntValue sacriheritage;
 			public final ForgeConfigSpec.DoubleValue sacriselfexplode;
-			
+
 			//soul box
-			public final ForgeConfigSpec.DoubleValue soulboxbreak; 
+			public final ForgeConfigSpec.DoubleValue soulboxbreak;
 			public final ForgeConfigSpec.DoubleValue soulboxwitherblast;
 			public final ForgeConfigSpec.IntValue soulboximmortalCD;
-			
+
 			// bearing stamen
 			public final ForgeConfigSpec.DoubleValue bearingStamenMaxHealth;
 			public final ForgeConfigSpec.DoubleValue bearingStamenRegen;
@@ -233,20 +231,22 @@ public class CAModConfig {
 			// sands talisman
 			public final ForgeConfigSpec.DoubleValue sandsTalismanDamageBonus;
 			public final ForgeConfigSpec.DoubleValue sandsTalismanExpBonus;
-			
+
 			//twisted brain
 			public final ForgeConfigSpec.DoubleValue twistedbrainAvoid;
 			public final ForgeConfigSpec.DoubleValue twistedbrainArmorless;
 			public final ForgeConfigSpec.DoubleValue twistedbrainDamageless;
-			
+
 			//undead charm
 			public final ForgeConfigSpec.IntValue undeadCD;
 
 			//wardead badge
-			public final ForgeConfigSpec.DoubleValue wardeadBleeds;
-			public final ForgeConfigSpec.DoubleValue wardeadStrength;
-			public final ForgeConfigSpec.DoubleValue wardeadArmor;
-			public final ForgeConfigSpec.DoubleValue wardeadSpeed;
+			public final ForgeConfigSpec.DoubleValue warDeadBadgeHeal;
+			public final ForgeConfigSpec.DoubleValue warDeadBadgeAtk;
+			public final ForgeConfigSpec.DoubleValue warDeadBadgeArmor;
+			public final ForgeConfigSpec.DoubleValue warDeadBadgeSpeed;
+			public final ForgeConfigSpec.DoubleValue warDeadBadgeThreshold;
+
 			private Charm(ForgeConfigSpec.Builder builder) {
 				builder.push("charm");
 
@@ -374,6 +374,7 @@ public class CAModConfig {
 							.comment("Angel Pearl: armor bonus per beneficial effect")
 							.defineInRange("angelPearlArmor", 1, 0, Integer.MAX_VALUE);
 				}
+
 				//CorruptBadge
 				{
 					corruptBadgeDebuffDuration = builder
@@ -420,51 +421,45 @@ public class CAModConfig {
 
 				//cursed_totem
 				{
-					curtemlevels = builder
-							.comment("Cursed Totem:levels under attack")
-							.defineInRange("curtemlevels", 1, 0, Integer.MAX_VALUE);
-					curtemlvlimit = builder
-							.comment("Cursed Totem:limit of levels")
-							.defineInRange("curtemlvlimit", 5, 0, Integer.MAX_VALUE);
-					curtomconsume = builder
-							.comment("Cursed Totem:consume of levels")
-							.defineInRange("curtomconsume", 5, 0, Integer.MAX_VALUE);
+					cursedTotemMaxLevel = builder
+							.comment("Cursed Totem: maximum level")
+							.defineInRange("cursedTotemMaxLevel", 5, 0, Integer.MAX_VALUE);
+					cursedTotemConsumption = builder
+							.comment("Cursed Totem: levels consumed when negating fatal damage")
+							.defineInRange("cursedTotemConsumption", 5, 0, Integer.MAX_VALUE);
 				}
 
 				//demon curse
 				{
-					democurHealeff = builder
-							.comment("demoncurseHealeff:Healing efficacy per percentage")
-							.defineInRange("democurHealeff", 0.01, 0.01, 1);
-					democurintensify = builder
-							.comment("democurintensify:attack speed intensify")
-							.defineInRange("democurintensify", 0.2, 0.0, 10.0);
-					democurspeed = builder
-							.comment("democurspeed: speed intensify")
-							.defineInRange("democurspeed", 0.1, 0.0, 10.0);
+					demonCurseAttackBonus = builder
+							.comment("Demon Curse: attack bonus per 1% extra regen rate")
+							.defineInRange("demonCurseAttackBonus", 0.02, 0.0, 10.0);
+					demonCurseSpeedBonus = builder
+							.comment("democurspeed: speed bonus per 1% extra regen rate")
+							.defineInRange("demonCurseSpeedBonus", 0.01, 0.0, 10.0);
 				}
 
 				//gluttony badge
 				{
-					glubadgestarve = builder
-							.comment("hunger lavel?")
-							.defineInRange("glubadgestarve", 2, 1, 255);
-					glubadgeimmunity = builder
-							.comment("injury immunity")
-							.defineInRange("glubadgeimmunity", 0.01, 0, 1.00);
+					gluttonyBadgeHungerLevel = builder
+							.comment("Gluttony Badge: Hunger effect level")
+							.defineInRange("gluttonyBadgeHungerLevel", 2, 1, 100);
+					gluttonyBadgeProtection = builder
+							.comment("Gluttony Badge: damage reduction per food level")
+							.defineInRange("gluttonyBadgeProtection", 0.01, 0, 1.00);
 				}
 
 				//knight shelter
 				{
 					knightarmor = builder
 							.comment("enhance armor")
-							.defineInRange("knightarmor", 8, 0,Integer.MAX_VALUE);
+							.defineInRange("knightarmor", 8, 0, Integer.MAX_VALUE);
 					knightDEinjury = builder
 							.comment("reduce any injury")
-							.defineInRange("knightDEinjury", 4, 0,Integer.MAX_VALUE);
+							.defineInRange("knightDEinjury", 4, 0, Integer.MAX_VALUE);
 					knightholder = builder
 							.comment("how long to treat")
-							.defineInRange("knightholder", 4, 0,Integer.MAX_VALUE);
+							.defineInRange("knightholder", 4, 0, Integer.MAX_VALUE);
 					knightrevenge = builder
 							.comment("counterattack after blocking")
 							.defineInRange("magicHorseshoeSpeedBonus", 0.30, 0.00, 1);
@@ -490,18 +485,18 @@ public class CAModConfig {
 				{
 					sacriloot = builder
 							.comment("sacrificial: loot level improve")
-							.defineInRange("sacriloot", 1, 0,Integer.MAX_VALUE);
+							.defineInRange("sacriloot", 1, 0, Integer.MAX_VALUE);
 					sacriReduction = builder
 							.comment("sacrificial: damage reduction percentage")
 							.defineInRange("cursedProtectorReduction", 0.05, 0.01, 1);
 					sacriheritage = builder
 							.comment("sacrificial:deadth drop gold ingots")
-							.defineInRange("sacriheritage", 1, 0,Integer.MAX_VALUE);
+							.defineInRange("sacriheritage", 1, 0, Integer.MAX_VALUE);
 					sacriselfexplode = builder
 							.comment("sacrificial:death explode percentage")
 							.defineInRange("sacriselfexplode", 0.45, 0.01, 1);
 				}
-				
+
 				//soul box
 				{
 					soulboxbreak = builder
@@ -509,10 +504,10 @@ public class CAModConfig {
 							.defineInRange("cursedProtectorReduction", 0.30, 0.01, 1);
 					soulboxwitherblast = builder
 							.comment("soulboxwitherblast:strike back with wither blast")
-							.defineInRange("cursedProtectorReduction", 2.50, 0.01,100);
+							.defineInRange("cursedProtectorReduction", 2.50, 0.01, 100);
 					soulboximmortalCD = builder
 							.comment("soulboximmortalCD:can die within a period of time")
-							.defineInRange("soulboximmortalCD", 240, 1,Integer.MAX_VALUE);
+							.defineInRange("soulboximmortalCD", 240, 1, Integer.MAX_VALUE);
 				}
 
 				// bearing stamen
@@ -537,12 +532,12 @@ public class CAModConfig {
 							.comment("Sands Talisman: exp bonus")
 							.defineInRange("sandsTalismanExpBonus", 0.5, 0, 10);
 				}
-				
+
 				//twisted brain
 				{
 					twistedbrainAvoid = builder
 							.comment("twistedbrainAvoid:possible to avoid harm")
-						    .defineInRange("twistedbrainAvoid", 0.17, 0, 1);
+							.defineInRange("twistedbrainAvoid", 0.17, 0, 1);
 					twistedbrainArmorless = builder
 							.comment("twistedbrainArmorless:armor less")
 							.defineInRange("twistedbrainArmorless", 0.20, 0, 1);
@@ -555,23 +550,26 @@ public class CAModConfig {
 				{
 					undeadCD = builder
 							.comment("undeadCD:possible to avoid harm")
-							.defineInRange("undeadCD", 180, 1,Integer.MAX_VALUE);
+							.defineInRange("undeadCD", 180, 1, Integer.MAX_VALUE);
 				}
-				
+
 				//wardead badge
 				{
-					wardeadBleeds = builder
-							.comment("wardeadbleeds:percentage health reduction")
-							.defineInRange("wardeadbleedss", 0.01, 0.01, 1);
-					wardeadStrength = builder
-							.comment("wardeadstrength:percentage damage increase")
-							.defineInRange("wardeadbleedss", 0.02, 0.01, 1);
-					wardeadArmor = builder
-							.comment("wardeadwardeadArmorprot :percentage armorresilience improve")
-							.defineInRange("wardeadArmor", 0.02, 0.01, 1);
-					wardeadSpeed = builder
-							.comment("wardeadwardeadSpeed :percentage Speed improve")
-							.defineInRange("wardeadSpeed", 0.01, 0.01, 1);
+					warDeadBadgeHeal = builder
+							.comment("War Dead Badge: healing in percentage of lost health per surrounding entity")
+							.defineInRange("warDeadBadgeHeal", 0.01, 0.01, 1);
+					warDeadBadgeAtk = builder
+							.comment("War Dead Badge: damage bonus per 1% lost health")
+							.defineInRange("warDeadBadgeAtk", 0.02, 0.01, 1);
+					warDeadBadgeArmor = builder
+							.comment("War Dead Badge: armor bonus per 1% lost health")
+							.defineInRange("warDeadBadgeArmor", 0.02, 0.01, 1);
+					warDeadBadgeSpeed = builder
+							.comment("War Dead Badge: speed bonus per 1% lost health")
+							.defineInRange("warDeadBadgeSpeed", 0.01, 0.01, 1);
+					warDeadBadgeThreshold = builder
+							.comment("War Dead Badge: health threshold to trigger healing")
+							.defineInRange("warDeadBadgeThreshold", 0.5, 0.01, 1);
 				}
 
 				builder.pop();

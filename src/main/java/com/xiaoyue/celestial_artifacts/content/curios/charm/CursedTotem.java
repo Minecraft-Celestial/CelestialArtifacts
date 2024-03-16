@@ -20,29 +20,25 @@ import java.util.List;
 
 @SerialClass
 public class CursedTotem extends BaseTickingToken
-		implements NetworkSensitiveToken<CursedTotem>, CAAttackToken {//TODO check
+		implements NetworkSensitiveToken<CursedTotem>, CAAttackToken {
 
 	public static final TokenFacet<CursedTotem> TOKEN = new TokenFacet<>("cursed_totem", CursedTotem::new);
 
 	@SerialClass.SerialField
 	public int cursed_soul_totem;
 
-	private static int addLevel() {
-		return CAModConfig.COMMON.charm.curtemlevels.get();
-	}
-
 	private static int maxLevel() {
-		return CAModConfig.COMMON.charm.curtemlvlimit.get();
+		return CAModConfig.COMMON.charm.cursedTotemMaxLevel.get();
 	}
 
 	private static int consume() {
-		return CAModConfig.COMMON.charm.curtomconsume.get();
+		return CAModConfig.COMMON.charm.cursedTotemConsumption.get();
 	}
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_1.get()));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_2.get(TextFacet.num(addLevel()) , TextFacet.num(maxLevel()))));
+		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_2.get(TextFacet.num(maxLevel()))));
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_3.get(TextFacet.num(consume()))));
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_4.get(TextFacet.num(cursed_soul_totem))));
 	}
@@ -59,20 +55,21 @@ public class CursedTotem extends BaseTickingToken
 
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
-		cache.addDealtModifier(DamageModifier.nonlinearFinal(1234, v -> parse(player, v)));
+		if (player instanceof ServerPlayer sp)
+			cache.addDealtModifier(DamageModifier.nonlinearFinal(1234, v -> parse(sp, v)));
 	}
 
-	private float parse(Player player, float v) {
+	private float parse(ServerPlayer player, float v) {
 		if (v < player.getHealth()) {
 			if (cursed_soul_totem < maxLevel()) {
-				cursed_soul_totem += addLevel();
-				sync(TOKEN.getKey(), this, (ServerPlayer) player);
+				cursed_soul_totem++;
+				sync(TOKEN.getKey(), this, player);
 			}
 			return v;
 		}
 		if (cursed_soul_totem <= 0) return v;
 		cursed_soul_totem -= consume();
-		sync(TOKEN.getKey(), this, (ServerPlayer) player);
+		sync(TOKEN.getKey(), this, player);
 		return 0;
 	}
 

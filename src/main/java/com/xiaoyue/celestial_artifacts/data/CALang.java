@@ -96,6 +96,8 @@ public class CALang {
 		SET("Requires [%s] to take effect:", 1),
 		SKILL("Active Skill: ", 0),
 		SKILL_CD("Cool Down: %s seconds", 1),
+		CURRENT_BONUS("Current bonus:", 0),
+		DIG_SPEED("Dig Speed", 0),
 		;
 
 		final Entry entry;
@@ -225,17 +227,8 @@ public class CALang {
 
 	public enum Charm implements Info {
 		WAR_DEAD_BADGE_1("每损失1%生命", 0),
-		WAR_DEAD_BADGE_2("攻击伤害提高%s", 1),
-		WAR_DEAD_BADGE_3("护甲韧性提高%s", 1),
-		WAR_DEAD_BADGE_4("移动速度提高%s", 1),
-		WAR_DEAD_BADGE_5("当前提供的属性加成", 0),
-		WAR_DEAD_BADGE_6("攻击伤害:%s", 1),
-		WAR_DEAD_BADGE_7("护甲韧性:%s", 1),
-		WAR_DEAD_BADGE_8("移动速度:%s", 1),
-		WAR_DEAD_BADGE_9("若背负混沌诅咒", 0),
-		WAR_DEAD_BADGE_10("当生命低于最大生命的20%时", 0),
-		WAR_DEAD_BADGE_11("周围每有1只怪物", 0),
-		WAR_DEAD_BADGE_12("攻击后恢复%s已损失生命", 1),
+		WAR_DEAD_BADGE_9("若背负混沌诅咒，当生命低于最大生命的%s时:", 1),
+		WAR_DEAD_BADGE_11("周围每有1只怪物，攻击后恢复%s已损失生命", 1),
 
 		CURSED_PROTECTOR_0("副手装备的盾牌不会再进入冷却", 0),
 		CURSED_PROTECTOR_1("受到伤害大于当前生命的%s时，伤害降低%s", 2),
@@ -266,45 +259,23 @@ public class CALang {
 		HOLY_SWORD_3("每损失1点生命提高%s攻击伤害", 1),
 
 		GLUTTONY_BADGE_1("每次食用食物后获得短暂的生命恢复与力量效果", 0),
-		GLUTTONY_BADGE_2("每拥有1点饱食度降低%s受到伤害", 1),
+		GLUTTONY_BADGE_2("每拥有1点饱食度降低%s受到的伤害", 1),
 
-		DEMON_CURSE_1("每%s治疗力", 1),
-		DEMON_CURSE_2("攻击伤害提高%s", 1),
-		DEMON_CURSE_3("移动速度提高%s", 1),
-		DEMON_CURSE_4("当前提供的属性加成", 0),
-		DEMON_CURSE_5("攻击伤害:%s", 1),
-		DEMON_CURSE_6("移动速度:%s", 1),
+		DEMON_CURSE_0("玩家无法回血", 0),
+		DEMON_CURSE_1("每1%额外治疗力:", 0),
 
 		CURSED_TOTEM_1("使用不死图腾时给予最近的攻击者凋零效果", 0),
-		CURSED_TOTEM_2("受到非致命伤害时会积攒%s层[怨念]，上限%s层", 2),
+		CURSED_TOTEM_2("受到非致命伤害时会积攒1层[怨念]，上限%s层", 1),
 		CURSED_TOTEM_3("受到致命伤害时，则消耗%s层[怨念]并规避该伤害", 1),
 		CURSED_TOTEM_4("当前已积攒的[怨念]:%s", 1),
 
-		CURSED_TALISMAN_1("使用的武器与防具中", 0),
-		CURSED_TALISMAN_2("每拥有1种诅咒附魔", 0),
-		CURSED_TALISMAN_3("暴击率提高%s", 1),
-		CURSED_TALISMAN_4("暴击伤害提高%s", 1),
-		CURSED_TALISMAN_5("当前提供的属性加成", 0),
-		CURSED_TALISMAN_6("暴击率:%s", 1),
-		CURSED_TALISMAN_7("暴击伤害:%s", 1),
+		CURSED_TALISMAN_1("使用的武器与防具中每拥有1种诅咒附魔:", 0),
 
 		CORRUPT_BADGE_2("获得%s, %s, %s", 3),
-		CORRUPT_BADGE_3("自身每有1种负面效果", 0),
-		CORRUPT_BADGE_4("挖掘速度提高%s", 1),
-		CORRUPT_BADGE_5("攻击速度提高%s", 1),
-		CORRUPT_BADGE_6("攻击伤害提高%s", 1),
-		CORRUPT_BADGE_7("当前提供的属性加成", 0),
-		CORRUPT_BADGE_8("挖掘速度:+%s", 1),
-		CORRUPT_BADGE_9("攻击速度:+%s", 1),
-		CORRUPT_BADGE_10("攻击伤害:+%s", 1),
+		CORRUPT_BADGE_3("自身每有1种负面效果:", 0),
 
 		ANGEL_PEARL_1("持续使周围的玩家获得生命恢复效果", 0),
-		ANGEL_PEARL_2("每有1种正面效果", 0),
-		ANGEL_PEARL_3("治疗力提高%s", 1),
-		ANGEL_PEARL_4("护甲值提高%s", 1),
-		ANGEL_PEARL_5("当前提供的属性加成", 0),
-		ANGEL_PEARL_6("治疗力:%s", 1),
-		ANGEL_PEARL_7("护甲值:%s", 1),
+		ANGEL_PEARL_2("每有1种正面效果:", 0),
 
 		ANGEL_HEART_1("每%s秒恢复%s点生命值", 2),
 		ANGEL_HEART_2("每%s秒清除1次身上的负面效果", 1),
@@ -490,7 +461,7 @@ public class CALang {
 
 	public enum Scroll implements Info {
 		SEA_GOD("处于水下时挖掘速度不会再受到影响", 0),
-		SKY_WALKER_2("下蹲时，储存当前位置的坐标，未下蹲时，将你传送到储存的坐标处，冷却%s秒", 1),
+		SKY_WALKER_2("潜行时，储存当前位置的坐标，否则将你传送到储存的坐标处", 0),
 		SKY_WALKER_3("只能在同维度中传送", 0),
 		SKY_WALKER_4("当前储存的坐标: %s - (%s,%s,%s)", 4);
 

@@ -93,7 +93,7 @@ public class AbyssWillBadge extends BaseTickingToken implements NetworkSensitive
 		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_7.get(TextFacet.perc(atkBonus()), TextFacet.perc(hurtPenalty()))));
 		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_8.get(TextFacet.num(abyss_will_badge_add)).withStyle(ChatFormatting.DARK_PURPLE)));
 		list.add(CALang.Modular.SKILL.get().withStyle(ChatFormatting.YELLOW));
-		list.add(CALang.Modular.SKILL_CD.get(TextFacet.num(duration())));
+		list.add(TextFacet.wrap(CALang.Modular.SKILL_CD.get(TextFacet.num(duration()))));
 		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_2.get(TextFacet.num(initial()), TextFacet.num(duration()))));
 		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_3.get(TextFacet.perc(remainHP()))));
 	}

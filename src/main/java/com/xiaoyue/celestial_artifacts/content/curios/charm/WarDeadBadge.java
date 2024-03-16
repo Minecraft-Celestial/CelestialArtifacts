@@ -10,6 +10,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -21,41 +22,44 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class WarDeadBadge extends BaseTickingToken implements CAAttackToken {//TODO check
+public class WarDeadBadge extends BaseTickingToken implements CAAttackToken {
 
 	@SerialClass.SerialField
 	public float war_dead_badge_add;
 
 	private static double damageFactor() {
-		return CAModConfig.COMMON.charm.wardeadStrength.get();
+		return CAModConfig.COMMON.charm.warDeadBadgeAtk.get();
 	}
 
 	private static double toughnessFactor() {
-		return CAModConfig.COMMON.charm.wardeadArmor.get();
+		return CAModConfig.COMMON.charm.warDeadBadgeArmor.get();
 	}
 
 	private static double speedFactor() {
-		return CAModConfig.COMMON.charm.wardeadSpeed.get();
+		return CAModConfig.COMMON.charm.warDeadBadgeSpeed.get();
+	}
+
+	private static double getThreshold() {
+		return CAModConfig.COMMON.charm.warDeadBadgeThreshold.get();
 	}
 
 	private static double healFactor() {
-		return CAModConfig.COMMON.charm.wardeadBleeds.get();
+		return CAModConfig.COMMON.charm.warDeadBadgeHeal.get();
 	}
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_1.get()));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_2.get(TextFacet.perc(damageFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_3.get(TextFacet.perc(toughnessFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_4.get(TextFacet.perc(speedFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_5.get()));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_6.get(TextFacet.perc(war_dead_badge_add * damageFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_7.get(TextFacet.perc(war_dead_badge_add * toughnessFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_8.get(TextFacet.perc(war_dead_badge_add * speedFactor()))));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_9.get()));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_10.get()));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_11.get()));
-		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_12.get(TextFacet.perc(healFactor()))));
+		list.add(TextFacet.inner(atk().getText(damageFactor())));
+		list.add(TextFacet.inner(tough().getText(toughnessFactor())));
+		list.add(TextFacet.inner(speed().getText(speedFactor())));
+		list.add(TextFacet.wrap(CALang.Charm.WAR_DEAD_BADGE_9.get(TextFacet.perc(getThreshold()))));
+		list.add(TextFacet.inner(CALang.Charm.WAR_DEAD_BADGE_11.get(TextFacet.perc(healFactor()))));
+
+		list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.DARK_PURPLE));
+		list.add(TextFacet.wrap(atk().getTooltip()));
+		list.add(TextFacet.wrap(tough().getTooltip()));
+		list.add(TextFacet.wrap(speed().getTooltip()));
 	}
 
 	private AttrAdder atk() {
@@ -91,7 +95,7 @@ public class WarDeadBadge extends BaseTickingToken implements CAAttackToken {//T
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
 		if (CatastropheScroll.Curses.CHAOS.cursing(player)) {
-			if (player.getHealth() < player.getMaxHealth() * 0.2f) {
+			if (player.getHealth() < player.getMaxHealth() * getThreshold()) {
 				List<LivingEntity> entities = EntityUtils.getExceptForCentralEntity(player, 8, 2);
 				player.heal((float) ((player.getMaxHealth() - player.getHealth()) * healFactor() * entities.size()));
 			}

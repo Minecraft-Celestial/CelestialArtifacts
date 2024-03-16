@@ -8,6 +8,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.utils.EnchUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class CursedTalisman extends BaseTickingToken {//TODO check
+public class CursedTalisman extends BaseTickingToken {
 
 	@SerialClass.SerialField
 	public int cursed_talisman_add;
@@ -33,12 +34,12 @@ public class CursedTalisman extends BaseTickingToken {//TODO check
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TALISMAN_1.get()));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TALISMAN_2.get()));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TALISMAN_3.get(TextFacet.perc(crit()))));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TALISMAN_4.get(TextFacet.perc(critDamage()))));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TALISMAN_5.get()));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TALISMAN_6.get(TextFacet.perc(cursed_talisman_add * crit()))));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TALISMAN_7.get(TextFacet.perc(cursed_talisman_add * critDamage()))));
+		list.add(TextFacet.inner(ctr().getText(crit())));
+		list.add(TextFacet.inner(dmg().getText(critDamage())));
+
+		list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.DARK_PURPLE));
+		list.add(TextFacet.inner(ctr().getTooltip()));
+		list.add(TextFacet.inner(dmg().getTooltip()));
 	}
 
 	private AttrAdder dmg() {

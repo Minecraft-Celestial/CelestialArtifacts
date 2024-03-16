@@ -3,6 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 import com.xiaoyue.celestial_artifacts.content.core.effect.EffectFacet;
 import com.xiaoyue.celestial_artifacts.content.core.feature.BreakSpeedFeature;
 import com.xiaoyue.celestial_artifacts.content.core.feature.SkillFeature;
+import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
@@ -65,20 +66,22 @@ public class CorruptBadge extends BaseTickingToken implements SkillFeature, Brea
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.wrap(CALang.Charm.CORRUPT_BADGE_3.get()));
-		list.add(TextFacet.wrap(CALang.Charm.CORRUPT_BADGE_4.get(TextFacet.perc(digSpeed()))));
-		list.add(TextFacet.wrap(CALang.Charm.CORRUPT_BADGE_5.get(TextFacet.perc(atkSpeed()))));
-		list.add(TextFacet.wrap(CALang.Charm.CORRUPT_BADGE_6.get(TextFacet.perc(damage()))));
-		list.add(TextFacet.wrap(CALang.Charm.CORRUPT_BADGE_7.get()));
-		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_8.get(TextFacet.perc(digSpeed() * corrupt_badge_add))));
-		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_9.get(TextFacet.perc(atkSpeed() * corrupt_badge_add))));
-		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_10.get(TextFacet.perc(damage() * corrupt_badge_add))));
+		list.add(TextFacet.inner(AttrFacet.textMult(CALang.Modular.DIG_SPEED.get(), digSpeed())));
+		list.add(TextFacet.inner(speed().getText(atkSpeed())));
+		list.add(TextFacet.inner(atk().getText(damage())));
+
 		list.add(CALang.Modular.SKILL.get().withStyle(ChatFormatting.YELLOW));
-		list.add(CALang.Modular.SKILL_CD.get(TextFacet.num(cooldown())));
-		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_2.get(
+		list.add(TextFacet.wrap(CALang.Modular.SKILL_CD.get(TextFacet.num(cooldown()))));
+		list.add(TextFacet.wrap(CALang.Charm.CORRUPT_BADGE_2.get(
 				EffectFacet.getDesc(ins0()),
 				EffectFacet.getDesc(ins1()),
 				EffectFacet.getDesc(ins2())
 		)));
+
+		list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.DARK_PURPLE));
+		list.add(TextFacet.wrap(AttrFacet.simpleMult(CALang.Modular.DIG_SPEED.get(), digSpeed() * corrupt_badge_add)));
+		list.add(TextFacet.inner(speed().getTooltip()));
+		list.add(TextFacet.inner(atk().getTooltip()));
 	}
 
 	private AttrAdder atk() {

@@ -46,7 +46,7 @@ public class SkywalkerScroll extends BaseTickingToken
 			).withStyle(ChatFormatting.GRAY)));
 		}
 		list.add(CALang.Modular.SKILL.get().withStyle(ChatFormatting.YELLOW));
-		list.add(CALang.Modular.SKILL_CD.get(TextFacet.num(cooldownFactor())));
+		list.add(TextFacet.wrap(CALang.Modular.SKILL_CD.get(TextFacet.num(cooldownFactor()))));
 		list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_2.get()));
 		list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_3.get()));
 	}
