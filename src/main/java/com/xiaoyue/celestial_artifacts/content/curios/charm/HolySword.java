@@ -16,7 +16,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HolySword implements MultiLineText, CAAttackToken {
+public class HolySword implements MultiLineText, CAAttackToken {//TODO check
+
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {//TODO text
 		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.holy_sword.shift1");

@@ -222,7 +222,7 @@ public final class ModularCurio extends BaseCurio {
 
 	public static class Builder {
 
-		private final Item.Properties prop;
+		private final Properties prop;
 		private boolean requireCS = false, curse = false, immune = false, hideAttr = false,
 				enderMask = false;
 		private int fortune = 0, loot = 0;

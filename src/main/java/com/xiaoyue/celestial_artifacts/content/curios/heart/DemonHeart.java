@@ -1,13 +1,16 @@
 package com.xiaoyue.celestial_artifacts.content.curios.heart;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -19,7 +22,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class DemonHeart extends BaseTickingToken implements CAAttackToken {
+public class DemonHeart extends BaseTickingToken implements CAAttackToken {//TODO check
+
+	private static double damageBonusFactor() {
+		return CAModConfig.COMMON.heart.demonHeartDamageBonus.get();
+	}
+
+	private static double damageReductionFactor() {
+		return CAModConfig.COMMON.heart.demonHeartDamageReduction.get();
+	}
 
 	protected AttrAdder attr(Player player) {
 		return AttrAdder.of("demon_heart", () -> Attributes.ARMOR_TOUGHNESS, AttributeModifier.Operation.ADDITION,
@@ -51,23 +62,23 @@ public class DemonHeart extends BaseTickingToken implements CAAttackToken {
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {//TODO text
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_heart.shift1");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_heart.shift2");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_heart.shift3");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_heart.shift4");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_heart.shift5");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.demon_heart.shift6");
+	public void addText(@Nullable Level level, List<Component> list) {
+	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_1.get().withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_2.get().withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_3.get(TextFacet.perc(damageBonusFactor())).withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_4.get(TextFacet.perc(damageReductionFactor())).withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_5.get().withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_6.get().withStyle(ChatFormatting.GRAY)));
 	}
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		cache.addHurtModifier(DamageModifier.multTotal(1 + CurioUtils.getCurseAmount(player) * 0.1f));
+		cache.addHurtModifier(DamageModifier.multTotal((float) (1 + CurioUtils.getCurseAmount(player) * damageBonusFactor())));
 	}
 
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
-		cache.addDealtModifier(DamageModifier.multTotal(1 - CurioUtils.getCurseAmount(player) * 0.05f));
+		cache.addDealtModifier(DamageModifier.multTotal((float) (1 - CurioUtils.getCurseAmount(player) * damageReductionFactor())));
 	}
 
 }

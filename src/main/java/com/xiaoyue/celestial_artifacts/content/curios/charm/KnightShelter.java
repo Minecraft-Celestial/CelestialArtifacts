@@ -2,7 +2,10 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.xiaoyue.celestial_artifacts.content.core.feature.ShieldingFeature;
 import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.network.chat.Component;
@@ -17,31 +20,39 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature {
+public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature {//TODO check
+
+	private static int healTime() {
+		return CAModConfig.COMMON.charm.knightholder.get();
+	}
+
+	private static double damage() {
+		return CAModConfig.COMMON.charm.knightrevenge.get();
+	}
 
 	@Override
 	public void onPlayerBlocked(Player player, ShieldBlockEvent event) {
 		Entity attacker = event.getDamageSource().getEntity();
 		if (attacker != null) {
 			GeneralEventHandler.schedule(() -> attacker.hurt(player.damageSources().playerAttack(player),
-					event.getBlockedDamage() * 0.3f));
+                    (float) (event.getBlockedDamage() * damage())));
 		}
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {//TODO text
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.knight_shelter.shift3");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.knight_shelter.shift4");
+	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.wrap(CALang.Charm.KNIGHT_SHELTER_1.get(TextFacet.num(healTime() * 20))));
+		list.add(TextFacet.wrap(CALang.Charm.KNIGHT_SHELTER_2.get(TextFacet.perc(damage()))));
 	}
 
 	@Override
 	public void tick(LivingEntity player, ItemStack stack) {
 		if (player.getOffhandItem().getItem() instanceof ShieldItem) {
-			if (player.tickCount % 80 == 0) {
+			if (player.tickCount % healTime() * 20 == 0) {
 				player.heal(1f);
 			}
 		} else if (player.getMainHandItem().getItem() instanceof ShieldItem) {
-			if (player.tickCount % 40 == 0) {
+			if (player.tickCount % healTime() * 10 == 0) {
 				player.heal(1f);
 			}
 		}

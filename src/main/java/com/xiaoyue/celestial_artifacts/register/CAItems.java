@@ -543,18 +543,24 @@ public class CAItems {
 									EffectFacet.of(() -> MobEffects.NIGHT_VISION, 2, 0)
 							), seaGodSet()));
 
-			// 祷告者王冠 TODO config
+			// 祷告者王冠
 			PRAYER_CROWN = head("prayer_crown", () ->
 					ModularCurio.builder().rarity(Rarity.UNCOMMON).build(
 							InvulToken.of(() -> 10),
+							SimpleListener.protect(CALang.Condition.SNEAK::get,
+									(player, attacker, cache) -> player.isCrouching(),
+									CAModConfig.COMMON.head.prayerCrownProtection::get),
 							new PrayerCrown()));
 			// 深渊意志之核
 			ABYSS_CORE = head("abyss_core", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA).build(new AbyssCore()));
-			// 守卫者之眼 TODO config
+			// 守卫者之眼
 			GUARDIAN_EYE = head("guardian_eye", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
 							AttrFacet.multBase(ForgeMod.SWIM_SPEED, () -> 0.15),
+							SimpleListener.protect(CALang.Condition.PLAYER_WET::get,
+									(player, attacker, cache) -> player.isInWaterRainOrBubble(),
+									CAModConfig.COMMON.head.guardianEyeProtection::get),
 							new GuardianEye()));
 			// 邪恶之瞳
 			EVIL_EYE = head("evil_eye", () ->

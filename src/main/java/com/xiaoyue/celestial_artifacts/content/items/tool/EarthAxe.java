@@ -5,6 +5,6 @@ import net.minecraft.world.item.Item;
 
 public class EarthAxe extends AxeItem {
 	public EarthAxe() {
-		super(new EarthTierUtils(), 6, -3, new Item.Properties());
+		super(new EarthTierUtils(), 6, -3, new Properties());
 	}
 }

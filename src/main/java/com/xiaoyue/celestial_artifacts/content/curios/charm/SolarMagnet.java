@@ -1,7 +1,9 @@
 package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
+import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,12 +16,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SolarMagnet implements MultiLineText, TickFacet {
+public class SolarMagnet implements MultiLineText, TickFacet {//TODO check
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {//TODO text
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.solar_magnet.shift1");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.solar_magnet.shift4");
+	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.wrap(CALang.Charm.SOLAR_MAGNET_1.get()));
+		list.add(TextFacet.wrap(CALang.Charm.SOLAR_MAGNET_2.get()));
 	}
 
 	public void getAttractingItems(Player player) {
