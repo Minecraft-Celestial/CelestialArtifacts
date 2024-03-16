@@ -21,7 +21,5 @@
   "tooltip.celestial_artifacts.holy_sword.shift2": "受到伤害时反弹12%受到伤害",
   "tooltip.celestial_artifacts.holy_sword.shift3": "攻击亡灵生物时造成伤害全额用于治疗自身",
   "tooltip.celestial_artifacts.holy_sword.shift4": "每损失1点生命提高%1$s攻击伤害",
-  "tooltip.celestial_artifacts.traveler_scroll.shift2": "每次进入新的维度时将获得速度与生命恢复效果",
-  "tooltip.celestial_artifacts.twisted_scroll.shift1": "周围生成怪物时有60%概率额外生成1只",
-  "tooltip.celestial_artifacts.chaotic_pendant.shift2": "从附魔台附魔出的附魔等级加3"
+  "tooltip.celestial_artifacts.twisted_scroll.shift1": "周围生成怪物时有60%概率额外生成1只"
 }

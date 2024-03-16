@@ -1,6 +1,6 @@
-// 1.20.1	2024-03-16T20:48:10.508057	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
-f5db8b1792f65b30fc1fbc5292f0ebff211ce900 assets/celestial_artifacts/lang/en_ud.json
-33c9957170e074d4a2b6762fc58f64fd2e67546e assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-03-16T22:09:50.008993	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
+47f50ac0f1d01afe407201f41053f10918dc7def assets/celestial_artifacts/lang/en_ud.json
+932e92a1f7ce233f9143b757ec8a6aa77b576a82 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
@@ -221,7 +221,7 @@ fa2fc39dbde2cbfc51531514f0f55bef0dc22cbc data/celestial_artifacts/recipes/undead
 10ad9d392116478867a9ae08c9403c1f54d597a6 data/celestial_artifacts/tags/entity_types/drops_twisted_brain.json
 a6206a3d5baad2b734515ea39951ce7d5c60f6d0 data/curios/tags/items/back.json
 6c401cd08b4f59029e724362aa2f380ddd8c42e0 data/curios/tags/items/bracelet.json
-66c93019c29056939444dbbc489ea64ec5af0590 data/curios/tags/items/c_charm.json
+66c93019c29056939444dbbc489ea64ec5af0590 data/curios/tags/items/catastrophe.json
 46e8c6688078f8c5991f8330799cdb92229a5146 data/curios/tags/items/charm.json
 40d496edba4c485a6ddd136947494317d3493e61 data/curios/tags/items/etching.json
 dba9f82b8c855378a2391bbcfdbc4b17d1f2128e data/curios/tags/items/head.json

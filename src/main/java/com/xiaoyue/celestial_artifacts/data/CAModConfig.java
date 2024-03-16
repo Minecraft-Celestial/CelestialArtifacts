@@ -1,5 +1,7 @@
 package com.xiaoyue.celestial_artifacts.data;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.IConfigSpec;
@@ -192,6 +194,8 @@ public class CAModConfig {
 			//cursed totem
 			public final ForgeConfigSpec.IntValue cursedTotemMaxLevel;
 			public final ForgeConfigSpec.IntValue cursedTotemConsumption;
+			public final ForgeConfigSpec.IntValue cursedTotemEffectDuration;
+			public final ForgeConfigSpec.IntValue cursedTotemEffectLevel;
 
 			//demon curse
 			public final ForgeConfigSpec.DoubleValue demonCurseAttackBonus;
@@ -200,6 +204,7 @@ public class CAModConfig {
 			//gluttony badge
 			public final ForgeConfigSpec.IntValue gluttonyBadgeHungerLevel;
 			public final ForgeConfigSpec.DoubleValue gluttonyBadgeProtection;
+			public final ForgeConfigSpec.IntValue gluttonyBadgeEffectDuration;
 
 			//knight shelter
 			public final ForgeConfigSpec.IntValue knightShelterArmor;
@@ -401,7 +406,6 @@ public class CAModConfig {
 					cursedProtectorThreshold = builder
 							.comment("Cursed Protector: health threshold to trigger damage reduction")
 							.defineInRange("cursedProtectorThreshold", 0.35, 0.01, 1);
-
 					cursedProtectorReduction = builder
 							.comment("Cursed Protector: damage reduction percentage")
 							.defineInRange("cursedProtectorReduction", 0.25, 0.01, 1);
@@ -426,6 +430,12 @@ public class CAModConfig {
 					cursedTotemConsumption = builder
 							.comment("Cursed Totem: levels consumed when negating fatal damage")
 							.defineInRange("cursedTotemConsumption", 5, 0, Integer.MAX_VALUE);
+					cursedTotemEffectDuration = builder
+							.comment("Cursed Totem: duration of wither effect in seconds")
+							.defineInRange("cursedTotemEffectDuration", 30, 0, Integer.MAX_VALUE);
+					cursedTotemEffectLevel = builder
+							.comment("Cursed Totem: level of wither effect (0 means Lv.I)")
+							.defineInRange("cursedTotemEffectLevel", 2, 0, 5);
 				}
 
 				//demon curse
@@ -446,6 +456,9 @@ public class CAModConfig {
 					gluttonyBadgeProtection = builder
 							.comment("Gluttony Badge: damage reduction per food level")
 							.defineInRange("gluttonyBadgeProtection", 0.01, 0, 1.00);
+					gluttonyBadgeEffectDuration = builder
+							.comment("Gluttony Badge: effect duration in seconds after eating food")
+							.defineInRange("gluttonyBadgeEffectDuration", 2, 1, 100);
 				}
 
 				//knight shelter
@@ -897,6 +910,8 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue shadowPendantDamageBonus;
 			public final ForgeConfigSpec.DoubleValue shadowPendantDamageReduction;
 			public final ForgeConfigSpec.IntValue shadowPendantLightLevel;
+			public final ForgeConfigSpec.IntValue chaoticPendantEnchantLevel;
+
 
 			private Pendant(ForgeConfigSpec.Builder builder) {
 				builder.push("pendant");
@@ -912,6 +927,9 @@ public class CAModConfig {
 				shadowPendantDamageReduction = builder
 						.comment("Shadow Pendant: damage reduction")
 						.defineInRange("shadowPendantDamageReduction", 0.05, 0, 1);
+				chaoticPendantEnchantLevel = builder
+						.comment("Chaotic Pendant: enchantment level bonus")
+						.defineInRange("chaoticPendantEnchantLevel", 3, 0, 30);
 				builder.pop();
 			}
 
@@ -944,15 +962,28 @@ public class CAModConfig {
 		public static class Scroll {
 
 			public final ForgeConfigSpec.IntValue skyWalkerCooldown;
+			public final ForgeConfigSpec.IntValue travelerEffectDuration;
+
 
 			private Scroll(ForgeConfigSpec.Builder builder) {
 				builder.push("scroll");
 
 				skyWalkerCooldown = builder
-						.comment("Sky Walker Scroll: teleport cooldown")
+						.comment("Sky Walker Scroll: teleport cooldown in seconds")
 						.defineInRange("skyWalkerCooldown", 60, 0, 600);
+				travelerEffectDuration = builder
+						.comment("Traveller Scroll: effect duration in seconds")
+						.defineInRange("travelerEffectDuration", 15, 1, 10000);
 
 				builder.pop();
+			}
+
+			public MobEffectInstance travelerScrollSpeedEffect() {
+				return new MobEffectInstance(MobEffects.MOVEMENT_SPEED, travelerEffectDuration.get() * 20, 1);
+			}
+
+			public MobEffectInstance travelerScrollRegenEffect() {
+				return new MobEffectInstance(MobEffects.REGENERATION, travelerEffectDuration.get() * 20, 0);
 			}
 
 		}

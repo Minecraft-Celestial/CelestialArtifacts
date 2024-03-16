@@ -284,7 +284,7 @@ public class CAItems {
 
 			// 金沙护符
 			SANDS_TALISMAN = charm("sands_talisman", () ->
-					ModularCurio.builder().loot(1).build(
+					ModularCurio.builder().rarity(Rarity.UNCOMMON).loot(1).build(
 							XpBonusFeature.simple(CAModConfig.COMMON.charm.sandsTalismanExpBonus::get),
 							SimpleListener.hurtBonus(
 									CALang.Condition.HOT_REGION::get,
@@ -343,7 +343,10 @@ public class CAItems {
 							AttrFacet.multBase(() -> Attributes.MOVEMENT_SPEED, () -> 0.25),
 							AttrFacet.multBase(() -> Attributes.FLYING_SPEED, () -> 0.25),
 							AttrFacet.multBase(ForgeMod.SWIM_SPEED, () -> 0.25),
-							TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.traveler_scroll.shift2"))
+							TextFacet.line(() -> CALang.Scroll.TRAVELER.get(
+									EffectFacet.getDesc(CAModConfig.COMMON.scroll.travelerScrollSpeedEffect()),
+									EffectFacet.getDesc(CAModConfig.COMMON.scroll.travelerScrollRegenEffect())
+							))
 					));
 			// 海神卷轴
 			SEA_GOD_SCROLL = scroll("sea_god_scroll", () ->
@@ -422,10 +425,11 @@ public class CAItems {
 			// 无主的吊坠
 			UNOWNED_PENDANT = pendant("unowned_pendant", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build());
-			// 混沌吊坠 TODO text
+			// 混沌吊坠
 			CHAOTIC_PENDANT = pendant("chaotic_pendant", () ->
 					ModularCurio.builder().rarity(Rarity.EPIC).requireCS().loot(1).build(
-							TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.chaotic_pendant.shift2"))
+							TextFacet.line(() -> CALang.Pendant.CHAOTIC.get(TextFacet.num(
+									CAModConfig.COMMON.pendant.chaoticPendantEnchantLevel.get())))
 					));
 			// 怨影吊坠
 			SHADOW_PENDANT = pendant("shadow_pendant", () ->
@@ -643,7 +647,7 @@ public class CAItems {
 							SlotFacet.of("etching", 7),
 							SlotFacet.of("charm", 3),
 							new TokenFacet<>("catastrophe_scroll", CatastropheScroll::new)
-					)).tag(curio("c_charm")).register();
+					)).tag(curio("catastrophe")).register();
 			// 混沌
 			CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 			// 始源

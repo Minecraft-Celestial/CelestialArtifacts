@@ -1,5 +1,6 @@
 package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
+import com.xiaoyue.celestial_artifacts.content.core.effect.EffectFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
@@ -10,8 +11,11 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -35,12 +39,24 @@ public class CursedTotem extends BaseTickingToken
 		return CAModConfig.COMMON.charm.cursedTotemConsumption.get();
 	}
 
+	private static int duration() {
+		return CAModConfig.COMMON.charm.cursedTotemEffectDuration.get();
+	}
+
+	private static int amplifier() {
+		return CAModConfig.COMMON.charm.cursedTotemEffectLevel.get();
+	}
+
+	public static MobEffectInstance eff() {
+		return new MobEffectInstance(MobEffects.WITHER, duration() * 20, amplifier());
+	}
+
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_1.get()));
+		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_1.get(EffectFacet.getDesc(eff()))));
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_2.get(TextFacet.num(maxLevel()))));
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_3.get(TextFacet.num(consume()))));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_4.get(TextFacet.num(cursed_soul_totem))));
+		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_4.get(TextFacet.num(cursed_soul_totem)).withStyle(ChatFormatting.DARK_PURPLE)));
 	}
 
 	@Override

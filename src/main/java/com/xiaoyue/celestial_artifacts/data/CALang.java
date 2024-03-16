@@ -258,13 +258,13 @@ public class CALang {
 		HOLY_SWORD_2("攻击亡灵生物时造成伤害全额用于治疗自身", 0),
 		HOLY_SWORD_3("每损失1点生命提高%s攻击伤害", 1),
 
-		GLUTTONY_BADGE_1("每次食用食物后获得短暂的生命恢复与力量效果", 0),
+		GLUTTONY_BADGE_1("每次食用食物后获得%s与%s", 2),
 		GLUTTONY_BADGE_2("每拥有1点饱食度降低%s受到的伤害", 1),
 
 		DEMON_CURSE_0("玩家无法回血", 0),
 		DEMON_CURSE_1("每1%额外治疗力:", 0),
 
-		CURSED_TOTEM_1("使用不死图腾时给予最近的攻击者凋零效果", 0),
+		CURSED_TOTEM_1("使用不死图腾时给予最近的攻击者%s", 1),
 		CURSED_TOTEM_2("受到非致命伤害时会积攒1层[怨念]，上限%s层", 1),
 		CURSED_TOTEM_3("受到致命伤害时，则消耗%s层[怨念]并规避该伤害", 1),
 		CURSED_TOTEM_4("当前已积攒的[怨念]:%s", 1),
@@ -428,7 +428,8 @@ public class CALang {
 		SHADOW_2("幻翼不会再因为失眠而生成", 0),
 		SHADOW_3("当处于亮度小于%s的位置时，每小于1点:", 1),
 		SHADOW_4("攻击伤害提高%s", 1),
-		SHADOW_5("受到伤害降低%s", 1);
+		SHADOW_5("受到伤害降低%s", 1),
+		CHAOTIC("从附魔台附魔出的附魔等级加%s", 1);
 
 		final Entry entry;
 
@@ -463,7 +464,8 @@ public class CALang {
 		SEA_GOD("处于水下时挖掘速度不会再受到影响", 0),
 		SKY_WALKER_2("潜行时，储存当前位置的坐标，否则将你传送到储存的坐标处", 0),
 		SKY_WALKER_3("只能在同维度中传送", 0),
-		SKY_WALKER_4("当前储存的坐标: %s - (%s,%s,%s)", 4);
+		SKY_WALKER_4("当前储存的坐标: %s - (%s,%s,%s)", 4),
+		TRAVELER("每次进入新的维度时将获得%s与%s", 2);
 
 		final Entry entry;
 

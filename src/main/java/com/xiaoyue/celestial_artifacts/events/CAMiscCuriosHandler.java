@@ -1,5 +1,7 @@
 package com.xiaoyue.celestial_artifacts.events;
 
+import com.xiaoyue.celestial_artifacts.content.curios.charm.CursedTotem;
+import com.xiaoyue.celestial_artifacts.content.curios.charm.GluttonyBadge;
 import com.xiaoyue.celestial_artifacts.content.curios.charm.SacrificialObject;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
@@ -9,16 +11,18 @@ import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2library.base.effects.EffectBuilder;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
@@ -28,6 +32,7 @@ import net.minecraftforge.event.entity.player.PlayerSpawnPhantomsEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -95,8 +100,8 @@ public class CAMiscCuriosHandler {
 			// 暴食徽章
 			if (CurioUtils.hasCurio(player, CAItems.GLUTTONY_BADGE.get())) {
 				if (itemStack.getUseAnimation() == UseAnim.EAT) {
-					EntityUtils.addEct(player, MobEffects.DAMAGE_BOOST, 40, 0);
-					EntityUtils.addEct(player, MobEffects.REGENERATION, 40, 0);
+					player.addEffect(GluttonyBadge.effAtk());
+					player.addEffect(GluttonyBadge.effReg());
 				}
 			}
 		}
@@ -123,7 +128,7 @@ public class CAMiscCuriosHandler {
 			// 被咒者的图腾
 			if (CurioUtils.hasCurio(player, CAItems.CURSED_TOTEM.get())) {
 				if (attacker instanceof LivingEntity livingEntity) {
-					EntityUtils.addEct(livingEntity, MobEffects.WITHER, 600, 2);
+					livingEntity.addEffect(CursedTotem.eff());
 				}
 			}
 		}
@@ -132,7 +137,7 @@ public class CAMiscCuriosHandler {
 	@SubscribeEvent
 	public static void onSpawnPhantom(PlayerSpawnPhantomsEvent event) {
 		Player player = event.getEntity();
-		// 怨影吊坠
+		// 怨影吊坠 TODO
 		if (CurioUtils.hasCurio(player, CAItems.SHADOW_PENDANT.get())) {
 			event.setResult(Event.Result.DENY);
 		}
@@ -159,8 +164,8 @@ public class CAMiscCuriosHandler {
 		Player entity = event.getEntity();
 		// 旅行者卷轴
 		if (CurioUtils.hasCurio(entity, CAItems.TRAVELER_SCROLL.get())) {
-			EntityUtils.addEct(entity, MobEffects.MOVEMENT_SPEED, 300, 1);
-			EntityUtils.addEct(entity, MobEffects.REGENERATION, 300, 0);
+			entity.addEffect(CAModConfig.COMMON.scroll.travelerScrollSpeedEffect());
+			entity.addEffect(CAModConfig.COMMON.scroll.travelerScrollRegenEffect());
 		}
 	}
 
@@ -173,4 +178,17 @@ public class CAMiscCuriosHandler {
 		}
 	}
 
+	public static void onEnchTable(@Nullable Slot slot, List<EnchantmentInstance> original) {
+		if (slot != null && slot.container instanceof Inventory inv) {
+			Player player = inv.player;
+			int lv = CAModConfig.COMMON.pendant.chaoticPendantEnchantLevel.get();
+			if (CurioUtils.hasCurio(player, CAItems.CHAOTIC_PENDANT.get())) {
+				for (int i = 0; i < original.size(); i++) {
+					var ins = original.get(i);
+					int ilv = Math.max(ins.level, Math.min(ins.enchantment.getMaxLevel(), ins.level + lv));
+					original.set(i, new EnchantmentInstance(ins.enchantment, ilv));
+				}
+			}
+		}
+	}
 }
