@@ -21,12 +21,12 @@ import java.util.List;
 
 @SerialClass
 public class SkywalkerScroll extends BaseTickingToken
-		implements NetworkSensitiveToken<SkywalkerScroll>, SkillFeature {//TODO check
+		implements NetworkSensitiveToken<SkywalkerScroll>, SkillFeature {
 
 	public static final TokenFacet<SkywalkerScroll> TOKEN = new TokenFacet<>("skywalker_scroll", SkywalkerScroll::new);
 
 	private static int cooldownFactor() {
-		return CAModConfig.COMMON.scroll.skyWalkerCooldwon.get();
+		return CAModConfig.COMMON.scroll.skyWalkerCooldown.get();
 	}
 
 	@SerialClass.SerialField

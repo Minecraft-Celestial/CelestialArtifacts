@@ -100,7 +100,7 @@ public class CAModConfig {
 						.defineInRange("spiritArrowBagArrowKnock", 2, 0, 100);
 
 
-				leechScabbardHealFactor = builder.comment("Leech Scabbard healing rate as percentage of damage dealt")
+				leechScabbardHealFactor = builder.comment("Leech Scabbard: healing rate as percentage of damage dealt")
 						.defineInRange("leechScabbardHealFactor", 0.25, 0, 100);
 
 
@@ -119,7 +119,7 @@ public class CAModConfig {
 
 				// hidden_bracelet
 				hiddenBraceletEffectDuration = builder
-						.comment("This value determines how many seconds you will receive a stealth effect once")
+						.comment("Hidden Bracelet: Stealth effect interval")
 						.defineInRange("hiddenBraceletEffectDuration", 7, 1, Integer.MAX_VALUE);
 
 				builder.pop();
@@ -202,10 +202,10 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue gluttonyBadgeProtection;
 
 			//knight shelter
-			public final ForgeConfigSpec.IntValue knightarmor;
-			public final ForgeConfigSpec.IntValue knightDEinjury;
-			public final ForgeConfigSpec.IntValue knightholder;
-			public final ForgeConfigSpec.DoubleValue knightrevenge;
+			public final ForgeConfigSpec.IntValue knightShelterArmor;
+			public final ForgeConfigSpec.IntValue knightShelterDamageReduction;
+			public final ForgeConfigSpec.IntValue knightShelterHealInterval;
+			public final ForgeConfigSpec.DoubleValue knightShelterReflection;
 
 			// magic horseshoe
 			public final ForgeConfigSpec.DoubleValue magicHorseshoeSpeedBonus;
@@ -279,7 +279,7 @@ public class CAModConfig {
 							.defineInRange("holySwordLostLifeAddDamage", 1, 1.0, 10000);
 				}
 
-				//holy talisman
+				//holy talisman TODO
 				{
 					holytaliweak = builder
 							.comment("weak stance")
@@ -435,7 +435,7 @@ public class CAModConfig {
 							.comment("Demon Curse: attack bonus per 1% extra regen rate")
 							.defineInRange("demonCurseAttackBonus", 0.02, 0.0, 10.0);
 					demonCurseSpeedBonus = builder
-							.comment("democurspeed: speed bonus per 1% extra regen rate")
+							.comment("Demon Curse: speed bonus per 1% extra regen rate")
 							.defineInRange("demonCurseSpeedBonus", 0.01, 0.0, 10.0);
 				}
 
@@ -451,18 +451,18 @@ public class CAModConfig {
 
 				//knight shelter
 				{
-					knightarmor = builder
-							.comment("enhance armor")
-							.defineInRange("knightarmor", 8, 0, Integer.MAX_VALUE);
-					knightDEinjury = builder
-							.comment("reduce any injury")
-							.defineInRange("knightDEinjury", 4, 0, Integer.MAX_VALUE);
-					knightholder = builder
-							.comment("how long to treat")
-							.defineInRange("knightholder", 4, 0, Integer.MAX_VALUE);
-					knightrevenge = builder
-							.comment("counterattack after blocking")
-							.defineInRange("magicHorseshoeSpeedBonus", 0.30, 0.00, 1);
+					knightShelterArmor = builder
+							.comment("Knight Shelter: armor")
+							.defineInRange("knightShelterArmor", 8, 0, Integer.MAX_VALUE);
+					knightShelterDamageReduction = builder
+							.comment("Knight Shelter: damage reduction")
+							.defineInRange("knightShelterDamageReduction", 4, 0, Integer.MAX_VALUE);
+					knightShelterHealInterval = builder
+							.comment("Knight Shelter: healing interval for offhand shield in seconds. Main hand shield takes half of the time")
+							.defineInRange("knightShelterHealInterval", 4, 0, Integer.MAX_VALUE);
+					knightShelterReflection = builder
+							.comment("Knight Shelter: reflection percentage")
+							.defineInRange("knightShelterReflection", 0.30, 0.00, 1);
 				}
 
 				// magic horseshoe
@@ -488,7 +488,7 @@ public class CAModConfig {
 							.defineInRange("sacriloot", 1, 0, Integer.MAX_VALUE);
 					sacriReduction = builder
 							.comment("sacrificial: damage reduction percentage")
-							.defineInRange("cursedProtectorReduction", 0.05, 0.01, 1);
+							.defineInRange("sacriReduction", 0.05, 0.01, 1);
 					sacriheritage = builder
 							.comment("sacrificial:deadth drop gold ingots")
 							.defineInRange("sacriheritage", 1, 0, Integer.MAX_VALUE);
@@ -497,14 +497,14 @@ public class CAModConfig {
 							.defineInRange("sacriselfexplode", 0.45, 0.01, 1);
 				}
 
-				//soul box
+				//soul box TODO
 				{
 					soulboxbreak = builder
 							.comment("soulboxbreak:break the soul of attacker")
-							.defineInRange("cursedProtectorReduction", 0.30, 0.01, 1);
+							.defineInRange("soulboxbreak", 0.30, 0.01, 1);
 					soulboxwitherblast = builder
 							.comment("soulboxwitherblast:strike back with wither blast")
-							.defineInRange("cursedProtectorReduction", 2.50, 0.01, 100);
+							.defineInRange("soulboxwitherblast", 2.50, 0.01, 100);
 					soulboximmortalCD = builder
 							.comment("soulboximmortalCD:can die within a period of time")
 							.defineInRange("soulboximmortalCD", 240, 1, Integer.MAX_VALUE);
@@ -533,7 +533,7 @@ public class CAModConfig {
 							.defineInRange("sandsTalismanExpBonus", 0.5, 0, 10);
 				}
 
-				//twisted brain
+				//twisted brain TODO
 				{
 					twistedbrainAvoid = builder
 							.comment("twistedbrainAvoid:possible to avoid harm")
@@ -546,7 +546,7 @@ public class CAModConfig {
 							.defineInRange("twistedbrainArmorless", 0.33, 0, 1);
 				}
 
-				//undead charm
+				//undead charm TODO
 				{
 					undeadCD = builder
 							.comment("undeadCD:possible to avoid harm")
@@ -699,9 +699,12 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue guardianEyeSwimSpeedBonus;
 			public final ForgeConfigSpec.DoubleValue guardianEyeProtection;
 			public final ForgeConfigSpec.DoubleValue prayerCrownHealAmount;
+			public final ForgeConfigSpec.DoubleValue prayerCrownHealChance;
 			public final ForgeConfigSpec.DoubleValue prayerCrownProtection;
 			public final ForgeConfigSpec.DoubleValue spiritCrownArrowDamageMultiplier;
 			public final ForgeConfigSpec.DoubleValue spiritCrownDistanceDamage;
+			public final ForgeConfigSpec.IntValue spiritCrownMaxEntityCount;
+			public final ForgeConfigSpec.IntValue seaGodCrownCoolDown;
 
 			private Head(ForgeConfigSpec.Builder builder) {
 				builder.push("head");
@@ -723,16 +726,24 @@ public class CAModConfig {
 				prayerCrownHealAmount = builder
 						.comment("Prayer Crown: heal amount")
 						.defineInRange("prayerCrownHealAmount", 0.25, 0.01, 10);
+				prayerCrownHealChance = builder
+						.comment("Prayer Crown: heal chance")
+						.defineInRange("prayerCrownHealChance", 0.5, 0.01, 1);
 				prayerCrownProtection = builder
 						.comment("Prayer Crown: protection")
 						.defineInRange("prayerCrownProtection", 0.25, 0.01, 10);
+				spiritCrownMaxEntityCount = builder
+						.comment("Spirit Crown: max entity count around player to trigger damage boost")
+						.defineInRange("spiritCrownMaxEntityCount", 3, 0, 100);
 				spiritCrownArrowDamageMultiplier = builder
 						.comment("Spirit Crown: arrow damage multiplier")
 						.defineInRange("spiritCrownArrowDamageMultiplier", 0.45, 0, 100);
 				spiritCrownDistanceDamage = builder
 						.comment("Spirit Crown: distance damage multiplier")
 						.defineInRange("spiritCrownDistanceDamage", 0.02, 0, 1);
-
+				seaGodCrownCoolDown = builder
+						.comment("Sea God Crown: skill cool down")
+						.defineInRange("seaGodCrownCoolDown", 30, 0, 1000);
 				builder.pop();
 			}
 
@@ -798,6 +809,7 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue emeraldNecklaceDrop;
 			public final ForgeConfigSpec.DoubleValue enderProtectorChance;
 			public final ForgeConfigSpec.IntValue holyNecklaceCooldown;
+			public final ForgeConfigSpec.IntValue holyNecklaceDuration;
 			public final ForgeConfigSpec.DoubleValue lockOfAbyssExtraDamage;
 
 			private Necklace(ForgeConfigSpec.Builder builder) {
@@ -823,6 +835,9 @@ public class CAModConfig {
 				holyNecklaceCooldown = builder
 						.comment("Holy Necklace: cooldown")
 						.defineInRange("holyNecklaceCooldown", 3, 0, 60);
+				holyNecklaceDuration = builder
+						.comment("Holy Necklace: duration in seconds")
+						.defineInRange("holyNecklaceDuration", 2, 0, 600);
 				lockOfAbyssExtraDamage = builder
 						.comment("Lock Of Abyss: extra damage multiplier")
 						.defineInRange("lockOfAbyssExtraDamage", 2.5, 0.01, 10);
@@ -877,12 +892,16 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue shadowPendantDamageHeal;
 			public final ForgeConfigSpec.DoubleValue shadowPendantDamageBonus;
 			public final ForgeConfigSpec.DoubleValue shadowPendantDamageReduction;
+			public final ForgeConfigSpec.IntValue shadowPendantLightLevel;
 
 			private Pendant(ForgeConfigSpec.Builder builder) {
 				builder.push("pendant");
 				shadowPendantDamageHeal = builder
 						.comment("Shadow Pendant: damage heal multiplier")
 						.defineInRange("shadowPendantDamageHeal", 0.25, 0, 1);
+				shadowPendantLightLevel = builder
+						.comment("Shadow Pendant: Starting light level to give bonus")
+						.defineInRange("shadowPendantLightLevel", 7, 0, 15);
 				shadowPendantDamageBonus = builder
 						.comment("Shadow Pendant: damage bonus")
 						.defineInRange("shadowPendantDamageBonus", 0.05, 0, 1);
@@ -903,9 +922,9 @@ public class CAModConfig {
 
 			private Ring(ForgeConfigSpec.Builder builder) {
 				builder.push("ring");
-				amethystRingDamage = builder.comment("Amethyst Ring damage boost")
+				amethystRingDamage = builder.comment("Amethyst Ring: damage boost")
 						.defineInRange("amethystRingDamage", 0.1, 0, 100);
-				netheriteRingProtection = builder.comment("Netherite Ring protection in nether")
+				netheriteRingProtection = builder.comment("Netherite Ring: protection in nether")
 						.defineInRange("netheriteRingProtection", 0.1, 0, 1);
 				netherFireRingFireTime = builder
 						.comment("Nether Fire Ring: fire burning time")
@@ -920,14 +939,14 @@ public class CAModConfig {
 
 		public static class Scroll {
 
-			public final ForgeConfigSpec.IntValue skyWalkerCooldwon;
+			public final ForgeConfigSpec.IntValue skyWalkerCooldown;
 
 			private Scroll(ForgeConfigSpec.Builder builder) {
 				builder.push("scroll");
 
-				skyWalkerCooldwon = builder
+				skyWalkerCooldown = builder
 						.comment("Sky Walker Scroll: teleport cooldown")
-						.defineInRange("skyWalkerScrollTeleportCooldown", 60, 0, 600);
+						.defineInRange("skyWalkerCooldown", 60, 0, 600);
 
 				builder.pop();
 			}

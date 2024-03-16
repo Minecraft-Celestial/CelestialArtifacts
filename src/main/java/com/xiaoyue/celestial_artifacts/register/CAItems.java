@@ -228,15 +228,17 @@ public class CAItems {
 							new TokenFacet<>("angel_pearl", AngelPearl::new)
 					));
 
-			// 大恶魔之咒 TODO config
+			// 大恶魔之咒
 			DEMON_CURSE = charm("demon_curse", () -> ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE)
 					.build(new TokenFacet<>("demon_curse", DemonCurse::new)));
 
-			// 骑士庇护 TODO config
+			// 骑士庇护
 			KNIGHT_SHELTER = charm("knight_shelter", () -> ModularCurio.builder().rarity(Rarity.UNCOMMON)
 					.build(new KnightShelter(),
-							AttrFacet.add(() -> Attributes.ARMOR, () -> 8),
-							AttrFacet.add(L2DamageTracker.ABSORB::get, () -> 4)
+							AttrFacet.add(() -> Attributes.ARMOR,
+									CAModConfig.COMMON.charm.knightShelterArmor::get),
+							AttrFacet.add(L2DamageTracker.ABSORB::get,
+									CAModConfig.COMMON.charm.knightShelterDamageReduction::get)
 					));
 
 			// 魂灵匣

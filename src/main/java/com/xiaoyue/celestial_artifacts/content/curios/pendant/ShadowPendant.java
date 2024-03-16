@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ShadowPendant implements MultiLineText, CAAttackToken {//TODO check
+public class ShadowPendant implements MultiLineText, CAAttackToken {
 
 	private static double damageHealFactor() {
 		return CAModConfig.COMMON.pendant.shadowPendantDamageHeal.get();
@@ -31,20 +31,24 @@ public class ShadowPendant implements MultiLineText, CAAttackToken {//TODO check
 		return CAModConfig.COMMON.pendant.shadowPendantDamageReduction.get();
 	}
 
+	private static int light() {
+		return CAModConfig.COMMON.pendant.shadowPendantLightLevel.get();
+	}
+
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-	  list.add(TextFacet.wrap(CALang.Pendant.SHADOW_1.get(TextFacet.perc(damageHealFactor())).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Pendant.SHADOW_2.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Pendant.SHADOW_3.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Pendant.SHADOW_4.get(TextFacet.perc(damageBonusFactor())).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Pendant.SHADOW_5.get(TextFacet.perc(damageReductionFactor())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Pendant.SHADOW_1.get(TextFacet.perc(damageHealFactor())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Pendant.SHADOW_2.get().withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Pendant.SHADOW_3.get(TextFacet.num(light())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.inner(CALang.Pendant.SHADOW_4.get(TextFacet.perc(damageBonusFactor())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.inner(CALang.Pendant.SHADOW_5.get(TextFacet.perc(damageReductionFactor())).withStyle(ChatFormatting.GRAY)));
 	}
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
-		int brightness = player.level().getMaxLocalRawBrightness(player.getOnPos());
-		if (brightness < 7) {
-			int add = 7 - brightness;
+		int brightness = CCUtils.getLight(player.level(), player.blockPosition().above());
+		if (brightness < light()) {
+			int add = light() - brightness;
 			cache.addHurtModifier(DamageModifier.multTotal((float) (1 + (add * damageBonusFactor()))));
 		}
 	}
@@ -57,9 +61,9 @@ public class ShadowPendant implements MultiLineText, CAAttackToken {//TODO check
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
 		if (player.level() instanceof ServerLevel sl) {
-			int brightness = CCUtils.getLight(sl, player.blockPosition());
-			if (brightness < 7) {
-				int add = 7 - brightness;
+			int brightness = CCUtils.getLight(sl, player.blockPosition().above());
+			if (brightness < light()) {
+				int add = light() - brightness;
 				cache.addDealtModifier(DamageModifier.multTotal((float) (1 - (add * damageReductionFactor()))));
 			}
 		}

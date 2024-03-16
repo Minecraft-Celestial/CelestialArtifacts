@@ -9,7 +9,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
-public class NetherFire implements SingleLineText, CAAttackToken {//TODO check
+public class NetherFire implements SingleLineText, CAAttackToken {
 
 	private static int fireTimeFactor() {
 		return CAModConfig.COMMON.ring.netherFireRingFireTime.get();

@@ -89,7 +89,7 @@ public class CALang {
 		INVUL_TIME("Increase invulnerable time by %s", 1),
 		HURT_BONUS("Increase damage by %s", 1),
 		PROTECT("Reduce damage by %s", 1),
-		PROTECT_TYPE("Reduce %s damage by %s", 2),
+		PROTECT_TYPE("Reduce incoming %s damage by %s", 2),
 		AVOID_TYPE("%s chance to avoid %s damage", 2),
 		NEGATE_TYPE("Negates %s damage", 1),
 		COMMA(", ", 0),
@@ -361,8 +361,8 @@ public class CALang {
 		GUARDIAN_EYE_1("持续给予周围的生物挖掘疲劳效果", 0),
 		GUARDIAN_EYE_2("处于水下时不在消耗氧气", 0),
 		SEA_GOD_CROWN("所处世界处于非雨天时将天气改为雨天", 0),
-		PRAYER_CROWN("潜行时受到攻击后50%概率立即恢复受到伤害%s生命", 1),
-		SPIRIT_CROWN_1("周围实体数量小于3时，射出的箭矢伤害提高%s", 1),
+		PRAYER_CROWN("潜行时受到攻击后%s概率立即恢复受到伤害%s生命", 2),
+		SPIRIT_CROWN_1("周围实体数量小于%s时，射出的箭矢伤害提高%s", 2),
 		SPIRIT_CROWN_2("与目标每相隔1方块的距离，射出的箭矢伤害提高%s", 1);
 
 		final Entry entry;
@@ -378,8 +378,8 @@ public class CALang {
 	}
 
 	public enum Heart implements Info {
-		DEMON_HEART_1("每背负1条诅咒", 0),
-		DEMON_HEART_2("盔甲韧性提高1", 0),
+		DEMON_HEART_1("每背负1条诅咒:", 0),
+		DEMON_HEART_2("盔甲韧性提高%s", 1),
 		DEMON_HEART_3("攻击伤害提高%s", 1),
 		DEMON_HEART_4("受到伤害降低%s", 1),
 		DEMON_HEART_5("背负大于等于3条诅咒时，阻止自身受到火焰燃烧", 0),
@@ -405,7 +405,7 @@ public class CALang {
 		GALLOP("移动时攻击会增加相当于移动速度的%s的攻击伤害", 1),
 		EMERALD("击杀生物后有%s基础概率额外掉落1个绿宝石", 1),
 		ENDER_PROTECTOR("使用盾牌格挡目标攻击后，有%s概率将目标传送走", 1),
-		HOLY("每次受到治疗后获得抗性提升效果，冷却%s秒", 1),
+		HOLY("每次受到治疗后获得%s，冷却%s秒", 2),
 		LOCK_OF_ABYSS_1("攻击后给予目标缓慢效果", 0),
 		LOCK_OF_ABYSS_2("若目标已有缓慢效果则将目标的缓慢效果提升1级", 0),
 		LOCK_OF_ABYSS_3("攻击时若目标拥有缓慢效果且等级大于7", 0),
@@ -426,7 +426,7 @@ public class CALang {
 	public enum Pendant implements Info {
 		SHADOW_1("造成伤害的%s用于治疗自身", 1),
 		SHADOW_2("幻翼不会再因为失眠而生成", 0),
-		SHADOW_3("当处于亮度小于7的位置时，每小于1点", 0),
+		SHADOW_3("当处于亮度小于%s的位置时，每小于1点:", 1),
 		SHADOW_4("攻击伤害提高%s", 1),
 		SHADOW_5("受到伤害降低%s", 1);
 

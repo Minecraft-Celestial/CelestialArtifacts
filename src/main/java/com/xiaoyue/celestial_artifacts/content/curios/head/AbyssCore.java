@@ -11,7 +11,7 @@ import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
-public class AbyssCore implements SingleLineText, CAAttackToken {//TODO check
+public class AbyssCore implements SingleLineText, CAAttackToken {
 
 	private static int cooldownFactor() {
 		return CAModConfig.COMMON.head.abyssCoreCooldown.get();
@@ -33,8 +33,17 @@ public class AbyssCore implements SingleLineText, CAAttackToken {//TODO check
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
 		if (!player.getCooldowns().isOnCooldown(CAItems.ABYSS_CORE.get())) {
-			cache.addDealtModifier(DamageModifier.nonlinearPre(245, d -> d >= damageJudgementFactor() ? damageReduceFactor() : d));
-            player.getCooldowns().addCooldown(CAItems.ABYSS_CORE.get(), cooldownFactor() * 20);
-        }
+			cache.addDealtModifier(DamageModifier.nonlinearPre(245, d -> parse(d, player)));
+			player.getCooldowns().addCooldown(CAItems.ABYSS_CORE.get(), cooldownFactor() * 20);
+		}
 	}
+
+	private float parse(float dmg, Player player) {
+		if (dmg >= damageJudgementFactor()) {
+			player.getCooldowns().addCooldown(CAItems.ABYSS_CORE.get(), cooldownFactor() * 20);
+			return damageReduceFactor();
+		}
+		return dmg;
+	}
+
 }

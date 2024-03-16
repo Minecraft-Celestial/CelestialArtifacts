@@ -7,7 +7,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.ForgeMod;
 
-public class SeaGodScroll implements SingleLineText, BreakSpeedFeature {//TODO check
+public class SeaGodScroll implements SingleLineText, BreakSpeedFeature {
 
 	@Override
 	public double getBreakFactor(Player player) {
@@ -21,4 +21,5 @@ public class SeaGodScroll implements SingleLineText, BreakSpeedFeature {//TODO c
 	public MutableComponent getLine() {
 		return CALang.Scroll.SEA_GOD.get();
 	}
+
 }

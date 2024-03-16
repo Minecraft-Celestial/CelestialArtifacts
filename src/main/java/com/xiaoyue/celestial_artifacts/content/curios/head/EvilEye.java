@@ -9,7 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-public class EvilEye implements SingleLineText, TickFacet {//TODO check
+public class EvilEye implements SingleLineText, TickFacet {
 	@Override
 	public MutableComponent getLine() {
 		return CALang.Head.EVIL_EYE.get();

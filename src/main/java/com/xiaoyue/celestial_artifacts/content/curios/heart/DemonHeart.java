@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class DemonHeart extends BaseTickingToken implements CAAttackToken {//TODO check
+public class DemonHeart extends BaseTickingToken implements CAAttackToken {//TODO
 
 	private static double damageBonusFactor() {
 		return CAModConfig.COMMON.heart.demonHeartDamageBonus.get();
@@ -64,9 +64,9 @@ public class DemonHeart extends BaseTickingToken implements CAAttackToken {//TOD
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_1.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_2.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_3.get(TextFacet.perc(damageBonusFactor())).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_4.get(TextFacet.perc(damageReductionFactor())).withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.inner(CALang.Heart.DEMON_HEART_2.get(TextFacet.num(1)).withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.inner(CALang.Heart.DEMON_HEART_3.get(TextFacet.perc(damageBonusFactor())).withStyle(ChatFormatting.GRAY)));
+	  list.add(TextFacet.inner(CALang.Heart.DEMON_HEART_4.get(TextFacet.perc(damageReductionFactor())).withStyle(ChatFormatting.GRAY)));
 	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_5.get().withStyle(ChatFormatting.GRAY)));
 	  list.add(TextFacet.wrap(CALang.Heart.DEMON_HEART_6.get().withStyle(ChatFormatting.GRAY)));
 	}
