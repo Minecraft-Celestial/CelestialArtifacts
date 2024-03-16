@@ -161,7 +161,7 @@ public class CAItems {
 			DESTROYER_BADGE = charm("destroyer_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
 							AttrFacet.add(() -> Attributes.ATTACK_DAMAGE, CAModConfig.COMMON.charm.destroyerBadgeAttack::get),
-							AttrFacet.multTotal(L2DamageTracker.REDUCTION, CAModConfig.COMMON.charm.destroyerBadgeDamagePenalty::get),
+							AttrFacet.multTotal(L2DamageTracker.REDUCTION::get, CAModConfig.COMMON.charm.destroyerBadgeDamagePenalty::get),
 							SimpleListener.hurtBonus(
 									() -> CALang.Condition.LOW_HEALTH.get(TextFacet.perc(CAModConfig.COMMON.charm.destroyerBadgeThreshold.get())),
 									(p, t, c) -> p.getHealth() <= CAModConfig.COMMON.charm.destroyerBadgeThreshold.get() * p.getMaxHealth(),
@@ -238,7 +238,7 @@ public class CAItems {
 			KNIGHT_SHELTER = charm("knight_shelter", () -> ModularCurio.builder().rarity(Rarity.UNCOMMON)
 					.build(new KnightShelter(),
 							AttrFacet.add(() -> Attributes.ARMOR, () -> 8),
-							AttrFacet.add(L2DamageTracker.ABSORB, () -> 4)
+							AttrFacet.add(L2DamageTracker.ABSORB::get, () -> 4)
 					));
 
 			// 魂灵匣
@@ -293,7 +293,7 @@ public class CAItems {
 
 			// 古代殉葬品 TODO config
 			SACRIFICIAL_OBJECT = charm("sacrificial_object", () -> ModularCurio.builder().rarity(Rarity.EPIC)
-					.loot(1).build(AttrFacet.multTotal(L2DamageTracker.REDUCTION, () -> -0.05),
+					.loot(1).build(AttrFacet.multTotal(L2DamageTracker.REDUCTION::get, () -> -0.05),
 							new SacrificialObject()));
 		}
 

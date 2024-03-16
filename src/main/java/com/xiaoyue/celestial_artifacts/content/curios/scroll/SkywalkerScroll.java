@@ -11,6 +11,7 @@ import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -28,6 +29,28 @@ public class SkywalkerScroll extends BaseTickingToken
 		return CAModConfig.COMMON.scroll.skyWalkerCooldwon.get();
 	}
 
+	@SerialClass.SerialField
+	public ResourceLocation id;
+	@SerialClass.SerialField
+	public double x, y, z;
+
+	@Override
+	public void addText(@Nullable Level level, List<Component> list) {
+		if (level != null && id != null) {
+			boolean same = level.dimension().location().equals(id);
+			list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_4.get(
+					Component.literal(id.getPath()).withStyle(same ? ChatFormatting.YELLOW : ChatFormatting.RED),
+					TextFacet.num((int) x),
+					TextFacet.num((int) y),
+					TextFacet.num((int) z)
+			).withStyle(ChatFormatting.GRAY)));
+		}
+		list.add(CALang.Modular.SKILL.get().withStyle(ChatFormatting.YELLOW));
+		list.add(CALang.Modular.SKILL_CD.get(TextFacet.num(cooldownFactor())));
+		list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_2.get()));
+		list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_3.get()));
+	}
+
 	@Override
 	public void trigger(ServerPlayer player) {
 		var item = CAItems.SKYWALKER_SCROLL.get();
@@ -35,8 +58,10 @@ public class SkywalkerScroll extends BaseTickingToken
 			x = player.getX();
 			y = player.getY();
 			z = player.getZ();
+			id = player.level().dimension().location();
 			sync(TOKEN.getKey(), this, player);
-		} else if (!player.getCooldowns().isOnCooldown(item)) {
+		} else if (player.level().dimension().location().equals(id) &&
+				!player.getCooldowns().isOnCooldown(item)) {
 			player.teleportTo(x, y, z);
 			player.getCooldowns().addCooldown(item, cooldownFactor() * 20);
 		}
@@ -50,19 +75,6 @@ public class SkywalkerScroll extends BaseTickingToken
 	@Override
 	protected void tickImpl(Player player) {
 
-	}
-
-	@SerialClass.SerialField
-	public double x, y, z;
-
-	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
-	  list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_1.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_2.get(TextFacet.num(cooldownFactor())).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_3.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_4.get(TextFacet.num((int) x)).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_5.get(TextFacet.num((int) y)).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Scroll.SKY_WALKER_6.get(TextFacet.num((int) z)).withStyle(ChatFormatting.GRAY)));
 	}
 
 	@Override

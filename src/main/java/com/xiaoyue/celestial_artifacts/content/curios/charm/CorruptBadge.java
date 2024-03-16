@@ -11,6 +11,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -71,7 +72,8 @@ public class CorruptBadge extends BaseTickingToken implements SkillFeature, Brea
 		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_8.get(TextFacet.perc(digSpeed() * corrupt_badge_add))));
 		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_9.get(TextFacet.perc(atkSpeed() * corrupt_badge_add))));
 		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_10.get(TextFacet.perc(damage() * corrupt_badge_add))));
-		list.add(TextFacet.wrap(CALang.Charm.CORRUPT_BADGE_1.get()));
+		list.add(CALang.Modular.SKILL.get().withStyle(ChatFormatting.YELLOW));
+		list.add(CALang.Modular.SKILL_CD.get(TextFacet.num(cooldown())));
 		list.add(TextFacet.inner(CALang.Charm.CORRUPT_BADGE_2.get(
 				EffectFacet.getDesc(ins0()),
 				EffectFacet.getDesc(ins1()),

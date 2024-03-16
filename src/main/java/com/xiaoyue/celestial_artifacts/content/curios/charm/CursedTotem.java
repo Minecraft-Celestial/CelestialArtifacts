@@ -44,7 +44,7 @@ public class CursedTotem extends BaseTickingToken
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_1.get()));
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_2.get(TextFacet.num(addLevel()) , TextFacet.num(maxLevel()))));
 		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_3.get(TextFacet.num(consume()))));
-		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_1.get(TextFacet.num(cursed_soul_totem))));
+		list.add(TextFacet.wrap(CALang.Charm.CURSED_TOTEM_4.get(TextFacet.num(cursed_soul_totem))));
 	}
 
 	@Override

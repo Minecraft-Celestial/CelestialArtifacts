@@ -93,7 +93,10 @@ public class CALang {
 		AVOID_TYPE("%s chance to avoid %s damage", 2),
 		NEGATE_TYPE("Negates %s damage", 1),
 		COMMA(", ", 0),
-		SET("Requires [%s] to take effect:", 1);
+		SET("Requires [%s] to take effect:", 1),
+		SKILL("Active Skill: ", 0),
+		SKILL_CD("Cool Down: %s seconds", 1),
+		;
 
 		final Entry entry;
 
@@ -233,50 +236,50 @@ public class CALang {
 		WAR_DEAD_BADGE_10("当生命低于最大生命的20%时", 0),
 		WAR_DEAD_BADGE_11("周围每有1只怪物", 0),
 		WAR_DEAD_BADGE_12("攻击后恢复%s已损失生命", 1),
-		
+
 		CURSED_PROTECTOR_0("副手装备的盾牌不会再进入冷却", 0),
 		CURSED_PROTECTOR_1("受到伤害大于当前生命的%s时，伤害降低%s", 2),
-		
+
 		UNDEAD_CHARM("受到致命伤害时规避该伤害，冷却%s秒", 1),
 		TWISTED_BRAIN("受到伤害时有%s的概率规避该伤害并获得力量效果", 1),
-		
+
 		SOUL_BOX_1("受到攻击时有%s概率使攻击者获得灵魂碎裂效果", 1),
 		SOUL_BOX_2("受到致命攻击时，使目标灵获得灵魂碎裂效果", 0),
 		SOUL_BOX_3("并对攻击者造成1次相当于最大生命%s的凋零伤害", 1),
 		SOUL_BOX_4("受到致命攻击时，规避该伤害，冷却%s秒", 1),
-		
+
 		SOLAR_MAGNET_1("所处世界为白天时免疫燃烧", 0),
 		SOLAR_MAGNET_2("吸引周围的物品", 0),
-		
+
 		SACRIFICIAL_OBJECT_1("死亡时有概率在原地留下%s块金锭", 1),
 		SACRIFICIAL_OBJECT_2("死亡时有%s概率使周围最大生命小于自身的敌对生物陪葬", 1),
-		
+
 		KNIGHT_SHELTER_1("副手装备盾牌时，每%s秒恢复1点生命，装备于主手时恢复速度加快", 1),
 		KNIGHT_SHELTER_2("使用盾牌格挡伤害后对攻击者反伤格挡伤害的%s", 1),
-		
+
 		HOLY_TALISMAN_1("根据周围的怪物数量每%s秒使它们获得1次虚弱效果", 1),
 		HOLY_TALISMAN_2("受到伤害降低%s，若攻击者属于亡灵生物，受到伤害则降低%s", 2),
 		HOLY_TALISMAN_3("受到致命攻击时将保留1点血量并获得与最大生命相等的伤害吸收，冷却%s秒", 1),
-		
+
 		HOLY_SWORD_1("受到伤害时反弹12%受到伤害", 0),
 		HOLY_SWORD_2("攻击亡灵生物时造成伤害全额用于治疗自身", 0),
 		HOLY_SWORD_3("每损失1点生命提高%s攻击伤害", 1),
-		
+
 		GLUTTONY_BADGE_1("每次食用食物后获得短暂的生命恢复与力量效果", 0),
 		GLUTTONY_BADGE_2("每拥有1点饱食度降低%s受到伤害", 1),
-		
+
 		DEMON_CURSE_1("每%s治疗力", 1),
 		DEMON_CURSE_2("攻击伤害提高%s", 1),
 		DEMON_CURSE_3("移动速度提高%s", 1),
 		DEMON_CURSE_4("当前提供的属性加成", 0),
 		DEMON_CURSE_5("攻击伤害:%s", 1),
 		DEMON_CURSE_6("移动速度:%s", 1),
-		
+
 		CURSED_TOTEM_1("使用不死图腾时给予最近的攻击者凋零效果", 0),
 		CURSED_TOTEM_2("受到非致命伤害时会积攒%s层[怨念]，上限%s层", 2),
 		CURSED_TOTEM_3("受到致命伤害时，则消耗%s层[怨念]并规避该伤害", 1),
 		CURSED_TOTEM_4("当前已积攒的[怨念]:%s", 1),
-		
+
 		CURSED_TALISMAN_1("使用的武器与防具中", 0),
 		CURSED_TALISMAN_2("每拥有1种诅咒附魔", 0),
 		CURSED_TALISMAN_3("暴击率提高%s", 1),
@@ -284,8 +287,7 @@ public class CALang {
 		CURSED_TALISMAN_5("当前提供的属性加成", 0),
 		CURSED_TALISMAN_6("暴击率:%s", 1),
 		CURSED_TALISMAN_7("暴击伤害:%s", 1),
-		
-		CORRUPT_BADGE_1("主动效果:", 0),
+
 		CORRUPT_BADGE_2("获得%s, %s, %s", 3),
 		CORRUPT_BADGE_3("自身每有1种负面效果", 0),
 		CORRUPT_BADGE_4("挖掘速度提高%s", 1),
@@ -295,7 +297,7 @@ public class CALang {
 		CORRUPT_BADGE_8("挖掘速度:+%s", 1),
 		CORRUPT_BADGE_9("攻击速度:+%s", 1),
 		CORRUPT_BADGE_10("攻击伤害:+%s", 1),
-		
+
 		ANGEL_PEARL_1("持续使周围的玩家获得生命恢复效果", 0),
 		ANGEL_PEARL_2("每有1种正面效果", 0),
 		ANGEL_PEARL_3("治疗力提高%s", 1),
@@ -303,11 +305,10 @@ public class CALang {
 		ANGEL_PEARL_5("当前提供的属性加成", 0),
 		ANGEL_PEARL_6("治疗力:%s", 1),
 		ANGEL_PEARL_7("护甲值:%s", 1),
-		
+
 		ANGEL_HEART_1("每%s秒恢复%s点生命值", 2),
 		ANGEL_HEART_2("每%s秒清除1次身上的负面效果", 1),
-		
-		ABYSS_WILL_BADGE_1("主动效果:", 0),
+
 		ABYSS_WILL_BADGE_2("将[深渊呼唤]层数提高至%s层，持续%s秒", 2),
 		ABYSS_WILL_BADGE_3("效果结束后将积攒的层数清0并将生命削减到当前生命的%s", 1),
 		ABYSS_WILL_BADGE_4("攻击时%s概率将此伤害提高至%s，%s概率提高至%s", 4),
@@ -388,7 +389,7 @@ public class CALang {
 		ABYSS_CORE("受到伤害大于%s点时，将此伤害降低为%s点，冷却%s秒", 3),
 		GUARDIAN_EYE_1("持续给予周围的生物挖掘疲劳效果", 0),
 		GUARDIAN_EYE_2("处于水下时不在消耗氧气", 0),
-		SEA_GOD_CROWN("主动效果:所处世界处于非雨天时将天气改为雨天，冷却300秒", 0),
+		SEA_GOD_CROWN("所处世界处于非雨天时将天气改为雨天", 0),
 		PRAYER_CROWN("潜行时受到攻击后50%概率立即恢复受到伤害%s生命", 1),
 		SPIRIT_CROWN_1("周围实体数量小于3时，射出的箭矢伤害提高%s", 1),
 		SPIRIT_CROWN_2("与目标每相隔1方块的距离，射出的箭矢伤害提高%s", 1);
@@ -412,7 +413,7 @@ public class CALang {
 		DEMON_HEART_4("受到伤害降低%s", 1),
 		DEMON_HEART_5("背负大于等于3条诅咒时，阻止自身受到火焰燃烧", 0),
 		DEMON_HEART_6("背负大于等于5条诅咒时，免疫缓慢与虚弱效果", 0),
-		
+
 		TWISTED_HEART_1("盔甲韧性降低%s", 1),
 		TWISTED_HEART_2("攻击伤害降低%s", 1),
 		TWISTED_HEART_3("若背负虚无诅咒，以上属性将反转为增益属性", 0);
@@ -489,12 +490,9 @@ public class CALang {
 
 	public enum Scroll implements Info {
 		SEA_GOD("处于水下时挖掘速度不会再受到影响", 0),
-		SKY_WALKER_1("主动效果:", 0),
 		SKY_WALKER_2("下蹲时，储存当前位置的坐标，未下蹲时，将你传送到储存的坐标处，冷却%s秒", 1),
-		SKY_WALKER_3("未储存任何坐标时，使用主动效果会将穿戴者传送到xyz分别为0的位置", 0),
-		SKY_WALKER_4("当前储存的x坐标: %s", 1),
-		SKY_WALKER_5("当前储存的y坐标: %s", 1),
-		SKY_WALKER_6("当前储存的z坐标: %s", 1);
+		SKY_WALKER_3("只能在同维度中传送", 0),
+		SKY_WALKER_4("当前储存的坐标: %s - (%s,%s,%s)", 4);
 
 		final Entry entry;
 
