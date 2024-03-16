@@ -8,15 +8,14 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 
-public class UndeadCharm implements SingleLineText, CAAttackToken {//TODO check
+public class UndeadCharm implements SingleLineText, CAAttackToken {
 
 	private static int cooldownFactor() {
-		return CAModConfig.COMMON.charm.undeadCD.get();
+		return CAModConfig.COMMON.charm.undeadCharmCooldown.get();
 	}
 
 	@Override

@@ -234,7 +234,7 @@ public class CALang {
 		CURSED_PROTECTOR_1("受到伤害大于当前生命的%s时，伤害降低%s", 2),
 
 		UNDEAD_CHARM("受到致命伤害时规避该伤害，冷却%s秒", 1),
-		TWISTED_BRAIN("受到伤害时有%s的概率规避该伤害并获得力量效果", 1),
+		TWISTED_BRAIN("受到伤害时有%s的概率规避该伤害并获得%s", 2),
 
 		SOUL_BOX_1("受到攻击时有%s概率使攻击者获得灵魂碎裂效果", 1),
 		SOUL_BOX_2("受到致命攻击时，使目标灵获得灵魂碎裂效果", 0),
@@ -406,10 +406,10 @@ public class CALang {
 		EMERALD("击杀生物后有%s基础概率额外掉落1个绿宝石", 1),
 		ENDER_PROTECTOR("使用盾牌格挡目标攻击后，有%s概率将目标传送走", 1),
 		HOLY("每次受到治疗后获得%s，冷却%s秒", 2),
-		LOCK_OF_ABYSS_1("攻击后给予目标缓慢效果", 0),
+		LOCK_OF_ABYSS_1("攻击后给予目标%s秒缓慢效果", 1),
 		LOCK_OF_ABYSS_2("若目标已有缓慢效果则将目标的缓慢效果提升1级", 0),
-		LOCK_OF_ABYSS_3("攻击时若目标拥有缓慢效果且等级大于7", 0),
-		LOCK_OF_ABYSS_4("移除该效果并对目标造成原伤害%s的虚空伤害", 1);
+		LOCK_OF_ABYSS_3("攻击时若目标拥有缓慢效果且等级大于%s", 1),
+		LOCK_OF_ABYSS_4("移除该效果并对目标造成原伤害%s的深渊伤害", 1);
 
 		final Entry entry;
 

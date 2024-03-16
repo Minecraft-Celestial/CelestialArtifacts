@@ -233,12 +233,11 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue sandsTalismanExpBonus;
 
 			//twisted brain
-			public final ForgeConfigSpec.DoubleValue twistedbrainAvoid;
-			public final ForgeConfigSpec.DoubleValue twistedbrainArmorless;
-			public final ForgeConfigSpec.DoubleValue twistedbrainDamageless;
+			public final ForgeConfigSpec.DoubleValue twistedbrainAvoidChance;
+			public final ForgeConfigSpec.IntValue twistedBrainEffectDuration;
 
 			//undead charm
-			public final ForgeConfigSpec.IntValue undeadCD;
+			public final ForgeConfigSpec.IntValue undeadCharmCooldown;
 
 			//wardead badge
 			public final ForgeConfigSpec.DoubleValue warDeadBadgeHeal;
@@ -481,7 +480,7 @@ public class CAModConfig {
 
 				}
 
-				//sacrificial object
+				//sacrificial object TODO
 				{
 					sacriloot = builder
 							.comment("sacrificial: loot level improve")
@@ -533,24 +532,21 @@ public class CAModConfig {
 							.defineInRange("sandsTalismanExpBonus", 0.5, 0, 10);
 				}
 
-				//twisted brain TODO
+				//twisted brain
 				{
-					twistedbrainAvoid = builder
-							.comment("twistedbrainAvoid:possible to avoid harm")
-							.defineInRange("twistedbrainAvoid", 0.17, 0, 1);
-					twistedbrainArmorless = builder
-							.comment("twistedbrainArmorless:armor less")
-							.defineInRange("twistedbrainArmorless", 0.20, 0, 1);
-					twistedbrainDamageless = builder
-							.comment("twistedbrainDamageless:damage less")
-							.defineInRange("twistedbrainArmorless", 0.33, 0, 1);
+					twistedbrainAvoidChance = builder
+							.comment("Twisted Brain: chance to avoid damage")
+							.defineInRange("twistedbrainAvoidChance", 0.17, 0, 1);
+					twistedBrainEffectDuration = builder
+							.comment("Twisted Brain: damage boost effect duration")
+							.defineInRange("twistedBrainEffectDuration", 5, 0, 100);
 				}
 
-				//undead charm TODO
+				//undead charm
 				{
-					undeadCD = builder
-							.comment("undeadCD:possible to avoid harm")
-							.defineInRange("undeadCD", 180, 1, Integer.MAX_VALUE);
+					undeadCharmCooldown = builder
+							.comment("Undead Charm: Cool Down in seconds")
+							.defineInRange("undeadCharmCooldown", 180, 1, Integer.MAX_VALUE);
 				}
 
 				//wardead badge
@@ -811,6 +807,8 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue holyNecklaceCooldown;
 			public final ForgeConfigSpec.IntValue holyNecklaceDuration;
 			public final ForgeConfigSpec.DoubleValue lockOfAbyssExtraDamage;
+			public final ForgeConfigSpec.IntValue lockOfAbyssDuration;
+			public final ForgeConfigSpec.IntValue lockOfAbyssThreshold;
 
 			private Necklace(ForgeConfigSpec.Builder builder) {
 				builder.push("necklace");
@@ -841,6 +839,12 @@ public class CAModConfig {
 				lockOfAbyssExtraDamage = builder
 						.comment("Lock Of Abyss: extra damage multiplier")
 						.defineInRange("lockOfAbyssExtraDamage", 2.5, 0.01, 10);
+				lockOfAbyssDuration = builder
+						.comment("Lock Of Abyss: slowness duration in seconds")
+						.defineInRange("lockOfAbyssDuration", 10, 1, 1000);
+				lockOfAbyssThreshold = builder
+						.comment("Lock Of Abyss: layer of slowness to take effect")
+						.defineInRange("lockOfAbyssThreshold", 7, 1, 10);
 				// fang necklace
 				{
 					fangNecklaceAttack = builder

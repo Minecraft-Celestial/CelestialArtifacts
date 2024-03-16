@@ -18,18 +18,26 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class LockOfAbyss implements MultiLineText, CAAttackToken {//TODO check
+public class LockOfAbyss implements MultiLineText, CAAttackToken {
 
 	private double extraDamageFactor() {
 		return CAModConfig.COMMON.necklace.lockOfAbyssExtraDamage.get();
 	}
 
+	private int duration() {
+		return CAModConfig.COMMON.necklace.lockOfAbyssDuration.get();
+	}
+
+	private int threshold() {
+		return CAModConfig.COMMON.necklace.lockOfAbyssThreshold.get();
+	}
+
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-	  list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_1.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_2.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_3.get().withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_4.get(TextFacet.perc(extraDamageFactor())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_1.get(TextFacet.num(duration())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_2.get().withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_3.get(TextFacet.num(threshold())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Necklace.LOCK_OF_ABYSS_4.get(TextFacet.perc(extraDamageFactor())).withStyle(ChatFormatting.GRAY)));
 	}
 
 	@Override
@@ -38,15 +46,15 @@ public class LockOfAbyss implements MultiLineText, CAAttackToken {//TODO check
 		var ins = entity.getEffect(MobEffects.MOVEMENT_SLOWDOWN);
 		if (ins != null) {
 			int amplifier = ins.getAmplifier();
-			if (amplifier >= 7) {
+			if (amplifier >= threshold() - 1) {
 				entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 				var dmg = cache.getDamageDealt() * extraDamageFactor();
 				GeneralEventHandler.schedule(() -> entity.hurt(CCDamageTypes.abyss(player), (float) dmg));
 			} else {
-				EntityUtils.addEct(entity, MobEffects.MOVEMENT_SLOWDOWN, 200, amplifier + 1);
+				EntityUtils.addEct(entity, MobEffects.MOVEMENT_SLOWDOWN, duration() * 20, amplifier + 1);
 			}
 		} else {
-			EntityUtils.addEct(entity, MobEffects.MOVEMENT_SLOWDOWN, 200, 0);
+			EntityUtils.addEct(entity, MobEffects.MOVEMENT_SLOWDOWN, duration() * 20, 0);
 		}
 	}
 }

@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 
-public class EnderProtector implements SingleLineText, ShieldingFeature {//TODO check
+public class EnderProtector implements SingleLineText, ShieldingFeature {
 
 	private static double teleportFactor() {
 		return CAModConfig.COMMON.necklace.enderProtectorChance.get();
