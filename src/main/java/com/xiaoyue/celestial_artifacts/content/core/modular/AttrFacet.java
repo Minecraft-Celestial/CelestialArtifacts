@@ -3,6 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.core.modular;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_core.CelestialCore;
 import com.xiaoyue.celestial_core.register.CCAttributes;
+import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -39,7 +40,7 @@ public record AttrFacet(Supplier<Attribute> attr, DoubleSupplier val,
 	public static MutableComponent getText(Attribute attr, double val, AttributeModifier.Operation op) {
 		var text = Component.translatable(attr.getDescriptionId());
 		MutableComponent base;
-		if (isMult(attr)) {
+		if (AttrTooltip.isMult(attr)) {
 			if (op == AttributeModifier.Operation.ADDITION) {
 				base = Component.literal(val < 0 ? "-" : "+");
 				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
@@ -62,33 +63,6 @@ public record AttrFacet(Supplier<Attribute> attr, DoubleSupplier val,
 		base.append(" ");
 		base.append(text);
 		return base.withStyle(ChatFormatting.GRAY);
-	}
-
-	public static MutableComponent getDesc(Attribute attr, double val, AttributeModifier.Operation op) {
-		var text = Component.translatable(attr.getDescriptionId());
-		MutableComponent base;
-		if (isMult(attr)) {
-			if (op == AttributeModifier.Operation.ADDITION) {
-				base = Component.literal(val < 0 ? "-" : "+");
-				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
-				base.append("%");
-
-			} else {
-				base = Component.literal("x");
-				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(val + 1));
-			}
-		} else {
-			base = Component.literal(val < 0 ? "-" : "+");
-			if (op == AttributeModifier.Operation.ADDITION) {
-				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val)));
-			} else {
-				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
-				base.append("%");
-			}
-		}
-		base.append(" ");
-		base.append(text);
-		return base.withStyle((val < 0 ^ attr == L2DamageTracker.REDUCTION.get()) ? ChatFormatting.RED : ChatFormatting.BLUE);
 	}
 
 	public static MutableComponent simpleAdd(Component text, int val) {
@@ -114,15 +88,6 @@ public record AttrFacet(Supplier<Attribute> attr, DoubleSupplier val,
 		base = Component.empty().append(base.withStyle(ChatFormatting.AQUA)).append(" ");
 		base.append(text);
 		return base.withStyle(ChatFormatting.GRAY);
-	}
-
-	public static boolean isMult(Attribute attr) {
-		if (attr == L2DamageTracker.ABSORB.get()) return false;
-		if (attr == CCAttributes.ARROW_KNOCK.get()) return false;
-		var rl = ForgeRegistries.ATTRIBUTES.getKey(attr);
-		assert rl != null;
-		return rl.getNamespace().equals(L2DamageTracker.MODID) ||
-				rl.getNamespace().equals(CelestialCore.MODID);
 	}
 
 }

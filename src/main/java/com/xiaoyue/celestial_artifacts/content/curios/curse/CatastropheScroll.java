@@ -247,7 +247,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 						Curses.ORIGIN.cursing(player) ? -getOriginCurse() : Curses.ORIGIN.blessing(player) ? getOriginBonus() : 0),
 				AttrAdder.of(name, () -> Attributes.MAX_HEALTH, AttributeModifier.Operation.MULTIPLY_BASE, () ->
 						Curses.LIFE.cursing(player) ? -getLifeCurseHealth() : Curses.LIFE.blessing(player) ? getLifeBonusHealth() : 0),
-				AttrAdder.of(name, CCAttributes.REPLY_POWER, AttributeModifier.Operation.ADDITION, () ->
+				AttrAdder.of(name, CCAttributes.REPLY_POWER::get, AttributeModifier.Operation.ADDITION, () ->
 						Curses.LIFE.cursing(player) ? -getLifeCurseHeal() : Curses.LIFE.blessing(player) ? getLifeBonusHeal() : 0)
 		);
 	}

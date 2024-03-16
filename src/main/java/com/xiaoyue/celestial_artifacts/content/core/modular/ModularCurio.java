@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureMap;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -145,7 +146,6 @@ public final class ModularCurio extends BaseCurio {
 
 	@Override
 	public List<Component> getAttributesTooltip(List<Component> tooltips, ItemStack stack) {
-		//if (Screen.hasShiftDown()) return List.of();
 		if (attributes.isEmpty()) return tooltips;
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < tooltips.size(); i++) {
@@ -168,11 +168,8 @@ public final class ModularCurio extends BaseCurio {
 				continue;
 			}
 			MutableComponent rep = null;
-			if (AttrFacet.isMult(ent.attr().get())) {
-				rep = AttrFacet.getDesc(ent.attr().get(), val, ent.op());
-			}
-			if (ent.attr().get() == L2DamageTracker.REDUCTION.get()) {
-				rep = AttrFacet.getDesc(ent.attr().get(), val, ent.op());
+			if (AttrTooltip.isMult(ent.attr().get()) || AttrTooltip.isNegative(ent.attr().get())) {
+				rep = AttrTooltip.getDesc(ent.attr().get(), val, ent.op());
 			}
 			if (rep != null) {
 				tooltips.set(index, rep);

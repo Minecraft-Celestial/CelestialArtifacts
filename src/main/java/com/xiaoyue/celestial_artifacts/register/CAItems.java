@@ -273,7 +273,7 @@ public class CAItems {
 					.build(
 							AttrFacet.add(() -> Attributes.MAX_HEALTH,
 									CAModConfig.COMMON.charm.bearingStamenMaxHealth::get),
-							AttrFacet.add(CCAttributes.REPLY_POWER,
+							AttrFacet.add(CCAttributes.REPLY_POWER::get,
 									CAModConfig.COMMON.charm.bearingStamenRegen::get),
 							EffectFacet.of(() -> MobEffects.REGENERATION, () -> 2,
 									CAModConfig.COMMON.charm.bearingStamenLevel::get)
@@ -292,9 +292,10 @@ public class CAItems {
 									CAModConfig.COMMON.charm.sandsTalismanDamageBonus::get)
 					));
 
-			// 古代殉葬品 TODO config
+			// 古代殉葬品
 			SACRIFICIAL_OBJECT = charm("sacrificial_object", () -> ModularCurio.builder().rarity(Rarity.EPIC)
-					.loot(1).build(AttrFacet.multTotal(L2DamageTracker.REDUCTION::get, () -> -0.05),
+					.loot(1).build(AttrFacet.multTotal(L2DamageTracker.REDUCTION::get,
+									() -> -CAModConfig.COMMON.charm.sacrificialObjectReduction.get()),
 							new SacrificialObject()));
 		}
 
@@ -383,7 +384,7 @@ public class CAItems {
 			// 生命手环 TODO config
 			LIFE_BRACELET = bracelet("life_bracelet", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							AttrFacet.add(CCAttributes.REPLY_POWER, () -> 0.15),
+							AttrFacet.add(CCAttributes.REPLY_POWER::get, () -> 0.15),
 							EffectFacet.of(() -> MobEffects.REGENERATION, 2, 0)
 					));
 			// 珍钻手环 TODO config
@@ -582,14 +583,14 @@ public class CAItems {
 			MAGIC_ARROW_BAG = back("magic_arrow_bag", () -> ModularCurio.of(
 					AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get,
 							CAModConfig.COMMON.back.magicArrowBagBowStrength::get),
-					AttrFacet.add(CCAttributes.ARROW_KNOCK,
+					AttrFacet.add(CCAttributes.ARROW_KNOCK::get,
 							CAModConfig.COMMON.back.magicArrowBagArrowKnock::get)
 			));
 			// 火焰箭袋
 			FLAME_ARROW_BAG = back("flame_arrow_bag", () -> ModularCurio.of(
 					AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get,
 							CAModConfig.COMMON.back.flameArrowBagBowStrength::get),
-					AttrFacet.add(CCAttributes.ARROW_KNOCK,
+					AttrFacet.add(CCAttributes.ARROW_KNOCK::get,
 							CAModConfig.COMMON.back.flameArrowBagArrowKnock::get),
 					TextFacet.line(() -> CALang.Back.FLAME.get(TextFacet.num(
 							CAModConfig.COMMON.back.flameArrowBagTime.get())))
@@ -599,9 +600,9 @@ public class CAItems {
 					ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
 							AttrFacet.add(L2DamageTracker.BOW_STRENGTH::get,
 									CAModConfig.COMMON.back.spiritArrowBagBowStrength::get),
-							AttrFacet.add(CCAttributes.ARROW_SPEED,
+							AttrFacet.add(CCAttributes.ARROW_SPEED::get,
 									CAModConfig.COMMON.back.spiritArrowBagArrowSpeed::get),
-							AttrFacet.add(CCAttributes.ARROW_KNOCK,
+							AttrFacet.add(CCAttributes.ARROW_KNOCK::get,
 									CAModConfig.COMMON.back.spiritArrowBagArrowKnock::get),
 							spiritSet()
 					));
@@ -635,7 +636,7 @@ public class CAItems {
 							EffectFacet.of(CCEffects.BLADE_MODIFIER::get, 3, 0, 5),
 							AttrFacet.multBase(() -> Attributes.ATTACK_KNOCKBACK, () -> 1),
 							AttrFacet.multBase(() -> Attributes.ATTACK_SPEED, () -> 0.25),
-							AttrFacet.multTotal(CCAttributes.REPLY_POWER, () -> -0.5),
+							AttrFacet.multTotal(CCAttributes.REPLY_POWER::get, () -> -0.5),
 							TwistedScabbard.TOKEN
 					));
 		}

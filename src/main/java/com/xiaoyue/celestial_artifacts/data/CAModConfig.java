@@ -218,15 +218,18 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue magicHorseshoeFallReduction;
 
 			//sacrificial object
-			public final ForgeConfigSpec.IntValue sacriloot;
-			public final ForgeConfigSpec.DoubleValue sacriReduction;
-			public final ForgeConfigSpec.IntValue sacriheritage;
-			public final ForgeConfigSpec.DoubleValue sacriselfexplode;
+			public final ForgeConfigSpec.DoubleValue sacrificialObjectReduction;
+			public final ForgeConfigSpec.DoubleValue sacrificialObjectHeritage;
+			public final ForgeConfigSpec.DoubleValue sacrificialObjectSacrifice;
 
 			//soul box
-			public final ForgeConfigSpec.DoubleValue soulboxbreak;
-			public final ForgeConfigSpec.DoubleValue soulboxwitherblast;
-			public final ForgeConfigSpec.IntValue soulboximmortalCD;
+			public final ForgeConfigSpec.DoubleValue soulBoxShatterChance;
+			public final ForgeConfigSpec.DoubleValue soulBoxReflect;
+			public final ForgeConfigSpec.IntValue soulBoxCooldown;
+			public final ForgeConfigSpec.IntValue soulBoxShatterHighDuration;
+			public final ForgeConfigSpec.IntValue soulBoxShatterHighLevel;
+			public final ForgeConfigSpec.IntValue soulBoxShatterLowDuration;
+			public final ForgeConfigSpec.IntValue soulBoxShatterLowLevel;
 
 			// bearing stamen
 			public final ForgeConfigSpec.DoubleValue bearingStamenMaxHealth;
@@ -493,33 +496,42 @@ public class CAModConfig {
 
 				}
 
-				//sacrificial object TODO
+				//sacrificial object
 				{
-					sacriloot = builder
-							.comment("sacrificial: loot level improve")
-							.defineInRange("sacriloot", 1, 0, Integer.MAX_VALUE);
-					sacriReduction = builder
-							.comment("sacrificial: damage reduction percentage")
+					sacrificialObjectReduction = builder
+							.comment("Sacrificial Object: damage reduction percentage")
 							.defineInRange("sacriReduction", 0.05, 0.01, 1);
-					sacriheritage = builder
-							.comment("sacrificial:deadth drop gold ingots")
-							.defineInRange("sacriheritage", 1, 0, Integer.MAX_VALUE);
-					sacriselfexplode = builder
-							.comment("sacrificial:death explode percentage")
-							.defineInRange("sacriselfexplode", 0.45, 0.01, 1);
+					sacrificialObjectHeritage = builder
+							.comment("Sacrificial Object: gold ingot drop chance on death")
+							.defineInRange("sacrificialObjectHeritage", 0.5, 0, 1);
+					sacrificialObjectSacrifice = builder
+							.comment("Sacrificial Object :death sacrifice chance")
+							.defineInRange("sacrificialObjectSacrifice", 0.45, 0.01, 1);
 				}
 
-				//soul box TODO
+				//soul box
 				{
-					soulboxbreak = builder
-							.comment("soulboxbreak:break the soul of attacker")
-							.defineInRange("soulboxbreak", 0.30, 0.01, 1);
-					soulboxwitherblast = builder
-							.comment("soulboxwitherblast:strike back with wither blast")
-							.defineInRange("soulboxwitherblast", 2.50, 0.01, 100);
-					soulboximmortalCD = builder
-							.comment("soulboximmortalCD:can die within a period of time")
-							.defineInRange("soulboximmortalCD", 240, 1, Integer.MAX_VALUE);
+					soulBoxShatterChance = builder
+							.comment("Soul Box: chance to inflict shatter effect")
+							.defineInRange("soulBoxShatterChance", 0.30, 0.01, 1);
+					soulBoxReflect = builder
+							.comment("Soul Box: abyss damage as percentage of original damage")
+							.defineInRange("soulBoxReflect", 2.50, 0.01, 100);
+					soulBoxCooldown = builder
+							.comment("Soul Box: cool down in seconds")
+							.defineInRange("soulBoxCooldown", 240, 1, Integer.MAX_VALUE);
+					soulBoxShatterHighDuration = builder
+							.comment("Soul Box: effect duration inflicted on fatal hit, in seconds")
+							.defineInRange("soulBoxShatterHighDuration", 60, 1, Integer.MAX_VALUE);
+					soulBoxShatterHighLevel = builder
+							.comment("Soul Box: effect level inflicted on fatal hit, (0 means Lv.I)")
+							.defineInRange("soulBoxShatterHighLevel", 2, 0, 100);
+					soulBoxShatterLowDuration = builder
+							.comment("Soul Box: effect duration inflicted on non-fatal hit, in seconds")
+							.defineInRange("soulBoxShatterLowDuration", 5, 1, Integer.MAX_VALUE);
+					soulBoxShatterLowLevel = builder
+							.comment("Soul Box: effect level inflicted on non-fatal hit, (0 means Lv.I)")
+							.defineInRange("soulBoxShatterLowLevel", 0, 0, 100);
 				}
 
 				// bearing stamen

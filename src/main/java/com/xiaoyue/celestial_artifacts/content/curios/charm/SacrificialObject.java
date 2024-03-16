@@ -17,23 +17,23 @@ import java.util.List;
 
 public class SacrificialObject implements MultiLineText {//TODO check
 
-	private static int goldAmount() {
-		return CAModConfig.COMMON.charm.sacriheritage.get();
+	private static double goldChance() {
+		return CAModConfig.COMMON.charm.sacrificialObjectHeritage.get();
 	}
 
 	private static double chance() {
-		return CAModConfig.COMMON.charm.sacriselfexplode.get();
+		return CAModConfig.COMMON.charm.sacrificialObjectSacrifice.get();
 	}
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-		list.add(TextFacet.wrap(CALang.Charm.SACRIFICIAL_OBJECT_1.get(TextFacet.num(goldAmount()))));
+		list.add(TextFacet.wrap(CALang.Charm.SACRIFICIAL_OBJECT_1.get(TextFacet.perc(goldChance()))));
 		list.add(TextFacet.wrap(CALang.Charm.SACRIFICIAL_OBJECT_2.get(TextFacet.perc(chance()))));
 	}
 
 	public static void onPlayerDeath(Player player) {
-		if (CAAttackToken.chance(player, 0.5)) {
-			player.spawnAtLocation(Items.GOLD_INGOT, goldAmount());
+		if (CAAttackToken.chance(player, goldChance())) {
+			player.spawnAtLocation(Items.GOLD_INGOT);
 		}
 		List<LivingEntity> entities = EntityUtils.getDelimitedMonster(player, 8);
 		entities.remove(player);

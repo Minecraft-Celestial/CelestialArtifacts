@@ -47,7 +47,7 @@ public class AngelPearl extends BaseTickingToken {
 
 	private AttrAdder reply() {
 		double val = angel_pearl_add * replyAmount();
-		return AttrAdder.of("angel_pearl", CCAttributes.REPLY_POWER, AttributeModifier.Operation.ADDITION, val);
+		return AttrAdder.of("angel_pearl", CCAttributes.REPLY_POWER::get, AttributeModifier.Operation.ADDITION, val);
 	}
 
 	private AttrAdder armor() {
