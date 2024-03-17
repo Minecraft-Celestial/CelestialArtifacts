@@ -114,6 +114,23 @@ public class CAModConfig {
 			// hidden_bracelet
 			public final ForgeConfigSpec.IntValue hiddenBraceletEffectDuration;
 
+			public final ForgeConfigSpec.DoubleValue hiddenBraceletDamageimprove;
+
+			public final ForgeConfigSpec.IntValue hiddenBraceletCD;
+
+			//charm_brace
+			public final ForgeConfigSpec.IntValue charmbraceArmor;
+			public final ForgeConfigSpec.IntValue charmbracevirus;
+			public final ForgeConfigSpec.IntValue charmbraceship;
+
+			//scarlet_bloodrage
+			public final ForgeConfigSpec.DoubleValue scarletheal;
+			public final ForgeConfigSpec.DoubleValue scarletdamagerate;
+			public final ForgeConfigSpec.DoubleValue scarletdamagelimit;
+
+			//spirit_bracelet
+			public final ForgeConfigSpec.DoubleValue spiritspeedbow;
+
 			private Bracelet(ForgeConfigSpec.Builder builder) {
 				builder.push("bracelet");
 
@@ -121,11 +138,60 @@ public class CAModConfig {
 				hiddenBraceletEffectDuration = builder
 						.comment("This value determines how many seconds you will receive a stealth effect once")
 						.defineInRange("hiddenBraceletEffectDuration", 7, 1, Integer.MAX_VALUE);
+				hiddenBraceletDamageimprove = builder
+			            .comment("This value determines how many damage you will improve")
+						.defineInRange("hiddenBraceletEffectDuration", 0.25, 0, Integer.MAX_VALUE);
+				hiddenBraceletCD = builder
+						.comment("This value determines how many seconds you cant hidden")
+						.defineInRange("hiddenBraceletEffectDuration", 5, 1, Integer.MAX_VALUE);
 
+				//charm_brace
+				{
+					charmbraceArmor = builder
+						.comment("Armor improve")
+						.defineInRange("charmbraceArmor", 2, 0, Integer.MAX_VALUE);
+					charmbracevirus = builder
+							.comment("enemy kill one of themself")
+							.defineInRange("charmbracevirus", 10, 1, Integer.MAX_VALUE);
+					charmbraceship = builder
+							.comment("villager be friendly when you kill zombies")
+							.defineInRange("ship", 1, 0, Integer.MAX_VALUE);
+				}
+
+				//scarlet_brace
+				{
+					scarletheal = builder
+							.comment("Armor improve")
+							.defineInRange("scarlet decrease heal", 0.50, 0, Integer.MAX_VALUE);
+					scarletdamagerate = builder
+							.comment("scarlet bracelet damage rate")
+							.defineInRange("scarlet damage rate", 0.01, 0, Integer.MAX_VALUE);
+					scarletdamagelimit = builder
+							.comment("the limit of scarlet bracelet damage rate")
+							.defineInRange("scarlet damage limit", 0.50, 0, Integer.MAX_VALUE);
+
+					//spirit_brace
+					spiritspeedbow = builder
+							.comment("speed increase after hitting with a bow or crossbow")
+							.defineInRange("scarlet damage limit", 1.00, 0, Integer.MAX_VALUE);
+
+				}
 				builder.pop();
 			}
 
-		}
+            public Bracelet(ForgeConfigSpec.IntValue hiddenBraceletEffectDuration, ForgeConfigSpec.DoubleValue hiddenBraceletDamageimprove, ForgeConfigSpec.IntValue hiddenBraceletCD, ForgeConfigSpec.IntValue charmbraceArmor, ForgeConfigSpec.IntValue charmbracevirus, ForgeConfigSpec.IntValue charmbraceship, ForgeConfigSpec.DoubleValue scarletheal, ForgeConfigSpec.DoubleValue scarletdamagerate, ForgeConfigSpec.DoubleValue scarletdamagelimit, ForgeConfigSpec.DoubleValue spiritspeedbow) {
+                this.hiddenBraceletEffectDuration = hiddenBraceletEffectDuration;
+                this.hiddenBraceletDamageimprove = hiddenBraceletDamageimprove;
+                this.hiddenBraceletCD = hiddenBraceletCD;
+                this.charmbraceArmor = charmbraceArmor;
+                this.charmbracevirus = charmbracevirus;
+                this.charmbraceship = charmbraceship;
+                this.scarletheal = scarletheal;
+                this.scarletdamagerate = scarletdamagerate;
+                this.scarletdamagelimit = scarletdamagelimit;
+                this.spiritspeedbow = spiritspeedbow;
+            }
+        }
 
 		public static class Charm {
 
