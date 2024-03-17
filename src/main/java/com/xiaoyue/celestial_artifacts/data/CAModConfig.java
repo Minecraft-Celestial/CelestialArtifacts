@@ -139,15 +139,15 @@ public class CAModConfig {
 
 			// holy sword
 			public final ForgeConfigSpec.DoubleValue holySwordCritRate;
-			public final ForgeConfigSpec.DoubleValue holySwordMaxAddDamage;
+			public final ForgeConfigSpec.DoubleValue holySwordReflect;
 			public final ForgeConfigSpec.DoubleValue holySwordLostLifeAddDamage;
 
 			//holy talisman
-			public final ForgeConfigSpec.IntValue holytaliweak;
-			public final ForgeConfigSpec.DoubleValue holytaliprotect;
-			public final ForgeConfigSpec.DoubleValue holytalideadprotect;
-			public final ForgeConfigSpec.IntValue holytaliimmortal;
-			public final ForgeConfigSpec.IntValue holytaliCD;
+			public final ForgeConfigSpec.IntValue holyTalismanWeakenInterval;
+			public final ForgeConfigSpec.DoubleValue holyTalismanProtection;
+			public final ForgeConfigSpec.DoubleValue holyTalismanProtectionUndead;
+			public final ForgeConfigSpec.IntValue holyTalismanEffectDuration;
+			public final ForgeConfigSpec.IntValue holyTalismanCooldown;
 
 			//AbyssWillBadge
 			public final ForgeConfigSpec.IntValue abyssWillBadgeInitialLevel;
@@ -278,31 +278,31 @@ public class CAModConfig {
 					holySwordCritRate = builder
 							.comment("Holy Sword: crit rate bonus")
 							.defineInRange("holySwordCritRate", 0.15, 0, 1);
-					holySwordMaxAddDamage = builder
-							.comment("Holy Sword: maximum damage increase")
-							.defineInRange("holySwordMaxAddDamage", 0.5, 0, 10000);
 					holySwordLostLifeAddDamage = builder
-							.comment("Holy Sword: how much life you lose and how much damage you inflict once")
-							.defineInRange("holySwordLostLifeAddDamage", 1, 1.0, 10000);
+							.comment("Holy Sword: atk bonus per life lost")
+							.defineInRange("holySwordLostLifeAddDamage", 0.02, 0, 100);
+					holySwordReflect = builder
+							.comment("Holy Sword: damage reflection rate")
+							.defineInRange("holySwordReflect", 0.12, 0, 10);
 				}
 
-				//holy talisman TODO
+				//holy talisman
 				{
-					holytaliweak = builder
-							.comment("weak stance")
-							.defineInRange("holytaliweak", 10, 1, Integer.MAX_VALUE);
-					holytaliprotect = builder
-							.comment("reduce damage under attack")
-							.defineInRange("holytaliprotect", 0.25, 0, 1.00);
-					holytalideadprotect = builder
-							.comment("reduce damage under dead attack")
-							.defineInRange("holytalizomprotect", 0.35, 0, 1.00);
-					holytaliimmortal = builder
-							.comment("reserve some health")
-							.defineInRange("holytaliimmortal", 1, 1, Integer.MAX_VALUE);
-					holytaliCD = builder
-							.comment("skill cooling down")
-							.defineInRange("holytaliCD", 600, 1, Integer.MAX_VALUE);
+					holyTalismanWeakenInterval = builder
+							.comment("Holy Talisman: weakness apply interval in seconds")
+							.defineInRange("holyTalismanWeakenInterval", 10, 1, Integer.MAX_VALUE);
+					holyTalismanEffectDuration = builder
+							.comment("Holy Talisman: effect duration per mob in seconds")
+							.defineInRange("holyTalismanEffectDuration", 2, 1, Integer.MAX_VALUE);
+					holyTalismanProtection = builder
+							.comment("Holy Talisman: non-undead protection")
+							.defineInRange("holyTalismanProtection", 0.25, 0, 1.00);
+					holyTalismanProtectionUndead = builder
+							.comment("Holy Talisman: undead protection")
+							.defineInRange("holyTalismanProtectionUndead", 0.35, 0, 1.00);
+					holyTalismanCooldown = builder
+							.comment("Holy Talisman: totem cool down")
+							.defineInRange("holyTalismanCooldown", 60, 1, Integer.MAX_VALUE);
 				}
 
 

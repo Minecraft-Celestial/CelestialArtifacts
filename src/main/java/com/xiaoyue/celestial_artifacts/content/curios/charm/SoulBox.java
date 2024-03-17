@@ -11,6 +11,7 @@ import com.xiaoyue.celestial_core.data.CCDamageTypes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -79,7 +80,8 @@ public class SoulBox implements MultiLineText, CAAttackToken {
 		if (val > player.getHealth()) {
 			if (!player.getCooldowns().isOnCooldown(item)) {
 				le.addEffect(effHigh());
-				le.hurt(CCDamageTypes.abyss(player), (float) (player.getMaxHealth() * damageFactor()));
+				GeneralEventHandler.schedule(() ->
+						le.hurt(CCDamageTypes.abyss(player), (float) (player.getMaxHealth() * damageFactor())));
 				player.getCooldowns().addCooldown(item, cooldownFactor() * 20);
 				return 0;
 			}

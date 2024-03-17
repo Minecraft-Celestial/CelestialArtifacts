@@ -40,7 +40,7 @@
   "celestial_artifacts.charms.soul_box_0": "受到攻击时有%s概率对攻击者施加%s",
   "celestial_artifacts.charms.soul_box_1": "受到致命攻击时规避该伤害，冷却%s秒，并且:",
   "celestial_artifacts.charms.soul_box_2": "对攻击者施加%s",
-  "celestial_artifacts.charms.soul_box_3": "对攻击者造成1次相当于最大生命%s的深渊伤害",
+  "celestial_artifacts.charms.soul_box_3": "对攻击者造成1次相当于你最大生命%s的深渊伤害",
   "celestial_artifacts.charms.twisted_brain": "受到伤害时有%s的概率规避该伤害并获得%s",
   "celestial_artifacts.charms.undead_charm": "受到致命伤害时规避该伤害，冷却%s秒",
   "celestial_artifacts.charms.war_dead_badge_1": "每损失1%生命",

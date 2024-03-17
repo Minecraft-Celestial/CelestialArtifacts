@@ -14,12 +14,5 @@
   "tooltip.celestial_artifacts.charming_bracelet.shift3": "击杀僵尸时，周围的村民会提高1点对你的好感度",
   "tooltip.celestial_artifacts.spirit_bracelet.shift1": "拉弓与弩的速度提高100%",
   "tooltip.celestial_artifacts.spirit_bracelet.shift2": "发射的箭矢命中后获得速度效果",
-  "tooltip.celestial_artifacts.holy_talisman.shift1": "根据周围的怪物数量每10秒使它们获得1次虚弱效果",
-  "tooltip.celestial_artifacts.holy_talisman.shift2": "受到伤害降低25%，若攻击者属于亡灵生物，受到伤害则降低35%",
-  "tooltip.celestial_artifacts.holy_talisman.shift3": "受到致命攻击时将保留1点血量并获得与最大生命相等的伤害吸收，冷却600秒",
-  "tooltip.celestial_artifacts.holy_sword.shift1": "星月暴击提高15%",
-  "tooltip.celestial_artifacts.holy_sword.shift2": "受到伤害时反弹12%受到伤害",
-  "tooltip.celestial_artifacts.holy_sword.shift3": "攻击亡灵生物时造成伤害全额用于治疗自身",
-  "tooltip.celestial_artifacts.holy_sword.shift4": "每损失1点生命提高%1$s攻击伤害",
   "tooltip.celestial_artifacts.twisted_scroll.shift1": "周围生成怪物时有60%概率额外生成1只"
 }

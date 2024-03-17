@@ -53,7 +53,7 @@ public record AttrAdder(String name, Supplier<Attribute> attr, UUID uuid,
 	}
 
 	public MutableComponent getText(double val) {
-		return AttrFacet.getText(attr.get(), val, op());
+		return AttrTooltip.getText(attr.get(), val, op());
 	}
 
 }
