@@ -8,9 +8,7 @@ import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.content.loot.*;
 import com.xiaoyue.celestial_core.events.CCGeneralEventHandler;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
-import net.minecraft.advancements.critereon.DamageSourcePredicate;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.TagPredicate;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
@@ -48,6 +46,11 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 				new CurseOnCondition(), CatastropheScroll.Curses.END.asCondition(),
 				entityType(EntityType.WARDEN), new PlayerEffectCondition(MobEffectCategory.HARMFUL,
 				IntConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.endEtchingEffectRequirement))));
+		add("drops/origin_etching", new AddItemModifier(CAItems.ORIGIN_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
+				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.originEtchingDropChance),
+				new CurseOnCondition(), CatastropheScroll.Curses.ORIGIN.asCondition(),
+				entityType(EntityType.ENDER_DRAGON), entity(EntityPredicate.Builder.entity()
+				.located(LocationPredicate.atYLocation(MinMaxBounds.Doubles.atLeast(200.0))))));
 		add("drops/life_etching", new AddItemModifier(CAItems.LIFE_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.lifeEtchingDropChance),
 				new CurseOnCondition(), CatastropheScroll.Curses.LIFE.asCondition(),
@@ -55,6 +58,7 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 						CAModConfig.COMMON.materials.lifeEtchingHealthRequirement))));
 		add("drops/nihility_etching", new AddItemModifier(CAItems.NIHILITY_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.nihilityEtchingDropChance),
+				new CurseOnCondition(), CatastropheScroll.Curses.NIHILITY.asCondition(),
 				entityType(EntityType.WARDEN), damage(DamageTypeTags.BYPASSES_ENCHANTMENTS)));
 		add("drops/chaotic_etching", new AddItemModifier(CAItems.CHAOTIC_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.chaoticEtchingDropChance),

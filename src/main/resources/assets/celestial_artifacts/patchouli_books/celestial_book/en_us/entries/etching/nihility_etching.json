@@ -13,7 +13,7 @@
       "type": "spotlight",
       "item": "celestial_artifacts:nihility_etching",
       "title": "虚无刻蚀",
-      "text": "当坚守者被深渊伤害杀死时有30%概率掉落。"
+      "text": "处于虚无诅咒的玩家用深渊伤害击杀坚守者时有30%概率掉落。"
     }
   ]
 }

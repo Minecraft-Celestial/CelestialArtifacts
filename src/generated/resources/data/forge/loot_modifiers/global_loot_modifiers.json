@@ -20,6 +20,7 @@
     "celestial_artifacts:chests/nether_bridge",
     "celestial_artifacts:chests/fishing_treasure",
     "celestial_artifacts:drops/life_etching",
+    "celestial_artifacts:drops/origin_etching",
     "celestial_artifacts:drops/nihility_etching"
   ],
   "replace": false

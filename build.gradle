@@ -111,9 +111,9 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     compileOnly fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.6")) {
+    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.7")) {
         transitive = false
-        jarJar.ranged(it, "[0.3.6,)")
+        jarJar.ranged(it, "[0.3.7,)")
     }
 
     implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.2.2-slim")

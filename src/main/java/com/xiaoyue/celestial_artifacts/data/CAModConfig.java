@@ -26,6 +26,8 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue desireEtchingLootingRequirement;
 			public final ForgeConfigSpec.DoubleValue endEtchingDropChance;
 			public final ForgeConfigSpec.IntValue endEtchingEffectRequirement;
+			public final ForgeConfigSpec.DoubleValue originEtchingDropChance;
+			public final ForgeConfigSpec.IntValue originEtchingEffectRequirement;
 			public final ForgeConfigSpec.DoubleValue lifeEtchingDropChance;
 			public final ForgeConfigSpec.IntValue lifeEtchingHealthRequirement;
 			public final ForgeConfigSpec.DoubleValue chaoticEtchingDropChance;
@@ -46,6 +48,8 @@ public class CAModConfig {
 				desireEtchingLootingRequirement = builder.defineInRange("desireEtchingLootingRequirement", 7, 0, 100);
 				endEtchingDropChance = builder.defineInRange("endEtchingDropChance", 0.75, 0, 1);
 				endEtchingEffectRequirement = builder.defineInRange("endEtchingEffectRequirement", 9, 0, 100);
+				originEtchingDropChance = builder.defineInRange("originEtchingDropChance", 0.5, 0, 1);
+				originEtchingEffectRequirement = builder.defineInRange("originEtchingEffectRequirement", 200, 0, 100);
 				lifeEtchingDropChance = builder.defineInRange("lifeEtchingDropChance", 0.15, 0, 1);
 				lifeEtchingHealthRequirement = builder.defineInRange("lifeEtchingHealthRequirement", 500, 1, 1000000);
 				chaoticEtchingDropChance = builder.defineInRange("chaoticEtchingDropChance", 0.3, 0, 1);
