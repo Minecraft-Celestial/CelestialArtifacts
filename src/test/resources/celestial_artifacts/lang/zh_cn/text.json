@@ -86,10 +86,10 @@
 	  "nihility_title": "[虚无]",
 	  "nihility_trigger": "获得增益效果时触发",
 	  "nihility_curse": "受到负面效果时长提高%s",
-	  "nihility_bonus": "降低%s收到虚空伤害，受到攻击时使攻击者获得%s秒的%s级%s",
+	  "nihility_bonus": "降低%s收到虚空伤害，受到攻击时使攻击者获得%s",
 	  "end_title": "[终焉]",
 	  "end_trigger": "午夜时未入睡触发",
-	  "end_curse": "受到大于当前生命%s的伤害时会受到%s秒的%s级%s与%s级%s影响",
+	  "end_curse": "受到大于当前生命%s的伤害时会受到%s与%s影响",
 	  "end_bonus": "攻击后恢复自身相当于已损失生命%s生命"
 	},
 	"back": {
@@ -146,7 +146,7 @@
 	"head": {
 	  "abyss_core": "受到伤害大于%s点时，将此伤害降低为%s点，冷却%s秒",
 	  "evil_eye": "免疫黑暗与失明效果",
-	  "guardian_eye_1": "持续给予周围的生物挖掘疲劳效果",
+	  "guardian_eye_1": "持续给予周围的生物%s",
 	  "guardian_eye_2": "处于水下时不在消耗氧气",
 	  "prayer_crown": "潜行时受到攻击后%s概率立即恢复受到伤害%s生命",
 	  "sea_god_crown": "所处世界处于非雨天时将天气改为雨天",

@@ -1,0 +1,19 @@
+{
+  "name": "金沙护符",
+  "icon": "celestial_artifacts:sands_talisman",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者1点抢夺等级与50%经验获取，处于炎热的地区时攻击伤害提高30%。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:sands_talisman",
+      "title": "金沙护符",
+      "text": "你或许可以从沙漠神殿的宝箱中发现它们。"
+    }
+  ]
+}

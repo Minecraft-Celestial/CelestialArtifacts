@@ -1,0 +1,18 @@
+{
+  "name": "深渊意志徽章",
+  "icon": "celestial_artifacts:abyss_will_badge",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，穿戴者攻击时有40%概率将此伤害提高至150%，10%概率提高至200%，受到攻击时有40%概率将此伤害提高至200%，10%概率提高至250%，同时，每20秒积攒一层深渊呼唤，每层深渊呼唤提高20%攻击伤害与25%受到伤害，上限10层。主动效果：深渊意志层数提高至15层，持续15秒，结束后清0，且穿戴者会受到反噬。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:charm/abyss_will_badge",
+      "text": "使用5号唱片碎片，下界合金，虚空精华，末影珍珠，回响碎片在工作台上合成获得。"
+    }
+  ]
+}

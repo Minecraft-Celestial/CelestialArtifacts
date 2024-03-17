@@ -1,0 +1,19 @@
+{
+  "name": "大恶魔之咒",
+  "icon": "celestial_artifacts:demon_curse",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，穿戴者受治疗量降低90%，但每1%治疗力都能提高2%攻击伤害与1%移动速度。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:demon_curse",
+      "title": "大恶魔之咒",
+      "text": "凋灵后击杀恼鬼极小概率掉落。"
+    }
+  ]
+}

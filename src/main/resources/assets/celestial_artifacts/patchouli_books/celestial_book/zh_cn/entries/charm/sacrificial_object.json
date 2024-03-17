@@ -1,0 +1,19 @@
+{
+  "name": "古代殉葬品",
+  "icon": "celestial_artifacts:sacrificial_object",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者1点抢夺等级，5%伤害减免，在穿戴者死亡时有概率在地上留下一块金锭，并有45%概率使周围最大生命小于穿戴者的敌对生物陪葬。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:sacrificial_object",
+      "title": "古代殉葬品",
+      "text": "你或许可以从远古城市的宝箱中发现它们。"
+    }
+  ]
+}

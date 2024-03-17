@@ -1,0 +1,7 @@
+{
+  "name": "护符",
+  "description": "护符类饰品",
+  "icon": "celestial_artifacts:angel_heart",
+  "sortnum": 0,
+  "secret": false
+}

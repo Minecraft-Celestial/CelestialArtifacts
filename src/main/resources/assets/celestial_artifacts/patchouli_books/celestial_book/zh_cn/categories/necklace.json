@@ -1,0 +1,7 @@
+{
+  "name": "项链",
+  "description": "项链类饰品",
+  "icon": "celestial_artifacts:emerald_necklace",
+  "sortnum": 0,
+  "secret": false
+}

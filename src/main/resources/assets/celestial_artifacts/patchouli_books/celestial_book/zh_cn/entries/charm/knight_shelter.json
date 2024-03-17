@@ -1,0 +1,18 @@
+{
+  "name": "骑士庇护",
+  "icon": "celestial_artifacts:knight_shelter",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者8点护甲值，穿戴者受到任何来源伤害降低4，穿戴者副手装备盾牌时，每4秒恢复1点生命，装备于主手时恢复速度加快，穿戴者使用盾牌格挡伤害后对攻击者反伤格挡伤害的30%。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:charm/knight_shelter",
+      "text": "使用金锭，下界之星，光明碎片在工作台上合成获得。"
+    }
+  ]
+}

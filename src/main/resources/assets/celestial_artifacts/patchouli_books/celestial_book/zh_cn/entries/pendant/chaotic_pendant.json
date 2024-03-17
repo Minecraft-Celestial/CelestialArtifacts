@@ -1,0 +1,18 @@
+{
+  "name": "混沌吊坠",
+  "icon": "celestial_artifacts:chaotic_pendant",
+  "category": "celestial_artifacts:pendant",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者1点抢夺等级。穿戴者从附魔台附魔出的附魔等级加3"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:pendant/chaotic_pendant",
+      "text": "使用神秘吊坠，附魔书，烈焰粉，终焉之尘在工作台上合成获得。"
+    }
+  ]
+}

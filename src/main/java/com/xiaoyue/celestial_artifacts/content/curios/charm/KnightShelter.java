@@ -46,12 +46,13 @@ public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature
 
 	@Override
 	public void tick(LivingEntity player, ItemStack stack) {
-		if (player.getOffhandItem().getItem() instanceof ShieldItem) {
-			if (player.tickCount % (healTime() * 20) == 0) {
+		if (player.getMainHandItem().getItem() instanceof ShieldItem) {
+			if (player.tickCount % (healTime() * 10) == 0) {
 				player.heal(1f);
 			}
-		} else if (player.getMainHandItem().getItem() instanceof ShieldItem) {
-			if (player.tickCount % (healTime() * 10) == 0) {
+		}
+		else if (player.getOffhandItem().getItem() instanceof ShieldItem) {
+			if (player.tickCount % (healTime() * 20) == 0) {
 				player.heal(1f);
 			}
 		}

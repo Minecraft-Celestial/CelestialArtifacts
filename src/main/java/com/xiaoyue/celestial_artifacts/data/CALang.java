@@ -195,8 +195,8 @@ public class CALang {
 	}
 
 	public enum Back implements Info {
-		FLAME("发射的箭矢命中目标后将使目标燃烧%s秒", 1),
-		LEECH("拥有%s效果时，攻击造成伤害的%s将用于治疗", 2);
+		FLAME("Arrows you shoot will burn target for %s seconds", 1),
+		LEECH("When you have %s effect, heal %s of your melee damage dealt", 2);
 
 		final Entry entry;
 
@@ -226,67 +226,67 @@ public class CALang {
 	}
 
 	public enum Charm implements Info {
-		WAR_DEAD_BADGE_1("每损失1%生命", 0),
-		WAR_DEAD_BADGE_9("若背负混沌诅咒，当生命低于最大生命的%s时:", 1),
-		WAR_DEAD_BADGE_11("周围每有1只怪物，攻击后恢复%s已损失生命", 1),
+		WAR_DEAD_BADGE_1("For every 1% health lost:", 0),
+		WAR_DEAD_BADGE_9("If you bear Chaotic Curse and your health is below %s:", 1),
+		WAR_DEAD_BADGE_11("For  mob around you, heals %s after attack", 1),
 
-		CURSED_PROTECTOR_0("副手装备的盾牌不会再进入冷却", 0),
-		CURSED_PROTECTOR_1("受到伤害大于当前生命的%s时，伤害降低%s", 2),
+		CURSED_PROTECTOR_0("Shields on your offhand will not be disabled", 0),
+		CURSED_PROTECTOR_1("When you take damage higher than %s of your current health, reduce it by %s", 2),
 
-		UNDEAD_CHARM("受到致命伤害时规避该伤害，冷却%s秒", 1),
-		TWISTED_BRAIN("受到伤害时有%s的概率规避该伤害并获得%s", 2),
+		UNDEAD_CHARM("Negate a fatal damage with %s seconds cool down", 1),
+		TWISTED_BRAIN("%s chance to avoid incoming damage and gain %s", 2),
 
-		SOUL_BOX_0("受到攻击时有%s概率对攻击者施加%s", 2),
-		SOUL_BOX_1("受到致命攻击时规避该伤害，冷却%s秒，并且:", 1),
-		SOUL_BOX_2("对攻击者施加%s", 1),
-		SOUL_BOX_3("对攻击者造成1次相当于你最大生命%s的深渊伤害", 1),
+		SOUL_BOX_0("When hurt, %s chance to inflict %s to attacker", 2),
+		SOUL_BOX_1("Negate a fatal damage with %s seconds cool down, and:", 1),
+		SOUL_BOX_2("Inflict %s to attacker", 1),
+		SOUL_BOX_3("Hurt opponent with abyssal damage for %s of your max health", 1),
 
-		SOLAR_MAGNET_1("所处世界为白天时免疫燃烧", 0),
-		SOLAR_MAGNET_2("吸引周围的物品", 0),
+		SOLAR_MAGNET_1("Put down fire in daytime", 0),
+		SOLAR_MAGNET_2("Attract surrounding items", 0),
 
-		SACRIFICIAL_OBJECT_1("死亡时有%s概率在原地留下1块金锭", 1),
-		SACRIFICIAL_OBJECT_2("死亡时有%s概率使周围最大生命小于自身的敌对生物陪葬", 1),
+		SACRIFICIAL_OBJECT_1("%s chance to leave a gold ingot on death", 1),
+		SACRIFICIAL_OBJECT_2("%a chance to kill surrounding enemies with lower max health than you", 1),
 
-		KNIGHT_SHELTER_1("副手装备盾牌时，每%s秒恢复1点生命，装备于主手时恢复速度加快", 1),
-		KNIGHT_SHELTER_2("使用盾牌格挡伤害后对攻击者反伤格挡伤害的%s", 1),
+		KNIGHT_SHELTER_1("When you have shield in off hand, heal 1 point every %s seconds. Heals at double rate when you have shield in main hand.", 1),
+		KNIGHT_SHELTER_2("When you use shield to block damage reflect %s of the damage blocked", 1),
 
-		HOLY_TALISMAN_1("每%s秒，对周围的怪物施加总数乘%s秒的虚弱效果", 2),
-		HOLY_TALISMAN_2("受到伤害降低%s，若攻击者属于亡灵生物，受到伤害则降低%s", 2),
-		HOLY_TALISMAN_3("受到致命攻击时将保留1点血量并获得与最大生命相等的伤害吸收，冷却%s秒", 1),
+		HOLY_TALISMAN_1("For every %s seconds, inflict surrounding mobs with Weakness for mob count x %s seconds", 2),
+		HOLY_TALISMAN_2("Reduce incoming damage by %s. If it's from undead mobs, reduce by %s instead.", 2),
+		HOLY_TALISMAN_3("Negate a fatal damage and gain absorption equal to your max health. Cool down: %s seconds", 1),
 
-		HOLY_SWORD_1("受到伤害时反弹%s受到伤害", 1),
-		HOLY_SWORD_2("攻击亡灵生物时造成伤害全额用于治疗自身", 0),
-		HOLY_SWORD_3("每损失1点生命提高%s攻击伤害", 1),
+		HOLY_SWORD_1("Reflect %s of damage you take", 1),
+		HOLY_SWORD_2("Heal the same amount when you deal damage to undead mob", 0),
+		HOLY_SWORD_3("For every life point you lose, increase damage by %s", 1),
 
-		GLUTTONY_BADGE_1("每次食用食物后获得%s与%s", 2),
-		GLUTTONY_BADGE_2("每拥有1点饱食度降低%s受到的伤害", 1),
+		GLUTTONY_BADGE_1("Gain %s and %s after eating food", 2),
+		GLUTTONY_BADGE_2("For every food point you have, reduce incoming damage by %s", 1),
 
-		DEMON_CURSE_0("玩家无法回血", 0),
-		DEMON_CURSE_1("每1%额外治疗力:", 0),
+		DEMON_CURSE_0("You cannot heal", 0),
+		DEMON_CURSE_1("For every 1% extra regen rate:", 0),
 
-		CURSED_TOTEM_1("使用不死图腾时给予最近的攻击者%s", 1),
-		CURSED_TOTEM_2("受到非致命伤害时会积攒1层[怨念]，上限%s层", 1),
-		CURSED_TOTEM_3("受到致命伤害时，则消耗%s层[怨念]并规避该伤害", 1),
-		CURSED_TOTEM_4("当前已积攒的[怨念]:%s", 1),
+		CURSED_TOTEM_1("When you trigger totem, inflict attacker with %s", 1),
+		CURSED_TOTEM_2("When you take non-fatal damage, stack 1 [Resentment]. Capped at %s.", 1),
+		CURSED_TOTEM_3("When you take fatal damage, consume %s [Resentment] and negate the damage.", 1),
+		CURSED_TOTEM_4("Current [Resentment]: %s", 1),
 
-		CURSED_TALISMAN_1("使用的武器与防具中每拥有1种诅咒附魔:", 0),
+		CURSED_TALISMAN_1("For every cursed enchantment you have on your equipments:", 0),
 
-		CORRUPT_BADGE_2("获得%s, %s, %s", 3),
-		CORRUPT_BADGE_3("自身每有1种负面效果:", 0),
+		CORRUPT_BADGE_2("Gain %s, %s, and %s", 3),
+		CORRUPT_BADGE_3("For every harmful effect you have:", 0),
 
-		ANGEL_PEARL_1("持续使周围的玩家获得生命恢复效果", 0),
-		ANGEL_PEARL_2("每有1种正面效果:", 0),
+		ANGEL_PEARL_1("Surrounding players gain regeneration:", 0),
+		ANGEL_PEARL_2("For every beneficial effect you have:", 0),
 
-		ANGEL_HEART_1("每%s秒恢复%s点生命值", 2),
-		ANGEL_HEART_2("每%s秒清除1次身上的负面效果", 1),
+		ANGEL_HEART_1("For every %s seconds, heal %s health", 2),
+		ANGEL_HEART_2("For every %s seconds, clear all harmful effects", 1),
 
-		ABYSS_WILL_BADGE_2("将[深渊呼唤]层数提高至%s层，持续%s秒", 2),
-		ABYSS_WILL_BADGE_3("效果结束后将积攒的层数清0并将生命削减到当前生命的%s", 1),
-		ABYSS_WILL_BADGE_4("攻击时%s概率将此伤害提高至%s，%s概率提高至%s", 4),
-		ABYSS_WILL_BADGE_5("受到攻击时%s概率将此伤害提高至%s，%s概率提高至%s", 4),
-		ABYSS_WILL_BADGE_6("每%s秒积攒1层[深渊呼唤]，上限%s层", 2),
-		ABYSS_WILL_BADGE_7("每层[深渊呼唤]提高%s攻击伤害与%s受到伤害", 2),
-		ABYSS_WILL_BADGE_8("当前已积攒的[深渊呼唤]:%s", 1);
+		ABYSS_WILL_BADGE_2("Increase [Abyssal Call] to %s for %s seconds", 2),
+		ABYSS_WILL_BADGE_3("After skill ends, clear [Abyssal Call] and retain only %s of current health", 1),
+		ABYSS_WILL_BADGE_4("%s chance to deal %s damage, and %s chance to deal %s", 4),
+		ABYSS_WILL_BADGE_5("%s chance to take %s damage, and %s chance to take %s", 4),
+		ABYSS_WILL_BADGE_6("For every %s seconds, gain 1 [Abyssal Call]. Capped at %s", 2),
+		ABYSS_WILL_BADGE_7("Every [Abyssal Call] increase attack damage by %s and incoming damage by %s", 2),
+		ABYSS_WILL_BADGE_8("Current [Abyssal Call]: %s", 1);
 
 		final Entry entry;
 
@@ -301,46 +301,46 @@ public class CALang {
 	}
 
 	public enum Curse implements Info {
-		SCROLL_0("一旦戴上，你将无法以正常的方式将它摘下", 0),
-		SCROLL_1("一些生物会产出独特的掉落物", 0),
-		SCROLL_2("允许佩戴与使用一些独特的饰品", 0),
-		TRIGGER("诅咒%s已生效", 1),
+		SCROLL_0("You cannot take it down once equipped", 0),
+		SCROLL_1("Some mobs drop special loot", 0),
+		SCROLL_2("Unlocks some powerful trinkets", 0),
+		TRIGGER("%s Curse is activated", 1),
 
-		CHAOS_TITLE("[混沌]", 0),
-		CHAOS_TRIGGER("装备附魔盔甲时触发", 0),
-		CHAOS_CURSE_0("受到的爆炸伤害提高%s", 1),
-		CHAOS_CURSE_1("受到的非爆炸伤害提高%s", 1),
-		CHAOS_BONUS("每损失%s生命，提高%s伤害减免", 2),
+		CHAOS_TITLE("[Chaotic]", 0),
+		CHAOS_TRIGGER("Activates when you equip enchanted armor", 0),
+		CHAOS_CURSE_0("Increase incoming explosion damage by %s", 1),
+		CHAOS_CURSE_1("Increase other incoming damage by %s", 1),
+		CHAOS_BONUS("For every %s HP you lose, reduce damage by %s", 2),
 
-		ORIGIN_TITLE("[始源]", 0),
-		ORIGIN_TRIGGER("持有%s耐久以上物品时触发", 1),
-		ORIGIN_CURSE("攻击伤害降低%s", 1),
-		ORIGIN_BONUS("提高%s挖掘速度与攻击伤害", 1),
+		ORIGIN_TITLE("[Origin]", 0),
+		ORIGIN_TRIGGER("Activates when you hold items with %s or more durability", 1),
+		ORIGIN_CURSE("Reduce attack damage by %s", 1),
+		ORIGIN_BONUS("Increase dig speed and attack damage by %s", 1),
 
-		LIFE_TITLE("[生命]", 0),
-		LIFE_TRIGGER("受到伤害时触发", 0),
-		LIFE_CURSE("降低%s最大生命，降低%s治疗力", 2),
-		LIFE_BONUS("提高%s最大生命与%s治疗力", 2),
+		LIFE_TITLE("[Life]", 0),
+		LIFE_TRIGGER("Activates when you take damage", 0),
+		LIFE_CURSE("Reduce max HP by %s. Reduce regen rate by %s.", 2),
+		LIFE_BONUS("Increase max HP by %s. Increase regen rate by %s.", 2),
 
-		TRUTH_TITLE("[真理]", 0),
-		TRUTH_TRIGGER("对怪物造成伤害时触发", 0),
-		TRUTH_CURSE("受到生物攻击时至少会受到自身最大生命%s的伤害", 1),
-		TRUTH_BONUS("受到生物攻击时伤害不会超过自身最大生命的%s", 1),
+		TRUTH_TITLE("[Truth]", 0),
+		TRUTH_TRIGGER("Activates when you attack monsters", 0),
+		TRUTH_CURSE("When you are attacked by entities, the damage will be at least %s of your max HP", 1),
+		TRUTH_BONUS("When you are attacked by entities, the damage will be at most %s of your max HP", 1),
 
-		DESIRE_TITLE("[欲望]", 0),
-		DESIRE_TRIGGER("对被动生物造成伤害时触发", 0),
-		DESIRE_CURSE("周围的生物将远离你，中立生物会主动攻击你", 0),
-		DESIRE_BONUS("提高%s点时运与抢夺等级", 1),
+		DESIRE_TITLE("[Desire]", 0),
+		DESIRE_TRIGGER("Activates when you attack passive mobs.", 0),
+		DESIRE_CURSE("Passive mobs will escape from you, and neutral mobs will attack you.", 0),
+		DESIRE_BONUS("Increase Fortune and Looting by %s", 1),
 
-		NIHILITY_TITLE("[虚无]", 0),
-		NIHILITY_TRIGGER("获得增益效果时触发", 0),
-		NIHILITY_CURSE("受到负面效果时长提高%s", 1),
-		NIHILITY_BONUS("降低%s收到虚空伤害，受到攻击时使攻击者获得%s秒的%s级%s", 4),
+		NIHILITY_TITLE("[Nihility]", 0),
+		NIHILITY_TRIGGER("Activates when you gain beneficial effects.", 0),
+		NIHILITY_CURSE("Harmful effects you get will have +%s duration", 1),
+		NIHILITY_BONUS("Reduce void damage by %s. Inflict target with %s", 2),
 
-		END_TITLE("[终焉]", 0),
-		END_TRIGGER("午夜时未入睡触发", 0),
-		END_CURSE("受到大于当前生命%s的伤害时会受到%s秒的%s级%s与%s级%s影响", 6),
-		END_BONUS("攻击后恢复自身相当于已损失生命%s生命", 1),
+		END_TITLE("[End]", 0),
+		END_TRIGGER("Activates when you is not sleeping at midnight", 0),
+		END_CURSE("When you take damage higher than %s of your max health, gain %s and %s", 3),
+		END_BONUS("When you deal damage, recover %s of your lost health", 1),
 		;
 
 		final Entry entry;
@@ -356,14 +356,14 @@ public class CALang {
 	}
 
 	public enum Head implements Info {
-		EVIL_EYE("免疫黑暗与失明效果", 0),
-		ABYSS_CORE("受到伤害大于%s点时，将此伤害降低为%s点，冷却%s秒", 3),
-		GUARDIAN_EYE_1("持续给予周围的生物挖掘疲劳效果", 0),
-		GUARDIAN_EYE_2("处于水下时不在消耗氧气", 0),
-		SEA_GOD_CROWN("所处世界处于非雨天时将天气改为雨天", 0),
-		PRAYER_CROWN("潜行时受到攻击后%s概率立即恢复受到伤害%s生命", 2),
-		SPIRIT_CROWN_1("周围实体数量小于%s时，射出的箭矢伤害提高%s", 2),
-		SPIRIT_CROWN_2("与目标每相隔1方块的距离，射出的箭矢伤害提高%s", 1);
+		EVIL_EYE("Immune to Darkness and Blindness effects", 0),
+		ABYSS_CORE("When you take %s or more damage, reduce it to %s. Cool down: %s seconds", 3),
+		GUARDIAN_EYE_1("Inflict %s to surrounding mobs.", 1),
+		GUARDIAN_EYE_2("Gain infinite water breathing", 0),
+		SEA_GOD_CROWN("Change weather to raining", 0),
+		PRAYER_CROWN("When you take damage when sneaking, %s chance to recover %s of the damage took.", 2),
+		SPIRIT_CROWN_1("When there are %s or fewer mobs around you, increase projectile damage by %s", 2),
+		SPIRIT_CROWN_2("For every block in between increase projectile damage by %s", 1);
 
 		final Entry entry;
 
@@ -378,16 +378,16 @@ public class CALang {
 	}
 
 	public enum Heart implements Info {
-		DEMON_HEART_1("每背负1条诅咒:", 0),
-		DEMON_HEART_2("盔甲韧性提高%s", 1),
-		DEMON_HEART_3("攻击伤害提高%s", 1),
-		DEMON_HEART_4("受到伤害降低%s", 1),
-		DEMON_HEART_5("背负大于等于3条诅咒时，阻止自身受到火焰燃烧", 0),
-		DEMON_HEART_6("背负大于等于5条诅咒时，免疫缓慢与虚弱效果", 0),
+		DEMON_HEART_1("For every curse you bear:", 0),
+		DEMON_HEART_2("+%s Armor Toughness", 1),
+		DEMON_HEART_3("+%s Attack Damage", 1),
+		DEMON_HEART_4("-%s Incoming Damage", 1),
+		DEMON_HEART_5("When you bear 3 or more curses, you are not flammable.", 0),
+		DEMON_HEART_6("When you bear 5 or more curses, you are immune to Slowness and Weakness.", 0),
 
-		TWISTED_HEART_1("盔甲韧性降低%s", 1),
-		TWISTED_HEART_2("攻击伤害降低%s", 1),
-		TWISTED_HEART_3("若背负虚无诅咒，以上属性将反转为增益属性", 0);
+		TWISTED_HEART_1("Reduce Armor Toughness by %s", 1),
+		TWISTED_HEART_2("Reduce attack damage by %s", 1),
+		TWISTED_HEART_3("If you bear Nihility curse, reverse the above effects", 0);
 
 		final Entry entry;
 
@@ -402,14 +402,14 @@ public class CALang {
 	}
 
 	public enum Necklace implements Info {
-		GALLOP("移动时攻击会增加相当于移动速度的%s的攻击伤害", 1),
-		EMERALD("击杀生物后有%s基础概率额外掉落1个绿宝石", 1),
-		ENDER_PROTECTOR("使用盾牌格挡目标攻击后，有%s概率将目标传送走", 1),
-		HOLY("每次受到治疗后获得%s，冷却%s秒", 2),
-		LOCK_OF_ABYSS_1("攻击后给予目标%s秒缓慢效果", 1),
-		LOCK_OF_ABYSS_2("若目标已有缓慢效果则将目标的缓慢效果提升1级", 0),
-		LOCK_OF_ABYSS_3("攻击时若目标拥有缓慢效果且等级大于%s", 1),
-		LOCK_OF_ABYSS_4("移除该效果并对目标造成原伤害%s的深渊伤害", 1);
+		GALLOP("When you attack while moving, increase damage by %s of your speed", 1),
+		EMERALD("%s chance to gain an emerald when killing mobs", 1),
+		ENDER_PROTECTOR("When you block damage with shield, %s chance to teleport attacker away", 1),
+		HOLY("Gain %s after healing. Cool down: %s seconds", 2),
+		LOCK_OF_ABYSS_1("Inflict target with %s seconds of Slowness on hit", 1),
+		LOCK_OF_ABYSS_2("Increase target Slowness level instead if it already has the effect.", 0),
+		LOCK_OF_ABYSS_3("If target has %s or higher Slowness effect when attacked:", 1),
+		LOCK_OF_ABYSS_4("Remove slowness and append abyssal damage equal to %s of original damage", 1);
 
 		final Entry entry;
 
@@ -424,12 +424,12 @@ public class CALang {
 	}
 
 	public enum Pendant implements Info {
-		SHADOW_1("造成伤害的%s用于治疗自身", 1),
-		SHADOW_2("幻翼不会再因为失眠而生成", 0),
-		SHADOW_3("当处于亮度小于%s的位置时，每小于1点:", 1),
-		SHADOW_4("攻击伤害提高%s", 1),
-		SHADOW_5("受到伤害降低%s", 1),
-		CHAOTIC("从附魔台附魔出的附魔等级加%s", 1);
+		SHADOW_1("Heal with %s of damage you dealt", 1),
+		SHADOW_2("Prevent Phantom spawn", 0),
+		SHADOW_3("For every level of brightness below %s:", 1),
+		SHADOW_4("Increase attack damage by %s", 1),
+		SHADOW_5("Reduce incoming damage by %s", 1),
+		CHAOTIC("Increase enchantment level obtained from enchanting table by %s", 1);
 
 		final Entry entry;
 
@@ -444,9 +444,9 @@ public class CALang {
 	}
 
 	public enum Ring implements Info {
-		FLIGHT("获得飞行能力", 0),
-		NETHER_FIRE("受到攻击后使攻击者陷入%s秒燃烧", 1),
-		RING_OF_LIFE("每%s秒随机催熟1次周围的作物", 1);
+		FLIGHT("Gain creative flying ability", 0),
+		NETHER_FIRE("Burn target for %s seconds on hit", 1),
+		RING_OF_LIFE("For every %s seconds, boost growth on surrounding crops", 1);
 
 		final Entry entry;
 
@@ -461,11 +461,11 @@ public class CALang {
 	}
 
 	public enum Scroll implements Info {
-		SEA_GOD("处于水下时挖掘速度不会再受到影响", 0),
-		SKY_WALKER_2("潜行时，储存当前位置的坐标，否则将你传送到储存的坐标处", 0),
-		SKY_WALKER_3("只能在同维度中传送", 0),
-		SKY_WALKER_4("当前储存的坐标: %s - (%s,%s,%s)", 4),
-		TRAVELER("每次进入新的维度时将获得%s与%s", 2);
+		SEA_GOD("Boost mining speed under water", 0),
+		SKY_WALKER_2("Store current position when sneaking, otherwise teleport you to stored position.", 0),
+		SKY_WALKER_3("Can only teleport in the same dimension", 0),
+		SKY_WALKER_4("Current stored position: %s - (%s,%s,%s)", 4),
+		TRAVELER("Gain %s and %s when changing dimensions", 2);
 
 		final Entry entry;
 
@@ -480,11 +480,11 @@ public class CALang {
 	}
 
 	public enum Sets implements Info {
-		SEA_GOD("手持三叉戟时：", 0),
-		SPIRIT_0("拉弓%s秒后获得%s", 2),
-		SPIRIT_1("从目标背后射出的%s伤害提高%s", 2),
-		SPIRIT_2("拥有%s效果时", 1),
-		SPIRIT_3("射出的箭矢有%s概率施加%s", 2);
+		SEA_GOD("When you hold trident:", 0),
+		SPIRIT_0("Gain %2$s after pulling bow for %1$s", 2),
+		SPIRIT_1("Increase %s damage from behind by %s", 2),
+		SPIRIT_2("When you have %s:", 1),
+		SPIRIT_3("Your projectile has %s chance to inflict %s", 2);
 
 		final Entry entry;
 

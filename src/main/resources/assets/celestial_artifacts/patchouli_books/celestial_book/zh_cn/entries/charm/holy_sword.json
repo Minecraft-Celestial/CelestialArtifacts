@@ -1,0 +1,19 @@
+{
+  "name": "大天使之证",
+  "icon": "celestial_artifacts:holy_sword",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者15%星月暴击，受到伤害时反弹12%受到伤害，攻击亡灵生物时造成伤害全额用于治疗穿戴者，每损失1点生命提高2%攻击伤害。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:holy_sword",
+      "title": "大天使之证",
+      "text": "暂无"
+    }
+  ]
+}

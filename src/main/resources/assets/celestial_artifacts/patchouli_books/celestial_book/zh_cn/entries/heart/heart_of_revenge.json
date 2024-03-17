@@ -1,0 +1,19 @@
+{
+  "name": "复仇之心",
+  "icon": "celestial_artifacts:heart_of_revenge",
+  "category": "celestial_artifacts:heart",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，提高穿戴者6%箭矢伤害。穿戴者攻击攻击过自身的目标时提高25%攻击伤害。当穿戴者受到伤害后获得短暂的力量与抗性提升效果。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:heart_of_revenge",
+      "title": "复仇之心",
+      "text": "你或许可以从猪灵堡垒的宝箱中发现它们。"
+    }
+  ]
+}

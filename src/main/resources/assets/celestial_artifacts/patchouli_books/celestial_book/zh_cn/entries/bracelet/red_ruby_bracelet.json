@@ -1,0 +1,19 @@
+{
+  "name": "绯红宝石手环",
+  "icon": "celestial_artifacts:red_ruby_bracelet",
+  "category": "celestial_artifacts:bracelet",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，使穿戴者免疫岩浆块造成的伤害，降低35%受到的火焰伤害，同时受到火焰伤害后有概率获得力量效果。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:red_ruby_bracelet",
+      "title": "绯红宝石手环",
+      "text": "你或许可以从下界要塞的宝箱中发现它们。"
+    }
+  ]
+}

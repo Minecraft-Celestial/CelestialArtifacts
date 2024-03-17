@@ -1,0 +1,19 @@
+{
+  "name": "始源刻蚀",
+  "icon": "celestial_artifacts:origin_etching",
+  "category": "celestial_artifacts:etching",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "始源刻蚀，穿戴后以反转当前的始源诅咒状态。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:origin_etching",
+      "title": "始源刻蚀",
+      "text": "处于始源诅咒的玩家击杀y轴200以上的末影龙时有50%概率掉落。"
+    }
+  ]
+}

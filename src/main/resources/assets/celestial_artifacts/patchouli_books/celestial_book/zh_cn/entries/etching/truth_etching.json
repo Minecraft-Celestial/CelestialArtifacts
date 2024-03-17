@@ -1,0 +1,19 @@
+{
+  "name": "真理刻蚀",
+  "icon": "celestial_artifacts:truth_etching",
+  "category": "celestial_artifacts:etching",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "真理刻蚀，穿戴后以反转当前的真理诅咒状态。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:truth_etching",
+      "title": "真理刻蚀",
+      "text": "当凋零被灾厄村民杀死时掉落。"
+    }
+  ]
+}

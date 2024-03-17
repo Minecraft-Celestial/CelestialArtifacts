@@ -74,9 +74,6 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven { // Registrate
-        url "https://maven.tterrag.com/"
-    }
     maven {
         url = "https://maven.theillusivec4.top/"
     }
@@ -90,7 +87,6 @@ repositories {
         name 'Progwml6 maven'
         url 'https://dvs1.progwml6.com/files/maven'
     }
-    mavenLocal();
 }
 
 if(lljij){

@@ -1,0 +1,18 @@
+{
+  "name": "神圣项链",
+  "icon": "celestial_artifacts:holy_necklace",
+  "category": "celestial_artifacts:necklace",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，将穿戴者受伤后的无敌时间提升至10。提高4点最大生命，每次受到治疗后获得抗性提升效果，冷却3秒。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:necklace/holy_necklace",
+      "text": "使用金锭，附魔之瓶，十字项链，光明碎片在工作台上合成获得。"
+    }
+  ]
+}

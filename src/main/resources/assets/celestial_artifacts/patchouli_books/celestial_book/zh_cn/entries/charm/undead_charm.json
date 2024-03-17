@@ -1,0 +1,18 @@
+{
+  "name": "不死者护符",
+  "icon": "celestial_artifacts:undead_charm",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，当穿戴者受到致命伤害时，规避该伤害，该效果拥有180秒冷却时间。"
+    },
+    {
+      "type": "crafting",
+      "recipe": "celestial_artifacts:charm/undead_charm",
+      "text": "使用铁粒，铁锭，骷髅头颅，闪烁西瓜，骨块在工作台上合成获得。"
+    }
+  ]
+}

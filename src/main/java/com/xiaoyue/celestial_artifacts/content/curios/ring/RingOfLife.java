@@ -39,7 +39,7 @@ public class RingOfLife implements SingleLineText, TickFacet {
 				ArrayList<BlockPos> list = new ArrayList<>();
 				for (BlockPos pos : BlockPos.betweenClosed(entityPos.getX() - range, entityPos.getY() - range, entityPos.getZ() - range, entityPos.getX() + range, entityPos.getY() + range, entityPos.getZ() + range)) {
 					BlockState block = player.level().getBlockState(pos);
-					if (block.getBlock() instanceof BonemealableBlock bmb &&
+					if (block.getBlock() instanceof BonemealableBlock bmb && !block.isSolid() &&
 							bmb.isValidBonemealTarget(player.level(), pos, block, false)) {
 						list.add(new BlockPos(pos));
 					}

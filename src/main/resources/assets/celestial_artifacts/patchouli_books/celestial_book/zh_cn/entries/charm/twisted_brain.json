@@ -1,0 +1,19 @@
+{
+  "name": "扭曲之脑",
+  "icon": "celestial_artifacts:twisted_brain",
+  "category": "celestial_artifacts:charm",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "穿戴后，穿戴者受到伤害时有17%概率规避该伤害并获得力量效果。"
+    },
+    {
+      "type": "spotlight",
+      "item": "celestial_artifacts:twisted_brain",
+      "title": "扭曲之脑",
+      "text": "凋灵击杀智慧型生物时小概率掉落。"
+    }
+  ]
+}

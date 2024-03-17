@@ -1,0 +1,7 @@
+{
+  "name": "刻蚀",
+  "description": "刻蚀板",
+  "icon": "celestial_artifacts:chaotic_etching",
+  "sortnum": 0,
+  "secret": false
+}
