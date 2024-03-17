@@ -112,7 +112,7 @@ dependencies {
         jarJar.ranged(it, "[0.3.7,)")
     }
 
-    implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.2.2-slim")
+    implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.2.5-slim")
     implementation fg.deobf("dev.xkmc.l2serial:l2serial:1.2.2")
     implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.1")
     implementation fg.deobf("dev.xkmc.l2screentracker:l2screentracker:0.1.4")

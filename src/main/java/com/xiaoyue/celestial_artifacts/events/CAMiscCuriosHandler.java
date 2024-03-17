@@ -28,8 +28,6 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerSpawnPhantomsEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
@@ -131,15 +129,6 @@ public class CAMiscCuriosHandler {
 					livingEntity.addEffect(CursedTotem.eff());
 				}
 			}
-		}
-	}
-
-	@SubscribeEvent
-	public static void onSpawnPhantom(PlayerSpawnPhantomsEvent event) {
-		Player player = event.getEntity();
-		// 怨影吊坠 TODO
-		if (CurioUtils.hasCurio(player, CAItems.SHADOW_PENDANT.get())) {
-			event.setResult(Event.Result.DENY);
 		}
 	}
 
