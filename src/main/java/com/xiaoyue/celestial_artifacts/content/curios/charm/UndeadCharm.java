@@ -2,17 +2,16 @@ package com.xiaoyue.celestial_artifacts.content.curios.charm;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TotemFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
-import com.xiaoyue.celestial_artifacts.register.CAItems;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2damagetracker.contents.curios.TotemHelper;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
-public class UndeadCharm implements SingleLineText, CAAttackToken {
+public class UndeadCharm implements SingleLineText, TotemFacet {
 
 	private static int cooldownFactor() {
 		return CAModConfig.COMMON.charm.undeadCharmCooldown.get();
@@ -24,20 +23,9 @@ public class UndeadCharm implements SingleLineText, CAAttackToken {
 	}
 
 	@Override
-	public void onPlayerDamaged(Player player, AttackCache cache) {
-		cache.addDealtModifier(DamageModifier.nonlinearFinal(1225, v -> parse(player, v)));
-	}
-
-	private float parse(Player player, float val) {
-		Item item = CAItems.UNDEAD_CHARM.get();
-		if (!player.getCooldowns().isOnCooldown(item)) {
-			if (val > player.getHealth()) {
-				player.heal(2);
-				player.getCooldowns().addCooldown(item, cooldownFactor() * 20);
-				return 0;
-			}
-		}
-		return val;
+	public void trigger(Player player, ItemStack stack, TotemHelper.TotemSlot slot, DamageSource source) {
+		TotemFacet.super.trigger(player, stack, slot, source);
+		player.getCooldowns().addCooldown(stack.getItem(), cooldownFactor() * 20);
 	}
 
 }

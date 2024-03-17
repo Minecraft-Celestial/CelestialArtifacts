@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class DemonHeart extends BaseTickingToken implements CAAttackToken {//TODO
+public class DemonHeart extends BaseTickingToken implements CAAttackToken {
 
 	private static double damageBonusFactor() {
 		return CAModConfig.COMMON.heart.demonHeartDamageBonus.get();

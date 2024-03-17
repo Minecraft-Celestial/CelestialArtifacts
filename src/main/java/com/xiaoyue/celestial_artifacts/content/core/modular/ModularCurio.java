@@ -3,10 +3,12 @@ package com.xiaoyue.celestial_artifacts.content.core.modular;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureMap;
+import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
-import dev.xkmc.l2damagetracker.init.L2DamageTracker;
+import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
+import dev.xkmc.l2damagetracker.contents.curios.TotemHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -21,7 +23,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
@@ -35,7 +36,7 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.*;
 
-public final class ModularCurio extends BaseCurio {
+public final class ModularCurio extends BaseCurio implements L2Totem {
 
 	public static Builder builder() {
 		return new Builder();
@@ -49,7 +50,9 @@ public final class ModularCurio extends BaseCurio {
 	private final List<SlotFacet> slots = new ArrayList<>();
 	private final List<TextFacet> text = new ArrayList<>();
 	private final List<TickFacet> tick = new ArrayList<>();
-	private final List<SetFacet> set = new ArrayList<>();
+	private SetFacet set = null;
+	private TotemFacet totem = null;
+	private TokenFacet<?> token = null;
 	private final FeatureMap features = new FeatureMap();
 
 	private final Prop prop;
@@ -67,7 +70,9 @@ public final class ModularCurio extends BaseCurio {
 		if (facet instanceof SlotFacet e) slots.add(e);
 		if (facet instanceof TextFacet e) text.add(e);
 		if (facet instanceof TickFacet e) tick.add(e);
-		if (facet instanceof SetFacet e) set.add(e);
+		if (facet instanceof SetFacet e) set = e;
+		if (facet instanceof TotemFacet e) totem = e;
+		if (facet instanceof TokenFacet<?> e) token = e;
 		features.add(facet);
 	}
 
@@ -81,6 +86,32 @@ public final class ModularCurio extends BaseCurio {
 		for (var e : tick) {
 			e.tick(slotContext.entity(), stack);
 		}
+	}
+
+	@Nullable
+	private TotemFacet totem(LivingEntity le) {
+		if (totem != null) return totem;
+		if (token != null && token.get(le) instanceof TotemFacet t) return t;
+		return null;
+	}
+
+	@Override
+	public void trigger(LivingEntity self, ItemStack holded, TotemHelper.TotemSlot second, DamageSource source) {
+		TotemFacet totem = totem(self);
+		if (totem != null && self instanceof Player pl)
+			totem.trigger(pl, holded, second, source);
+	}
+
+	@Override
+	public boolean allow(LivingEntity self, ItemStack stack, DamageSource pDamageSource) {
+		TotemFacet totem = totem(self);
+		return totem != null && self instanceof Player player && totem.allow(player, stack, pDamageSource);
+	}
+
+	@Override
+	public boolean isValid(LivingEntity self, ItemStack stack, TotemHelper.TotemSlot slot) {
+		TotemFacet totem = totem(self);
+		return totem != null && slot instanceof TotemHelper.CurioPred && self instanceof Player;
 	}
 
 	@Override
@@ -103,11 +134,9 @@ public final class ModularCurio extends BaseCurio {
 				list.add(CALang.Modular.shift());
 			}
 		}
-		if (!set.isEmpty()) {
+		if (set != null) {
 			if (Screen.hasAltDown()) {
-				for (var e : set) {
-					e.addText(level, list);
-				}
+				set.addText(level, list);
 			} else {
 				list.add(CALang.Modular.alt());
 			}

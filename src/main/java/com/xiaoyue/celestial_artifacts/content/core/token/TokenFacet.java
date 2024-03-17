@@ -34,6 +34,14 @@ public record TokenFacet<T extends BaseTickingToken>(String id, Supplier<T> sup)
 		}
 	}
 
+	@Nullable
+	public T get(LivingEntity entity) {
+		if (entity instanceof Player player) {
+			return ConditionalData.HOLDER.get(player).getData(getKey());
+		}
+		return null;
+	}
+
 	@Override
 	public T getData(TokenFacet<T> self) {
 		return sup.get();

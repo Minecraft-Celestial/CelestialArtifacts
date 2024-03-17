@@ -1,6 +1,0 @@
-TODO list
-- Damage Type clean up
-- migrate damage event to L2DT
-- Config for numbers
-- Lang gen
-- Attribute Merge

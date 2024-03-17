@@ -93,6 +93,17 @@ repositories {
     mavenLocal();
 }
 
+if(lljij){
+    jarJar.enable()
+    tasks.jarJar.configure {
+        archiveClassifier.set('')
+    }
+    jar {
+        archiveClassifier.set('slim')
+    }
+
+}
+
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixin_extras_version}"))
@@ -100,9 +111,9 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     compileOnly fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.4")) {
+    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.6")) {
         transitive = false
-        jarJar.ranged(it, "[0.3.4,)")
+        jarJar.ranged(it, "[0.3.6,)")
     }
 
     implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.2.2-slim")
