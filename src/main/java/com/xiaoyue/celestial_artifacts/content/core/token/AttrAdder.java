@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.core.token;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
+import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
@@ -48,7 +49,11 @@ public record AttrAdder(String name, Supplier<Attribute> attr, UUID uuid,
 	}
 
 	public MutableComponent getTooltip() {
-		return AttrFacet.getDesc(attr.get(), value.getAsDouble(), op());
+		return AttrTooltip.getDesc(attr.get(), value.getAsDouble(), op());
+	}
+
+	public MutableComponent getText(double val) {
+		return AttrTooltip.getText(attr.get(), val, op());
 	}
 
 }

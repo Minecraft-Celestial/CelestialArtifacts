@@ -31,12 +31,45 @@
           "functions": [
             {
               "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "celestial_artifacts:spirit_necklace"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "celestial_artifacts:spirit_bracelet"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "celestial_artifacts:spirit_crown"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
               "count": 0.0,
               "function": "minecraft:set_count"
             }
           ],
           "name": "minecraft:air",
-          "weight": 10
+          "weight": 7
         }
       ],
       "rolls": 1.0

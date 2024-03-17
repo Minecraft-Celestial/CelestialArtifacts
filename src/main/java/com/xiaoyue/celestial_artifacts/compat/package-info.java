@@ -1,0 +1,8 @@
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
+
+package com.xiaoyue.celestial_artifacts.compat;
+
+import net.minecraft.MethodsReturnNonnullByDefault;
+
+import javax.annotation.ParametersAreNonnullByDefault;

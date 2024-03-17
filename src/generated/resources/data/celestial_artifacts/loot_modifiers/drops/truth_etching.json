@@ -1,5 +1,6 @@
 {
   "type": "celestial_core:add_item",
+  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.truthEtchingDropChance",
   "conditions": [
     {
       "condition": "minecraft:entity_properties",

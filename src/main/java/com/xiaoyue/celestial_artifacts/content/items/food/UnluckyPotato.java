@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
 
 public class UnluckyPotato extends Item {
 	public UnluckyPotato() {
-		super(new Item.Properties().rarity(Rarity.UNCOMMON).food(
+		super(new Properties().rarity(Rarity.UNCOMMON).food(
 				new FoodProperties.Builder().nutrition(3).build()));
 	}
 

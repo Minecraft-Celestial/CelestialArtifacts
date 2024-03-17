@@ -51,7 +51,7 @@ public class CursedProtector implements MultiLineText, TickFacet, CAAttackToken 
 
 	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
-		cache.addDealtModifier(DamageModifier.nonlinearFinal(200, val -> parse(player, val)));
+		cache.addDealtModifier(DamageModifier.nonlinearMiddle(200, val -> parse(player, val)));
 	}
 
 	private float parse(Player player, float val) {

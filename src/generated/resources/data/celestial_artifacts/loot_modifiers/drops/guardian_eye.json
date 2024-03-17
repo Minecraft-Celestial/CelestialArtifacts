@@ -3,7 +3,7 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.guardianEyeDropChance",
   "conditions": [
     {
-      "condition": "minecraft:killed_by_player"
+      "condition": "celestial_artifacts:curse_on"
     },
     {
       "condition": "minecraft:entity_properties",

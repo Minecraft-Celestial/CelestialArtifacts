@@ -13,4 +13,5 @@ public class CArtifactsClient {
 	public static void keyRegister(RegisterKeyMappingsEvent event) {
 		event.register(CAKeyMapping.ABILITY_KEY);
 	}
+
 }

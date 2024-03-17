@@ -1,4 +1,5 @@
-// 1.20.1	2024-03-08T20:02:13.821327	Celestial Artifact Slot Provider
+// 1.20.1	2024-03-17T08:45:55.309974	Celestial Artifact Slot Provider
+17f7cd8f0b57a0a0a58f75f47cf1343b3a0692d6 data/celestial_artifacts/curios/entities/player_celestial.json
 66219906bdd4594ddd624fa0b973f361826040f9 data/celestial_artifacts/curios/entities/player_vanilla.json
 096ed332871bb87ec50f337d22e4b3fde9747ceb data/celestial_artifacts/curios/slots/catastrophe.json
 024a2c00781fdf689dc55bf5cb89eb113a11ea10 data/celestial_artifacts/curios/slots/etching.json

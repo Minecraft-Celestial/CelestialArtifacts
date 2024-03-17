@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
 public class CASlotGen extends RecordDataProvider {
 
@@ -51,6 +52,12 @@ public class CASlotGen extends RecordDataProvider {
 		map.accept(CelestialArtifacts.MODID + "/curios/entities/player_vanilla", new CurioEntityBuilder(
 				new ArrayList<>(List.of(new ResourceLocation("player"))),
 				new ArrayList<>(List.of("back", "body", "bracelet", "charm", "head", "necklace", "ring")),
+				SlotCondition.of()
+		));
+
+		map.accept(CelestialArtifacts.MODID + "/curios/entities/player_celestial", new CurioEntityBuilder(
+				new ArrayList<>(List.of(new ResourceLocation("player"))),
+				new ArrayList<>(Stream.of(Type.values()).map(Type::id).toList()),
 				SlotCondition.of()
 		));
 	}

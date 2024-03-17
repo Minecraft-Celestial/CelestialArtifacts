@@ -27,7 +27,7 @@ public class ScarletBracelet implements MultiLineText, CAAttackToken {
 			float i = player.getHealth() - player.getMaxHealth() * 0.5f;
 			float addDamage = i * (e.getMaxHealth() * 0.0001f);
 			player.setHealth(player.getMaxHealth() * 0.5f);
-			cache.addHurtModifier(DamageModifier.nonlinearFinal(900, val ->
+			cache.addHurtModifier(DamageModifier.nonlinearMiddle(900, val ->
 					Math.min(e.getMaxHealth() * 0.5f, val * (1 + addDamage))));
 		}
 

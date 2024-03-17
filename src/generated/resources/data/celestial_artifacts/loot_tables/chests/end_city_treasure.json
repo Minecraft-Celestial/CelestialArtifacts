@@ -13,18 +13,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "celestial_artifacts:sands_talisman"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "celestial_artifacts:holy_sword"
+          "name": "celestial_artifacts:traveler_scroll"
         },
         {
           "type": "minecraft:item",
@@ -36,11 +25,11 @@
             }
           ],
           "name": "minecraft:air",
-          "weight": 5
+          "weight": 4
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "celestial_artifacts:chests/desert_pyramid"
+  "random_sequence": "celestial_artifacts:chests/end_city_treasure"
 }

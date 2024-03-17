@@ -2,8 +2,8 @@ package com.xiaoyue.celestial_artifacts.content.curios.ring;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
+import com.xiaoyue.celestial_artifacts.data.CALang;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
@@ -25,8 +25,7 @@ public class FlightRing extends BaseTickingToken implements SingleLineText {
 	}
 
 	@Override
-	public MutableComponent getLine() {//TODO text
-		return Component.translatable("tooltip.celestial_artifacts.flight_ring.shift1");
+	public MutableComponent getLine() {
+		return CALang.Ring.FLIGHT.get();
 	}
-
 }

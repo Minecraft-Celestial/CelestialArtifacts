@@ -65,7 +65,7 @@ public class SeaGodSet extends BaseTickingToken implements CAAttackToken {
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.set(level, CAItems.seaGodSet()));
-		list.add(TextFacet.inner(CALang.Modular.PROTECT_TYPE.get(
+		list.add(TextFacet.wrap(CALang.Modular.PROTECT_TYPE.get(
 				type().get(), TextFacet.perc(getProtect())
 		).withStyle(ChatFormatting.GRAY)));
 		list.add(TextFacet.wrap(CALang.Sets.SEA_GOD.get().withStyle(ChatFormatting.GRAY)));

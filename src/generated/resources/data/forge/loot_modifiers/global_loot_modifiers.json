@@ -8,6 +8,7 @@
     "celestial_artifacts:drops/demon_curse",
     "celestial_artifacts:drops/twisted_brain",
     "celestial_artifacts:drops/guardian_eye",
+    "celestial_artifacts:chests/end_city_treasure",
     "celestial_artifacts:drops/desire_etching",
     "celestial_artifacts:drops/chaotic_etching",
     "celestial_artifacts:drops/twisted_heart",
@@ -20,6 +21,7 @@
     "celestial_artifacts:chests/nether_bridge",
     "celestial_artifacts:chests/fishing_treasure",
     "celestial_artifacts:drops/life_etching",
+    "celestial_artifacts:drops/origin_etching",
     "celestial_artifacts:drops/nihility_etching"
   ],
   "replace": false

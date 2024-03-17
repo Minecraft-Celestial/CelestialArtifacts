@@ -4,6 +4,33 @@
 	  "end_dust": "携带[%s]杀死怪物时%s概率掉落",
 	  "nebula_cube": "玩家达成刻蚀板条件但是未获得刻蚀版时作为替代掉落"
 	},
+	"info": {
+	  "curse": "承受%2$s诅咒的玩家%3$s时%1$s概率掉落",
+	  "curse_by": "%2$s被%3$s击杀时%1$s概率掉落",
+	  "desire": "持有至少%2$s级抢夺击杀%1$s",
+	  "end": "持有至少%2$s个负面效果击杀%1$s",
+	  "find": "可以在%s找到",
+	  "life": "击杀至少%s血量的生物",
+	  "nihility": "使用深渊伤害击杀%s",
+	  "origin": "在y轴200以上击杀%s",
+	  "chaotic": "爆炸伤害",
+	  "truth": "灾厄村民",
+	  "charming": "声誉%s以上的玩家击杀村民时：%s概率掉落%s，否则掉落%s",
+	  "curse_drop": "装备%1$s的玩家击杀%3$s时%2$s概率掉落",
+	  "wither_kill": "%2$s击杀%3$s时%1$s概率掉落"
+	},
+	"loot": {
+	  "abandoned_mineshaft": "废弃矿道的宝箱里",
+	  "end_city_treasure": "末地城的宝箱里",
+	  "ancient_city": "古城的宝箱里",
+	  "bastion_treasure": "猪灵堡垒的藏宝箱里",
+	  "desert_pyramid": "沙漠神殿的宝箱里",
+	  "fishing_treasure": "可以在y轴300以上钓鱼得到",
+	  "jungle_temple": "丛林神殿的宝箱里",
+	  "nether_bridge": "下界要塞的桥的宝箱里",
+	  "underwater_ruin_big": "大型水下遗迹的宝箱里",
+	  "village_plains_house": "平原村庄的箱子里"
+	},
 	"modular": {
 	  "effect_flash": "每%s秒获得: ",
 	  "effect_hurt": "受伤时获得: ",
@@ -23,10 +50,14 @@
 	  "invul_time": "+%s无敌时间",
 	  "loot": "抢夺",
 	  "xp": "经验获取",
-	  "protect": "-%s伤害",
-	  "protect_type": "-%2$s%1$s伤害",
+	  "protect": "-%s受到的伤害",
+	  "protect_type": "-%2$s受到的%1$s伤害",
 	  "avoid_type": "%s概率回避%s伤害",
-	  "negate_type": "免疫%s伤害"
+	  "negate_type": "免疫%s伤害",
+	  "skill": "主动技能:",
+	  "skill_cd": "技能冷却:%s秒",
+	  "current_bonus": "当前增益:",
+	  "dig_speed": "挖掘速度"
 	},
 	"condition": {
 	  "attack_behind": "从背后攻击目标时:",
@@ -49,7 +80,9 @@
 	  "fire": "火焰",
 	  "magic": "魔法",
 	  "projectile": "弹射物",
-	  "water_mob": "水生生物"
+	  "water_mob": "水生生物",
+	  "freeze": "冰冻",
+	  "lightning": "闪电"
 	},
 	"curse": {
 	  "scroll_0": "一旦戴上，你将无法以正常的方式将它摘下",
@@ -80,22 +113,113 @@
 	  "nihility_title": "[虚无]",
 	  "nihility_trigger": "获得增益效果时触发",
 	  "nihility_curse": "受到负面效果时长提高%s",
-	  "nihility_bonus": "降低%s收到虚空伤害，受到攻击时使攻击者获得%s秒的%s级%s",
+	  "nihility_bonus": "降低%s收到虚空伤害，受到攻击时使攻击者获得%s",
 	  "end_title": "[终焉]",
 	  "end_trigger": "午夜时未入睡触发",
-	  "end_curse": "受到大于当前生命%s的伤害时会受到%s秒的%s级%s与%s级%s影响",
+	  "end_curse": "受到大于当前生命%s的伤害时会受到%s与%s影响",
 	  "end_bonus": "攻击后恢复自身相当于已损失生命%s生命"
 	},
 	"back": {
 	  "leech": "拥有%s效果时，攻击造成伤害的%s将用于治疗",
 	  "flame": "发射的箭矢命中目标后将使目标燃烧%s秒"
 	},
-	"necklace": {
-	  "gallop": "移动时攻击会增加相当于移动速度的%s的攻击伤害"
-	},
 	"charms": {
+	  "abyss_will_badge_2": "将[深渊呼唤]层数提高至%s层，持续%s秒",
+	  "abyss_will_badge_3": "效果结束后将积攒的层数清0并将生命削减到当前生命的%s",
+	  "abyss_will_badge_4": "攻击时%s概率将此伤害提高至%s，%s概率提高至%s",
+	  "abyss_will_badge_5": "受到攻击时%s概率将此伤害提高至%s，%s概率提高至%s",
+	  "abyss_will_badge_6": "每%s秒积攒1层[深渊呼唤]，上限%s层",
+	  "abyss_will_badge_7": "每层[深渊呼唤]提高%s攻击伤害与%s受到伤害",
+	  "abyss_will_badge_8": "当前已积攒的[深渊呼唤]: %s",
+	  "angel_heart_1": "每%s秒恢复%s点生命值",
+	  "angel_heart_2": "每%s秒清除1次身上的负面效果",
+	  "angel_pearl_1": "持续使周围的玩家获得生命恢复效果",
+	  "angel_pearl_2": "每有1种正面效果:",
+	  "corrupt_badge_2": "获得%s, %s, %s",
+	  "corrupt_badge_3": "自身每有1种负面效果:",
 	  "cursed_protector_0": "副手装备的盾牌不会再进入冷却",
-	  "cursed_protector_1": "受到伤害大于当前生命的%s时，伤害降低%s"
+	  "cursed_protector_1": "受到伤害大于当前生命的%s时，伤害降低%s",
+	  "cursed_talisman_1": "使用的武器与防具中每拥有1种诅咒附魔:",
+	  "cursed_totem_1": "使用不死图腾时给予最近的攻击者%s",
+	  "cursed_totem_2": "受到非致命伤害时会积攒1层[怨念]，上限%s层",
+	  "cursed_totem_3": "受到致命伤害时，则消耗%s层[怨念]并规避该伤害",
+	  "cursed_totem_4": "当前已积攒的[怨念]: %s",
+	  "demon_curse_0": "玩家无法回血",
+	  "demon_curse_1": "每1%额外治疗力:",
+	  "gluttony_badge_1": "每次食用食物后获得%s与%s",
+	  "gluttony_badge_2": "每拥有1点饱食度降低%s受到的伤害",
+	  "holy_sword_1": "受到伤害时反弹%s受到伤害",
+	  "holy_sword_2": "攻击亡灵生物时造成伤害全额用于治疗自身",
+	  "holy_sword_3": "每损失1点生命提高%s攻击伤害",
+	  "holy_talisman_1": "每%s秒，对周围的怪物施加总数乘%s秒的虚弱效果",
+	  "holy_talisman_2": "受到伤害降低%s，若攻击者属于亡灵生物，受到伤害则降低%s",
+	  "holy_talisman_3": "受到致命攻击时将保留1点血量并获得与最大生命相等的伤害吸收，冷却%s秒",
+	  "knight_shelter_1": "副手装备盾牌时，每%s秒恢复1点生命，装备于主手时恢复速度加快",
+	  "knight_shelter_2": "使用盾牌格挡伤害后对攻击者反伤格挡伤害的%s",
+	  "sacrificial_object_1": "死亡时有%s概率在原地留下1块金锭",
+	  "sacrificial_object_2": "死亡时有%s概率使周围最大生命小于自身的敌对生物陪葬",
+	  "solar_magnet_1": "所处世界为白天时免疫燃烧",
+	  "solar_magnet_2": "吸引周围的物品",
+	  "soul_box_0": "受到攻击时有%s概率对攻击者施加%s",
+	  "soul_box_1": "受到致命攻击时规避该伤害，冷却%s秒，并且:",
+	  "soul_box_2": "对攻击者施加%s",
+	  "soul_box_3": "对攻击者造成1次相当于你最大生命%s的深渊伤害",
+	  "twisted_brain": "受到伤害时有%s的概率规避该伤害并获得%s",
+	  "undead_charm": "受到致命伤害时规避该伤害，冷却%s秒",
+	  "war_dead_badge_1": "每损失1%生命",
+	  "war_dead_badge_11": "周围每有1只怪物，攻击后恢复%s已损失生命",
+	  "war_dead_badge_9": "若背负混沌诅咒，当生命低于最大生命的%s时"
+	},
+	"head": {
+	  "abyss_core": "受到伤害大于%s点时，将此伤害降低为%s点，冷却%s秒",
+	  "evil_eye": "免疫黑暗与失明效果",
+	  "guardian_eye_1": "持续给予周围的生物%s",
+	  "guardian_eye_2": "处于水下时不在消耗氧气",
+	  "prayer_crown": "潜行时受到攻击后%s概率立即恢复受到伤害%s生命",
+	  "sea_god_crown": "所处世界处于非雨天时将天气改为雨天",
+	  "spirit_crown_1": "周围实体数量小于%s时，射出的箭矢伤害提高%s",
+	  "spirit_crown_2": "与目标每相隔1方块的距离，射出的箭矢伤害提高%s"
+	},
+	"heart": {
+	  "demon_heart_1": "每背负1条诅咒",
+	  "demon_heart_2": "盔甲韧性提高%s",
+	  "demon_heart_3": "攻击伤害提高%s",
+	  "demon_heart_4": "受到伤害降低%s",
+	  "demon_heart_5": "背负大于等于3条诅咒时，阻止自身受到火焰燃烧",
+	  "demon_heart_6": "背负大于等于5条诅咒时，免疫缓慢与虚弱效果",
+	  "twisted_heart_1": "盔甲韧性降低%s",
+	  "twisted_heart_2": "攻击伤害降低%s",
+	  "twisted_heart_3": "若背负虚无诅咒，以上属性将反转为增益属性"
+	},
+	"necklace": {
+	  "emerald": "击杀生物后有%s基础概率额外掉落1个绿宝石",
+	  "ender_protector": "使用盾牌格挡目标攻击后，有%s概率将目标传送走",
+	  "gallop": "移动时攻击会增加相当于移动速度的%s的攻击伤害",
+	  "holy": "每次受到治疗后获得%s，冷却%s秒",
+	  "lock_of_abyss_1": "攻击后给予目标%s秒缓慢效果",
+	  "lock_of_abyss_2": "若目标已有缓慢效果则将目标的缓慢效果提升1级",
+	  "lock_of_abyss_3": "攻击时若目标拥有缓慢效果且等级大于%s",
+	  "lock_of_abyss_4": "移除该效果并对目标造成原伤害%s的深渊伤害"
+	},
+	"pendant": {
+	  "shadow_1": "造成伤害的%s用于治疗自身",
+	  "shadow_2": "幻翼不会再因为失眠而生成",
+	  "shadow_3": "当处于亮度小于%s的位置时，每小于1点:",
+	  "shadow_4": "攻击伤害提高%s",
+	  "shadow_5": "受到伤害降低%s",
+	  "chaotic": "从附魔台附魔出的附魔等级加%s"
+	},
+	"ring": {
+	  "flight": "获得飞行能力",
+	  "nether_fire": "受到攻击后使攻击者陷入%s秒燃烧",
+	  "ring_of_life": "每%s秒随机催熟1次周围的作物"
+	},
+	"scroll": {
+	  "sea_god": "处于水下时挖掘速度不会再受到影响",
+	  "sky_walker_2": "潜行时，储存当前位置的坐标，否则将你传送到储存的坐标处",
+	  "sky_walker_3": "只能在同维度中传送",
+	  "sky_walker_4": "当前储存的坐标: %s - (%s,%s,%s)",
+	  "traveler": "每次进入新的维度时将获得%s与%s"
 	},
 	"sets": {
 	  "sea_god": "手持三叉戟时：",

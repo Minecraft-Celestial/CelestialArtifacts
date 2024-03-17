@@ -20,12 +20,23 @@
           "functions": [
             {
               "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "celestial_artifacts:red_heart_necklace"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
               "count": 0.0,
               "function": "minecraft:set_count"
             }
           ],
           "name": "minecraft:air",
-          "weight": 6
+          "weight": 5
         }
       ],
       "rolls": 1.0
