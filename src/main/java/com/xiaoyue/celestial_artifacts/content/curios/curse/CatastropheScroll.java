@@ -153,7 +153,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 		;
 
 		private final Supplier<Item> etching;
-		private final Supplier<MutableComponent> title, trigger, bonus;
+		public final Supplier<MutableComponent> title, trigger, bonus;
 		private final List<Supplier<MutableComponent>> curse;
 
 

@@ -19,27 +19,37 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
 
-public enum CALootTableGen {
-	VILLAGE_PLAINS_HOUSE(BuiltInLootTables.VILLAGE_PLAINS_HOUSE, 7, CAItems.CROSS_NECKLACE),
-	ABANDONED_MINESHAFT(BuiltInLootTables.ABANDONED_MINESHAFT, 5, CAItems.FANG_NECKLACE),
-	ANCIENT_CITY(BuiltInLootTables.ANCIENT_CITY, 12, CAItems.UNOWNED_PENDANT, CAItems.SACRIFICIAL_OBJECT),
-	BASTION_TREASURE(BuiltInLootTables.BASTION_TREASURE, 5, CAItems.HEART_OF_REVENGE),
-	DESERT_PYRAMID(BuiltInLootTables.DESERT_PYRAMID, 5, CAItems.SANDS_TALISMAN),
-	JUNGLE_TEMPLE(BuiltInLootTables.JUNGLE_TEMPLE, 12, CAItems.BEARING_STAMEN, CAItems.SPIRIT_ARROW_BAG),
-	NETHER_BRIDGE(BuiltInLootTables.NETHER_BRIDGE, 5, CAItems.RED_RUBY_BRACELET),
-	UNDERWATER_RUIN_BIG(BuiltInLootTables.UNDERWATER_RUIN_BIG, 7, CAItems.LEECH_SCABBARD),
-	FISHING_TREASURE(BuiltInLootTables.FISHING_TREASURE, 33, CAItems.MAGIC_HORSESHOE),
+public enum CALootTableGen implements CALang.Info {
+	VILLAGE_PLAINS_HOUSE("Plains Village House", BuiltInLootTables.VILLAGE_PLAINS_HOUSE, 7, CAItems.CROSS_NECKLACE, CAItems.RED_HEART_NECKLACE),
+	ABANDONED_MINESHAFT("Abandoned Mineshaft", BuiltInLootTables.ABANDONED_MINESHAFT, 5, CAItems.FANG_NECKLACE),
+	END_CITY_TREASURE("End City", BuiltInLootTables.END_CITY_TREASURE, 5, CAItems.TRAVELER_SCROLL),
+	ANCIENT_CITY("Ancient City", BuiltInLootTables.ANCIENT_CITY, 12, CAItems.UNOWNED_PENDANT, CAItems.SACRIFICIAL_OBJECT, CAItems.DEMON_HEART),
+	BASTION_TREASURE("Bastion Treasure Room", BuiltInLootTables.BASTION_TREASURE, 9, CAItems.HEART_OF_REVENGE, CAItems.SCARLET_BRACELET),
+	DESERT_PYRAMID("Desert Pyramid", BuiltInLootTables.DESERT_PYRAMID, 7, CAItems.SANDS_TALISMAN, CAItems.HOLY_SWORD),
+	JUNGLE_TEMPLE("Jungle Temple", BuiltInLootTables.JUNGLE_TEMPLE, 12, CAItems.BEARING_STAMEN,
+			CAItems.SPIRIT_ARROW_BAG, CAItems.SPIRIT_NECKLACE, CAItems.SPIRIT_BRACELET, CAItems.SPIRIT_CROWN),
+	NETHER_BRIDGE("Nether Fortress Bridge", BuiltInLootTables.NETHER_BRIDGE, 5, CAItems.RED_RUBY_BRACELET),
+	UNDERWATER_RUIN_BIG("Big Underwater Ruin", BuiltInLootTables.UNDERWATER_RUIN_BIG, 9, CAItems.LEECH_SCABBARD, CAItems.THUNDER_RING),
+	FISHING_TREASURE("Can be fished at y>300", BuiltInLootTables.FISHING_TREASURE, 33, CAItems.MAGIC_HORSESHOE),
 	;
 
+	private final CALang.Entry entry;
 	public final List<Supplier<Item>> item;
 	public final ResourceLocation target;
 	public final int odds;
 
 	@SafeVarargs
-	CALootTableGen(ResourceLocation target, int odds, Supplier<Item>... item) {
+	CALootTableGen(String def, ResourceLocation target, int odds, Supplier<Item>... item) {
+		this.entry = new CALang.Entry(name().toLowerCase(Locale.ROOT), def, 0);
 		this.item = List.of(item);
 		this.target = target;
 		this.odds = odds - item.length;
+	}
+
+
+	@Override
+	public CALang.Entry entry() {
+		return entry;
 	}
 
 	public ResourceLocation id() {
@@ -62,5 +72,6 @@ public enum CALootTableGen {
 			}
 		});
 	}
+
 
 }

@@ -7,6 +7,7 @@ import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Mob;
@@ -45,7 +46,7 @@ public class CALang {
 			return CelestialArtifacts.MODID + "." + path() + "." + entry().id();
 		}
 
-		default MutableComponent get(Component... objs) {
+		default MutableComponent get(MutableComponent... objs) {
 			if (objs.length != entry().count())
 				throw new IllegalArgumentException("for " + entry().id() + ": expect " + entry().count() + " parameters, got " + objs.length);
 			return translate(desc(), (Object[]) objs);
@@ -68,6 +69,43 @@ public class CALang {
 		public Entry entry() {
 			return entry;
 		}
+
+	}
+
+	public enum JEIInfo implements Info {
+		FIND("Can be found in %s", 1),
+		CURSE("%s chance to drop when player bearing %s Curse kills %s", 3),
+		CURSE_BY("%s chance to drop when %s is killed by %s", 3),
+		DESIRE("%s with %s or higher looting", 2),
+		END("%s with %s or more harmful effects", 2),
+		ORIGIN("%s at y=200 or higher", 1),
+		LIFE("mobs with %s or higher health", 1),
+		NIHILITY("%s with abyss damage", 1),
+		CHAOTIC("explosion damage", 0),
+		TRUTH("raiders", 0),
+
+		CURSE_DROP("With %s, %s chance to drop when player kills %s", 3),
+		CHARMING("When player with %s or higher reputation kills villager: %s chance to drop %s, otherwise drops %s", 4),
+		WITHER_KILL("%s chance to drop when %s kills %s", 3),
+		;
+
+		final Entry entry;
+
+		JEIInfo(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		@Override
+		public Entry entry() {
+			return entry;
+		}
+
+		@Override
+		public MutableComponent get(MutableComponent... objs) {
+			for (var e : objs) e.setStyle(Style.EMPTY);
+			return Info.super.get(objs);
+		}
+
 
 	}
 
@@ -500,6 +538,8 @@ public class CALang {
 
 	static {
 		putLang(Tooltip.class, "tooltip", Tooltip.values());
+		putLang(JEIInfo.class, "info", JEIInfo.values());
+		putLang(CALootTableGen.class, "loot", CALootTableGen.values());
 		putLang(Modular.class, "modular", Modular.values());
 		putLang(Condition.class, "condition", Condition.values());
 		putLang(DamageTypes.class, "damage_type", DamageTypes.values());

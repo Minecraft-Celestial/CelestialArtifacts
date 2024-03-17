@@ -1,6 +1,6 @@
-// 1.20.1	2024-03-17T16:18:36.959142	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
-0c4a34aef43d794ed5f2115ebd521c8aaf4595ed assets/celestial_artifacts/lang/en_ud.json
-fba7eab459bede17207edf7b078fa0b1a658ac20 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-03-17T18:11:57.397759	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
+2f718e8224cff5a4be1e1ef1aaf3d3b063c63bab assets/celestial_artifacts/lang/en_ud.json
+9f2a169b959e81b2467f10e4b85bbcde6dda75ae assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
@@ -153,14 +153,15 @@ dd92717026b680c3c1f7d154b78803c62fb3f1a2 data/celestial_artifacts/advancements/r
 c4e842c7eb8446ee8d5fa4f39d77dbb123a07f4d data/celestial_artifacts/advancements/recipes/misc/undead_charm.json
 29850cbd83c15049df27db5490edab1fb2e6315d data/celestial_artifacts/advancements/recipes/misc/war_dead_badge.json
 f729b7c5738e8dd9a166c285669d4adcbbef498d data/celestial_artifacts/loot_tables/chests/abandoned_mineshaft.json
-a8c8a46d7ca705853f7d600ecdf68a59aba2b8bf data/celestial_artifacts/loot_tables/chests/ancient_city.json
-c283e8572f7c1d58be59547bd506aa76a39d6a24 data/celestial_artifacts/loot_tables/chests/bastion_treasure.json
-c2242a89981878a4a6850c49b7ba1fba3646e2e4 data/celestial_artifacts/loot_tables/chests/desert_pyramid.json
+64d1c5fa4d752b2b34d7e04c77b29bd096c6f7a3 data/celestial_artifacts/loot_tables/chests/ancient_city.json
+28fd6dbdf5261fc729f561161f6ae6043224d5c1 data/celestial_artifacts/loot_tables/chests/bastion_treasure.json
+acc602e50b8400ee68643e3accc0dbb4841c5a87 data/celestial_artifacts/loot_tables/chests/desert_pyramid.json
+01ea6d6cb2c731d375060efb193641988b3765d0 data/celestial_artifacts/loot_tables/chests/end_city_treasure.json
 bbba0f8a04e93f64d781f116c78ecdc2ad4f8965 data/celestial_artifacts/loot_tables/chests/fishing_treasure.json
-957d59431c5945a271fe5ac68fdf796d0d9f600d data/celestial_artifacts/loot_tables/chests/jungle_temple.json
+17b7704503109cafe889cf3e5886d19bdd3b19d0 data/celestial_artifacts/loot_tables/chests/jungle_temple.json
 dd2f91a08703f50a84c35f5e71c7508740fa2aa7 data/celestial_artifacts/loot_tables/chests/nether_bridge.json
-4d442d1cf695d169d8dea4702169574681f92744 data/celestial_artifacts/loot_tables/chests/underwater_ruin_big.json
-48863a9edb4adac90890711a35765d271a94c169 data/celestial_artifacts/loot_tables/chests/village_plains_house.json
+072f874a031f94225e8ac7fa06d108707a2b7dc3 data/celestial_artifacts/loot_tables/chests/underwater_ruin_big.json
+fcb60a2ad7330f35270a1770e5316074f8089b91 data/celestial_artifacts/loot_tables/chests/village_plains_house.json
 fc1f30cc59e3264c7573b59ac746ae4db4cca95c data/celestial_artifacts/recipes/abyss_core.json
 71c930f7296f616398371d1e0bd8f180d6bd420c data/celestial_artifacts/recipes/abyss_will_badge.json
 c639702baca3cda2eabc59272efb527b2ff7df68 data/celestial_artifacts/recipes/amethyst_ring.json
@@ -218,7 +219,6 @@ dae3b0ffb4b872f92351f0fbbce02c597df487a4 data/celestial_artifacts/recipes/twiste
 5b35bd49a6e1f18aa91920182a725720a88890bd data/celestial_artifacts/recipes/twisted_scroll.json
 fa2fc39dbde2cbfc51531514f0f55bef0dc22cbc data/celestial_artifacts/recipes/undead_charm.json
 4d6c0a1cc2c98bf44441789ec4a6c9fdaba27e99 data/celestial_artifacts/recipes/war_dead_badge.json
-10ad9d392116478867a9ae08c9403c1f54d597a6 data/celestial_artifacts/tags/entity_types/drops_twisted_brain.json
 a6206a3d5baad2b734515ea39951ce7d5c60f6d0 data/curios/tags/items/back.json
 6c401cd08b4f59029e724362aa2f380ddd8c42e0 data/curios/tags/items/bracelet.json
 66c93019c29056939444dbbc489ea64ec5af0590 data/curios/tags/items/catastrophe.json

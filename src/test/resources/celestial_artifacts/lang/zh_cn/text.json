@@ -4,6 +4,33 @@
 	  "end_dust": "携带[%s]杀死怪物时%s概率掉落",
 	  "nebula_cube": "玩家达成刻蚀板条件但是未获得刻蚀版时作为替代掉落"
 	},
+	"info": {
+	  "curse": "承受%2$s诅咒的玩家%3$s时%1$s概率掉落",
+	  "curse_by": "%2$s被%3$s击杀时%1$s概率掉落",
+	  "desire": "持有至少%2$s级抢夺击杀%1$s",
+	  "end": "持有至少%2$s个负面效果击杀%1$s",
+	  "find": "可以在%s找到",
+	  "life": "击杀至少%s血量的生物",
+	  "nihility": "使用深渊伤害击杀%s",
+	  "origin": "在y轴200以上击杀%s",
+	  "chaotic": "爆炸伤害",
+	  "truth": "灾厄村民",
+	  "charming": "声誉%s以上的玩家击杀村民时：%s概率掉落%s，否则掉落%s",
+	  "curse_drop": "装备%1$s的玩家击杀%3$s时%2$s概率掉落",
+	  "wither_kill": "%2$s击杀%3$s时%1$s概率掉落"
+	},
+	"loot": {
+	  "abandoned_mineshaft": "废弃矿道的宝箱里",
+	  "end_city_treasure": "末地城的宝箱里",
+	  "ancient_city": "古城的宝箱里",
+	  "bastion_treasure": "猪灵堡垒的藏宝箱里",
+	  "desert_pyramid": "沙漠神殿的宝箱里",
+	  "fishing_treasure": "可以在y轴300以上钓鱼得到",
+	  "jungle_temple": "丛林神殿的宝箱里",
+	  "nether_bridge": "下界要塞的桥的宝箱里",
+	  "underwater_ruin_big": "大型水下遗迹的宝箱里",
+	  "village_plains_house": "平原村庄的箱子里"
+	},
 	"modular": {
 	  "effect_flash": "每%s秒获得: ",
 	  "effect_hurt": "受伤时获得: ",

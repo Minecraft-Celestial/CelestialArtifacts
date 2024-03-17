@@ -31,12 +31,23 @@
           "functions": [
             {
               "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "celestial_artifacts:demon_heart"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
               "count": 0.0,
               "function": "minecraft:set_count"
             }
           ],
           "name": "minecraft:air",
-          "weight": 10
+          "weight": 9
         }
       ],
       "rolls": 1.0

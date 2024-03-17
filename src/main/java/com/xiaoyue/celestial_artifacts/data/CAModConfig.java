@@ -32,6 +32,7 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue lifeEtchingHealthRequirement;
 			public final ForgeConfigSpec.DoubleValue chaoticEtchingDropChance;
 			public final ForgeConfigSpec.DoubleValue nihilityEtchingDropChance;
+			public final ForgeConfigSpec.DoubleValue truthEtchingDropChance;
 
 			public final ForgeConfigSpec.DoubleValue endDustDropChance;
 			public final ForgeConfigSpec.DoubleValue charmingBraceletDropChance;
@@ -54,6 +55,7 @@ public class CAModConfig {
 				lifeEtchingHealthRequirement = builder.defineInRange("lifeEtchingHealthRequirement", 500, 1, 1000000);
 				chaoticEtchingDropChance = builder.defineInRange("chaoticEtchingDropChance", 0.3, 0, 1);
 				nihilityEtchingDropChance = builder.defineInRange("nihilityEtchingDropChance", 0.5, 0, 1);
+				truthEtchingDropChance = builder.defineInRange("truthEtchingDropChance", 0.5, 0, 1);
 
 				endDustDropChance = builder.defineInRange("endDustDropChance", 0.02, 0, 1);
 				charmingBraceletDropChance = builder.defineInRange("charmingBraceletDropChance", 0.5, 0, 1);

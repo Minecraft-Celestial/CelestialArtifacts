@@ -8,5 +8,6 @@
       "count": "celestial_configs/celestial_artifacts-common.toml/materials.charmingBraceletReputationRequirement"
     }
   ],
+  "fail": "minecraft:gold_ingot",
   "item": "celestial_artifacts:charming_bracelet"
 }
