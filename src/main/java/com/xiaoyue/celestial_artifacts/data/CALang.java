@@ -219,9 +219,7 @@ public class CALang {
 		SCARLETBLOOD("攻击目标时额外消耗自身生命到最大生命的%s",1),
 		SCARLETRAGE("每消耗1点生命攻击提高相当于目标最大生命%s点伤害，上限%s",2),
 
-		SPIRITSPEEDBOW("拉弓与弩的速度提高%s",1),
-
-
+		SPIRITSPEEDBOW("拉弓与弩的速度提高%s",1)
 		;
 
 		final Entry entry;

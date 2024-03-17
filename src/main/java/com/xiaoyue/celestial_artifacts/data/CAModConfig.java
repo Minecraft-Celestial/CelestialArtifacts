@@ -174,7 +174,6 @@ public class CAModConfig {
 					spiritspeedbow = builder
 							.comment("speed increase after hitting with a bow or crossbow")
 							.defineInRange("scarlet damage limit", 1.00, 0, Integer.MAX_VALUE);
-
 				}
 				builder.pop();
 			}
