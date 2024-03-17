@@ -117,7 +117,7 @@ public class CAModConfig {
 
 		}
 
-		public static class Bracelet {
+		public static class Bracelet {//TODO
 
 			// hidden_bracelet
 			public final ForgeConfigSpec.IntValue hiddenBraceletEffectDuration;
@@ -147,7 +147,7 @@ public class CAModConfig {
 						.comment("Hidden Bracelet: Stealth effect interval")
 						.defineInRange("hiddenBraceletEffectDuration", 7, 1, Integer.MAX_VALUE);
 				hiddenBraceletDamageimprove = builder
-			            .comment("This value determines how many damage you will improve")
+						.comment("This value determines how many damage you will improve")
 						.defineInRange("hiddenBraceletEffectDuration", 0.25, 0, Integer.MAX_VALUE);
 				hiddenBraceletCD = builder
 						.comment("This value determines how many seconds you cant hidden")
@@ -156,8 +156,8 @@ public class CAModConfig {
 				//charm_brace
 				{
 					charmbraceArmor = builder
-						.comment("Armor improve")
-						.defineInRange("charmbraceArmor", 2, 0, Integer.MAX_VALUE);
+							.comment("Armor improve")
+							.defineInRange("charmbraceArmor", 2, 0, Integer.MAX_VALUE);
 					charmbracevirus = builder
 							.comment("enemy kill one of themself")
 							.defineInRange("charmbracevirus", 10, 1, Integer.MAX_VALUE);
@@ -186,19 +186,7 @@ public class CAModConfig {
 				builder.pop();
 			}
 
-            public Bracelet(ForgeConfigSpec.IntValue hiddenBraceletEffectDuration, ForgeConfigSpec.DoubleValue hiddenBraceletDamageimprove, ForgeConfigSpec.IntValue hiddenBraceletCD, ForgeConfigSpec.IntValue charmbraceArmor, ForgeConfigSpec.IntValue charmbracevirus, ForgeConfigSpec.IntValue charmbraceship, ForgeConfigSpec.DoubleValue scarletheal, ForgeConfigSpec.DoubleValue scarletdamagerate, ForgeConfigSpec.DoubleValue scarletdamagelimit, ForgeConfigSpec.DoubleValue spiritspeedbow) {
-                this.hiddenBraceletEffectDuration = hiddenBraceletEffectDuration;
-                this.hiddenBraceletDamageimprove = hiddenBraceletDamageimprove;
-                this.hiddenBraceletCD = hiddenBraceletCD;
-                this.charmbraceArmor = charmbraceArmor;
-                this.charmbracevirus = charmbracevirus;
-                this.charmbraceship = charmbraceship;
-                this.scarletheal = scarletheal;
-                this.scarletdamagerate = scarletdamagerate;
-                this.scarletdamagelimit = scarletdamagelimit;
-                this.spiritspeedbow = spiritspeedbow;
-            }
-        }
+		}
 
 		public static class Charm {
 

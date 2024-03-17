@@ -248,22 +248,21 @@ public class CALang {
 
 	}
 
-	public enum Bracelet implements Info {
+	public enum Bracelet implements Info {//TODO
 
-		HIDDENBRACE1("每%s秒获得1次隐匿效果",1),
-		HIDDENBRACE2("拥有隐匿效果时攻击伤害提高%s",1),
+		HIDDENBRACE1("每%s秒获得1次隐匿效果", 1),
+		HIDDENBRACE2("拥有隐匿效果时攻击伤害提高%s", 1),
 
-		HIDDENBRACE4("攻击时若拥有隐匿效果则移除隐匿效果，且之后%s秒内无法再次获得",1),
+		HIDDENBRACE4("攻击时若拥有隐匿效果则移除隐匿效果，且之后%s秒内无法再次获得", 1),
 
-		CHARMARMOR("提高%s点护甲",1),
-		CHARMVIRUS("受到攻击时周围的生物会优先攻击刚才攻击你的生物，冷却%s秒",1),
-		CHARMSHIP("击杀僵尸时，周围的村民会提高%s点对你的好感度",1),
+		CHARMARMOR("提高%s点护甲", 1),
+		CHARMVIRUS("受到攻击时周围的生物会优先攻击刚才攻击你的生物，冷却%s秒", 1),
+		CHARMSHIP("击杀僵尸时，周围的村民会提高%s点对你的好感度", 1),
 
-		SCARLETBLOOD("攻击目标时额外消耗自身生命到最大生命的%s",1),
-		SCARLETRAGE("每消耗1点生命攻击提高相当于目标最大生命%s点伤害，上限%s",2),
+		SCARLETBLOOD("攻击目标时额外消耗自身生命到最大生命的%s", 1),
+		SCARLETRAGE("每消耗1点生命攻击提高相当于目标最大生命%s点伤害，上限%s", 2),
 
-		SPIRITSPEEDBOW("拉弓与弩的速度提高%s",1)
-		;
+		SPIRITSPEEDBOW("拉弓与弩的速度提高%s", 1);
 
 		final Entry entry;
 
