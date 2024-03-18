@@ -10,7 +10,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class CAModConfig {
 
-
 	public static class Client {
 
 		Client(ForgeConfigSpec.Builder builder) {
@@ -1081,6 +1080,26 @@ public class CAModConfig {
 
 		}
 
+		public static class Misc {
+
+			public final ForgeConfigSpec.IntValue backtrackMirrorCooldown;
+			public final ForgeConfigSpec.IntValue repentMirrorCooldown;
+
+			private Misc(ForgeConfigSpec.Builder builder) {
+				builder.push("misc");
+
+				backtrackMirrorCooldown = builder.defineInRange("backtrackMirrorCooldown",
+						10, 0, 10000);
+				repentMirrorCooldown = builder.defineInRange("repentMirrorCooldown",
+						10, 0, 10000);
+
+
+				builder.pop();
+			}
+
+		}
+
+
 		public final Materials materials;
 		public final Back back;
 		public final Bracelet bracelet;
@@ -1093,6 +1112,7 @@ public class CAModConfig {
 		public final Ring ring;
 		public final Scroll scroll;
 		public final Set set;
+		public final Misc misc;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			materials = new Materials(builder);
@@ -1107,6 +1127,7 @@ public class CAModConfig {
 			ring = new Ring(builder);
 			scroll = new Scroll(builder);
 			set = new Set(builder);
+			misc = new Misc(builder);
 		}
 
 	}

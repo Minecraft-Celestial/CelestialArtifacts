@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:amethyst_shard"
+      "item": "celestial_core:void_essence"
     },
     "B": {
       "item": "minecraft:ender_eye"
@@ -15,7 +15,7 @@
       "item": "minecraft:glow_ink_sac"
     },
     "E": {
-      "item": "minecraft:amethyst_block"
+      "item": "minecraft:amethyst_shard"
     }
   },
   "pattern": [

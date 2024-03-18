@@ -6,7 +6,7 @@
       "item": "celestial_artifacts:nebula_cube"
     },
     "B": {
-      "item": "celestial_core:warden_sclerite"
+      "item": "celestial_core:heart_fragment"
     },
     "C": {
       "item": "celestial_core:light_fragment"
@@ -16,12 +16,15 @@
     },
     "E": {
       "item": "celestial_artifacts:life_etching"
+    },
+    "F": {
+      "item": "celestial_core:warden_sclerite"
     }
   },
   "pattern": [
-    "DED",
+    "FEF",
     "ABA",
-    "CAC"
+    "CDC"
   ],
   "result": {
     "item": "celestial_artifacts:soul_box"

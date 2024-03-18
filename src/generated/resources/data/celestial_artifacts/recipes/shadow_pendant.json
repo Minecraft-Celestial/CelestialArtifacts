@@ -16,12 +16,21 @@
     },
     "E": {
       "item": "celestial_artifacts:unowned_pendant"
+    },
+    "F": {
+      "item": "celestial_core:death_essence"
+    },
+    "M": {
+      "item": "celestial_core:midnight_fragment"
+    },
+    "X": {
+      "item": "celestial_artifacts:nebula_cube"
     }
   },
   "pattern": [
-    " A ",
+    "XAF",
     "CED",
-    " B "
+    "MBX"
   ],
   "result": {
     "item": "celestial_artifacts:shadow_pendant"

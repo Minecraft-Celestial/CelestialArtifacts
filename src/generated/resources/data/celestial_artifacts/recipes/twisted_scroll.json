@@ -6,17 +6,20 @@
       "item": "minecraft:paper"
     },
     "B": {
-      "item": "minecraft:amethyst_shard"
+      "item": "celestial_core:void_essence"
     },
     "C": {
-      "item": "minecraft:ink_sac"
+      "item": "celestial_core:death_essence"
     },
     "D": {
       "item": "celestial_core:midnight_fragment"
+    },
+    "X": {
+      "item": "celestial_artifacts:nebula_cube"
     }
   },
   "pattern": [
-    " AA",
+    "XAA",
     "ADB",
     "AAC"
   ],

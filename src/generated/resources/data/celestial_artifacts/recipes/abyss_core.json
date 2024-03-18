@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:diamond"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "B": {
       "item": "minecraft:ender_pearl"
@@ -13,10 +13,13 @@
     },
     "D": {
       "item": "celestial_core:void_essence"
+    },
+    "E": {
+      "item": "celestial_artifacts:the_end_dust"
     }
   },
   "pattern": [
-    " A ",
+    "EAE",
     "CBC",
     "DCD"
   ],

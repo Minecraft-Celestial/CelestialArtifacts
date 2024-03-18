@@ -16,10 +16,13 @@
     },
     "E": {
       "item": "celestial_artifacts:life_etching"
+    },
+    "F": {
+      "item": "minecraft:spore_blossom"
     }
   },
   "pattern": [
-    "DCD",
+    "DFD",
     "BEA",
     "DCD"
   ],

@@ -16,11 +16,14 @@
     },
     "E": {
       "item": "celestial_core:light_fragment"
+    },
+    "F": {
+      "item": "celestial_core:midnight_fragment"
     }
   },
   "pattern": [
-    "ABB",
-    "CDB",
+    "FBF",
+    "CAD",
     "ECC"
   ],
   "result": {

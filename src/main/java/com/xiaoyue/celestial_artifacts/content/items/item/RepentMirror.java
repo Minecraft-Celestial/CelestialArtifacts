@@ -1,6 +1,8 @@
 package com.xiaoyue.celestial_artifacts.content.items.item;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import dev.xkmc.l2library.util.tools.TeleportTool;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -19,13 +21,18 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class RepentMirror extends Item {
+
+	private static int cd() {
+		return CAModConfig.COMMON.misc.backtrackMirrorCooldown.get();
+	}
+
 	public RepentMirror() {
 		super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override
 	public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
-		list.add(CALang.Tooltip.REPENT.get().withStyle(ChatFormatting.GRAY));
+		list.add(CALang.Tooltip.REPENT.get(TextFacet.num(cd())).withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override
@@ -42,7 +49,7 @@ public class RepentMirror extends Item {
 							BlockPos pos = opt.get().pos();
 							TeleportTool.performTeleport(sp, lv, pos.getX(), pos.getY(), pos.getZ(),
 									player.getYRot(), player.getXRot());
-							player.getCooldowns().addCooldown(itemInHand.getItem(), 200);
+							player.getCooldowns().addCooldown(itemInHand.getItem(), 20 * cd());
 						}
 					}
 				}

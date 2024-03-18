@@ -35,11 +35,12 @@ public class CARecipeGen {
 						.save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.TWISTED_SCROLL.get(), 1)::unlockedBy, Items.PAPER)
-						.pattern(" AA").pattern("ADB").pattern("AAC")
+						.pattern("XAA").pattern("ADB").pattern("AAC")
 						.define('A', Items.PAPER)
-						.define('B', Items.AMETHYST_SHARD)
-						.define('C', Items.INK_SAC)
+						.define('B', CCItems.VOID_ESSENCE)
+						.define('C', CCItems.DEATH_ESSENCE)
 						.define('D', CCItems.MIDNIGHT_FRAGMENT.get())
+						.define('X', CAItems.NEBULA_CUBE.get())
 						.save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.SKYWALKER_SCROLL.get(), 1)::unlockedBy, Items.PAPER)
@@ -105,13 +106,16 @@ public class CARecipeGen {
 						.define('D', CAItems.UNOWNED_PENDANT.get())
 						.save(pvd);
 
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.SHADOW_PENDANT.get(), 1)::unlockedBy, Items.AMETHYST_SHARD)
-						.pattern(" A ").pattern("CED").pattern(" B ")
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.SHADOW_PENDANT.get(), 1)::unlockedBy, CAItems.NEBULA_CUBE.get())
+						.pattern("XAF").pattern("CED").pattern("MBX")
 						.define('A', Items.AMETHYST_SHARD)
 						.define('B', Items.NETHERITE_INGOT)
 						.define('C', CCItems.VOID_ESSENCE.get())
 						.define('D', CAItems.THE_END_DUST.get())
 						.define('E', CAItems.UNOWNED_PENDANT.get())
+						.define('X', CAItems.NEBULA_CUBE.get())
+						.define('M', CCItems.MIDNIGHT_FRAGMENT.get())
+						.define('F', CCItems.DEATH_ESSENCE.get())
 						.save(pvd);
 			}
 
@@ -216,21 +220,21 @@ public class CARecipeGen {
 						.define('D', Items.GOLD_INGOT)
 						.save(pvd);
 
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.GALLOP_NECKLACE.get(), 1)::unlockedBy, Items.GOLD_INGOT)
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.GALLOP_NECKLACE.get(), 1)::unlockedBy, CAItems.UNOWNED_PENDANT.get())
 						.pattern("ATA").pattern("ABA").pattern("DCD")
 						.define('A', Items.GOLD_INGOT)
 						.define('T', CCItems.TREASURE_FRAGMENT)
-						.define('B', Items.REDSTONE_BLOCK)
+						.define('B', CAItems.UNOWNED_PENDANT)
 						.define('C', Items.RABBIT_FOOT)
 						.define('D', Items.SUGAR).save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.ENDER_PROTECTOR.get(), 1)::unlockedBy, Items.AMETHYST_SHARD)
 						.pattern("EAE").pattern("ABA").pattern("DCD")
-						.define('A', Items.AMETHYST_SHARD)
+						.define('A', CCItems.VOID_ESSENCE)
 						.define('B', Items.ENDER_EYE)
 						.define('C', CCItems.SHULKER_SCRAP.get())
 						.define('D', Items.GLOW_INK_SAC)
-						.define('E', Items.AMETHYST_BLOCK)
+						.define('E', Items.AMETHYST_SHARD)
 						.save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.HOLY_NECKLACE.get(), 1)::unlockedBy, Items.GOLD_INGOT)
@@ -285,12 +289,13 @@ public class CARecipeGen {
 						.define('D', CCItems.OCEAN_ESSENCE.get())
 						.save(pvd);
 
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.ABYSS_CORE.get(), 1)::unlockedBy, Items.DIAMOND)
-						.pattern(" A ").pattern("CBC").pattern("DCD")
-						.define('A', Items.DIAMOND)
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.ABYSS_CORE.get(), 1)::unlockedBy, CCItems.VOID_ESSENCE.get())
+						.pattern("EAE").pattern("CBC").pattern("DCD")
+						.define('A', CAItems.NEBULA_CUBE)
 						.define('B', Items.ENDER_PEARL)
 						.define('C', Items.PRISMARINE_SHARD)
-						.define('D', CCItems.VOID_ESSENCE.get())
+						.define('D', CCItems.VOID_ESSENCE)
+						.define('E', CAItems.THE_END_DUST)
 						.save(pvd);
 
 			}
@@ -379,9 +384,10 @@ public class CARecipeGen {
 						.save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.BEARING_STAMEN.get(), 1)::unlockedBy, CCItems.EARTH_CORE.get())
-						.pattern("DCD").pattern("BEA").pattern("DCD")
+						.pattern("DFD").pattern("BEA").pattern("DCD")
 						.define('A', CCItems.FIRE_ESSENCE.get())
 						.define('B', CCItems.OCEAN_ESSENCE.get())
+						.define('F', Items.SPORE_BLOSSOM)
 						.define('C', Items.GHAST_TEAR)
 						.define('D', CCItems.EARTH_CORE)
 						.define('E', CAItems.LIFE_ETCHING)
@@ -472,12 +478,13 @@ public class CARecipeGen {
 
 				// totems
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.HOLY_TALISMAN.get(), 1)::unlockedBy, CCItems.PURE_NETHER_STAR.get())
-						.pattern("ABB").pattern("CDB").pattern("ECC")
+						.pattern("FBF").pattern("CAD").pattern("ECC")
 						.define('A', CCItems.PURE_NETHER_STAR.get())
 						.define('B', CAItems.ORIGIN_ETCHING)
 						.define('C', CAItems.NEBULA_CUBE)
 						.define('D', CAItems.LIFE_ETCHING.get())
 						.define('E', CCItems.LIGHT_FRAGMENT.get())
+						.define('F', CCItems.MIDNIGHT_FRAGMENT.get())
 						.save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.UNDEAD_CHARM.get(), 1)::unlockedBy, CAItems.NEBULA_CUBE.get())
@@ -493,19 +500,20 @@ public class CARecipeGen {
 						.pattern("AEA").pattern("CDC").pattern("BFB")
 						.define('A', Items.ECHO_SHARD)
 						.define('B', CAItems.NEBULA_CUBE)
-						.define('C', CCItems.MIDNIGHT_FRAGMENT.get())
+						.define('C', CCItems.DEATH_ESSENCE.get())
 						.define('D', Items.TOTEM_OF_UNDYING)
 						.define('E', CAItems.END_ETCHING)
 						.define('F', CAItems.LIFE_ETCHING)
 						.save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.SOUL_BOX.get(), 1)::unlockedBy, CAItems.NEBULA_CUBE.get())
-						.pattern("DED").pattern("ABA").pattern("CAC")
+						.pattern("FEF").pattern("ABA").pattern("CDC")
 						.define('A', CAItems.NEBULA_CUBE)
-						.define('B', CCItems.WARDEN_SCLERITE)
+						.define('B', CCItems.HEART_FRAGMENT)
 						.define('C', CCItems.LIGHT_FRAGMENT.get())
 						.define('D', CAItems.NIHILITY_ETCHING)
 						.define('E', CAItems.LIFE_ETCHING)
+						.define('F', CCItems.WARDEN_SCLERITE)
 						.save(pvd);
 			}
 
