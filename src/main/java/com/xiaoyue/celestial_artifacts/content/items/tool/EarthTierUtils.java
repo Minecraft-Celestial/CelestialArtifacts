@@ -12,7 +12,7 @@ public class EarthTierUtils implements Tier {
 
 	@Override
 	public float getSpeed() {
-		return 4;
+		return 20;
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class EarthTierUtils implements Tier {
 
 	@Override
 	public int getEnchantmentValue() {
-		return 18;
+		return 30;
 	}
 
 	@Override

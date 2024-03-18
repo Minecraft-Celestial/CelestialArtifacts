@@ -234,7 +234,13 @@ public class CALang {
 
 	public enum Back implements Info {
 		FLAME("Arrows you shoot will burn target for %s seconds", 1),
-		LEECH("When you have %s effect, heal %s of your melee damage dealt", 2);
+		LEECH("When you have %s effect, heal %s of your melee damage dealt", 2),
+
+		TWIST_0("Every time you kill a mob, you gain 1 [Twist]", 0),
+		TWIST_1("You lose 1 [Twist] every %s seconds", 1),
+		TWIST_2("Every [Twist] increase your melee damage by %s", 1),
+		TWIST_3("When you bear %s curse, increase by %s instead", 2),
+		TWIST_4("Current [Twist]: %s", 1);
 
 		final Entry entry;
 
@@ -248,21 +254,19 @@ public class CALang {
 
 	}
 
-	public enum Bracelet implements Info {//TODO
+	public enum Bracelet implements Info {
 
-		HIDDENBRACE1("每%s秒获得1次隐匿效果", 1),
-		HIDDENBRACE2("拥有隐匿效果时攻击伤害提高%s", 1),
+		HIDDEN_0("Gain %3$s %2$s seconds after %1$s disappears", 3),
+		HIDDEN_1("When you have %s, increase attack damage by %s", 2),
 
-		HIDDENBRACE4("攻击时若拥有隐匿效果则移除隐匿效果，且之后%s秒内无法再次获得", 1),
+		CHARM_1("When you are attacked, mobs around you will help you to revenge. Cool down: %s seconds", 1),
+		CHARM_0("When you kill zombies, increase your reputation by %s", 1),
 
-		CHARMARMOR("提高%s点护甲", 1),
-		CHARMVIRUS("受到攻击时周围的生物会优先攻击刚才攻击你的生物，冷却%s秒", 1),
-		CHARMSHIP("击杀僵尸时，周围的村民会提高%s点对你的好感度", 1),
+		SCARLET_0("When you attack, consume your health till %s of your max health", 1),
+		SCARLET_1("For every HP consumed, increase your damage by %s of target max health, capped at %s", 2),
 
-		SCARLETBLOOD("攻击目标时额外消耗自身生命到最大生命的%s", 1),
-		SCARLETRAGE("每消耗1点生命攻击提高相当于目标最大生命%s点伤害，上限%s", 2),
-
-		SPIRITSPEEDBOW("拉弓与弩的速度提高%s", 1);
+		SPIRIT_0("Increase bow / crossbow pulling speed by %s", 1),
+		SPIRIT_1("Projectiles you shoot will inflict %s", 1);
 
 		final Entry entry;
 
@@ -516,7 +520,8 @@ public class CALang {
 		SKY_WALKER_2("Store current position when sneaking, otherwise teleport you to stored position.", 0),
 		SKY_WALKER_3("Can only teleport in the same dimension", 0),
 		SKY_WALKER_4("Current stored position: %s - (%s,%s,%s)", 4),
-		TRAVELER("Gain %s and %s when changing dimensions", 2);
+		TRAVELER("Gain %s and %s when changing dimensions", 2),
+		TWIST("Mobs you encounter has %s chance to duplicate", 1);
 
 		final Entry entry;
 

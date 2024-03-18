@@ -1,12 +1,13 @@
 package com.xiaoyue.celestial_artifacts.content.curios.back;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
-import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -27,6 +28,18 @@ public class TwistedScabbard extends BaseTickingToken
 
 	public static final TokenFacet<TwistedScabbard> TOKEN = new TokenFacet<>("twisted_scabbard", TwistedScabbard::new);
 
+	private static int interval() {
+		return CAModConfig.COMMON.back.twistedScabbardInterval.get();
+	}
+
+	private static double atk() {
+		return CAModConfig.COMMON.back.twistedScabbardAttack.get();
+	}
+
+	private static double endAtk() {
+		return CAModConfig.COMMON.back.twistedScabbardAttackEnd.get();
+	}
+
 	@SerialClass.SerialField
 	public int twisted_scabbard_add, timer;
 
@@ -44,9 +57,9 @@ public class TwistedScabbard extends BaseTickingToken
 	}
 
 	private double getVal(Player player) {
-		double factor = 0.05f;
+		double factor = atk();
 		if (CatastropheScroll.Curses.END.cursing(player)) {
-			factor = 0.1f;
+			factor = endAtk();
 		}
 		return 1 + twisted_scabbard_add * factor;
 	}
@@ -58,28 +71,35 @@ public class TwistedScabbard extends BaseTickingToken
 
 	@Override
 	protected void tickImpl(Player player) {
+		if (!(player instanceof ServerPlayer sp)) return;
 		attr(player).tickImpl(player);
 		timer++;
-		if (timer >= 100) {
+		if (timer >= interval() * 20) {
 			timer = 0;
 			if (twisted_scabbard_add > 0) {
 				twisted_scabbard_add--;
+				sync(TOKEN.getKey(), this, sp);
 			}
 		}
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {//TODO text
-		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift4"));
-		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift5"));
-		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift6"));
-		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift7"));
-		list.add(Component.translatable("tooltip.celestial_artifacts.twisted_scabbard.shift8",
-				twisted_scabbard_add).withStyle(ChatFormatting.LIGHT_PURPLE));
+	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.wrap(CALang.Back.TWIST_0.get()));
+		list.add(TextFacet.wrap(CALang.Back.TWIST_1.get(TextFacet.num(interval()))));
+		list.add(TextFacet.wrap(CALang.Back.TWIST_2.get(TextFacet.perc(atk()))));
+		list.add(TextFacet.inner(CALang.Back.TWIST_3.get(
+				CALang.Curse.END_TITLE.get().withStyle(ChatFormatting.RED),
+				TextFacet.perc(endAtk())
+		)));
+
+		list.add(TextFacet.wrap(CALang.Back.TWIST_4.get(
+				TextFacet.num(twisted_scabbard_add)
+		).withStyle(ChatFormatting.DARK_PURPLE)));
 	}
 
 	@Override
-	public void onSync(@Nullable TwistedScabbard twistedScabbard, Player player) {
+	public void onSync(@Nullable TwistedScabbard old, Player player) {
 
 	}
 

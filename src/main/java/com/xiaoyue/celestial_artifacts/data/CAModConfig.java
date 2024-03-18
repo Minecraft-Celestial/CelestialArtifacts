@@ -85,6 +85,10 @@ public class CAModConfig {
 
 			public ForgeConfigSpec.DoubleValue leechScabbardHealFactor;
 
+			public ForgeConfigSpec.IntValue twistedScabbardInterval;
+			public ForgeConfigSpec.DoubleValue twistedScabbardAttack;
+			public ForgeConfigSpec.DoubleValue twistedScabbardAttackEnd;
+
 			private Back(ForgeConfigSpec.Builder builder) {
 				builder.push("back");
 
@@ -111,78 +115,81 @@ public class CAModConfig {
 				leechScabbardHealFactor = builder.comment("Leech Scabbard: healing rate as percentage of damage dealt")
 						.defineInRange("leechScabbardHealFactor", 0.25, 0, 100);
 
-
+				twistedScabbardInterval = builder.comment("Twisted Scabbard: interval, in seconds, to lose 1 layer of Twist")
+						.defineInRange("twistedScabbardInterval", 5, 1, 1000);
+				twistedScabbardAttack = builder.comment("Twisted Scabbard: attack bonus per layer of Twist")
+						.defineInRange("twistedScabbardAttack", 0.05, 0, 1);
+				twistedScabbardAttackEnd = builder.comment("Twisted Scabbard: attack bonus in End curse")
+						.defineInRange("twistedScabbardAttackEnd", 0.1, 0, 1);
 				builder.pop();
 			}
 
 		}
 
-		public static class Bracelet {//TODO
+		public static class Bracelet {
 
 			// hidden_bracelet
-			public final ForgeConfigSpec.IntValue hiddenBraceletEffectDuration;
-
-			public final ForgeConfigSpec.DoubleValue hiddenBraceletDamageimprove;
-
-			public final ForgeConfigSpec.IntValue hiddenBraceletCD;
+			public final ForgeConfigSpec.IntValue hiddenBraceletInterval;
+			public final ForgeConfigSpec.DoubleValue hiddenBraceletDamageBoost;
 
 			//charm_brace
-			public final ForgeConfigSpec.IntValue charmbraceArmor;
-			public final ForgeConfigSpec.IntValue charmbracevirus;
-			public final ForgeConfigSpec.IntValue charmbraceship;
+			public final ForgeConfigSpec.IntValue charmingBraceletArmor;
+			public final ForgeConfigSpec.IntValue charmingBraceletCooldown;
+			public final ForgeConfigSpec.IntValue charmingBraceletReputationBonus;
 
 			//scarlet_bloodrage
-			public final ForgeConfigSpec.DoubleValue scarletheal;
-			public final ForgeConfigSpec.DoubleValue scarletdamagerate;
-			public final ForgeConfigSpec.DoubleValue scarletdamagelimit;
+			public final ForgeConfigSpec.DoubleValue scarletBraceletMaxCost;
+			public final ForgeConfigSpec.DoubleValue scarletBraceletDamageBonus;
+			public final ForgeConfigSpec.DoubleValue scarletBraceletDamageLimit;
 
 			//spirit_bracelet
-			public final ForgeConfigSpec.DoubleValue spiritspeedbow;
+			public final ForgeConfigSpec.IntValue spiritBraceletEffectDuration;
 
 			private Bracelet(ForgeConfigSpec.Builder builder) {
 				builder.push("bracelet");
 
 				// hidden_bracelet
-				hiddenBraceletEffectDuration = builder
-						.comment("Hidden Bracelet: Stealth effect interval")
-						.defineInRange("hiddenBraceletEffectDuration", 7, 1, Integer.MAX_VALUE);
-				hiddenBraceletDamageimprove = builder
-						.comment("This value determines how many damage you will improve")
-						.defineInRange("hiddenBraceletEffectDuration", 0.25, 0, Integer.MAX_VALUE);
-				hiddenBraceletCD = builder
-						.comment("This value determines how many seconds you cant hidden")
-						.defineInRange("hiddenBraceletEffectDuration", 5, 1, Integer.MAX_VALUE);
-
-				//charm_brace
 				{
-					charmbraceArmor = builder
-							.comment("Armor improve")
-							.defineInRange("charmbraceArmor", 2, 0, Integer.MAX_VALUE);
-					charmbracevirus = builder
-							.comment("enemy kill one of themself")
-							.defineInRange("charmbracevirus", 10, 1, Integer.MAX_VALUE);
-					charmbraceship = builder
-							.comment("villager be friendly when you kill zombies")
-							.defineInRange("ship", 1, 0, Integer.MAX_VALUE);
+					hiddenBraceletInterval = builder
+							.comment("Hidden Bracelet: Hidden effect interval")
+							.defineInRange("hiddenBraceletInterval", 7, 1, 100000);
+					hiddenBraceletDamageBoost = builder
+							.comment("Hidden Bracelet: Damage boost in hidden effect")
+							.defineInRange("hiddenBraceletDamageBoost", 0.25, 0, 100);
+				}
+
+				//charming bracelet
+				{
+					charmingBraceletArmor = builder
+							.comment("Charming Bracelet: Armor bonus")
+							.defineInRange("charmingBraceletArmor", 2, 0, Integer.MAX_VALUE);
+					charmingBraceletCooldown = builder
+							.comment("Charming Bracelet: Cool down for target transfer on hurt, in seconds")
+							.defineInRange("charmingBraceletCooldown", 10, 1, Integer.MAX_VALUE);
+					charmingBraceletReputationBonus = builder
+							.comment("Charming Bracelet: Reputation bonus when you kill zombies")
+							.defineInRange("charmingBraceletReputationBonus", 1, 0, Integer.MAX_VALUE);
 				}
 
 				//scarlet_brace
 				{
-					scarletheal = builder
-							.comment("Armor improve")
-							.defineInRange("scarlet decrease heal", 0.50, 0, Integer.MAX_VALUE);
-					scarletdamagerate = builder
-							.comment("scarlet bracelet damage rate")
-							.defineInRange("scarlet damage rate", 0.01, 0, Integer.MAX_VALUE);
-					scarletdamagelimit = builder
-							.comment("the limit of scarlet bracelet damage rate")
-							.defineInRange("scarlet damage limit", 0.50, 0, Integer.MAX_VALUE);
+					scarletBraceletMaxCost = builder
+							.comment("Scarlet Bracelet: remaining HP as percentage")
+							.defineInRange("scarletMaxCost", 0.50, 0, 1);
+					scarletBraceletDamageBonus = builder
+							.comment("Scarlet Bracelet: damage boost as percentage of target max health per health cost")
+							.defineInRange("scarletBraceletDamageBonus", 0.01, 0, Integer.MAX_VALUE);
+					scarletBraceletDamageLimit = builder
+							.comment("Scarlet Bracelet: max damage boost as percentage of target max health")
+							.defineInRange("scarletBraceletDamageLimit", 0.50, 0, Integer.MAX_VALUE);
 
-					//spirit_brace
-					spiritspeedbow = builder
-							.comment("speed increase after hitting with a bow or crossbow")
-							.defineInRange("scarlet damage limit", 1.00, 0, Integer.MAX_VALUE);
 				}
+
+				//spirit_brace
+				spiritBraceletEffectDuration = builder
+						.comment("Spirit Bracelet: speed effect duration in seconds")
+						.defineInRange("spiritBraceletEffectDuration", 5, 1, Integer.MAX_VALUE);
+
 				builder.pop();
 			}
 
@@ -1034,6 +1041,7 @@ public class CAModConfig {
 
 			public final ForgeConfigSpec.IntValue skyWalkerCooldown;
 			public final ForgeConfigSpec.IntValue travelerEffectDuration;
+			public final ForgeConfigSpec.DoubleValue twistedDuplicateChance;
 
 
 			private Scroll(ForgeConfigSpec.Builder builder) {
@@ -1045,6 +1053,9 @@ public class CAModConfig {
 				travelerEffectDuration = builder
 						.comment("Traveller Scroll: effect duration in seconds")
 						.defineInRange("travelerEffectDuration", 15, 1, 10000);
+				twistedDuplicateChance = builder
+						.comment("Twisted Scroll: chance for encountered mobs to duplicate")
+						.defineInRange("twistedDuplicateChance", 0.6, 0, 1);
 
 				builder.pop();
 			}

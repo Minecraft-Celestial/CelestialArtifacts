@@ -38,6 +38,7 @@ import com.xiaoyue.celestial_artifacts.content.curios.ring.NetherFire;
 import com.xiaoyue.celestial_artifacts.content.curios.ring.RingOfLife;
 import com.xiaoyue.celestial_artifacts.content.curios.scroll.SeaGodScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.scroll.SkywalkerScroll;
+import com.xiaoyue.celestial_artifacts.content.curios.scroll.TwistedScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.set.EmeraldSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SeaGodSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SpiritSet;
@@ -52,19 +53,16 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.content.generic.CCTooltipItem;
-import com.xiaoyue.celestial_core.data.CCLangData;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import com.xiaoyue.celestial_core.utils.IRarityUtils;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -363,12 +361,11 @@ public class CAItems {
 							),
 							seaGodSet()));
 			// 传送卷轴
-			SKYWALKER_SCROLL = scroll("skywalker_scroll", () -> ModularCurio.builder().rarity(Rarity.UNCOMMON)
-					.build(SkywalkerScroll.TOKEN));
-			// 扭曲卷轴 TODO text
-			TWISTED_SCROLL = scroll("twisted_scroll", () ->
-					ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).build(
-							TextFacet.line(() -> Component.translatable("tooltip.celestial_artifacts.twisted_scroll.shift1"))));
+			SKYWALKER_SCROLL = scroll("skywalker_scroll", () -> ModularCurio.builder()
+					.rarity(Rarity.UNCOMMON).build(SkywalkerScroll.TOKEN));
+			// 扭曲卷轴
+			TWISTED_SCROLL = scroll("twisted_scroll", () -> ModularCurio.builder()
+					.rarity(IRarityUtils.DARK_PURPLE).build(new TwistedScroll()));
 		}
 
 		// bracelet
@@ -404,23 +401,20 @@ public class CAItems {
 									EffectFacet.of(() -> MobEffects.DAMAGE_BOOST, 3, 0))
 					));
 
-
 			// 隐匿手环
 			HIDDEN_BRACELET = bracelet("hidden_bracelet", () -> ModularCurio.builder()
-					.rarity(IRarityUtils.DARK_PURPLE).build(new HiddenBracelet()));
+					.rarity(IRarityUtils.DARK_PURPLE).build(new TokenFacet<>("hidden_bracelet", HiddenBracelet::new)));
 			// 猩红手环
 			SCARLET_BRACELET = bracelet("scarlet_bracelet", () -> ModularCurio.builder()
 					.rarity(IRarityUtils.RED).build(new ScarletBracelet()));
-			// 魅力手环 TODO config
-			CHARMING_BRACELET = bracelet("charming_bracelet", () -> ModularCurio.builder()
-					.rarity(Rarity.RARE).build(
-							AttrFacet.add(() -> Attributes.ARMOR, () -> 2),
-							new CharmingBracelet()
-					));
+			// 魅力手环
+			CHARMING_BRACELET = bracelet("charming_bracelet", () -> ModularCurio.builder().rarity(Rarity.RARE).build(
+					AttrFacet.add(() -> Attributes.ARMOR, CAModConfig.COMMON.bracelet.charmingBraceletArmor::get),
+					new CharmingBracelet()
+			));
 			// 精灵手环
-			SPIRIT_BRACELET = bracelet("spirit_bracelet", () ->
-					ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
-							new SpiritBracelet(), spiritSet()));
+			SPIRIT_BRACELET = bracelet("spirit_bracelet", () -> ModularCurio.builder().rarity(IRarityUtils.GREEN)
+					.build(new SpiritBracelet(), spiritSet()));
 		}
 
 		// pendant

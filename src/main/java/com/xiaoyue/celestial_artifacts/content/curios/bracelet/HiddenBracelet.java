@@ -1,68 +1,80 @@
 package com.xiaoyue.celestial_artifacts.content.curios.bracelet;
 
-import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
-import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
+import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
+import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
+import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.register.CCEffects;
-import com.xiaoyue.celestial_core.utils.EntityUtils;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import net.minecraft.ChatFormatting;
+import dev.xkmc.l2library.base.effects.EffectUtil;
+import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HiddenBracelet implements MultiLineText, TickFacet, CAAttackToken {
+public class HiddenBracelet extends BaseTickingToken implements CAAttackToken {
 
-	public static int getDur() {
-		return CAModConfig.COMMON.bracelet.hiddenBraceletEffectDuration.get();
+	private static int dur() {
+		return CAModConfig.COMMON.bracelet.hiddenBraceletInterval.get();
+	}
+
+	private static MobEffect eff() {
+		return CCEffects.HIDDEN.get();
+	}
+
+	private static MobEffectInstance ins() {
+		return new MobEffectInstance(eff(), 40, 0, true, false);
+	}
+
+	private static double atk() {
+		return 0.25;
 	}
 
 	@Override
-	public void addText(@Nullable Level level, List<Component> list) {//TODO text
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift1",
-				ChatFormatting.LIGHT_PURPLE, getDur());
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift2");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift3");
-		ToolTipUtils.addLocalTooltip(list, "tooltip.celestial_artifacts.hidden_bracelet.shift4");
+	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.wrap(CALang.Bracelet.HIDDEN_0.get(
+				TextFacet.eff(eff()), TextFacet.num(dur()), TextFacet.eff(eff())
+		)));
+		list.add(TextFacet.wrap(CALang.Bracelet.HIDDEN_1.get(
+				TextFacet.eff(eff()), TextFacet.perc(atk()))));
+	}
+
+	@SerialClass.SerialField
+	private int cooldown = 0;
+
+	@Override
+	protected void removeImpl(Player player) {
+		player.removeEffect(eff());
 	}
 
 	@Override
-	public void tick(LivingEntity entity, ItemStack stack) {
-		if (entity.tickCount % (getDur() * 20) == 0) {
-			EntityUtils.addEct(entity, CCEffects.HIDDEN.get(), 40, 0);
+	protected void tickImpl(Player player) {
+		if (!player.hasEffect(eff())) {
+			if (cooldown <= 0) {
+				cooldown = dur() * 20;
+			} else {
+				cooldown--;
+				if (cooldown <= 0) {
+					player.addEffect(ins());
+				}
+			}
+		} else {
+			EffectUtil.refreshEffect(player, ins(), EffectUtil.AddReason.SELF, player);
 		}
 	}
 
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
 		if (player.hasEffect(CCEffects.HIDDEN.get())) {
-			cache.addHurtModifier(DamageModifier.multTotal(1.25f));
+			cache.addHurtModifier(DamageModifier.multTotal(1 + (float) atk()));
 		}
-		if (player.hasEffect(CCEffects.HIDDEN.get())) {
-			player.removeEffect(CCEffects.HIDDEN.get());
-		}
-	}
-
-	@Override
-	public boolean onPlayerAttacked(Player player, AttackCache cache) {
-		var source = CAAttackToken.getSource(cache);
-		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) ||
-				source.is(DamageTypeTags.BYPASSES_EFFECTS))
-			return false;
-		if (cache.getAttacker() != null && player.hasEffect(CCEffects.HIDDEN.get())) {
-			player.removeEffect(CCEffects.HIDDEN.get());
-			return true;
-		}
-		return false;
 	}
 
 }

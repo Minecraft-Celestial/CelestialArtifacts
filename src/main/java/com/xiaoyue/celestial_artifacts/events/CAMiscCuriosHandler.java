@@ -133,22 +133,6 @@ public class CAMiscCuriosHandler {
 	}
 
 	@SubscribeEvent
-	public static void onSpawnEntity(MobSpawnEvent.FinalizeSpawn event) {
-		Mob entity = event.getEntity();
-		// 扭曲卷轴 TODO
-		if (!entity.level().isClientSide() && entity instanceof Monster) {
-			List<Player> entities = entity.level().getEntitiesOfClass(Player.class, EntityUtils.getAABB(entity, 6, 2));
-			for (Player list : entities) {
-				if (CurioUtils.hasCurio(list, CAItems.TWISTED_SCROLL.get())) {
-					if (list.getRandom().nextDouble() < 0.6) {
-						entity.level().addFreshEntity(entity);
-					}
-				}
-			}
-		}
-	}
-
-	@SubscribeEvent
 	public static void onChangeLevel(PlayerEvent.PlayerChangedDimensionEvent event) {
 		Player entity = event.getEntity();
 		// 旅行者卷轴
