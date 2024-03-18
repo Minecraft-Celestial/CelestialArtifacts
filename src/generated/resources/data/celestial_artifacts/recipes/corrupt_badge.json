@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:shulker_shell"
+      "item": "celestial_core:shulker_scrap"
     },
     "B": {
       "item": "celestial_artifacts:the_end_dust"
@@ -12,16 +12,19 @@
       "item": "minecraft:ender_pearl"
     },
     "D": {
-      "item": "minecraft:potion"
+      "item": "celestial_artifacts:chaotic_etching"
     },
     "E": {
-      "item": "minecraft:netherite_ingot"
+      "item": "celestial_artifacts:end_etching"
+    },
+    "F": {
+      "item": "celestial_artifacts:nebula_cube"
     }
   },
   "pattern": [
-    " E ",
+    "FEF",
     "CBA",
-    " D "
+    "FDF"
   ],
   "result": {
     "item": "celestial_artifacts:corrupt_badge"

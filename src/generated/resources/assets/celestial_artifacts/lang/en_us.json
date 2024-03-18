@@ -207,8 +207,11 @@
   "celestial_artifacts.sets.spirit_1": "Increase %s damage from behind by %s",
   "celestial_artifacts.sets.spirit_2": "When you have %s:",
   "celestial_artifacts.sets.spirit_3": "Your projectile has %s chance to inflict %s",
+  "celestial_artifacts.tooltip.backtrack": "Teleport player to spawning point. Cool down: %s seconds",
   "celestial_artifacts.tooltip.end_dust": "%s chance to drop when players equipped with [%s] kill monsters targeting them",
   "celestial_artifacts.tooltip.nebula_cube": "Dropped when player failed to get etchings while meeting conditions",
+  "celestial_artifacts.tooltip.purified": "Remove curse on off hand item",
+  "celestial_artifacts.tooltip.repent": "Teleport player to last death position. Cool down: %s seconds",
   "curios.identifier.catastrophe": "Celestial - Catastrophe",
   "curios.identifier.etching": "Celestial - Etching",
   "curios.identifier.heart": "Celestial - Heart",
@@ -313,5 +316,7 @@
   "item.celestial_artifacts.unlucky_potato": "Unlucky Potato",
   "item.celestial_artifacts.unowned_pendant": "Unowned Pendant",
   "item.celestial_artifacts.war_dead_badge": "War Dead Badge",
-  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts"
+  "itemGroup.celestial_artifacts.curios": "Celestial Artifacts",
+  "key.category.celestial_artifacts.celestial_artifacts": "Celestial Artifacts",
+  "key.celestial_artifacts.ability_key": "Activate Curio Effects"
 }

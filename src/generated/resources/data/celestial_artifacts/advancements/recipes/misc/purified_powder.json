@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_redstone": {
+    "has_the_end_dust": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:redstone"
+              "celestial_artifacts:the_end_dust"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_redstone",
+      "has_the_end_dust",
       "has_the_recipe"
     ]
   ],

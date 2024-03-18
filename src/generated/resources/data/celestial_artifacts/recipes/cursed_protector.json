@@ -3,19 +3,25 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:netherite_ingot"
+      "item": "celestial_core:shulker_scrap"
     },
     "B": {
       "item": "celestial_core:death_essence"
     },
     "C": {
-      "item": "minecraft:ender_pearl"
+      "item": "celestial_artifacts:chaotic_etching"
+    },
+    "D": {
+      "item": "celestial_artifacts:truth_etching"
+    },
+    "E": {
+      "item": "celestial_artifacts:nebula_cube"
     }
   },
   "pattern": [
     "ABA",
     "ACA",
-    " A "
+    "EDE"
   ],
   "result": {
     "item": "celestial_artifacts:cursed_protector"

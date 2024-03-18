@@ -13,17 +13,6 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "celestial_artifacts:bearing_stamen"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "celestial_artifacts:spirit_arrow_bag"
         },
         {
@@ -69,7 +58,7 @@
             }
           ],
           "name": "minecraft:air",
-          "weight": 7
+          "weight": 8
         }
       ],
       "rolls": 1.0

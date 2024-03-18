@@ -6,21 +6,24 @@
       "item": "minecraft:echo_shard"
     },
     "B": {
-      "item": "minecraft:ender_pearl"
+      "item": "celestial_artifacts:nihility_etching"
     },
     "C": {
-      "item": "celestial_core:void_essence"
+      "item": "celestial_artifacts:end_etching"
     },
     "D": {
-      "item": "minecraft:netherite_ingot"
+      "item": "celestial_artifacts:the_end_dust"
     },
     "E": {
       "item": "minecraft:disc_fragment_5"
+    },
+    "F": {
+      "item": "celestial_artifacts:nebula_cube"
     }
   },
   "pattern": [
     "DCD",
-    "DBD",
+    "FBF",
     "EAE"
   ],
   "result": {

@@ -1,6 +1,8 @@
 package com.xiaoyue.celestial_artifacts.content.items.item;
 
-import net.minecraft.client.gui.screens.Screen;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import dev.xkmc.l2library.util.tools.TeleportTool;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,27 +24,31 @@ public class RepentMirror extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-		if (Screen.hasShiftDown()) {
-			components.add(Component.translatable("tooltip.celestial_artifacts.repent_mirror.shift1"));
-		} else {
-			components.add(Component.translatable("tooltip.celestial_artifacts.has_shift_down"));
-		}
-		super.appendHoverText(itemStack, level, components, tooltipFlag);
+	public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
+		list.add(CALang.Tooltip.REPENT.get().withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack itemInHand = player.getItemInHand(hand);
 		if (!player.level().isClientSide()) {
-			if (player instanceof ServerPlayer serverPlayer) {
-				if (serverPlayer.getLastDeathLocation().isPresent() && !player.getCooldowns().isOnCooldown(itemInHand.getItem())) {
-					BlockPos deathPos = serverPlayer.getLastDeathLocation().get().pos();
-					player.teleportTo(deathPos.getX(), deathPos.getY(), deathPos.getZ());
-					player.getCooldowns().addCooldown(itemInHand.getItem(), 200);
+			if (player instanceof ServerPlayer sp) {
+				if (!player.getCooldowns().isOnCooldown(itemInHand.getItem())) {
+					var opt = sp.getLastDeathLocation();
+					if (opt.isPresent()) {
+						var dim = opt.get().dimension();
+						var lv = sp.server.getLevel(dim);
+						if (lv != null) {
+							BlockPos pos = opt.get().pos();
+							TeleportTool.performTeleport(sp, lv, pos.getX(), pos.getY(), pos.getZ(),
+									player.getYRot(), player.getXRot());
+							player.getCooldowns().addCooldown(itemInHand.getItem(), 200);
+						}
+					}
 				}
 			}
 		}
 		return InteractionResultHolder.success(itemInHand);
 	}
+
 }

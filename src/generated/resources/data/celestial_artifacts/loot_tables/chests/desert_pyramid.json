@@ -20,23 +20,12 @@
           "functions": [
             {
               "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "celestial_artifacts:holy_sword"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
               "count": 0.0,
               "function": "minecraft:set_count"
             }
           ],
           "name": "minecraft:air",
-          "weight": 5
+          "weight": 4
         }
       ],
       "rolls": 1.0

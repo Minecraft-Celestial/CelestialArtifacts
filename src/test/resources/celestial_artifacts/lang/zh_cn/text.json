@@ -2,7 +2,10 @@
   "celestial_artifacts": {
 	"tooltip": {
 	  "end_dust": "携带[%s]杀死怪物时%s概率掉落",
-	  "nebula_cube": "玩家达成刻蚀板条件但是未获得刻蚀版时作为替代掉落"
+	  "nebula_cube": "玩家达成刻蚀板条件但是未获得刻蚀版时作为替代掉落",
+	  "repent": "右击将使用者传送回上一次的死亡地点，冷却%s秒",
+	  "backtrack": "右击将使用者传送回重生点，若你没有重生点，则传送到世界重生点，冷却%s秒",
+	  "purified": "右击后消耗该物品移除使用者副手上物品的诅咒附魔"
 	},
 	"info": {
 	  "curse": "承受%2$s诅咒的玩家%3$s时%1$s概率掉落",
@@ -256,5 +259,8 @@
 	"modifiers.etching": "佩戴刻蚀时：",
 	"identifier.pendant": "星月-吊坠",
 	"modifiers.pendant": "佩戴吊坠时："
-  }
+  },
+  "itemGroup.celestial_artifacts.curios": "星月遗物",
+  "key.celestial_artifacts.ability_key": "饰品主动效果",
+  "key.category.celestial_artifacts.celestial_artifacts": "星月遗物"
 }

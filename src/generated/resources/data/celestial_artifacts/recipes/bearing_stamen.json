@@ -6,16 +6,16 @@
       "item": "celestial_core:fire_essence"
     },
     "B": {
-      "item": "celestial_core:death_essence"
+      "item": "celestial_core:ocean_essence"
     },
     "C": {
-      "item": "celestial_artifacts:the_end_dust"
+      "item": "minecraft:ghast_tear"
     },
     "D": {
-      "item": "celestial_artifacts:nebula_cube"
+      "item": "celestial_core:earth_core"
     },
     "E": {
-      "item": "celestial_artifacts:chaotic_etching"
+      "item": "celestial_artifacts:life_etching"
     }
   },
   "pattern": [
@@ -24,7 +24,7 @@
     "DCD"
   ],
   "result": {
-    "item": "celestial_artifacts:war_dead_badge"
+    "item": "celestial_artifacts:bearing_stamen"
   },
   "show_notification": true
 }

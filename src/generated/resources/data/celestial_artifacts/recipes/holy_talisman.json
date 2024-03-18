@@ -6,13 +6,13 @@
       "item": "celestial_core:pure_nether_star"
     },
     "B": {
-      "item": "minecraft:feather"
+      "item": "celestial_artifacts:origin_etching"
     },
     "C": {
-      "item": "minecraft:gold_ingot"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "D": {
-      "item": "celestial_artifacts:heirloom_necklace"
+      "item": "celestial_artifacts:life_etching"
     },
     "E": {
       "item": "celestial_core:light_fragment"

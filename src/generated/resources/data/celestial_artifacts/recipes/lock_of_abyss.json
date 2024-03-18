@@ -3,21 +3,24 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:lapis_lazuli"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "B": {
-      "item": "minecraft:diamond"
+      "item": "celestial_artifacts:nihility_etching"
     },
     "C": {
-      "item": "celestial_core:void_essence"
+      "item": "celestial_core:heart_fragment"
     },
     "D": {
-      "item": "minecraft:ice"
+      "item": "celestial_artifacts:the_end_dust"
+    },
+    "E": {
+      "item": "celestial_core:warden_sclerite"
     }
   },
   "pattern": [
     "AAA",
-    "ACA",
+    "ECE",
     "DBD"
   ],
   "result": {

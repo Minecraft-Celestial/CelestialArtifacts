@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_shulker_shell": {
+    "has_nebula_cube": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:shulker_shell"
+              "celestial_artifacts:nebula_cube"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_shulker_shell",
+      "has_nebula_cube",
       "has_the_recipe"
     ]
   ],

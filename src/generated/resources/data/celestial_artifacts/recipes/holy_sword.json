@@ -6,25 +6,25 @@
       "item": "celestial_core:fire_essence"
     },
     "B": {
-      "item": "celestial_core:death_essence"
+      "item": "celestial_core:light_fragment"
     },
     "C": {
-      "item": "celestial_artifacts:the_end_dust"
+      "item": "minecraft:feather"
     },
     "D": {
       "item": "celestial_artifacts:nebula_cube"
     },
     "E": {
-      "item": "celestial_artifacts:chaotic_etching"
+      "item": "celestial_artifacts:desire_etching"
     }
   },
   "pattern": [
-    "DCD",
-    "BEA",
-    "DCD"
+    "DAD",
+    "CEC",
+    "DBD"
   ],
   "result": {
-    "item": "celestial_artifacts:war_dead_badge"
+    "item": "celestial_artifacts:holy_sword"
   },
   "show_notification": true
 }

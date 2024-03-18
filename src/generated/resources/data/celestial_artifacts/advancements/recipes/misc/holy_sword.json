@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "celestial_artifacts:cursed_protector"
+        "recipe": "celestial_artifacts:holy_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "celestial_artifacts:cursed_protector"
+      "celestial_artifacts:holy_sword"
     ]
   },
   "sends_telemetry_event": false

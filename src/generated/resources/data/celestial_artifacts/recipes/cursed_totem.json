@@ -6,7 +6,7 @@
       "item": "minecraft:echo_shard"
     },
     "B": {
-      "item": "minecraft:wither_rose"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "C": {
       "item": "celestial_core:midnight_fragment"
@@ -15,13 +15,16 @@
       "item": "minecraft:totem_of_undying"
     },
     "E": {
-      "item": "minecraft:ender_pearl"
+      "item": "celestial_artifacts:end_etching"
+    },
+    "F": {
+      "item": "celestial_artifacts:life_etching"
     }
   },
   "pattern": [
-    " E ",
+    "AEA",
     "CDC",
-    "BAB"
+    "BFB"
   ],
   "result": {
     "item": "celestial_artifacts:cursed_totem"

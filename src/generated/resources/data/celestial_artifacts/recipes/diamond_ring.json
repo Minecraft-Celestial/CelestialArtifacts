@@ -4,12 +4,15 @@
   "key": {
     "A": {
       "item": "minecraft:diamond"
+    },
+    "T": {
+      "item": "celestial_core:treasure_fragment"
     }
   },
   "pattern": [
-    "AAA",
-    "A A",
-    "AAA"
+    " A ",
+    "ATA",
+    " A "
   ],
   "result": {
     "item": "celestial_artifacts:diamond_ring"

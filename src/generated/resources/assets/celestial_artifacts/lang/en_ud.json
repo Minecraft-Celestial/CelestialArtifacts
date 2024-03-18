@@ -207,8 +207,11 @@
   "celestial_artifacts.sets.spirit_1": "%s ʎq puıɥǝq ɯoɹɟ ǝbɐɯɐp %s ǝsɐǝɹɔuI",
   "celestial_artifacts.sets.spirit_2": ":%s ǝʌɐɥ noʎ uǝɥM",
   "celestial_artifacts.sets.spirit_3": "%s ʇɔıןɟuı oʇ ǝɔuɐɥɔ %s sɐɥ ǝןıʇɔǝظoɹd ɹnoʎ",
+  "celestial_artifacts.tooltip.backtrack": "spuoɔǝs %s :uʍop ןooƆ ˙ʇuıod buıuʍɐds oʇ ɹǝʎɐןd ʇɹodǝןǝ⟘",
   "celestial_artifacts.tooltip.end_dust": "ɯǝɥʇ buıʇǝbɹɐʇ sɹǝʇsuoɯ ןןıʞ ]%s[ ɥʇıʍ pǝddınbǝ sɹǝʎɐןd uǝɥʍ doɹp oʇ ǝɔuɐɥɔ %s",
   "celestial_artifacts.tooltip.nebula_cube": "suoıʇıpuoɔ buıʇǝǝɯ ǝןıɥʍ sbuıɥɔʇǝ ʇǝb oʇ pǝןıɐɟ ɹǝʎɐןd uǝɥʍ pǝddoɹᗡ",
+  "celestial_artifacts.tooltip.purified": "ɯǝʇı puɐɥ ɟɟo uo ǝsɹnɔ ǝʌoɯǝᴚ",
+  "celestial_artifacts.tooltip.repent": "spuoɔǝs %s :uʍop ןooƆ ˙uoıʇısod ɥʇɐǝp ʇsɐן oʇ ɹǝʎɐןd ʇɹodǝןǝ⟘",
   "curios.identifier.catastrophe": "ǝɥdoɹʇsɐʇɐƆ - ןɐıʇsǝןǝƆ",
   "curios.identifier.etching": "buıɥɔʇƎ - ןɐıʇsǝןǝƆ",
   "curios.identifier.heart": "ʇɹɐǝH - ןɐıʇsǝןǝƆ",
@@ -313,5 +316,7 @@
   "item.celestial_artifacts.unlucky_potato": "oʇɐʇoԀ ʎʞɔnןu∩",
   "item.celestial_artifacts.unowned_pendant": "ʇuɐpuǝԀ pǝuʍou∩",
   "item.celestial_artifacts.war_dead_badge": "ǝbpɐᗺ pɐǝᗡ ɹɐM",
-  "itemGroup.celestial_artifacts.curios": "sʇɔɐɟıʇɹⱯ ןɐıʇsǝןǝƆ"
+  "itemGroup.celestial_artifacts.curios": "sʇɔɐɟıʇɹⱯ ןɐıʇsǝןǝƆ",
+  "key.category.celestial_artifacts.celestial_artifacts": "sʇɔɐɟıʇɹⱯ ןɐıʇsǝןǝƆ",
+  "key.celestial_artifacts.ability_key": "sʇɔǝɟɟƎ oıɹnƆ ǝʇɐʌıʇɔⱯ"
 }

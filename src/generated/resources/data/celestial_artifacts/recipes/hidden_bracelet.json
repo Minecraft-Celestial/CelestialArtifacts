@@ -9,10 +9,10 @@
       "item": "minecraft:netherite_ingot"
     },
     "C": {
-      "item": "minecraft:experience_bottle"
+      "item": "celestial_artifacts:the_end_dust"
     },
     "D": {
-      "item": "minecraft:leather"
+      "item": "celestial_artifacts:truth_etching"
     },
     "E": {
       "item": "minecraft:blaze_powder"
@@ -21,7 +21,7 @@
       "item": "celestial_core:death_essence"
     },
     "G": {
-      "item": "minecraft:ink_sac"
+      "item": "celestial_artifacts:nebula_cube"
     }
   },
   "pattern": [

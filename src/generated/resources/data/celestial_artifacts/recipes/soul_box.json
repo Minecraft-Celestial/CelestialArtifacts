@@ -3,19 +3,19 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:netherite_ingot"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "B": {
-      "item": "minecraft:gold_ingot"
+      "item": "celestial_core:warden_sclerite"
     },
     "C": {
       "item": "celestial_core:light_fragment"
     },
     "D": {
-      "item": "minecraft:gold_ingot"
+      "item": "celestial_artifacts:nihility_etching"
     },
     "E": {
-      "item": "minecraft:amethyst_block"
+      "item": "celestial_artifacts:life_etching"
     }
   },
   "pattern": [

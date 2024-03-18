@@ -1,24 +1,18 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "A": {
+  "ingredients": [
+    {
       "item": "minecraft:redstone"
     },
-    "B": {
-      "item": "celestial_core:light_fragment"
-    },
-    "C": {
+    {
       "item": "minecraft:experience_bottle"
+    },
+    {
+      "item": "celestial_artifacts:the_end_dust"
     }
-  },
-  "pattern": [
-    "   ",
-    " C ",
-    "BAB"
   ],
   "result": {
     "item": "celestial_artifacts:purified_powder"
-  },
-  "show_notification": true
+  }
 }

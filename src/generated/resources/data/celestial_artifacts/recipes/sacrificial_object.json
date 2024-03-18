@@ -3,22 +3,22 @@
   "category": "misc",
   "key": {
     "1": {
-      "item": "celestial_artifacts:origin_etching"
+      "item": "celestial_artifacts:desire_etching"
     },
     "2": {
-      "item": "celestial_artifacts:chaotic_etching"
+      "item": "celestial_artifacts:truth_etching"
     },
     "A": {
       "item": "celestial_artifacts:the_end_dust"
     },
     "B": {
-      "item": "celestial_core:midnight_fragment"
+      "item": "celestial_core:light_fragment"
     },
     "C": {
       "item": "celestial_artifacts:nebula_cube"
     },
     "D": {
-      "item": "celestial_core:heart_fragment"
+      "item": "celestial_core:death_essence"
     },
     "E": {
       "item": "celestial_artifacts:unowned_pendant"
@@ -30,7 +30,7 @@
     "CDC"
   ],
   "result": {
-    "item": "celestial_artifacts:cursed_talisman"
+    "item": "celestial_artifacts:sacrificial_object"
   },
   "show_notification": true
 }

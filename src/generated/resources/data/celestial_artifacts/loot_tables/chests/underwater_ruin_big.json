@@ -36,7 +36,7 @@
             }
           ],
           "name": "minecraft:air",
-          "weight": 7
+          "weight": 5
         }
       ],
       "rolls": 1.0

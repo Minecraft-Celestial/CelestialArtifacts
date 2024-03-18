@@ -7,11 +7,14 @@
     },
     "B": {
       "item": "minecraft:leather"
+    },
+    "T": {
+      "item": "celestial_core:treasure_fragment"
     }
   },
   "pattern": [
     "BA ",
-    "A A",
+    "ATA",
     "AAB"
   ],
   "result": {

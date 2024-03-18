@@ -13,10 +13,13 @@
     },
     "D": {
       "item": "minecraft:sugar"
+    },
+    "T": {
+      "item": "celestial_core:treasure_fragment"
     }
   },
   "pattern": [
-    "AAA",
+    "ATA",
     "ABA",
     "DCD"
   ],

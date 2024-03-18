@@ -10,11 +10,14 @@
     },
     "C": {
       "item": "minecraft:leather"
+    },
+    "T": {
+      "item": "celestial_core:treasure_fragment"
     }
   },
   "pattern": [
     "ABB",
-    "CBB",
+    "CTB",
     "ACA"
   ],
   "result": {

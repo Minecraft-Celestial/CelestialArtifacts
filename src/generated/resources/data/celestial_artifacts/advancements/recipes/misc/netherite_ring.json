@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_diamond_ring": {
+    "has_netherite_ring": {
       "conditions": {
         "items": [
           {
             "items": [
-              "celestial_artifacts:diamond_ring"
+              "celestial_artifacts:netherite_ring"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_diamond_ring",
+      "has_netherite_ring",
       "has_the_recipe"
     ]
   ],

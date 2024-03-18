@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_echo_shard": {
+    "has_nebula_cube": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:echo_shard"
+              "celestial_artifacts:nebula_cube"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_echo_shard",
+      "has_nebula_cube",
       "has_the_recipe"
     ]
   ],

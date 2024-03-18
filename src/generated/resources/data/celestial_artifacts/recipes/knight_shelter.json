@@ -10,12 +10,18 @@
     },
     "C": {
       "item": "celestial_core:light_fragment"
+    },
+    "D": {
+      "item": "celestial_artifacts:origin_etching"
+    },
+    "E": {
+      "item": "celestial_artifacts:nebula_cube"
     }
   },
   "pattern": [
-    "BAB",
+    "ADA",
     "BCB",
-    " B "
+    "EBE"
   ],
   "result": {
     "item": "celestial_artifacts:knight_shelter"

@@ -42,7 +42,7 @@ import com.xiaoyue.celestial_artifacts.content.curios.scroll.TwistedScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.set.EmeraldSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SeaGodSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SpiritSet;
-import com.xiaoyue.celestial_artifacts.content.items.food.UnluckyPotato;
+import com.xiaoyue.celestial_artifacts.content.items.item.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
 import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
 import com.xiaoyue.celestial_artifacts.content.items.item.RepentMirror;
@@ -689,7 +689,7 @@ public class CAItems {
 	public static final ItemEntry<Item> PURIFIED_POWDER = item("items/", "purified_powder", PurifiedPowder::new).register();
 
 	// food
-	// 厄运土豆
+	// 厄运土豆 TODO unused, not obtainable
 	public static final ItemEntry<Item> UNLUCKY_POTATO = item("food/", "unlucky_potato", UnluckyPotato::new).register();
 
 	private static final SetTokenFacet<SpiritSet> SPIRIT_SET = new SetTokenFacet<>("spirit",

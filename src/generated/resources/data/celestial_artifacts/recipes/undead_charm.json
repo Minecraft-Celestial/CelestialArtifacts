@@ -6,22 +6,22 @@
       "item": "minecraft:skeleton_skull"
     },
     "B": {
-      "item": "minecraft:glistering_melon_slice"
+      "item": "celestial_artifacts:life_etching"
     },
     "C": {
-      "item": "minecraft:iron_ingot"
+      "item": "celestial_artifacts:desire_etching"
     },
     "D": {
-      "item": "minecraft:iron_nugget"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "E": {
-      "item": "minecraft:bone_block"
+      "item": "celestial_core:shulker_scrap"
     }
   },
   "pattern": [
     "DCD",
-    "BAB",
-    "EBE"
+    "EAE",
+    "DBD"
   ],
   "result": {
     "item": "celestial_artifacts:undead_charm"

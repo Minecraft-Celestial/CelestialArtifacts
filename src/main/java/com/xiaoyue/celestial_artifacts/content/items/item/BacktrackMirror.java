@@ -1,7 +1,8 @@
 package com.xiaoyue.celestial_artifacts.content.items.item;
 
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.BlockPos;
+import com.xiaoyue.celestial_artifacts.data.CALang;
+import dev.xkmc.l2library.util.tools.TeleportTool;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -17,40 +18,28 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class BacktrackMirror extends Item {
+
 	public BacktrackMirror() {
 		super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-		if (Screen.hasShiftDown()) {
-			components.add(Component.translatable("tooltip.celestial_artifacts.backtrack_mirror.shift1"));
-		} else {
-			components.add(Component.translatable("tooltip.celestial_artifacts.has_shift_down"));
-		}
-		super.appendHoverText(itemStack, level, components, tooltipFlag);
+	public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
+		list.add(CALang.Tooltip.BACKTRACK.get().withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-		ItemStack itemInHand = player.getItemInHand(hand);
+		ItemStack stack = player.getItemInHand(hand);
 		if (!player.level().isClientSide()) {
-			if (player instanceof ServerPlayer serverPlayer) {
-				BlockPos spawnPos = serverPlayer.getRespawnPosition();
-				if (spawnPos != null) {
-					if (!player.getCooldowns().isOnCooldown(itemInHand.getItem())) {
-						player.teleportTo(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-						player.getCooldowns().addCooldown(itemInHand.getItem(), 200);
-					}
-				} else {
-					BlockPos levelPos = level.getSharedSpawnPos();
-					if (!player.getCooldowns().isOnCooldown(itemInHand.getItem())) {
-						player.teleportTo(levelPos.getX(), levelPos.getY(), levelPos.getZ());
-						player.getCooldowns().addCooldown(itemInHand.getItem(), 200);
-					}
+			if (player instanceof ServerPlayer sp) {
+				if (!player.getCooldowns().isOnCooldown(stack.getItem())) {
+					TeleportTool.teleportHome(sp.serverLevel(), sp);
+					player.getCooldowns().addCooldown(stack.getItem(), 200);
 				}
 			}
 		}
-		return InteractionResultHolder.success(itemInHand);
+		return InteractionResultHolder.success(stack);
 	}
+
 }

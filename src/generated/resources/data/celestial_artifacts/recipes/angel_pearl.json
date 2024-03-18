@@ -2,6 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
+    "1": {
+      "item": "celestial_artifacts:origin_etching"
+    },
+    "2": {
+      "item": "celestial_artifacts:desire_etching"
+    },
     "A": {
       "item": "minecraft:ender_pearl"
     },
@@ -9,14 +15,14 @@
       "item": "minecraft:feather"
     },
     "C": {
-      "item": "minecraft:diamond"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "D": {
       "item": "celestial_core:pure_nether_star"
     }
   },
   "pattern": [
-    " D ",
+    "1D2",
     "BAB",
     "CCC"
   ],

@@ -24,17 +24,6 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "celestial_artifacts:sacrificial_object"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "celestial_artifacts:demon_heart"
         },
         {
@@ -47,7 +36,7 @@
             }
           ],
           "name": "minecraft:air",
-          "weight": 9
+          "weight": 7
         }
       ],
       "rolls": 1.0

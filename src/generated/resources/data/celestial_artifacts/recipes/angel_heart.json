@@ -9,10 +9,10 @@
       "item": "minecraft:feather"
     },
     "C": {
-      "item": "minecraft:diamond"
+      "item": "celestial_artifacts:nebula_cube"
     },
     "D": {
-      "item": "minecraft:diamond_block"
+      "item": "celestial_artifacts:end_etching"
     }
   },
   "pattern": [

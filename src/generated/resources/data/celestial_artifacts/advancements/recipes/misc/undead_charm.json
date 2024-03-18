@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_skeleton_skull": {
+    "has_nebula_cube": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:skeleton_skull"
+              "celestial_artifacts:nebula_cube"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_skeleton_skull",
+      "has_nebula_cube",
       "has_the_recipe"
     ]
   ],
