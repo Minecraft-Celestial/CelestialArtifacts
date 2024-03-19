@@ -101,7 +101,7 @@ public class SimpleListener {
 		@Override
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
 			if (condition.test(player, cache.getAttackTarget(), cache)) {
-				cache.addHurtModifier(DamageModifier.multTotal((float) (1 - bonus.getAsDouble())));
+				cache.addDealtModifier(DamageModifier.multTotal((float) (1 - bonus.getAsDouble())));
 			}
 		}
 	}
@@ -122,7 +122,7 @@ public class SimpleListener {
 		@Override
 		public void onPlayerDamaged(Player player, AttackCache cache) {
 			if (condition.test(CAAttackToken.getSource(cache))) {
-				cache.addHurtModifier(DamageModifier.multTotal((float) (1 - bonus.getAsDouble())));
+				cache.addDealtModifier(DamageModifier.multTotal((float) (1 - bonus.getAsDouble())));
 			}
 		}
 

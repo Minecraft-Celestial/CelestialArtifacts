@@ -232,9 +232,9 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 	private List<AttrAdder> attrs(Player player) {
 		String name = "catastrophe_scroll";
 		return List.of(
-				AttrAdder.of(name, () -> Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADDITION, () ->
+				AttrAdder.of(name, () -> Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.MULTIPLY_TOTAL, () ->
 						Curses.ORIGIN.cursing(player) ? -getOriginCurse() : Curses.ORIGIN.blessing(player) ? getOriginBonus() : 0),
-				AttrAdder.of(name, () -> Attributes.MAX_HEALTH, AttributeModifier.Operation.MULTIPLY_BASE, () ->
+				AttrAdder.of(name, () -> Attributes.MAX_HEALTH, AttributeModifier.Operation.MULTIPLY_TOTAL, () ->
 						Curses.LIFE.cursing(player) ? -getLifeCurseHealth() : Curses.LIFE.blessing(player) ? getLifeBonusHealth() : 0),
 				AttrAdder.of(name, CCAttributes.REPLY_POWER::get, AttributeModifier.Operation.ADDITION, () ->
 						Curses.LIFE.cursing(player) ? -getLifeCurseHeal() : Curses.LIFE.blessing(player) ? getLifeBonusHeal() : 0)
@@ -309,7 +309,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 	@Override
 	public void onPlayerDamagedFinal(Player player, AttackCache cache) {
 		if (Curses.END.cursing(player)) {
-			if (cache.getDamageDealt() > player.getHealth() * getEndCurseThreshold()) {
+			if (cache.getDamageDealt() >= player.getMaxHealth() * getEndCurseThreshold()) {
 				player.addEffect(getEndEffectA());
 				player.addEffect(getEndEffectB());
 			}

@@ -32,7 +32,7 @@ public class CAGeneralEventHandler {
 	}
 
 	@SubscribeEvent
-	public void onPlayerPickupXp(PlayerXpEvent.PickupXp event) {
+	public static void onPlayerPickupXp(PlayerXpEvent.PickupXp event) {
 		Player player = event.getEntity();
 		double factor = 1;
 		for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.EXP)) {
@@ -42,7 +42,7 @@ public class CAGeneralEventHandler {
 	}
 
 	@SubscribeEvent
-	public void onPlayerBreak(PlayerEvent.BreakSpeed event) {
+	public static void onPlayerBreak(PlayerEvent.BreakSpeed event) {
 		Player player = event.getEntity();
 		double factor = 1;
 		for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.MINING)) {
@@ -53,7 +53,7 @@ public class CAGeneralEventHandler {
 
 
 	@SubscribeEvent
-	public void onPlayerHeal(LivingHealEvent event) {
+	public static void onPlayerHeal(LivingHealEvent event) {
 		if (event.getEntity() instanceof Player player) {
 			for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.HEAL))
 				e.onPlayerHeal(player, event);
@@ -61,7 +61,7 @@ public class CAGeneralEventHandler {
 	}
 
 	@SubscribeEvent
-	public void onPlayerBlocked(ShieldBlockEvent event) {
+	public static void onPlayerBlocked(ShieldBlockEvent event) {
 		if (event.getEntity() instanceof Player player) {
 			for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.SHIELD))
 				e.onPlayerBlocked(player, event);

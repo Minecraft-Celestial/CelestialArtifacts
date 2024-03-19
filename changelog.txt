@@ -1,0 +1,7 @@
+1.2.5
+- Fix crash on damage reduction / negation charms
+
+1.2.4
+- Fix Catastrophe Scroll Origin/End Curse
+- Fix Amethyst Ring flashing
+- Fix Break Speed / Heal / Exp Pickup / Shield Block effect never triggered
