@@ -1,3 +1,8 @@
+1.2.6
+- Change recipe, make more curios to require Catastrophe Scroll
+- Buff Earth tools
+- Fix Nebula Cube drop problem
+
 1.2.5
 - Fix crash on damage reduction / negation charms
 

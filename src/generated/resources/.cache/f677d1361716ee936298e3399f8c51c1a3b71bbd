@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-18T19:06:01.464849	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
+// 1.20.1	2024-03-20T20:28:47.591555	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
 4053a81e7ff342260549dbe5532a3731f65176f8 assets/celestial_artifacts/lang/en_ud.json
 b34b1cb1f62df2f3ac0e6aa3c066902547dab606 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
@@ -169,10 +169,10 @@ fcb60a2ad7330f35270a1770e5316074f8089b91 data/celestial_artifacts/loot_tables/ch
 513965efdfb0884e5d1691b0783f59604b7ecada data/celestial_artifacts/recipes/abyss_core.json
 6a5ebd4b8269af73eb1b613e567bb1258c76b0f1 data/celestial_artifacts/recipes/abyss_will_badge.json
 c639702baca3cda2eabc59272efb527b2ff7df68 data/celestial_artifacts/recipes/amethyst_ring.json
-d44969091e812a2508ae14f08d779bd4cebdc0cd data/celestial_artifacts/recipes/angel_heart.json
-39867586426157927a74960085bf98c194015e9c data/celestial_artifacts/recipes/angel_pearl.json
+56e73be526f5a9b39416a8df57c001e3c99b9c82 data/celestial_artifacts/recipes/angel_heart.json
+14071c1c8d826c1dbf622c90a4d9f294db642c52 data/celestial_artifacts/recipes/angel_pearl.json
 b48404c061a7da9d82a0242e0f9213fabe919ba5 data/celestial_artifacts/recipes/backtrack_mirror.json
-e595020f1c92bb10aab3c454a10bc84d1d7758c9 data/celestial_artifacts/recipes/bearing_stamen.json
+e5a439dbc255c6affc2aa68b441eed10edff20d7 data/celestial_artifacts/recipes/bearing_stamen.json
 1984bd25b25de43c1cb0523895bfa8c875a53dbf data/celestial_artifacts/recipes/chaotic_pendant.json
 a6589197dbc69bb387fa783d9bd145d4aff2f7da data/celestial_artifacts/recipes/corrupt_badge.json
 1addd97dda07402f1f8d85f3bb55debb11f870b8 data/celestial_artifacts/recipes/cursed_protector.json
@@ -198,8 +198,8 @@ dfb9b6accbc705d79ca2b59ed2ee17910ffbaee2 data/celestial_artifacts/recipes/gold_r
 206198a51999f447a62ed00b770f4d9bb2b83e1d data/celestial_artifacts/recipes/greedy_heart.json
 add9b752e4a3148b8dbf08b347bf00d54754be21 data/celestial_artifacts/recipes/hidden_bracelet.json
 fb245e581ef46a8066482436ef25f14ff8d75083 data/celestial_artifacts/recipes/holy_necklace.json
-500738df8fab3c1e5b5b1f67318360154d42e9bc data/celestial_artifacts/recipes/holy_sword.json
-0362f68325cdc1993d8d9aa79151d687536a25c5 data/celestial_artifacts/recipes/holy_talisman.json
+ec1c6243400a0ef4de1801cb7af062eb48c02b62 data/celestial_artifacts/recipes/holy_sword.json
+855384a3a0b0e481d92c9453faec600afa9b050c data/celestial_artifacts/recipes/holy_talisman.json
 57c5c9329d5ad7b8a1828e00841a6cd9bc6d1aae data/celestial_artifacts/recipes/iron_scabbard.json
 31d93c3485b1fed4de6864eefb72307836e57e9e data/celestial_artifacts/recipes/knight_shelter.json
 0cf0b2ec68ee24fe1857a01b8dd2dc1d66953f2c data/celestial_artifacts/recipes/life_bracelet.json

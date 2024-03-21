@@ -19,10 +19,13 @@
     },
     "F": {
       "item": "celestial_core:midnight_fragment"
+    },
+    "G": {
+      "item": "celestial_core:soaring_wings"
     }
   },
   "pattern": [
-    "FBF",
+    "FBG",
     "CAD",
     "ECC"
   ],

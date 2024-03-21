@@ -369,7 +369,7 @@ public class CARecipeGen {
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.ANGEL_HEART.get(), 1)::unlockedBy, CCItems.PURE_NETHER_STAR.get())
 						.pattern(" B ").pattern("BAB").pattern("CDC")
 						.define('A', CCItems.PURE_NETHER_STAR.get())
-						.define('B', Items.FEATHER)
+						.define('B', CCItems.SOARING_WINGS)
 						.define('C', CAItems.NEBULA_CUBE)
 						.define('D', CAItems.END_ETCHING)
 						.save(pvd);
@@ -389,7 +389,7 @@ public class CARecipeGen {
 						.define('B', CCItems.OCEAN_ESSENCE.get())
 						.define('F', Items.SPORE_BLOSSOM)
 						.define('C', Items.GHAST_TEAR)
-						.define('D', CCItems.EARTH_CORE)
+						.define('D', Items.MOSSY_COBBLESTONE)
 						.define('E', CAItems.LIFE_ETCHING)
 						.save(pvd);
 
@@ -397,7 +397,7 @@ public class CARecipeGen {
 						.pattern("DAD").pattern("CEC").pattern("DBD")
 						.define('A', CCItems.FIRE_ESSENCE.get())
 						.define('B', CCItems.LIGHT_FRAGMENT.get())
-						.define('C', Items.FEATHER)
+						.define('C', CCItems.SOARING_WINGS)
 						.define('D', CAItems.NEBULA_CUBE)
 						.define('E', CAItems.DESIRE_ETCHING)
 						.save(pvd);
@@ -431,7 +431,7 @@ public class CARecipeGen {
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.ANGEL_PEARL.get(), 1)::unlockedBy, CAItems.NEBULA_CUBE.get())
 						.pattern("1D2").pattern("BAB").pattern("CCC")
 						.define('A', Items.ENDER_PEARL)
-						.define('B', Items.FEATHER)
+						.define('B', CCItems.SOARING_WINGS)
 						.define('C', CAItems.NEBULA_CUBE)
 						.define('D', CCItems.PURE_NETHER_STAR.get())
 						.define('1', CAItems.ORIGIN_ETCHING)
@@ -478,13 +478,14 @@ public class CARecipeGen {
 
 				// totems
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.HOLY_TALISMAN.get(), 1)::unlockedBy, CCItems.PURE_NETHER_STAR.get())
-						.pattern("FBF").pattern("CAD").pattern("ECC")
+						.pattern("FBG").pattern("CAD").pattern("ECC")
 						.define('A', CCItems.PURE_NETHER_STAR.get())
 						.define('B', CAItems.ORIGIN_ETCHING)
 						.define('C', CAItems.NEBULA_CUBE)
 						.define('D', CAItems.LIFE_ETCHING.get())
 						.define('E', CCItems.LIGHT_FRAGMENT.get())
 						.define('F', CCItems.MIDNIGHT_FRAGMENT.get())
+						.define('G', CCItems.SOARING_WINGS)
 						.save(pvd);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.UNDEAD_CHARM.get(), 1)::unlockedBy, CAItems.NEBULA_CUBE.get())
