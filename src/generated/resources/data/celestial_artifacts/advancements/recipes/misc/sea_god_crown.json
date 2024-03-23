@@ -1,5 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "sea_god_crown"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
   "criteria": {
     "has_prismarine_shard": {
       "conditions": {

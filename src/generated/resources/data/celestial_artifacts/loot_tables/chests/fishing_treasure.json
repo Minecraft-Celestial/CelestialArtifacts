@@ -8,6 +8,10 @@
           "type": "minecraft:item",
           "conditions": [
             {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:magic_horseshoe"
+            },
+            {
               "condition": "minecraft:location_check",
               "predicate": {
                 "position": {

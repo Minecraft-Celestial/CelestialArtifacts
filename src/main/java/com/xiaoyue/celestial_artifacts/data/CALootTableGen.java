@@ -2,12 +2,13 @@ package com.xiaoyue.celestial_artifacts.data;
 
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
+import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
+import com.xiaoyue.celestial_artifacts.content.loot.EnabledCondition;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -34,12 +35,12 @@ public enum CALootTableGen implements CALang.Info {
 	;
 
 	private final CALang.Entry entry;
-	public final List<Supplier<Item>> item;
+	public final List<Supplier<ModularCurio>> item;
 	public final ResourceLocation target;
 	public final int odds;
 
 	@SafeVarargs
-	CALootTableGen(String def, ResourceLocation target, int odds, Supplier<Item>... item) {
+	CALootTableGen(String def, ResourceLocation target, int odds, Supplier<ModularCurio>... item) {
 		this.entry = new CALang.Entry(name().toLowerCase(Locale.ROOT), def, 0);
 		this.item = List.of(item);
 		this.target = target;
@@ -62,6 +63,7 @@ public enum CALootTableGen implements CALang.Info {
 				var pool = LootPool.lootPool();
 				for (var item : e.item) {
 					var entry = LootTableTemplate.getItem(item.get(), 1).setWeight(1);
+					entry.when(new EnabledCondition(item.get()));
 					if (item.get() == CAItems.MAGIC_HORSESHOE.get())
 						entry.when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setY(
 								MinMaxBounds.Doubles.atLeast(300))));

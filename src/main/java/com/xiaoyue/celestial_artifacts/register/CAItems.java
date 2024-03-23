@@ -42,10 +42,10 @@ import com.xiaoyue.celestial_artifacts.content.curios.scroll.TwistedScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.set.EmeraldSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SeaGodSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SpiritSet;
-import com.xiaoyue.celestial_artifacts.content.items.item.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
 import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
 import com.xiaoyue.celestial_artifacts.content.items.item.RepentMirror;
+import com.xiaoyue.celestial_artifacts.content.items.item.UnluckyPotato;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
@@ -71,10 +71,13 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import top.theillusivec4.curios.Curios;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.function.IntSupplier;
 
 public class CAItems {
+
+	public static final LinkedHashSet<String> ALL_CURIOS = new LinkedHashSet<>();
 
 	public static final ItemEntry<CCTooltipItem> THE_END_DUST = material("the_end_dust",
 			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false,
@@ -83,20 +86,20 @@ public class CAItems {
 	public static final ItemEntry<CCTooltipItem> NEBULA_CUBE = material("nebula_cube",
 			p -> new CCTooltipItem(new Item.Properties().rarity(Rarity.EPIC), false, CALang.Tooltip.NEBULA_CUBE::get));
 
-	public static final ItemEntry<Item> GOLD_RING, AMETHYST_RING, DIAMOND_RING, EMERALD_RING, FLIGHT_RING, NETHERITE_RING, RING_OF_LIFE, THUNDER_RING, NETHER_FIRE, FREEZE_RING;
-	public static final ItemEntry<Item> WAR_DEAD_BADGE, UNDEAD_CHARM, DESTROYER_BADGE, TWISTED_BRAIN, CORRUPT_BADGE,
+	public static final ItemEntry<ModularCurio> GOLD_RING, AMETHYST_RING, DIAMOND_RING, EMERALD_RING, FLIGHT_RING, NETHERITE_RING, RING_OF_LIFE, THUNDER_RING, NETHER_FIRE, FREEZE_RING,
+			WAR_DEAD_BADGE, UNDEAD_CHARM, DESTROYER_BADGE, TWISTED_BRAIN, CORRUPT_BADGE,
 			CURSED_TALISMAN, CURSED_PROTECTOR, CURSED_TOTEM, HOLY_TALISMAN, HOLY_SWORD, ANGEL_HEART,
 			ANGEL_PEARL, DEMON_CURSE, KNIGHT_SHELTER, SOUL_BOX, SOLAR_MAGNET, GLUTTONY_BADGE, MAGIC_HORSESHOE,
-			BEARING_STAMEN, ABYSS_WILL_BADGE, SANDS_TALISMAN, SACRIFICIAL_OBJECT;
-	public static final ItemEntry<Item> HEART_OF_REVENGE, TWISTED_HEART, GREEDY_HEART, DEMON_HEART;
-	public static final ItemEntry<Item> TRAVELER_SCROLL, SEA_GOD_SCROLL, SKYWALKER_SCROLL, TWISTED_SCROLL;
-	public static final ItemEntry<Item> EMERALD_BRACELET, LIFE_BRACELET, PRECIOUS_BRACELET, RED_RUBY_BRACELET, HIDDEN_BRACELET, SCARLET_BRACELET, CHARMING_BRACELET, SPIRIT_BRACELET;
-	public static final ItemEntry<Item> UNOWNED_PENDANT, CHAOTIC_PENDANT, SHADOW_PENDANT;
-	public static final ItemEntry<Item> STAR_NECKLACE, CROSS_NECKLACE, GALLOP_NECKLACE, FANG_NECKLACE, PRECIOUS_NECKLACE,
-			HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE, ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE;
-	public static final ItemEntry<Item> SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN;
-	public static final ItemEntry<Item> MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG, IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD;
-	public static final ItemEntry<Item> CATASTROPHE_SCROLL, CHAOTIC_ETCHING, ORIGIN_ETCHING, LIFE_ETCHING, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
+			BEARING_STAMEN, ABYSS_WILL_BADGE, SANDS_TALISMAN, SACRIFICIAL_OBJECT,
+			HEART_OF_REVENGE, TWISTED_HEART, GREEDY_HEART, DEMON_HEART,
+			TRAVELER_SCROLL, SEA_GOD_SCROLL, SKYWALKER_SCROLL, TWISTED_SCROLL,
+			EMERALD_BRACELET, LIFE_BRACELET, PRECIOUS_BRACELET, RED_RUBY_BRACELET, HIDDEN_BRACELET, SCARLET_BRACELET, CHARMING_BRACELET, SPIRIT_BRACELET,
+			UNOWNED_PENDANT, CHAOTIC_PENDANT, SHADOW_PENDANT,
+			STAR_NECKLACE, CROSS_NECKLACE, GALLOP_NECKLACE, FANG_NECKLACE, PRECIOUS_NECKLACE,
+			HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE, ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE,
+			SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN,
+			MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG, IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD,
+			CATASTROPHE_SCROLL, CHAOTIC_ETCHING, ORIGIN_ETCHING, LIFE_ETCHING, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
 
 	static {
 
@@ -639,7 +642,7 @@ public class CAItems {
 
 		// curses and etching
 		{
-			CATASTROPHE_SCROLL = item("curios/", "catastrophe_scroll", () ->
+			CATASTROPHE_SCROLL = curio("curios/", "catastrophe_scroll", () ->
 					ModularCurio.builder().curse().immune().rarity(IRarityUtils.DARK_PURPLE).hideAttr().build(
 							SlotFacet.of("etching", 7),
 							SlotFacet.of("charm", 3),
@@ -668,29 +671,29 @@ public class CAItems {
 	// tool
 	// 大地系列工具
 	// 斧
-	public static final ItemEntry<Item> EARTH_AXE = item("tool/earth/", "earth_axe", EarthAxe::new)
-			.tag(ItemTags.AXES).register();
+	public static final ItemEntry<EarthAxe> EARTH_AXE = item("tool/earth/", "earth_axe",
+			EarthAxe::new).tag(ItemTags.AXES).register();
 	// 镐
-	public static final ItemEntry<Item> EARTH_PICKAXE = item("tool/earth/", "earth_pickaxe", EarthPickaxe::new)
-			.tag(ItemTags.PICKAXES).register();
+	public static final ItemEntry<EarthPickaxe> EARTH_PICKAXE = item("tool/earth/", "earth_pickaxe",
+			EarthPickaxe::new).tag(ItemTags.PICKAXES).register();
 	// 铲
-	public static final ItemEntry<Item> EARTH_SHOVEL = item("tool/earth/", "earth_shovel", EarthShovel::new)
-			.tag(ItemTags.SHOVELS).register();
+	public static final ItemEntry<EarthShovel> EARTH_SHOVEL = item("tool/earth/", "earth_shovel",
+			EarthShovel::new).tag(ItemTags.SHOVELS).register();
 	// 锄
-	public static final ItemEntry<Item> EARTH_HOE = item("tool/earth/", "earth_hoe", EarthHoe::new)
-			.tag(ItemTags.HOES).register();
+	public static final ItemEntry<EarthHoe> EARTH_HOE = item("tool/earth/", "earth_hoe",
+			EarthHoe::new).tag(ItemTags.HOES).register();
 
 	// item
 	// 忏悔之境
-	public static final ItemEntry<Item> REPENT_MIRROR = item("items/", "repent_mirror", RepentMirror::new).register();
+	public static final ItemEntry<RepentMirror> REPENT_MIRROR = item("items/", "repent_mirror", RepentMirror::new).register();
 	// 回溯之镜
-	public static final ItemEntry<Item> BACKTRACK_MIRROR = item("items/", "backtrack_mirror", BacktrackMirror::new).register();
+	public static final ItemEntry<BacktrackMirror> BACKTRACK_MIRROR = item("items/", "backtrack_mirror", BacktrackMirror::new).register();
 	// 净化粉末
-	public static final ItemEntry<Item> PURIFIED_POWDER = item("items/", "purified_powder", PurifiedPowder::new).register();
+	public static final ItemEntry<PurifiedPowder> PURIFIED_POWDER = item("items/", "purified_powder", PurifiedPowder::new).register();
 
 	// food
 	// 厄运土豆 TODO unused, not obtainable
-	public static final ItemEntry<Item> UNLUCKY_POTATO = item("food/", "unlucky_potato", UnluckyPotato::new).register();
+	public static final ItemEntry<UnluckyPotato> UNLUCKY_POTATO = item("food/", "unlucky_potato", UnluckyPotato::new).register();
 
 	private static final SetTokenFacet<SpiritSet> SPIRIT_SET = new SetTokenFacet<>("spirit",
 			List.of(SPIRIT_BRACELET, SPIRIT_CROWN, SPIRIT_NECKLACE, SPIRIT_ARROW_BAG),
@@ -714,47 +717,52 @@ public class CAItems {
 		return SEA_GOD_SET;
 	}
 
-	public static ItemEntry<Item> ring(String id, NonNullSupplier<Item> factory) {
-		return item("curios/ring/", id, factory).tag(curio("ring")).register();
+	public static ItemEntry<ModularCurio> ring(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/ring/", id, factory).tag(curio("ring")).register();
 	}
 
-	public static ItemEntry<Item> charm(String id, NonNullSupplier<Item> factory) {
-		return item("curios/charm/", id, factory).tag(curio("charm")).register();
+	public static ItemEntry<ModularCurio> charm(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/charm/", id, factory).tag(curio("charm")).register();
 	}
 
-	public static ItemEntry<Item> scroll(String id, NonNullSupplier<Item> factory) {
-		return item("curios/scroll/", id, factory).tag(curio("scroll")).register();
+	public static ItemEntry<ModularCurio> scroll(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/scroll/", id, factory).tag(curio("scroll")).register();
 	}
 
-	public static ItemEntry<Item> bracelet(String id, NonNullSupplier<Item> factory) {
-		return item("curios/bracelet/", id, factory).tag(curio("bracelet")).register();
+	public static ItemEntry<ModularCurio> bracelet(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/bracelet/", id, factory).tag(curio("bracelet")).register();
 	}
 
-	public static ItemEntry<Item> pendant(String id, NonNullSupplier<Item> factory) {
-		return item("curios/pendant/", id, factory).tag(curio("pendant")).register();
+	public static ItemEntry<ModularCurio> pendant(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/pendant/", id, factory).tag(curio("pendant")).register();
 	}
 
-	public static ItemEntry<Item> necklace(String id, NonNullSupplier<Item> factory) {
-		return item("curios/necklace/", id, factory).tag(curio("necklace")).register();
+	public static ItemEntry<ModularCurio> necklace(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/necklace/", id, factory).tag(curio("necklace")).register();
 	}
 
-	public static ItemEntry<Item> head(String id, NonNullSupplier<Item> factory) {
-		return item("curios/head/", id, factory).tag(curio("head")).register();
+	public static ItemEntry<ModularCurio> head(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/head/", id, factory).tag(curio("head")).register();
 	}
 
-	public static ItemEntry<Item> heart(String id, NonNullSupplier<Item> factory) {
-		return item("curios/heart/", id, factory).tag(curio("heart")).register();
+	public static ItemEntry<ModularCurio> heart(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/heart/", id, factory).tag(curio("heart")).register();
 	}
 
-	public static ItemEntry<Item> etching(String id, NonNullSupplier<Item> factory) {
-		return item("curios/etching/", id, factory).tag(curio("etching")).register();
+	public static ItemEntry<ModularCurio> etching(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/etching/", id, factory).tag(curio("etching")).register();
 	}
 
-	public static ItemEntry<Item> back(String id, NonNullSupplier<Item> factory) {
-		return item("curios/back/", id, factory).tag(curio("back")).register();
+	public static ItemEntry<ModularCurio> back(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/back/", id, factory).tag(curio("back")).register();
 	}
 
-	public static ItemBuilder<Item, ?> item(String path, String id, NonNullSupplier<Item> factory) {
+	public static ItemBuilder<ModularCurio, ?> curio(String path, String id, NonNullSupplier<ModularCurio> factory) {
+		ALL_CURIOS.add(id);
+		return item(path, id, factory);
+	}
+
+	public static <T extends Item> ItemBuilder<T, ?> item(String path, String id, NonNullSupplier<T> factory) {
 		return CelestialArtifacts.REGISTRATE.item(id, p -> factory.get())
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + path + ctx.getName())));
 	}

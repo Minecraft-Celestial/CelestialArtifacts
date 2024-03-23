@@ -59,7 +59,8 @@ public class CALang {
 		NEBULA_CUBE("Dropped when player failed to get etchings while meeting conditions", 0),
 		BACKTRACK("Teleport player to spawning point. Cool down: %s seconds", 1),
 		REPENT("Teleport player to last death position. Cool down: %s seconds", 1),
-		PURIFIED("Remove curse on off hand item", 0);
+		PURIFIED("Remove curse on off hand item", 0),
+		BAN("This item is disabled", 0);
 
 		final Entry entry;
 

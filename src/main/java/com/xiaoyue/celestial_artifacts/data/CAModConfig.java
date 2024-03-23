@@ -1,12 +1,17 @@
 package com.xiaoyue.celestial_artifacts.data;
 
+import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
+import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.IConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.LinkedHashMap;
 
 public class CAModConfig {
 
@@ -665,9 +670,6 @@ public class CAModConfig {
 
 		public static class Curse {
 
-			// catastrophe_scroll
-			public final ForgeConfigSpec.BooleanValue catastropheScrollStart;
-
 			public final ForgeConfigSpec.DoubleValue chaoticExplosionDamage;
 			public final ForgeConfigSpec.DoubleValue chaoticOtherDamage;
 			public final ForgeConfigSpec.DoubleValue chaoticBlessDamageReduction;
@@ -694,11 +696,6 @@ public class CAModConfig {
 
 			private Curse(ForgeConfigSpec.Builder builder) {
 				builder.push("curse");
-
-				// catastrophe_scroll
-				catastropheScrollStart = builder
-						.comment("When true, when the player enters the world, the accessory will be directly worn in the accessory bar")
-						.define("catastropheScrollStart", false);
 
 				chaoticExplosionDamage = builder
 						.comment("Chaotic Curse: Damage increment percentage for explosion")
@@ -1085,6 +1082,8 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue backtrackMirrorCooldown;
 			public final ForgeConfigSpec.IntValue repentMirrorCooldown;
 
+			public final ForgeConfigSpec.BooleanValue catastropheScrollEquipOnStart;
+
 			private Misc(ForgeConfigSpec.Builder builder) {
 				builder.push("misc");
 
@@ -1093,10 +1092,35 @@ public class CAModConfig {
 				repentMirrorCooldown = builder.defineInRange("repentMirrorCooldown",
 						10, 0, 10000);
 
+				// catastrophe_scroll
+				catastropheScrollEquipOnStart = builder
+						.comment("When true, when the player enters the world, the accessory will be directly worn in the accessory bar")
+						.define("catastropheScrollStart", false);
 
 				builder.pop();
 			}
 
+		}
+
+		public static class Toggles {
+
+
+			private final LinkedHashMap<String, ForgeConfigSpec.BooleanValue> itemToggle = new LinkedHashMap<>();
+
+			private Toggles(ForgeConfigSpec.Builder builder) {
+
+				builder.push("itemToggle");
+				for (var e : CAItems.ALL_CURIOS) {
+					itemToggle.put(e, builder.define(e, true));
+				}
+				builder.pop();
+			}
+
+			public ForgeConfigSpec.BooleanValue get(ModularCurio item) {
+				var id = ForgeRegistries.ITEMS.getKey(item);
+				assert id != null;
+				return itemToggle.get(id.getPath());
+			}
 		}
 
 
@@ -1113,6 +1137,8 @@ public class CAModConfig {
 		public final Scroll scroll;
 		public final Set set;
 		public final Misc misc;
+		public final Toggles toggles;
+
 
 		Common(ForgeConfigSpec.Builder builder) {
 			materials = new Materials(builder);
@@ -1128,6 +1154,8 @@ public class CAModConfig {
 			scroll = new Scroll(builder);
 			set = new Set(builder);
 			misc = new Misc(builder);
+			toggles = new Toggles(builder);
+
 		}
 
 	}

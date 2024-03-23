@@ -3,6 +3,10 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.truthEtchingDropChance",
   "conditions": [
     {
+      "condition": "celestial_artifacts:enabled",
+      "item": "celestial_artifacts:truth_etching"
+    },
+    {
       "condition": "minecraft:entity_properties",
       "entity": "this",
       "predicate": {

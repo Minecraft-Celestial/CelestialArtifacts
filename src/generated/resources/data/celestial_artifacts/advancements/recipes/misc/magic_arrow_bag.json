@@ -1,5 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "magic_arrow_bag"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
   "criteria": {
     "has_amethyst_shard": {
       "conditions": {

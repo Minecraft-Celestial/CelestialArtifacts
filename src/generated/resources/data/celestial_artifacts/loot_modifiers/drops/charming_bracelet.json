@@ -3,6 +3,10 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.charmingBraceletDropChance",
   "conditions": [
     {
+      "condition": "celestial_artifacts:enabled",
+      "item": "celestial_artifacts:charming_bracelet"
+    },
+    {
       "type": "REPUTATION",
       "condition": "celestial_artifacts:player_stat",
       "count": "celestial_configs/celestial_artifacts-common.toml/materials.charmingBraceletReputationRequirement"

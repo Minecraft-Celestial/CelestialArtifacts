@@ -19,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@SerialClass
 public class HiddenBracelet extends BaseTickingToken implements CAAttackToken {
 
 	private static int dur() {

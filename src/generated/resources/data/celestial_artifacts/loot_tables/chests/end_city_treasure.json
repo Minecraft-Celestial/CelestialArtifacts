@@ -6,6 +6,12 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:traveler_scroll"
+            }
+          ],
           "functions": [
             {
               "add": false,

@@ -152,12 +152,12 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 				() -> END_BONUS.get(TextFacet.perc(getEndBonus()))),
 		;
 
-		private final Supplier<Item> etching;
+		private final Supplier<? extends Item> etching;
 		public final Supplier<MutableComponent> title, trigger, bonus;
 		private final List<Supplier<MutableComponent>> curse;
 
 
-		Curses(Supplier<Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, List<Supplier<MutableComponent>> curse, Supplier<MutableComponent> bonus) {
+		Curses(Supplier<? extends Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, List<Supplier<MutableComponent>> curse, Supplier<MutableComponent> bonus) {
 			this.etching = etching;
 			this.title = title;
 			this.trigger = trigger;
@@ -165,7 +165,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 			this.bonus = bonus;
 		}
 
-		Curses(Supplier<Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, Supplier<MutableComponent> curse, Supplier<MutableComponent> bonus) {
+		Curses(Supplier<? extends Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, Supplier<MutableComponent> curse, Supplier<MutableComponent> bonus) {
 			this(etching, title, trigger, List.of(curse), bonus);
 		}
 

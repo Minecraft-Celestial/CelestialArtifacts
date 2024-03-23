@@ -6,6 +6,12 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:spirit_arrow_bag"
+            }
+          ],
           "functions": [
             {
               "add": false,
@@ -17,6 +23,12 @@
         },
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:spirit_necklace"
+            }
+          ],
           "functions": [
             {
               "add": false,
@@ -28,6 +40,12 @@
         },
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:spirit_bracelet"
+            }
+          ],
           "functions": [
             {
               "add": false,
@@ -39,6 +57,12 @@
         },
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:spirit_crown"
+            }
+          ],
           "functions": [
             {
               "add": false,

@@ -5,6 +5,8 @@ import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureMap;
 import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
+import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
@@ -16,8 +18,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -28,6 +28,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,6 +36,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public final class ModularCurio extends BaseCurio implements L2Totem {
 
@@ -55,7 +57,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 	private TokenFacet<?> token = null;
 	private final FeatureMap features = new FeatureMap();
 
-	private final Prop prop;
+	public final Prop prop;
 
 	private ModularCurio(Properties props, Prop prop, IFacet... facets) {
 		super(props);
@@ -83,6 +85,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 	@Override
 	public void curioTick(SlotContext slotContext, ItemStack stack) {
 		if (slotContext.cosmetic()) return;
+		if (!enableConfig().get()) return;
 		for (var e : tick) {
 			e.tick(slotContext.entity(), stack);
 		}
@@ -104,18 +107,24 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 
 	@Override
 	public boolean allow(LivingEntity self, ItemStack stack, DamageSource pDamageSource) {
+		if (!enableConfig().get()) return false;
 		TotemFacet totem = totem(self);
 		return totem != null && self instanceof Player player && totem.allow(player, stack, pDamageSource);
 	}
 
 	@Override
 	public boolean isValid(LivingEntity self, ItemStack stack, TotemHelper.TotemSlot slot) {
+		if (!enableConfig().get()) return false;
 		TotemFacet totem = totem(self);
 		return totem != null && slot instanceof TotemHelper.CurioPred && self instanceof Player;
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		if (!enableConfig().get()) {
+			list.add(CALang.Tooltip.BAN.get().withStyle(ChatFormatting.RED));
+			return;
+		}
 		if (Screen.hasShiftDown()) {
 			for (var e : text) {
 				e.addText(level, list);
@@ -127,7 +136,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 				list.add(CALang.Modular.IMMUNE.get().withStyle(ChatFormatting.GRAY));
 			}
 		} else {
-			if (prop.requireCS) {
+			if (stack.is(CATagGen.REQUIRE_CURSE)) {
 				list.add(CALang.Modular.curse());
 			}
 			if (!text.isEmpty()) {
@@ -220,13 +229,25 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 	}
 
 	@Override
-	public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
-		if (prop.requireCS()) {
+	public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+		if (!enableConfig().get()) return false;
+		var entity = slotContext.entity();
+		if (stack.is(CATagGen.REQUIRE_CURSE)) {
 			if (!(entity instanceof Player player && CurioUtils.isCsOn(player))) {
 				return false;
 			}
 		}
-		return super.canEquip(stack, armorType, entity);
+		return super.canEquip(slotContext, stack);
+	}
+
+	public ForgeConfigSpec.BooleanValue enableConfig() {
+		return CAModConfig.COMMON.toggles.get(this);
+	}
+
+	public void enableMap(Consumer<ModularCurio> cons) {
+		if (enableConfig().get()) {
+			cons.accept(this);
+		}
 	}
 
 	@Override

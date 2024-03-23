@@ -3,6 +3,10 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.twistedBrainDropChance",
   "conditions": [
     {
+      "condition": "celestial_artifacts:enabled",
+      "item": "celestial_artifacts:twisted_brain"
+    },
+    {
       "condition": "minecraft:entity_properties",
       "entity": "killer",
       "predicate": {

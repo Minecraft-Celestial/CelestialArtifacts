@@ -3,6 +3,10 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.twistedHeartDropChance",
   "conditions": [
     {
+      "condition": "celestial_artifacts:enabled",
+      "item": "celestial_artifacts:twisted_heart"
+    },
+    {
       "condition": "minecraft:entity_properties",
       "entity": "killer",
       "predicate": {

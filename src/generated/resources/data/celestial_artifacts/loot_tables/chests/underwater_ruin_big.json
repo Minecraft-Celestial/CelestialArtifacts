@@ -6,6 +6,12 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:leech_scabbard"
+            }
+          ],
           "functions": [
             {
               "add": false,
@@ -17,6 +23,12 @@
         },
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:thunder_ring"
+            }
+          ],
           "functions": [
             {
               "add": false,

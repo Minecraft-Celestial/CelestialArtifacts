@@ -3,6 +3,10 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.lifeEtchingDropChance",
   "conditions": [
     {
+      "condition": "celestial_artifacts:enabled",
+      "item": "celestial_artifacts:life_etching"
+    },
+    {
       "condition": "celestial_artifacts:curse_on"
     },
     {

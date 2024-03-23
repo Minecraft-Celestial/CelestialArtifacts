@@ -208,6 +208,7 @@
   "celestial_artifacts.sets.spirit_2": "When you have %s:",
   "celestial_artifacts.sets.spirit_3": "Your projectile has %s chance to inflict %s",
   "celestial_artifacts.tooltip.backtrack": "Teleport player to spawning point. Cool down: %s seconds",
+  "celestial_artifacts.tooltip.ban": "This item is disabled",
   "celestial_artifacts.tooltip.end_dust": "%s chance to drop when players equipped with [%s] kill monsters targeting them",
   "celestial_artifacts.tooltip.nebula_cube": "Dropped when player failed to get etchings while meeting conditions",
   "celestial_artifacts.tooltip.purified": "Remove curse on off hand item",

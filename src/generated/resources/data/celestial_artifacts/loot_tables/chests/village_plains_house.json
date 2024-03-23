@@ -6,6 +6,12 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:cross_necklace"
+            }
+          ],
           "functions": [
             {
               "add": false,
@@ -17,6 +23,12 @@
         },
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "celestial_artifacts:enabled",
+              "item": "celestial_artifacts:red_heart_necklace"
+            }
+          ],
           "functions": [
             {
               "add": false,

@@ -1,5 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "prayer_crown"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
   "criteria": {
     "has_redstone_block": {
       "conditions": {

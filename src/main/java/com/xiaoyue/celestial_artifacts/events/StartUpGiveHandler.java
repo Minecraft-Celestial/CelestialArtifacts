@@ -4,9 +4,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.content.generic.PlayerFlagData;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -23,13 +21,11 @@ public class StartUpGiveHandler {
 		if (player.level().isClientSide()) return;
 		var data = PlayerFlagData.HOLDER.get(player);
 		if (!data.hasFlag("hello_world")) {
-			player.addItem(new ItemStack(CAItems.HEIRLOOM_NECKLACE.get()));
-			if (!CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
-				player.addItem(new ItemStack(CAItems.CATASTROPHE_SCROLL.get()));
-			}
 			data.addFlag("hello_world");
+			CAItems.HEIRLOOM_NECKLACE.get().enableMap(e -> player.addItem(e.getDefaultInstance()));
+			CAItems.CATASTROPHE_SCROLL.get().enableMap(e -> player.addItem(e.getDefaultInstance()));
 		}
-		if (CAModConfig.COMMON.curse.catastropheScrollStart.get()) {
+		if (CAModConfig.COMMON.misc.catastropheScrollEquipOnStart.get()) {
 			if (!data.hasFlag("cs")) {
 				if (!CurioUtils.isCsOn(player)) {
 					var opt = CuriosApi.getCuriosInventory(player).resolve()

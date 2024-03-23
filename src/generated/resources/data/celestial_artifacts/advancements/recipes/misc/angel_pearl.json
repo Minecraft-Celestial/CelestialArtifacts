@@ -1,5 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "angel_pearl"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
   "criteria": {
     "has_nebula_cube": {
       "conditions": {

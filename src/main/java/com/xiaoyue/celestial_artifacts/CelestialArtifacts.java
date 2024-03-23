@@ -44,6 +44,7 @@ public class CelestialArtifacts {
 		AttackEventHandler.register(3460, new CAAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CALang::addLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CARecipeGen::onRecipeGen);
+		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CATagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, CATagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, CALootTableGen::onLootGen);
 	}
