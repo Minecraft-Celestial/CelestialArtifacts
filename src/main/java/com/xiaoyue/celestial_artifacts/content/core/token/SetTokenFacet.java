@@ -8,6 +8,7 @@ import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.conditionals.Context;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2library.capability.conditionals.TokenProvider;
+import dev.xkmc.l2serial.util.Wrappers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -35,7 +36,7 @@ public record SetTokenFacet<T extends BaseTickingToken>(String id, List<ItemLike
 			for (var e : list()) {
 				if (!CurioUtils.hasCurio(player, e.asItem())) return;
 			}
-			ConditionalData.HOLDER.get(player).getOrCreateData(this, this).update();
+			Wrappers.run(() -> ConditionalData.HOLDER.get(player).getOrCreateData(this, this).update());
 		}
 	}
 

@@ -1,16 +1,15 @@
-1.2.7
+1.2.6
 - Fix Hidden Bracelet crash
 - Allow config to disable items
 - Use tag for require-curse
 - Fix curse equip limit
 - fix translation
+- redo pendant textures (original is edited EL texture)
 
-1.2.6
+1.2.5
 - Change recipe, make more curios to require Catastrophe Scroll
 - Buff Earth tools
 - Fix Nebula Cube drop problem
-
-1.2.5
 - Fix crash on damage reduction / negation charms
 
 1.2.4

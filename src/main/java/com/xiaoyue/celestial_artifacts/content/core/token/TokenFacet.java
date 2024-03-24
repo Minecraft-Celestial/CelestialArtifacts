@@ -7,6 +7,7 @@ import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.capability.conditionals.Context;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2library.capability.conditionals.TokenProvider;
+import dev.xkmc.l2serial.util.Wrappers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -30,14 +31,14 @@ public record TokenFacet<T extends BaseTickingToken>(String id, Supplier<T> sup)
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
 		if (entity instanceof Player player) {
-			ConditionalData.HOLDER.get(player).getOrCreateData(this, this).update();
+			Wrappers.run(() -> ConditionalData.HOLDER.get(player).getOrCreateData(this, this).update());
 		}
 	}
 
 	@Nullable
 	public T get(LivingEntity entity) {
 		if (entity instanceof Player player) {
-			return ConditionalData.HOLDER.get(player).getData(getKey());
+			return Wrappers.get(() -> ConditionalData.HOLDER.get(player).getData(getKey()));
 		}
 		return null;
 	}
