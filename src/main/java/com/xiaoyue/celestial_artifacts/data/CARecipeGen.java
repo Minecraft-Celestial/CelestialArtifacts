@@ -344,7 +344,7 @@ public class CARecipeGen {
 						.pattern("AAA").pattern("ECE").pattern("DBD")
 						.define('A', CAItems.NEBULA_CUBE.get())
 						.define('E', CCItems.WARDEN_SCLERITE.get())
-						.define('B', CAItems.NIHILITY_ETCHING.get())
+						.define('B', CAItems.CHAOTIC_ETCHING.get())
 						.define('C', CCItems.HEART_FRAGMENT.get())
 						.define('D', CAItems.THE_END_DUST)
 						.save(saver);
@@ -383,7 +383,7 @@ public class CARecipeGen {
 						.define('B', CCItems.DEATH_ESSENCE.get())
 						.define('C', CAItems.THE_END_DUST.get())
 						.define('D', CAItems.NEBULA_CUBE)
-						.define('E', CAItems.CHAOTIC_ETCHING)
+						.define('E', CAItems.NIHILITY_ETCHING)
 						.save(saver);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.BEARING_STAMEN.get(), 1)::unlockedBy, CCItems.EARTH_CORE.get())

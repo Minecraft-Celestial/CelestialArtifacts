@@ -99,7 +99,7 @@ public class SimpleListener {
 		}
 
 		@Override
-		public void onPlayerHurtTarget(Player player, AttackCache cache) {
+		public void onPlayerDamaged(Player player, AttackCache cache) {
 			if (condition.test(player, cache.getAttackTarget(), cache)) {
 				cache.addDealtModifier(DamageModifier.multTotal((float) (1 - bonus.getAsDouble())));
 			}

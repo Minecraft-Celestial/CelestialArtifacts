@@ -1,3 +1,8 @@
+1.2.7
+- replace scabbard texture
+- change recipe to make nihility etching possible to obtain
+- Fix charms that reduce damage
+
 1.2.6
 - Fix Hidden Bracelet crash
 - Allow config to disable items

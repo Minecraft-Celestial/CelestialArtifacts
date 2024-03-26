@@ -1,6 +1,6 @@
-// 1.20.1	2024-03-23T21:38:34.608978	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
-2930dd1b4de81e6be9bf77b5fa41af52cf5a830d assets/celestial_artifacts/lang/en_ud.json
-75d4cbeef7ad77d49196041060eaa85be3b78380 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-03-26T11:37:39.89973	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
+aa5f5cba58705aa09834e261dbee30ae9b963916 assets/celestial_artifacts/lang/en_ud.json
+00f79ab17d6929ece6d9e7b115aef61a9e9eb340 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
@@ -203,7 +203,7 @@ bc1c9b5b7e8a087d85ba762203e3b4cc9f10323a data/celestial_artifacts/recipes/holy_t
 404d9040a9416ceb2868172c6b2c77f9e062d55e data/celestial_artifacts/recipes/iron_scabbard.json
 034d63b05bd4ad1ed5a82b96febd8676e91f3344 data/celestial_artifacts/recipes/knight_shelter.json
 257b826ceb5971a19449e0633bb11d4f94b94e01 data/celestial_artifacts/recipes/life_bracelet.json
-c55452bd0d4b83b0f284d00b6fbd821d8956a133 data/celestial_artifacts/recipes/lock_of_abyss.json
+fe89621718544c9119072f8f163539dd3f29c821 data/celestial_artifacts/recipes/lock_of_abyss.json
 b5b794d0a425b69cfc8621872d4784b3318e434f data/celestial_artifacts/recipes/magic_arrow_bag.json
 565e5cc7e71990a433e51bbfae307d11f300f7fe data/celestial_artifacts/recipes/nether_fire.json
 854a7023a51abd21916eb573a7e1cedd553c9193 data/celestial_artifacts/recipes/netherite_ring.json
@@ -226,7 +226,7 @@ ae4c9d6d969bc7df9669f03226b4ec013f899946 data/celestial_artifacts/recipes/star_n
 5f355a8d9cec236cf3dd6955363c5fc6c839e4bb data/celestial_artifacts/recipes/twisted_scabbard.json
 98e0300e2471b569ec5c173735f3390965a22213 data/celestial_artifacts/recipes/twisted_scroll.json
 97c860cda4201b75777be320496bab0a6f18174f data/celestial_artifacts/recipes/undead_charm.json
-ecd656c91b5695370a089f7e9a2239e5d5429fe9 data/celestial_artifacts/recipes/war_dead_badge.json
+95e58bf82024465677ee61f79c41a505f83e9f63 data/celestial_artifacts/recipes/war_dead_badge.json
 8528deb26b8e16940fc7e704556131a1f479d219 data/celestial_artifacts/tags/items/require_curse.json
 a6206a3d5baad2b734515ea39951ce7d5c60f6d0 data/curios/tags/items/back.json
 6c401cd08b4f59029e724362aa2f380ddd8c42e0 data/curios/tags/items/bracelet.json

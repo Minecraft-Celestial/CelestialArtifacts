@@ -136,7 +136,7 @@
   "celestial_artifacts.info.curse_by": "%s chance to drop when %s is killed by %s",
   "celestial_artifacts.info.curse_drop": "With %s, %s chance to drop when player kills %s",
   "celestial_artifacts.info.desire": "%s with %s or higher looting",
-  "celestial_artifacts.info.end": "%s with %s or more harmful effects",
+  "celestial_artifacts.info.end": "%s while having %s or more harmful effects",
   "celestial_artifacts.info.find": "Can be found in %s",
   "celestial_artifacts.info.life": "mobs with %s or higher health",
   "celestial_artifacts.info.nihility": "%s with abyss damage",

@@ -80,7 +80,7 @@ public class CALang {
 		CURSE("%s chance to drop when player bearing %s Curse kills %s", 3),
 		CURSE_BY("%s chance to drop when %s is killed by %s", 3),
 		DESIRE("%s with %s or higher looting", 2),
-		END("%s with %s or more harmful effects", 2),
+		END("%s while having %s or more harmful effects", 2),
 		ORIGIN("%s at y=200 or higher", 1),
 		LIFE("mobs with %s or higher health", 1),
 		NIHILITY("%s with abyss damage", 1),
