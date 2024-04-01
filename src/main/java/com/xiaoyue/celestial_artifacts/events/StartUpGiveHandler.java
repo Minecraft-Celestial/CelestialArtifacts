@@ -23,9 +23,11 @@ public class StartUpGiveHandler {
 		if (!data.hasFlag("hello_world")) {
 			data.addFlag("hello_world");
 			CAItems.HEIRLOOM_NECKLACE.get().enableMap(e -> player.addItem(e.getDefaultInstance()));
-			CAItems.CATASTROPHE_SCROLL.get().enableMap(e -> player.addItem(e.getDefaultInstance()));
+			if (!CAModConfig.COMMON.misc.catastropheScrollEquipOnStart.get())
+				CAItems.CATASTROPHE_SCROLL.get().enableMap(e -> player.addItem(e.getDefaultInstance()));
 		}
-		if (CAModConfig.COMMON.misc.catastropheScrollEquipOnStart.get()) {
+		if (CAModConfig.COMMON.misc.catastropheScrollEquipOnStart.get() &&
+				CAItems.CATASTROPHE_SCROLL.get().enableConfig().get()) {
 			if (!data.hasFlag("cs")) {
 				if (!CurioUtils.isCsOn(player)) {
 					var opt = CuriosApi.getCuriosInventory(player).resolve()

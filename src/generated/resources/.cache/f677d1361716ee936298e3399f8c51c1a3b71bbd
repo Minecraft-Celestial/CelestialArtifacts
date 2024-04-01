@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-01T09:17:42.790567	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
+// 1.20.1	2024-04-01T18:18:59.317578	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
 da1d23e8b5c87160a7260456e0e7789d66257518 assets/celestial_artifacts/lang/en_ud.json
 7d5310285acd86307e1cad76a4727cf8475d8a54 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
@@ -195,7 +195,7 @@ b093a769ea5d4f77e380f113c4db61ed6f3eae9e data/celestial_artifacts/recipes/flight
 9b7359522eb3ced291bcb844ea02dcbcb12325de data/celestial_artifacts/recipes/gallop_necklace.json
 f0e5c9c8234b627b7d1ca6af50074e34a89bf225 data/celestial_artifacts/recipes/gluttony_badge.json
 b0c47c75e9f3f94efe1058e60476d6067367c69a data/celestial_artifacts/recipes/gold_ring.json
-bc5fbdff071208957095d7307abeeb8808637864 data/celestial_artifacts/recipes/greedy_heart.json
+c3aed4dda2a1632233e092f4adb1648ff12d297f data/celestial_artifacts/recipes/greedy_heart.json
 de84347df4bb220387727d9a17166be951afebbc data/celestial_artifacts/recipes/hidden_bracelet.json
 7247d2da900cd56e79a2bf2a7790ea5bc9a10d70 data/celestial_artifacts/recipes/holy_necklace.json
 0af27807af6678a1a4a750ffb191bd2894463941 data/celestial_artifacts/recipes/holy_sword.json

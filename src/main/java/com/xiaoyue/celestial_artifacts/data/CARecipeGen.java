@@ -332,7 +332,7 @@ public class CARecipeGen {
 						.pattern("CBC").pattern("BAB").pattern("DBD")
 						.define('A', CCItems.HEART_FRAGMENT.get())
 						.define('B', Items.NETHER_STAR)
-						.define('C', Items.NETHERITE_BLOCK)
+						.define('C', Items.NETHERITE_INGOT)
 						.define('D', Items.GOLD_BLOCK)
 						.save(saver);
 

@@ -1236,7 +1236,7 @@ public class CAModConfig {
 
 				// catastrophe_scroll
 				catastropheScrollEquipOnStart = builder
-						.comment("When true, when the player enters the world, the accessory will be directly worn in the accessory bar")
+						.comment("If true, Catastrophe will be directly equipped onto new players")
 						.define("catastropheScrollStart", false);
 
 				builder.pop();
