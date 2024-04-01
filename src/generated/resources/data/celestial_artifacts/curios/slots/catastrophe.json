@@ -3,7 +3,7 @@
   "conditions": [],
   "icon": "celestial_artifacts:slot/empty_catastrophe_slot",
   "operation": "SET",
-  "order": 23,
+  "order": -5,
   "render_toggle": true,
   "replace": false,
   "size": 1,

@@ -21,19 +21,23 @@ import java.util.function.Supplier;
 /**
  * duration and period are in seconds
  */
-public record EffectFacet(Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier, int period)
+public record EffectFacet(Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier, IntSupplier period)
 		implements TickFacet, SingleLineText {
 
-	public static EffectFacet of(Supplier<MobEffect> eff, int duration, int amplifier, int period) {
-		return new EffectFacet(eff, () -> duration, () -> amplifier, period);
+	public static EffectFacet of(Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier, IntSupplier period) {
+		return new EffectFacet(eff, duration, amplifier, period);
+	}
+
+	public static EffectFacet of(Supplier<MobEffect> eff) {
+		return of(eff, () -> 2, () -> 0, () -> 0);
 	}
 
 	public static EffectFacet of(Supplier<MobEffect> eff, int duration, int amplifier) {
-		return new EffectFacet(eff, () -> duration, () -> amplifier, 0);
+		return of(eff, () -> duration, () -> amplifier, () -> 0);
 	}
 
 	public static EffectFacet of(Supplier<MobEffect> eff, IntSupplier duration, IntSupplier amplifier) {
-		return new EffectFacet(eff, duration, amplifier, 0);
+		return of(eff, duration, amplifier, () -> 0);
 	}
 
 	public static MutableComponent getDesc(MobEffectInstance ins) {
@@ -62,11 +66,11 @@ public record EffectFacet(Supplier<MobEffect> eff, IntSupplier duration, IntSupp
 		MobEffectInstance ins = get();
 		var bad = ChatFormatting.DARK_GRAY;
 		ChatFormatting base = enable ? ChatFormatting.GRAY : bad;
-		if (period <= duration.getAsInt()) {
+		if (period.getAsInt() <= duration.getAsInt()) {
 			return CALang.Modular.EFFECT_REFRESH.get().withStyle(base)
 					.append(ClientTokenHelper.disable(enable, getDesc(ins, false)));
 		} else {
-			var p = ClientTokenHelper.disable(enable, TextFacet.num(period));
+			var p = ClientTokenHelper.disable(enable, TextFacet.num(period.getAsInt()));
 			return CALang.Modular.EFFECT_FLASH.get(p).withStyle(base).append(
 					ClientTokenHelper.disable(enable, getDesc(ins)));
 		}
@@ -79,7 +83,7 @@ public record EffectFacet(Supplier<MobEffect> eff, IntSupplier duration, IntSupp
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
 		if (entity.level().isClientSide()) return;
-		if (period <= duration.getAsInt() || entity.tickCount % (period * 20) == 0) {
+		if (period.getAsInt() <= duration.getAsInt() || entity.tickCount % (period.getAsInt() * 20) == 0) {
 			EffectUtil.refreshEffect(entity, get(), EffectUtil.AddReason.SELF, entity);
 		}
 	}

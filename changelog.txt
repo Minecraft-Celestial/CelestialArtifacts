@@ -1,3 +1,9 @@
+1.2.8
+- Fix a mysterious crash in large modpack
+- Replace head / charm / scroll textures
+- Fix tool models
+- Allow Catastrophe Scroll to show full effects
+
 1.2.7
 - replace scabbard texture
 - change recipe to make nihility etching possible to obtain

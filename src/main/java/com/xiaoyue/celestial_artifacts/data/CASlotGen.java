@@ -44,7 +44,9 @@ public class CASlotGen extends RecordDataProvider {
 	public void add(BiConsumer<String, Record> map) {
 
 		for (var e : Type.values()) {
-			map.accept(CelestialArtifacts.MODID + "/curios/slots/" + e.id(), new CurioSlotBuilder(20 + e.ordinal(),
+			int order = 20 + e.ordinal();
+			if (e == Type.CATASTROPHE) order = -5;
+			map.accept(CelestialArtifacts.MODID + "/curios/slots/" + e.id(), new CurioSlotBuilder(order,
 					new ResourceLocation(CelestialArtifacts.MODID, "slot/empty_" + e.id() + "_slot").toString(),
 					e.slot, CurioSlotBuilder.Operation.SET));
 		}

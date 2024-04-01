@@ -5,6 +5,7 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.register.CCEffects;
@@ -28,23 +29,23 @@ import java.util.List;
 public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 
 	private static int getEffectThreshold() {
-		return 3;
+		return CAModConfig.COMMON.set.spiritPullDuration.get();
 	}
 
 	private static double getBackShootDamage() {
-		return 0.5;
+		return CAModConfig.COMMON.set.spiritBackShootBonus.get();
 	}
 
 	private static double getInflictChance() {
-		return 0.5;
+		return CAModConfig.COMMON.set.spiritInflictChance.get();
 	}
 
-	private static double getAvoidChance() {
-		return 0.2;
+	private static double getDodgeChance() {
+		return CAModConfig.COMMON.set.spiritDodgeChance.get();
 	}
 
 	private static double getProtect() {
-		return 0.2;
+		return CAModConfig.COMMON.set.spiritProtect.get();
 	}
 
 	private static CALang.DamageTypes type() {
@@ -61,7 +62,9 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 	}
 
 	private static MobEffectInstance getInflictEff() {
-		return new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1);
+		return new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
+				CAModConfig.COMMON.set.spiritEffectDuration.get() * 20,
+				CAModConfig.COMMON.set.spiritEffectAmplifier.get());
 	}
 
 	@Override
@@ -97,7 +100,7 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 	@Override
 	public boolean onPlayerAttacked(Player player, AttackCache cache) {
 		if (player.hasEffect(getTrigger()) && CAAttackToken.isArrow(cache)) {
-			return CAAttackToken.chance(player, getAvoidChance());
+			return CAAttackToken.chance(player, getDodgeChance());
 		}
 		return false;
 	}
@@ -127,8 +130,8 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 				TextFacet.perc(getInflictChance()),
 				EffectFacet.getDesc(getInflictEff(), true)
 		).withStyle(ChatFormatting.GRAY)));
-		list.add(TextFacet.inner(CALang.Modular.AVOID_TYPE.get(
-				TextFacet.perc(getAvoidChance()), type().get()
+		list.add(TextFacet.inner(CALang.Modular.DODGE_TYPE.get(
+				TextFacet.perc(getDodgeChance()), type().get()
 		).withStyle(ChatFormatting.GRAY)));
 		list.add(TextFacet.inner(CALang.Modular.PROTECT_TYPE.get(
 				type().get(), TextFacet.perc(getProtect())

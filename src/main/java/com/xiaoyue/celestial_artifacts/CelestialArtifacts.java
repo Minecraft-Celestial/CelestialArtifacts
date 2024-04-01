@@ -20,13 +20,18 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 
 @Mod(CelestialArtifacts.MODID)
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CelestialArtifacts {
+
+
 	public static final String MODID = "celestial_artifacts";
+	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
 	public static final PacketHandler HANDLER = new PacketHandler(loc("main"), 1,

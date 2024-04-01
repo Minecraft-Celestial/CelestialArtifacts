@@ -131,7 +131,7 @@ public class CALang {
 		HURT_BONUS("Increase damage by %s", 1),
 		PROTECT("Reduce damage by %s", 1),
 		PROTECT_TYPE("Reduce incoming %s damage by %s", 2),
-		AVOID_TYPE("%s chance to avoid %s damage", 2),
+		DODGE_TYPE("%s chance to dodge %s damage", 2),
 		NEGATE_TYPE("Negates %s damage", 1),
 		COMMA(", ", 0),
 		SET("Requires [%s] to take effect:", 1),
@@ -175,6 +175,11 @@ public class CALang {
 
 		public static MutableComponent alt() {
 			return ALT.get(Component.literal("ALT").withStyle(ChatFormatting.YELLOW))
+					.withStyle(ChatFormatting.GRAY);
+		}
+
+		public static MutableComponent curseAlt() {
+			return Curse.ALT.get(Component.literal("ALT").withStyle(ChatFormatting.YELLOW))
 					.withStyle(ChatFormatting.GRAY);
 		}
 
@@ -360,9 +365,13 @@ public class CALang {
 
 	public enum Curse implements Info {
 		SCROLL_0("You cannot take it down once equipped", 0),
-		SCROLL_1("Some mobs drop special loot", 0),
-		SCROLL_2("Unlocks some powerful trinkets", 0),
+		SCROLL_1("Unlocks some powerful trinkets and loot", 0),
+		SCROLL_2("Find and equip etchings to reverse the curses", 0),
 		TRIGGER("%s Curse is activated", 1),
+		TRIGGER_COND("Trigger Condition:", 0),
+		CURSE_EFF("Effect in Curse:", 0),
+		BLESS_EFF("Effect with Etchings:", 0),
+		ALT("Press [%s] to display curse details", 1),
 
 		CHAOS_TITLE("[Chaotic]", 0),
 		CHAOS_TRIGGER("Activates when you equip enchanted armor", 0),

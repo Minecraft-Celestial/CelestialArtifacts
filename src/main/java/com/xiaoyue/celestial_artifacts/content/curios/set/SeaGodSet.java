@@ -5,6 +5,7 @@ import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -34,15 +35,15 @@ public class SeaGodSet extends BaseTickingToken implements CAAttackToken {
 	}
 
 	private static double getProtect() {
-		return 0.35;
+		return CAModConfig.COMMON.set.seaGodProtect.get();
 	}
 
 	private static double getTridentMelee() {
-		return 0.5;
+		return CAModConfig.COMMON.set.seaGodMelee.get();
 	}
 
 	private static double getTridentThrow() {
-		return 0.75;
+		return CAModConfig.COMMON.set.seaGodThrow.get();
 	}
 
 	@Override

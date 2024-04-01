@@ -139,7 +139,7 @@ public class SimpleListener {
 			if (chance == null) {
 				list.add(TextFacet.wrap(CALang.Modular.NEGATE_TYPE.get(text.get()).withStyle(ChatFormatting.GRAY)));
 			} else {
-				list.add(TextFacet.wrap(CALang.Modular.AVOID_TYPE.get(
+				list.add(TextFacet.wrap(CALang.Modular.DODGE_TYPE.get(
 						TextFacet.perc(chance.getAsDouble()), text.get()
 				).withStyle(ChatFormatting.GRAY)));
 			}

@@ -1,6 +1,6 @@
 package com.xiaoyue.celestial_artifacts.data;
 
-import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
+import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -8,7 +8,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.IConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.LinkedHashMap;
@@ -76,22 +75,26 @@ public class CAModConfig {
 
 		public static class Back {
 
-			public ForgeConfigSpec.DoubleValue magicArrowBagBowStrength;
-			public ForgeConfigSpec.IntValue magicArrowBagArrowKnock;
-
-			public ForgeConfigSpec.DoubleValue flameArrowBagBowStrength;
-			public ForgeConfigSpec.IntValue flameArrowBagArrowKnock;
-			public ForgeConfigSpec.IntValue flameArrowBagTime;
-
-			public ForgeConfigSpec.DoubleValue spiritArrowBagBowStrength;
-			public ForgeConfigSpec.DoubleValue spiritArrowBagArrowSpeed;
-			public ForgeConfigSpec.IntValue spiritArrowBagArrowKnock;
-
-			public ForgeConfigSpec.DoubleValue leechScabbardHealFactor;
-
-			public ForgeConfigSpec.IntValue twistedScabbardInterval;
-			public ForgeConfigSpec.DoubleValue twistedScabbardAttack;
-			public ForgeConfigSpec.DoubleValue twistedScabbardAttackEnd;
+			public final ForgeConfigSpec.DoubleValue magicArrowBagBowStrength;
+			public final ForgeConfigSpec.IntValue magicArrowBagArrowKnock;
+			public final ForgeConfigSpec.DoubleValue flameArrowBagBowStrength;
+			public final ForgeConfigSpec.IntValue flameArrowBagArrowKnock;
+			public final ForgeConfigSpec.IntValue flameArrowBagTime;
+			public final ForgeConfigSpec.DoubleValue spiritArrowBagBowStrength;
+			public final ForgeConfigSpec.DoubleValue spiritArrowBagArrowSpeed;
+			public final ForgeConfigSpec.IntValue spiritArrowBagArrowKnock;
+			public final ForgeConfigSpec.DoubleValue leechScabbardHealFactor;
+			public final ForgeConfigSpec.DoubleValue titanScabbardDamageFactor;
+			public final ForgeConfigSpec.IntValue twistedScabbardInterval;
+			public final ForgeConfigSpec.DoubleValue twistedScabbardAttack;
+			public final ForgeConfigSpec.DoubleValue twistedScabbardAttackEnd;
+			public final ForgeConfigSpec.DoubleValue twistedScabbardAtkKonck;
+			public final ForgeConfigSpec.DoubleValue twistedScabbardAtkSpeed;
+			public final ForgeConfigSpec.DoubleValue twistedScabbardHealRate;
+			public final ForgeConfigSpec.IntValue ironScabbardBladeInterval;
+			public final ForgeConfigSpec.IntValue leechScabbardBladeInterval;
+			public final ForgeConfigSpec.IntValue titanScabbardBladeInterval;
+			public final ForgeConfigSpec.IntValue twistedScabbardBladeInterval;
 
 			private Back(ForgeConfigSpec.Builder builder) {
 				builder.push("back");
@@ -115,9 +118,18 @@ public class CAModConfig {
 				spiritArrowBagArrowKnock = builder.comment("Spirit Arrow Bag: arrow knock")
 						.defineInRange("spiritArrowBagArrowKnock", 2, 0, 100);
 
+				ironScabbardBladeInterval = builder.comment("Iron Scabbard: interval in seconds for blade modifier effect")
+						.defineInRange("ironScabbardBladeInterval", 10, 0, 100);
 
+				leechScabbardBladeInterval = builder.comment("Leech Scabbard: interval in seconds for blade modifier effect")
+						.defineInRange("leechScabbardBladeInterval", 10, 0, 100);
 				leechScabbardHealFactor = builder.comment("Leech Scabbard: healing rate as percentage of damage dealt")
 						.defineInRange("leechScabbardHealFactor", 0.25, 0, 100);
+
+				titanScabbardBladeInterval = builder.comment("Titan Scabbard: interval in seconds for blade modifier effect")
+						.defineInRange("titanScabbardBladeInterval", 7, 0, 100);
+				titanScabbardDamageFactor = builder.comment("Titan Scabbard: damage bonus when effect applies")
+						.defineInRange("titanScabbardDamageFactor", 0.75, 0, 100);
 
 				twistedScabbardInterval = builder.comment("Twisted Scabbard: interval, in seconds, to lose 1 layer of Twist")
 						.defineInRange("twistedScabbardInterval", 5, 1, 1000);
@@ -125,6 +137,15 @@ public class CAModConfig {
 						.defineInRange("twistedScabbardAttack", 0.05, 0, 1);
 				twistedScabbardAttackEnd = builder.comment("Twisted Scabbard: attack bonus in End curse")
 						.defineInRange("twistedScabbardAttackEnd", 0.1, 0, 1);
+				twistedScabbardBladeInterval = builder.comment("Twisted Scabbard: interval in seconds for blade modifier effect")
+						.defineInRange("twistedScabbardBladeInterval", 5, 0, 100);
+				twistedScabbardAtkKonck = builder.comment("Twisted Scabbard: attack knock back")
+						.defineInRange("twistedScabbardAtkKonck", 1d, 0, 100);
+				twistedScabbardAtkSpeed = builder.comment("Twisted Scabbard: attack speed bonus")
+						.defineInRange("twistedScabbardAtkSpeed", 0.25, 0, 1);
+				twistedScabbardHealRate = builder.comment("Twisted Scabbard: heal rate penalty")
+						.defineInRange("twistedScabbardHealRate", 0.5, 0, 1);
+
 				builder.pop();
 			}
 
@@ -148,6 +169,17 @@ public class CAModConfig {
 
 			//spirit_bracelet
 			public final ForgeConfigSpec.IntValue spiritBraceletEffectDuration;
+
+
+			public final ForgeConfigSpec.DoubleValue lifeBraceletRegenBonus;
+			public final ForgeConfigSpec.DoubleValue preciousBraceletReach;
+			public final ForgeConfigSpec.DoubleValue preciousBraceletMagicReduction;
+			public final ForgeConfigSpec.DoubleValue redRubyBraceletFireReduction;
+
+			// emerald_necklace
+			public final ForgeConfigSpec.DoubleValue emeraldBraceletCritRate;
+			public final ForgeConfigSpec.IntValue emeraldBraceletLuckReq;
+			public final ForgeConfigSpec.DoubleValue emeraldBraceletEffChance;
 
 			private Bracelet(ForgeConfigSpec.Builder builder) {
 				builder.push("bracelet");
@@ -193,6 +225,38 @@ public class CAModConfig {
 				spiritBraceletEffectDuration = builder
 						.comment("Spirit Bracelet: speed effect duration in seconds")
 						.defineInRange("spiritBraceletEffectDuration", 5, 1, Integer.MAX_VALUE);
+
+
+				// emerald bracelet
+				{
+					emeraldBraceletCritRate = builder
+							.comment("Emerald Bracelet: crit rate bonus")
+							.defineInRange("emeraldBraceletCritRate", 0.1, 0, 1);
+
+					emeraldBraceletLuckReq = builder
+							.comment("Emerald Bracelet: luck requirement to gain effect")
+							.defineInRange("emeraldBraceletLuckReq", 2, 0, 100);
+
+					emeraldBraceletEffChance = builder
+							.comment("Emerald Bracelet: absorption effect chance")
+							.defineInRange("emeraldBraceletEffChance", 0.1, 0, 1);
+				}
+
+				lifeBraceletRegenBonus = builder
+						.comment("Life Bracelet: regen rate bonus")
+						.defineInRange("lifeBraceletRegenBonus", 0.15, 0, 10);
+
+				preciousBraceletReach = builder
+						.comment("Precious Bracelet: block reach bonus")
+						.defineInRange("preciousBraceletReach", 1d, 0, 10);
+
+				preciousBraceletMagicReduction = builder
+						.comment("Precious Bracelet: magic damage reduction")
+						.defineInRange("preciousBraceletMagicReduction", 0.4, 0, 1);
+
+				redRubyBraceletFireReduction = builder
+						.comment("Red Ruby Bracelet: fire damage reduction")
+						.defineInRange("redRubyBraceletFireReduction", 0.9, 0, 1);
 
 				builder.pop();
 			}
@@ -323,6 +387,9 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue warDeadBadgeArmor;
 			public final ForgeConfigSpec.DoubleValue warDeadBadgeSpeed;
 			public final ForgeConfigSpec.DoubleValue warDeadBadgeThreshold;
+
+			// solar magnet
+			public final ForgeConfigSpec.DoubleValue solarMagnetDamageBonus;
 
 			private Charm(ForgeConfigSpec.Builder builder) {
 				builder.push("charm");
@@ -663,6 +730,13 @@ public class CAModConfig {
 							.defineInRange("warDeadBadgeThreshold", 0.5, 0.01, 1);
 				}
 
+				// solar magnet
+				{
+					solarMagnetDamageBonus = builder
+							.comment("Solar Magnet: damage bonus at day")
+							.defineInRange("solarMagnetDamageBonus", 0.25, 0, 10);
+				}
+
 				builder.pop();
 			}
 
@@ -841,6 +915,8 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue demonHeartDamageReduction;
 			public final ForgeConfigSpec.DoubleValue twistedHeartDamage;
 			public final ForgeConfigSpec.DoubleValue twistedHeartToughness;
+			public final ForgeConfigSpec.DoubleValue greedyHeartXpBonus;
+
 
 			private Heart(ForgeConfigSpec.Builder builder) {
 				builder.push("heart");
@@ -865,7 +941,9 @@ public class CAModConfig {
 				twistedHeartToughness = builder
 						.comment("Twisted Heart: toughness")
 						.defineInRange("twistedHeartToughness", 0.2, 0.01, 1);
-
+				greedyHeartXpBonus = builder
+						.comment("Greedy Heart: Xp pickup bonus")
+						.defineInRange("greedyHeartXpBonus", 2d, 0, 100);
 
 				builder.pop();
 			}
@@ -896,6 +974,10 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue lockOfAbyssExtraDamage;
 			public final ForgeConfigSpec.IntValue lockOfAbyssDuration;
 			public final ForgeConfigSpec.IntValue lockOfAbyssThreshold;
+
+			public final ForgeConfigSpec.DoubleValue enderProtectorToughness;
+			public final ForgeConfigSpec.DoubleValue redHeartNecklaceMaxHealth;
+			public final ForgeConfigSpec.DoubleValue spiritNecklaceProjectile;
 
 			private Necklace(ForgeConfigSpec.Builder builder) {
 				builder.push("necklace");
@@ -973,6 +1055,15 @@ public class CAModConfig {
 							.comment("Hierloom Necklace: exp pickup bonus")
 							.defineInRange("hierloomNecklaceExp", 0.1, 0, 10);
 				}
+				enderProtectorToughness = builder
+						.comment("Ender Protector: armor toughness bonus")
+						.defineInRange("enderProtectorToughness", 4d, 0, 100);
+				redHeartNecklaceMaxHealth = builder
+						.comment("Red Heart Necklace: max health bonus")
+						.defineInRange("redHeartNecklaceMaxHealth", 0.05, 0, 10);
+				spiritNecklaceProjectile = builder
+						.comment("Spirit Necklace: projectile damage bonus")
+						.defineInRange("spiritNecklaceProjectile", 0.25, 0, 10);
 				builder.pop();
 			}
 
@@ -1038,6 +1129,7 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue skyWalkerCooldown;
 			public final ForgeConfigSpec.IntValue travelerEffectDuration;
 			public final ForgeConfigSpec.DoubleValue twistedDuplicateChance;
+			public final ForgeConfigSpec.DoubleValue travellerScrollSpeedBonus;
 
 
 			private Scroll(ForgeConfigSpec.Builder builder) {
@@ -1052,6 +1144,9 @@ public class CAModConfig {
 				twistedDuplicateChance = builder
 						.comment("Twisted Scroll: chance for encountered mobs to duplicate")
 						.defineInRange("twistedDuplicateChance", 0.6, 0, 1);
+				travellerScrollSpeedBonus = builder
+						.comment("Traveller Scroll: speed bonus of all kinds")
+						.defineInRange("travellerScrollSpeedBonus", 0.25, 0, 10);
 
 				builder.pop();
 			}
@@ -1068,10 +1163,57 @@ public class CAModConfig {
 
 		public static class Set {
 
+			public final ForgeConfigSpec.DoubleValue seaGodProtect;
+			public final ForgeConfigSpec.DoubleValue seaGodMelee;
+			public final ForgeConfigSpec.DoubleValue seaGodThrow;
+			public final ForgeConfigSpec.IntValue emeraldLuck;
+			public final ForgeConfigSpec.DoubleValue emeraldCrit;
+			public final ForgeConfigSpec.IntValue spiritPullDuration;
+			public final ForgeConfigSpec.DoubleValue spiritBackShootBonus;
+			public final ForgeConfigSpec.DoubleValue spiritInflictChance;
+			public final ForgeConfigSpec.IntValue spiritEffectDuration;
+			public final ForgeConfigSpec.IntValue spiritEffectAmplifier;
+			public final ForgeConfigSpec.DoubleValue spiritDodgeChance;
+			public final ForgeConfigSpec.DoubleValue spiritProtect;
+
 			private Set(ForgeConfigSpec.Builder builder) {
 				builder.push("set");
 
+				// sea god
+				{
+					seaGodProtect = builder.comment("Sea God Set: damage reduction of water mob damage")
+							.defineInRange("seaGodProtect", 0.35, 0, 1);
+					seaGodMelee = builder.comment("Sea God Set: damage bonus of trident melee")
+							.defineInRange("seaGodMelee", 0.5, 0, 10);
+					seaGodThrow = builder.comment("Sea God Set: damage bonus of trident throw")
+							.defineInRange("seaGodThrow", 0.75, 0, 10);
+				}
 
+				// emerald
+				{
+					emeraldLuck = builder.comment("Emerald Set: Luck bonus")
+							.defineInRange("emeraldLuck", 2, 0, 10);
+					emeraldCrit = builder.comment("Emerald Set: Crit rate bonus")
+							.defineInRange("emeraldCrit", 0.15, 0, 1);
+				}
+
+				// spirit
+				{
+					spiritPullDuration = builder.comment("Spirit Set: time in seconds after pulling bow to apply pulling bonus")
+							.defineInRange("spiritPullDuration", 3, 0, 100);
+					spiritBackShootBonus = builder.comment("Spirit Set: damage bonus when shooting target from behind")
+							.defineInRange("spiritBackShootBonus", 0.5, 0, 10);
+					spiritInflictChance = builder.comment("Spirit Set: chance to inflict slowness effect")
+							.defineInRange("spiritInflictChance", 0.5, 0, 1);
+					spiritEffectDuration = builder.comment("Spirit Set: slowness effect duration")
+							.defineInRange("spiritEffectDuration", 3, 0, 100);
+					spiritEffectAmplifier = builder.comment("Spirit Set: slowness effect level (0 means Lv.I)")
+							.defineInRange("spiritEffectAmplifier", 1, 0, 10);
+					spiritDodgeChance = builder.comment("Spirit Set: chance to dodge projectile")
+							.defineInRange("spiritDodgeChance", 0.2, 0, 1);
+					spiritProtect = builder.comment("Spirit Set: projectile damage reduction")
+							.defineInRange("spiritProtect", 0.2, 0, 1);
+				}
 				builder.pop();
 			}
 
@@ -1108,7 +1250,6 @@ public class CAModConfig {
 			private final LinkedHashMap<String, ForgeConfigSpec.BooleanValue> itemToggle = new LinkedHashMap<>();
 
 			private Toggles(ForgeConfigSpec.Builder builder) {
-
 				builder.push("itemToggle");
 				for (var e : CAItems.ALL_CURIOS) {
 					itemToggle.put(e, builder.define(e, true));
@@ -1116,13 +1257,19 @@ public class CAModConfig {
 				builder.pop();
 			}
 
-			public ForgeConfigSpec.BooleanValue get(ModularCurio item) {
-				var id = ForgeRegistries.ITEMS.getKey(item);
-				assert id != null;
-				return itemToggle.get(id.getPath());
+			public ForgeConfigSpec.BooleanValue get(String item) {
+				var ans = itemToggle.get(item);
+				if (ans == null) {
+					CelestialArtifacts.LOGGER.error("Item toggle failed to load. Toggle map size: " + itemToggle.size());
+					CelestialArtifacts.LOGGER.error("Iten ID: " + item + ", containing: " + itemToggle.containsKey(item));
+					for (var e : itemToggle.entrySet()) {
+						CelestialArtifacts.LOGGER.error(e.getKey() + " -> " + e.getValue());
+					}
+					throw new IllegalStateException("Iten ID: " + item + " is not in config");
+				}
+				return ans;
 			}
 		}
-
 
 		public final Materials materials;
 		public final Back back;
@@ -1159,7 +1306,6 @@ public class CAModConfig {
 		}
 
 	}
-
 
 	public static final ForgeConfigSpec CLIENT_SPEC;
 	public static final Client CLIENT;

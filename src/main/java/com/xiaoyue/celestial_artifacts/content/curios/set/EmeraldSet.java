@@ -3,6 +3,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.set;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
 import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -19,8 +20,10 @@ import java.util.List;
 public class EmeraldSet extends BaseTickingToken {
 
 	private static final String NAME = "celestial_artifact:emerald_set";
-	private static final AttrAdder LUCK = AttrAdder.of(NAME, () -> Attributes.LUCK, AttributeModifier.Operation.ADDITION, 2);
-	private static final AttrAdder CRIT = AttrAdder.of(NAME, L2DamageTracker.CRIT_RATE::get, AttributeModifier.Operation.ADDITION, 0.15);
+	private static final AttrAdder LUCK = AttrAdder.of(NAME, () -> Attributes.LUCK, AttributeModifier.Operation.ADDITION,
+			CAModConfig.COMMON.set.emeraldLuck::get);
+	private static final AttrAdder CRIT = AttrAdder.of(NAME, L2DamageTracker.CRIT_RATE::get, AttributeModifier.Operation.ADDITION,
+			CAModConfig.COMMON.set.emeraldCrit::get);
 
 	@Override
 	protected void removeImpl(Player player) {

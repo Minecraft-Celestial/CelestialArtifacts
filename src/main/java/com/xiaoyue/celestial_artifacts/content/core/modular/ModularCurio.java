@@ -4,6 +4,7 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureMap;
 import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
+import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.data.CATagGen;
@@ -85,7 +86,6 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 	@Override
 	public void curioTick(SlotContext slotContext, ItemStack stack) {
 		if (slotContext.cosmetic()) return;
-		if (!enableConfig().get()) return;
 		for (var e : tick) {
 			e.tick(slotContext.entity(), stack);
 		}
@@ -148,6 +148,13 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 				set.addText(level, list);
 			} else {
 				list.add(CALang.Modular.alt());
+			}
+		}
+		if (!Screen.hasShiftDown() && prop.curse()) {
+			if (Screen.hasAltDown()) {
+				list.addAll(CatastropheScroll.addInfo());
+			} else {
+				list.add(CALang.Modular.curseAlt());
 			}
 		}
 	}
@@ -240,8 +247,15 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 		return super.canEquip(slotContext, stack);
 	}
 
+	private String idCache;
+
 	public ForgeConfigSpec.BooleanValue enableConfig() {
-		return CAModConfig.COMMON.toggles.get(this);
+		if (idCache == null) {
+			var rl = ForgeRegistries.ITEMS.getKey(this);
+			assert rl != null;
+			idCache = rl.getPath();
+		}
+		return CAModConfig.COMMON.toggles.get(idCache);
 	}
 
 	public void enableMap(Consumer<ModularCurio> cons) {

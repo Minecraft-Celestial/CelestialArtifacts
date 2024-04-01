@@ -32,6 +32,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -123,6 +124,24 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 
 	private static MobEffectInstance getEndEffectB() {
 		return new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, getEndCurseDuration() * 20, 1);
+	}
+
+	public static List<Component> addInfo() {
+		List<Component> list = new ArrayList<>();
+		for (var curse : Curses.values()) {
+			list.add(curse.title.get());
+			list.add(TextFacet.wrap(TRIGGER_COND.get().append(curse.trigger.get().withStyle(ChatFormatting.YELLOW))));
+			if (curse.curse.size() == 1) {
+				list.add(TextFacet.wrap(CURSE_EFF.get().append(curse.curse.get(0).get().withStyle(ChatFormatting.RED))));
+			} else {
+				list.add(TextFacet.wrap(CURSE_EFF.get()));
+				for (var e : curse.curse) {
+					list.add(TextFacet.inner(e.get().withStyle(ChatFormatting.RED)));
+				}
+			}
+			list.add(TextFacet.wrap(BLESS_EFF.get().append(curse.bonus.get().withStyle(ChatFormatting.GREEN))));
+		}
+		return list;
 	}
 
 	public enum Curses {
@@ -222,6 +241,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 		public LootItemCondition asCondition() {
 			return new PlayerFlagCondition(name());
 		}
+
 	}
 
 	@Override

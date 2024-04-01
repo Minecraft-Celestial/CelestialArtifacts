@@ -1,6 +1,6 @@
-// 1.20.1	2024-03-26T11:37:39.89973	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
-aa5f5cba58705aa09834e261dbee30ae9b963916 assets/celestial_artifacts/lang/en_ud.json
-00f79ab17d6929ece6d9e7b115aef61a9e9eb340 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-04-01T09:17:42.790567	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
+da1d23e8b5c87160a7260456e0e7789d66257518 assets/celestial_artifacts/lang/en_ud.json
+7d5310285acd86307e1cad76a4727cf8475d8a54 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
@@ -22,10 +22,10 @@ ec331cbd0dc3e138d9cb725b54806399e4607a57 assets/celestial_artifacts/models/item/
 201c582539fa654d25e863f02419003d385cea24 assets/celestial_artifacts/models/item/desire_etching.json
 74fb1dd2e0ae2d069532868c5378cbc46f63afab assets/celestial_artifacts/models/item/destroyer_badge.json
 e43b30cfc305f6853b5ff3c1893dd8b27e9e85fe assets/celestial_artifacts/models/item/diamond_ring.json
-49eb524de9d6daf11e65a1a33291e8a98266d7b8 assets/celestial_artifacts/models/item/earth_axe.json
-5d2c48d0f137effaf1a80b7e12fa021037865469 assets/celestial_artifacts/models/item/earth_hoe.json
-a80e596807a56b3cd5a172ecd0c10da1485ce74b assets/celestial_artifacts/models/item/earth_pickaxe.json
-7c6fee8a4c8c2f0868b3f60668fb94a712266907 assets/celestial_artifacts/models/item/earth_shovel.json
+54bba60fcfba8628647509110b7f4079ca11ca0d assets/celestial_artifacts/models/item/earth_axe.json
+3512b93827dd63e22aaddcc10bbb4585fe46780d assets/celestial_artifacts/models/item/earth_hoe.json
+89a16c8aef11572ff25735f99b6bf13931545eca assets/celestial_artifacts/models/item/earth_pickaxe.json
+e267c557858888d7d38456cb4367739ef842a504 assets/celestial_artifacts/models/item/earth_shovel.json
 a453ebb7dbb4fc9bd72192db9d78484d49b85154 assets/celestial_artifacts/models/item/emerald_bracelet.json
 29df71960dbeb183ddcb136d7f36df511081e568 assets/celestial_artifacts/models/item/emerald_necklace.json
 5137bba0be185e47767c5992cc51b4fa7fda19e6 assets/celestial_artifacts/models/item/emerald_ring.json
