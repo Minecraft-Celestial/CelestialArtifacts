@@ -1,5 +1,12 @@
+1.3.1
+- Fix origin etching break speed bonus
+- Fix charms dropped when rejoining
+- Tweak loot and fortune
+- Fix loot and fortune tooltip
+- Chaotic Pendant compat with Apotheosis
+
 1.3.0
-- Fix a mysterious crash in large modpack
+- Fix a mysterious crash in large modpack involving Sinytra Connector
 - Replace head / charm / scroll textures
 - Fix tool models
 - Allow Catastrophe Scroll to show full effects

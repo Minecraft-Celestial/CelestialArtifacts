@@ -173,7 +173,7 @@ public class CAItems {
 
 			// 扭曲之脑
 			TWISTED_BRAIN = charm("twisted_brain", () -> ModularCurio.builder()
-					.requireCS().rarity(Rarity.EPIC).build(new TwistedBrain()));
+					.requireCS().rarity(Rarity.EPIC).loot(1).build(new TwistedBrain()));
 
 			// 噬咒护符
 			CORRUPT_BADGE = charm("corrupt_badge", () -> ModularCurio.builder()
@@ -326,7 +326,7 @@ public class CAItems {
 
 			// 扭曲之心
 			TWISTED_HEART = heart("twisted_heart", () ->
-					ModularCurio.builder().requireCS().rarity(IRarityUtils.DARK_PURPLE).immune().build(
+					ModularCurio.builder().requireCS().rarity(IRarityUtils.DARK_PURPLE).immune().loot(1).build(
 							new TokenFacet<>("twisted_heart", TwistedHeart::new)
 					));
 
@@ -372,7 +372,7 @@ public class CAItems {
 					.rarity(Rarity.UNCOMMON).build(SkywalkerScroll.TOKEN));
 			// 扭曲卷轴
 			TWISTED_SCROLL = scroll("twisted_scroll", () -> ModularCurio.builder()
-					.requireCS().rarity(IRarityUtils.DARK_PURPLE).build(new TwistedScroll()));
+					.requireCS().rarity(IRarityUtils.DARK_PURPLE).loot(1).build(new TwistedScroll()));
 		}
 
 		// bracelet
@@ -380,7 +380,7 @@ public class CAItems {
 			// 幸运手环
 			EMERALD_BRACELET = bracelet("emerald_bracelet", () -> {
 				IntSupplier luck = CAModConfig.COMMON.bracelet.emeraldBraceletLuckReq::get;
-				return ModularCurio.builder().rarity(IRarityUtils.GREEN).build(
+				return ModularCurio.builder().rarity(IRarityUtils.GREEN).fortune(1).build(
 						AttrFacet.add(L2DamageTracker.CRIT_RATE::get,
 								CAModConfig.COMMON.bracelet.emeraldBraceletCritRate::get),
 						HurtPlayerEffectFacet.of(
@@ -399,7 +399,7 @@ public class CAItems {
 					));
 			// 珍钻手环
 			PRECIOUS_BRACELET = bracelet("precious_bracelet", () ->
-					ModularCurio.builder().rarity(Rarity.EPIC).build(
+					ModularCurio.builder().rarity(Rarity.EPIC).fortune(1).build(
 							AttrFacet.add(ForgeMod.BLOCK_REACH, CAModConfig.COMMON.bracelet.preciousBraceletReach::get),
 							SlotFacet.of("ring", 1),
 							SimpleListener.protectType(CALang.DamageTypes.MAGIC,
@@ -647,7 +647,7 @@ public class CAItems {
 
 			// 扭曲剑鞘
 			TWISTED_SCABBARD = back("twisted_scabbard", () ->
-					ModularCurio.builder().requireCS().rarity(IRarityUtils.DARK_PURPLE).build(
+					ModularCurio.builder().requireCS().rarity(IRarityUtils.DARK_PURPLE).loot(1).build(
 							EffectFacet.of(CCEffects.BLADE_MODIFIER::get, () -> 3, () -> 0,
 									CAModConfig.COMMON.back.twistedScabbardBladeInterval::get),
 							AttrFacet.multBase(() -> Attributes.ATTACK_KNOCKBACK,
@@ -666,13 +666,13 @@ public class CAItems {
 					ModularCurio.builder().curse().immune().rarity(IRarityUtils.DARK_PURPLE).hideAttr().build(
 							SlotFacet.of("etching", 7),
 							SlotFacet.of("charm", 3),
-							new TokenFacet<>("catastrophe_scroll", CatastropheScroll::new)
+							CatastropheScroll.TOKEN
 					)).tag(curio("catastrophe")).register();
 			// 混沌
 			CHAOTIC_ETCHING = etching("chaotic_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 			// 始源
 			ORIGIN_ETCHING = etching("origin_etching", () -> ModularCurio.builder().immune().hideAttr().build(
-					BreakSpeedFeature.simple(CatastropheScroll::getOriginBonus)
+					BreakSpeedFeature.simple(() -> 1 + CatastropheScroll.getOriginBonus())
 			));
 			// 生命
 			LIFE_ETCHING = etching("life_etching", () -> ModularCurio.builder().immune().hideAttr().build());

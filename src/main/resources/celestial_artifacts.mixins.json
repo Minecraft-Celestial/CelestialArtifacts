@@ -5,7 +5,8 @@
   "refmap": "celestial_artifacts.refmap.json",
   "mixins": [
 	"AbstractArrowAccessor",
-	"MixinEnchTable",
+	"ApothEnchantmentMenuMixin",
+	"EnchantmentMenuMixin",
 	"PhantomSpawnerMixin"
   ],
   "minVersion": "0.8",

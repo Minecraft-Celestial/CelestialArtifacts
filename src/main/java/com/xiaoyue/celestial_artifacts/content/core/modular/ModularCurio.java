@@ -125,9 +125,15 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 			list.add(CALang.Tooltip.BAN.get().withStyle(ChatFormatting.RED));
 			return;
 		}
-		if (Screen.hasShiftDown()) {
+		if (level == null || Screen.hasShiftDown()) {
 			for (var e : text) {
 				e.addText(level, list);
+			}
+			if (!prop.hideAttr()) {
+				if (prop.fortune != 0)
+					list.add(TextFacet.wrap(AttrFacet.simpleAdd(CALang.Modular.FORTUNE.get(), prop.fortune)));
+				if (prop.loot != 0)
+					list.add(TextFacet.wrap(AttrFacet.simpleAdd(CALang.Modular.LOOT.get(), prop.loot)));
 			}
 			if (prop.enderMask) {
 				list.add(CALang.Modular.ENDER_MASK.get().withStyle(ChatFormatting.GRAY));
@@ -144,7 +150,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 			}
 		}
 		if (set != null) {
-			if (Screen.hasAltDown()) {
+			if (level == null || Screen.hasAltDown()) {
 				set.addText(level, list);
 			} else {
 				list.add(CALang.Modular.alt());
@@ -219,12 +225,6 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 			if (rep != null) {
 				tooltips.set(index, rep);
 			}
-		}
-		if (!prop.hideAttr()) {
-			if (prop.fortune != 0)
-				tooltips.add(AttrFacet.simpleAdd(CALang.Modular.FORTUNE.get(), prop.fortune));
-			if (prop.loot != 0)
-				tooltips.add(AttrFacet.simpleAdd(CALang.Modular.LOOT.get(), prop.loot));
 		}
 		tooltips.removeIf(Objects::isNull);
 		return tooltips;

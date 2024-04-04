@@ -2,10 +2,7 @@ package com.xiaoyue.celestial_artifacts.content.curios.curse;
 
 import com.xiaoyue.celestial_artifacts.content.core.effect.EffectFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
-import com.xiaoyue.celestial_artifacts.content.core.token.AttrAdder;
-import com.xiaoyue.celestial_artifacts.content.core.token.BaseTickingToken;
-import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
-import com.xiaoyue.celestial_artifacts.content.core.token.ClientTokenHelper;
+import com.xiaoyue.celestial_artifacts.content.core.token.*;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
@@ -40,6 +37,8 @@ import static com.xiaoyue.celestial_artifacts.data.CALang.Curse.*;
 
 @SerialClass
 public class CatastropheScroll extends BaseTickingToken implements CAAttackToken {
+
+	public static final TokenFacet<CatastropheScroll> TOKEN = new TokenFacet<>("catastrophe_scroll", CatastropheScroll::new);
 
 	private static double getChaosBonus() {
 		return CAModConfig.COMMON.curse.chaoticBlessDamageReduction.get();

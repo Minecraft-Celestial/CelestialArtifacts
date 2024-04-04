@@ -13,9 +13,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import java.util.List;
 
 @Mixin(EnchantmentMenu.class)
-public abstract class MixinEnchTable extends AbstractContainerMenu {
+public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
 
-	protected MixinEnchTable(@Nullable MenuType<?> pMenuType, int pContainerId) {
+	protected EnchantmentMenuMixin(@Nullable MenuType<?> pMenuType, int pContainerId) {
 		super(pMenuType, pContainerId);
 	}
 
