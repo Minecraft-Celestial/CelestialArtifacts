@@ -112,7 +112,7 @@ public class CAMiscCuriosHandler {
 		if (entity instanceof Player player) {
 			if (CurioUtils.hasCurio(player, CAItems.SPIRIT_BRACELET.get())) {
 				if (CurioUtils.isRangeUseAnim(itemStack.getUseAnimation())) {
-					event.setDuration(event.getDuration() + 1);
+					event.setDuration(event.getDuration() - 1);
 				}
 			}
 		}
