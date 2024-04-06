@@ -138,15 +138,15 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 			if (prop.enderMask) {
 				list.add(CALang.Modular.ENDER_MASK.get().withStyle(ChatFormatting.GRAY));
 			}
-			if (prop.immune) {
-				list.add(CALang.Modular.IMMUNE.get().withStyle(ChatFormatting.GRAY));
-			}
 		} else {
 			if (stack.is(CATagGen.REQUIRE_CURSE)) {
 				list.add(CALang.Modular.curse());
 			}
-			if (!text.isEmpty()) {
+			if (!text.isEmpty() || !prop.hideAttr() && (prop.fortune() > 0 || prop.loot() > 0) || prop.enderMask) {
 				list.add(CALang.Modular.shift());
+			}
+			if (prop.immune) {
+				list.add(CALang.Modular.IMMUNE.get().withStyle(ChatFormatting.GOLD));
 			}
 		}
 		if (set != null) {

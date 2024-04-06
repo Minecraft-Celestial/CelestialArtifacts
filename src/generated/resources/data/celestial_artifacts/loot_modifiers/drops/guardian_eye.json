@@ -7,9 +7,6 @@
       "item": "celestial_artifacts:guardian_eye"
     },
     {
-      "condition": "celestial_artifacts:curse_on"
-    },
-    {
       "condition": "minecraft:entity_properties",
       "entity": "this",
       "predicate": {

@@ -3,15 +3,28 @@
   "chance": "celestial_configs/celestial_artifacts-common.toml/materials.lifeEtchingDropChance",
   "conditions": [
     {
-      "condition": "celestial_artifacts:enabled",
-      "item": "celestial_artifacts:life_etching"
-    },
-    {
-      "condition": "celestial_artifacts:curse_on"
-    },
-    {
-      "condition": "celestial_core:player_flag",
-      "flag": "LIFE"
+      "condition": "minecraft:all_of",
+      "terms": [
+        {
+          "condition": "celestial_artifacts:enabled",
+          "item": "celestial_artifacts:life_etching"
+        },
+        {
+          "condition": "celestial_artifacts:has_curio",
+          "item": "celestial_artifacts:catastrophe_scroll"
+        },
+        {
+          "condition": "celestial_core:player_flag",
+          "flag": "LIFE"
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "celestial_artifacts:has_curio",
+            "item": "celestial_artifacts:life_etching"
+          }
+        }
+      ]
     },
     {
       "condition": "celestial_core:entity_health",

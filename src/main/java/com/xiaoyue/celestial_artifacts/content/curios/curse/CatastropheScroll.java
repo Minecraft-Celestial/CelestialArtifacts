@@ -1,8 +1,11 @@
 package com.xiaoyue.celestial_artifacts.content.curios.curse;
 
 import com.xiaoyue.celestial_artifacts.content.core.effect.EffectFacet;
+import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.*;
+import com.xiaoyue.celestial_artifacts.content.loot.EnabledCondition;
+import com.xiaoyue.celestial_artifacts.content.loot.HasCurioCondition;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
@@ -26,6 +29,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.predicates.AllOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import org.jetbrains.annotations.Nullable;
 
@@ -238,7 +242,11 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 		}
 
 		public LootItemCondition asCondition() {
-			return new PlayerFlagCondition(name());
+			return AllOfCondition.allOf(
+					new EnabledCondition((ModularCurio) etching.get()),
+					new HasCurioCondition(CAItems.CATASTROPHE_SCROLL.get()),
+					() -> new PlayerFlagCondition(name()),
+					new HasCurioCondition(etching.get()).invert()).build();
 		}
 
 	}

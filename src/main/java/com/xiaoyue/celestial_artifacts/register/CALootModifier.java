@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
-import com.xiaoyue.celestial_artifacts.content.loot.CurseOnCondition;
+import com.xiaoyue.celestial_artifacts.content.loot.HasCurioCondition;
 import com.xiaoyue.celestial_artifacts.content.loot.EnabledCondition;
 import com.xiaoyue.celestial_artifacts.content.loot.PlayerStatCondition;
 import com.xiaoyue.celestial_core.content.loot.CCConditionSerializer;
@@ -16,10 +16,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class CALootModifier {
 
-	public static final RegistryEntry<LootItemConditionType> CURSE_ON, PLAYER_STAT, ENABLED;
+	public static final RegistryEntry<LootItemConditionType> HAS_CURIO, PLAYER_STAT, ENABLED;
 
 	static {
-		CURSE_ON = reg("curse_on", CurseOnCondition.class);
+		HAS_CURIO = reg("has_curio", HasCurioCondition.class);
 		ENABLED = reg("enabled", EnabledCondition.class);
 		PLAYER_STAT = reg("player_stat", PlayerStatCondition.class);
 	}

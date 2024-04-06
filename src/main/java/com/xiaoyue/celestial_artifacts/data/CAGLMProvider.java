@@ -3,7 +3,7 @@ package com.xiaoyue.celestial_artifacts.data;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
-import com.xiaoyue.celestial_artifacts.content.loot.CurseOnCondition;
+import com.xiaoyue.celestial_artifacts.content.loot.HasCurioCondition;
 import com.xiaoyue.celestial_artifacts.content.loot.EnabledCondition;
 import com.xiaoyue.celestial_artifacts.content.loot.PlayerStatCondition;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
@@ -123,32 +123,27 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 
 		add("drops/desire_etching", new AddItemModifier(CAItems.DESIRE_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.desireEtchingDropChance),
-				new CurseOnCondition(), CatastropheScroll.Curses.DESIRE.asCondition(),
-				new EnabledCondition(CAItems.DESIRE_ETCHING.get()),
+				CatastropheScroll.Curses.DESIRE.asCondition(),
 				entityType(EntityType.WITHER), new PlayerStatCondition(PlayerStatCondition.Type.LOOT,
 				IntConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.desireEtchingLootingRequirement))));
 		add("drops/end_etching", new AddItemModifier(CAItems.END_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.endEtchingDropChance),
-				new EnabledCondition(CAItems.END_ETCHING.get()),
-				new CurseOnCondition(), CatastropheScroll.Curses.END.asCondition(),
+				CatastropheScroll.Curses.END.asCondition(),
 				entityType(EntityType.WARDEN), new PlayerEffectCondition(MobEffectCategory.HARMFUL,
 				IntConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.endEtchingEffectRequirement))));
 		add("drops/origin_etching", new AddItemModifier(CAItems.ORIGIN_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.originEtchingDropChance),
-				new EnabledCondition(CAItems.ORIGIN_ETCHING.get()),
-				new CurseOnCondition(), CatastropheScroll.Curses.ORIGIN.asCondition(),
+				CatastropheScroll.Curses.ORIGIN.asCondition(),
 				entityType(EntityType.ENDER_DRAGON), entity(EntityPredicate.Builder.entity()
 				.located(LocationPredicate.atYLocation(MinMaxBounds.Doubles.atLeast(200.0))))));
 		add("drops/life_etching", new AddItemModifier(CAItems.LIFE_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.lifeEtchingDropChance),
-				new EnabledCondition(CAItems.LIFE_ETCHING.get()),
-				new CurseOnCondition(), CatastropheScroll.Curses.LIFE.asCondition(),
+				CatastropheScroll.Curses.LIFE.asCondition(),
 				new EntityHealthCondition(IntConfigValue.of(CAModConfig.COMMON_PATH,
 						CAModConfig.COMMON.materials.lifeEtchingHealthRequirement))));
 		add("drops/nihility_etching", new AddItemModifier(CAItems.NIHILITY_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.nihilityEtchingDropChance),
-				new EnabledCondition(CAItems.NIHILITY_ETCHING.get()),
-				new CurseOnCondition(), CatastropheScroll.Curses.NIHILITY.asCondition(),
+				CatastropheScroll.Curses.NIHILITY.asCondition(),
 				entityType(EntityType.WARDEN), damage(DamageTypeTags.BYPASSES_ENCHANTMENTS)));
 		add("drops/chaotic_etching", new AddItemModifier(CAItems.CHAOTIC_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.chaoticEtchingDropChance),
@@ -161,7 +156,7 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 
 		add("drops/the_end_dust", new AddItemModifier(CAItems.THE_END_DUST.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.endDustDropChance),
-				new CurseOnCondition(), entity(EntityPredicate.Builder.entity().targetedEntity(
+				new HasCurioCondition(CAItems.CATASTROPHE_SCROLL.get()), entity(EntityPredicate.Builder.entity().targetedEntity(
 				EntityPredicate.Builder.entity().of(EntityType.PLAYER).build()))));
 		add("drops/charming_bracelet", new AddItemModifier(CAItems.CHARMING_BRACELET.get(), Items.GOLD_INGOT,
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.charmingBraceletDropChance),
@@ -171,7 +166,7 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 		add("drops/guardian_eye", new AddItemModifier(CAItems.GUARDIAN_EYE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.guardianEyeDropChance),
 				new EnabledCondition(CAItems.GUARDIAN_EYE.get()),
-				new CurseOnCondition(), entityType(EntityType.ELDER_GUARDIAN)));
+				entityType(EntityType.ELDER_GUARDIAN)));
 		add("drops/demon_curse", new AddItemModifier(CAItems.DEMON_CURSE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.demonCurseDropChance),
 				new EnabledCondition(CAItems.DEMON_CURSE.get()),
