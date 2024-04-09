@@ -757,8 +757,8 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue lifeBlessHealth;
 			public final ForgeConfigSpec.DoubleValue lifeBlessHeal;
 
-			public final ForgeConfigSpec.DoubleValue truthCurseThreshold;
-			public final ForgeConfigSpec.DoubleValue truthBlessThreshold;
+			public final ForgeConfigSpec.DoubleValue truthCurseMinDamage;
+			public final ForgeConfigSpec.DoubleValue truthBlessMaxDamage;
 
 			public final ForgeConfigSpec.DoubleValue nihilityCurseDuration;
 			public final ForgeConfigSpec.DoubleValue nihilityBlessReduction;
@@ -811,13 +811,13 @@ public class CAModConfig {
 						.comment("Life Bless: Player healing bonus")
 						.defineInRange("lifeBlessHeal", 0.3, 0.01, 100);
 
-				truthCurseThreshold = builder
+				truthCurseMinDamage = builder
 						.comment("Truth Curse: minimum damage from mobs")
-						.defineInRange("truthCurseThreshold", 0.4, 0.01, 1);
+						.defineInRange("truthCurseMinDamage", 0.3, 0.01, 1);
 
-				truthBlessThreshold = builder
+				truthBlessMaxDamage = builder
 						.comment("Truth Bless: maximum damage from mobs")
-						.defineInRange("truthBlessThreshold", 0.6, 0.01, 1);
+						.defineInRange("truthBlessMaxDamage", 0.6, 0.01, 1);
 
 				nihilityCurseDuration = builder
 						.comment("Nihility Curse: negative effect duration")

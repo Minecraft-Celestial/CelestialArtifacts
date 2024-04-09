@@ -192,7 +192,7 @@ public class CAItems {
 							SimpleListener.protect(
 									CALang.Condition.FRONT_DAMAGE::get,
 									(p, a, c) -> !EntityUtils.isLookingBehindTarget(p, a.getEyePosition()),
-									CAModConfig.COMMON.charm.cursedProtectorReduction::get
+									CAModConfig.COMMON.charm.cursedProtectorFrontProtect::get
 							),
 							new CursedProtector()
 					));

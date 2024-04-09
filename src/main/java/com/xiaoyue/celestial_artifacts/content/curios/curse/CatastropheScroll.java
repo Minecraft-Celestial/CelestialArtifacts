@@ -85,11 +85,11 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 	}
 
 	private static double getTruthCurse() {
-		return CAModConfig.COMMON.curse.truthCurseThreshold.get();
+		return CAModConfig.COMMON.curse.truthCurseMinDamage.get();
 	}
 
 	private static double getTruthBonus() {
-		return CAModConfig.COMMON.curse.truthBlessThreshold.get();
+		return CAModConfig.COMMON.curse.truthBlessMaxDamage.get();
 	}
 
 	public static double getNihilityCurse() {
