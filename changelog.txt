@@ -1,6 +1,5 @@
-Texture TODO
-- heart
-- ring
+1.3.3
+- Replace back, bracelet, necklace, heart textures
 
 1.3.2
 - Show cannot destroy tooltip only while not pressing shift
