@@ -6,11 +6,13 @@ import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.ForgeRegistries;
+import top.theillusivec4.curios.Curios;
 
 public class CATagGen {
 
@@ -25,6 +27,9 @@ public class CATagGen {
 				curse.add(curio);
 			}
 		}
+		pvd.addTag(ItemTags.create(new ResourceLocation("l2hostility", "no_seal")))
+				.add(CAItems.CATASTROPHE_SCROLL.get())
+				.addTag(ItemTags.create(new ResourceLocation(Curios.MODID, "etching")));
 	}
 
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {

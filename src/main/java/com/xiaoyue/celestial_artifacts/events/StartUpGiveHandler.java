@@ -28,10 +28,9 @@ public class StartUpGiveHandler {
 		}
 		if (CAModConfig.COMMON.misc.catastropheScrollEquipOnStart.get() &&
 				CAItems.CATASTROPHE_SCROLL.get().enableConfig().get()) {
-			if (!data.hasFlag("cs")) {
-				if (!CurioUtils.isCsOn(player)) {
+			if (!data.hasFlag("cs") && !CurioUtils.isCsOn(player)) {
 					var opt = CuriosApi.getCuriosInventory(player).resolve()
-							.flatMap(e -> e.getStacksHandler("c_charm"))
+							.flatMap(e -> e.getStacksHandler("catastrophe"))
 							.map(ICurioStacksHandler::getStacks);
 					if (opt.isPresent() && opt.get().getSlots() > 0 && opt.get().getStackInSlot(0).isEmpty()) {
 						opt.get().setStackInSlot(0, CAItems.CATASTROPHE_SCROLL.asStack());
@@ -39,6 +38,5 @@ public class StartUpGiveHandler {
 					}
 				}
 			}
-		}
 	}
 }

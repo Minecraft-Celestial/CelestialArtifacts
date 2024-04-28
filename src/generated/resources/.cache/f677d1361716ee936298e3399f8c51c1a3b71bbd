@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-01T18:18:59.317578	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
+// 1.20.1	2024-04-28T19:19:55.939646	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes)]
 da1d23e8b5c87160a7260456e0e7789d66257518 assets/celestial_artifacts/lang/en_ud.json
 7d5310285acd86307e1cad76a4727cf8475d8a54 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
@@ -239,6 +239,7 @@ dba9f82b8c855378a2391bbcfdbc4b17d1f2128e data/curios/tags/items/head.json
 2116f35ca177fd1e0b416c0f32d383faf7fb1409 data/curios/tags/items/pendant.json
 2c8f3a2a7f2b8078f78124dd2fd70a4d471cd64f data/curios/tags/items/ring.json
 30921501fd07b88d6836c5c150c14672cfdf6b2a data/curios/tags/items/scroll.json
+10d6ef6fc9584bb192a3839de11708b5d6cb358e data/l2hostility/tags/items/no_seal.json
 e1ac4fc7bcbfe86eeb8114c770f56e9f077496d4 data/minecraft/tags/items/axes.json
 f777fab223aee76e21355d2e6867aa171d96e1ae data/minecraft/tags/items/hoes.json
 78ec75b4ce4495b8927d3d840622a3f70da19af4 data/minecraft/tags/items/pickaxes.json
