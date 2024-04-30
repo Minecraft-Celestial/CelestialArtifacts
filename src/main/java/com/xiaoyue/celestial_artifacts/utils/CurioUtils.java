@@ -2,6 +2,7 @@ package com.xiaoyue.celestial_artifacts.utils;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
+import com.xiaoyue.celestial_artifacts.register.CAItems;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -14,7 +15,8 @@ public class CurioUtils {
 	}
 
 	public static boolean isCsOn(Player player) {
-		return ConditionalData.HOLDER.get(player).hasData(CatastropheScroll.TOKEN.getKey());
+		return ConditionalData.HOLDER.get(player).hasData(CatastropheScroll.TOKEN.getKey()) ||
+				hasCurio(player, CAItems.CATASTROPHE_SCROLL.get());
 	}
 
 	public static int getCurseAmount(Player player) {
