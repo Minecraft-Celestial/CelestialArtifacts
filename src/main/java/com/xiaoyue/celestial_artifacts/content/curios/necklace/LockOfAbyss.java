@@ -11,6 +11,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -42,6 +43,9 @@ public class LockOfAbyss implements MultiLineText, CAAttackToken {
 
 	@Override
 	public void onPlayerDamageTargetFinal(Player player, AttackCache cache) {
+		if (CAAttackToken.getSource(cache).is(DamageTypeTags.BYPASSES_COOLDOWN)) {
+			return;
+		}
 		var entity = cache.getAttackTarget();
 		var ins = entity.getEffect(MobEffects.MOVEMENT_SLOWDOWN);
 		if (ins != null) {

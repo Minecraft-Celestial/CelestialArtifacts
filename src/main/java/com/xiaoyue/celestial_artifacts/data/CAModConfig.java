@@ -837,7 +837,7 @@ public class CAModConfig {
 
 				endCurseDuration = builder
 						.comment("End Curse: negative effect duration")
-						.defineInRange("endCurseDuration", 30, 1, 1000);
+						.defineInRange("endCurseDuration", 10, 1, 1000);
 
 				endBlessHeal = builder
 						.comment("End Bless: healing as percentage of health lost")

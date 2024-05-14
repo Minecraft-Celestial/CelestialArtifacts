@@ -55,7 +55,7 @@ public class CALang {
 	}
 
 	public enum Tooltip implements Info {
-		END_DUST("%s chance to drop when players equipped with [%s] kill monsters targeting them", 2),
+		END_DUST("%2$s chance to drop when players equipped with [%1$s] kill monsters targeting them", 2),
 		NEBULA_CUBE("Dropped when player failed to get etchings while meeting conditions", 0),
 		BACKTRACK("Teleport player to spawning point. Cool down: %s seconds", 1),
 		REPENT("Teleport player to last death position. Cool down: %s seconds", 1),

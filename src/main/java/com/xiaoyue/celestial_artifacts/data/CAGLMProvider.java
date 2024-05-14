@@ -149,7 +149,7 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.chaoticEtchingDropChance),
 				new EnabledCondition(CAItems.CHAOTIC_ETCHING.get()),
 				entityType(EntityType.WITHER), damage(DamageTypeTags.IS_EXPLOSION)));
-		add("drops/truth_etching", new AddItemModifier(CAItems.TRUTH_ETCHING.get(),
+		add("drops/truth_etching", new AddItemModifier(CAItems.TRUTH_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.truthEtchingDropChance),
 				new EnabledCondition(CAItems.TRUTH_ETCHING.get()),
 				entityType(EntityType.WITHER), killer(EntityTypeTags.RAIDERS)));
