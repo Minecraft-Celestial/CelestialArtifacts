@@ -1,7 +1,12 @@
+1.3.9
+- Use new Hierloom Necklace texture from Kayn
+- Curse of Truth no longer amplify damage if it's 0
+- Add Russian translation
+
 1.3.7
 - Fix Lock of Abyss recursive damage stacking
 - Fix End Dust description
-- Reduce Catastrophe scroll end curse duration from 30 sec to 10 sec
+- Reduce Catastrophe scroll end curse duration from 30 sec to 10 sec (requires reset config)
 
 1.3.6
 - Fix Truth Etching drop missing Nebula Cube as fail drop

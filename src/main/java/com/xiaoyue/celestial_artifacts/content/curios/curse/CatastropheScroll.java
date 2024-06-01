@@ -328,7 +328,7 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 			}
 			if (Curses.TRUTH.cursing(player)) {
 				float hp = player.getMaxHealth() * (float) getTruthCurse();
-				cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> Math.max(e, hp)));
+				cache.addDealtModifier(DamageModifier.nonlinearPre(345, e -> e <= 0 ? 0 : Math.max(e, hp)));
 			}
 		}
 	}

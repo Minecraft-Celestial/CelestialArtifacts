@@ -1269,6 +1269,7 @@ public class CAModConfig {
 				}
 				return ans;
 			}
+
 		}
 
 		public final Materials materials;
