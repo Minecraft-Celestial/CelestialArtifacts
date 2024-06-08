@@ -18,6 +18,8 @@ public class CATagGen {
 
 	public static final TagKey<Item> REQUIRE_CURSE = ItemTags.create(CelestialArtifacts.loc("require_curse"));
 
+	public static final TagKey<Item> ETCHINGS = ItemTags.create(new ResourceLocation(Curios.MODID, "etching"));
+
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		var curse = pvd.addTag(REQUIRE_CURSE);
 		for (var e : CAItems.ALL_CURIOS) {

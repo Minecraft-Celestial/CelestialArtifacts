@@ -130,6 +130,8 @@ dependencies {
     implementation fg.deobf("curse.maven:apotheosis-313970:5209354")
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
     implementation fg.deobf("curse.maven:placebo-283644:5098182")
+    implementation fg.deobf("curse.maven:lionfish-api-1001614:5274401")
+    implementation fg.deobf("curse.maven:lendercataclysm-551586:5299092")
 
 
 }

@@ -77,8 +77,6 @@ public class CAAttackListener implements AttackListener {
 		assert event != null;
 		if (cache.getAttacker() instanceof Player player) {
 			fireEvent(player, t -> t.onPlayerHurtTarget(player, cache));
-			if (cache.getAttackTarget() instanceof Enemy)
-				CatastropheScroll.Curses.TRUTH.trigger(player);
 			if (cache.getAttackTarget() instanceof Mob mob) {
 				if (mob.targetSelector.getAvailableGoals().isEmpty()) {
 					CatastropheScroll.Curses.DESIRE.trigger(player);

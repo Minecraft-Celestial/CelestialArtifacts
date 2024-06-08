@@ -111,7 +111,7 @@
 	  "life_curse": "降低%s最大生命，降低%s治疗力",
 	  "life_bonus": "提高%s最大生命与%s治疗力",
 	  "truth_title": "[真理]",
-	  "truth_trigger": "对怪物造成伤害时触发",
+	  "truth_trigger": "装备任意刻蚀板时触发",
 	  "truth_curse": "受到生物攻击时至少会受到自身最大生命%s的伤害",
 	  "truth_bonus": "受到生物攻击时伤害不会超过自身最大生命的%s",
 	  "desire_title": "[欲望]",
@@ -123,7 +123,7 @@
 	  "nihility_curse": "受到负面效果时长提高%s",
 	  "nihility_bonus": "降低%s收到虚空伤害，受到攻击时使攻击者获得%s",
 	  "end_title": "[终焉]",
-	  "end_trigger": "午夜时未入睡触发",
+	  "end_trigger": "与末影人对视时触发",
 	  "end_curse": "受到大于当前生命%s的伤害时会受到%s与%s影响",
 	  "end_bonus": "攻击后恢复自身相当于已损失生命%s生命"
 	},

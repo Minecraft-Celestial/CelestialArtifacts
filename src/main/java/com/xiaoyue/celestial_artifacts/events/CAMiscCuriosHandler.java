@@ -5,16 +5,15 @@ import com.xiaoyue.celestial_artifacts.content.curios.charm.GluttonyBadge;
 import com.xiaoyue.celestial_artifacts.content.curios.charm.SacrificialObject;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
+import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2library.base.effects.EffectBuilder;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -28,9 +27,11 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.event.CurioEquipEvent;
 
 import java.util.List;
 
@@ -55,12 +56,19 @@ public class CAMiscCuriosHandler {
 				break;
 			}
 		}
-		if (!level.isNight() || player.isSleeping()) return;
-		float time = level.getTimeOfDay(1);
-		if (0.49 < time && time < 0.51) {
-			CatastropheScroll.Curses.END.trigger(player);
-		}
+	}
 
+	@SubscribeEvent(priority = EventPriority.LOW)
+	public static void onEnderManAnger(EnderManAngerEvent event) {
+		if (event.getPlayer() instanceof ServerPlayer sp)
+			CatastropheScroll.Curses.END.trigger(sp);
+	}
+
+	@SubscribeEvent
+	public static void onEquipEtching(CurioEquipEvent event) {
+		if (event.getEntity() instanceof ServerPlayer sp && event.getStack().is(CATagGen.ETCHINGS)) {
+			CatastropheScroll.Curses.TRUTH.trigger(sp);
+		}
 	}
 
 	@SubscribeEvent

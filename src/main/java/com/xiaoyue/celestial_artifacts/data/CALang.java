@@ -390,7 +390,7 @@ public class CALang {
 		LIFE_BONUS("Increase max HP by %s. Increase regen rate by %s.", 2),
 
 		TRUTH_TITLE("[Truth]", 0),
-		TRUTH_TRIGGER("Activates when you attack monsters", 0),
+		TRUTH_TRIGGER("Activates when you equip etchings", 0),
 		TRUTH_CURSE("When you are attacked by entities, the damage will be at least %s of your max HP", 1),
 		TRUTH_BONUS("When you are attacked by entities, the damage will be at most %s of your max HP", 1),
 
@@ -405,7 +405,7 @@ public class CALang {
 		NIHILITY_BONUS("Reduce void damage by %s. Inflict target with %s", 2),
 
 		END_TITLE("[End]", 0),
-		END_TRIGGER("Activates when you is not sleeping at midnight", 0),
+		END_TRIGGER("Activates when you look at enderman", 0),
 		END_CURSE("When you take damage higher than %s of your max health, gain %s and %s", 3),
 		END_BONUS("When you deal damage, recover %s of your lost health", 1),
 		;
