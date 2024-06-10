@@ -2,8 +2,12 @@
   "type": "celestial_core:add_loot_table",
   "conditions": [
     {
+      "condition": "celestial_artifacts:fishing",
+      "open": true
+    },
+    {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:gameplay/fishing/treasure"
+      "loot_table_id": "minecraft:gameplay/fishing"
     }
   ],
   "lootTable": "celestial_artifacts:chests/fishing_treasure"

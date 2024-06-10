@@ -31,7 +31,7 @@ public enum CALootTableGen implements CALang.Info {
 			CAItems.SPIRIT_ARROW_BAG, CAItems.SPIRIT_NECKLACE, CAItems.SPIRIT_BRACELET, CAItems.SPIRIT_CROWN),
 	NETHER_BRIDGE("Nether Fortress Bridge", BuiltInLootTables.NETHER_BRIDGE, 5, CAItems.RED_RUBY_BRACELET),
 	UNDERWATER_RUIN_BIG("Big Underwater Ruin", BuiltInLootTables.UNDERWATER_RUIN_BIG, 7, CAItems.LEECH_SCABBARD, CAItems.THUNDER_RING),
-	FISHING_TREASURE("Can be fished at y>300", BuiltInLootTables.FISHING_TREASURE, 33, CAItems.MAGIC_HORSESHOE),
+	FISHING_TREASURE("Can be fished at y>300", BuiltInLootTables.FISHING, 5, CAItems.MAGIC_HORSESHOE),
 	;
 
 	private final CALang.Entry entry;

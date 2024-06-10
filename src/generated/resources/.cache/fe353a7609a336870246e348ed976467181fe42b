@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-08T10:23:42.94127	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2024-06-09T03:32:47.789894	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 2598f64c2c81b5a1a382628874807fca773a0a72 assets/celestial_artifacts/lang/en_ud.json
 b87a220fc5108654af8e7c2b46ab4f9e83b69d83 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
@@ -161,7 +161,7 @@ e9ef9a02f92427da634046ba158d7c1b78e242d5 data/celestial_artifacts/advancements/r
 c1ae75094b85c75bd8313ce569f6dfd59edcc58f data/celestial_artifacts/loot_tables/chests/bastion_treasure.json
 3e579d3934fc083a95ece6133d90203447175e98 data/celestial_artifacts/loot_tables/chests/desert_pyramid.json
 802adb2c5279f4bad97314e916cc21044569f342 data/celestial_artifacts/loot_tables/chests/end_city_treasure.json
-2e24ff0a4b21afa5dede147eba05742e67b3be38 data/celestial_artifacts/loot_tables/chests/fishing_treasure.json
+63001350b10e810dd772e4eefc538d9fef8b92f1 data/celestial_artifacts/loot_tables/chests/fishing_treasure.json
 48669f219ccabf97d7e1425c38bae49f1a36e615 data/celestial_artifacts/loot_tables/chests/jungle_temple.json
 bfe5377cb49b06e6614faad444bf5dab7b1d3a4c data/celestial_artifacts/loot_tables/chests/nether_bridge.json
 76654f9130a141d7ff7efd946a9730ffe2e25e3d data/celestial_artifacts/loot_tables/chests/underwater_ruin_big.json

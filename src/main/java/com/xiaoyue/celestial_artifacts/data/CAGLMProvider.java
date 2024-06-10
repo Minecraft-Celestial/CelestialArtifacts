@@ -3,8 +3,9 @@ package com.xiaoyue.celestial_artifacts.data;
 import com.xiaoyue.celestial_artifacts.CelestialArtifacts;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
-import com.xiaoyue.celestial_artifacts.content.loot.HasCurioCondition;
 import com.xiaoyue.celestial_artifacts.content.loot.EnabledCondition;
+import com.xiaoyue.celestial_artifacts.content.loot.FishingCondition;
+import com.xiaoyue.celestial_artifacts.content.loot.HasCurioCondition;
 import com.xiaoyue.celestial_artifacts.content.loot.PlayerStatCondition;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.content.loot.*;
@@ -117,7 +118,11 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 	@Override
 	protected void start() {
 		for (var e : CALootTableGen.values()) {
-			add(e.id().getPath(), new AddLootTableModifier(e.id(),
+			if (e != CALootTableGen.FISHING_TREASURE)
+				add(e.id().getPath(), new AddLootTableModifier(e.id(),
+						LootTableIdCondition.builder(e.target).build()));
+			else add(e.id().getPath(), new AddLootTableModifier(e.id(),
+					new FishingCondition(true),
 					LootTableIdCondition.builder(e.target).build()));
 		}
 

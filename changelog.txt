@@ -1,3 +1,6 @@
+1.4.2
+- Fixed the bug that magic horseshoe cannot be fished and buff the chance from 3% to 20%
+
 1.4.1
 - Fix refmap that causes startup crash
 

@@ -1,10 +1,10 @@
-// 1.20.1	2024-04-30T21:28:25.734975	Global Loot Modifiers : celestial_artifacts
+// 1.20.1	2024-06-09T03:54:17.193112	Global Loot Modifiers : celestial_artifacts
 867ec656a7c4776ccef5a58b5186bd026f6b203c data/celestial_artifacts/loot_modifiers/chests/abandoned_mineshaft.json
 8c7e7de869f9b9e1d6bc7d93205a341e6baf5b98 data/celestial_artifacts/loot_modifiers/chests/ancient_city.json
 3ede68d955b990a554e8086ba13d176b1332a8cb data/celestial_artifacts/loot_modifiers/chests/bastion_treasure.json
 85fbfdcdf8cd92185d6c44b970098b1d0ba52871 data/celestial_artifacts/loot_modifiers/chests/desert_pyramid.json
 c14545e5213c653fe1a6bbf7e4433c1ed056c14c data/celestial_artifacts/loot_modifiers/chests/end_city_treasure.json
-ba30d950b8171571e3ae8b393aa586048070b96f data/celestial_artifacts/loot_modifiers/chests/fishing_treasure.json
+4c17f53fcbbd210cfc60b476662ac7f690f6abb0 data/celestial_artifacts/loot_modifiers/chests/fishing_treasure.json
 4b16cdf66eadef7d589ced072b1b006075218d8e data/celestial_artifacts/loot_modifiers/chests/jungle_temple.json
 384d1e4c6f5ff3a480a0f1a5b47eb30eff30ec4d data/celestial_artifacts/loot_modifiers/chests/nether_bridge.json
 17636041a69ed935a7c89defae0b9b643f7c44aa data/celestial_artifacts/loot_modifiers/chests/underwater_ruin_big.json
