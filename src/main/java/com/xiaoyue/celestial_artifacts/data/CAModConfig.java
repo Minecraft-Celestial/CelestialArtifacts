@@ -102,7 +102,7 @@ public class CAModConfig {
 				magicArrowBagBowStrength = builder.comment("Magic Arrow Bag: bow strength")
 						.defineInRange("magicArrowBagBowStrength", 0.1, 0, 10);
 				magicArrowBagArrowKnock = builder.comment("Magic Arrow Bag: arrow knock")
-						.defineInRange("magicArrowBagBowStrength", 1, 0, 100);
+						.defineInRange("magicArrowBagArrowKnock", 1, 0, 100);
 
 				flameArrowBagBowStrength = builder.comment("Flame Arrow Bag: bow strength")
 						.defineInRange("flameArrowBagBowStrength", 0.1, 0, 10);
@@ -1224,7 +1224,9 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue backtrackMirrorCooldown;
 			public final ForgeConfigSpec.IntValue repentMirrorCooldown;
 
+			public final ForgeConfigSpec.BooleanValue giveItemsOnStart;
 			public final ForgeConfigSpec.BooleanValue catastropheScrollEquipOnStart;
+			public final ForgeConfigSpec.BooleanValue catastropheScrollPreventUnequip;
 
 			private Misc(ForgeConfigSpec.Builder builder) {
 				builder.push("misc");
@@ -1234,10 +1236,16 @@ public class CAModConfig {
 				repentMirrorCooldown = builder.defineInRange("repentMirrorCooldown",
 						10, 0, 10000);
 
+				giveItemsOnStart = builder
+						.comment("If true, Hierloom Necklace and Catastrophe Scroll will be given to new players")
+						.define("giveItemsOnStart", true);
 				// catastrophe_scroll
 				catastropheScrollEquipOnStart = builder
-						.comment("If true, Catastrophe will be directly equipped onto new players")
+						.comment("If true, Catastrophe Scroll will be directly equipped onto new players")
 						.define("catastropheScrollStart", false);
+				catastropheScrollPreventUnequip = builder
+						.comment("If true, Catastrophe Scroll cannot be unequipped once equipped")
+						.define("catastropheScrollPreventUnequip", true);
 
 				builder.pop();
 			}

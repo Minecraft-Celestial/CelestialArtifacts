@@ -395,7 +395,7 @@ public class CAItems {
 					ModularCurio.builder().rarity(Rarity.RARE).build(
 							AttrFacet.add(CCAttributes.REPLY_POWER::get,
 									CAModConfig.COMMON.bracelet.lifeBraceletRegenBonus::get),
-							EffectFacet.of(() -> MobEffects.REGENERATION)
+							EffectFacet.of(() -> MobEffects.REGENERATION, () -> 4, () -> 0)
 					));
 			// 珍钻手环
 			PRECIOUS_BRACELET = bracelet("precious_bracelet", () ->

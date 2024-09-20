@@ -37,7 +37,7 @@ public record HurtTargetEffectFacet(
 	@Override
 	public void onPlayerHurtTarget(Player player, AttackCache cache) {
 		if (chance == null || CAAttackToken.chance(player, chance.getAsDouble())) {
-			cache.getAttackTarget().addEffect(new MobEffectInstance(eff.get(), duration.getAsInt(), amplifier.getAsInt()));
+			cache.getAttackTarget().addEffect(new MobEffectInstance(eff.get(), duration.getAsInt() * 20, amplifier.getAsInt()));
 		}
 	}
 

@@ -16,8 +16,12 @@ public class BaseCurio extends Item implements ICurioItem {
 	@Override
 	public boolean canEquip(SlotContext slotContext, ItemStack stack) {
 		if (slotContext.entity() instanceof Player player) {
-			return CuriosApi.getCuriosInventory(player).resolve()
-					.flatMap(e -> e.findFirstCurio(this)).isEmpty();
+			var repeat = CuriosApi.getCuriosInventory(player).resolve()
+					.flatMap(e -> e.findFirstCurio(this));
+			if (repeat.isEmpty()) return true;
+			var rep = repeat.get().slotContext();
+			if (rep.identifier().equals(slotContext.identifier()) && rep.index() == slotContext.index())
+				return true;
 		}
 		return false;
 	}

@@ -266,7 +266,10 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 
 	@Override
 	public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
-		return !prop.curse() || slotContext.entity() instanceof Player player && player.isCreative();
+		if (!prop.curse() || !CAModConfig.COMMON.misc.catastropheScrollPreventUnequip.get()) {
+			return true;
+		}
+		return slotContext.entity() instanceof Player player && player.isCreative();
 	}
 
 	@NotNull

@@ -1,3 +1,13 @@
+1.4.5
+- Add config to locking catastrophe on player and giving player items on start
+- Fix Magic Arrow Bag config
+- Add blacklist for Desire curse
+- Add more l18n
+
+1.4.3
+- Fix Fang Necklace, Life Bracelet
+- Items will no longer drop after reload
+
 1.4.2
 - Fixed the bug that magic horseshoe cannot be fished and buff the chance from 3% to 20%
 

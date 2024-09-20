@@ -20,7 +20,7 @@ public class StartUpGiveHandler {
 		var player = event.player;
 		if (player.level().isClientSide()) return;
 		var data = PlayerFlagData.HOLDER.get(player);
-		if (!data.hasFlag("hello_world")) {
+		if (CAModConfig.COMMON.misc.giveItemsOnStart.get() && !data.hasFlag("hello_world")) {
 			data.addFlag("hello_world");
 			CAItems.HEIRLOOM_NECKLACE.get().enableMap(e -> player.addItem(e.getDefaultInstance()));
 			if (!CAModConfig.COMMON.misc.catastropheScrollEquipOnStart.get())
@@ -29,14 +29,14 @@ public class StartUpGiveHandler {
 		if (CAModConfig.COMMON.misc.catastropheScrollEquipOnStart.get() &&
 				CAItems.CATASTROPHE_SCROLL.get().enableConfig().get()) {
 			if (!data.hasFlag("cs") && !CurioUtils.isCsOn(player)) {
-					var opt = CuriosApi.getCuriosInventory(player).resolve()
-							.flatMap(e -> e.getStacksHandler("catastrophe"))
-							.map(ICurioStacksHandler::getStacks);
-					if (opt.isPresent() && opt.get().getSlots() > 0 && opt.get().getStackInSlot(0).isEmpty()) {
-						opt.get().setStackInSlot(0, CAItems.CATASTROPHE_SCROLL.asStack());
-						data.addFlag("cs");
-					}
+				var opt = CuriosApi.getCuriosInventory(player).resolve()
+						.flatMap(e -> e.getStacksHandler("catastrophe"))
+						.map(ICurioStacksHandler::getStacks);
+				if (opt.isPresent() && opt.get().getSlots() > 0 && opt.get().getStackInSlot(0).isEmpty()) {
+					opt.get().setStackInSlot(0, CAItems.CATASTROPHE_SCROLL.asStack());
+					data.addFlag("cs");
 				}
 			}
+		}
 	}
 }

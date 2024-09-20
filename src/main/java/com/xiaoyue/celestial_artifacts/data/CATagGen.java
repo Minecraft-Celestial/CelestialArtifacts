@@ -7,6 +7,7 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -17,6 +18,7 @@ import top.theillusivec4.curios.Curios;
 public class CATagGen {
 
 	public static final TagKey<Item> REQUIRE_CURSE = ItemTags.create(CelestialArtifacts.loc("require_curse"));
+	public static final TagKey<EntityType<?>> DESIRE_BLACKLIST = TagKey.create(Registries.ENTITY_TYPE, CelestialArtifacts.loc("desire_blacklist"));
 
 	public static final TagKey<Item> ETCHINGS = ItemTags.create(new ResourceLocation(Curios.MODID, "etching"));
 
@@ -35,6 +37,7 @@ public class CATagGen {
 	}
 
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {
+		pvd.addTag(DESIRE_BLACKLIST).add(EntityType.PLAYER);
 	}
 
 	private static TagKey<EntityType<?>> entity(String id) {

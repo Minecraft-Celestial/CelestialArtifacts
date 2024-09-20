@@ -7,6 +7,7 @@ import com.xiaoyue.celestial_artifacts.content.core.token.*;
 import com.xiaoyue.celestial_artifacts.content.loot.EnabledCondition;
 import com.xiaoyue.celestial_artifacts.content.loot.HasCurioCondition;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
+import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.content.generic.PlayerFlagData;
@@ -200,7 +201,8 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 		}
 
 		private static void addText(@Nullable Level level, List<Component> list) {
-			wrap(list, SCROLL_0.get());
+			if (CAModConfig.COMMON.misc.catastropheScrollPreventUnequip.get())
+				wrap(list, SCROLL_0.get());
 			wrap(list, SCROLL_1.get());
 			wrap(list, SCROLL_2.get());
 			list.add(Component.empty());
@@ -283,6 +285,8 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 			List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class,
 					EntityUtils.getAABB(player, 8, 2));
 			for (LivingEntity e : entities) {
+				if (e.getType().is(CATagGen.DESIRE_BLACKLIST))
+					continue;
 				if (e.getLastHurtMobTimestamp() < e.tickCount - 20)
 					e.setLastHurtMob(player);
 				if (e.getLastHurtByMobTimestamp() < e.tickCount - 20)
