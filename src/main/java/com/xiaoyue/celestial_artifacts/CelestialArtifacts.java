@@ -42,6 +42,7 @@ public class CelestialArtifacts {
 					e -> e.icon(CAItems.AMETHYST_RING::asStack));
 
 	public CelestialArtifacts() {
+		REGISTRATE.getModEventBus();
 		CAItems.register();
 		CALootModifier.register();
 		CurioCacheCap.register();
