@@ -7,7 +7,6 @@ import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

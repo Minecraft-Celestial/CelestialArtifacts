@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "sakura_hairpin"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:cherry_log"
+    },
+    "B": {
+      "item": "celestial_core:sakura_steel"
+    },
+    "C": {
+      "item": "celestial_core:sakura_fragment"
+    },
+    "D": {
+      "item": "celestial_core:light_fragment"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "BAD",
+    " CA"
+  ],
+  "result": {
+    "item": "celestial_artifacts:sakura_hairpin"
+  },
+  "show_notification": true
+}

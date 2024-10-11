@@ -1,6 +1,5 @@
 package com.xiaoyue.celestial_artifacts.content.core.token;
 
-import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.network.chat.MutableComponent;

@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "angel_desire"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
+  "key": {
+    "A": {
+      "item": "celestial_core:pure_nether_star"
+    },
+    "B": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "C": {
+      "item": "minecraft:feather"
+    },
+    "D": {
+      "item": "celestial_core:light_fragment"
+    }
+  },
+  "pattern": [
+    "CDC",
+    "BAB",
+    "C C"
+  ],
+  "result": {
+    "item": "celestial_artifacts:angel_desire"
+  },
+  "show_notification": true
+}

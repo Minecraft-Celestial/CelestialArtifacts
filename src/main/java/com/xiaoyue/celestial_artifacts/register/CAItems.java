@@ -98,7 +98,7 @@ public class CAItems {
 			UNOWNED_PENDANT, CHAOTIC_PENDANT, SHADOW_PENDANT,
 			STAR_NECKLACE, CROSS_NECKLACE, GALLOP_NECKLACE, FANG_NECKLACE, PRECIOUS_NECKLACE,
 			HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE, ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE,
-			SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN,
+			SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN, SAKURA_HAIRPIN, YELLOW_DUCK, ANGEL_DESIRE,
 			MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG, IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD,
 			CATASTROPHE_SCROLL, CHAOTIC_ETCHING, ORIGIN_ETCHING, LIFE_ETCHING, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
 
@@ -164,7 +164,7 @@ public class CAItems {
 			// 毁灭者徽章
 			DESTROYER_BADGE = charm("destroyer_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(
-							AttrFacet.add(() -> Attributes.ATTACK_DAMAGE, CAModConfig.COMMON.charm.destroyerBadgeAttack::get),
+							AttrFacet.multTotal(() -> Attributes.ATTACK_DAMAGE, CAModConfig.COMMON.charm.destroyerBadgeAttack::get),
 							AttrFacet.multTotal(L2DamageTracker.REDUCTION::get, CAModConfig.COMMON.charm.destroyerBadgeDamagePenalty::get),
 							SimpleListener.hurtBonus(
 									() -> CALang.Condition.LOW_HEALTH.get(TextFacet.perc(CAModConfig.COMMON.charm.destroyerBadgeThreshold.get())),
@@ -553,13 +553,12 @@ public class CAItems {
 			// 海神王冠
 			SEA_GOD_CROWN = head("sea_god_crown", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							new SeaGodCrown(),
 							ConditionalEffectFacet.of(false,
 									Player::isInWaterRainOrBubble,
 									CALang.Condition.PLAYER_WET::get,
 									EffectFacet.of(() -> MobEffects.WATER_BREATHING, 2, 3),
 									EffectFacet.of(() -> MobEffects.NIGHT_VISION, 2, 0)
-							), seaGodSet()));
+							), new SeaGodCrown(), seaGodSet()));
 
 			// 祷告者王冠
 			PRAYER_CROWN = head("prayer_crown", () ->
@@ -569,9 +568,11 @@ public class CAItems {
 									(player, attacker, cache) -> player.isCrouching(),
 									CAModConfig.COMMON.head.prayerCrownProtection::get),
 							new PrayerCrown()));
+
 			// 深渊意志之核
 			ABYSS_CORE = head("abyss_core", () ->
 					ModularCurio.builder().requireCS().rarity(IRarityUtils.DARK_AQUA).build(new AbyssCore()));
+
 			// 守卫者之眼
 			GUARDIAN_EYE = head("guardian_eye", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
@@ -580,13 +581,36 @@ public class CAItems {
 									(player, attacker, cache) -> player.isInWaterRainOrBubble(),
 									CAModConfig.COMMON.head.guardianEyeProtection::get),
 							new GuardianEye()));
+
 			// 邪恶之瞳
 			EVIL_EYE = head("evil_eye", () ->
 					ModularCurio.builder().rarity(Rarity.EPIC).build(new EvilEye()));
+
 			// 精灵花冠
 			SPIRIT_CROWN = head("spirit_crown", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_GREEN).build(
 							new SpiritCrown(), spiritSet()));
+
+			// 樱花发簪
+			SAKURA_HAIRPIN = head("sakura_hairpin", () -> ModularCurio.builder().rarity(IRarityUtils.PINK).build(
+					AttrFacet.add(() -> Attributes.MAX_HEALTH,
+							CAModConfig.COMMON.head.sakuraHairpinMaxHealthAdd::get),
+					AttrFacet.multBase(() -> Attributes.ARMOR,
+							CAModConfig.COMMON.head.sakuraHairpinArmorBonus::get),
+					new TokenFacet<>("sakura_hairpin", SakuraHairpin::new)
+			));
+
+			// 小黄鸭
+			YELLOW_DUCK = head("yellow_duck", () ->
+					ModularCurio.builder().rarity(IRarityUtils.YELLOW).build(new YellowDuck()));
+
+			// 天使的祈愿
+			ANGEL_DESIRE = head("angel_desire", () -> ModularCurio.builder().rarity(IRarityUtils.YELLOW).build(
+					SimpleListener.hurtBonus(() ->
+							CALang.Head.ANGEL_DESIRE_1.get(TextFacet.perc(CAModConfig.COMMON.head.angelDesireDamageBonus.get())),
+							(p, f, c) -> p.isFallFlying(), CAModConfig.COMMON.head.angelDesireDamageBonus::get
+							), new AngelDesire()
+			));
 		}
 
 		// back
@@ -636,10 +660,10 @@ public class CAItems {
 			// 泰坦剑鞘
 			TITAN_SCABBARD = back("titan_scabbard", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
-							EffectFacet.of(CCEffects.BLADE_MODIFIER::get, () -> 3, () -> 0,
+							EffectFacet.of(CCEffects.REPLY_POWER::get, () -> 3, () -> 0,
 									CAModConfig.COMMON.back.titanScabbardBladeInterval::get),
 							SimpleListener.hurtBonus(
-									() -> CALang.Condition.TITAN.get(TextFacet.eff(CCEffects.BLADE_MODIFIER.get())),
+									() -> CALang.Condition.TITAN.get(TextFacet.eff(CCEffects.REPLY_POWER.get())),
 									(p, t, c) -> CAAttackToken.isMelee(c) && p.hasEffect(CCEffects.BLADE_MODIFIER.get()) &&
 											t.getMaxHealth() > p.getMaxHealth(),
 									CAModConfig.COMMON.back.titanScabbardDamageFactor::get)

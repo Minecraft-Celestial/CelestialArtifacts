@@ -4,7 +4,6 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;

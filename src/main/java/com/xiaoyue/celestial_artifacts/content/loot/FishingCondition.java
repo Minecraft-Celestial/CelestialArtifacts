@@ -1,10 +1,8 @@
 package com.xiaoyue.celestial_artifacts.content.loot;
 
 import com.xiaoyue.celestial_artifacts.register.CALootModifier;
-import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.world.entity.projectile.FishingHook;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;

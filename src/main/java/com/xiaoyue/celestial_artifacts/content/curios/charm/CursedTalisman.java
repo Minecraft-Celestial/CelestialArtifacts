@@ -38,8 +38,8 @@ public class CursedTalisman extends BaseTickingToken {
 		list.add(TextFacet.inner(dmg().getText(critDamage())));
 
 		list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.DARK_PURPLE));
-		list.add(TextFacet.inner(ctr().getTooltip()));
-		list.add(TextFacet.inner(dmg().getTooltip()));
+		list.add(TextFacet.wrap(ctr().getTooltip()));
+		list.add(TextFacet.wrap(dmg().getTooltip()));
 	}
 
 	private AttrAdder dmg() {

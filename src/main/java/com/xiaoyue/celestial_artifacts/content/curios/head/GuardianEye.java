@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -36,7 +37,7 @@ public class GuardianEye implements TickFacet, MultiLineText, CAAttackToken {
 	public void tick(LivingEntity entity, ItemStack stack) {
 		if (!entity.level().isClientSide()) {
 			if (entity.tickCount % 20 == 0) {
-				List<LivingEntity> entities = EntityUtils.getDelimitedMonster(entity, 16);
+				List<LivingEntity> entities = EntityUtils.getExceptForCentralEntity(entity, 16, 4, e -> e instanceof Enemy);
 				for (LivingEntity target : entities) {
 					target.addEffect(eff());
 				}

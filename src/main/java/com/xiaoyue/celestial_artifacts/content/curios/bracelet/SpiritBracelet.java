@@ -5,7 +5,6 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
-import com.xiaoyue.celestial_core.utils.ToolTipUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;

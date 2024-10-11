@@ -1,9 +1,10 @@
-// 1.20.1	2024-09-22T17:31:36.201901	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
-2598f64c2c81b5a1a382628874807fca773a0a72 assets/celestial_artifacts/lang/en_ud.json
-b87a220fc5108654af8e7c2b46ab4f9e83b69d83 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-10-12T03:46:26.779627	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+5fe85622230df31ce11187c5c5c1e75e7064687c assets/celestial_artifacts/lang/en_ud.json
+12c0f2aae361a21ffabe4265899b06a29486acd2 assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
+847cb8b9280e2ad743fa00bc05281102e7ea8d1a assets/celestial_artifacts/models/item/angel_desire.json
 b8dfe4ed2a067d35f9d202d01167b4df25e1d0fc assets/celestial_artifacts/models/item/angel_heart.json
 718b709d08c1b86685aa9958daf9ad8669a90ad5 assets/celestial_artifacts/models/item/angel_pearl.json
 1323474bb110fe048b133fc7164255b873724b01 assets/celestial_artifacts/models/item/backtrack_mirror.json
@@ -69,6 +70,7 @@ c8eeedd8f61fec2e4d620ee9da41006f580c2fda assets/celestial_artifacts/models/item/
 7ee5e2c3aa31b246e1a3fcd84c806731cfdf1089 assets/celestial_artifacts/models/item/repent_mirror.json
 9fcc5b6fb42913528f59da3b38ce5052f9e8788f assets/celestial_artifacts/models/item/ring_of_life.json
 254bffc263838a55d3bed74defcf5e74b3e99629 assets/celestial_artifacts/models/item/sacrificial_object.json
+168d25dd9cdc958cc247b75658fe67e2867088ca assets/celestial_artifacts/models/item/sakura_hairpin.json
 854336c61218c02b7900b814e19c3039a9471599 assets/celestial_artifacts/models/item/sands_talisman.json
 3fb34029291cd7db730d97e0787fbd80d05b501b assets/celestial_artifacts/models/item/scarlet_bracelet.json
 bd68ce987917b8ce8ca6b11bbfe7f600f8729895 assets/celestial_artifacts/models/item/sea_god_crown.json
@@ -95,9 +97,11 @@ e4573c18a0343ac16499369b1a175202bfd8ca18 assets/celestial_artifacts/models/item/
 0d1b7fcb38f4600afb096f16e90024177e2fc801 assets/celestial_artifacts/models/item/unlucky_potato.json
 e5ca41fc77b5e3043b298c55f24733639ab01d4b assets/celestial_artifacts/models/item/unowned_pendant.json
 9de85d7b4c3d44c5186cf36f60d4b4d58ca3c949 assets/celestial_artifacts/models/item/war_dead_badge.json
+155004fceb6cd95578d0670fa70676c0dcb4f9b4 assets/celestial_artifacts/models/item/yellow_duck.json
 31eb7ca8aa98b0a99324be900cb8e342ba339cee data/celestial_artifacts/advancements/recipes/misc/abyss_core.json
 f8869f030fcb3d6e84d4b9f85f5faffec09824fb data/celestial_artifacts/advancements/recipes/misc/abyss_will_badge.json
 0a05c7a848b4bb87da8ca63bab74924c9a097995 data/celestial_artifacts/advancements/recipes/misc/amethyst_ring.json
+0c85f8fc0795e2711e7b622e035e242fdea3f607 data/celestial_artifacts/advancements/recipes/misc/angel_desire.json
 9c03c3f600a10df773bb84cbc7124dca42bd4a36 data/celestial_artifacts/advancements/recipes/misc/angel_heart.json
 113dda9e8f10f03ff307214fca4d2b12322fdf26 data/celestial_artifacts/advancements/recipes/misc/angel_pearl.json
 cc199c41e2451ee85575b68911326b2fb5e157e8 data/celestial_artifacts/advancements/recipes/misc/backtrack_mirror.json
@@ -143,6 +147,7 @@ dfd4214e2aa94b34f6d3f5e0572298c33236696b data/celestial_artifacts/advancements/r
 6c4467d0bddb7874b13821e9e381aa7699dc747c data/celestial_artifacts/advancements/recipes/misc/repent_mirror.json
 1a42f2b4a0fb3e4d60e17d9f856caa9d0a0c09da data/celestial_artifacts/advancements/recipes/misc/ring_of_life.json
 27a2a0c4e3dd2700850026883e4444351e6ad037 data/celestial_artifacts/advancements/recipes/misc/sacrificial_object.json
+0d0af6af629066bbefdb5e2738b16272a9673dd4 data/celestial_artifacts/advancements/recipes/misc/sakura_hairpin.json
 2ea1f7a3e029f6ad018cb799d6b4d1a24df76a60 data/celestial_artifacts/advancements/recipes/misc/scarlet_bracelet.json
 3d03879b34ef2b27efade276fdf0080558a7ea83 data/celestial_artifacts/advancements/recipes/misc/sea_god_crown.json
 c20b1646b02c7dc8b0b238976ed8ba90d8adc1b3 data/celestial_artifacts/advancements/recipes/misc/sea_god_scroll.json
@@ -169,6 +174,7 @@ dd6287b7221ff305ddbdd9c1cd6f2d74184c1614 data/celestial_artifacts/loot_tables/ch
 40a01a7bd9953cd1bbfe112397ae5b50aba1deea data/celestial_artifacts/recipes/abyss_core.json
 a580810c89258d471424a502b042156c3c8867e6 data/celestial_artifacts/recipes/abyss_will_badge.json
 1cc85e6db8692933b2a31f15947845671e696b87 data/celestial_artifacts/recipes/amethyst_ring.json
+328949702496deeb56bd2b880baef6953253d00f data/celestial_artifacts/recipes/angel_desire.json
 3ee77333a17894da898df48ca638bb7a761b973d data/celestial_artifacts/recipes/angel_heart.json
 dd617d5284fe1cfb38751a68036d1ebed7a100f8 data/celestial_artifacts/recipes/angel_pearl.json
 b48404c061a7da9d82a0242e0f9213fabe919ba5 data/celestial_artifacts/recipes/backtrack_mirror.json
@@ -214,6 +220,7 @@ adafbd0caceb709887a3eef30eaa72978af3f18e data/celestial_artifacts/recipes/prayer
 6b47d4f455e8c3a342f967fa36bab3fef476f0c3 data/celestial_artifacts/recipes/repent_mirror.json
 180ab811e44c0473244d9d4f7cc9aa4243c58941 data/celestial_artifacts/recipes/ring_of_life.json
 2159bb15fa7d913198aa3fba2c70d7b359d177b1 data/celestial_artifacts/recipes/sacrificial_object.json
+1b3c4d9ccc64539dc08100d3ac5de15c775b3c74 data/celestial_artifacts/recipes/sakura_hairpin.json
 e3f68cd54a20ecfc339a9c09331c2251c9d15477 data/celestial_artifacts/recipes/scarlet_bracelet.json
 8fac6b7d251291d39963123ecf2eb6ce2c9368d5 data/celestial_artifacts/recipes/sea_god_crown.json
 88ec460f95859d71fdc44dfa536463bbc3d8d3f9 data/celestial_artifacts/recipes/sea_god_scroll.json
@@ -234,7 +241,7 @@ a6206a3d5baad2b734515ea39951ce7d5c60f6d0 data/curios/tags/items/back.json
 66c93019c29056939444dbbc489ea64ec5af0590 data/curios/tags/items/catastrophe.json
 46e8c6688078f8c5991f8330799cdb92229a5146 data/curios/tags/items/charm.json
 40d496edba4c485a6ddd136947494317d3493e61 data/curios/tags/items/etching.json
-dba9f82b8c855378a2391bbcfdbc4b17d1f2128e data/curios/tags/items/head.json
+8a7f2d76892674da0182f7d8ae49121f14287d84 data/curios/tags/items/head.json
 0300fd3fa12b19852f85a6fa3a75e3d4501575c2 data/curios/tags/items/heart.json
 4f201ad46fc4e5710a09588b57bb145ca006ec9c data/curios/tags/items/necklace.json
 2116f35ca177fd1e0b416c0f32d383faf7fb1409 data/curios/tags/items/pendant.json

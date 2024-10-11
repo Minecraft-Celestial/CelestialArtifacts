@@ -301,6 +301,22 @@ public class CARecipeGen {
 						.define('E', CAItems.THE_END_DUST)
 						.save(saver);
 
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.SAKURA_HAIRPIN.get(), 1)::unlockedBy, CCItems.SAKURA_STEEL.get())
+						.pattern("ABC").pattern("BAD").pattern(" CA")
+						.define('A', Items.CHERRY_LOG)
+						.define('B', CCItems.SAKURA_STEEL)
+						.define('C', CCItems.SAKURA_FRAGMENT)
+						.define('D', CCItems.LIGHT_FRAGMENT)
+						.save(saver);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.ANGEL_DESIRE.get(), 1)::unlockedBy, CCItems.PURE_NETHER_STAR.get())
+						.pattern("CDC").pattern("BAB").pattern("C C")
+						.define('A', CCItems.PURE_NETHER_STAR)
+						.define('B', Items.PHANTOM_MEMBRANE)
+						.define('C', Items.FEATHER)
+						.define('D', CCItems.LIGHT_FRAGMENT)
+						.save(saver);
+
 			}
 
 			// charm

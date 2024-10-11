@@ -16,5 +16,4 @@ public class PhantomSpawnerMixin {
 	public boolean youkaishomecoming$phantomSpawn$cancel(ServerPlayer player, Operation<Boolean> original) {
 		return CurioUtils.hasCurio(player, CAItems.SHADOW_PENDANT.get()) || original.call(player);
 	}
-
 }

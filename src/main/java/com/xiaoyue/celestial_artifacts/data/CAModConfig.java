@@ -862,6 +862,10 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue spiritCrownDistanceDamage;
 			public final ForgeConfigSpec.IntValue spiritCrownMaxEntityCount;
 			public final ForgeConfigSpec.IntValue seaGodCrownCoolDown;
+			public final ForgeConfigSpec.IntValue sakuraHairpinMaxHealthAdd;
+			public final ForgeConfigSpec.DoubleValue sakuraHairpinArmorBonus;
+			public final ForgeConfigSpec.DoubleValue sakuraHairpinCritBonusFromLuck;
+			public final ForgeConfigSpec.DoubleValue angelDesireDamageBonus;
 
 			private Head(ForgeConfigSpec.Builder builder) {
 				builder.push("head");
@@ -901,6 +905,18 @@ public class CAModConfig {
 				seaGodCrownCoolDown = builder
 						.comment("Sea God Crown: skill cool down")
 						.defineInRange("seaGodCrownCoolDown", 30, 0, 1000);
+				sakuraHairpinMaxHealthAdd = builder
+						.comment("Sakura Hairpin: max health add amount")
+						.defineInRange("sakuraHairpinMaxHealthAdd", 10, 0, 500);
+				sakuraHairpinArmorBonus = builder
+						.comment("Sakura Hairpin: armor bonus amount")
+						.defineInRange("sakuraHairpinArmorBonus", 0.1, 0, 10);
+				sakuraHairpinCritBonusFromLuck = builder
+						.comment("Sakura Hairpin: crit rate bonus from luck")
+						.defineInRange("sakuraHairpinCritBonusFromLuck", 0.03, 0, 1);
+				angelDesireDamageBonus = builder
+						.comment("Angel Desire: damage bonus when flying")
+						.defineInRange("angelDesireDamageBonus", 0.5, 0, 10);
 				builder.pop();
 			}
 

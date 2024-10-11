@@ -7,7 +7,6 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.ModularCurio;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;

@@ -136,7 +136,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 					list.add(TextFacet.wrap(AttrFacet.simpleAdd(CALang.Modular.LOOT.get(), prop.loot)));
 			}
 			if (prop.enderMask) {
-				list.add(CALang.Modular.ENDER_MASK.get().withStyle(ChatFormatting.GRAY));
+				list.add(TextFacet.wrap(CALang.Modular.ENDER_MASK.get().withStyle(ChatFormatting.GRAY)));
 			}
 		} else {
 			if (stack.is(CATagGen.REQUIRE_CURSE)) {

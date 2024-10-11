@@ -80,8 +80,8 @@ public class CorruptBadge extends BaseTickingToken implements SkillFeature, Brea
 
 		list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.DARK_PURPLE));
 		list.add(TextFacet.wrap(AttrFacet.simpleMult(CALang.Modular.DIG_SPEED.get(), digSpeed() * corrupt_badge_add)));
-		list.add(TextFacet.inner(speed().getTooltip()));
-		list.add(TextFacet.inner(atk().getTooltip()));
+		list.add(TextFacet.wrap(speed().getTooltip()));
+		list.add(TextFacet.wrap(atk().getTooltip()));
 	}
 
 	private AttrAdder atk() {

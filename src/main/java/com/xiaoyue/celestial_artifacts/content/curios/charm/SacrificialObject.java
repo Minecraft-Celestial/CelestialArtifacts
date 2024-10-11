@@ -8,6 +8,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -35,7 +36,7 @@ public class SacrificialObject implements MultiLineText {
 		if (CAAttackToken.chance(player, goldChance())) {
 			player.spawnAtLocation(Items.GOLD_INGOT);
 		}
-		List<LivingEntity> entities = EntityUtils.getDelimitedMonster(player, 8);
+		List<LivingEntity> entities = EntityUtils.getExceptForCentralEntity(player, 8, 4, e -> e instanceof Enemy);
 		entities.remove(player);
 		for (LivingEntity e : entities) {
 			if (e.getMaxHealth() < player.getMaxHealth()) {

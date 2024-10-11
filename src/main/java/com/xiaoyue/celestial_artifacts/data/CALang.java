@@ -430,7 +430,13 @@ public class CALang {
 		SEA_GOD_CROWN("Change weather to raining", 0),
 		PRAYER_CROWN("When you take damage when sneaking, %s chance to recover %s of the damage took.", 2),
 		SPIRIT_CROWN_1("When there are %s or fewer mobs around you, increase projectile damage by %s", 2),
-		SPIRIT_CROWN_2("For every block in between increase projectile damage by %s", 1);
+		SPIRIT_CROWN_2("For every block in between increase projectile damage by %s", 1),
+		SAKURA_HAIRPIN("For every luck: ", 0),
+		YELLOW_DUCK("You can naturally float on the water", 0),
+		ANGEL_DESIRE_1("When flying: ", 1),
+		ANGEL_DESIRE_2("Immune to projectile damage", 0),
+		ANGEL_DESIRE_3("Boost elytra flying", 0),
+		;
 
 		final Entry entry;
 

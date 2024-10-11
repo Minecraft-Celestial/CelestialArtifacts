@@ -6,7 +6,6 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
-import com.xiaoyue.celestial_core.utils.EntityUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.ChatFormatting;

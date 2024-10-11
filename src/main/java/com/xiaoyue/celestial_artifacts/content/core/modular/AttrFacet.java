@@ -1,16 +1,11 @@
 package com.xiaoyue.celestial_artifacts.content.core.modular;
 
 import com.google.common.collect.Multimap;
-import com.xiaoyue.celestial_core.CelestialCore;
-import com.xiaoyue.celestial_core.register.CCAttributes;
-import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
-import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.UUID;
 import java.util.function.DoubleSupplier;

@@ -9,6 +9,7 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_core.utils.EntityUtils;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.Tags;
 
@@ -28,7 +29,7 @@ public class TwistedScroll implements TickFacet, SingleLineText {
 	@Override
 	public void tick(LivingEntity entity, ItemStack stack) {
 		if (entity.tickCount % 20 == 0) {
-			for (var e : EntityUtils.getDelimitedMonster(entity, 24)) {
+			for (var e : EntityUtils.getExceptForCentralEntity(entity, 24, 8, e -> e instanceof Enemy)) {
 				if (e.getType().is(Tags.EntityTypes.BOSSES)) continue;
 				if (!e.getTags().contains(TAG)) {
 					e.addTag(TAG);
