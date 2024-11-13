@@ -2,6 +2,7 @@ package com.xiaoyue.celestial_artifacts.events;
 
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
+import com.xiaoyue.celestial_core.events.LivingJumpEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +18,15 @@ import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CAGeneralEventHandler {
+
+	@SubscribeEvent
+	public static void onLivingJump(LivingJumpEvent event) {
+        if (event.getEntity() instanceof Player player) {
+			for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.JUMP)) {
+				e.onJump(player, event);
+			}
+        }
+	}
 
 	@SubscribeEvent
 	public static void onLivingDeath(LivingDeathEvent event) {

@@ -127,8 +127,9 @@ public class CALang {
 		CURSE("Requires %s to be equipped", 1),
 		SHIFT("Press [%s] to display curio effects", 1),
 		ALT("Press [%s] to display set effects", 1),
-		INVUL_TIME("Increase invulnerable time by %s", 1),
+		INVUL_TIME("Invulnerable time", 0),
 		HURT_BONUS("Increase damage by %s", 1),
+		JUMP_POWER("Jump Power", 0),
 		PROTECT("Reduce damage by %s", 1),
 		PROTECT_TYPE("Reduce incoming %s damage by %s", 2),
 		DODGE_TYPE("%s chance to dodge %s damage", 2),
@@ -139,6 +140,7 @@ public class CALang {
 		SKILL_CD("Cool Down: %s seconds", 1),
 		CURRENT_BONUS("Current bonus:", 0),
 		DIG_SPEED("Dig Speed", 0),
+		PUT_DOWN_FIRE("Put down fire", 0),
 		;
 
 		final Entry entry;
@@ -304,8 +306,7 @@ public class CALang {
 		SOUL_BOX_2("Inflict %s to attacker", 1),
 		SOUL_BOX_3("Hurt opponent with abyssal damage for %s of your max health", 1),
 
-		SOLAR_MAGNET_1("Put down fire in daytime", 0),
-		SOLAR_MAGNET_2("Attract surrounding items", 0),
+		SOLAR_MAGNET("Attract surrounding items", 0),
 
 		SACRIFICIAL_OBJECT_1("%s chance to leave a gold ingot on death", 1),
 		SACRIFICIAL_OBJECT_2("%a chance to kill surrounding enemies with lower max health than you", 1),
@@ -343,13 +344,13 @@ public class CALang {
 		ANGEL_HEART_1("For every %s seconds, heal %s health", 2),
 		ANGEL_HEART_2("For every %s seconds, clear all harmful effects", 1),
 
-		ABYSS_WILL_BADGE_2("Increase [Abyssal Call] to %s for %s seconds", 2),
-		ABYSS_WILL_BADGE_3("After skill ends, clear [Abyssal Call] and retain only %s of current health", 1),
-		ABYSS_WILL_BADGE_4("%s chance to deal %s damage, and %s chance to deal %s", 4),
-		ABYSS_WILL_BADGE_5("%s chance to take %s damage, and %s chance to take %s", 4),
-		ABYSS_WILL_BADGE_6("For every %s seconds, gain 1 [Abyssal Call]. Capped at %s", 2),
-		ABYSS_WILL_BADGE_7("Every [Abyssal Call] increase attack damage by %s and incoming damage by %s", 2),
-		ABYSS_WILL_BADGE_8("Current [Abyssal Call]: %s", 1);
+		ABYSS_WILL_BADGE_1("Increase [Abyssal Call] to %s for %s seconds", 2),
+		ABYSS_WILL_BADGE_2("After skill ends, clear [Abyssal Call] and retain only %s of current health", 1),
+		ABYSS_WILL_BADGE_3("%s chance to deal %s damage, and %s chance to deal %s", 4),
+		ABYSS_WILL_BADGE_4("%s chance to take %s damage, and %s chance to take %s", 4),
+		ABYSS_WILL_BADGE_5("For every %s seconds, gain 1 [Abyssal Call]. Capped at %s", 2),
+		ABYSS_WILL_BADGE_6("Every [Abyssal Call] increase attack damage by %s and incoming damage by %s", 2),
+		ABYSS_WILL_BADGE_7("Current [Abyssal Call]: %s", 1);
 
 		final Entry entry;
 
@@ -428,11 +429,11 @@ public class CALang {
 		GUARDIAN_EYE_1("Inflict %s to surrounding mobs.", 1),
 		GUARDIAN_EYE_2("Gain infinite water breathing", 0),
 		SEA_GOD_CROWN("Change weather to raining", 0),
-		PRAYER_CROWN("When you take damage when sneaking, %s chance to recover %s of the damage took.", 2),
+		PRAYER_CROWN("When you take damage, %s chance to recover %s of the damage took.", 2),
 		SPIRIT_CROWN_1("When there are %s or fewer mobs around you, increase projectile damage by %s", 2),
 		SPIRIT_CROWN_2("For every block in between increase projectile damage by %s", 1),
 		SAKURA_HAIRPIN("For every luck: ", 0),
-		YELLOW_DUCK("You can naturally float on the water", 0),
+		YELLOW_DUCK("You can walk on the water", 0),
 		ANGEL_DESIRE_1("When flying: ", 1),
 		ANGEL_DESIRE_2("Immune to projectile damage", 0),
 		ANGEL_DESIRE_3("Boost elytra flying", 0),
@@ -487,6 +488,22 @@ public class CALang {
 		final Entry entry;
 
 		Necklace(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Body implements Info {
+
+		;
+
+		final Entry entry;
+
+		Body(String def, int count) {
 			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 

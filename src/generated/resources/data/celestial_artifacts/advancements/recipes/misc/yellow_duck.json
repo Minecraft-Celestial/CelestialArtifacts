@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "yellow_duck"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "celestial_artifacts:yellow_duck"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_wool": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:yellow_wool"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_yellow_wool",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "celestial_artifacts:yellow_duck"
+    ]
+  },
+  "sends_telemetry_event": false
+}

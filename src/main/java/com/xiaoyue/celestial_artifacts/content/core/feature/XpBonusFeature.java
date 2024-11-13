@@ -1,11 +1,12 @@
 package com.xiaoyue.celestial_artifacts.content.core.feature;
 
 import com.xiaoyue.celestial_artifacts.content.core.modular.AttrFacet;
-import com.xiaoyue.celestial_artifacts.content.core.modular.SingleLineText;
+import com.xiaoyue.celestial_artifacts.content.core.modular.AttrTextFacet;
 import com.xiaoyue.celestial_artifacts.data.CALang;
-import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
+import java.util.List;
 import java.util.function.DoubleSupplier;
 
 public interface XpBonusFeature extends IFeature {
@@ -16,11 +17,11 @@ public interface XpBonusFeature extends IFeature {
 
 	double getXpBonus(Player player);
 
-	record Simple(DoubleSupplier val) implements XpBonusFeature, SingleLineText {
+	record Simple(DoubleSupplier val) implements XpBonusFeature, AttrTextFacet {
 
 		@Override
-		public MutableComponent getLine() {
-			return AttrFacet.simpleMult(CALang.Modular.XP.get(), val.getAsDouble());
+		public void addAttrText(List<Component> list) {
+			list.add(AttrFacet.simpleMult(CALang.Modular.XP.get(), val.getAsDouble()));
 		}
 
 		@Override
@@ -28,5 +29,4 @@ public interface XpBonusFeature extends IFeature {
 			return val.getAsDouble();
 		}
 	}
-
 }

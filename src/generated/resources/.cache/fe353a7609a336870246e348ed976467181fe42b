@@ -1,6 +1,6 @@
-// 1.20.1	2024-10-12T03:46:26.779627	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
-5fe85622230df31ce11187c5c5c1e75e7064687c assets/celestial_artifacts/lang/en_ud.json
-12c0f2aae361a21ffabe4265899b06a29486acd2 assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2024-11-13T19:56:05.583631	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+b5818b396263cc56b1785abd2abbf88b0f4dc25b assets/celestial_artifacts/lang/en_ud.json
+a0c87188530fd55d8f7d1b7f146d4112b779297f assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 b4584fb63ac93a52b6134b83a10d3841e6f43b4b assets/celestial_artifacts/models/item/amethyst_ring.json
@@ -36,6 +36,7 @@ a9d9291d85e90a42a6767fe7356496759139f46b assets/celestial_artifacts/models/item/
 9febc098126abf474c7b73ee3bbada704feefed3 assets/celestial_artifacts/models/item/fang_necklace.json
 db03fd388b3a2422edf8f176ae0c95615b89cdd6 assets/celestial_artifacts/models/item/flame_arrow_bag.json
 9f2014b71814faf9de90ed54890fbc864552a473 assets/celestial_artifacts/models/item/flight_ring.json
+01e06fbab0e0494613b60a7c4db90775eb74f3b9 assets/celestial_artifacts/models/item/forest_cloak.json
 d38b4ac26e13015b7dcd123551cc4b711cced956 assets/celestial_artifacts/models/item/freeze_ring.json
 234a5d8a20275ca6f2fc49e514a18e77dfb781ec assets/celestial_artifacts/models/item/gallop_necklace.json
 831d7782b12e95d8547295cb794ff12d8ba3840a assets/celestial_artifacts/models/item/gluttony_badge.json
@@ -124,6 +125,7 @@ ac674ad66157f315edf04086dfd33fcb6b22a6d6 data/celestial_artifacts/advancements/r
 bfdbcc2311a2dedaa6918f5b474676456da42c72 data/celestial_artifacts/advancements/recipes/misc/evil_eye.json
 2e6a0c5434ec172ac092e4cd8d58bf34e3cde1f4 data/celestial_artifacts/advancements/recipes/misc/flame_arrow_bag.json
 6c369f6cbeb7eb352f151b75c0b16406471d2e9f data/celestial_artifacts/advancements/recipes/misc/flight_ring.json
+afe97a462add3becfad39c005335f7bf92d3b253 data/celestial_artifacts/advancements/recipes/misc/forest_cloak.json
 f8354865469ffa42e48f429f262d05aa746ae16c data/celestial_artifacts/advancements/recipes/misc/freeze_ring.json
 3cd882713437f9e6bb75b25044816c4bfda84b5f data/celestial_artifacts/advancements/recipes/misc/gallop_necklace.json
 d8e4aae06a1905dc28d586449943093a2c153427 data/celestial_artifacts/advancements/recipes/misc/gluttony_badge.json
@@ -161,6 +163,7 @@ d72d855c5dc364abe8d5153427b825b1df4fee1c data/celestial_artifacts/advancements/r
 f1872242911f07095698ced6e765e524fc6a7e5c data/celestial_artifacts/advancements/recipes/misc/twisted_scroll.json
 09f89965ec0aeb77393690380933ea4fc8e58647 data/celestial_artifacts/advancements/recipes/misc/undead_charm.json
 e9ef9a02f92427da634046ba158d7c1b78e242d5 data/celestial_artifacts/advancements/recipes/misc/war_dead_badge.json
+a948117364a120c62db2dc08adcd0247d324ba5f data/celestial_artifacts/advancements/recipes/misc/yellow_duck.json
 59a6403164290698b0b4f2c79c095db227e9b330 data/celestial_artifacts/loot_tables/chests/abandoned_mineshaft.json
 595355fa62f88f212e34c4e5e13fc351c7ef9f7b data/celestial_artifacts/loot_tables/chests/ancient_city.json
 c1ae75094b85c75bd8313ce569f6dfd59edcc58f data/celestial_artifacts/loot_tables/chests/bastion_treasure.json
@@ -197,6 +200,7 @@ abf5a93623b085b8d8720bdc08b12383958dab42 data/celestial_artifacts/recipes/ender_
 6678bab727cc275172bdedcff625b587db64dce2 data/celestial_artifacts/recipes/evil_eye.json
 9b2fedb86c366ffefb7e4bb054c8798194e17623 data/celestial_artifacts/recipes/flame_arrow_bag.json
 b093a769ea5d4f77e380f113c4db61ed6f3eae9e data/celestial_artifacts/recipes/flight_ring.json
+5069d155718aacbcce401d4129a9bdee2bb3e193 data/celestial_artifacts/recipes/forest_cloak.json
 5a086baf82f82fe6a58a88f3f817ee3f7afb41f3 data/celestial_artifacts/recipes/freeze_ring.json
 9b7359522eb3ced291bcb844ea02dcbcb12325de data/celestial_artifacts/recipes/gallop_necklace.json
 f0e5c9c8234b627b7d1ca6af50074e34a89bf225 data/celestial_artifacts/recipes/gluttony_badge.json
@@ -234,9 +238,11 @@ ae4c9d6d969bc7df9669f03226b4ec013f899946 data/celestial_artifacts/recipes/star_n
 98e0300e2471b569ec5c173735f3390965a22213 data/celestial_artifacts/recipes/twisted_scroll.json
 97c860cda4201b75777be320496bab0a6f18174f data/celestial_artifacts/recipes/undead_charm.json
 95e58bf82024465677ee61f79c41a505f83e9f63 data/celestial_artifacts/recipes/war_dead_badge.json
+bca2dd75294742b2d75d16ed13756e1cb2fad34d data/celestial_artifacts/recipes/yellow_duck.json
 6ded3ea2e35a47445f95b3e2a263d918575d48cf data/celestial_artifacts/tags/entity_types/desire_blacklist.json
 8528deb26b8e16940fc7e704556131a1f479d219 data/celestial_artifacts/tags/items/require_curse.json
 a6206a3d5baad2b734515ea39951ce7d5c60f6d0 data/curios/tags/items/back.json
+38212bb2fa07199dbc37bdb8e3a044d34a88a8f3 data/curios/tags/items/body.json
 6c401cd08b4f59029e724362aa2f380ddd8c42e0 data/curios/tags/items/bracelet.json
 66c93019c29056939444dbbc489ea64ec5af0590 data/curios/tags/items/catastrophe.json
 46e8c6688078f8c5991f8330799cdb92229a5146 data/curios/tags/items/charm.json

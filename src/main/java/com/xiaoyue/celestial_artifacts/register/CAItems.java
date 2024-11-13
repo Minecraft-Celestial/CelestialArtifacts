@@ -22,6 +22,7 @@ import com.xiaoyue.celestial_artifacts.content.core.token.SetTokenFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.TokenFacet;
 import com.xiaoyue.celestial_artifacts.content.curios.back.LeechScabbard;
 import com.xiaoyue.celestial_artifacts.content.curios.back.TwistedScabbard;
+import com.xiaoyue.celestial_artifacts.content.curios.body.ForestCloak;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.CharmingBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.HiddenBracelet;
 import com.xiaoyue.celestial_artifacts.content.curios.bracelet.ScarletBracelet;
@@ -95,7 +96,7 @@ public class CAItems {
 			HEART_OF_REVENGE, TWISTED_HEART, GREEDY_HEART, DEMON_HEART,
 			TRAVELER_SCROLL, SEA_GOD_SCROLL, SKYWALKER_SCROLL, TWISTED_SCROLL,
 			EMERALD_BRACELET, LIFE_BRACELET, PRECIOUS_BRACELET, RED_RUBY_BRACELET, HIDDEN_BRACELET, SCARLET_BRACELET, CHARMING_BRACELET, SPIRIT_BRACELET,
-			UNOWNED_PENDANT, CHAOTIC_PENDANT, SHADOW_PENDANT,
+			UNOWNED_PENDANT, CHAOTIC_PENDANT, SHADOW_PENDANT, FOREST_CLOAK,
 			STAR_NECKLACE, CROSS_NECKLACE, GALLOP_NECKLACE, FANG_NECKLACE, PRECIOUS_NECKLACE,
 			HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE, ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE,
 			SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN, SAKURA_HAIRPIN, YELLOW_DUCK, ANGEL_DESIRE,
@@ -109,6 +110,7 @@ public class CAItems {
 			// 金戒指
 			GOLD_RING = ring("gold_ring", () ->
 					ModularCurio.of(EffectFacet.of(() -> MobEffects.LUCK)));
+
 			// 紫水晶戒指
 			AMETHYST_RING = ring("amethyst_ring", () ->
 					ModularCurio.of(EffectFacet.of(() -> MobEffects.NIGHT_VISION),
@@ -255,6 +257,7 @@ public class CAItems {
 							CALang.Condition.DAY::get, (p, t, c) -> p.level().isDay(),
 							CAModConfig.COMMON.charm.solarMagnetDamageBonus::get
 					)));
+
 			// 暴食徽章
 			GLUTTONY_BADGE = charm("gluttony_badge", () -> ModularCurio.builder()
 					.rarity(Rarity.EPIC).build(new GluttonyBadge(),
@@ -283,6 +286,7 @@ public class CAItems {
 							EffectFacet.of(() -> MobEffects.REGENERATION, () -> 2,
 									CAModConfig.COMMON.charm.bearingStamenLevel::get)
 					));
+
 			// 深渊意志徽章
 			ABYSS_WILL_BADGE = charm("abyss_will_badge", () -> ModularCurio.builder().rarity(IRarityUtils.DARK_AQUA)
 					.requireCS().build(AbyssWillBadge.TOKEN));
@@ -335,6 +339,7 @@ public class CAItems {
 					ModularCurio.builder().requireCS().rarity(Rarity.EPIC).fortune(1).loot(1).build(
 							XpBonusFeature.simple(CAModConfig.COMMON.heart.greedyHeartXpBonus::get)
 					));
+
 			// 恶魔之心
 			DEMON_HEART = heart("demon_heart", () ->
 					ModularCurio.builder().requireCS().rarity(Rarity.EPIC).requireCS()
@@ -356,6 +361,7 @@ public class CAItems {
 						))
 				);
 			});
+
 			// 海神卷轴
 			SEA_GOD_SCROLL = scroll("sea_god_scroll", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
@@ -370,6 +376,7 @@ public class CAItems {
 			// 传送卷轴
 			SKYWALKER_SCROLL = scroll("skywalker_scroll", () -> ModularCurio.builder()
 					.rarity(Rarity.UNCOMMON).build(SkywalkerScroll.TOKEN));
+
 			// 扭曲卷轴
 			TWISTED_SCROLL = scroll("twisted_scroll", () -> ModularCurio.builder()
 					.requireCS().rarity(IRarityUtils.DARK_PURPLE).loot(1).build(new TwistedScroll()));
@@ -390,6 +397,7 @@ public class CAItems {
 								EffectFacet.of(() -> MobEffects.ABSORPTION, 5, 1)),
 						emeraldSet());
 			});
+
 			// 生命手环
 			LIFE_BRACELET = bracelet("life_bracelet", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build(
@@ -397,6 +405,7 @@ public class CAItems {
 									CAModConfig.COMMON.bracelet.lifeBraceletRegenBonus::get),
 							EffectFacet.of(() -> MobEffects.REGENERATION, () -> 4, () -> 0)
 					));
+
 			// 珍钻手环
 			PRECIOUS_BRACELET = bracelet("precious_bracelet", () ->
 					ModularCurio.builder().rarity(Rarity.EPIC).fortune(1).build(
@@ -405,6 +414,7 @@ public class CAItems {
 							SimpleListener.protectType(CALang.DamageTypes.MAGIC,
 									CAModConfig.COMMON.bracelet.preciousBraceletMagicReduction::get)
 					));
+
 			// 绯红石手环
 			RED_RUBY_BRACELET = bracelet("red_ruby_bracelet", () ->
 					ModularCurio.builder().rarity(IRarityUtils.RED).build(
@@ -417,9 +427,11 @@ public class CAItems {
 			// 隐匿手环
 			HIDDEN_BRACELET = bracelet("hidden_bracelet", () -> ModularCurio.builder().requireCS()
 					.rarity(IRarityUtils.DARK_PURPLE).build(new TokenFacet<>("hidden_bracelet", HiddenBracelet::new)));
+
 			// 猩红手环
 			SCARLET_BRACELET = bracelet("scarlet_bracelet", () -> ModularCurio.builder()
 					.requireCS().rarity(IRarityUtils.RED).build(new ScarletBracelet()));
+
 			// 魅力手环
 			CHARMING_BRACELET = bracelet("charming_bracelet", () -> ModularCurio.builder().rarity(Rarity.RARE).build(
 					AttrFacet.add(() -> Attributes.ARMOR, CAModConfig.COMMON.bracelet.charmingBraceletArmor::get),
@@ -435,12 +447,14 @@ public class CAItems {
 			// 无主的吊坠
 			UNOWNED_PENDANT = pendant("unowned_pendant", () ->
 					ModularCurio.builder().rarity(Rarity.RARE).build());
+
 			// 混沌吊坠
 			CHAOTIC_PENDANT = pendant("chaotic_pendant", () ->
 					ModularCurio.builder().rarity(Rarity.EPIC).requireCS().loot(1).build(
 							TextFacet.line(() -> CALang.Pendant.CHAOTIC.get(TextFacet.num(
 									CAModConfig.COMMON.pendant.chaoticPendantEnchantLevel.get())))
 					));
+
 			// 怨影吊坠
 			SHADOW_PENDANT = pendant("shadow_pendant", () ->
 					ModularCurio.builder().rarity(IRarityUtils.DARK_PURPLE).requireCS().build(new ShadowPendant()));
@@ -546,6 +560,13 @@ public class CAItems {
 									CAModConfig.COMMON.necklace.spiritNecklaceProjectile::get),
 							HurtPlayerEffectFacet.of(EffectFacet.of(() -> MobEffects.MOVEMENT_SPEED, 5, 0)),
 							spiritSet()));
+		}
+
+		// body
+		{
+			// 丛林披风
+			FOREST_CLOAK = body("forest_cloak", () ->
+					ModularCurio.builder().rarity(IRarityUtils.GREEN).build(new ForestCloak()));
 		}
 
 		// head
@@ -791,6 +812,10 @@ public class CAItems {
 
 	public static ItemEntry<ModularCurio> heart(String id, NonNullSupplier<ModularCurio> factory) {
 		return curio("curios/heart/", id, factory).tag(curio("heart")).register();
+	}
+
+	public static ItemEntry<ModularCurio> body(String id, NonNullSupplier<ModularCurio> factory) {
+		return curio("curios/body/", id, factory).tag(curio("body")).register();
 	}
 
 	public static ItemEntry<ModularCurio> etching(String id, NonNullSupplier<ModularCurio> factory) {

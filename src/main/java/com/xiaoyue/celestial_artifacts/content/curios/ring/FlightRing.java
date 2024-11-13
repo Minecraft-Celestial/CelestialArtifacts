@@ -12,6 +12,7 @@ public class FlightRing extends BaseTickingToken implements SingleLineText {
 
 	@Override
 	protected void removeImpl(Player player) {
+		if (player.getAbilities().instabuild) return;
 		player.getAbilities().flying = false;
 		player.getAbilities().mayfly = false;
 		player.onUpdateAbilities();

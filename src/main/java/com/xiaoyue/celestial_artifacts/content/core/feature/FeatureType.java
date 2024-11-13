@@ -15,6 +15,7 @@ public class FeatureType<T extends IFeature> {
 	public static final FeatureType<SkillFeature> SKILL = new FeatureType<>(SkillFeature.class);
 	public static final FeatureType<HealFeature> HEAL = new FeatureType<>(HealFeature.class);
 	public static final FeatureType<ShieldingFeature> SHIELD = new FeatureType<>(ShieldingFeature.class);
+	public static final FeatureType<JumpFeature> JUMP = new FeatureType<>(JumpFeature.class);
 
 	final Class<T> cls;
 

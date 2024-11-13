@@ -9,9 +9,11 @@ import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
+import com.xiaoyue.celestial_core.utils.ItemUtils;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
 import dev.xkmc.l2damagetracker.contents.curios.TotemHelper;
+import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -33,7 +35,9 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.ISlotType;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.*;
@@ -52,6 +56,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 	private final List<AttrFacet> attributes = new ArrayList<>();
 	private final List<SlotFacet> slots = new ArrayList<>();
 	private final List<TextFacet> text = new ArrayList<>();
+	private final List<AttrTextFacet> attrText = new ArrayList<>();
 	private final List<TickFacet> tick = new ArrayList<>();
 	private SetFacet set = null;
 	private TotemFacet totem = null;
@@ -72,6 +77,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 		if (facet instanceof AttrFacet e) attributes.add(e);
 		if (facet instanceof SlotFacet e) slots.add(e);
 		if (facet instanceof TextFacet e) text.add(e);
+		if (facet instanceof AttrTextFacet e) attrText.add(e);
 		if (facet instanceof TickFacet e) tick.add(e);
 		if (facet instanceof SetFacet e) set = e;
 		if (facet instanceof TotemFacet e) totem = e;
@@ -129,12 +135,6 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 			for (var e : text) {
 				e.addText(level, list);
 			}
-			if (!prop.hideAttr()) {
-				if (prop.fortune != 0)
-					list.add(TextFacet.wrap(AttrFacet.simpleAdd(CALang.Modular.FORTUNE.get(), prop.fortune)));
-				if (prop.loot != 0)
-					list.add(TextFacet.wrap(AttrFacet.simpleAdd(CALang.Modular.LOOT.get(), prop.loot)));
-			}
 			if (prop.enderMask) {
 				list.add(TextFacet.wrap(CALang.Modular.ENDER_MASK.get().withStyle(ChatFormatting.GRAY)));
 			}
@@ -142,7 +142,7 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 			if (stack.is(CATagGen.REQUIRE_CURSE)) {
 				list.add(CALang.Modular.curse());
 			}
-			if (!text.isEmpty() || !prop.hideAttr() && (prop.fortune() > 0 || prop.loot() > 0) || prop.enderMask) {
+			if (!text.isEmpty() || prop.enderMask) {
 				list.add(CALang.Modular.shift());
 			}
 			if (prop.immune) {
@@ -195,9 +195,35 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 		return ans;
 	}
 
+	public void addLootTooltip(List<Component> list) {
+		if (prop.fortune != 0) {
+			list.add(AttrFacet.simpleAdd(CALang.Modular.FORTUNE.get(), prop.fortune));
+		}
+		if (prop.loot != 0) {
+			list.add(AttrFacet.simpleAdd(CALang.Modular.LOOT.get(), prop.loot));
+		}
+	}
+
 	@Override
 	public List<Component> getAttributesTooltip(List<Component> tooltips, ItemStack stack) {
-		if (attributes.isEmpty()) return tooltips;
+		if (attributes.isEmpty()) {
+			if (prop.hideAttr || attrText.isEmpty() || Proxy.getClientPlayer() == null) return tooltips;
+			for (ISlotType slot : CuriosApi.getItemStackSlots(stack, Proxy.getClientPlayer()).values()) {
+				tooltips.add(Component.empty());
+				tooltips.add(ItemUtils.addTranslatable("curios.modifiers." + slot.getIdentifier(), ChatFormatting.GOLD));
+				if (prop.fortune != 0 || prop.loot != 0) {
+					addLootTooltip(tooltips);
+				}
+				for (var e : attrText) {
+					e.addAttrText(tooltips);
+				}
+			}
+			return tooltips;
+		}
+		addLootTooltip(tooltips);
+		for (var e : attrText) {
+			e.addAttrText(tooltips);
+		}
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < tooltips.size(); i++) {
 			var txt = tooltips.get(i);

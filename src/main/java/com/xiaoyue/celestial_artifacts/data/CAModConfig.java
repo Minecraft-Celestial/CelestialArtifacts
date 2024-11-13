@@ -1177,6 +1177,23 @@ public class CAModConfig {
 
 		}
 
+		public static class Body {
+
+			public final ForgeConfigSpec.DoubleValue forestCloakDodgeChance;
+			public final ForgeConfigSpec.DoubleValue forestCloakJumpPower;
+
+			private Body(ForgeConfigSpec.Builder builder) {
+				builder.push("body");
+
+				forestCloakDodgeChance = builder.comment("forest cloak: chance to dodge projectile")
+						.defineInRange("forestCloakDodgeChance", 0.2, 0, 1);
+				forestCloakJumpPower = builder.comment("forest cloak: jump power bonus")
+						.defineInRange("forestCloakJumpPower", 0.25, 0.01, 10);
+				builder.pop();
+			}
+
+		}
+
 		public static class Set {
 
 			public final ForgeConfigSpec.DoubleValue seaGodProtect;
@@ -1189,7 +1206,6 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue spiritInflictChance;
 			public final ForgeConfigSpec.IntValue spiritEffectDuration;
 			public final ForgeConfigSpec.IntValue spiritEffectAmplifier;
-			public final ForgeConfigSpec.DoubleValue spiritDodgeChance;
 			public final ForgeConfigSpec.DoubleValue spiritProtect;
 
 			private Set(ForgeConfigSpec.Builder builder) {
@@ -1225,8 +1241,6 @@ public class CAModConfig {
 							.defineInRange("spiritEffectDuration", 3, 0, 100);
 					spiritEffectAmplifier = builder.comment("Spirit Set: slowness effect level (0 means Lv.I)")
 							.defineInRange("spiritEffectAmplifier", 1, 0, 10);
-					spiritDodgeChance = builder.comment("Spirit Set: chance to dodge projectile")
-							.defineInRange("spiritDodgeChance", 0.2, 0, 1);
 					spiritProtect = builder.comment("Spirit Set: projectile damage reduction")
 							.defineInRange("spiritProtect", 0.2, 0, 1);
 				}
@@ -1307,6 +1321,7 @@ public class CAModConfig {
 		public final Pendant pendant;
 		public final Ring ring;
 		public final Scroll scroll;
+		public final Body body;
 		public final Set set;
 		public final Misc misc;
 		public final Toggles toggles;
@@ -1324,6 +1339,7 @@ public class CAModConfig {
 			pendant = new Pendant(builder);
 			ring = new Ring(builder);
 			scroll = new Scroll(builder);
+			body = new Body(builder);
 			set = new Set(builder);
 			misc = new Misc(builder);
 			toggles = new Toggles(builder);

@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "forest_cloak"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:green_wool"
+    },
+    "B": {
+      "item": "celestial_core:light_fragment"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "A A"
+  ],
+  "result": {
+    "item": "celestial_artifacts:forest_cloak"
+  },
+  "show_notification": true
+}

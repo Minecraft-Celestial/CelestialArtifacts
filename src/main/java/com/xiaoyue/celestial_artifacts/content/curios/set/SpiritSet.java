@@ -40,10 +40,6 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 		return CAModConfig.COMMON.set.spiritInflictChance.get();
 	}
 
-	private static double getDodgeChance() {
-		return CAModConfig.COMMON.set.spiritDodgeChance.get();
-	}
-
 	private static double getProtect() {
 		return CAModConfig.COMMON.set.spiritProtect.get();
 	}
@@ -98,14 +94,6 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 	}
 
 	@Override
-	public boolean onPlayerAttacked(Player player, AttackCache cache) {
-		if (player.hasEffect(getTrigger()) && CAAttackToken.isArrow(cache)) {
-			return CAAttackToken.chance(player, getDodgeChance());
-		}
-		return false;
-	}
-
-	@Override
 	public void onPlayerDamaged(Player player, AttackCache cache) {
 		if (player.hasEffect(getTrigger()) && CAAttackToken.isArrow(cache)) {
 			float factor = 1 - (float) getProtect();
@@ -129,9 +117,6 @@ public class SpiritSet extends BaseTickingToken implements CAAttackToken {
 		list.add(TextFacet.inner(CALang.Sets.SPIRIT_3.get(
 				TextFacet.perc(getInflictChance()),
 				EffectFacet.getDesc(getInflictEff(), true)
-		).withStyle(ChatFormatting.GRAY)));
-		list.add(TextFacet.inner(CALang.Modular.DODGE_TYPE.get(
-				TextFacet.perc(getDodgeChance()), type().get()
 		).withStyle(ChatFormatting.GRAY)));
 		list.add(TextFacet.inner(CALang.Modular.PROTECT_TYPE.get(
 				type().get(), TextFacet.perc(getProtect())

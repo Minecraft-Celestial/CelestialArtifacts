@@ -85,17 +85,17 @@ public class AbyssWillBadge extends BaseTickingToken implements NetworkSensitive
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_4.get(TextFacet.perc(pa()), TextFacet.perc(atkA()),
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_3.get(TextFacet.perc(pa()), TextFacet.perc(atkA()),
 				TextFacet.perc(pb()), TextFacet.perc(atkB()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_5.get(TextFacet.perc(pa()), TextFacet.perc(dmgB()),
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_4.get(TextFacet.perc(pa()), TextFacet.perc(dmgB()),
 				TextFacet.perc(pb()), TextFacet.perc(dmgA()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_6.get(TextFacet.num(interval()), TextFacet.num(limit()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_7.get(TextFacet.perc(atkBonus()), TextFacet.perc(hurtPenalty()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_8.get(TextFacet.num(abyss_will_badge_add)).withStyle(ChatFormatting.DARK_PURPLE)));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_5.get(TextFacet.num(interval()), TextFacet.num(limit()))));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_6.get(TextFacet.perc(atkBonus()), TextFacet.perc(hurtPenalty()))));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_7.get(TextFacet.num(abyss_will_badge_add)).withStyle(ChatFormatting.DARK_PURPLE)));
 		list.add(CALang.Modular.SKILL.get().withStyle(ChatFormatting.YELLOW));
 		list.add(TextFacet.wrap(CALang.Modular.SKILL_CD.get(TextFacet.num(duration()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_2.get(TextFacet.num(initial()), TextFacet.num(duration()))));
-		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_3.get(TextFacet.perc(remainHP()))));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_1.get(TextFacet.num(initial()), TextFacet.num(duration()))));
+		list.add(TextFacet.wrap(CALang.Charm.ABYSS_WILL_BADGE_2.get(TextFacet.perc(remainHP()))));
 	}
 
 	@Override

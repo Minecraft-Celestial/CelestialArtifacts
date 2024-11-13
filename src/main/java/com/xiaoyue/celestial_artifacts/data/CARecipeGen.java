@@ -317,6 +317,22 @@ public class CARecipeGen {
 						.define('D', CCItems.LIGHT_FRAGMENT)
 						.save(saver);
 
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.YELLOW_DUCK.get(), 1)::unlockedBy, Items.YELLOW_WOOL)
+						.pattern("ABA").pattern("A A").pattern("ACA")
+						.define('A', Items.YELLOW_WOOL)
+						.define('B', CCItems.OCEAN_ESSENCE.get())
+						.define('C', CAItems.LIFE_ETCHING.get())
+						.save(saver);
+
+			}
+
+			// body
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.FOREST_CLOAK.get(), 1)::unlockedBy, Items.GREEN_WOOL)
+						.pattern("AAA").pattern("ABA").pattern("A A")
+						.define('A', Items.GREEN_WOOL)
+						.define('B', CCItems.LIGHT_FRAGMENT.get())
+						.save(saver);
 			}
 
 			// charm

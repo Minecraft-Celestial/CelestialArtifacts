@@ -60,7 +60,7 @@ public class CAMiscCuriosHandler {
 
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onEnderManAnger(EnderManAngerEvent event) {
-		if (event.getPlayer() instanceof ServerPlayer sp)
+		if (event.getPlayer() instanceof ServerPlayer sp && sp.hasLineOfSight(event.getEntity()))
 			CatastropheScroll.Curses.END.trigger(sp);
 	}
 

@@ -1,3 +1,7 @@
+1.4.7
+- Fix end curse triggering
+- Add a cloak
+
 1.4.6
 - Add 3 new curios
 - Replace textures
