@@ -94,8 +94,7 @@ public class CAMiscCuriosHandler {
 		if (instance.getEffect().getCategory() != MobEffectCategory.HARMFUL) return;
 		if (!CatastropheScroll.Curses.NIHILITY.cursing(player)) return;
 		double factor = CatastropheScroll.getNihilityCurse();
-		new EffectBuilder(instance).setDuration((int) (instance.getDuration() * factor));
-
+		new EffectBuilder(instance).setDuration((int) (instance.getDuration() * (1 + factor)));
 	}
 
 	@SubscribeEvent

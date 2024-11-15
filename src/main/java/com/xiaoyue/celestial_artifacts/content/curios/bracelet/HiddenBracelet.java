@@ -35,7 +35,7 @@ public class HiddenBracelet extends BaseTickingToken implements CAAttackToken {
 	}
 
 	private static double atk() {
-		return 0.25;
+		return CAModConfig.COMMON.bracelet.hiddenBraceletDamageBoost.get();
 	}
 
 	@Override

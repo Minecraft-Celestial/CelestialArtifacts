@@ -1,3 +1,7 @@
+1.4.8
+- Add more config options for artifacts
+- Fix server crash
+
 1.4.7
 - Fix end curse triggering
 - Add a cloak

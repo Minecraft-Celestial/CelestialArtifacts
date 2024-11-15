@@ -5,6 +5,7 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -18,7 +19,7 @@ import java.util.List;
 public class SpiritBracelet implements MultiLineText, CAAttackToken {
 
 	private static int duration() {
-		return 5;
+		return CAModConfig.COMMON.bracelet.spiritBraceletEffectDuration.get();
 	}
 
 	private static MobEffectInstance eff() {

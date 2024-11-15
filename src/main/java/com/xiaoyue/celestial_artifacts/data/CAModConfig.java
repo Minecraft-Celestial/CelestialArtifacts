@@ -214,7 +214,7 @@ public class CAModConfig {
 							.defineInRange("scarletMaxCost", 0.50, 0, 1);
 					scarletBraceletDamageBonus = builder
 							.comment("Scarlet Bracelet: damage boost as percentage of target max health per health cost")
-							.defineInRange("scarletBraceletDamageBonus", 0.01, 0, Integer.MAX_VALUE);
+							.defineInRange("scarletBraceletDamageBonus", 0.0001, 0, Integer.MAX_VALUE);
 					scarletBraceletDamageLimit = builder
 							.comment("Scarlet Bracelet: max damage boost as percentage of target max health")
 							.defineInRange("scarletBraceletDamageLimit", 0.50, 0, Integer.MAX_VALUE);
@@ -768,6 +768,9 @@ public class CAModConfig {
 			public final ForgeConfigSpec.IntValue endCurseDuration;
 			public final ForgeConfigSpec.DoubleValue endBlessHeal;
 
+			public final ForgeConfigSpec.IntValue etchingSlotSize;
+			public final ForgeConfigSpec.IntValue charmSlotSize;
+
 			private Curse(ForgeConfigSpec.Builder builder) {
 				builder.push("curse");
 
@@ -842,6 +845,14 @@ public class CAModConfig {
 				endBlessHeal = builder
 						.comment("End Bless: healing as percentage of health lost")
 						.defineInRange("endBlessHeal", 0.2, 0.01, 1);
+
+				etchingSlotSize = builder
+						.comment("Catastrophe Scroll: Number of etching slots size")
+						.defineInRange("etchingSlotSize", 7, 0, 7);
+
+				charmSlotSize = builder
+						.comment("Catastrophe Scroll: Number of charm slots size")
+						.defineInRange("charmSlotSize", 3, 0, 10);
 
 				builder.pop();
 			}

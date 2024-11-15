@@ -709,8 +709,8 @@ public class CAItems {
 		{
 			CATASTROPHE_SCROLL = curio("curios/", "catastrophe_scroll", () ->
 					ModularCurio.builder().curse().immune().rarity(IRarityUtils.DARK_PURPLE).hideAttr().build(
-							SlotFacet.of("etching", 7),
-							SlotFacet.of("charm", 3),
+							SlotFacet.of("etching", CAModConfig.COMMON.curse.etchingSlotSize::get),
+							SlotFacet.of("charm", CAModConfig.COMMON.curse.charmSlotSize::get),
 							CatastropheScroll.TOKEN
 					)).tag(curio("catastrophe")).register();
 			// 混沌

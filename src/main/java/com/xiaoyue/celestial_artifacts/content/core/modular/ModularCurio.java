@@ -207,8 +207,8 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 	@Override
 	public List<Component> getAttributesTooltip(List<Component> tooltips, ItemStack stack) {
 		if (attributes.isEmpty()) {
-			if (prop.hideAttr || attrText.isEmpty() || Proxy.getClientPlayer() == null) return tooltips;
-			for (ISlotType slot : CuriosApi.getItemStackSlots(stack, Proxy.getClientPlayer()).values()) {
+			if (prop.hideAttr || attrText.isEmpty() || Proxy.getPlayer() == null) return tooltips;
+			for (ISlotType slot : CuriosApi.getItemStackSlots(stack, Proxy.getPlayer()).values()) {
 				tooltips.add(Component.empty());
 				tooltips.add(ItemUtils.addTranslatable("curios.modifiers." + slot.getIdentifier(), ChatFormatting.GOLD));
 				if (prop.fortune != 0 || prop.loot != 0) {

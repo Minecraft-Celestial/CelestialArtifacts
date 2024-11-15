@@ -4,6 +4,7 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.MultiLineText;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import net.minecraft.network.chat.Component;
@@ -16,15 +17,15 @@ import java.util.List;
 public class ScarletBracelet implements MultiLineText, CAAttackToken {
 
 	private static double threshold() {
-		return 0.5;
+		return CAModConfig.COMMON.bracelet.scarletBraceletMaxCost.get();
 	}
 
 	private static double maxDamage() {
-		return 0.5;
+		return CAModConfig.COMMON.bracelet.scarletBraceletDamageLimit.get();
 	}
 
 	private static double damageBoost() {
-		return 0.0001;
+		return CAModConfig.COMMON.bracelet.scarletBraceletDamageBonus.get();
 	}
 
 	@Override
