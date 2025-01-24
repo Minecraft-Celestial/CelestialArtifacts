@@ -8,6 +8,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,6 +35,10 @@ public interface TextFacet extends IFacet {
 
 	static MutableComponent eff(MobEffect eff) {
 		return eff.getDisplayName().copy().withStyle(ChatFormatting.AQUA);
+	}
+
+	public static MutableComponent item(Item item) {
+		return Component.translatable(item.getDescriptionId()).withStyle(ChatFormatting.AQUA);
 	}
 
 	static MutableComponent perc(double val) {

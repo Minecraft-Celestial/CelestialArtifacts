@@ -43,10 +43,7 @@ import com.xiaoyue.celestial_artifacts.content.curios.scroll.TwistedScroll;
 import com.xiaoyue.celestial_artifacts.content.curios.set.EmeraldSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SeaGodSet;
 import com.xiaoyue.celestial_artifacts.content.curios.set.SpiritSet;
-import com.xiaoyue.celestial_artifacts.content.items.item.BacktrackMirror;
-import com.xiaoyue.celestial_artifacts.content.items.item.PurifiedPowder;
-import com.xiaoyue.celestial_artifacts.content.items.item.RepentMirror;
-import com.xiaoyue.celestial_artifacts.content.items.item.UnluckyPotato;
+import com.xiaoyue.celestial_artifacts.content.items.item.*;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthAxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthHoe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
@@ -98,7 +95,7 @@ public class CAItems {
 			EMERALD_BRACELET, LIFE_BRACELET, PRECIOUS_BRACELET, RED_RUBY_BRACELET, HIDDEN_BRACELET, SCARLET_BRACELET, CHARMING_BRACELET, SPIRIT_BRACELET,
 			UNOWNED_PENDANT, CHAOTIC_PENDANT, SHADOW_PENDANT, FOREST_CLOAK,
 			STAR_NECKLACE, CROSS_NECKLACE, GALLOP_NECKLACE, FANG_NECKLACE, PRECIOUS_NECKLACE,
-			HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE, ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE,
+			HOLY_NECKLACE, HEIRLOOM_NECKLACE, EMERALD_NECKLACE, ENDER_PROTECTOR, RED_HEART_NECKLACE, LOCK_OF_ABYSS, SPIRIT_NECKLACE, TREASURE_HUNTER_NECKLACE,
 			SEA_GOD_CROWN, PRAYER_CROWN, ABYSS_CORE, GUARDIAN_EYE, EVIL_EYE, SPIRIT_CROWN, SAKURA_HAIRPIN, YELLOW_DUCK, ANGEL_DESIRE,
 			MAGIC_ARROW_BAG, FLAME_ARROW_BAG, SPIRIT_ARROW_BAG, IRON_SCABBARD, LEECH_SCABBARD, TITAN_SCABBARD, TWISTED_SCABBARD,
 			CATASTROPHE_SCROLL, CHAOTIC_ETCHING, ORIGIN_ETCHING, LIFE_ETCHING, TRUTH_ETCHING, DESIRE_ETCHING, NIHILITY_ETCHING, END_ETCHING;
@@ -467,7 +464,7 @@ public class CAItems {
 					ModularCurio.builder().rarity(Rarity.RARE).build(
 							SimpleListener.hurtBonus(
 									CALang.Condition.ATTACK_BEHIND::get,
-									(p, t, c) -> EntityUtils.isLookingBehindTarget(t, p.getEyePosition()),
+									(p, t, c) -> EntityUtils.isLookingBehindTarget(t, p.position()),
 									CAModConfig.COMMON.necklace.starNecklaceDamageBonus::get),
 							ConditionalEffectFacet.of(false,
 									e -> e.level().isNight(), CALang.Condition.NIGHT::get,
@@ -560,6 +557,11 @@ public class CAItems {
 									CAModConfig.COMMON.necklace.spiritNecklaceProjectile::get),
 							HurtPlayerEffectFacet.of(EffectFacet.of(() -> MobEffects.MOVEMENT_SPEED, 5, 0)),
 							spiritSet()));
+
+			// 寻宝者项链
+			TREASURE_HUNTER_NECKLACE = necklace("treasure_hunter_necklace", () ->
+					ModularCurio.builder().requireCS().rarity(Rarity.UNCOMMON).fortune(1)
+							.build(new TreasureHunterNecklace()));
 		}
 
 		// body
@@ -755,6 +757,16 @@ public class CAItems {
 	public static final ItemEntry<BacktrackMirror> BACKTRACK_MIRROR = item("items/", "backtrack_mirror", BacktrackMirror::new).register();
 	// 净化粉末
 	public static final ItemEntry<PurifiedPowder> PURIFIED_POWDER = item("items/", "purified_powder", PurifiedPowder::new).register();
+	// 铜加固板
+	public static final ItemEntry<CopperReinforcePlate> COPPER_REINFORCE_PLATE = item("items/", "copper_reinforce_plate", CopperReinforcePlate::new).register();
+	// 紫水晶加固板
+	public static final ItemEntry<AmethystReinforcePlate> AMETHYST_REINFORCE_PLATE = item("items/", "amethyst_reinforce_plate", AmethystReinforcePlate::new).register();
+	// 药水袋
+	public static final ItemEntry<PotionsBag> POTIONS_BAG = item("items/", "potions_bag", PotionsBag::new).register();
+	// 盖亚图腾
+	public static final ItemEntry<GaiaTotem> GAIA_TOTEM = item("items/", "gaia_totem", GaiaTotem::new).register();
+	// 末影折跃权杖
+	public static final ItemEntry<EnderJumpScepter> ENDER_JUMP_SCEPTER = item("items/", "ender_jump_scepter", EnderJumpScepter::new).register();
 
 	// food
 	// 厄运土豆 TODO unused, not obtainable

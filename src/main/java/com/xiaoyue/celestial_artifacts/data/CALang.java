@@ -60,6 +60,16 @@ public class CALang {
 		BACKTRACK("Teleport player to spawning point. Cool down: %s seconds", 1),
 		REPENT("Teleport player to last death position. Cool down: %s seconds", 1),
 		PURIFIED("Remove curse on off hand item", 0),
+		AMETHYST_REINFORCE_PLATE("After reinforcement, the durability of the item will be deducted at most 1 point each time", 0),
+		COPPER_REINFORCE_PLATE("After reinforcement, the durability loss is reduced by 50%", 0),
+		CAN_STORAGE_POTION("Able to store potions", 0),
+		POTIONS_BAG_INFO("When a potion is loaded, crouch down and right-click to consume the potion to add the missing potion effect to itself", 0),
+		GAIA_TOTEM("Triggers when dying and gives the holder %s for a few seconds", 1),
+		CURRENT_POS("Current pos: %s %s %s", 3),
+		CURRENT_LEVEL("Current level: %s", 1),
+		CURRENT_CHARGING("Current charging: %s", 1),
+		SCEPTER_CHARGING("Use the %s right-click scepter to recharge in the backpack", 1),
+		ENDER_JUMP_SCEPTER("Right-click on a block to bind that block's coordinates, and right-click a mob to teleport the creature to the bound coordinates with a charged", 0),
 		BAN("This item is disabled", 0);
 
 		final Entry entry;
@@ -483,7 +493,8 @@ public class CALang {
 		LOCK_OF_ABYSS_1("Inflict target with %s seconds of Slowness on hit", 1),
 		LOCK_OF_ABYSS_2("Increase target Slowness level instead if it already has the effect.", 0),
 		LOCK_OF_ABYSS_3("If target has %s or higher Slowness effect when attacked:", 1),
-		LOCK_OF_ABYSS_4("Remove slowness and append abyssal damage equal to %s of original damage", 1);
+		LOCK_OF_ABYSS_4("Remove slowness and append abyssal damage equal to %s of original damage", 1),
+		TREASURE_HUNTER_NECKLACE("When fishing in some biomes, you may catch the structural spoils of the corresponding biomes, cooldown for %s seconds", 1);
 
 		final Entry entry;
 

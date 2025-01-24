@@ -1001,10 +1001,11 @@ public class CAModConfig {
 			public final ForgeConfigSpec.DoubleValue lockOfAbyssExtraDamage;
 			public final ForgeConfigSpec.IntValue lockOfAbyssDuration;
 			public final ForgeConfigSpec.IntValue lockOfAbyssThreshold;
-
 			public final ForgeConfigSpec.DoubleValue enderProtectorToughness;
 			public final ForgeConfigSpec.DoubleValue redHeartNecklaceMaxHealth;
 			public final ForgeConfigSpec.DoubleValue spiritNecklaceProjectile;
+			public final ForgeConfigSpec.IntValue treasureHunterNecklaceCooldown;
+			public final ForgeConfigSpec.DoubleValue treasureHunterNecklaceChance;
 
 			private Necklace(ForgeConfigSpec.Builder builder) {
 				builder.push("necklace");
@@ -1091,6 +1092,12 @@ public class CAModConfig {
 				spiritNecklaceProjectile = builder
 						.comment("Spirit Necklace: projectile damage bonus")
 						.defineInRange("spiritNecklaceProjectile", 0.25, 0, 10);
+				treasureHunterNecklaceCooldown = builder
+						.comment("Treasure Hunter Necklace: Cooldown time")
+						.defineInRange("treasureHunterNecklaceCooldown", 300, 0, 10000);
+				treasureHunterNecklaceChance = builder
+						.comment("Treasure Hunter Necklace: chance to catch a loot")
+						.defineInRange("treasureHunterNecklaceChance", 0.05, 0.01, 1);
 				builder.pop();
 			}
 

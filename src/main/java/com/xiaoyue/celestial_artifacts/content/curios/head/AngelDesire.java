@@ -5,6 +5,7 @@ import com.xiaoyue.celestial_artifacts.content.core.modular.TextFacet;
 import com.xiaoyue.celestial_artifacts.content.core.modular.TickFacet;
 import com.xiaoyue.celestial_artifacts.content.core.token.CAAttackToken;
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_core.utils.CCUtils;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -13,8 +14,8 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,9 +30,13 @@ public class AngelDesire implements TickFacet, MultiLineText, CAAttackToken {
         list.add(TextFacet.wrap(CALang.Head.ANGEL_DESIRE_3.get()));
     }
 
+    public boolean isCurrent(ItemStack stack) {
+        return stack.getItem() instanceof ElytraItem || stack.is(CATagGen.ANGEL_DESIRE_COMPAT);
+    }
+
     @Override
     public void tick(LivingEntity entity, ItemStack stack) {
-        if (entity.isFallFlying() && entity.getItemBySlot(EquipmentSlot.CHEST).is(Items.ELYTRA)) {
+        if (entity.isFallFlying() && isCurrent(entity.getItemBySlot(EquipmentSlot.CHEST))) {
             CCUtils.addFlySpeed(entity, 1f);
         }
     }

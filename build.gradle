@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath "org.spongepowered:mixingradle:${mixingradle_version}"
-        classpath 'org.parchmentmc:librarian:1.+'
+        //classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
@@ -17,7 +17,7 @@ plugins {
 
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
+//apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = "${mod_version}"
 group = "xiaoyue.${mod_id}"
@@ -109,7 +109,7 @@ dependencies {
 
     implementation fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.3.8")
 
-    implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.4.1-slim")
+    implementation fg.deobf("xiaoyue.celestial_core:celestial_core:1.4.3-slim")
     implementation fg.deobf("dev.xkmc.l2serial:l2serial:1.2.2")
     implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.1")
     implementation fg.deobf("dev.xkmc.l2screentracker:l2screentracker:0.1.4")

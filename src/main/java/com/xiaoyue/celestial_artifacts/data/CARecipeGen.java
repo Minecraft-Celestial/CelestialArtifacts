@@ -264,6 +264,14 @@ public class CARecipeGen {
 						.define('D', CCItems.TREASURE_FRAGMENT.get())
 						.save(saver);
 
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.TREASURE_HUNTER_NECKLACE.get(), 1)::unlockedBy, Items.DIAMOND)
+						.pattern("AAA").pattern("ABA").pattern("CDC")
+						.define('A', Items.IRON_INGOT)
+						.define('B', CAItems.THE_END_DUST)
+						.define('C', Items.DIAMOND)
+						.define('D', CCItems.TREASURE_FRAGMENT.get())
+						.save(saver);
+
 			}
 
 			// head
@@ -572,6 +580,20 @@ public class CARecipeGen {
 					.define('E', Items.GLASS_PANE)
 					.save(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.COPPER_REINFORCE_PLATE, 1)::unlockedBy, Items.COPPER_INGOT)
+					.pattern("ICI").pattern("COC").pattern("ICI")
+					.define('C', Items.COPPER_INGOT)
+					.define('I', Items.IRON_INGOT)
+					.define('O', Items.OBSIDIAN)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.AMETHYST_REINFORCE_PLATE, 1)::unlockedBy, Items.AMETHYST_SHARD)
+					.pattern("ICI").pattern("COC").pattern("ICI")
+					.define('C', Items.AMETHYST_SHARD)
+					.define('I', Items.GOLD_INGOT)
+					.define('O', CAItems.NEBULA_CUBE)
+					.save(pvd);
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.REPENT_MIRROR.get(), 1)::unlockedBy, Items.ECHO_SHARD)
 					.pattern(" BA").pattern("CEB").pattern("DC ")
 					.define('A', Items.ECHO_SHARD)
@@ -579,6 +601,29 @@ public class CARecipeGen {
 					.define('C', CCItems.VOID_ESSENCE)
 					.define('D', Items.NETHERITE_INGOT)
 					.define('E', Items.GLASS_PANE)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.POTIONS_BAG, 1)::unlockedBy, CCItems.TREASURE_FRAGMENT.get())
+					.pattern(" G ").pattern("ITI").pattern("III")
+					.define('T', CCItems.TREASURE_FRAGMENT)
+					.define('I', Items.LEATHER)
+					.define('G', Items.GOLD_INGOT)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.GAIA_TOTEM, 1)::unlockedBy, Items.TOTEM_OF_UNDYING)
+					.pattern("EGE").pattern("GOG").pattern(" L ")
+					.define('E', Items.EMERALD)
+					.define('G', Items.GOLD_INGOT)
+					.define('O', Items.TOTEM_OF_UNDYING)
+					.define('L', CCItems.HEART_FRAGMENT)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CAItems.ENDER_JUMP_SCEPTER, 1)::unlockedBy, CCItems.WARDEN_SCLERITE.get())
+					.pattern("EGE").pattern(" T ").pattern("L  ")
+					.define('E', Items.ENDER_PEARL)
+					.define('G', Items.OBSIDIAN)
+					.define('T', CCItems.WARDEN_SCLERITE)
+					.define('L', CCItems.MIDNIGHT_FRAGMENT)
 					.save(pvd);
 
 			upgradeEarth(pvd, CAItems.NEBULA_CUBE, CCItems.EARTH_CORE, Items.NETHERITE_AXE, CAItems.EARTH_AXE);

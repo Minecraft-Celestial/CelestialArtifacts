@@ -9,7 +9,6 @@ import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.utils.ItemUtils;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
 import dev.xkmc.l2damagetracker.contents.curios.TotemHelper;
@@ -207,10 +206,11 @@ public final class ModularCurio extends BaseCurio implements L2Totem {
 	@Override
 	public List<Component> getAttributesTooltip(List<Component> tooltips, ItemStack stack) {
 		if (attributes.isEmpty()) {
-			if (prop.hideAttr || attrText.isEmpty() || Proxy.getPlayer() == null) return tooltips;
+			if (prop.hideAttr || Proxy.getPlayer() == null) return tooltips;
+			if (attrText.isEmpty() && prop.fortune == 0 && prop.loot == 0) return tooltips;
 			for (ISlotType slot : CuriosApi.getItemStackSlots(stack, Proxy.getPlayer()).values()) {
 				tooltips.add(Component.empty());
-				tooltips.add(ItemUtils.addTranslatable("curios.modifiers." + slot.getIdentifier(), ChatFormatting.GOLD));
+				tooltips.add(Component.translatable("curios.modifiers." + slot.getIdentifier()).withStyle(ChatFormatting.GOLD));
 				if (prop.fortune != 0 || prop.loot != 0) {
 					addLootTooltip(tooltips);
 				}

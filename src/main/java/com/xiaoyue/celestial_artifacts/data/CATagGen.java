@@ -16,6 +16,7 @@ import top.theillusivec4.curios.Curios;
 
 public class CATagGen {
 
+	public static final TagKey<Item> ANGEL_DESIRE_COMPAT = ItemTags.create(CelestialArtifacts.loc("angel_desire_compat"));
 	public static final TagKey<Item> REQUIRE_CURSE = ItemTags.create(CelestialArtifacts.loc("require_curse"));
 	public static final TagKey<EntityType<?>> DESIRE_BLACKLIST = TagKey.create(Registries.ENTITY_TYPE, CelestialArtifacts.loc("desire_blacklist"));
 

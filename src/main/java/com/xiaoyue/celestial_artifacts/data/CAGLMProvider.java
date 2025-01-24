@@ -10,7 +10,7 @@ import com.xiaoyue.celestial_artifacts.content.loot.PlayerStatCondition;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_core.content.loot.*;
 import com.xiaoyue.celestial_core.data.CCLangData;
-import com.xiaoyue.celestial_core.events.CCGeneralEventHandler;
+import com.xiaoyue.celestial_core.register.CelestialFlags;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
@@ -175,7 +175,7 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 		add("drops/demon_curse", new AddItemModifier(CAItems.DEMON_CURSE.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.demonCurseDropChance),
 				new EnabledCondition(CAItems.DEMON_CURSE.get()),
-				new PlayerFlagCondition(CCGeneralEventHandler.NETHER_STAGE), entityType(EntityType.VEX)));
+				new PlayerFlagCondition(CelestialFlags.NETHER_STAGE), entityType(EntityType.VEX)));
 		add("drops/twisted_heart", new AddItemModifier(CAItems.TWISTED_HEART.get(),
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.twistedHeartDropChance),
 				new EnabledCondition(CAItems.TWISTED_HEART.get()),

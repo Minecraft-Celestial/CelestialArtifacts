@@ -1,3 +1,10 @@
+1.4.9
+- Add reinforce plates
+- Add a necklace
+- Add a scepter
+- Add gaia totem
+- Add potion bag
+
 1.4.8
 - Add more config options for artifacts
 - Fix server crash

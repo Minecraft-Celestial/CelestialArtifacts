@@ -7,6 +7,7 @@ import com.xiaoyue.celestial_artifacts.data.*;
 import com.xiaoyue.celestial_artifacts.events.CAAttackListener;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.register.CALootModifier;
+import com.xiaoyue.celestial_artifacts.register.CAMenus;
 import com.xiaoyue.celestial_artifacts.register.CAbilityPacket;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
@@ -45,6 +46,7 @@ public class CelestialArtifacts {
 		CAItems.register();
 		CALootModifier.register();
 		CurioCacheCap.register();
+		CAMenus.register();
 		CAModConfig.init();
 		AttackEventHandler.register(3460, new CAAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CALang::addLang);
