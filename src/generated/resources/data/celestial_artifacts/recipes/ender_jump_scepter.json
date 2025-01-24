@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "G": {
+      "item": "minecraft:obsidian"
+    },
+    "L": {
+      "item": "celestial_core:midnight_fragment"
+    },
+    "T": {
+      "item": "celestial_core:warden_sclerite"
+    }
+  },
+  "pattern": [
+    "EGE",
+    " T ",
+    "L  "
+  ],
+  "result": {
+    "item": "celestial_artifacts:ender_jump_scepter"
+  },
+  "show_notification": true
+}

@@ -1,3 +1,6 @@
+1.4.10
+- Fix models and textures
+
 1.4.9
 - Add reinforce plates
 - Add a necklace

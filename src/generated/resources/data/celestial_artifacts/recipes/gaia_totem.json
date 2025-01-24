@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "L": {
+      "item": "celestial_core:heart_fragment"
+    },
+    "O": {
+      "item": "minecraft:totem_of_undying"
+    }
+  },
+  "pattern": [
+    "EGE",
+    "GOG",
+    " L "
+  ],
+  "result": {
+    "item": "celestial_artifacts:gaia_totem"
+  },
+  "show_notification": true
+}

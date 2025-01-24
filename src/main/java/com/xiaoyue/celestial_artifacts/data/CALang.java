@@ -60,16 +60,16 @@ public class CALang {
 		BACKTRACK("Teleport player to spawning point. Cool down: %s seconds", 1),
 		REPENT("Teleport player to last death position. Cool down: %s seconds", 1),
 		PURIFIED("Remove curse on off hand item", 0),
-		AMETHYST_REINFORCE_PLATE("After reinforcement, the durability of the item will be deducted at most 1 point each time", 0),
-		COPPER_REINFORCE_PLATE("After reinforcement, the durability loss is reduced by 50%", 0),
+		AMETHYST_REINFORCE_PLATE("Reinforced item may lose at most 1 durability at a time", 0),
+		COPPER_REINFORCE_PLATE("Reinforced item has 50% resistance to durability loss", 0),
 		CAN_STORAGE_POTION("Able to store potions", 0),
-		POTIONS_BAG_INFO("When a potion is loaded, crouch down and right-click to consume the potion to add the missing potion effect to itself", 0),
+		POTIONS_BAG_INFO("Sneak right click with the bag to consume potions that is not active on player", 0),
 		GAIA_TOTEM("Triggers when dying and gives the holder %s for a few seconds", 1),
 		CURRENT_POS("Current pos: %s %s %s", 3),
 		CURRENT_LEVEL("Current level: %s", 1),
 		CURRENT_CHARGING("Current charging: %s", 1),
-		SCEPTER_CHARGING("Use the %s right-click scepter to recharge in the backpack", 1),
-		ENDER_JUMP_SCEPTER("Right-click on a block to bind that block's coordinates, and right-click a mob to teleport the creature to the bound coordinates with a charged", 0),
+		SCEPTER_CHARGING("Use [%s] to right click scepter in inventory to recharge", 1),
+		ENDER_JUMP_SCEPTER("Right click on a block to bind position, and right-click a mob to teleport it to the bound position", 0),
 		BAN("This item is disabled", 0);
 
 		final Entry entry;
@@ -613,6 +613,7 @@ public class CALang {
 		putLang(Curse.class, "curse", Curse.values());
 		putLang(Head.class, "head", Head.values());
 		putLang(Heart.class, "heart", Heart.values());
+		putLang(Body.class, "body", Body.values());
 		putLang(Necklace.class, "necklace", Necklace.values());
 		putLang(Pendant.class, "pendant", Pendant.values());
 		putLang(Ring.class, "ring", Ring.values());

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "ICI",
+    "COC",
+    "ICI"
+  ],
+  "result": {
+    "item": "celestial_artifacts:copper_reinforce_plate"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "O": {
+      "item": "celestial_artifacts:nebula_cube"
+    }
+  },
+  "pattern": [
+    "ICI",
+    "COC",
+    "ICI"
+  ],
+  "result": {
+    "item": "celestial_artifacts:amethyst_reinforce_plate"
+  },
+  "show_notification": true
+}

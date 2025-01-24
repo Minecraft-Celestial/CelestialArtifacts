@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "celestial_artifacts:ender_jump_scepter"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warden_sclerite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestial_core:warden_sclerite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_warden_sclerite",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "celestial_artifacts:ender_jump_scepter"
+    ]
+  },
+  "sends_telemetry_event": false
+}

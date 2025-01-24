@@ -1,4 +1,4 @@
-// 1.20.1	2024-11-13T19:56:05.590356	Global Loot Modifiers : celestial_artifacts
+// 1.20.1	2025-01-24T11:30:47.255967	Global Loot Modifiers : celestial_artifacts
 867ec656a7c4776ccef5a58b5186bd026f6b203c data/celestial_artifacts/loot_modifiers/chests/abandoned_mineshaft.json
 8c7e7de869f9b9e1d6bc7d93205a341e6baf5b98 data/celestial_artifacts/loot_modifiers/chests/ancient_city.json
 3ede68d955b990a554e8086ba13d176b1332a8cb data/celestial_artifacts/loot_modifiers/chests/bastion_treasure.json
@@ -11,7 +11,7 @@ c14545e5213c653fe1a6bbf7e4433c1ed056c14c data/celestial_artifacts/loot_modifiers
 9fdde17986ea387a17537ee1dc55814abfe0e234 data/celestial_artifacts/loot_modifiers/chests/village_plains_house.json
 48cf73555c84e7a860d77622d24d6634b2d82835 data/celestial_artifacts/loot_modifiers/drops/chaotic_etching.json
 1b2cee2c169b9b05d9af9a792b2e4d0e1cf39aaf data/celestial_artifacts/loot_modifiers/drops/charming_bracelet.json
-d4f5f21d111ade05fff3b4602e86aeac29281101 data/celestial_artifacts/loot_modifiers/drops/demon_curse.json
+70691ed530dfad9aa17d05bcc02938334a128053 data/celestial_artifacts/loot_modifiers/drops/demon_curse.json
 8d9121031fc602ff9e50b994b822a5c85fd18981 data/celestial_artifacts/loot_modifiers/drops/desire_etching.json
 050eeb09ad00c9ea866bb2ebf7080cee2bacb43a data/celestial_artifacts/loot_modifiers/drops/end_etching.json
 84e69b0252dd475038be931d85d18f5bbddf5050 data/celestial_artifacts/loot_modifiers/drops/guardian_eye.json
