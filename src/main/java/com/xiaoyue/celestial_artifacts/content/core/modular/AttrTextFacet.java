@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface AttrTextFacet extends IFacet{
 
-    void addAttrText(List<Component> list);
+	void addAttrText(List<Component> list);
 
 }

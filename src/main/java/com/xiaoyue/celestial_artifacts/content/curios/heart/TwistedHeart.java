@@ -55,9 +55,9 @@ public class TwistedHeart extends BaseTickingToken implements CAAttackToken {
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
-	  list.add(TextFacet.wrap(CALang.Heart.TWISTED_HEART_1.get(TextFacet.perc(damageFactor())).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Heart.TWISTED_HEART_2.get(TextFacet.perc(toughnessFactor())).withStyle(ChatFormatting.GRAY)));
-	  list.add(TextFacet.wrap(CALang.Heart.TWISTED_HEART_3.get().withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Heart.TWISTED_HEART_1.get(TextFacet.perc(damageFactor())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Heart.TWISTED_HEART_2.get(TextFacet.perc(toughnessFactor())).withStyle(ChatFormatting.GRAY)));
+		list.add(TextFacet.wrap(CALang.Heart.TWISTED_HEART_3.get().withStyle(ChatFormatting.GRAY)));
 	}
 
 }

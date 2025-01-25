@@ -21,11 +21,11 @@ public class CAGeneralEventHandler {
 
 	@SubscribeEvent
 	public static void onLivingJump(LivingJumpEvent event) {
-        if (event.getEntity() instanceof Player player) {
+		if (event.getEntity() instanceof Player player) {
 			for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.JUMP)) {
 				e.onJump(player, event);
 			}
-        }
+		}
 	}
 
 	@SubscribeEvent

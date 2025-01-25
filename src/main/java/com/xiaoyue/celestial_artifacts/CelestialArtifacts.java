@@ -34,13 +34,11 @@ public class CelestialArtifacts {
 	public static final String MODID = "celestial_artifacts";
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
-
-	public static final PacketHandler HANDLER = new PacketHandler(loc("main"), 1,
-			e -> e.create(CAbilityPacket.class, NetworkDirection.PLAY_TO_SERVER));
-
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("curios", "Celestial Artifacts",
 					e -> e.icon(CAItems.AMETHYST_RING::asStack));
+	public static final PacketHandler HANDLER = new PacketHandler(loc("main"), 1,
+			e -> e.create(CAbilityPacket.class, NetworkDirection.PLAY_TO_SERVER));
 
 	public CelestialArtifacts() {
 		CAItems.register();

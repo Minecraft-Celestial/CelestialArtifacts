@@ -21,12 +21,12 @@ import java.util.List;
 
 public class BacktrackMirror extends Item {
 
-	private static int cd() {
-		return CAModConfig.COMMON.misc.backtrackMirrorCooldown.get();
-	}
-
 	public BacktrackMirror() {
 		super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	}
+
+	private static int cd() {
+		return CAModConfig.COMMON.misc.backtrackMirrorCooldown.get();
 	}
 
 	@Override

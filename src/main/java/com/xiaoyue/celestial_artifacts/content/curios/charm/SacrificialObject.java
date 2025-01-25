@@ -26,12 +26,6 @@ public class SacrificialObject implements MultiLineText {
 		return CAModConfig.COMMON.charm.sacrificialObjectSacrifice.get();
 	}
 
-	@Override
-	public void addText(@Nullable Level level, List<Component> list) {
-		list.add(TextFacet.wrap(CALang.Charm.SACRIFICIAL_OBJECT_1.get(TextFacet.perc(goldChance()))));
-		list.add(TextFacet.wrap(CALang.Charm.SACRIFICIAL_OBJECT_2.get(TextFacet.perc(chance()))));
-	}
-
 	public static void onPlayerDeath(Player player) {
 		if (CAAttackToken.chance(player, goldChance())) {
 			player.spawnAtLocation(Items.GOLD_INGOT);
@@ -45,6 +39,12 @@ public class SacrificialObject implements MultiLineText {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.wrap(CALang.Charm.SACRIFICIAL_OBJECT_1.get(TextFacet.perc(goldChance()))));
+		list.add(TextFacet.wrap(CALang.Charm.SACRIFICIAL_OBJECT_2.get(TextFacet.perc(chance()))));
 	}
 
 }

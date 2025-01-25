@@ -26,16 +26,15 @@ public class HolySword implements MultiLineText, CAAttackToken {
 		return CAModConfig.COMMON.charm.holySwordReflect.get();
 	}
 
+	public static float lossLifeAdd(Player player) {
+		return (float) (((player.getMaxHealth() - player.getHealth()) * atk()));
+	}
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		list.add(TextFacet.wrap(CALang.Charm.HOLY_SWORD_1.get(TextFacet.perc(reflect()))));
 		list.add(TextFacet.wrap(CALang.Charm.HOLY_SWORD_2.get()));
 		list.add(TextFacet.wrap(CALang.Charm.HOLY_SWORD_3.get(TextFacet.perc(atk()))));
-	}
-
-	public static float lossLifeAdd(Player player) {
-		return (float) (((player.getMaxHealth() - player.getHealth()) * atk()));
 	}
 
 	@Override

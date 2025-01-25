@@ -34,10 +34,10 @@ public enum CALootTableGen implements CALang.Info {
 	FISHING_TREASURE("Can be fished at y>300", BuiltInLootTables.FISHING, 5, CAItems.MAGIC_HORSESHOE),
 	;
 
-	private final CALang.Entry entry;
 	public final List<Supplier<ModularCurio>> item;
 	public final ResourceLocation target;
 	public final int odds;
+	private final CALang.Entry entry;
 
 	@SafeVarargs
 	CALootTableGen(String def, ResourceLocation target, int odds, Supplier<ModularCurio>... item) {
@@ -47,6 +47,24 @@ public enum CALootTableGen implements CALang.Info {
 		this.odds = odds - item.length;
 	}
 
+	public static void onLootGen(RegistrateLootTableProvider pvd) {
+		pvd.addLootAction(LootContextParamSets.EMPTY, cons -> {
+			for (var e : values()) {
+				var pool = LootPool.lootPool();
+				for (var item : e.item) {
+					var entry = LootTableTemplate.getItem(item.get(), 1).setWeight(1);
+					entry.when(new EnabledCondition(item.get()));
+					if (item.get() == CAItems.MAGIC_HORSESHOE.get()) {
+						entry.when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setY(
+								MinMaxBounds.Doubles.atLeast(300))));
+					}
+					pool.add(entry);
+				}
+				pool.add(LootTableTemplate.getItem(Items.AIR, 0).setWeight(e.odds));
+				cons.accept(e.id(), LootTable.lootTable().withPool(pool));
+			}
+		});
+	}
 
 	@Override
 	public CALang.Entry entry() {
@@ -55,24 +73,6 @@ public enum CALootTableGen implements CALang.Info {
 
 	public ResourceLocation id() {
 		return CelestialArtifacts.loc("chests/" + name().toLowerCase(Locale.ROOT));
-	}
-
-	public static void onLootGen(RegistrateLootTableProvider pvd) {
-		pvd.addLootAction(LootContextParamSets.EMPTY, cons -> {
-			for (var e : values()) {
-				var pool = LootPool.lootPool();
-				for (var item : e.item) {
-					var entry = LootTableTemplate.getItem(item.get(), 1).setWeight(1);
-					entry.when(new EnabledCondition(item.get()));
-					if (item.get() == CAItems.MAGIC_HORSESHOE.get())
-						entry.when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setY(
-								MinMaxBounds.Doubles.atLeast(300))));
-					pool.add(entry);
-				}
-				pool.add(LootTableTemplate.getItem(Items.AIR, 0).setWeight(e.odds));
-				cons.accept(e.id(), LootTable.lootTable().withPool(pool));
-			}
-		});
 	}
 
 

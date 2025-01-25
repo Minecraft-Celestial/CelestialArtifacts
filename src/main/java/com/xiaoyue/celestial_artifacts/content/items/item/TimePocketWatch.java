@@ -14,23 +14,23 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class TimePocketWatch extends Item {
-    public TimePocketWatch(Properties pProperties) {
-        super(pProperties);
-    }
+	public TimePocketWatch(Properties pProperties) {
+		super(pProperties);
+	}
 
-    @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-    }
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+		super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+	}
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        ItemStack stack = pPlayer.getItemInHand(pUsedHand);
-        if (!pLevel.isClientSide() && pLevel instanceof ServerLevel serverLevel) {
-            long time = serverLevel.getDayTime();
-            serverLevel.setDayTime(time + 2000);
-            stack.hurtAndBreak(1, pPlayer, e -> e.broadcastBreakEvent(pUsedHand));
-        }
-        return InteractionResultHolder.success(stack);
-    }
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+		ItemStack stack = pPlayer.getItemInHand(pUsedHand);
+		if (!pLevel.isClientSide() && pLevel instanceof ServerLevel serverLevel) {
+			long time = serverLevel.getDayTime();
+			serverLevel.setDayTime(time + 2000);
+			stack.hurtAndBreak(1, pPlayer, e -> e.broadcastBreakEvent(pUsedHand));
+		}
+		return InteractionResultHolder.success(stack);
+	}
 }

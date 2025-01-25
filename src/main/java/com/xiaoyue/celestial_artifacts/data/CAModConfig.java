@@ -14,6 +14,37 @@ import java.util.LinkedHashMap;
 
 public class CAModConfig {
 
+	public static final ForgeConfigSpec CLIENT_SPEC;
+	public static final Client CLIENT;
+	public static final ForgeConfigSpec COMMON_SPEC;
+	public static final Common COMMON;
+	public static String COMMON_PATH;
+
+	static {
+		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
+		CLIENT_SPEC = client.getRight();
+		CLIENT = client.getLeft();
+
+		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
+		COMMON_SPEC = common.getRight();
+		COMMON = common.getLeft();
+	}
+
+	/**
+	 * Registers any relevant listeners for config
+	 */
+	public static void init() {
+		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
+		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
+	}
+
+	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {
+		var mod = ModLoadingContext.get().getActiveContainer();
+		String path = "celestial_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
+		ModLoadingContext.get().registerConfig(type, spec, path);
+		return path;
+	}
+
 	public static class Client {
 
 		Client(ForgeConfigSpec.Builder builder) {
@@ -22,6 +53,41 @@ public class CAModConfig {
 	}
 
 	public static class Common {
+
+		public final Materials materials;
+		public final Back back;
+		public final Bracelet bracelet;
+		public final Charm charm;
+		public final Curse curse;
+		public final Head head;
+		public final Heart heart;
+		public final Necklace necklace;
+		public final Pendant pendant;
+		public final Ring ring;
+		public final Scroll scroll;
+		public final Body body;
+		public final Set set;
+		public final Misc misc;
+		public final Toggles toggles;
+
+		Common(ForgeConfigSpec.Builder builder) {
+			materials = new Materials(builder);
+			back = new Back(builder);
+			bracelet = new Bracelet(builder);
+			charm = new Charm(builder);
+			curse = new Curse(builder);
+			head = new Head(builder);
+			heart = new Heart(builder);
+			necklace = new Necklace(builder);
+			pendant = new Pendant(builder);
+			ring = new Ring(builder);
+			scroll = new Scroll(builder);
+			body = new Body(builder);
+			set = new Set(builder);
+			misc = new Misc(builder);
+			toggles = new Toggles(builder);
+
+		}
 
 		public static class Materials {
 
@@ -1328,75 +1394,6 @@ public class CAModConfig {
 
 		}
 
-		public final Materials materials;
-		public final Back back;
-		public final Bracelet bracelet;
-		public final Charm charm;
-		public final Curse curse;
-		public final Head head;
-		public final Heart heart;
-		public final Necklace necklace;
-		public final Pendant pendant;
-		public final Ring ring;
-		public final Scroll scroll;
-		public final Body body;
-		public final Set set;
-		public final Misc misc;
-		public final Toggles toggles;
-
-
-		Common(ForgeConfigSpec.Builder builder) {
-			materials = new Materials(builder);
-			back = new Back(builder);
-			bracelet = new Bracelet(builder);
-			charm = new Charm(builder);
-			curse = new Curse(builder);
-			head = new Head(builder);
-			heart = new Heart(builder);
-			necklace = new Necklace(builder);
-			pendant = new Pendant(builder);
-			ring = new Ring(builder);
-			scroll = new Scroll(builder);
-			body = new Body(builder);
-			set = new Set(builder);
-			misc = new Misc(builder);
-			toggles = new Toggles(builder);
-
-		}
-
-	}
-
-	public static final ForgeConfigSpec CLIENT_SPEC;
-	public static final Client CLIENT;
-
-	public static final ForgeConfigSpec COMMON_SPEC;
-	public static final Common COMMON;
-
-	public static String COMMON_PATH;
-
-	static {
-		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
-		CLIENT_SPEC = client.getRight();
-		CLIENT = client.getLeft();
-
-		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
-		COMMON_SPEC = common.getRight();
-		COMMON = common.getLeft();
-	}
-
-	/**
-	 * Registers any relevant listeners for config
-	 */
-	public static void init() {
-		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
-	}
-
-	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {
-		var mod = ModLoadingContext.get().getActiveContainer();
-		String path = "celestial_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
-		ModLoadingContext.get().registerConfig(type, spec, path);
-		return path;
 	}
 
 }

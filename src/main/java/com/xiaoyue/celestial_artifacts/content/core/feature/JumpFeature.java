@@ -5,6 +5,6 @@ import net.minecraft.world.entity.player.Player;
 
 public interface JumpFeature extends IFeature {
 
-    void onJump(Player player, LivingJumpEvent event);
+	void onJump(Player player, LivingJumpEvent event);
 
 }

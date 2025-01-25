@@ -19,34 +19,34 @@ import java.util.List;
 @SerialClass
 public class SakuraHairpin extends BaseTickingToken {
 
-    private static double critBonus() {
-        return CAModConfig.COMMON.head.sakuraHairpinCritBonusFromLuck.get();
-    }
+	@SerialClass.SerialField
+	public double sakura_hairpin_bonus;
 
-    @SerialClass.SerialField
-    public double sakura_hairpin_bonus;
+	private static double critBonus() {
+		return CAModConfig.COMMON.head.sakuraHairpinCritBonusFromLuck.get();
+	}
 
-    @Override
-    public void addText(@Nullable Level level, List<Component> list) {
-        list.add(TextFacet.wrap(CALang.Head.SAKURA_HAIRPIN.get()));
-        list.add(TextFacet.inner(crit().getText(critBonus())));
-        list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.LIGHT_PURPLE));
-        list.add(TextFacet.wrap(crit().getTooltip()));
-    }
+	@Override
+	public void addText(@Nullable Level level, List<Component> list) {
+		list.add(TextFacet.wrap(CALang.Head.SAKURA_HAIRPIN.get()));
+		list.add(TextFacet.inner(crit().getText(critBonus())));
+		list.add(CALang.Modular.CURRENT_BONUS.get().withStyle(ChatFormatting.LIGHT_PURPLE));
+		list.add(TextFacet.wrap(crit().getTooltip()));
+	}
 
-    private AttrAdder crit() {
-        return AttrAdder.of("sakura_hairpin", L2DamageTracker.CRIT_RATE::get,
-                AttributeModifier.Operation.ADDITION, sakura_hairpin_bonus);
-    }
+	private AttrAdder crit() {
+		return AttrAdder.of("sakura_hairpin", L2DamageTracker.CRIT_RATE::get,
+				AttributeModifier.Operation.ADDITION, sakura_hairpin_bonus);
+	}
 
-    @Override
-    protected void removeImpl(Player player) {
-        crit().removeImpl(player);
-    }
+	@Override
+	protected void removeImpl(Player player) {
+		crit().removeImpl(player);
+	}
 
-    @Override
-    protected void tickImpl(Player player) {
-        sakura_hairpin_bonus = player.getLuck() * critBonus();
-        crit().tickImpl(player);
-    }
+	@Override
+	protected void tickImpl(Player player) {
+		sakura_hairpin_bonus = player.getLuck() * critBonus();
+		crit().tickImpl(player);
+	}
 }

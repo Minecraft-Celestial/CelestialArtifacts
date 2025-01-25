@@ -34,7 +34,7 @@ public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature
 		Entity attacker = event.getDamageSource().getEntity();
 		if (attacker != null) {
 			GeneralEventHandler.schedule(() -> attacker.hurt(player.damageSources().playerAttack(player),
-                    (float) (event.getBlockedDamage() * damage())));
+					(float) (event.getBlockedDamage() * damage())));
 		}
 	}
 
@@ -50,8 +50,7 @@ public class KnightShelter implements MultiLineText, TickFacet, ShieldingFeature
 			if (player.tickCount % (healTime() * 10) == 0) {
 				player.heal(1f);
 			}
-		}
-		else if (player.getOffhandItem().getItem() instanceof ShieldItem) {
+		} else if (player.getOffhandItem().getItem() instanceof ShieldItem) {
 			if (player.tickCount % (healTime() * 20) == 0) {
 				player.heal(1f);
 			}

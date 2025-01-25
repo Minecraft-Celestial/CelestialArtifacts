@@ -37,9 +37,9 @@ public class SolarMagnet implements MultiLineText, TickFacet {
 	public void tick(LivingEntity entity, ItemStack stack) {
 		if (!(entity instanceof ServerPlayer player)) return;
 		this.getAttractingItems(player);
-        if (player.isOnFire()) {
-            player.clearFire();
-        }
-    }
+		if (player.isOnFire()) {
+			player.clearFire();
+		}
+	}
 
 }

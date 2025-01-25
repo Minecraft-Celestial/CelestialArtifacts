@@ -24,15 +24,14 @@ public class SkywalkerScroll extends BaseTickingToken
 		implements NetworkSensitiveToken<SkywalkerScroll>, SkillFeature {
 
 	public static final TokenFacet<SkywalkerScroll> TOKEN = new TokenFacet<>("skywalker_scroll", SkywalkerScroll::new);
-
-	private static int cooldownFactor() {
-		return CAModConfig.COMMON.scroll.skyWalkerCooldown.get();
-	}
-
 	@SerialClass.SerialField
 	public ResourceLocation id;
 	@SerialClass.SerialField
 	public double x, y, z;
+
+	private static int cooldownFactor() {
+		return CAModConfig.COMMON.scroll.skyWalkerCooldown.get();
+	}
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {

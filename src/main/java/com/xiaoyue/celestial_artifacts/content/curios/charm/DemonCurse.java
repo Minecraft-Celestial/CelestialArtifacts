@@ -22,6 +22,9 @@ import java.util.List;
 @SerialClass
 public class DemonCurse extends BaseTickingToken implements HealFeature {
 
+	@SerialClass.SerialField
+	public double demon_curse_add;
+
 	public static double atkBonus() {
 		return CAModConfig.COMMON.charm.demonCurseAttackBonus.get();
 	}
@@ -29,9 +32,6 @@ public class DemonCurse extends BaseTickingToken implements HealFeature {
 	public static double speedBonus() {
 		return CAModConfig.COMMON.charm.demonCurseSpeedBonus.get();
 	}
-
-	@SerialClass.SerialField
-	public double demon_curse_add;
 
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {

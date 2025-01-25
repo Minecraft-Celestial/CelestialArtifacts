@@ -9,20 +9,20 @@ import net.minecraft.world.item.ItemStack;
 
 public class YellowDuck implements SingleLineText, TickFacet {
 
-    private static final double DEFAULT_DOWN_SPEED = -0.32;
+	private static final double DEFAULT_DOWN_SPEED = -0.32;
 
-    @Override
-    public MutableComponent getLine() {
-        return CALang.Head.YELLOW_DUCK.get();
-    }
+	@Override
+	public MutableComponent getLine() {
+		return CALang.Head.YELLOW_DUCK.get();
+	}
 
-    @Override
-    public void tick(LivingEntity entity, ItemStack stack) {
-        if (entity.isInWater() && !entity.isUnderWater()) {
-            if (entity.getDeltaMovement().y < 0) {
-                double speed = entity.isCrouching() ? DEFAULT_DOWN_SPEED : 0;
-                entity.setDeltaMovement(entity.getDeltaMovement().x, speed, entity.getDeltaMovement().z);
-            }
-        }
-    }
+	@Override
+	public void tick(LivingEntity entity, ItemStack stack) {
+		if (entity.isInWater() && !entity.isUnderWater()) {
+			if (entity.getDeltaMovement().y < 0) {
+				double speed = entity.isCrouching() ? DEFAULT_DOWN_SPEED : 0;
+				entity.setDeltaMovement(entity.getDeltaMovement().x, speed, entity.getDeltaMovement().z);
+			}
+		}
+	}
 }

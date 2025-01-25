@@ -15,26 +15,8 @@ import java.util.function.BiFunction;
 @SerialClass
 public class PlayerStatCondition implements LootItemCondition {
 
-	public enum Type {
-		LOOT((player, ctx) -> ctx.getLootingModifier()),
-		REPUTATION((player, ctx) -> ctx.hasParam(LootContextParams.THIS_ENTITY) &&
-				ctx.getParam(LootContextParams.THIS_ENTITY) instanceof Villager vil ?
-				vil.getPlayerReputation(player) : 0);
-
-		private final BiFunction<Player, LootContext, Integer> func;
-
-		Type(BiFunction<Player, LootContext, Integer> func) {
-			this.func = func;
-		}
-
-		public int get(Player player, LootContext ctx) {
-			return func.apply(player, ctx);
-		}
-	}
-
 	@SerialClass.SerialField
 	public Type type;
-
 	@SerialClass.SerialField
 	public String count;
 
@@ -58,6 +40,23 @@ public class PlayerStatCondition implements LootItemCondition {
 		if (!ctx.hasParam(LootContextParams.LAST_DAMAGE_PLAYER)) return false;
 		var player = ctx.getParam(LootContextParams.LAST_DAMAGE_PLAYER);
 		return type.get(player, ctx) >= IntConfigValue.of(count).get();
+	}
+
+	public enum Type {
+		LOOT((player, ctx) -> ctx.getLootingModifier()),
+		REPUTATION((player, ctx) -> ctx.hasParam(LootContextParams.THIS_ENTITY) &&
+				ctx.getParam(LootContextParams.THIS_ENTITY) instanceof Villager vil ?
+				vil.getPlayerReputation(player) : 0);
+
+		private final BiFunction<Player, LootContext, Integer> func;
+
+		Type(BiFunction<Player, LootContext, Integer> func) {
+			this.func = func;
+		}
+
+		public int get(Player player, LootContext ctx) {
+			return func.apply(player, ctx);
+		}
 	}
 
 }

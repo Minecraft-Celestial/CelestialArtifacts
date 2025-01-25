@@ -27,6 +27,8 @@ public class TwistedScabbard extends BaseTickingToken
 		implements NetworkSensitiveToken<TwistedScabbard>, CAAttackToken {
 
 	public static final TokenFacet<TwistedScabbard> TOKEN = new TokenFacet<>("twisted_scabbard", TwistedScabbard::new);
+	@SerialClass.SerialField
+	public int twisted_scabbard_add, timer;
 
 	private static int interval() {
 		return CAModConfig.COMMON.back.twistedScabbardInterval.get();
@@ -39,9 +41,6 @@ public class TwistedScabbard extends BaseTickingToken
 	private static double endAtk() {
 		return CAModConfig.COMMON.back.twistedScabbardAttackEnd.get();
 	}
-
-	@SerialClass.SerialField
-	public int twisted_scabbard_add, timer;
 
 	@Override
 	public void onPlayerKill(Player player, LivingDeathEvent event) {

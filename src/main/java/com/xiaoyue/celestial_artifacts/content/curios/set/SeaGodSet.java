@@ -25,7 +25,6 @@ import java.util.List;
 @SerialClass
 public class SeaGodSet extends BaseTickingToken implements CAAttackToken {
 
-
 	private static final String NAME = "celestial_artifact:sea_god_set";
 	private static final AttrAdder ATK = AttrAdder.of(NAME, () -> Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.MULTIPLY_BASE, SeaGodSet::getTridentMelee);
 	private static final AttrAdder BOW = AttrAdder.of(NAME, L2DamageTracker.BOW_STRENGTH::get, AttributeModifier.Operation.ADDITION, SeaGodSet::getTridentThrow);

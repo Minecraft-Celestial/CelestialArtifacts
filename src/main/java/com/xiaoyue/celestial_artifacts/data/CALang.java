@@ -22,36 +22,47 @@ public class CALang {
 
 	private static final HashMap<Class<?>, EnumEntry> MAP = new HashMap<>();
 
+	static {
+		putLang(Tooltip.class, "tooltip", Tooltip.values());
+		putLang(JEIInfo.class, "info", JEIInfo.values());
+		putLang(CALootTableGen.class, "loot", CALootTableGen.values());
+		putLang(Modular.class, "modular", Modular.values());
+		putLang(Condition.class, "condition", Condition.values());
+		putLang(DamageTypes.class, "damage_type", DamageTypes.values());
+		putLang(Back.class, "back", Back.values());
+		putLang(Bracelet.class, "bracelet", Bracelet.values());
+		putLang(Charm.class, "charms", Charm.values());
+		putLang(Curse.class, "curse", Curse.values());
+		putLang(Head.class, "head", Head.values());
+		putLang(Heart.class, "heart", Heart.values());
+		putLang(Necklace.class, "necklace", Necklace.values());
+		putLang(Pendant.class, "pendant", Pendant.values());
+		putLang(Ring.class, "ring", Ring.values());
+		putLang(Scroll.class, "scroll", Scroll.values());
+		putLang(Sets.class, "sets", Sets.values());
+	}
+
 	@SafeVarargs
 	private static <T extends Info> void putLang(Class<T> cls, String str, T... vals) {
 		MAP.put(cls, new EnumEntry(str, vals));
 	}
 
-	public record EnumEntry(String path, Info[] info) {
-
+	public static void addLang(RegistrateLangProvider pvd) {
+		for (var ent : MAP.values()) {
+			for (var e : ent.info()) {
+				pvd.add(e.desc(), e.entry().def());
+			}
+		}
+		for (var type : CASlotGen.Type.values()) {
+			pvd.add("curios.identifier." + type.id(), "Celestial - " + RegistrateLangProvider.toEnglishName(type.id()));
+			pvd.add("curios.modifiers." + type.id(), "When wearing as " + RegistrateLangProvider.toEnglishName(type.id()) + ": ");
+		}
+		pvd.add("key.celestial_artifacts.ability_key", "Activate Curio Effects");
+		pvd.add("key.category.celestial_artifacts.celestial_artifacts", "Celestial Artifacts");
 	}
 
-	public record Entry(String id, String def, int count) {
-	}
-
-	public interface Info {
-
-		Entry entry();
-
-		default String path() {
-			return MAP.get(getClass()).path();
-		}
-
-		default String desc() {
-			return CelestialArtifacts.MODID + "." + path() + "." + entry().id();
-		}
-
-		default MutableComponent get(MutableComponent... objs) {
-			if (objs.length != entry().count())
-				throw new IllegalArgumentException("for " + entry().id() + ": expect " + entry().count() + " parameters, got " + objs.length);
-			return translate(desc(), (Object[]) objs);
-		}
-
+	public static MutableComponent translate(String key, Object... objs) {
+		return Component.translatable(key, objs);
 	}
 
 	public enum Tooltip implements Info {
@@ -159,11 +170,6 @@ public class CALang {
 			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-
-		public Entry entry() {
-			return entry;
-		}
-
 		public static MutableComponent comma() {
 			return COMMA.get();
 		}
@@ -193,6 +199,10 @@ public class CALang {
 		public static MutableComponent curseAlt() {
 			return Curse.ALT.get(Component.literal("ALT").withStyle(ChatFormatting.YELLOW))
 					.withStyle(ChatFormatting.GRAY);
+		}
+
+		public Entry entry() {
+			return entry;
 		}
 
 	}
@@ -600,43 +610,31 @@ public class CALang {
 
 	}
 
-	static {
-		putLang(Tooltip.class, "tooltip", Tooltip.values());
-		putLang(JEIInfo.class, "info", JEIInfo.values());
-		putLang(CALootTableGen.class, "loot", CALootTableGen.values());
-		putLang(Modular.class, "modular", Modular.values());
-		putLang(Condition.class, "condition", Condition.values());
-		putLang(DamageTypes.class, "damage_type", DamageTypes.values());
-		putLang(Back.class, "back", Back.values());
-		putLang(Bracelet.class, "bracelet", Bracelet.values());
-		putLang(Charm.class, "charms", Charm.values());
-		putLang(Curse.class, "curse", Curse.values());
-		putLang(Head.class, "head", Head.values());
-		putLang(Heart.class, "heart", Heart.values());
-		putLang(Body.class, "body", Body.values());
-		putLang(Necklace.class, "necklace", Necklace.values());
-		putLang(Pendant.class, "pendant", Pendant.values());
-		putLang(Ring.class, "ring", Ring.values());
-		putLang(Scroll.class, "scroll", Scroll.values());
-		putLang(Sets.class, "sets", Sets.values());
+	public interface Info {
+
+		Entry entry();
+
+		default String path() {
+			return MAP.get(getClass()).path();
+		}
+
+		default String desc() {
+			return CelestialArtifacts.MODID + "." + path() + "." + entry().id();
+		}
+
+		default MutableComponent get(MutableComponent... objs) {
+			if (objs.length != entry().count())
+				throw new IllegalArgumentException("for " + entry().id() + ": expect " + entry().count() + " parameters, got " + objs.length);
+			return translate(desc(), (Object[]) objs);
+		}
+
 	}
 
-	public static void addLang(RegistrateLangProvider pvd) {
-		for (var ent : MAP.values()) {
-			for (var e : ent.info()) {
-				pvd.add(e.desc(), e.entry().def());
-			}
-		}
-		for (var type : CASlotGen.Type.values()) {
-			pvd.add("curios.identifier." + type.id(), "Celestial - " + RegistrateLangProvider.toEnglishName(type.id()));
-			pvd.add("curios.modifiers." + type.id(), "When wearing as " + RegistrateLangProvider.toEnglishName(type.id()) + ": ");
-		}
-		pvd.add("key.celestial_artifacts.ability_key", "Activate Curio Effects");
-		pvd.add("key.category.celestial_artifacts.celestial_artifacts", "Celestial Artifacts");
+	public record EnumEntry(String path, Info[] info) {
+
 	}
 
-	public static MutableComponent translate(String key, Object... objs) {
-		return Component.translatable(key, objs);
+	public record Entry(String id, String def, int count) {
 	}
 
 }

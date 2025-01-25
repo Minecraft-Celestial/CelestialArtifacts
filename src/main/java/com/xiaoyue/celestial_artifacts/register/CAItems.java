@@ -630,9 +630,9 @@ public class CAItems {
 			// 天使的祈愿
 			ANGEL_DESIRE = head("angel_desire", () -> ModularCurio.builder().rarity(IRarityUtils.YELLOW).build(
 					SimpleListener.hurtBonus(() ->
-							CALang.Head.ANGEL_DESIRE_1.get(TextFacet.perc(CAModConfig.COMMON.head.angelDesireDamageBonus.get())),
+									CALang.Head.ANGEL_DESIRE_1.get(TextFacet.perc(CAModConfig.COMMON.head.angelDesireDamageBonus.get())),
 							(p, f, c) -> p.isFallFlying(), CAModConfig.COMMON.head.angelDesireDamageBonus::get
-							), new AngelDesire()
+					), new AngelDesire()
 			));
 		}
 
@@ -732,7 +732,6 @@ public class CAItems {
 			// 终焉
 			END_ETCHING = etching("end_etching", () -> ModularCurio.builder().immune().hideAttr().build());
 		}
-
 	}
 
 	// tool
@@ -749,7 +748,6 @@ public class CAItems {
 	// 锄
 	public static final ItemEntry<EarthHoe> EARTH_HOE = tool("tool/earth/", "earth_hoe",
 			EarthHoe::new).tag(ItemTags.HOES).register();
-
 	// item
 	// 忏悔之境
 	public static final ItemEntry<RepentMirror> REPENT_MIRROR = item("items/", "repent_mirror", RepentMirror::new).register();

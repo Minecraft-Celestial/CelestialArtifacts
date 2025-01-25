@@ -148,111 +148,6 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 		return list;
 	}
 
-	public enum Curses {
-		CHAOS(CAItems.CHAOTIC_ETCHING, CHAOS_TITLE::get, CHAOS_TRIGGER::get,
-				List.of(() -> CHAOS_CURSE_0.get(TextFacet.perc(getChaosCurseExplosion())),
-						() -> CHAOS_CURSE_1.get(TextFacet.perc(getChaosCurse()))),
-				() -> CHAOS_BONUS.get(TextFacet.perc(0.01), TextFacet.percSmall(getChaosBonus() * 0.01))),
-		ORIGIN(CAItems.ORIGIN_ETCHING, ORIGIN_TITLE::get,
-				() -> ORIGIN_TRIGGER.get(TextFacet.num(getOriginTrigger())),
-				() -> ORIGIN_CURSE.get(TextFacet.perc(getOriginCurse())),
-				() -> ORIGIN_BONUS.get(TextFacet.perc(getOriginBonus()))),
-		LIFE(CAItems.LIFE_ETCHING, LIFE_TITLE::get, LIFE_TRIGGER::get,
-				() -> LIFE_CURSE.get(TextFacet.perc(getLifeCurseHealth()), TextFacet.perc(getLifeCurseHeal())),
-				() -> LIFE_BONUS.get(TextFacet.perc(getLifeBonusHealth()), TextFacet.perc(getLifeBonusHeal()))),
-		TRUTH(CAItems.TRUTH_ETCHING, TRUTH_TITLE::get, TRUTH_TRIGGER::get,
-				() -> TRUTH_CURSE.get(TextFacet.perc(getTruthCurse())),
-				() -> TRUTH_BONUS.get(TextFacet.perc(getTruthBonus()))),
-		DESIRE(CAItems.DESIRE_ETCHING, DESIRE_TITLE::get, DESIRE_TRIGGER::get, DESIRE_CURSE::get,
-				() -> DESIRE_BONUS.get(TextFacet.num(1))),
-		NIHILITY(CAItems.NIHILITY_ETCHING, NIHILITY_TITLE::get, NIHILITY_TRIGGER::get,
-				() -> NIHILITY_CURSE.get(TextFacet.perc(getNihilityCurse())),
-				() -> NIHILITY_BONUS.get(TextFacet.perc(getNihilityBonus()), EffectFacet.getDesc(getNihilityEffect()))),
-		END(CAItems.END_ETCHING, END_TITLE::get, END_TRIGGER::get,
-				() -> END_CURSE.get(TextFacet.perc(getEndCurseThreshold()),
-						EffectFacet.getDesc(getEndEffectA()),
-						EffectFacet.getDesc(getEndEffectB())),
-				() -> END_BONUS.get(TextFacet.perc(getEndBonus()))),
-		;
-
-		private final Supplier<? extends Item> etching;
-		public final Supplier<MutableComponent> title, trigger, bonus;
-		private final List<Supplier<MutableComponent>> curse;
-
-
-		Curses(Supplier<? extends Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, List<Supplier<MutableComponent>> curse, Supplier<MutableComponent> bonus) {
-			this.etching = etching;
-			this.title = title;
-			this.trigger = trigger;
-			this.curse = curse;
-			this.bonus = bonus;
-		}
-
-		Curses(Supplier<? extends Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, Supplier<MutableComponent> curse, Supplier<MutableComponent> bonus) {
-			this(etching, title, trigger, List.of(curse), bonus);
-		}
-
-		private static void wrap(List<Component> list, MutableComponent comp) {
-			list.add(TextFacet.wrap(comp.withStyle(ChatFormatting.GRAY)));
-		}
-
-		private static void inner(List<Component> list, MutableComponent comp) {
-			list.add(TextFacet.inner(comp.withStyle(ChatFormatting.GRAY)));
-		}
-
-		private static void addText(@Nullable Level level, List<Component> list) {
-			if (CAModConfig.COMMON.misc.catastropheScrollPreventUnequip.get())
-				wrap(list, SCROLL_0.get());
-			wrap(list, SCROLL_1.get());
-			wrap(list, SCROLL_2.get());
-			list.add(Component.empty());
-			for (var curse : Curses.values()) {
-				boolean disabled = !ClientTokenHelper.flag(level, curse.name());
-				boolean bonus = ClientTokenHelper.hasCurio(level, curse.etching.get());
-				list.add(TextFacet.wrap(curse.title.get().withStyle(disabled ? ChatFormatting.GRAY :
-						bonus ? ChatFormatting.YELLOW : ChatFormatting.RED)));
-				if (disabled) {
-					inner(list, curse.trigger.get());
-				} else if (bonus) {
-					inner(list, curse.bonus.get());
-				} else {
-					for (var e : curse.curse) {
-						inner(list, e.get());
-					}
-				}
-			}
-		}
-
-		public void trigger(Player player) {
-			var flags = PlayerFlagData.HOLDER.get(player);
-			if (!flags.hasFlag(name())) {
-				flags.addFlag(name());
-				if (CurioUtils.isCsOn(player) && player instanceof ServerPlayer sp) {
-					sp.sendSystemMessage(TRIGGER.get(title.get()).withStyle(ChatFormatting.RED), true);
-				}
-			}
-		}
-
-		public boolean cursing(Player player) {
-			return PlayerFlagData.HOLDER.get(player).hasFlag(name()) &&
-					CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, etching.get());
-		}
-
-		public boolean blessing(Player player) {
-			return PlayerFlagData.HOLDER.get(player).hasFlag(name()) &&
-					CurioUtils.isCsOn(player) && CurioUtils.hasCurio(player, etching.get());
-		}
-
-		public LootItemCondition asCondition() {
-			return AllOfCondition.allOf(
-					new EnabledCondition((ModularCurio) etching.get()),
-					new HasCurioCondition(CAItems.CATASTROPHE_SCROLL.get()),
-					() -> new PlayerFlagCondition(name()),
-					new HasCurioCondition(etching.get()).invert()).build();
-		}
-
-	}
-
 	@Override
 	public void addText(@Nullable Level level, List<Component> list) {
 		Curses.addText(level, list);
@@ -345,6 +240,111 @@ public class CatastropheScroll extends BaseTickingToken implements CAAttackToken
 				player.addEffect(getEndEffectB());
 			}
 		}
+	}
+
+	public enum Curses {
+		CHAOS(CAItems.CHAOTIC_ETCHING, CHAOS_TITLE::get, CHAOS_TRIGGER::get,
+				List.of(() -> CHAOS_CURSE_0.get(TextFacet.perc(getChaosCurseExplosion())),
+						() -> CHAOS_CURSE_1.get(TextFacet.perc(getChaosCurse()))),
+				() -> CHAOS_BONUS.get(TextFacet.perc(0.01), TextFacet.percSmall(getChaosBonus() * 0.01))),
+		ORIGIN(CAItems.ORIGIN_ETCHING, ORIGIN_TITLE::get,
+				() -> ORIGIN_TRIGGER.get(TextFacet.num(getOriginTrigger())),
+				() -> ORIGIN_CURSE.get(TextFacet.perc(getOriginCurse())),
+				() -> ORIGIN_BONUS.get(TextFacet.perc(getOriginBonus()))),
+		LIFE(CAItems.LIFE_ETCHING, LIFE_TITLE::get, LIFE_TRIGGER::get,
+				() -> LIFE_CURSE.get(TextFacet.perc(getLifeCurseHealth()), TextFacet.perc(getLifeCurseHeal())),
+				() -> LIFE_BONUS.get(TextFacet.perc(getLifeBonusHealth()), TextFacet.perc(getLifeBonusHeal()))),
+		TRUTH(CAItems.TRUTH_ETCHING, TRUTH_TITLE::get, TRUTH_TRIGGER::get,
+				() -> TRUTH_CURSE.get(TextFacet.perc(getTruthCurse())),
+				() -> TRUTH_BONUS.get(TextFacet.perc(getTruthBonus()))),
+		DESIRE(CAItems.DESIRE_ETCHING, DESIRE_TITLE::get, DESIRE_TRIGGER::get, DESIRE_CURSE::get,
+				() -> DESIRE_BONUS.get(TextFacet.num(1))),
+		NIHILITY(CAItems.NIHILITY_ETCHING, NIHILITY_TITLE::get, NIHILITY_TRIGGER::get,
+				() -> NIHILITY_CURSE.get(TextFacet.perc(getNihilityCurse())),
+				() -> NIHILITY_BONUS.get(TextFacet.perc(getNihilityBonus()), EffectFacet.getDesc(getNihilityEffect()))),
+		END(CAItems.END_ETCHING, END_TITLE::get, END_TRIGGER::get,
+				() -> END_CURSE.get(TextFacet.perc(getEndCurseThreshold()),
+						EffectFacet.getDesc(getEndEffectA()),
+						EffectFacet.getDesc(getEndEffectB())),
+				() -> END_BONUS.get(TextFacet.perc(getEndBonus()))),
+		;
+
+		public final Supplier<MutableComponent> title, trigger, bonus;
+		private final Supplier<? extends Item> etching;
+		private final List<Supplier<MutableComponent>> curse;
+
+
+		Curses(Supplier<? extends Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, List<Supplier<MutableComponent>> curse, Supplier<MutableComponent> bonus) {
+			this.etching = etching;
+			this.title = title;
+			this.trigger = trigger;
+			this.curse = curse;
+			this.bonus = bonus;
+		}
+
+		Curses(Supplier<? extends Item> etching, Supplier<MutableComponent> title, Supplier<MutableComponent> trigger, Supplier<MutableComponent> curse, Supplier<MutableComponent> bonus) {
+			this(etching, title, trigger, List.of(curse), bonus);
+		}
+
+		private static void wrap(List<Component> list, MutableComponent comp) {
+			list.add(TextFacet.wrap(comp.withStyle(ChatFormatting.GRAY)));
+		}
+
+		private static void inner(List<Component> list, MutableComponent comp) {
+			list.add(TextFacet.inner(comp.withStyle(ChatFormatting.GRAY)));
+		}
+
+		private static void addText(@Nullable Level level, List<Component> list) {
+			if (CAModConfig.COMMON.misc.catastropheScrollPreventUnequip.get())
+				wrap(list, SCROLL_0.get());
+			wrap(list, SCROLL_1.get());
+			wrap(list, SCROLL_2.get());
+			list.add(Component.empty());
+			for (var curse : Curses.values()) {
+				boolean disabled = !ClientTokenHelper.flag(level, curse.name());
+				boolean bonus = ClientTokenHelper.hasCurio(level, curse.etching.get());
+				list.add(TextFacet.wrap(curse.title.get().withStyle(disabled ? ChatFormatting.GRAY :
+						bonus ? ChatFormatting.YELLOW : ChatFormatting.RED)));
+				if (disabled) {
+					inner(list, curse.trigger.get());
+				} else if (bonus) {
+					inner(list, curse.bonus.get());
+				} else {
+					for (var e : curse.curse) {
+						inner(list, e.get());
+					}
+				}
+			}
+		}
+
+		public void trigger(Player player) {
+			var flags = PlayerFlagData.HOLDER.get(player);
+			if (!flags.hasFlag(name())) {
+				flags.addFlag(name());
+				if (CurioUtils.isCsOn(player) && player instanceof ServerPlayer sp) {
+					sp.sendSystemMessage(TRIGGER.get(title.get()).withStyle(ChatFormatting.RED), true);
+				}
+			}
+		}
+
+		public boolean cursing(Player player) {
+			return PlayerFlagData.HOLDER.get(player).hasFlag(name()) &&
+					CurioUtils.isCsOn(player) && !CurioUtils.hasCurio(player, etching.get());
+		}
+
+		public boolean blessing(Player player) {
+			return PlayerFlagData.HOLDER.get(player).hasFlag(name()) &&
+					CurioUtils.isCsOn(player) && CurioUtils.hasCurio(player, etching.get());
+		}
+
+		public LootItemCondition asCondition() {
+			return AllOfCondition.allOf(
+					new EnabledCondition((ModularCurio) etching.get()),
+					new HasCurioCondition(CAItems.CATASTROPHE_SCROLL.get()),
+					() -> new PlayerFlagCondition(name()),
+					new HasCurioCondition(etching.get()).invert()).build();
+		}
+
 	}
 
 }

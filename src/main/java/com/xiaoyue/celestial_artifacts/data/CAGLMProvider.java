@@ -115,15 +115,52 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 
 	}
 
+	public static LootItemCondition killer(EntityType<?> type) {
+		return LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
+				EntityPredicate.Builder.entity().of(type)).build();
+	}
+
+	public static LootItemCondition killer(TagKey<EntityType<?>> tag) {
+		return LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
+				EntityPredicate.Builder.entity().of(tag)).build();
+	}
+
+	public static LootItemCondition entity(EntityPredicate.Builder builder) {
+		return LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, builder).build();
+	}
+
+	public static LootItemCondition entityType(EntityType<?> type) {
+		return entity(EntityPredicate.Builder.entity().of(type));
+	}
+
+	public static LootItemCondition entityType(TagKey<EntityType<?>> tag) {
+		return entity(EntityPredicate.Builder.entity().of(tag));
+	}
+
+	public static LootItemCondition damage(TagKey<DamageType> tag) {
+		return DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType()
+				.tag(TagPredicate.is(tag))).build();
+	}
+
 	@Override
 	protected void start() {
 		for (var e : CALootTableGen.values()) {
-			if (e != CALootTableGen.FISHING_TREASURE)
+			if (e != CALootTableGen.FISHING_TREASURE) {
 				add(e.id().getPath(), new AddLootTableModifier(e.id(),
 						LootTableIdCondition.builder(e.target).build()));
-			else add(e.id().getPath(), new AddLootTableModifier(e.id(),
-					new FishingCondition(true),
-					LootTableIdCondition.builder(e.target).build()));
+			} else {
+				add(e.id().getPath(), new AddLootTableModifier(e.id(),
+						new FishingCondition(true),
+						LootTableIdCondition.builder(e.target).build()));
+			}
+		}
+
+		for (LootBoxEnum e : LootBoxEnum.values()) {
+			add(e.id().getPath(), new FishingCooldownModifier(CAItems.TREASURE_HUNTER_NECKLACE.get(),
+					e.box, IntConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.necklace.treasureHunterNecklaceCooldown),
+					DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.necklace.treasureHunterNecklaceChance),
+					new FishingCondition(true, e.box, e.biomes))
+			);
 		}
 
 		add("drops/desire_etching", new AddItemModifier(CAItems.DESIRE_ETCHING.get(), CAItems.NEBULA_CUBE.get(),
@@ -185,34 +222,6 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.twistedBrainDropChance),
 				new EnabledCondition(CAItems.TWISTED_BRAIN.get()),
 				killer(EntityType.WITHER), entityType(EntityTypeTags.RAIDERS)));
-
-	}
-
-	public static LootItemCondition killer(EntityType<?> type) {
-		return LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
-				EntityPredicate.Builder.entity().of(type)).build();
-	}
-
-	public static LootItemCondition killer(TagKey<EntityType<?>> tag) {
-		return LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
-				EntityPredicate.Builder.entity().of(tag)).build();
-	}
-
-	public static LootItemCondition entity(EntityPredicate.Builder builder) {
-		return LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, builder).build();
-	}
-
-	public static LootItemCondition entityType(EntityType<?> type) {
-		return entity(EntityPredicate.Builder.entity().of(type));
-	}
-
-	public static LootItemCondition entityType(TagKey<EntityType<?>> tag) {
-		return entity(EntityPredicate.Builder.entity().of(tag));
-	}
-
-	public static LootItemCondition damage(TagKey<DamageType> tag) {
-		return DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType()
-				.tag(TagPredicate.is(tag))).build();
 	}
 
 }

@@ -23,29 +23,29 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class GaiaTotem extends Item implements L2Totem {
-    public GaiaTotem() {
-        super(new Properties().rarity(IRarityUtils.GREEN).stacksTo(1).fireResistant());
-    }
+	public GaiaTotem() {
+		super(new Properties().rarity(IRarityUtils.GREEN).stacksTo(1).fireResistant());
+	}
 
-    @Override
-    public void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
-        L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
-        holded.shrink(1);
-        self.setHealth(1f);
-        self.removeAllEffects();
-        EntityUtils.addEct(self, CCEffects.UNYIELDING.get(), 100);
-    }
+	@Override
+	public void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
+		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
+		holded.shrink(1);
+		self.setHealth(1f);
+		self.removeAllEffects();
+		EntityUtils.addEct(self, CCEffects.UNYIELDING.get(), 100);
+	}
 
-    @Override
-    public boolean allow(LivingEntity self, ItemStack stack, DamageSource source) {
-        if (self instanceof Player player) {
-            return CurioUtils.isCsOn(player);
-        }
-        return false;
-    }
+	@Override
+	public boolean allow(LivingEntity self, ItemStack stack, DamageSource source) {
+		if (self instanceof Player player) {
+			return CurioUtils.isCsOn(player);
+		}
+		return false;
+	}
 
-    @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> list, TooltipFlag pIsAdvanced) {
-        list.add(CALang.Tooltip.GAIA_TOTEM.get(CCLangData.eff(CCEffects.UNYIELDING.get())));
-    }
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> list, TooltipFlag pIsAdvanced) {
+		list.add(CALang.Tooltip.GAIA_TOTEM.get(CCLangData.eff(CCEffects.UNYIELDING.get())));
+	}
 }

@@ -16,26 +16,6 @@ import java.util.stream.Stream;
 
 public class CASlotGen extends RecordDataProvider {
 
-	public enum Type {
-		SCROLL(1),
-		PENDANT(1),
-		HEART(1),
-		CATASTROPHE(1),
-		ETCHING(0);
-
-		private final int slot;
-
-		Type(int slot) {
-			this.slot = slot;
-		}
-
-		public String id() {
-			return name().toLowerCase(Locale.ROOT);
-		}
-
-
-	}
-
 	public CASlotGen(DataGenerator generator) {
 		super(generator, "Celestial Artifact Slot Provider");
 	}
@@ -62,5 +42,25 @@ public class CASlotGen extends RecordDataProvider {
 				new ArrayList<>(Stream.of(Type.values()).map(Type::id).toList()),
 				SlotCondition.of()
 		));
+	}
+
+	public enum Type {
+		SCROLL(1),
+		PENDANT(1),
+		HEART(1),
+		CATASTROPHE(1),
+		ETCHING(0);
+
+		private final int slot;
+
+		Type(int slot) {
+			this.slot = slot;
+		}
+
+		public String id() {
+			return name().toLowerCase(Locale.ROOT);
+		}
+
+
 	}
 }

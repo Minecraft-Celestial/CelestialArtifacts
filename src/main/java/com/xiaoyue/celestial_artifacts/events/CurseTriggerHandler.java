@@ -8,5 +8,4 @@ import static com.xiaoyue.celestial_artifacts.CelestialArtifacts.MODID;
 public class CurseTriggerHandler {
 
 
-
 }

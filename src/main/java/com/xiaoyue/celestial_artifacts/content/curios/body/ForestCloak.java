@@ -19,39 +19,39 @@ import java.util.List;
 
 public class ForestCloak implements SingleLineText, AttrTextFacet, CAAttackToken, JumpFeature {
 
-    private static double getDodgeChance() {
-        return CAModConfig.COMMON.body.forestCloakDodgeChance.get();
-    }
+	private static double getDodgeChance() {
+		return CAModConfig.COMMON.body.forestCloakDodgeChance.get();
+	}
 
-    private static float getPower() {
-        return CAModConfig.COMMON.body.forestCloakJumpPower.get().floatValue();
-    }
+	private static float getPower() {
+		return CAModConfig.COMMON.body.forestCloakJumpPower.get().floatValue();
+	}
 
-    private static CALang.DamageTypes type() {
-        return CALang.DamageTypes.PROJECTILE;
-    }
+	private static CALang.DamageTypes type() {
+		return CALang.DamageTypes.PROJECTILE;
+	}
 
-    @Override
-    public MutableComponent getLine() {
-        return CALang.Modular.DODGE_TYPE.get(TextFacet.perc(getDodgeChance()),
-                type().get()).withStyle(ChatFormatting.GRAY);
-    }
+	@Override
+	public MutableComponent getLine() {
+		return CALang.Modular.DODGE_TYPE.get(TextFacet.perc(getDodgeChance()),
+				type().get()).withStyle(ChatFormatting.GRAY);
+	}
 
-    @Override
-    public void addAttrText(List<Component> list) {
-        list.add(AttrFacet.simpleMult(CALang.Modular.JUMP_POWER.get(), getPower()));
-    }
+	@Override
+	public void addAttrText(List<Component> list) {
+		list.add(AttrFacet.simpleMult(CALang.Modular.JUMP_POWER.get(), getPower()));
+	}
 
-    @Override
-    public void onJump(Player player, LivingJumpEvent event) {
-        event.setJumpPower(event.getJumpPower() * (1 + getPower()));
-    }
+	@Override
+	public void onJump(Player player, LivingJumpEvent event) {
+		event.setJumpPower(event.getJumpPower() * (1 + getPower()));
+	}
 
-    @Override
-    public boolean onPlayerAttacked(Player player, AttackCache cache) {
-        if (CAAttackToken.isArrow(cache)) {
-            return CAAttackToken.chance(player, getDodgeChance());
-        }
-        return false;
-    }
+	@Override
+	public boolean onPlayerAttacked(Player player, AttackCache cache) {
+		if (CAAttackToken.isArrow(cache)) {
+			return CAAttackToken.chance(player, getDodgeChance());
+		}
+		return false;
+	}
 }

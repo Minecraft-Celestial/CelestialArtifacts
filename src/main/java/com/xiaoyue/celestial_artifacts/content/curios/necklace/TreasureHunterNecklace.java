@@ -8,9 +8,9 @@ import net.minecraft.network.chat.MutableComponent;
 
 public class TreasureHunterNecklace implements SingleLineText {
 
-    @Override
-    public MutableComponent getLine() {
-        return CALang.Necklace.TREASURE_HUNTER_NECKLACE.get(TextFacet.num(
-                CAModConfig.COMMON.necklace.treasureHunterNecklaceCooldown.get()));
-    }
+	@Override
+	public MutableComponent getLine() {
+		return CALang.Necklace.TREASURE_HUNTER_NECKLACE.get(TextFacet.num(
+				CAModConfig.COMMON.necklace.treasureHunterNecklaceCooldown.get()));
+	}
 }

@@ -4,20 +4,15 @@ import com.xiaoyue.celestial_artifacts.content.curios.charm.CursedTotem;
 import com.xiaoyue.celestial_artifacts.content.curios.charm.GluttonyBadge;
 import com.xiaoyue.celestial_artifacts.content.curios.charm.SacrificialObject;
 import com.xiaoyue.celestial_artifacts.content.curios.curse.CatastropheScroll;
-import com.xiaoyue.celestial_artifacts.content.items.item.EnderJumpScepter;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.data.CCModConfig;
 import com.xiaoyue.celestial_core.events.DamageItemEvent;
-import com.xiaoyue.celestial_core.events.MenuSlotClickEvent;
-import com.xiaoyue.celestial_core.register.CCItems;
 import com.xiaoyue.celestial_core.utils.ItemUtils;
 import dev.xkmc.l2library.base.effects.EffectBuilder;
-import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -26,19 +21,15 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.*;
-import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -81,19 +72,6 @@ public class CAMiscCuriosHandler {
 		}
 		if (stack.getTag().getBoolean(AMETHYST_REF)) {
 			event.setAmount(Math.min(event.getAmount(), 1));
-		}
-	}
-
-	@SubscribeEvent
-	public static void onMenuClick(MenuSlotClickEvent event) {
-		if (event.getAction() != ClickAction.SECONDARY) return;
-		ItemStack heldItem = event.getHeldItem();
-		ItemStack slotItem = event.getSlotItem();
-		if (slotItem.is(CAItems.ENDER_JUMP_SCEPTER.get()) && heldItem.is(Items.ENDER_PEARL)) {
-			heldItem.shrink(1);
-			int charging = slotItem.getOrCreateTag().getInt(EnderJumpScepter.CHARGING);
-			slotItem.getOrCreateTag().putInt(EnderJumpScepter.CHARGING, charging + 1);
-			event.setCanceled(true);
 		}
 	}
 
@@ -188,34 +166,6 @@ public class CAMiscCuriosHandler {
 			if (CurioUtils.hasCurio(player, CAItems.CURSED_TOTEM.get())) {
 				if (attacker instanceof LivingEntity livingEntity) {
 					livingEntity.addEffect(CursedTotem.eff());
-				}
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public static void onFishing(ItemFishedEvent event) {
-		Player entity = event.getEntity();
-		if (CurioUtils.hasCurio(entity, CAItems.TREASURE_HUNTER_NECKLACE.get())) {
-			double chance = CAModConfig.COMMON.necklace.treasureHunterNecklaceChance.get();
-			if (entity.getRandom().nextDouble() <= chance && !entity.getCooldowns().isOnCooldown(CAItems.TREASURE_HUNTER_NECKLACE.get())) {
-				Holder<Biome> biome = entity.level().getBiome(entity.getOnPos());
-				int cooldown = CAModConfig.COMMON.necklace.treasureHunterNecklaceCooldown.get();
-				if (biome.is(BiomeTags.IS_JUNGLE)) {
-					entity.addItem(CCItems.JUNGLE_PYRAMID_LOOT_BOX.asStack());
-					entity.getCooldowns().addCooldown(CAItems.TREASURE_HUNTER_NECKLACE.get(), cooldown * 20);
-				} else if (biome.is(BiomeTags.HAS_DESERT_PYRAMID)) {
-					entity.addItem(CCItems.DESERT_PYRAMID_LOOT_BOX.asStack());
-					entity.getCooldowns().addCooldown(CAItems.TREASURE_HUNTER_NECKLACE.get(), cooldown * 20);
-				} else if (biome.is(BiomeTags.HAS_IGLOO)) {
-					entity.addItem(CCItems.IGLOO_LOOT_BOX.asStack());
-					entity.getCooldowns().addCooldown(CAItems.TREASURE_HUNTER_NECKLACE.get(), cooldown * 20);
-				} else if (biome.is(BiomeTags.HAS_WOODLAND_MANSION)) {
-					entity.addItem(CCItems.MANSON_LOOT_BOX.asStack());
-					entity.getCooldowns().addCooldown(CAItems.TREASURE_HUNTER_NECKLACE.get(), cooldown * 20);
-				} else if (biome.is(BiomeTags.HAS_PILLAGER_OUTPOST)) {
-					entity.addItem(CCItems.PILLAGER_OUTPOST_LOOT_BOX.asStack());
-					entity.getCooldowns().addCooldown(CAItems.TREASURE_HUNTER_NECKLACE.get(), cooldown * 20);
 				}
 			}
 		}

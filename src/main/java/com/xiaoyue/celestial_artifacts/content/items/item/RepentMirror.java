@@ -22,12 +22,12 @@ import java.util.List;
 
 public class RepentMirror extends Item {
 
-	private static int cd() {
-		return CAModConfig.COMMON.misc.backtrackMirrorCooldown.get();
-	}
-
 	public RepentMirror() {
 		super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	}
+
+	private static int cd() {
+		return CAModConfig.COMMON.misc.backtrackMirrorCooldown.get();
 	}
 
 	@Override

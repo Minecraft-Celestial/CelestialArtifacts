@@ -22,6 +22,9 @@ import java.util.List;
 @SerialClass
 public class HiddenBracelet extends BaseTickingToken implements CAAttackToken {
 
+	@SerialClass.SerialField
+	private int cooldown = 0;
+
 	private static int dur() {
 		return CAModConfig.COMMON.bracelet.hiddenBraceletInterval.get();
 	}
@@ -46,9 +49,6 @@ public class HiddenBracelet extends BaseTickingToken implements CAAttackToken {
 		list.add(TextFacet.wrap(CALang.Bracelet.HIDDEN_1.get(
 				TextFacet.eff(eff()), TextFacet.perc(atk()))));
 	}
-
-	@SerialClass.SerialField
-	private int cooldown = 0;
 
 	@Override
 	protected void removeImpl(Player player) {
