@@ -8,7 +8,6 @@ import com.xiaoyue.celestial_artifacts.data.CAModConfig;
 import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.register.CAItems;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
-import com.xiaoyue.celestial_core.data.CCModConfig;
 import com.xiaoyue.celestial_core.events.DamageItemEvent;
 import com.xiaoyue.celestial_core.utils.ItemUtils;
 import dev.xkmc.l2library.base.effects.EffectBuilder;
@@ -67,11 +66,11 @@ public class CAMiscCuriosHandler {
 		ItemStack stack = event.getStack();
 		if (!stack.hasTag()) return;
 		if (stack.getTag().getBoolean(COPPER_REF)) {
-			Double chance = CCModConfig.COMMON.copperReinforceChance.get();
+			Double chance = CAModConfig.COMMON.misc.copperReinforceChance.get();
 			event.setAmount(ItemUtils.calculateRef(event.getRandom(), event.getAmount(), chance));
 		}
 		if (stack.getTag().getBoolean(AMETHYST_REF)) {
-			event.setAmount(Math.min(event.getAmount(), 1));
+			event.setAmount(Math.min(event.getAmount(), CAModConfig.COMMON.misc.amethystReinforceEffect.get()));
 		}
 	}
 

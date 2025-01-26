@@ -37,7 +37,7 @@ public interface TextFacet extends IFacet {
 		return eff.getDisplayName().copy().withStyle(ChatFormatting.AQUA);
 	}
 
-	public static MutableComponent item(Item item) {
+	static MutableComponent item(Item item) {
 		return Component.translatable(item.getDescriptionId()).withStyle(ChatFormatting.AQUA);
 	}
 

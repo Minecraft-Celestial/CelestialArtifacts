@@ -1337,6 +1337,8 @@ public class CAModConfig {
 
 			public final ForgeConfigSpec.IntValue backtrackMirrorCooldown;
 			public final ForgeConfigSpec.IntValue repentMirrorCooldown;
+			public final ForgeConfigSpec.DoubleValue copperReinforceChance;
+			public final ForgeConfigSpec.IntValue amethystReinforceEffect;
 
 			public final ForgeConfigSpec.BooleanValue giveItemsOnStart;
 			public final ForgeConfigSpec.BooleanValue catastropheScrollEquipOnStart;
@@ -1349,6 +1351,10 @@ public class CAModConfig {
 						10, 0, 10000);
 				repentMirrorCooldown = builder.defineInRange("repentMirrorCooldown",
 						10, 0, 10000);
+				copperReinforceChance = builder.defineInRange("copperReinforceChance",
+						0.5, 0.01, 1);
+				amethystReinforceEffect = builder.defineInRange("amethystReinforceEffect",
+						1, 0, 100);
 
 				giveItemsOnStart = builder
 						.comment("If true, Hierloom Necklace and Catastrophe Scroll will be given to new players")
