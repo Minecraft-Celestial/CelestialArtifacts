@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-26T15:09:11.813226	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-02-15T10:44:22.029888	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 2e66c345eaaa3a434b3d05b5ddd3a20dd91aaebd assets/celestial_artifacts/lang/en_ud.json
 689e8a11360304f97c89a8cd69d179ee23db291b assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
@@ -258,7 +258,7 @@ ae4c9d6d969bc7df9669f03226b4ec013f899946 data/celestial_artifacts/recipes/star_n
 95e58bf82024465677ee61f79c41a505f83e9f63 data/celestial_artifacts/recipes/war_dead_badge.json
 bca2dd75294742b2d75d16ed13756e1cb2fad34d data/celestial_artifacts/recipes/yellow_duck.json
 6ded3ea2e35a47445f95b3e2a263d918575d48cf data/celestial_artifacts/tags/entity_types/desire_blacklist.json
-78f9c4a5381a9fccbb58ad9ff35086558d1ce2d9 data/celestial_artifacts/tags/items/require_curse.json
+cdec9e4f1f84ae6a1b59347655429fb4a9106f21 data/celestial_artifacts/tags/items/require_curse.json
 a6206a3d5baad2b734515ea39951ce7d5c60f6d0 data/curios/tags/items/back.json
 38212bb2fa07199dbc37bdb8e3a044d34a88a8f3 data/curios/tags/items/body.json
 6c401cd08b4f59029e724362aa2f380ddd8c42e0 data/curios/tags/items/bracelet.json

@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_artifacts.content.items.item;
 
 import com.xiaoyue.celestial_artifacts.data.CALang;
+import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_artifacts.utils.CurioUtils;
 import com.xiaoyue.celestial_core.data.CCLangData;
 import com.xiaoyue.celestial_core.register.CCEffects;
@@ -38,6 +39,7 @@ public class GaiaTotem extends Item implements L2Totem {
 
 	@Override
 	public boolean allow(LivingEntity self, ItemStack stack, DamageSource source) {
+		if (!stack.is(CATagGen.REQUIRE_CURSE)) return true;
 		if (self instanceof Player player) {
 			return CurioUtils.isCsOn(player);
 		}
@@ -45,7 +47,10 @@ public class GaiaTotem extends Item implements L2Totem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> list, TooltipFlag pIsAdvanced) {
+	public void appendHoverText(ItemStack stack, @Nullable Level pLevel, List<Component> list, TooltipFlag pIsAdvanced) {
+		if (stack.is(CATagGen.REQUIRE_CURSE)) {
+			list.add(CALang.Modular.curse());
+		}
 		list.add(CALang.Tooltip.GAIA_TOTEM.get(CCLangData.eff(CCEffects.UNYIELDING.get())));
 	}
 }

@@ -50,6 +50,7 @@ import com.xiaoyue.celestial_artifacts.content.items.tool.EarthPickaxe;
 import com.xiaoyue.celestial_artifacts.content.items.tool.EarthShovel;
 import com.xiaoyue.celestial_artifacts.data.CALang;
 import com.xiaoyue.celestial_artifacts.data.CAModConfig;
+import com.xiaoyue.celestial_artifacts.data.CATagGen;
 import com.xiaoyue.celestial_core.content.generic.CCTooltipItem;
 import com.xiaoyue.celestial_core.register.CCAttributes;
 import com.xiaoyue.celestial_core.register.CCEffects;
@@ -762,7 +763,7 @@ public class CAItems {
 	// 药水袋
 	public static final ItemEntry<PotionsBag> POTIONS_BAG = item("items/", "potions_bag", PotionsBag::new).register();
 	// 盖亚图腾
-	public static final ItemEntry<GaiaTotem> GAIA_TOTEM = item("items/", "gaia_totem", GaiaTotem::new).register();
+	public static final ItemEntry<GaiaTotem> GAIA_TOTEM = item("items/", "gaia_totem", GaiaTotem::new).tag(CATagGen.REQUIRE_CURSE).register();
 	// 末影折跃权杖
 	public static final ItemEntry<EnderJumpScepter> ENDER_JUMP_SCEPTER = item("items/", "ender_jump_scepter", EnderJumpScepter::new).register();
 
