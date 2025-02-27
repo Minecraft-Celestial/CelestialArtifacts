@@ -159,7 +159,7 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 			add(e.id().getPath(), new FishingCooldownModifier(CAItems.TREASURE_HUNTER_NECKLACE.get(),
 					e.box, IntConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.necklace.treasureHunterNecklaceCooldown),
 					DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.necklace.treasureHunterNecklaceChance),
-					new FishingCondition(true, e.box, e.biomes))
+					new FishingCondition(true, CAItems.TREASURE_HUNTER_NECKLACE.get(), e.biomes))
 			);
 		}
 

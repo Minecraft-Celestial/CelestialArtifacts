@@ -4,7 +4,10 @@
   "condition": "celestial_artifacts:treasure_hunter_necklace",
   "conditions": [
     {
-      "condition": "celestial_artifacts:fishing"
+      "biomes": "minecraft:has_structure/desert_pyramid",
+      "condition": "celestial_artifacts:fishing",
+      "item": "celestial_artifacts:treasure_hunter_necklace",
+      "open": true
     }
   ],
   "cooldown": "celestial_configs/celestial_artifacts-common.toml/necklace.treasureHunterNecklaceCooldown",

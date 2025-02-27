@@ -1,3 +1,7 @@
+1.5.3
+- Fix treasure hunter
+- Change min value of certain config options to 0
+
 1.5.2
 - Fix Gaia Totem description
 

@@ -519,7 +519,7 @@ public class CAModConfig {
 							.defineInRange("abyssWillBadgeDuration", 15, 0, Integer.MAX_VALUE);
 					abyssWillBadgeRemainingHealth = builder
 							.comment("AbyssWillBadge: Remaining HP in percentage after skill ends")
-							.defineInRange("abyssWillBadgeRemainingHealth", 0.2, 0.01, 1.00);
+							.defineInRange("abyssWillBadgeRemainingHealth", 0.2, 0, 1.00);
 					abyssWillBadgeChanceSmall = builder
 							.comment("AbyssWillBadge: Chance of small damage bonus")
 							.defineInRange("abyssWillBadgeChanceSmall", 0.4, 0.0, 1.0);
@@ -546,10 +546,10 @@ public class CAModConfig {
 							.defineInRange("abyssWillBadgeLimit", 10, 1, Integer.MAX_VALUE);
 					abyssWillBadgeDamageBonus = builder
 							.comment("AbyssWillBadge: damage bonus per level")
-							.defineInRange("abyssWillBadgeDamageBonus", 0.20, 0.01, 1.00);
+							.defineInRange("abyssWillBadgeDamageBonus", 0.20, 0, 1.00);
 					abyssWillBadgeDamagePenalty = builder
 							.comment("AbyssWillBadge: damage penalty per level")
-							.defineInRange("abyssWillBadgeDamagePenalty", 0.25, 0.01, 1.00);
+							.defineInRange("abyssWillBadgeDamagePenalty", 0.25, 0, 1.00);
 
 				}
 
@@ -579,7 +579,7 @@ public class CAModConfig {
 				{
 					angelPearlRegen = builder
 							.comment("Angel Pearl: Regen rate per beneficial effect")
-							.defineInRange("angelPearlRegen", 0.08, 0.01, 1.00);
+							.defineInRange("angelPearlRegen", 0.08, 0, 1.00);
 					angelPearlArmor = builder
 							.comment("Angel Pearl: armor bonus per beneficial effect")
 							.defineInRange("angelPearlArmor", 1, 0, Integer.MAX_VALUE);
@@ -611,21 +611,21 @@ public class CAModConfig {
 							.defineInRange("cursedProtectorFrontProtect", 0.3, 0, 1);
 					cursedProtectorThreshold = builder
 							.comment("Cursed Protector: health threshold to trigger damage reduction")
-							.defineInRange("cursedProtectorThreshold", 0.35, 0.01, 1);
+							.defineInRange("cursedProtectorThreshold", 0.35, 0, 1);
 					cursedProtectorReduction = builder
 							.comment("Cursed Protector: damage reduction percentage")
-							.defineInRange("cursedProtectorReduction", 0.25, 0.01, 1);
+							.defineInRange("cursedProtectorReduction", 0.25, 0, 1);
 				}
 
 				// cursed_talisman
 				{
 					cursedTalismanCritRateAdd = builder
 							.comment("Cursed Talisman: critical hit rate increased by each enchantment")
-							.defineInRange("cursedTalismanCritRateAdd", 0.04, 0.01, 1);
+							.defineInRange("cursedTalismanCritRateAdd", 0.04, 0, 1);
 
 					cursedTalismanCritDamageAdd = builder
 							.comment("Cursed Talisman: critical hit damage increased by each enchantment")
-							.defineInRange("cursedTalismanCritDamageAdd", 0.08, 0.01, 1);
+							.defineInRange("cursedTalismanCritDamageAdd", 0.08, 0, 1);
 				}
 
 				//cursed_totem
@@ -680,7 +680,7 @@ public class CAModConfig {
 							.defineInRange("knightShelterHealInterval", 4, 0, Integer.MAX_VALUE);
 					knightShelterReflection = builder
 							.comment("Knight Shelter: reflection percentage")
-							.defineInRange("knightShelterReflection", 0.30, 0.00, 1);
+							.defineInRange("knightShelterReflection", 0.30, 0, 1);
 				}
 
 				// magic horseshoe
@@ -703,23 +703,23 @@ public class CAModConfig {
 				{
 					sacrificialObjectReduction = builder
 							.comment("Sacrificial Object: damage reduction percentage")
-							.defineInRange("sacriReduction", 0.05, 0.01, 1);
+							.defineInRange("sacriReduction", 0.05, 0, 1);
 					sacrificialObjectHeritage = builder
 							.comment("Sacrificial Object: gold ingot drop chance on death")
 							.defineInRange("sacrificialObjectHeritage", 0.5, 0, 1);
 					sacrificialObjectSacrifice = builder
 							.comment("Sacrificial Object :death sacrifice chance")
-							.defineInRange("sacrificialObjectSacrifice", 0.45, 0.01, 1);
+							.defineInRange("sacrificialObjectSacrifice", 0.45, 0, 1);
 				}
 
 				//soul box
 				{
 					soulBoxShatterChance = builder
 							.comment("Soul Box: chance to inflict shatter effect")
-							.defineInRange("soulBoxShatterChance", 0.30, 0.01, 1);
+							.defineInRange("soulBoxShatterChance", 0.30, 0, 1);
 					soulBoxReflect = builder
 							.comment("Soul Box: abyss damage as percentage of original damage")
-							.defineInRange("soulBoxReflect", 2.50, 0.01, 100);
+							.defineInRange("soulBoxReflect", 2.50, 0, 100);
 					soulBoxCooldown = builder
 							.comment("Soul Box: cool down in seconds")
 							.defineInRange("soulBoxCooldown", 240, 1, Integer.MAX_VALUE);
@@ -781,19 +781,19 @@ public class CAModConfig {
 				{
 					warDeadBadgeHeal = builder
 							.comment("War Dead Badge: healing in percentage of lost health per surrounding entity")
-							.defineInRange("warDeadBadgeHeal", 0.01, 0.01, 1);
+							.defineInRange("warDeadBadgeHeal", 0.01, 0, 1);
 					warDeadBadgeAtk = builder
 							.comment("War Dead Badge: damage bonus per 1% lost health")
-							.defineInRange("warDeadBadgeAtk", 0.02, 0.01, 1);
+							.defineInRange("warDeadBadgeAtk", 0.02, 0, 1);
 					warDeadBadgeArmor = builder
 							.comment("War Dead Badge: armor bonus per 1% lost health")
-							.defineInRange("warDeadBadgeArmor", 0.02, 0.01, 1);
+							.defineInRange("warDeadBadgeArmor", 0.02, 0, 1);
 					warDeadBadgeSpeed = builder
 							.comment("War Dead Badge: speed bonus per 1% lost health")
-							.defineInRange("warDeadBadgeSpeed", 0.01, 0.01, 1);
+							.defineInRange("warDeadBadgeSpeed", 0.01, 0, 1);
 					warDeadBadgeThreshold = builder
 							.comment("War Dead Badge: health threshold to trigger healing")
-							.defineInRange("warDeadBadgeThreshold", 0.5, 0.01, 1);
+							.defineInRange("warDeadBadgeThreshold", 0.5, 0, 1);
 				}
 
 				// solar magnet
@@ -842,15 +842,15 @@ public class CAModConfig {
 
 				chaoticExplosionDamage = builder
 						.comment("Chaotic Curse: Damage increment percentage for explosion")
-						.defineInRange("chaoticExplosionDamage", 0.75, 0.01, 100);
+						.defineInRange("chaoticExplosionDamage", 0.75, 0, 100);
 
 				chaoticOtherDamage = builder
 						.comment("Chaotic Curse: Damage increment percentage for non-explosion")
-						.defineInRange("chaoticOtherDamage", 0.5, 0.01, 100);
+						.defineInRange("chaoticOtherDamage", 0.5, 0, 100);
 
 				chaoticBlessDamageReduction = builder
 						.comment("Chaotic Bless: Max damage reduction at zero health")
-						.defineInRange("chaoticBlessDamageReduction", 0.5, 0.01, 1);
+						.defineInRange("chaoticBlessDamageReduction", 0.5, 0, 1);
 
 				originTriggerDurability = builder
 						.comment("Origin Curse: Durability threshold to trigger curse ")
@@ -858,43 +858,43 @@ public class CAModConfig {
 
 				originCurseDamage = builder
 						.comment("Origin Curse: Player attack damage reduction")
-						.defineInRange("originCurseDamage", 0.5, 0.01, 1);
+						.defineInRange("originCurseDamage", 0.5, 0, 1);
 
 				originBlessDamage = builder
 						.comment("Origin Bless: Player attack damage bonus")
-						.defineInRange("originBlessDamage", 0.25, 0.01, 100);
+						.defineInRange("originBlessDamage", 0.25, 0, 100);
 
 				lifeCurseHealth = builder
 						.comment("Life Curse: Player max health reduction")
-						.defineInRange("lifeCurseHealth", 0.25, 0.01, 1);
+						.defineInRange("lifeCurseHealth", 0.25, 0, 1);
 
 				lifeCurseHeal = builder
 						.comment("Life Curse: Player healing reduction")
-						.defineInRange("lifeCurseHeal", 0.5, 0.01, 1);
+						.defineInRange("lifeCurseHeal", 0.5, 0, 1);
 
 				lifeBlessHealth = builder
 						.comment("Life Bless: Player max health bonus")
-						.defineInRange("lifeBlessHealth", 0.2, 0.01, 100);
+						.defineInRange("lifeBlessHealth", 0.2, 0, 100);
 
 				lifeBlessHeal = builder
 						.comment("Life Bless: Player healing bonus")
-						.defineInRange("lifeBlessHeal", 0.3, 0.01, 100);
+						.defineInRange("lifeBlessHeal", 0.3, 0, 100);
 
 				truthCurseMinDamage = builder
 						.comment("Truth Curse: minimum damage from mobs")
-						.defineInRange("truthCurseMinDamage", 0.3, 0.01, 1);
+						.defineInRange("truthCurseMinDamage", 0.3, 0, 1);
 
 				truthBlessMaxDamage = builder
 						.comment("Truth Bless: maximum damage from mobs")
-						.defineInRange("truthBlessMaxDamage", 0.6, 0.01, 1);
+						.defineInRange("truthBlessMaxDamage", 0.6, 0, 1);
 
 				nihilityCurseDuration = builder
 						.comment("Nihility Curse: negative effect duration")
-						.defineInRange("nihilityCurseDuration", 1, 0.01, 100);
+						.defineInRange("nihilityCurseDuration", 1d, 0, 100);
 
 				nihilityBlessReduction = builder
 						.comment("Nihility Bless: void damage reduction")
-						.defineInRange("nihilityBlessReduction", 0.75, 0.01, 1);
+						.defineInRange("nihilityBlessReduction", 0.75, 0, 1);
 
 				nihilityBlessDuration = builder
 						.comment("Nihility Bless: effect duration inflicted")
@@ -902,7 +902,7 @@ public class CAModConfig {
 
 				endCurseThreshold = builder
 						.comment("End Curse: damage threshold for negative effects")
-						.defineInRange("endCurseThreshold", 0.1, 0.01, 1);
+						.defineInRange("endCurseThreshold", 0.1, 0, 1);
 
 				endCurseDuration = builder
 						.comment("End Curse: negative effect duration")
@@ -910,7 +910,7 @@ public class CAModConfig {
 
 				endBlessHeal = builder
 						.comment("End Bless: healing as percentage of health lost")
-						.defineInRange("endBlessHeal", 0.2, 0.01, 1);
+						.defineInRange("endBlessHeal", 0.2, 0, 1);
 
 				etchingSlotSize = builder
 						.comment("Catastrophe Scroll: Number of etching slots size")
@@ -963,13 +963,13 @@ public class CAModConfig {
 						.defineInRange("guardianEyeProtection", 0.2, 0, 1);
 				prayerCrownHealAmount = builder
 						.comment("Prayer Crown: heal amount")
-						.defineInRange("prayerCrownHealAmount", 0.25, 0.01, 10);
+						.defineInRange("prayerCrownHealAmount", 0.25, 0, 10);
 				prayerCrownHealChance = builder
 						.comment("Prayer Crown: heal chance")
-						.defineInRange("prayerCrownHealChance", 0.5, 0.01, 1);
+						.defineInRange("prayerCrownHealChance", 0.5, 0, 1);
 				prayerCrownProtection = builder
 						.comment("Prayer Crown: protection")
-						.defineInRange("prayerCrownProtection", 0.25, 0.01, 10);
+						.defineInRange("prayerCrownProtection", 0.25, 0, 10);
 				spiritCrownMaxEntityCount = builder
 						.comment("Spirit Crown: max entity count around player to trigger damage boost")
 						.defineInRange("spiritCrownMaxEntityCount", 3, 0, 100);
@@ -1030,10 +1030,10 @@ public class CAModConfig {
 						.defineInRange("demonHeartDamageReduction", 0.05, 0, 1);
 				twistedHeartDamage = builder
 						.comment("Twisted Heart: damage")
-						.defineInRange("twistedHeartDamage", 0.33, 0.01, 1);
+						.defineInRange("twistedHeartDamage", 0.33, 0, 1);
 				twistedHeartToughness = builder
 						.comment("Twisted Heart: toughness")
-						.defineInRange("twistedHeartToughness", 0.2, 0.01, 1);
+						.defineInRange("twistedHeartToughness", 0.2, 0, 1);
 				greedyHeartXpBonus = builder
 						.comment("Greedy Heart: Xp pickup bonus")
 						.defineInRange("greedyHeartXpBonus", 2d, 0, 100);
@@ -1101,7 +1101,7 @@ public class CAModConfig {
 						.defineInRange("holyNecklaceDuration", 2, 0, 600);
 				lockOfAbyssExtraDamage = builder
 						.comment("Lock Of Abyss: extra damage multiplier")
-						.defineInRange("lockOfAbyssExtraDamage", 2.5, 0.01, 10);
+						.defineInRange("lockOfAbyssExtraDamage", 2.5, 0, 10);
 				lockOfAbyssDuration = builder
 						.comment("Lock Of Abyss: slowness duration in seconds")
 						.defineInRange("lockOfAbyssDuration", 10, 1, 1000);
@@ -1160,10 +1160,10 @@ public class CAModConfig {
 						.defineInRange("spiritNecklaceProjectile", 0.25, 0, 10);
 				treasureHunterNecklaceCooldown = builder
 						.comment("Treasure Hunter Necklace: Cooldown time")
-						.defineInRange("treasureHunterNecklaceCooldown", 300, 0, 10000);
+						.defineInRange("treasureHunterNecklaceCoolDown", 6000, 0, 10000000);
 				treasureHunterNecklaceChance = builder
 						.comment("Treasure Hunter Necklace: chance to catch a loot")
-						.defineInRange("treasureHunterNecklaceChance", 0.05, 0.01, 1);
+						.defineInRange("treasureHunterNecklaceChance", 0.05, 0, 1);
 				builder.pop();
 			}
 
@@ -1272,7 +1272,7 @@ public class CAModConfig {
 				forestCloakDodgeChance = builder.comment("forest cloak: chance to dodge projectile")
 						.defineInRange("forestCloakDodgeChance", 0.2, 0, 1);
 				forestCloakJumpPower = builder.comment("forest cloak: jump power bonus")
-						.defineInRange("forestCloakJumpPower", 0.25, 0.01, 10);
+						.defineInRange("forestCloakJumpPower", 0.25, 0, 10);
 				builder.pop();
 			}
 
@@ -1352,7 +1352,7 @@ public class CAModConfig {
 				repentMirrorCooldown = builder.defineInRange("repentMirrorCooldown",
 						10, 0, 10000);
 				copperReinforceChance = builder.defineInRange("copperReinforceChance",
-						0.5, 0.01, 1);
+						0.5, 0, 1);
 				amethystReinforceEffect = builder.defineInRange("amethystReinforceEffect",
 						1, 0, 100);
 
