@@ -10,6 +10,6 @@
       "open": true
     }
   ],
-  "cooldown": "celestial_configs/celestial_artifacts-common.toml/necklace.treasureHunterNecklaceCooldown",
+  "cooldown": "celestial_configs/celestial_artifacts-common.toml/necklace.treasureHunterNecklaceCoolDown",
   "result": "celestial_core:pillager_outpost_loot_box"
 }

@@ -202,7 +202,7 @@ public class CAGLMProvider extends GlobalLootModifierProvider {
 				EntityPredicate.Builder.entity().of(EntityType.PLAYER).build()))));
 		add("drops/charming_bracelet", new AddItemModifier(CAItems.CHARMING_BRACELET.get(), Items.GOLD_INGOT,
 				DoubleConfigValue.of(CAModConfig.COMMON_PATH, CAModConfig.COMMON.materials.charmingBraceletDropChance),
-				new EnabledCondition(CAItems.CHARMING_BRACELET.get()),
+				new EnabledCondition(CAItems.CHARMING_BRACELET.get()), entityType(EntityType.VILLAGER),
 				new PlayerStatCondition(PlayerStatCondition.Type.REPUTATION, IntConfigValue.of(CAModConfig.COMMON_PATH,
 						CAModConfig.COMMON.materials.charmingBraceletReputationRequirement))));
 		add("drops/guardian_eye", new AddItemModifier(CAItems.GUARDIAN_EYE.get(),

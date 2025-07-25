@@ -1,3 +1,6 @@
+1.5.4
+- Fix charming bracelet drop not checking if it's killing villager
+
 1.5.3
 - Fix treasure hunter
 - Change min value of certain config options to 0

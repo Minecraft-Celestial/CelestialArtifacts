@@ -7,6 +7,13 @@
       "item": "celestial_artifacts:charming_bracelet"
     },
     {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:villager"
+      }
+    },
+    {
       "type": "REPUTATION",
       "condition": "celestial_artifacts:player_stat",
       "count": "celestial_configs/celestial_artifacts-common.toml/materials.charmingBraceletReputationRequirement"
