@@ -1,3 +1,6 @@
+1.5.5
+- Fix potion bag
+
 1.5.4
 - Fix charming bracelet drop not checking if it's killing villager
 
