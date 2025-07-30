@@ -35,7 +35,7 @@ public class CAModConfig {
 	 */
 	public static void init() {
 		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
+		COMMON_PATH = register(ModConfig.Type.SERVER, COMMON_SPEC);
 	}
 
 	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {

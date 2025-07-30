@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:add_item",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.desireEtchingDropChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/materials.desireEtchingDropChance",
   "conditions": [
     {
       "condition": "minecraft:all_of",
@@ -36,7 +36,7 @@
     {
       "type": "LOOT",
       "condition": "celestial_artifacts:player_stat",
-      "count": "celestial_configs/celestial_artifacts-common.toml/materials.desireEtchingLootingRequirement"
+      "count": "celestial_configs/celestial_artifacts-server.toml/materials.desireEtchingLootingRequirement"
     }
   ],
   "fail": "celestial_artifacts:nebula_cube",

@@ -646,6 +646,7 @@ public class CARecipeGen {
 		if (ans instanceof RecipeBuilder rec && rec.getResult() instanceof ModularCurio curio) {
 			saver = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(CAModConfig.COMMON_PATH, curio.enableConfig(), true));
 		}
+		saver = pvd;
 		return ans;
 	}
 

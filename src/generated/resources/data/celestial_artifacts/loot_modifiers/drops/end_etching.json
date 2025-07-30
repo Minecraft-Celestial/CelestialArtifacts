@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:add_item",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.endEtchingDropChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/materials.endEtchingDropChance",
   "conditions": [
     {
       "condition": "minecraft:all_of",
@@ -36,7 +36,7 @@
     {
       "category": "HARMFUL",
       "condition": "celestial_core:player_effect",
-      "count": "celestial_configs/celestial_artifacts-common.toml/materials.endEtchingEffectRequirement"
+      "count": "celestial_configs/celestial_artifacts-server.toml/materials.endEtchingEffectRequirement"
     }
   ],
   "fail": "celestial_artifacts:nebula_cube",

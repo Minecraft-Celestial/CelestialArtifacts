@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:fishing_cooldown",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/necklace.treasureHunterNecklaceChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/necklace.treasureHunterNecklaceChance",
   "condition": "celestial_artifacts:treasure_hunter_necklace",
   "conditions": [
     {
@@ -10,6 +10,6 @@
       "open": true
     }
   ],
-  "cooldown": "celestial_configs/celestial_artifacts-common.toml/necklace.treasureHunterNecklaceCoolDown",
+  "cooldown": "celestial_configs/celestial_artifacts-server.toml/necklace.treasureHunterNecklaceCoolDown",
   "result": "celestial_core:jungle_pyramid_loot_box"
 }

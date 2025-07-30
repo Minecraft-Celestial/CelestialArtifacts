@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:add_item",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.lifeEtchingDropChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/materials.lifeEtchingDropChance",
   "conditions": [
     {
       "condition": "minecraft:all_of",
@@ -28,7 +28,7 @@
     },
     {
       "condition": "celestial_core:entity_health",
-      "min": "celestial_configs/celestial_artifacts-common.toml/materials.lifeEtchingHealthRequirement"
+      "min": "celestial_configs/celestial_artifacts-server.toml/materials.lifeEtchingHealthRequirement"
     }
   ],
   "fail": "celestial_artifacts:nebula_cube",

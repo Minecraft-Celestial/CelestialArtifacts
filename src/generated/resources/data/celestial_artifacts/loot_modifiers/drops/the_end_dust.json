@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:add_item",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.endDustDropChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/materials.endDustDropChance",
   "conditions": [
     {
       "condition": "celestial_artifacts:has_curio",

@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:add_item",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.originEtchingDropChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/materials.originEtchingDropChance",
   "conditions": [
     {
       "condition": "minecraft:all_of",

@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:add_item",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.charmingBraceletDropChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/materials.charmingBraceletDropChance",
   "conditions": [
     {
       "condition": "celestial_artifacts:enabled",
@@ -16,7 +16,7 @@
     {
       "type": "REPUTATION",
       "condition": "celestial_artifacts:player_stat",
-      "count": "celestial_configs/celestial_artifacts-common.toml/materials.charmingBraceletReputationRequirement"
+      "count": "celestial_configs/celestial_artifacts-server.toml/materials.charmingBraceletReputationRequirement"
     }
   ],
   "fail": "minecraft:gold_ingot",

@@ -1,6 +1,6 @@
 {
   "type": "celestial_core:add_item",
-  "chance": "celestial_configs/celestial_artifacts-common.toml/materials.twistedHeartDropChance",
+  "chance": "celestial_configs/celestial_artifacts-server.toml/materials.twistedHeartDropChance",
   "conditions": [
     {
       "condition": "celestial_artifacts:enabled",
@@ -15,7 +15,7 @@
     },
     {
       "condition": "celestial_core:entity_health",
-      "min": "celestial_configs/celestial_artifacts-common.toml/materials.twistedHeartHealthRequirement"
+      "min": "celestial_configs/celestial_artifacts-server.toml/materials.twistedHeartHealthRequirement"
     }
   ],
   "item": "celestial_artifacts:twisted_heart"
