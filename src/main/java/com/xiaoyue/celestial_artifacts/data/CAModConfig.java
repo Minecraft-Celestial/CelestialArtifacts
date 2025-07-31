@@ -14,37 +14,6 @@ import java.util.LinkedHashMap;
 
 public class CAModConfig {
 
-	public static final ForgeConfigSpec CLIENT_SPEC;
-	public static final Client CLIENT;
-	public static final ForgeConfigSpec COMMON_SPEC;
-	public static final Common COMMON;
-	public static String COMMON_PATH;
-
-	static {
-		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
-		CLIENT_SPEC = client.getRight();
-		CLIENT = client.getLeft();
-
-		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
-		COMMON_SPEC = common.getRight();
-		COMMON = common.getLeft();
-	}
-
-	/**
-	 * Registers any relevant listeners for config
-	 */
-	public static void init() {
-		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
-	}
-
-	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {
-		var mod = ModLoadingContext.get().getActiveContainer();
-		String path = "celestial_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
-		ModLoadingContext.get().registerConfig(type, spec, path);
-		return path;
-	}
-
 	public static class Client {
 
 		Client(ForgeConfigSpec.Builder builder) {
@@ -457,6 +426,18 @@ public class CAModConfig {
 			// solar magnet
 			public final ForgeConfigSpec.DoubleValue solarMagnetDamageBonus;
 
+			// deers mercy amulet
+			public final ForgeConfigSpec.IntValue deersMercyAmuletDamage;
+			public final ForgeConfigSpec.IntValue deersMercyAmuletMaxHealth;
+
+			public final ForgeConfigSpec.DoubleValue deerInscribedAmuletMaxHealth;
+			public final ForgeConfigSpec.DoubleValue deerInscribedAmuletArmor;
+			public final ForgeConfigSpec.DoubleValue deerInscribedAmuletToughness;
+			public final ForgeConfigSpec.DoubleValue deerInscribedAmuletDamage;
+			public final ForgeConfigSpec.DoubleValue deerInscribedAmuletBlessBonus;
+			public final ForgeConfigSpec.IntValue deerInscribedAmuletStrengthInterval;
+
+
 			private Charm(ForgeConfigSpec.Builder builder) {
 				builder.push("charm");
 
@@ -801,6 +782,38 @@ public class CAModConfig {
 					solarMagnetDamageBonus = builder
 							.comment("Solar Magnet: damage bonus at day")
 							.defineInRange("solarMagnetDamageBonus", 0.25, 0, 10);
+				}
+
+				// deers mercy amulet
+				{
+					deersMercyAmuletDamage = builder
+							.comment("Deers Mercy Amulet: attack damage bonus")
+							.defineInRange("deersMercyAmuletDamage", 2, 1, 100);
+					deersMercyAmuletMaxHealth = builder
+							.comment("Deers Mercy Amulet: max health bonus")
+							.defineInRange("deersMercyAmuletMaxHealth", 10, 1, 100);
+				}
+
+				// deer_inscribed_amulet
+				{
+					deerInscribedAmuletMaxHealth = builder
+							.comment("Deer Inscribed Amulet: max health bonus")
+							.defineInRange("deerInscribedAmuletMaxHealth", 0.15, 0.01, 10);
+					deerInscribedAmuletArmor = builder
+							.comment("Deer Inscribed Amulet: armor bonus")
+							.defineInRange("deerInscribedAmuletArmor", 5.0, 1, 100);
+					deerInscribedAmuletToughness = builder
+							.comment("Deer Inscribed Amulet: armor toughness bonus")
+							.defineInRange("deerInscribedAmuletToughness", 2.0, 1, 100);
+					deerInscribedAmuletDamage = builder
+							.comment("Deer Inscribed Amulet: attack damage bonus")
+							.defineInRange("deerInscribedAmuletDamage", 5.0, 1, 100);
+					deerInscribedAmuletBlessBonus = builder
+							.comment("Deer Inscribed Amulet: The bonus provided by reversing the curse")
+							.defineInRange("deerInscribedAmuletBlessBonus", 0.05, 0.01, 10);
+					deerInscribedAmuletStrengthInterval = builder
+							.comment("Deer Inscribed Amulet: Strengthen attack interval")
+							.defineInRange("deerInscribedAmuletStrengthInterval", 10, 1, 100);
 				}
 
 				builder.pop();
@@ -1402,4 +1415,36 @@ public class CAModConfig {
 
 	}
 
+	public static final ForgeConfigSpec CLIENT_SPEC;
+	public static final Client CLIENT;
+
+	public static final ForgeConfigSpec COMMON_SPEC;
+	public static final Common COMMON;
+
+	public static String COMMON_PATH;
+
+	static {
+		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
+		CLIENT_SPEC = client.getRight();
+		CLIENT = client.getLeft();
+
+		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
+		COMMON_SPEC = common.getRight();
+		COMMON = common.getLeft();
+	}
+
+	/**
+	 * Registers any relevant listeners for config
+	 */
+	public static void init() {
+		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
+		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
+	}
+
+	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {
+		var mod = ModLoadingContext.get().getActiveContainer();
+		String path = "celestial_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
+		ModLoadingContext.get().registerConfig(type, spec, path);
+		return path;
+	}
 }

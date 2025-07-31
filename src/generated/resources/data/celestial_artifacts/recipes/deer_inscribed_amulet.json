@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "deer_inscribed_amulet"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
+  "key": {
+    "D": {
+      "item": "celestial_core:light_fragment"
+    },
+    "G": {
+      "item": "minecraft:diamond"
+    },
+    "I": {
+      "item": "minecraft:feather"
+    },
+    "T": {
+      "item": "celestial_artifacts:deers_mercy_amulet"
+    }
+  },
+  "pattern": [
+    "I I",
+    "GTG",
+    "D D"
+  ],
+  "result": {
+    "item": "celestial_artifacts:deer_inscribed_amulet"
+  },
+  "show_notification": true
+}

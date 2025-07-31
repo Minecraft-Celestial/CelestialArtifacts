@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "deer_inscribed_amulet"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
+  "criteria": {
+    "has_deers_mercy_amulet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestial_artifacts:deers_mercy_amulet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "celestial_artifacts:deer_inscribed_amulet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_deers_mercy_amulet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "celestial_artifacts:deer_inscribed_amulet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

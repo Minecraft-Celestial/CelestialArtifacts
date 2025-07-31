@@ -1,6 +1,6 @@
-// 1.20.1	2025-02-15T10:44:22.029888	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
-2e66c345eaaa3a434b3d05b5ddd3a20dd91aaebd assets/celestial_artifacts/lang/en_ud.json
-689e8a11360304f97c89a8cd69d179ee23db291b assets/celestial_artifacts/lang/en_us.json
+// 1.20.1	2025-07-30T13:33:31.2658202	Registrate Provider for celestial_artifacts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+037404264710f120e6b604f0e6077883b8eefdd6 assets/celestial_artifacts/lang/en_ud.json
+58c3a42a634d4f327ca44c2273f0f0f90ba5784e assets/celestial_artifacts/lang/en_us.json
 6bac01ffbdb846e51d42cc3387aa9add978b1ccf assets/celestial_artifacts/models/item/abyss_core.json
 aa8ae8969def9a9afc7e66a3e189cb3ec87c48ad assets/celestial_artifacts/models/item/abyss_will_badge.json
 d9744c1da9516b25ffbab28cdfb841b7f055d9f2 assets/celestial_artifacts/models/item/amethyst_reinforce_plate.json
@@ -20,6 +20,8 @@ af721b602ace82431008a05f90cf80dee0df3dfc assets/celestial_artifacts/models/item/
 7bfce61daafc45314dfbff62ddee86ab175abef7 assets/celestial_artifacts/models/item/cursed_protector.json
 810fbcd28ecbb3e01fae35198bc1029532d1f4bf assets/celestial_artifacts/models/item/cursed_talisman.json
 561e40bc8497b655a03c27681c5af725832fb96f assets/celestial_artifacts/models/item/cursed_totem.json
+8445764bed2e54e4a48d8acff122f4804540e4fa assets/celestial_artifacts/models/item/deers_mercy_amulet.json
+4568091b1566776f84eccf0e08212ecbb4fa2f9c assets/celestial_artifacts/models/item/deer_inscribed_amulet.json
 ec331cbd0dc3e138d9cb725b54806399e4607a57 assets/celestial_artifacts/models/item/demon_curse.json
 75ab836f3f6e81fc985b853463fbae4c854a528d assets/celestial_artifacts/models/item/demon_heart.json
 201c582539fa654d25e863f02419003d385cea24 assets/celestial_artifacts/models/item/desire_etching.json
@@ -32,9 +34,9 @@ e267c557858888d7d38456cb4367739ef842a504 assets/celestial_artifacts/models/item/
 a453ebb7dbb4fc9bd72192db9d78484d49b85154 assets/celestial_artifacts/models/item/emerald_bracelet.json
 29df71960dbeb183ddcb136d7f36df511081e568 assets/celestial_artifacts/models/item/emerald_necklace.json
 5137bba0be185e47767c5992cc51b4fa7fda19e6 assets/celestial_artifacts/models/item/emerald_ring.json
-bb413d2a1aaede80f6410ca5d279ed58eb37799c assets/celestial_artifacts/models/item/end_etching.json
 d5e56e7fc9758aaff40cccf51bac04c67b4b7057 assets/celestial_artifacts/models/item/ender_jump_scepter.json
 a9d9291d85e90a42a6767fe7356496759139f46b assets/celestial_artifacts/models/item/ender_protector.json
+bb413d2a1aaede80f6410ca5d279ed58eb37799c assets/celestial_artifacts/models/item/end_etching.json
 9f8aba385c322b5f01f80bbd708bc5351e673356 assets/celestial_artifacts/models/item/evil_eye.json
 9febc098126abf474c7b73ee3bbada704feefed3 assets/celestial_artifacts/models/item/fang_necklace.json
 db03fd388b3a2422edf8f176ae0c95615b89cdd6 assets/celestial_artifacts/models/item/flame_arrow_bag.json
@@ -62,8 +64,8 @@ ef8bfa562cc5943e76593413d27c5c1ba88ffb2f assets/celestial_artifacts/models/item/
 cb332bc50e53a4265bc02c57829c37ff8878229a assets/celestial_artifacts/models/item/magic_arrow_bag.json
 0520b546b5042013b42adec5f645ab53c098a0f6 assets/celestial_artifacts/models/item/magic_horseshoe.json
 0238041680b1898f0a24e00c6801cc886dc5add4 assets/celestial_artifacts/models/item/nebula_cube.json
-5527205ac039fe5c9c9a6fc3d275177993122c1e assets/celestial_artifacts/models/item/nether_fire.json
 5a51a4016ba8992bad25cec2df2b918abef46d0d assets/celestial_artifacts/models/item/netherite_ring.json
+5527205ac039fe5c9c9a6fc3d275177993122c1e assets/celestial_artifacts/models/item/nether_fire.json
 8285b557f74cf672aebad0179b217e059e907e98 assets/celestial_artifacts/models/item/nihility_etching.json
 0c8b3ba9531be09b882239ac49fb4124158ba51a assets/celestial_artifacts/models/item/origin_etching.json
 0bb1e2dc8033a92aa846d1497457b73bc9806ada assets/celestial_artifacts/models/item/potions_bag.json
@@ -120,6 +122,8 @@ e056b5a9d3d878e568a9ae439d40b61bc865c27a data/celestial_artifacts/advancements/r
 b82b5811d45e140e35ea97416ff77a29cd699fbd data/celestial_artifacts/advancements/recipes/misc/cursed_protector.json
 39eefe4b99ae4d1b4438d3f7bf6e6a878a1759a6 data/celestial_artifacts/advancements/recipes/misc/cursed_talisman.json
 05d567aad32b908849666c8a04d425b4d9545d04 data/celestial_artifacts/advancements/recipes/misc/cursed_totem.json
+8ab3eebadb52a52204cca4e1653b97058e95f0aa data/celestial_artifacts/advancements/recipes/misc/deers_mercy_amulet.json
+288125c902b0abce6945b14308c1fb533db7423d data/celestial_artifacts/advancements/recipes/misc/deer_inscribed_amulet.json
 5a893db98bb2c3283fd562db5f96404ce2ae948a data/celestial_artifacts/advancements/recipes/misc/destroyer_badge.json
 66abf7039fb23b043d9aefc9995ca2d002ea29a6 data/celestial_artifacts/advancements/recipes/misc/diamond_ring.json
 1287bd0856f37277f0dec6a20a0cf1ee6a48bd23 data/celestial_artifacts/advancements/recipes/misc/earth_axe.json
@@ -150,8 +154,8 @@ a243cbc7eae4e979b075c5f03c8a16d88d0ee3fd data/celestial_artifacts/advancements/r
 4c7adf2804e1c89a2f56ab71fb897bed0cf3731e data/celestial_artifacts/advancements/recipes/misc/life_bracelet.json
 6eebaf6574f00c2000014606c6d80a82e3001a45 data/celestial_artifacts/advancements/recipes/misc/lock_of_abyss.json
 0ece71f4dc5449cef4aa029131851dabb36eb0a5 data/celestial_artifacts/advancements/recipes/misc/magic_arrow_bag.json
-6d44d7d6367682e87ba1ffc682810a984a6ede4d data/celestial_artifacts/advancements/recipes/misc/nether_fire.json
 ac1f05660dabc1271f7a7a9e245ca42032fc3a21 data/celestial_artifacts/advancements/recipes/misc/netherite_ring.json
+6d44d7d6367682e87ba1ffc682810a984a6ede4d data/celestial_artifacts/advancements/recipes/misc/nether_fire.json
 4250e676839caae7571bb5e3716514bddbd89e22 data/celestial_artifacts/advancements/recipes/misc/potions_bag.json
 08b7dbcd2b72428c5b1d172d21c95f36217cfafc data/celestial_artifacts/advancements/recipes/misc/prayer_crown.json
 aa064fd2f547f0ae9984958173654bfbb34c2978 data/celestial_artifacts/advancements/recipes/misc/precious_bracelet.json
@@ -201,6 +205,8 @@ c0c5749370406fa4a46e4fa4b89f7a62cce096be data/celestial_artifacts/recipes/copper
 ea744531d2eee12221a967732180329dcdd031f8 data/celestial_artifacts/recipes/cursed_protector.json
 e621de9c5c96983a4c25f4f63e1cdf7be5e06abb data/celestial_artifacts/recipes/cursed_talisman.json
 fb75a95dc16eb87f0540ab12661dfb8474961c52 data/celestial_artifacts/recipes/cursed_totem.json
+6425640453b66a1526ff2188a5a199d504c7f232 data/celestial_artifacts/recipes/deers_mercy_amulet.json
+d673fdfea803f4eca974b3198e15f1a4659b50da data/celestial_artifacts/recipes/deer_inscribed_amulet.json
 8fa25919a7fa472b3c29873eb9db2152f5367b30 data/celestial_artifacts/recipes/destroyer_badge.json
 f00590f197c9aa69c8917c731cc8f444363b4b98 data/celestial_artifacts/recipes/diamond_ring.json
 644787e2d9ea9035cb578ff603aae0943e4de473 data/celestial_artifacts/recipes/earth_axe.json
@@ -231,8 +237,8 @@ bc1c9b5b7e8a087d85ba762203e3b4cc9f10323a data/celestial_artifacts/recipes/holy_t
 257b826ceb5971a19449e0633bb11d4f94b94e01 data/celestial_artifacts/recipes/life_bracelet.json
 fe89621718544c9119072f8f163539dd3f29c821 data/celestial_artifacts/recipes/lock_of_abyss.json
 b5b794d0a425b69cfc8621872d4784b3318e434f data/celestial_artifacts/recipes/magic_arrow_bag.json
-565e5cc7e71990a433e51bbfae307d11f300f7fe data/celestial_artifacts/recipes/nether_fire.json
 854a7023a51abd21916eb573a7e1cedd553c9193 data/celestial_artifacts/recipes/netherite_ring.json
+565e5cc7e71990a433e51bbfae307d11f300f7fe data/celestial_artifacts/recipes/nether_fire.json
 47827b5a0d6b54f214c3452f8751875201cf1473 data/celestial_artifacts/recipes/potions_bag.json
 adafbd0caceb709887a3eef30eaa72978af3f18e data/celestial_artifacts/recipes/prayer_crown.json
 8df57f161e1c18bb608009d590bdf12f3a703f11 data/celestial_artifacts/recipes/precious_bracelet.json
@@ -263,7 +269,7 @@ a6206a3d5baad2b734515ea39951ce7d5c60f6d0 data/curios/tags/items/back.json
 38212bb2fa07199dbc37bdb8e3a044d34a88a8f3 data/curios/tags/items/body.json
 6c401cd08b4f59029e724362aa2f380ddd8c42e0 data/curios/tags/items/bracelet.json
 66c93019c29056939444dbbc489ea64ec5af0590 data/curios/tags/items/catastrophe.json
-46e8c6688078f8c5991f8330799cdb92229a5146 data/curios/tags/items/charm.json
+5c695420be9d7610044e8af5197018024a14c858 data/curios/tags/items/charm.json
 40d496edba4c485a6ddd136947494317d3493e61 data/curios/tags/items/etching.json
 8a7f2d76892674da0182f7d8ae49121f14287d84 data/curios/tags/items/head.json
 0300fd3fa12b19852f85a6fa3a75e3d4501575c2 data/curios/tags/items/heart.json

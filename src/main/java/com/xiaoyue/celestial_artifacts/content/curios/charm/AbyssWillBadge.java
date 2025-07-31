@@ -28,6 +28,7 @@ public class AbyssWillBadge extends BaseTickingToken implements NetworkSensitive
 
 	@SerialClass.SerialField
 	public int abyss_will_badge_add;
+
 	@SerialClass.SerialField
 	public float abyss_will_badge_damage;
 

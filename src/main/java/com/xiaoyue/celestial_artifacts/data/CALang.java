@@ -371,7 +371,11 @@ public class CALang {
 		ABYSS_WILL_BADGE_4("%s chance to take %s damage, and %s chance to take %s", 4),
 		ABYSS_WILL_BADGE_5("For every %s seconds, gain 1 [Abyssal Call]. Capped at %s", 2),
 		ABYSS_WILL_BADGE_6("Every [Abyssal Call] increase attack damage by %s and incoming damage by %s", 2),
-		ABYSS_WILL_BADGE_7("Current [Abyssal Call]: %s", 1);
+		ABYSS_WILL_BADGE_7("Current [Abyssal Call]: %s", 1),
+
+		DEER_INSCRIBED_AMULET_1("Strengthen the next attack every %s seconds, during which the attack traps the target in a %s effect", 2),
+		DEER_INSCRIBED_AMULET_2("When wearing the catastrophe scroll:", 0),
+		DEER_INSCRIBED_AMULET_3("each curse reversal will increase the attack damage dealt by you by %s, and an additional %s will be dealt when reversing all curses", 2);
 
 		final Entry entry;
 

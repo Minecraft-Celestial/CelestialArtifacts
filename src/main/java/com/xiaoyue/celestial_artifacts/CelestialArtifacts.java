@@ -5,10 +5,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
 import com.xiaoyue.celestial_artifacts.data.*;
 import com.xiaoyue.celestial_artifacts.events.CAAttackListener;
-import com.xiaoyue.celestial_artifacts.register.CAItems;
-import com.xiaoyue.celestial_artifacts.register.CALootModifier;
-import com.xiaoyue.celestial_artifacts.register.CAMenus;
-import com.xiaoyue.celestial_artifacts.register.CAbilityPacket;
+import com.xiaoyue.celestial_artifacts.register.*;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.PacketHandler;
@@ -42,6 +39,7 @@ public class CelestialArtifacts {
 
 	public CelestialArtifacts() {
 		CAItems.register();
+		CAEffects.register();
 		CALootModifier.register();
 		CurioCacheCap.register();
 		CAMenus.register();

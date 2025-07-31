@@ -351,5 +351,12 @@
   "curios.modifiers.pendant": "佩戴吊坠时：",
   "itemGroup.celestial_artifacts.curios": "星月遗物",
   "key.celestial_artifacts.ability_key": "饰品主动效果",
-  "key.category.celestial_artifacts.celestial_artifacts": "星月遗物"
+  "key.category.celestial_artifacts.celestial_artifacts": "星月遗物",
+  "item.celestial_artifacts.deers_mercy_amulet": "铭鹿护符",
+  "effect.celestial_artifacts.enfeebled_laceration": "疲弱诅咒",
+  "effect.celestial_artifacts.enfeebled_laceration.description": "降低生物的移动速度，攻击伤害，受治疗量",
+  "celestial_artifacts.charms.deer_inscribed_amulet_1": "每%s秒强化下一次攻击，强化时攻击使目标陷入%s效果",
+  "celestial_artifacts.charms.deer_inscribed_amulet_2": "佩戴灾厄之册时",
+  "item.celestial_artifacts.deer_inscribed_amulet": "悯鹿护符",
+  "celestial_artifacts.charms.deer_inscribed_amulet_3": "每反转一条诅咒将使你造成的攻击伤害提高%s，全部反转时额外提高%s"
 }

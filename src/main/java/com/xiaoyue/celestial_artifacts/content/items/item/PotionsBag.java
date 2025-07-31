@@ -76,8 +76,10 @@ public class PotionsBag extends Item {
 			if (invItem.isEmpty() || !(invItem.getItem() instanceof PotionItem)) continue;
 			List<MobEffectInstance> effects = PotionUtils.getMobEffects(invItem);
 			if (effects.stream().anyMatch(e -> player.getActiveEffects().contains(e))) return;
-			effects.forEach(e -> player.addEffect(new MobEffectInstance(e)));
-			ItemStack copy = invItem.copy();
+            for (MobEffectInstance effect : effects) {
+                player.addEffect(new MobEffectInstance(effect));
+            }
+            ItemStack copy = invItem.copy();
 			copy.shrink(1);
 			inv.setItem(i, copy);
 		}

@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "itemToggle",
+        "deers_mercy_amulet"
+      ],
+      "path": "celestial_configs/celestial_artifacts-common.toml"
+    }
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "T": {
+      "item": "celestial_core:treasure_fragment"
+    }
+  },
+  "pattern": [
+    "I I",
+    "GTG",
+    "D D"
+  ],
+  "result": {
+    "item": "celestial_artifacts:deers_mercy_amulet"
+  },
+  "show_notification": true
+}

@@ -90,7 +90,7 @@ public class CAItems {
 			WAR_DEAD_BADGE, UNDEAD_CHARM, DESTROYER_BADGE, TWISTED_BRAIN, CORRUPT_BADGE,
 			CURSED_TALISMAN, CURSED_PROTECTOR, CURSED_TOTEM, HOLY_TALISMAN, HOLY_SWORD, ANGEL_HEART,
 			ANGEL_PEARL, DEMON_CURSE, KNIGHT_SHELTER, SOUL_BOX, SOLAR_MAGNET, GLUTTONY_BADGE, MAGIC_HORSESHOE,
-			BEARING_STAMEN, ABYSS_WILL_BADGE, SANDS_TALISMAN, SACRIFICIAL_OBJECT,
+			BEARING_STAMEN, ABYSS_WILL_BADGE, SANDS_TALISMAN, SACRIFICIAL_OBJECT, DEERS_MERCY_AMULET, DEER_INSCRIBED_AMULET,
 			HEART_OF_REVENGE, TWISTED_HEART, GREEDY_HEART, DEMON_HEART,
 			TRAVELER_SCROLL, SEA_GOD_SCROLL, SKYWALKER_SCROLL, TWISTED_SCROLL,
 			EMERALD_BRACELET, LIFE_BRACELET, PRECIOUS_BRACELET, RED_RUBY_BRACELET, HIDDEN_BRACELET, SCARLET_BRACELET, CHARMING_BRACELET, SPIRIT_BRACELET,
@@ -304,6 +304,21 @@ public class CAItems {
 					.requireCS().loot(1).build(AttrFacet.multTotal(L2DamageTracker.REDUCTION::get,
 									() -> -CAModConfig.COMMON.charm.sacrificialObjectReduction.get()),
 							new SacrificialObject()));
+
+			// 铭鹿护符
+			DEERS_MERCY_AMULET = charm("deers_mercy_amulet", () -> ModularCurio.builder()
+					.rarity(Rarity.RARE).fortune(1).loot(1).build(
+							AttrFacet.add(() -> Attributes.MAX_HEALTH, CAModConfig.COMMON.charm.deersMercyAmuletMaxHealth::get),
+							AttrFacet.add(() -> Attributes.ATTACK_DAMAGE, CAModConfig.COMMON.charm.deersMercyAmuletDamage::get)
+					));
+
+			DEER_INSCRIBED_AMULET = charm("deer_inscribed_amulet", () -> ModularCurio.builder()
+					.rarity(Rarity.UNCOMMON).build(
+							AttrFacet.multBase(() -> Attributes.MAX_HEALTH, CAModConfig.COMMON.charm.deerInscribedAmuletMaxHealth::get),
+							AttrFacet.add(() -> Attributes.ARMOR, CAModConfig.COMMON.charm.deerInscribedAmuletArmor::get),
+							AttrFacet.add(() -> Attributes.ARMOR_TOUGHNESS, CAModConfig.COMMON.charm.deerInscribedAmuletToughness::get),
+							AttrFacet.add(() -> Attributes.ATTACK_DAMAGE, CAModConfig.COMMON.charm.deerInscribedAmuletDamage::get),
+							new TokenFacet<>("deer_inscribed_amulet", DeerInscribedAmulet::new)));
 		}
 
 		// heart

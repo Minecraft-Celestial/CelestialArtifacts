@@ -2,6 +2,7 @@ package com.xiaoyue.celestial_artifacts.events;
 
 import com.xiaoyue.celestial_artifacts.content.core.feature.FeatureType;
 import com.xiaoyue.celestial_artifacts.content.core.modular.CurioCacheCap;
+import com.xiaoyue.celestial_artifacts.register.CAEffects;
 import com.xiaoyue.celestial_core.events.LivingJumpEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -60,6 +61,9 @@ public class CAGeneralEventHandler {
 
 	@SubscribeEvent
 	public static void onPlayerHeal(LivingHealEvent event) {
+		if (event.getEntity().hasEffect(CAEffects.ENFEEBLED_LACERATION.get())) {
+			event.setAmount(event.getAmount() * 0.2f);
+		}
 		if (event.getEntity() instanceof Player player) {
 			for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.HEAL))
 				e.onPlayerHeal(player, event);
