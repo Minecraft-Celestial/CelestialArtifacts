@@ -55,7 +55,7 @@ public class CAGeneralEventHandler {
 		for (var e : CurioCacheCap.HOLDER.get(player).getFeature(FeatureType.MINING)) {
 			factor *= e.getBreakFactor(player);
 		}
-		event.setNewSpeed((float) (event.getOriginalSpeed() * factor));
+		event.setNewSpeed((float) (event.getNewSpeed() * factor));
 	}
 
 
