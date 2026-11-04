@@ -84,7 +84,7 @@ public class CAModConfig {
 				endEtchingDropChance = builder.defineInRange("endEtchingDropChance", 0.75, 0, 1);
 				endEtchingEffectRequirement = builder.defineInRange("endEtchingEffectRequirement", 9, 0, 100);
 				originEtchingDropChance = builder.defineInRange("originEtchingDropChance", 0.5, 0, 1);
-				originEtchingEffectRequirement = builder.defineInRange("originEtchingEffectRequirement", 200, 0, 100);
+				originEtchingEffectRequirement = builder.defineInRange("originEtchingEffectRequirement", 200, 0, 10000);
 				lifeEtchingDropChance = builder.defineInRange("lifeEtchingDropChance", 0.15, 0, 1);
 				lifeEtchingHealthRequirement = builder.defineInRange("lifeEtchingHealthRequirement", 500, 1, 1000000);
 				chaoticEtchingDropChance = builder.defineInRange("chaoticEtchingDropChance", 0.3, 0, 1);
@@ -245,7 +245,7 @@ public class CAModConfig {
 				{
 					scarletBraceletMaxCost = builder
 							.comment("Scarlet Bracelet: remaining HP as a percentage")
-							.defineInRange("scarletMaxCost", 0.50, 0, 1);
+							.defineInRange("scarletBraceletMaxCost", 0.50, 0, 1);
 					scarletBraceletDamageBonus = builder
 							.comment("Scarlet Bracelet: damage bonus as a percentage of the target's max health per health spent")
 							.defineInRange("scarletBraceletDamageBonus", 0.0001, 0, Integer.MAX_VALUE);
@@ -683,7 +683,7 @@ public class CAModConfig {
 				{
 					sacrificialObjectReduction = builder
 							.comment("Sacrificial Object: damage reduction")
-							.defineInRange("sacriReduction", 0.05, 0, 1);
+							.defineInRange("sacrificialObjectReduction", 0.05, 0, 1);
 					sacrificialObjectHeritage = builder
 							.comment("Sacrificial Object: gold ingot drop chance on death")
 							.defineInRange("sacrificialObjectHeritage", 0.5, 0, 1);
@@ -1101,10 +1101,10 @@ public class CAModConfig {
 						.defineInRange("gallopNecklaceDamageFactor", 1.5, 0, 100000);
 				emeraldNecklaceDrop = builder
 						.comment("Emerald Necklace: chance to drop an emerald")
-						.defineInRange("emeraldNecklaceDropEmerald", 0.02, 0, 1);
+						.defineInRange("emeraldNecklaceDrop", 0.02, 0, 1);
 				enderProtectorChance = builder
 						.comment("Ender Protector: teleport chance")
-						.defineInRange("enderProtectorTeleportChance", 0.5, 0, 1);
+						.defineInRange("enderProtectorChance", 0.5, 0, 1);
 				holyNecklaceCooldown = builder
 						.comment("Holy Necklace: cooldown")
 						.defineInRange("holyNecklaceCooldown", 3, 0, 60);
@@ -1172,7 +1172,7 @@ public class CAModConfig {
 						.defineInRange("spiritNecklaceProjectile", 0.25, 0, 10);
 				treasureHunterNecklaceCooldown = builder
 						.comment("Treasure Hunter Necklace: cooldown")
-						.defineInRange("treasureHunterNecklaceCoolDown", 6000, 0, 10000000);
+						.defineInRange("treasureHunterNecklaceCooldown", 6000, 0, 10000000);
 				treasureHunterNecklaceChance = builder
 						.comment("Treasure Hunter Necklace: chance to obtain loot")
 						.defineInRange("treasureHunterNecklaceChance", 0.05, 0, 1);
@@ -1229,7 +1229,7 @@ public class CAModConfig {
 						.defineInRange("netheriteRingProtection", 0.1, 0, 1);
 				netherFireRingFireTime = builder
 						.comment("Nether Fire Ring: fire burn duration")
-						.defineInRange("netherFireRingFireBurningTime", 5, 0, 1000);
+						.defineInRange("netherFireRingFireTime", 5, 0, 1000);
 				ringOfLifeEffectInterval = builder
 						.comment("Ring of Life: effect interval")
 						.defineInRange("ringOfLifeEffectInterval", 5, 1, 100);
@@ -1386,7 +1386,7 @@ public class CAModConfig {
 				// catastrophe_scroll
 				catastropheScrollEquipOnStart = builder
 						.comment("If true, Catastrophe Scroll will be equipped to new players automatically")
-						.define("catastropheScrollStart", false);
+						.define("catastropheScrollEquipOnStart", false);
 				catastropheScrollPreventUnequip = builder
 						.comment("If true, Catastrophe Scroll cannot be unequipped once equipped")
 						.define("catastropheScrollPreventUnequip", true);

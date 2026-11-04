@@ -37,5 +37,4 @@ public class LeechScabbard implements CAAttackToken, SingleLineText {
 			player.heal(cache.getDamageFinal() * (float) getHeal());
 		}
 	}
-
 }

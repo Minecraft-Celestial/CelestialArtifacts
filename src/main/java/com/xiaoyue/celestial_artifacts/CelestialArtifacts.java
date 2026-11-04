@@ -67,7 +67,6 @@ public class CelestialArtifacts {
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, CALootTableGen::onLootGen);
 	}
 
-
 	public static ResourceLocation loc(String id) {
 		return ResourceLocation.fromNamespaceAndPath(MODID, id);
 	}
